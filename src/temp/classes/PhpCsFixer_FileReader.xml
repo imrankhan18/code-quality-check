@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\FileReader" namespace="PhpCsFixer" name="FileReader" abstract="false" final="true" start="26" end="73">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src" file="FileReader.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/FileReader.php" size="1677" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="ecefda2a8f7bfc9f3f2976b96291e0b9c9130ed0" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/FileReader.php"/>
+  <docblock>
+    <description compact="File reader that unify access to regular file and stdin-alike file.">Regular file could be read multiple times with `file_get_contents`, but file provided on stdin cannot.
+Consecutive try will provide empty content for stdin-alike file.
+This reader unifies access to them.</description>
+    <internal/>
+  </docblock>
+  <member name="stdinContent" visibility="private" static="false" line="31">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\null|string" namespace="PhpCsFixer" name="null|string"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="createSingleton" start="33" end="42" abstract="false" final="false" static="true" visibility="public">
+    <return type="object" nullable="false">
+      <type full="PhpCsFixer\FileReader" namespace="PhpCsFixer" name="FileReader"/>
+    </return>
+  </method>
+  <method name="read" start="44" end="55" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+    <parameter name="filePath" byreference="false" type="string"/>
+  </method>
+  <method name="readRaw" start="57" end="72" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="realPath" byreference="false" type="string"/>
+  </method>
+</class>

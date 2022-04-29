@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Symfony\Contracts\Cache\CacheInterface" namespace="Symfony\Contracts\Cache" name="CacheInterface" abstract="false" final="false" start="22" end="57">
+  <file path="//var/www/html/vendor/symfony/cache-contracts" file="CacheInterface.php" realpath="/var/www/html/vendor/symfony/cache-contracts/CacheInterface.php" size="2393" time="2022-01-02T09:53:40+00:00" unixtime="1641117220" sha1="acf24bb6bdd9a39d617f94eb1ee7aaa41894223e" relative="ar/www/html/vendor/symfony/cache-contracts/CacheInterface.php"/>
+  <docblock>
+    <description compact="Covers most simple to advanced caching needs."/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+  </docblock>
+  <method name="get" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetches a value from the pool or computes it if not found.">On cache misses, a callback is called that should return the missing value.
+This callback is given a PSR-6 CacheItemInterface instance corresponding to the
+requested key, that could be used e.g. for expiration control. It could also
+be an ItemInterface instance when its additional features are needed.</description>
+      <param description="The key of the item to retrieve from the cache" type="string" variable="$key"/>
+      <param description="Should return the computed value for the given key/item" type="object" variable="$callback">
+        <type full="Symfony\Contracts\Cache\callable|CallbackInterface" namespace="Symfony\Contracts\Cache" name="callable|CallbackInterface"/>
+      </param>
+      <param description="A float that, as it grows, controls the likeliness of triggering" type="object" variable="$beta">early expiration. 0 disables it, INF forces immediate expiration.
+                                             The default (or providing null) is implementation dependent but should
+                                             typically be 1.0, which should provide optimal stampede protection.
+                                             See https://en.wikipedia.org/wiki/Cache_stampede#Probabilistic_early_expiration<type full="Symfony\Contracts\Cache\float|null" namespace="Symfony\Contracts\Cache" name="float|null"/></param>
+      <param description="&amp;$metadata The metadata of the cached item {@see ItemInterface::getMetadata()}" type="array"/>
+      <return type="mixed"/>
+      <throws description="When $key is not valid or when $beta is negative" type="object">
+        <type full="Psr\Cache\InvalidArgumentException" namespace="Psr\Cache" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="key" byreference="false" type="string"/>
+    <parameter name="callback" byreference="false" type="callable"/>
+    <parameter name="beta" byreference="false" type="float" default="NULL"/>
+    <parameter name="metadata" byreference="true" type="array" default="NULL"/>
+  </method>
+  <method name="delete" start="56" end="56" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes an item from the pool."/>
+      <param description="The key to delete" type="string" variable="$key"/>
+      <throws description="When $key is not valid" type="object">
+        <type full="Psr\Cache\InvalidArgumentException" namespace="Psr\Cache" name="InvalidArgumentException"/>
+      </throws>
+      <return description="True if the item was successfully removed, false if there was any error" type="object">
+        <type full="Symfony\Contracts\Cache\bool" namespace="Symfony\Contracts\Cache" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="key" byreference="false" type="string"/>
+  </method>
+  <implementors>
+    <class full="Symfony\Component\Cache\Adapter\FilesystemAdapter" namespace="Symfony\Component\Cache\Adapter" name="FilesystemAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\TraceableAdapter" namespace="Symfony\Component\Cache\Adapter" name="TraceableAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\TraceableTagAwareAdapter" namespace="Symfony\Component\Cache\Adapter" name="TraceableTagAwareAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\AbstractAdapter" namespace="Symfony\Component\Cache\Adapter" name="AbstractAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\DoctrineAdapter" namespace="Symfony\Component\Cache\Adapter" name="DoctrineAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\ProxyAdapter" namespace="Symfony\Component\Cache\Adapter" name="ProxyAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\Psr16Adapter" namespace="Symfony\Component\Cache\Adapter" name="Psr16Adapter"/>
+    <class full="Symfony\Component\Cache\Adapter\MemcachedAdapter" namespace="Symfony\Component\Cache\Adapter" name="MemcachedAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\CouchbaseBucketAdapter" namespace="Symfony\Component\Cache\Adapter" name="CouchbaseBucketAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\PhpFilesAdapter" namespace="Symfony\Component\Cache\Adapter" name="PhpFilesAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\PhpArrayAdapter" namespace="Symfony\Component\Cache\Adapter" name="PhpArrayAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\ArrayAdapter" namespace="Symfony\Component\Cache\Adapter" name="ArrayAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\PdoAdapter" namespace="Symfony\Component\Cache\Adapter" name="PdoAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\ApcuAdapter" namespace="Symfony\Component\Cache\Adapter" name="ApcuAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\ChainAdapter" namespace="Symfony\Component\Cache\Adapter" name="ChainAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\RedisAdapter" namespace="Symfony\Component\Cache\Adapter" name="RedisAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\CouchbaseCollectionAdapter" namespace="Symfony\Component\Cache\Adapter" name="CouchbaseCollectionAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\NullAdapter" namespace="Symfony\Component\Cache\Adapter" name="NullAdapter"/>
+  </implementors>
+  <extenders>
+    <extender full="Symfony\Contracts\Cache\TagAwareCacheInterface" namespace="Symfony\Contracts\Cache" name="TagAwareCacheInterface"/>
+  </extenders>
+</interface>

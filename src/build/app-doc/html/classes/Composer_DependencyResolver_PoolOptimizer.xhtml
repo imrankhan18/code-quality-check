@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\DependencyResolver\PoolOptimizer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_DependencyResolver">Composer\DependencyResolver</a>
+          </li>
+          <li class="separator">PoolOptimizer</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/PoolOptimizer.php.xhtml#line29">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\DependencyResolver\</small>PoolOptimizer</h1>
+        <h4>Optimizes a given pool</h4>
+        <p/>
+        <ul>
+          <li>Author: Yanick Witschi &lt;yanick.witschi@terminal42.ch&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PoolOptimizer
+            {<br/><ul class="none"><li>// members</li><li>private <span title="Composer\DependencyResolver\PolicyInterface">PolicyInterface</span> <a href="#members">$policy</a>;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;int">array&lt;int</span> <a href="#members">$irremovablePackages</a> =
+                        ;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;string">array&lt;string</span> <a href="#members">$requireConstraintsPerPackage</a> =
+                        ;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;string">array&lt;string</span> <a href="#members">$conflictConstraintsPerPackage</a> =
+                        ;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;int">array&lt;int</span> <a href="#members">$packagesToRemove</a> =
+                        ;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;int">array&lt;int</span> <a href="#members">$aliasesPerPackage</a> =
+                        ;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;string">array&lt;string</span> <a href="#members">$removedVersionsByPackage</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/__construct.xhtml">__construct</a>()
+                    </li><li>public <span title="Pool">Pool</span> <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/optimize.xhtml">optimize</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/prepare.xhtml">prepare</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/markPackageIrremovable.xhtml">markPackageIrremovable</a>()
+                    </li><li>private <span title="Pool">Pool</span> <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/applyRemovalsToPool.xhtml">applyRemovalsToPool</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/optimizeByIdenticalDependencies.xhtml">optimizeByIdenticalDependencies</a>()
+                    </li><li>private string <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/calculateDependencyHash.xhtml">calculateDependencyHash</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/markPackageForRemoval.xhtml">markPackageForRemoval</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/keepPackage.xhtml">keepPackage</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/optimizeImpossiblePackagesAway.xhtml">optimizeImpossiblePackagesAway</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/extractRequireConstraintsPerPackage.xhtml">extractRequireConstraintsPerPackage</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/extractConflictConstraintsPerPackage.xhtml">extractConflictConstraintsPerPackage</a>()
+                    </li><li>private array <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/expandDisjunctiveMultiConstraints.xhtml">expandDisjunctiveMultiConstraints</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="aliasesPerPackage"><strong>$aliasesPerPackage</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;int" href="../classes/Composer_DependencyResolver_array&lt;int.xhtml">Composer\DependencyResolver\array&lt;int</a></li>
+            <li id="conflictConstraintsPerPackage"><strong>$conflictConstraintsPerPackage</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;string" href="../classes/Composer_DependencyResolver_array&lt;string.xhtml">Composer\DependencyResolver\array&lt;string</a></li>
+            <li id="irremovablePackages"><strong>$irremovablePackages</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;int" href="../classes/Composer_DependencyResolver_array&lt;int.xhtml">Composer\DependencyResolver\array&lt;int</a></li>
+            <li id="packagesToRemove"><strong>$packagesToRemove</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;int" href="../classes/Composer_DependencyResolver_array&lt;int.xhtml">Composer\DependencyResolver\array&lt;int</a></li>
+            <li id="policy"><strong>$policy</strong>
+                —
+                <a title="Composer\DependencyResolver\PolicyInterface" href="../classes/Composer_DependencyResolver_PolicyInterface.xhtml">Composer\DependencyResolver\PolicyInterface</a></li>
+            <li id="removedVersionsByPackage"><strong>$removedVersionsByPackage</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;string" href="../classes/Composer_DependencyResolver_array&lt;string.xhtml">Composer\DependencyResolver\array&lt;string</a></li>
+            <li id="requireConstraintsPerPackage"><strong>$requireConstraintsPerPackage</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;string" href="../classes/Composer_DependencyResolver_array&lt;string.xhtml">Composer\DependencyResolver\array&lt;string</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="applyRemovalsToPool">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/applyRemovalsToPool.xhtml">applyRemovalsToPool()</a>
+            </li>
+            <li id="calculateDependencyHash">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/calculateDependencyHash.xhtml">calculateDependencyHash()</a>
+            </li>
+            <li id="expandDisjunctiveMultiConstraints">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/expandDisjunctiveMultiConstraints.xhtml">expandDisjunctiveMultiConstraints()</a>
+            </li>
+            <li id="extractConflictConstraintsPerPackage"><a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/extractConflictConstraintsPerPackage.xhtml">extractConflictConstraintsPerPackage()</a>
+                — Disjunctive conflict constraints need to be considered in their own group. E.g. "^2.14 || ^3.3" needs to generate two conflict constraint groups in order for us to keep the best matching package for "^2.14" AND "^3.3" as otherwise, we'd only keep either one which can cause trouble (e.g. when using --prefer-lowest).</li>
+            <li id="extractRequireConstraintsPerPackage"><a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/extractRequireConstraintsPerPackage.xhtml">extractRequireConstraintsPerPackage()</a>
+                — Disjunctive require constraints need to be considered in their own group. E.g. "^2.14 || ^3.3" needs to generate two require constraint groups in order for us to keep the best matching package for "^2.14" AND "^3.3" as otherwise, we'd only keep either one which can cause trouble (e.g. when using --prefer-lowest).</li>
+            <li id="keepPackage">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/keepPackage.xhtml">keepPackage()</a>
+            </li>
+            <li id="markPackageForRemoval">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/markPackageForRemoval.xhtml">markPackageForRemoval()</a>
+            </li>
+            <li id="markPackageIrremovable">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/markPackageIrremovable.xhtml">markPackageIrremovable()</a>
+            </li>
+            <li id="optimizeByIdenticalDependencies">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/optimizeByIdenticalDependencies.xhtml">optimizeByIdenticalDependencies()</a>
+            </li>
+            <li id="optimizeImpossiblePackagesAway"><a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/optimizeImpossiblePackagesAway.xhtml">optimizeImpossiblePackagesAway()</a>
+                — Use the list of locked packages to constrain the loaded packages This will reduce packages with significant numbers of historical versions to a smaller number and reduce the resulting rule set that is generated</li>
+            <li id="prepare">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/prepare.xhtml">prepare()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="optimize">
+              <a title="Composer\DependencyResolver\PoolOptimizer" href="../classes/Composer_DependencyResolver_PoolOptimizer/optimize.xhtml">optimize()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

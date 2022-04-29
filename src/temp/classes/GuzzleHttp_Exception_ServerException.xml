@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Exception\ServerException" namespace="GuzzleHttp\Exception" name="ServerException" abstract="false" final="false" start="8" end="10">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Exception" file="ServerException.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Exception/ServerException.php" size="163" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="5d5b7e40ccb786cd174e82c8dbf15cca301fb22d" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Exception/ServerException.php"/>
+  <docblock>
+    <description compact="Exception when a server error is encountered (5xx codes)"/>
+  </docblock>
+  <extends full="GuzzleHttp\Exception\BadResponseException" namespace="GuzzleHttp\Exception" name="BadResponseException"/>
+  <parent full="GuzzleHttp\Exception\BadResponseException" namespace="GuzzleHttp\Exception" name="BadResponseException">
+    <extends full="GuzzleHttp\Exception\RequestException" namespace="GuzzleHttp\Exception" name="RequestException"/>
+    <constructor name="__construct" start="13" end="21" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="message" byreference="false" type="string"/>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+      <parameter name="response" byreference="false" type="object">
+        <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+      </parameter>
+      <parameter name="previous" byreference="false" type="object" default="NULL">
+        <type full="Throwable" namespace="" name="Throwable"/>
+      </parameter>
+      <parameter name="handlerContext" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="hasResponse" start="26" end="29" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Current exception and the ones that extend it will always have a response."/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="getResponse" start="34" end="38" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This function narrows the return type from the parent class and does not allow it to be nullable."/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+      </return>
+    </method>
+  </parent>
+  <parent full="GuzzleHttp\Exception\RequestException" namespace="GuzzleHttp\Exception" name="RequestException">
+    <extends full="GuzzleHttp\Exception\TransferException" namespace="GuzzleHttp\Exception" name="TransferException"/>
+    <implements full="Psr\Http\Client\RequestExceptionInterface" namespace="Psr\Http\Client" name="RequestExceptionInterface"/>
+    <constructor name="__construct" start="32" end="45" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="message" byreference="false" type="string"/>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+      <parameter name="response" byreference="false" type="object" default="NULL">
+        <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+      </parameter>
+      <parameter name="previous" byreference="false" type="object" default="NULL">
+        <type full="Throwable" namespace="" name="Throwable"/>
+      </parameter>
+      <parameter name="handlerContext" byreference="false" type="array" default=""/>
+      <inline>
+        <comment value="Set the code of the exception if the response is set and not future." line="39"/>
+      </inline>
+    </constructor>
+    <method name="wrapException" start="50" end="53" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Wrap non-RequestExceptions with a RequestException"/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="GuzzleHttp\Exception\RequestException" namespace="GuzzleHttp\Exception" name="RequestException"/>
+      </return>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+      <parameter name="e" byreference="false" type="object">
+        <type full="Throwable" namespace="" name="Throwable"/>
+      </parameter>
+    </method>
+    <method name="create" start="64" end="114" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Factory method to create a new exception with a normalized error message"/>
+        <param description="Request sent" type="object" variable="$request">
+          <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+        </param>
+        <param description="Response received" type="object" variable="$response">
+          <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+        </param>
+        <param description="Previous exception" type="object" variable="$previous">
+          <type full="\Throwable|null" namespace="" name="Throwable|null"/>
+        </param>
+        <param description="Optional handler context" type="array" variable="$handlerContext"/>
+        <param description="Optional body summarizer" type="object" variable="$bodySummarizer">
+          <type full="GuzzleHttp\Exception\BodySummarizerInterface|null" namespace="GuzzleHttp\Exception" name="BodySummarizerInterface|null"/>
+        </param>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="GuzzleHttp\Exception\RequestException" namespace="GuzzleHttp\Exception" name="RequestException"/>
+      </return>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+      <parameter name="response" byreference="false" type="object" default="NULL">
+        <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+      </parameter>
+      <parameter name="previous" byreference="false" type="object" default="NULL">
+        <type full="Throwable" namespace="" name="Throwable"/>
+      </parameter>
+      <parameter name="handlerContext" byreference="false" type="array" default=""/>
+      <parameter name="bodySummarizer" byreference="false" type="object" default="NULL">
+        <type full="GuzzleHttp\BodySummarizerInterface" namespace="GuzzleHttp" name="BodySummarizerInterface"/>
+      </parameter>
+      <inline>
+        <comment value="Client Error: `GET /` resulted in a `404 Not Found` response:" line="96"/>
+        <comment value="&lt;html&gt; ... (truncated)" line="97"/>
+      </inline>
+    </method>
+    <method name="getRequest" start="133" end="136" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the request that caused the exception"/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </return>
+    </method>
+    <method name="getResponse" start="141" end="144" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the associated response"/>
+      </docblock>
+      <return type="object" nullable="true">
+        <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+      </return>
+    </method>
+    <method name="hasResponse" start="149" end="152" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check if a response was received"/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="getHandlerContext" start="162" end="165" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get contextual information about the error from the underlying handler.">The contents of this array will vary depending on which handler you are
+using. It may also be just an empty array. Relying on this data will
+couple you to a specific handler, but can give more debug information
+when needed.</description>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+  </parent>
+  <parent full="GuzzleHttp\Exception\TransferException" namespace="GuzzleHttp\Exception" name="TransferException">
+    <extends full="RuntimeException" namespace="" name="RuntimeException"/>
+    <implements full="GuzzleHttp\Exception\GuzzleException" namespace="GuzzleHttp\Exception" name="GuzzleException"/>
+  </parent>
+  <parent full="RuntimeException" namespace="" name="RuntimeException">
+    <extends full="Exception" namespace="" name="Exception"/>
+    <member name="message" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception message"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="code" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception code"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <member name="file" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The filename where the exception was created"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="line" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The line where the exception was created"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <method name="getMessage" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getPrevious" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="Throwable"/>
+    </docblock>
+  </method>
+    <method name="getCode" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="getFile" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getLine" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getTrace" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="array"/>
+    </docblock>
+  </method>
+    <method name="getTraceAsString" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="__toString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  </parent>
+  <parent full="Exception" namespace="" name="Exception">
+    <member name="message" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception message"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="code" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception code"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <member name="file" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The filename where the exception was created"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="line" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The line where the exception was created"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <constructor name="__construct" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Construct the exception"/>
+      <return type="void"/>
+    </docblock>
+    <parameter name="message" optional="true" byreference="false" type="string"/>
+    <parameter name="code" optional="true" byreference="false" type="int"/>
+    <parameter name="previous" optional="true" byreference="false" type="object" class="Throwable"/>
+  </constructor>
+    <method name="getMessage" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the Exception message"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getPrevious" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Returns previous Exception"/>
+      <return type="Throwable"/>
+    </docblock>
+  </method>
+    <method name="getCode" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the Exception code"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="getFile" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the file in which the exception was created"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getLine" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the line in which the exception was created"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getTrace" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the stack trace"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+    <method name="getTraceAsString" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the stack trace as a string"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="__toString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="String representation of the exception"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  </parent>
+  <interface full="GuzzleHttp\Exception\GuzzleException" namespace="GuzzleHttp\Exception" name="GuzzleException">
+    <extends full="Psr\Http\Client\ClientExceptionInterface" namespace="Psr\Http\Client" name="ClientExceptionInterface"/>
+  </interface>
+  <interface full="Psr\Http\Client\RequestExceptionInterface" namespace="Psr\Http\Client" name="RequestExceptionInterface">
+    <extends full="Psr\Http\Client\ClientExceptionInterface" namespace="Psr\Http\Client" name="ClientExceptionInterface"/>
+    <method name="getRequest" start="23" end="23" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the request.">The request object MAY be a different object from the one passed to ClientInterface::sendRequest()</description>
+        <return type="object">
+          <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </return>
+    </method>
+  </interface>
+</class>

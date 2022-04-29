@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\CacheItem" namespace="Symfony\Component\Cache" name="CacheItem" abstract="false" final="true" start="22" end="192">
+  <file path="//var/www/html/vendor/symfony/cache" file="CacheItem.php" realpath="/var/www/html/vendor/symfony/cache/CacheItem.php" size="5332" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="6b7cf49611c70daccb2d9242cb446964f81e3710" relative="ar/www/html/vendor/symfony/cache/CacheItem.php"/>
+  <docblock>
+    <description/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+  </docblock>
+  <implements full="Symfony\Contracts\Cache\ItemInterface" namespace="Symfony\Contracts\Cache" name="ItemInterface"/>
+  <constant type="integer" name="METADATA_EXPIRY_OFFSET" value="1527506807"/>
+  <member name="key" visibility="protected" static="false" line="26"/>
+  <member name="value" visibility="protected" static="false" line="27"/>
+  <member name="isHit" default="false" type="boolean" visibility="protected" static="false" line="28"/>
+  <member name="expiry" visibility="protected" static="false" line="29"/>
+  <member name="metadata" default="" type="array" visibility="protected" static="false" line="30"/>
+  <member name="newMetadata" default="" type="array" visibility="protected" static="false" line="31"/>
+  <member name="innerItem" visibility="protected" static="false" line="32"/>
+  <member name="poolHash" visibility="protected" static="false" line="33"/>
+  <member name="isTaggable" default="false" type="boolean" visibility="protected" static="false" line="34"/>
+  <method name="getKey" start="39" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="get" start="49" end="52" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  <method name="isHit" start="57" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="set" start="67" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\$this" namespace="Symfony\Component\Cache" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Symfony\Component\Cache\CacheItem" namespace="Symfony\Component\Cache" name="CacheItem"/>
+    </return>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="expiresAt" start="79" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\$this" namespace="Symfony\Component\Cache" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Symfony\Component\Cache\CacheItem" namespace="Symfony\Component\Cache" name="CacheItem"/>
+    </return>
+    <parameter name="expiration" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="expiresAfter" start="97" end="110" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\$this" namespace="Symfony\Component\Cache" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Symfony\Component\Cache\CacheItem" namespace="Symfony\Component\Cache" name="CacheItem"/>
+    </return>
+    <parameter name="time" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="tag" start="115" end="141" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Symfony\Contracts\Cache\ItemInterface" namespace="Symfony\Contracts\Cache" name="ItemInterface"/>
+    </return>
+    <parameter name="tags" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMetadata" start="146" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="validateKey" start="158" end="171" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Validates a cache key according to PSR-6."/>
+      <param description="The key to validate" type="mixed" variable="$key"/>
+      <throws description="When $key is not valid" type="object">
+        <type full="Symfony\Component\Cache\Exception\InvalidArgumentException" namespace="Symfony\Component\Cache\Exception" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="log" start="178" end="191" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Internal logging helper."/>
+      <internal/>
+    </docblock>
+    <parameter name="logger" byreference="false" nullable="true" type="object">
+      <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+    </parameter>
+    <parameter name="message" byreference="false" type="string"/>
+    <parameter name="context" byreference="false" type="array" default=""/>
+  </method>
+  <interface full="Symfony\Contracts\Cache\ItemInterface" namespace="Symfony\Contracts\Cache" name="ItemInterface">
+    <extends full="Psr\Cache\CacheItemInterface" namespace="Psr\Cache" name="CacheItemInterface"/>
+    <constant type="{unknown}" name="METADATA_EXPIRY" value="'expiry'">
+      <docblock>
+        <description compact="References the Unix timestamp stating when the item will expire."/>
+      </docblock>
+    </constant>
+    <constant type="{unknown}" name="METADATA_CTIME" value="'ctime'">
+      <docblock>
+        <description compact="References the time the item took to be created, in milliseconds."/>
+      </docblock>
+    </constant>
+    <constant type="{unknown}" name="METADATA_TAGS" value="'tags'">
+      <docblock>
+        <description compact="References the list of tags that were assigned to the item, as string[]."/>
+      </docblock>
+    </constant>
+    <constant type="{unknown}" name="RESERVED_CHARACTERS" value="'{}()/\@:'">
+      <docblock>
+        <description compact="Reserved characters that cannot be used in a key or tag."/>
+      </docblock>
+    </constant>
+    <method name="tag" start="57" end="57" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Adds a tag to a cache item.">Tags are strings that follow the same validation rules as keys.</description>
+        <param description="A tag or array of tags" type="array" variable="$tags" of="object">
+          <type full="Symfony\Contracts\Cache\string|string" namespace="Symfony\Contracts\Cache" name="string|string"/>
+        </param>
+        <return type="object">
+          <type full="Symfony\Contracts\Cache\$this" namespace="Symfony\Contracts\Cache" name="$this"/>
+        </return>
+        <throws description="When $tag is not valid" type="object">
+          <type full="Psr\Cache\InvalidArgumentException" namespace="Psr\Cache" name="InvalidArgumentException"/>
+        </throws>
+        <throws description="When the item comes from a pool that is not tag-aware" type="object">
+          <type full="Psr\Cache\CacheException" namespace="Psr\Cache" name="CacheException"/>
+        </throws>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Symfony\Contracts\Cache\ItemInterface" namespace="Symfony\Contracts\Cache" name="ItemInterface"/>
+      </return>
+      <parameter name="tags" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getMetadata" start="64" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a list of metadata info that were saved alongside with the cached value.">See ItemInterface::METADATA_* consts for keys potentially found in the returned array.</description>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+  </interface>
+</class>

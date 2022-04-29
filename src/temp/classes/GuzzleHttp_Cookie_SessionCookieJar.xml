@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Cookie\SessionCookieJar" namespace="GuzzleHttp\Cookie" name="SessionCookieJar" abstract="false" final="false" start="8" end="77">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Cookie" file="SessionCookieJar.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Cookie/SessionCookieJar.php" size="2003" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="20ffd780dda77043266cae573722854e0d29c39e" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Cookie/SessionCookieJar.php"/>
+  <docblock>
+    <description compact="Persists cookies in the client session"/>
+  </docblock>
+  <extends full="GuzzleHttp\Cookie\CookieJar" namespace="GuzzleHttp\Cookie" name="CookieJar"/>
+  <member name="sessionKey" visibility="private" static="false" line="13">
+    <docblock>
+      <description/>
+      <var description="session key" type="string"/>
+    </docblock>
+  </member>
+  <member name="storeSessionCookies" visibility="private" static="false" line="18">
+    <docblock>
+      <description/>
+      <var description="Control whether to persist session cookies or not." type="object">
+        <type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="28" end="34" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a new SessionCookieJar object"/>
+      <param description="Session key name to store the cookie" type="string" variable="$sessionKey">data in session</param>
+      <param description="Set to true to store session cookies" type="object" variable="$storeSessionCookies">in the cookie jar.<type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/></param>
+    </docblock>
+    <parameter name="sessionKey" byreference="false" type="string"/>
+    <parameter name="storeSessionCookies" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <destructor name="__destruct" start="39" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Saves cookies to session when shutting down"/>
+    </docblock>
+  </destructor>
+  <method name="save" start="47" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Save cookies to the client session"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="load" start="63" end="76" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Load the contents of the client session into the data array"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <parent full="GuzzleHttp\Cookie\CookieJar" namespace="GuzzleHttp\Cookie" name="CookieJar">
+    <implements full="GuzzleHttp\Cookie\CookieJarInterface" namespace="GuzzleHttp\Cookie" name="CookieJarInterface"/>
+    <constructor name="__construct" start="30" end="40" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="Set to true to throw exceptions when invalid" type="object" variable="$strictMode">cookies are added to the cookie jar.<type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/></param>
+        <param description="Array of SetCookie objects or a hash of" type="array" variable="$cookieArray">arrays that can be used with the SetCookie
+                          constructor</param>
+      </docblock>
+      <parameter name="strictMode" byreference="false" type="boolean" default="false"/>
+      <parameter name="cookieArray" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="fromArray" start="48" end="61" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Create a new Cookie jar from an associative array and domain."/>
+        <param description="Cookies to create the jar from" type="array" variable="$cookies"/>
+        <param description="Domain to set the cookies to" type="string" variable="$domain"/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="GuzzleHttp\Cookie\CookieJar" namespace="GuzzleHttp\Cookie" name="CookieJar"/>
+      </return>
+      <parameter name="cookies" byreference="false" type="array"/>
+      <parameter name="domain" byreference="false" type="string"/>
+    </method>
+    <method name="shouldPersist" start="70" end="79" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Evaluate if this cookie should be persisted to storage that survives between requests."/>
+        <param description="Being evaluated." type="object" variable="$cookie">
+          <type full="GuzzleHttp\Cookie\SetCookie" namespace="GuzzleHttp\Cookie" name="SetCookie"/>
+        </param>
+        <param description="If we should persist session cookies" type="object" variable="$allowSessionCookies">
+          <type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/>
+        </param>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="cookie" byreference="false" type="object">
+        <type full="GuzzleHttp\Cookie\SetCookie" namespace="GuzzleHttp\Cookie" name="SetCookie"/>
+      </parameter>
+      <parameter name="allowSessionCookies" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getCookieByName" start="88" end="97" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Finds and returns the cookie based on the name"/>
+        <param description="cookie name to search for" type="string" variable="$name"/>
+        <return description="cookie that was found or null if not found" type="object">
+          <type full="GuzzleHttp\Cookie\SetCookie|null" namespace="GuzzleHttp\Cookie" name="SetCookie|null"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="true">
+        <type full="GuzzleHttp\Cookie\SetCookie" namespace="GuzzleHttp\Cookie" name="SetCookie"/>
+      </return>
+      <parameter name="name" byreference="false" type="string"/>
+    </method>
+    <method name="toArray" start="102" end="107" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="clear" start="112" end="142" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="domain" byreference="false" nullable="true" type="string" default="NULL"/>
+      <parameter name="path" byreference="false" nullable="true" type="string" default="NULL"/>
+      <parameter name="name" byreference="false" nullable="true" type="string" default="NULL"/>
+    </method>
+    <method name="clearSessionCookies" start="147" end="155" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="setCookie" start="160" end="218" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="cookie" byreference="false" type="object">
+        <type full="GuzzleHttp\Cookie\SetCookie" namespace="GuzzleHttp\Cookie" name="SetCookie"/>
+      </parameter>
+      <inline>
+        <comment value="If the name string is empty (but not 0), ignore the set-cookie" line="162"/>
+        <comment value="string entirely." line="163"/>
+        <comment value="Only allow cookies with set and valid domain, name, value" line="169"/>
+        <comment value="Resolve conflicts with previously set cookies" line="179"/>
+      </inline>
+    </method>
+    <method name="count" start="220" end="223" abstract="false" final="false" static="false" visibility="public">
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="getIterator" start="228" end="231" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return description="SetCookie&gt;" type="object">
+          <type full="\ArrayIterator&lt;int" namespace="" name="ArrayIterator&lt;int"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="ArrayIterator" namespace="" name="ArrayIterator"/>
+      </return>
+    </method>
+    <method name="extractCookies" start="233" end="247" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+      <parameter name="response" byreference="false" type="object">
+        <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+      </parameter>
+    </method>
+    <method name="withCookieHeader" start="274" end="296" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </return>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+    </method>
+  </parent>
+  <interface full="GuzzleHttp\Cookie\CookieJarInterface" namespace="GuzzleHttp\Cookie" name="CookieJarInterface">
+    <extends full="Countable" namespace="" name="Countable"/>
+    <extends full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <method name="withCookieHeader" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a request with added cookie headers.">If no matching cookies are found in the cookie jar, then no Cookie
+header is added to the request and the same request is returned.</description>
+        <param description="Request object to modify." type="object" variable="$request">
+          <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+        </param>
+        <return description="returns the modified request." type="object">
+          <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </return>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+    </method>
+    <method name="extractCookies" start="39" end="39" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Extract cookies from an HTTP response and store them in the CookieJar."/>
+        <param description="Request that was sent" type="object" variable="$request">
+          <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+        </param>
+        <param description="Response that was received" type="object" variable="$response">
+          <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+        </param>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+      <parameter name="response" byreference="false" type="object">
+        <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+      </parameter>
+    </method>
+    <method name="setCookie" start="48" end="48" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Sets a cookie in the cookie jar."/>
+        <param description="Cookie to set." type="object" variable="$cookie">
+          <type full="GuzzleHttp\Cookie\SetCookie" namespace="GuzzleHttp\Cookie" name="SetCookie"/>
+        </param>
+        <return description="Returns true on success or false on failure" type="object">
+          <type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="cookie" byreference="false" type="object">
+        <type full="GuzzleHttp\Cookie\SetCookie" namespace="GuzzleHttp\Cookie" name="SetCookie"/>
+      </parameter>
+    </method>
+    <method name="clear" start="64" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Remove cookies currently held in the cookie jar.">Invoking this method without arguments will empty the whole cookie jar.
+If given a $domain argument only cookies belonging to that domain will
+be removed. If given a $domain and $path argument, cookies belonging to
+the specified path within that domain are removed. If given all three
+arguments, then the cookie with the specified name, path and domain is
+removed.</description>
+        <param description="Clears cookies matching a domain" type="object" variable="$domain">
+          <type full="GuzzleHttp\Cookie\string|null" namespace="GuzzleHttp\Cookie" name="string|null"/>
+        </param>
+        <param description="Clears cookies matching a domain and path" type="object" variable="$path">
+          <type full="GuzzleHttp\Cookie\string|null" namespace="GuzzleHttp\Cookie" name="string|null"/>
+        </param>
+        <param description="Clears cookies matching a domain, path, and name" type="object" variable="$name">
+          <type full="GuzzleHttp\Cookie\string|null" namespace="GuzzleHttp\Cookie" name="string|null"/>
+        </param>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="domain" byreference="false" nullable="true" type="string" default="NULL"/>
+      <parameter name="path" byreference="false" nullable="true" type="string" default="NULL"/>
+      <parameter name="name" byreference="false" nullable="true" type="string" default="NULL"/>
+    </method>
+    <method name="clearSessionCookies" start="73" end="73" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Discard all sessions cookies.">Removes cookies that don't have an expire field or a have a discard
+field set to true. To be called when the user agent shuts down according
+to RFC 2965.</description>
+      </docblock>
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="toArray" start="78" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Converts the cookie jar to an array."/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+  </interface>
+</class>

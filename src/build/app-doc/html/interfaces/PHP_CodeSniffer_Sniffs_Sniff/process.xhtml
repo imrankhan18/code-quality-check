@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PHP_CodeSniffer\Sniffs\Sniff::process</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#PHP_CodeSniffer_Sniffs">PHP_CodeSniffer\Sniffs</a>
+          </li>
+          <li class="separator">
+            <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">Sniff</a>
+          </li>
+          <li class="separator">process</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="../../source/ar/www/html/vendor/squizlabs/php_codesniffer/src/Sniffs/Sniff.php.xhtml#line77">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>PHP_CodeSniffer\Sniffs\Sniff::</small>process</h1>
+        <h4>Called when one of the token types that this sniff is listening for is found.</h4>
+        <p>The stackPtr variable indicates where in the stack the token was found.
+A sniff can acquire information this token, along with all the other
+tokens within the stack by first acquiring the token stack:
+
+&lt;code&gt;
+   $tokens = $phpcsFile-&gt;getTokens();
+   echo 'Encountered a '.$tokens[$stackPtr]['type'].' token';
+   echo 'token information: ';
+   print_r($tokens[$stackPtr]);
+&lt;/code&gt;
+
+If the sniff discovers an anomaly in the code, they can raise an error
+by calling addError() on the \PHP_CodeSniffer\Files\File object, specifying an error
+message and the position of the offending token:
+
+&lt;code&gt;
+   $phpcsFile-&gt;addError('Encountered an error', $stackPtr);
+&lt;/code&gt;</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function process(<a title="PHP_CodeSniffer\Files\File" href="../../interfaces/PHP_CodeSniffer_Files_File.xhtml">File</a>
+        $phpcsFile,
+            int
+        $stackPtr )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$phpcsFile</code>
+                —
+                <a title="\PHP_CodeSniffer\Files\File" href="../../interfaces/_PHP_CodeSniffer_Files_File.xhtml">\PHP_CodeSniffer\Files\File</a></dt>
+          <dd>The PHP_CodeSniffer file where the<br/>token was found.</dd>
+          <dt><code>$stackPtr</code>
+                —
+                int</dt>
+          <dd>The position in the PHP_CodeSniffer<br/>file's token stack where the token<br/>                                              was found.</dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>void|int</dt>
+          <dd>Optionally returns a stack pointer. The sniff will not be<br/>called again on the current file until the returned stack
+                 pointer is reached. Return (count($tokens) + 1) to skip
+                 the rest of the file.</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

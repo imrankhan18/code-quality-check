@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\StreamWrapper" namespace="GuzzleHttp\Psr7" name="StreamWrapper" abstract="false" final="true" start="14" end="175">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="StreamWrapper.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/StreamWrapper.php" size="4109" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="efa451b19a0a3379b244ee7f34cfd107a446e2d6" relative="ar/www/html/vendor/guzzlehttp/psr7/src/StreamWrapper.php"/>
+  <docblock>
+    <description compact="Converts Guzzle streams into PHP stream resources."/>
+    <see value="https://www.php.net/streamwrapper"/>
+  </docblock>
+  <member name="context" visibility="public" static="false" line="17">
+    <docblock>
+      <var type="resource"/>
+    </docblock>
+  </member>
+  <member name="stream" visibility="private" static="false" line="20">
+    <docblock>
+      <var type="object">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="mode" visibility="private" static="false" line="23">
+    <docblock>
+      <var description="r, r+, or w" type="string"/>
+    </docblock>
+  </member>
+  <method name="getResource" start="34" end="48" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns a resource representing the stream."/>
+      <param description="The stream to get a resource for" type="object" variable="$stream">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </param>
+      <return type="resource"/>
+      <throws description="if stream is not readable or writable" type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="stream" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+  </method>
+  <method name="createStreamContext" start="55" end="60" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates a stream context that can be used to open a stream as a php stream resource."/>
+      <return type="resource"/>
+    </docblock>
+    <parameter name="stream" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+  </method>
+  <method name="register" start="65" end="70" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Registers the stream wrapper if needed"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="stream_open" start="72" end="84" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="mode" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="int"/>
+    <parameter name="opened_path" byreference="true" type="string" default="NULL"/>
+  </method>
+  <method name="stream_read" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+    <parameter name="count" byreference="false" type="int"/>
+  </method>
+  <method name="stream_write" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+    <parameter name="data" byreference="false" type="string"/>
+  </method>
+  <method name="stream_tell" start="96" end="99" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="stream_eof" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="stream_seek" start="106" end="111" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="offset" byreference="false" type="int"/>
+    <parameter name="whence" byreference="false" type="int"/>
+  </method>
+  <method name="stream_cast" start="116" end="122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="GuzzleHttp\Psr7\resource|false" namespace="GuzzleHttp\Psr7" name="resource|false"/>
+      </return>
+    </docblock>
+    <parameter name="cast_as" byreference="false" type="int"/>
+  </method>
+  <method name="stream_stat" start="127" end="152" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="int&gt;" type="object">
+        <type full="GuzzleHttp\Psr7\array&lt;int|string" namespace="GuzzleHttp\Psr7" name="array&lt;int|string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="url_stat" start="157" end="174" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="int&gt;" type="object">
+        <type full="GuzzleHttp\Psr7\array&lt;int|string" namespace="GuzzleHttp\Psr7" name="array&lt;int|string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="flags" byreference="false" type="int"/>
+  </method>
+</class>

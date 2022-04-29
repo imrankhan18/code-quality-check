@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Error" namespace="" name="PEAR_Error" abstract="false" final="false" start="853" end="1127">
+  <file path="//usr/local/lib/php" file="PEAR.php" realpath="/usr/local/lib/php/PEAR.php" size="36171" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="cb5b66c92d413046ba3a1b5b180f81df5a04ab62" relative="sr/local/lib/php/PEAR.php"/>
+  <docblock>
+    <description compact="Standard PEAR error class for PHP 4">This class is supserseded by <link xmlns="http://xml.phpdox.net/src" value="PEAR_Exception"/> in PHP 5
+</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Stig Bakken &lt;ssb@php.net&gt;"/>
+    <author value="Tomas V.V. Cox &lt;cox@idecnet.com&gt;"/>
+    <author value="Gregory Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2006 The PHP Group"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/manual/en/core.pear.pear-error.php"/>
+    <see value="PEAR::raiseError(), PEAR::throwError()"/>
+    <since value="Class available since PHP 4.0.2"/>
+  </docblock>
+  <member name="error_message_prefix" default="''" type="string" visibility="public" static="false" line="855"/>
+  <member name="mode" default="" type="{unknown}" constant="PEAR_ERROR_RETURN" visibility="public" static="false" line="856"/>
+  <member name="level" default="" type="{unknown}" constant="E_USER_NOTICE" visibility="public" static="false" line="857"/>
+  <member name="code" default="1" type="integer" visibility="public" static="false" line="858"/>
+  <member name="message" default="''" type="string" visibility="public" static="false" line="859"/>
+  <member name="userinfo" default="''" type="string" visibility="public" static="false" line="860"/>
+  <member name="backtrace" default="NULL" visibility="public" static="false" line="861"/>
+  <constructor name="__construct" start="883" end="951" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="PEAR_Error constructor"/>
+      <param description="message" type="string" variable="$message"/>
+      <param description="(optional) error code" type="int" variable="$code"/>
+      <param description="(optional) error mode, one of: PEAR_ERROR_RETURN," type="int" variable="$mode">PEAR_ERROR_PRINT, PEAR_ERROR_DIE, PEAR_ERROR_TRIGGER,
+PEAR_ERROR_CALLBACK or PEAR_ERROR_EXCEPTION</param>
+      <param description="(optional) error level, _OR_ in the case of" type="mixed" variable="$options">PEAR_ERROR_CALLBACK, the callback function or object/method
+tuple.</param>
+      <param description="(optional) additional user/debug info" type="string" variable="$userinfo"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="string" default="'unknown error'"/>
+    <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+  </constructor>
+  <method name="PEAR_Error" start="964" end="969" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only here for backwards compatibility.">Class "Cache_Error" still uses it, among others.</description>
+      <param description="Message" type="string" variable="$message"/>
+      <param description="Error code" type="int" variable="$code"/>
+      <param description="Error mode" type="int" variable="$mode"/>
+      <param description="See __construct()" type="mixed" variable="$options"/>
+      <param description="Additional user/debug info" type="string" variable="$userinfo"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="string" default="'unknown error'"/>
+    <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="getMode" start="977" end="980" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the error mode from an error object."/>
+      <return description="error mode" type="int"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="getCallback" start="988" end="991" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the callback function/method from an error object."/>
+      <return description="callback function or object/method array" type="mixed"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="getMessage" start="999" end="1002" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the error message from an error object."/>
+      <return description="full error message" type="string"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="getCode" start="1010" end="1013" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get error code from an error object"/>
+      <return description="error code" type="int"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="getType" start="1021" end="1024" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the name of this error/exception."/>
+      <return description="error/exception name (type)" type="string"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="getUserInfo" start="1032" end="1035" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get additional user-supplied information."/>
+      <return description="user-supplied information" type="string"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="getDebugInfo" start="1043" end="1046" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get additional debug information supplied by the application."/>
+      <return description="debug information" type="string"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="getBacktrace" start="1056" end="1065" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the call backtrace from where the error was generated.">Supported with PHP 4.3.0 or newer.</description>
+      <param description="(optional) what frame to fetch" type="int" variable="$frame"/>
+      <return description="Backtrace, or NULL if not available." type="array"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="frame" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="addUserInfo" start="1067" end="1074" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="info" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="__toString" start="1076" end="1079" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="toString" start="1087" end="1126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Make a string representation of this object."/>
+      <return description="a string with an object summary" type="string"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+</class>

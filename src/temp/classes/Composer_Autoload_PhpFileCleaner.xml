@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Autoload\PhpFileCleaner" namespace="Composer\Autoload" name="PhpFileCleaner" abstract="false" final="false" start="21" end="277">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Autoload" file="PhpFileCleaner.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Autoload/PhpFileCleaner.php" size="7557" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="4dcaf574ba3acb3ba5ff345c07621f95c0574fc7" relative="ar/www/html/vendor/composer/composer/src/Composer/Autoload/PhpFileCleaner.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+    <internal/>
+  </docblock>
+  <member name="typeConfig" visibility="private" static="true" line="24">
+    <docblock>
+      <var description="string, length: int, pattern: non-empty-string}&gt;" type="object">
+        <type full="Composer\Autoload\array&lt;array{name:" namespace="Composer\Autoload" name="array&lt;array{name:"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="restPattern" visibility="private" static="true" line="27">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Autoload\non-empty-string" namespace="Composer\Autoload" name="non-empty-string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="contents" visibility="private" static="false" line="33">
+    <docblock>
+      <description/>
+      <readonly/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="len" visibility="private" static="false" line="39">
+    <docblock>
+      <description/>
+      <readonly/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="maxMatches" visibility="private" static="false" line="45">
+    <docblock>
+      <description/>
+      <readonly/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="index" default="0" type="integer" visibility="private" static="false" line="48">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <method name="setTypeConfig" start="54" end="65" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="Composer\Autoload\string" namespace="Composer\Autoload" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="types" byreference="false" type="array"/>
+  </method>
+  <constructor name="__construct" start="71" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$contents"/>
+      <param type="int" variable="$maxMatches"/>
+    </docblock>
+    <parameter name="contents" byreference="false" type="string"/>
+    <parameter name="maxMatches" byreference="false" type="int"/>
+  </constructor>
+  <method name="clean" start="81" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="skipToPhp" start="155" end="165" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="skipString" start="171" end="185" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$delimiter"/>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="delimiter" byreference="false" type="string"/>
+  </method>
+  <method name="skipComment" start="190" end="201" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="skipToNewline" start="206" end="214" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="skipHeredoc" start="220" end="257" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$delimiter"/>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="delimiter" byreference="false" type="string"/>
+  </method>
+  <method name="peek" start="263" end="266" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$char"/>
+      <return type="object">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="char" byreference="false" type="string"/>
+  </method>
+  <method name="match" start="273" end="276" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$regex">
+        <type full="Composer\Autoload\non-empty-string" namespace="Composer\Autoload" name="non-empty-string"/>
+      </param>
+      <param description="string&gt; $match" type="object">
+        <type full="Composer\Autoload\null|array&lt;int" namespace="Composer\Autoload" name="null|array&lt;int"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="regex" byreference="false" type="{unknown}"/>
+    <parameter name="match" byreference="true" type="array" default="NULL"/>
+  </method>
+</class>

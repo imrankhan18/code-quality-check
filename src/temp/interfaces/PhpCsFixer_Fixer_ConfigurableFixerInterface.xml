@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Fixer\ConfigurableFixerInterface" namespace="PhpCsFixer\Fixer" name="ConfigurableFixerInterface" abstract="false" final="false" start="23" end="47">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Fixer" file="ConfigurableFixerInterface.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Fixer/ConfigurableFixerInterface.php" size="1558" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="45b4ea0e6b6a9c229f32a58568fb2634d4203932" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Fixer/ConfigurableFixerInterface.php"/>
+  <docblock>
+    <description/>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+  </docblock>
+  <extends full="PhpCsFixer\Fixer\FixerInterface" namespace="PhpCsFixer\Fixer" name="FixerInterface"/>
+  <method name="configure" start="41" end="41" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set configuration.">New configuration must override current one, not patch it.
+Using empty array makes fixer to use default configuration
+(or reset configuration from previously configured back to default one).
+
+Some fixers may have no configuration, then - simply don't implement this interface.
+Other ones may have configuration that will change behavior of fixer,
+eg `php_unit_strict` fixer allows to configure which methods should be fixed.
+Finally, some fixers need configuration to work, eg `header_comment`.</description>
+      <param description="configuration depends on Fixer" type="array" variable="$configuration"/>
+      <throws type="object">
+        <type full="PhpCsFixer\ConfigurationException\InvalidFixerConfigurationException" namespace="PhpCsFixer\ConfigurationException" name="InvalidFixerConfigurationException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="configuration" byreference="false" type="array"/>
+  </method>
+  <method name="getConfigurationDefinition" start="46" end="46" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Defines the available configuration options of the fixer."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PhpCsFixer\FixerConfiguration\FixerConfigurationResolverInterface" namespace="PhpCsFixer\FixerConfiguration" name="FixerConfigurationResolverInterface"/>
+    </return>
+  </method>
+  <implementors>
+    <class full="PhpCsFixer\Fixer\Semicolon\SpaceAfterSemicolonFixer" namespace="PhpCsFixer\Fixer\Semicolon" name="SpaceAfterSemicolonFixer"/>
+    <class full="PhpCsFixer\Fixer\Semicolon\MultilineWhitespaceBeforeSemicolonsFixer" namespace="PhpCsFixer\Fixer\Semicolon" name="MultilineWhitespaceBeforeSemicolonsFixer"/>
+    <class full="PhpCsFixer\Fixer\DoctrineAnnotation\DoctrineAnnotationArrayAssignmentFixer" namespace="PhpCsFixer\Fixer\DoctrineAnnotation" name="DoctrineAnnotationArrayAssignmentFixer"/>
+    <class full="PhpCsFixer\Fixer\DoctrineAnnotation\DoctrineAnnotationIndentationFixer" namespace="PhpCsFixer\Fixer\DoctrineAnnotation" name="DoctrineAnnotationIndentationFixer"/>
+    <class full="PhpCsFixer\Fixer\DoctrineAnnotation\DoctrineAnnotationSpacesFixer" namespace="PhpCsFixer\Fixer\DoctrineAnnotation" name="DoctrineAnnotationSpacesFixer"/>
+    <class full="PhpCsFixer\Fixer\DoctrineAnnotation\DoctrineAnnotationBracesFixer" namespace="PhpCsFixer\Fixer\DoctrineAnnotation" name="DoctrineAnnotationBracesFixer"/>
+    <class full="PhpCsFixer\Fixer\LanguageConstruct\DeclareEqualNormalizeFixer" namespace="PhpCsFixer\Fixer\LanguageConstruct" name="DeclareEqualNormalizeFixer"/>
+    <class full="PhpCsFixer\Fixer\LanguageConstruct\FunctionToConstantFixer" namespace="PhpCsFixer\Fixer\LanguageConstruct" name="FunctionToConstantFixer"/>
+    <class full="PhpCsFixer\Fixer\LanguageConstruct\ErrorSuppressionFixer" namespace="PhpCsFixer\Fixer\LanguageConstruct" name="ErrorSuppressionFixer"/>
+    <class full="PhpCsFixer\Fixer\LanguageConstruct\SingleSpaceAfterConstructFixer" namespace="PhpCsFixer\Fixer\LanguageConstruct" name="SingleSpaceAfterConstructFixer"/>
+    <class full="PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer" namespace="PhpCsFixer\Fixer\Whitespace" name="NoExtraBlankLinesFixer"/>
+    <class full="PhpCsFixer\Fixer\Whitespace\NoSpacesAroundOffsetFixer" namespace="PhpCsFixer\Fixer\Whitespace" name="NoSpacesAroundOffsetFixer"/>
+    <class full="PhpCsFixer\Fixer\Whitespace\HeredocIndentationFixer" namespace="PhpCsFixer\Fixer\Whitespace" name="HeredocIndentationFixer"/>
+    <class full="PhpCsFixer\Fixer\Whitespace\TypesSpacesFixer" namespace="PhpCsFixer\Fixer\Whitespace" name="TypesSpacesFixer"/>
+    <class full="PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer" namespace="PhpCsFixer\Fixer\Whitespace" name="BlankLineBeforeStatementFixer"/>
+    <class full="PhpCsFixer\Fixer\Operator\NewWithBracesFixer" namespace="PhpCsFixer\Fixer\Operator" name="NewWithBracesFixer"/>
+    <class full="PhpCsFixer\Fixer\Operator\ConcatSpaceFixer" namespace="PhpCsFixer\Fixer\Operator" name="ConcatSpaceFixer"/>
+    <class full="PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer" namespace="PhpCsFixer\Fixer\Operator" name="BinaryOperatorSpacesFixer"/>
+    <class full="PhpCsFixer\Fixer\Operator\IncrementStyleFixer" namespace="PhpCsFixer\Fixer\Operator" name="IncrementStyleFixer"/>
+    <class full="PhpCsFixer\Fixer\Operator\OperatorLinebreakFixer" namespace="PhpCsFixer\Fixer\Operator" name="OperatorLinebreakFixer"/>
+    <class full="PhpCsFixer\Fixer\Comment\HeaderCommentFixer" namespace="PhpCsFixer\Fixer\Comment" name="HeaderCommentFixer"/>
+    <class full="PhpCsFixer\Fixer\Comment\SingleLineCommentStyleFixer" namespace="PhpCsFixer\Fixer\Comment" name="SingleLineCommentStyleFixer"/>
+    <class full="PhpCsFixer\Fixer\Comment\CommentToPhpdocFixer" namespace="PhpCsFixer\Fixer\Comment" name="CommentToPhpdocFixer"/>
+    <class full="PhpCsFixer\Fixer\CastNotation\CastSpacesFixer" namespace="PhpCsFixer\Fixer\CastNotation" name="CastSpacesFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\NativeFunctionInvocationFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="NativeFunctionInvocationFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\PhpdocToPropertyTypeFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="PhpdocToPropertyTypeFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\NullableTypeDeclarationForDefaultNullValueFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="NullableTypeDeclarationForDefaultNullValueFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="PhpdocToParamTypeFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\ReturnTypeDeclarationFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="ReturnTypeDeclarationFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\FunctionDeclarationFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="FunctionDeclarationFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\MethodArgumentSpaceFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="MethodArgumentSpaceFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\FopenFlagsFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="FopenFlagsFixer"/>
+    <class full="PhpCsFixer\Fixer\FunctionNotation\PhpdocToReturnTypeFixer" namespace="PhpCsFixer\Fixer\FunctionNotation" name="PhpdocToReturnTypeFixer"/>
+    <class full="PhpCsFixer\Fixer\Basic\BracesFixer" namespace="PhpCsFixer\Fixer\Basic" name="BracesFixer"/>
+    <class full="PhpCsFixer\Fixer\Basic\NonPrintableCharacterFixer" namespace="PhpCsFixer\Fixer\Basic" name="NonPrintableCharacterFixer"/>
+    <class full="PhpCsFixer\Fixer\Basic\PsrAutoloadingFixer" namespace="PhpCsFixer\Fixer\Basic" name="PsrAutoloadingFixer"/>
+    <class full="PhpCsFixer\Fixer\ListNotation\ListSyntaxFixer" namespace="PhpCsFixer\Fixer\ListNotation" name="ListSyntaxFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitInternalClassFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitInternalClassFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitNamespacedFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitNamespacedFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitConstructFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitConstructFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitNoExpectationAnnotationFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitNoExpectationAnnotationFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitSizeClassFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitSizeClassFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitDedicateAssertInternalTypeFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitDedicateAssertInternalTypeFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitStrictFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitStrictFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitExpectationFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitExpectationFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitMethodCasingFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitMethodCasingFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitMockFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitMockFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitTestAnnotationFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitTestAnnotationFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpUnit\PhpUnitTestCaseStaticMethodCallsFixer" namespace="PhpCsFixer\Fixer\PhpUnit" name="PhpUnitTestCaseStaticMethodCallsFixer"/>
+    <class full="PhpCsFixer\Fixer\ControlStructure\NoAlternativeSyntaxFixer" namespace="PhpCsFixer\Fixer\ControlStructure" name="NoAlternativeSyntaxFixer"/>
+    <class full="PhpCsFixer\Fixer\ControlStructure\NoUnneededControlParenthesesFixer" namespace="PhpCsFixer\Fixer\ControlStructure" name="NoUnneededControlParenthesesFixer"/>
+    <class full="PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer" namespace="PhpCsFixer\Fixer\ControlStructure" name="YodaStyleFixer"/>
+    <class full="PhpCsFixer\Fixer\ControlStructure\ControlStructureContinuationPositionFixer" namespace="PhpCsFixer\Fixer\ControlStructure" name="ControlStructureContinuationPositionFixer"/>
+    <class full="PhpCsFixer\Fixer\ControlStructure\EmptyLoopBodyFixer" namespace="PhpCsFixer\Fixer\ControlStructure" name="EmptyLoopBodyFixer"/>
+    <class full="PhpCsFixer\Fixer\ControlStructure\EmptyLoopConditionFixer" namespace="PhpCsFixer\Fixer\ControlStructure" name="EmptyLoopConditionFixer"/>
+    <class full="PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer" namespace="PhpCsFixer\Fixer\ControlStructure" name="TrailingCommaInMultilineFixer"/>
+    <class full="PhpCsFixer\Fixer\ControlStructure\NoBreakCommentFixer" namespace="PhpCsFixer\Fixer\ControlStructure" name="NoBreakCommentFixer"/>
+    <class full="PhpCsFixer\Fixer\ConstantNotation\NativeConstantInvocationFixer" namespace="PhpCsFixer\Fixer\ConstantNotation" name="NativeConstantInvocationFixer"/>
+    <class full="PhpCsFixer\Fixer\PhpTag\EchoTagSyntaxFixer" namespace="PhpCsFixer\Fixer\PhpTag" name="EchoTagSyntaxFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocLineSpanFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocLineSpanFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocInlineTagNormalizerFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocInlineTagNormalizerFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocScalarFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocScalarFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocTypesFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocTypesFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocAddMissingParamAnnotationFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocAddMissingParamAnnotationFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocTagCasingFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocTagCasingFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocNoAliasTagFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocNoAliasTagFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocReturnSelfReferenceFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocReturnSelfReferenceFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\AlignMultilineCommentFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="AlignMultilineCommentFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocToCommentFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocToCommentFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\GeneralPhpdocTagRenameFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="GeneralPhpdocTagRenameFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocAlignFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocTypesOrderFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocTypesOrderFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\GeneralPhpdocAnnotationRemoveFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="GeneralPhpdocAnnotationRemoveFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocTagTypeFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocTagTypeFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\PhpdocOrderByValueFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="PhpdocOrderByValueFixer"/>
+    <class full="PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer" namespace="PhpCsFixer\Fixer\Phpdoc" name="NoSuperfluousPhpdocTagsFixer"/>
+    <class full="PhpCsFixer\Fixer\Import\OrderedImportsFixer" namespace="PhpCsFixer\Fixer\Import" name="OrderedImportsFixer"/>
+    <class full="PhpCsFixer\Fixer\ArrayNotation\NoWhitespaceBeforeCommaInArrayFixer" namespace="PhpCsFixer\Fixer\ArrayNotation" name="NoWhitespaceBeforeCommaInArrayFixer"/>
+    <class full="PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer" namespace="PhpCsFixer\Fixer\ArrayNotation" name="ArraySyntaxFixer"/>
+    <class full="PhpCsFixer\Fixer\Alias\RandomApiMigrationFixer" namespace="PhpCsFixer\Fixer\Alias" name="RandomApiMigrationFixer"/>
+    <class full="PhpCsFixer\Fixer\Alias\NoMixedEchoPrintFixer" namespace="PhpCsFixer\Fixer\Alias" name="NoMixedEchoPrintFixer"/>
+    <class full="PhpCsFixer\Fixer\Alias\NoAliasFunctionsFixer" namespace="PhpCsFixer\Fixer\Alias" name="NoAliasFunctionsFixer"/>
+    <class full="PhpCsFixer\Fixer\ClassNotation\NoUnneededFinalMethodFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="NoUnneededFinalMethodFixer"/>
+    <class full="PhpCsFixer\Fixer\ClassNotation\VisibilityRequiredFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="VisibilityRequiredFixer"/>
+    <class full="PhpCsFixer\Fixer\ClassNotation\OrderedClassElementsFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="OrderedClassElementsFixer"/>
+    <class full="PhpCsFixer\Fixer\ClassNotation\FinalInternalClassFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="FinalInternalClassFixer"/>
+    <class full="PhpCsFixer\Fixer\ClassNotation\ClassDefinitionFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="ClassDefinitionFixer"/>
+    <class full="PhpCsFixer\Fixer\ClassNotation\OrderedInterfacesFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="OrderedInterfacesFixer"/>
+    <class full="PhpCsFixer\Fixer\ClassNotation\SingleClassElementPerStatementFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="SingleClassElementPerStatementFixer"/>
+    <class full="PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="ClassAttributesSeparationFixer"/>
+    <class full="PhpCsFixer\Fixer\Casing\ConstantCaseFixer" namespace="PhpCsFixer\Fixer\Casing" name="ConstantCaseFixer"/>
+    <class full="PhpCsFixer\Fixer\StringNotation\EscapeImplicitBackslashesFixer" namespace="PhpCsFixer\Fixer\StringNotation" name="EscapeImplicitBackslashesFixer"/>
+    <class full="PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer" namespace="PhpCsFixer\Fixer\StringNotation" name="SingleQuoteFixer"/>
+    <class full="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" namespace="PhpCsFixer" name="AbstractPhpdocToTypeDeclarationFixer"/>
+    <class full="PhpCsFixer\AbstractDoctrineAnnotationFixer" namespace="PhpCsFixer" name="AbstractDoctrineAnnotationFixer"/>
+  </implementors>
+  <parent full="PhpCsFixer\Fixer\FixerInterface" namespace="PhpCsFixer\Fixer" name="FixerInterface">
+    <method name="isCandidate" start="35" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check if the fixer is a candidate for given Tokens collection.">Fixer is a candidate when the collection contains tokens that may be fixed
+during fixer work. This could be considered as some kind of bloom filter.
+When this method returns true then to the Tokens collection may or may not
+need a fixing, but when this method returns false then the Tokens collection
+need no fixing for sure.</description>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="tokens" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+      </parameter>
+    </method>
+    <method name="isRisky" start="42" end="42" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check if fixer is risky or not.">Risky fixer could change code behavior!</description>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="fix" start="50" end="50" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Fixes a file."/>
+        <param description="A \SplFileInfo instance" type="object" variable="$file">
+          <type full="\SplFileInfo" namespace="" name="SplFileInfo"/>
+        </param>
+        <param description="Tokens collection" type="object" variable="$tokens">
+          <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+        </param>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="file" byreference="false" type="object">
+        <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+      </parameter>
+      <parameter name="tokens" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+      </parameter>
+    </method>
+    <method name="getDefinition" start="55" end="55" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the definition of the fixer."/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="PhpCsFixer\FixerDefinition\FixerDefinitionInterface" namespace="PhpCsFixer\FixerDefinition" name="FixerDefinitionInterface"/>
+      </return>
+    </method>
+    <method name="getName" start="64" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the name of the fixer.">The name must be all lowercase and without any spaces.</description>
+        <return description="The name of the fixer" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPriority" start="71" end="71" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the priority of the fixer.">The default priority is 0 and higher priorities are executed first.</description>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="supports" start="78" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns true if the file is supported by this fixer."/>
+        <return description="true if the file is supported by this fixer, false otherwise" type="object">
+          <type full="PhpCsFixer\Fixer\bool" namespace="PhpCsFixer\Fixer" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="file" byreference="false" type="object">
+        <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+      </parameter>
+    </method>
+  </parent>
+</interface>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - GuzzleHttp\Promise\EachPromise</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#GuzzleHttp_Promise">GuzzleHttp\Promise</a>
+          </li>
+          <li class="separator">EachPromise</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/guzzlehttp/promises/src/EachPromise.php.xhtml#line9">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>GuzzleHttp\Promise\</small>EachPromise</h1>
+        <h4>Represents a promise that iterates over many promises and invokes side-effect functions in the process.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class EachPromise
+                implements
+                <a title="GuzzleHttp\Promise\PromisorInterface" href="../interfaces/GuzzleHttp_Promise_PromisorInterface.xhtml">PromisorInterface</a>
+            {<br/><ul class="none"><li>// members</li><li>private array <a href="#members">$pending</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$nextPendingIndex</a> =
+                        0;
+                    </li><li>private <span title="\Iterator|null">Iterator|null</span> <a href="#members">$iterable</a>;
+                    </li><li>private <span title="GuzzleHttp\Promise\callable|int|null">callable|int|null</span> <a href="#members">$concurrency</a>;
+                    </li><li>private <span title="GuzzleHttp\Promise\callable|null">callable|null</span> <a href="#members">$onFulfilled</a>;
+                    </li><li>private <span title="GuzzleHttp\Promise\callable|null">callable|null</span> <a href="#members">$onRejected</a>;
+                    </li><li>private <span title="GuzzleHttp\Promise\Promise|null">Promise|null</span> <a href="#members">$aggregate</a>;
+                    </li><li>private <span title="GuzzleHttp\Promise\bool|null">bool|null</span> <a href="#members">$mutex</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/promise.xhtml">promise</a>()
+                    </li><li>private void <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/createPromise.xhtml">createPromise</a>()
+                    </li><li>private void <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/refillPending.xhtml">refillPending</a>()
+                    </li><li>private void <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/addPending.xhtml">addPending</a>()
+                    </li><li>private void <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/advanceIterator.xhtml">advanceIterator</a>()
+                    </li><li>private void <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/step.xhtml">step</a>()
+                    </li><li>private void <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/checkIfFinished.xhtml">checkIfFinished</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="GuzzleHttp\Promise\PromisorInterface" href="../interfaces/GuzzleHttp_Promise_PromisorInterface.xhtml">GuzzleHttp\Promise\PromisorInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="aggregate"><strong>$aggregate</strong>
+                —
+                <a title="GuzzleHttp\Promise\Promise|null" href="../classes/GuzzleHttp_Promise_Promise|null.xhtml">GuzzleHttp\Promise\Promise|null</a></li>
+            <li id="concurrency"><strong>$concurrency</strong>
+                —
+                <a title="GuzzleHttp\Promise\callable|int|null" href="../classes/GuzzleHttp_Promise_callable|int|null.xhtml">GuzzleHttp\Promise\callable|int|null</a></li>
+            <li id="iterable"><strong>$iterable</strong>
+                —
+                <a title="\Iterator|null" href="../classes/_Iterator|null.xhtml">\Iterator|null</a></li>
+            <li id="mutex"><strong>$mutex</strong>
+                —
+                <a title="GuzzleHttp\Promise\bool|null" href="../classes/GuzzleHttp_Promise_bool|null.xhtml">GuzzleHttp\Promise\bool|null</a></li>
+            <li id="nextPendingIndex">
+              <strong>$nextPendingIndex</strong>
+            </li>
+            <li id="onFulfilled"><strong>$onFulfilled</strong>
+                —
+                <a title="GuzzleHttp\Promise\callable|null" href="../classes/GuzzleHttp_Promise_callable|null.xhtml">GuzzleHttp\Promise\callable|null</a></li>
+            <li id="onRejected"><strong>$onRejected</strong>
+                —
+                <a title="GuzzleHttp\Promise\callable|null" href="../classes/GuzzleHttp_Promise_callable|null.xhtml">GuzzleHttp\Promise\callable|null</a></li>
+            <li id="pending">
+              <strong>$pending</strong>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="addPending">
+              <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/addPending.xhtml">addPending()</a>
+            </li>
+            <li id="advanceIterator">
+              <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/advanceIterator.xhtml">advanceIterator()</a>
+            </li>
+            <li id="checkIfFinished">
+              <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/checkIfFinished.xhtml">checkIfFinished()</a>
+            </li>
+            <li id="createPromise">
+              <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/createPromise.xhtml">createPromise()</a>
+            </li>
+            <li id="refillPending">
+              <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/refillPending.xhtml">refillPending()</a>
+            </li>
+            <li id="step">
+              <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/step.xhtml">step()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/__construct.xhtml">__construct()</a>
+                — Configuration hash can include the following key value pairs:</li>
+            <li id="promise">
+              <a title="GuzzleHttp\Promise\EachPromise" href="../classes/GuzzleHttp_Promise_EachPromise/promise.xhtml">promise()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

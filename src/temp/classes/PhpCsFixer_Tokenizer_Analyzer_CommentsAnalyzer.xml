@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Tokenizer\Analyzer\CommentsAnalyzer" namespace="PhpCsFixer\Tokenizer\Analyzer" name="CommentsAnalyzer" abstract="false" final="true" start="27" end="311">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer" file="CommentsAnalyzer.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer/CommentsAnalyzer.php" size="9273" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="8f93626d4df3433d3e8024080b59a99be8128002" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer/CommentsAnalyzer.php"/>
+  <docblock>
+    <description/>
+    <author value="Kuba Werłos &lt;werlos@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <constant type="integer" name="TYPE_HASH" value="1"/>
+  <constant type="integer" name="TYPE_DOUBLE_SLASH" value="2"/>
+  <constant type="integer" name="TYPE_SLASH_ASTERISK" value="3"/>
+  <method name="isHeaderComment" start="33" end="61" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="isBeforeStructuralElement" start="68" end="110" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if comment at given index precedes structural element."/>
+      <see value="https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md#3-definitions"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="getCommentBlockIndices" start="117" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return array of indices that are part of a comment started at given index."/>
+      <param description="T_COMMENT index" type="int" variable="$index"/>
+    </docblock>
+    <return type="array" nullable="true"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="isStructuralElement" start="155" end="195" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <see value="https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md#3-definitions"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="isValidControl" start="203" end="233" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Checks control structures (for, foreach, if, switch, while) for correct docblock usage."/>
+      <param description="docs Token" type="object" variable="$docsToken">
+        <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+      </param>
+      <param description="index of control structure Token" type="int" variable="$controlIndex"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="docsToken" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="controlIndex" byreference="false" type="int"/>
+  </method>
+  <method name="isValidLanguageConstruct" start="241" end="271" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Checks variable assignments through `list()`, `print()` etc. calls for correct docblock usage."/>
+      <param description="docs Token" type="object" variable="$docsToken">
+        <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+      </param>
+      <param description="index of variable Token" type="int" variable="$languageConstructIndex"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="docsToken" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="languageConstructIndex" byreference="false" type="int"/>
+  </method>
+  <method name="isValidVariable" start="278" end="287" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Checks variable assignments for correct docblock usage."/>
+      <param description="index of variable Token" type="int" variable="$index"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="getCommentType" start="289" end="300" abstract="false" final="false" static="false" visibility="private">
+    <return type="int" nullable="false"/>
+    <parameter name="content" byreference="false" type="string"/>
+  </method>
+  <method name="getLineBreakCount" start="302" end="310" abstract="false" final="false" static="false" visibility="private">
+    <return type="int" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="whiteStart" byreference="false" type="int"/>
+    <parameter name="whiteEnd" byreference="false" type="int"/>
+  </method>
+</class>

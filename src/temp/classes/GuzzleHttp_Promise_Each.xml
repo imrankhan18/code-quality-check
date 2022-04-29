@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Promise\Each" namespace="GuzzleHttp\Promise" name="Each" abstract="false" final="true" start="5" end="90">
+  <file path="//var/www/html/vendor/guzzlehttp/promises/src" file="Each.php" realpath="/var/www/html/vendor/guzzlehttp/promises/src/Each.php" size="2887" time="2021-10-22T20:56:57+00:00" unixtime="1634936217" sha1="8a00087ecf297a57be1ab171364c7581e9775e8a" relative="ar/www/html/vendor/guzzlehttp/promises/src/Each.php"/>
+  <method name="of" start="26" end="35" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Given an iterator that yields promises or values, returns a promise that is fulfilled with a null value when the iterator has been consumed or the aggregate promise has been fulfilled or rejected.">$onFulfilled is a function that accepts the fulfilled value, iterator
+index, and the aggregate promise. The callback can invoke any necessary
+side effects and choose to resolve or reject the aggregate if needed.
+
+$onRejected is a function that accepts the rejection reason, iterator
+index, and the aggregate promise. The callback can invoke any necessary
+side effects and choose to resolve or reject the aggregate if needed.</description>
+      <param description="Iterator or array to iterate over." type="mixed" variable="$iterable"/>
+      <param type="object" variable="$onFulfilled">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <param type="object" variable="$onRejected">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="iterable" byreference="false" type="{unknown}"/>
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="ofLimit" start="52" end="63" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Like of, but only allows a certain number of outstanding promises at any given time.">$concurrency may be an integer or a function that accepts the number of
+pending promises and returns a numeric concurrency limit value to allow
+for dynamic a concurrency size.</description>
+      <param type="mixed" variable="$iterable"/>
+      <param type="object" variable="$concurrency">
+        <type full="GuzzleHttp\Promise\int|callable" namespace="GuzzleHttp\Promise" name="int|callable"/>
+      </param>
+      <param type="object" variable="$onFulfilled">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <param type="object" variable="$onRejected">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="iterable" byreference="false" type="{unknown}"/>
+    <parameter name="concurrency" byreference="false" type="{unknown}"/>
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="ofLimitAll" start="76" end="89" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Like limit, but ensures that no promise in the given $iterable argument is rejected. If any promise is rejected, then the aggregate promise is rejected with the encountered rejection."/>
+      <param type="mixed" variable="$iterable"/>
+      <param type="object" variable="$concurrency">
+        <type full="GuzzleHttp\Promise\int|callable" namespace="GuzzleHttp\Promise" name="int|callable"/>
+      </param>
+      <param type="object" variable="$onFulfilled">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="iterable" byreference="false" type="{unknown}"/>
+    <parameter name="concurrency" byreference="false" type="{unknown}"/>
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+  </method>
+</class>

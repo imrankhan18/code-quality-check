@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\ErrorHandler" namespace="Composer\Util" name="ErrorHandler" abstract="false" final="false" start="22" end="85">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="ErrorHandler.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/ErrorHandler.php" size="2500" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="295f7c31aa1a7ca1a509da87d449e835f1901215" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/ErrorHandler.php"/>
+  <docblock>
+    <description compact="Convert PHP errors into exceptions"/>
+    <author value="Artem Lopata &lt;biozshock@gmail.com&gt;"/>
+  </docblock>
+  <member name="io" visibility="private" static="true" line="25">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?IOInterface" namespace="Composer\Util" name="?IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="handle" start="39" end="70" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Error handler"/>
+      <param description="Level of the error raised" type="int" variable="$level"/>
+      <param description="Error message" type="string" variable="$message"/>
+      <param description="Filename that the error was raised in" type="string" variable="$file"/>
+      <param description="Line number the error was raised at" type="int" variable="$line"/>
+      <static/>
+      <throws type="object">
+        <type full="\ErrorException" namespace="" name="ErrorException"/>
+      </throws>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="level" byreference="false" type="int"/>
+    <parameter name="message" byreference="false" type="string"/>
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="line" byreference="false" type="int"/>
+    <inline>
+      <comment value="error code is not included in error_reporting" line="41"/>
+    </inline>
+  </method>
+  <method name="register" start="79" end="84" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Register error handler."/>
+      <param type="object" variable="$io">
+        <type full="Composer\Util\IOInterface|null" namespace="Composer\Util" name="IOInterface|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="io" byreference="false" type="object" default="NULL">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </method>
+</class>

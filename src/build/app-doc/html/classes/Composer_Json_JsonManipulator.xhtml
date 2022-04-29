@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Json\JsonManipulator</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Json">Composer\Json</a>
+          </li>
+          <li class="separator">JsonManipulator</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Json/JsonManipulator.php.xhtml#line21">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Json\</small>JsonManipulator</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Jordi Boggiano &lt;j.boggiano@seld.be&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class JsonManipulator
+            {<br/><ul class="none"><li>// members</li><li>private static string <a href="#members">$DEFINES</a> =
+                        '(?(DEFINE)
+       (?&lt;number&gt;    -? (?= [1-9]|0(?!\d) ) \d++ (\.\d++)? ([eE] [+-]?+ \d++)? )
+       (?&lt;boolean&gt;   true | false | null )
+       (?&lt;string&gt;    " ([^"\\\\]*+ | \\\\ ["\\\\bfnrt\/] | \\\\ u [0-9A-Fa-f]{4} )* " )
+       (?&lt;array&gt;     \[  (?:  (?&amp;json) \s*+ (?: , (?&amp;json) \s*+ )*+  )?+  \s*+ \] )
+       (?&lt;pair&gt;      \s*+ (?&amp;string) \s*+ : (?&amp;json) \s*+ )
+       (?&lt;object&gt;    \{  (?:  (?&amp;pair)  (?: , (?&amp;pair)  )*+  )?+  \s*+ \} )
+       (?&lt;json&gt;      \s*+ (?: (?&amp;number) | (?&amp;boolean) | (?&amp;string) | (?&amp;array) | (?&amp;object) ) )
+    )';
+                    </li><li>private  <a href="#members">$contents</a>;
+                    </li><li>private  <a href="#members">$newline</a>;
+                    </li><li>private  <a href="#members">$indent</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/__construct.xhtml">__construct</a>()
+                    </li><li>public string <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/getContents.xhtml">getContents</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addLink.xhtml">addLink</a>()
+                    </li><li>private void <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/sortPackages.xhtml">sortPackages</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addRepository.xhtml">addRepository</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeRepository.xhtml">removeRepository</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addConfigSetting.xhtml">addConfigSetting</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeConfigSetting.xhtml">removeConfigSetting</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addProperty.xhtml">addProperty</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeProperty.xhtml">removeProperty</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addSubNode.xhtml">addSubNode</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeSubNode.xhtml">removeSubNode</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addMainKey.xhtml">addMainKey</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeMainKey.xhtml">removeMainKey</a>()
+                    </li><li>public bool <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeMainKeyIfEmpty.xhtml">removeMainKeyIfEmpty</a>()
+                    </li><li>public string <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/format.xhtml">format</a>()
+                    </li><li>protected void <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/detectIndenting.xhtml">detectIndenting</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="DEFINES"><strong>$DEFINES</strong>
+                —
+                string</li>
+            <li id="contents"><strong>$contents</strong>
+                —
+                string</li>
+            <li id="indent"><strong>$indent</strong>
+                —
+                string</li>
+            <li id="newline"><strong>$newline</strong>
+                —
+                string</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="sortPackages"><a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/sortPackages.xhtml">sortPackages()</a>
+                — Sorts packages by importance (platform packages first, then PHP dependencies) and alphabetically.</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="detectIndenting">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/detectIndenting.xhtml">detectIndenting()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="addConfigSetting">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addConfigSetting.xhtml">addConfigSetting()</a>
+            </li>
+            <li id="addLink">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addLink.xhtml">addLink()</a>
+            </li>
+            <li id="addMainKey">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addMainKey.xhtml">addMainKey()</a>
+            </li>
+            <li id="addProperty">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addProperty.xhtml">addProperty()</a>
+            </li>
+            <li id="addRepository">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addRepository.xhtml">addRepository()</a>
+            </li>
+            <li id="addSubNode">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/addSubNode.xhtml">addSubNode()</a>
+            </li>
+            <li id="format">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/format.xhtml">format()</a>
+            </li>
+            <li id="getContents">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/getContents.xhtml">getContents()</a>
+            </li>
+            <li id="removeConfigSetting">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeConfigSetting.xhtml">removeConfigSetting()</a>
+            </li>
+            <li id="removeMainKey">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeMainKey.xhtml">removeMainKey()</a>
+            </li>
+            <li id="removeMainKeyIfEmpty">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeMainKeyIfEmpty.xhtml">removeMainKeyIfEmpty()</a>
+            </li>
+            <li id="removeProperty">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeProperty.xhtml">removeProperty()</a>
+            </li>
+            <li id="removeRepository">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeRepository.xhtml">removeRepository()</a>
+            </li>
+            <li id="removeSubNode">
+              <a title="Composer\Json\JsonManipulator" href="../classes/Composer_Json_JsonManipulator/removeSubNode.xhtml">removeSubNode()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

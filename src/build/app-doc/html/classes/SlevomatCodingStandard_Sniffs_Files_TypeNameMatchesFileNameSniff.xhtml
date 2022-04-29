@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#SlevomatCodingStandard_Sniffs_Files">SlevomatCodingStandard\Sniffs\Files</a>
+          </li>
+          <li class="separator">TypeNameMatchesFileNameSniff</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Files/TypeNameMatchesFileNameSniff.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>SlevomatCodingStandard\Sniffs\Files\</small>TypeNameMatchesFileNameSniff</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class TypeNameMatchesFileNameSniff
+                implements
+                <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">Sniff</a>
+            {<br/><ul class="none"><li>// constants</li><li>const CODE_NO_MATCH_BETWEEN_TYPE_NAME_AND_FILE_NAME = 'NoMatchBetweenTypeNameAndFileName';</li></ul><ul class="none"><li>// members</li><li>public <span title="SlevomatCodingStandard\Sniffs\Files\array&lt;string">array&lt;string</span> <a href="#members">$rootNamespaces</a> =
+                        ;
+                    </li><li>public array <a href="#members">$skipDirs</a> =
+                        ;
+                    </li><li>public array <a href="#members">$ignoredNamespaces</a> =
+                        ;
+                    </li><li>public array <a href="#members">$extensions</a> =
+                        ;
+                    </li><li>private <span title="SlevomatCodingStandard\Sniffs\Files\array&lt;string">array&lt;string</span> <a href="#members">$normalizedRootNamespaces</a>;
+                    </li><li>private  <a href="#members">$normalizedSkipDirs</a>;
+                    </li><li>private  <a href="#members">$normalizedIgnoredNamespaces</a>;
+                    </li><li>private  <a href="#members">$normalizedExtensions</a>;
+                    </li><li>private <span title="SlevomatCodingStandard\Sniffs\Files\FilepathNamespaceExtractor">FilepathNamespaceExtractor</span> <a href="#members">$namespaceExtractor</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public array <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/register.xhtml">register</a>()
+                    </li><li>public void <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/process.xhtml">process</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getRootNamespaces.xhtml">getRootNamespaces</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getSkipDirs.xhtml">getSkipDirs</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getIgnoredNamespaces.xhtml">getIgnoredNamespaces</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getExtensions.xhtml">getExtensions</a>()
+                    </li><li>private <span title="FilepathNamespaceExtractor">FilepathNamespaceExtractor</span> <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getNamespaceExtractor.xhtml">getNamespaceExtractor</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">PHP_CodeSniffer\Sniffs\Sniff</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CODE_NO_MATCH_BETWEEN_TYPE_NAME_AND_FILE_NAME">CODE_NO_MATCH_BETWEEN_TYPE_NAME_AND_FILE_NAME</td>
+              <td>'NoMatchBetweenTypeNameAndFileName'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="namespaceExtractor"><strong>$namespaceExtractor</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Files\FilepathNamespaceExtractor" href="../classes/SlevomatCodingStandard_Sniffs_Files_FilepathNamespaceExtractor.xhtml">SlevomatCodingStandard\Sniffs\Files\FilepathNamespaceExtractor</a></li>
+            <li id="normalizedExtensions"><strong>$normalizedExtensions</strong>
+                —
+                array</li>
+            <li id="normalizedIgnoredNamespaces"><strong>$normalizedIgnoredNamespaces</strong>
+                —
+                array</li>
+            <li id="normalizedRootNamespaces"><strong>$normalizedRootNamespaces</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Files\array&lt;string" href="../classes/SlevomatCodingStandard_Sniffs_Files_array&lt;string.xhtml">SlevomatCodingStandard\Sniffs\Files\array&lt;string</a></li>
+            <li id="normalizedSkipDirs"><strong>$normalizedSkipDirs</strong>
+                —
+                array</li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="extensions"><strong>$extensions</strong>
+                —
+                array</li>
+            <li id="ignoredNamespaces"><strong>$ignoredNamespaces</strong>
+                —
+                array</li>
+            <li id="rootNamespaces"><strong>$rootNamespaces</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Files\array&lt;string" href="../classes/SlevomatCodingStandard_Sniffs_Files_array&lt;string.xhtml">SlevomatCodingStandard\Sniffs\Files\array&lt;string</a></li>
+            <li id="skipDirs"><strong>$skipDirs</strong>
+                —
+                array</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="getExtensions">
+              <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getExtensions.xhtml">getExtensions()</a>
+            </li>
+            <li id="getIgnoredNamespaces">
+              <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getIgnoredNamespaces.xhtml">getIgnoredNamespaces()</a>
+            </li>
+            <li id="getNamespaceExtractor">
+              <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getNamespaceExtractor.xhtml">getNamespaceExtractor()</a>
+            </li>
+            <li id="getRootNamespaces">
+              <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getRootNamespaces.xhtml">getRootNamespaces()</a>
+            </li>
+            <li id="getSkipDirs">
+              <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/getSkipDirs.xhtml">getSkipDirs()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="process">
+              <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/process.xhtml">process()</a>
+            </li>
+            <li id="register">
+              <a title="SlevomatCodingStandard\Sniffs\Files\TypeNameMatchesFileNameSniff" href="../classes/SlevomatCodingStandard_Sniffs_Files_TypeNameMatchesFileNameSniff/register.xhtml">register()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

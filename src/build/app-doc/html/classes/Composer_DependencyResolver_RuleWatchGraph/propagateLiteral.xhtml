@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\DependencyResolver\RuleWatchGraph::propagateLiteral</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#Composer_DependencyResolver">Composer\DependencyResolver</a>
+          </li>
+          <li class="separator">
+            <a title="Composer\DependencyResolver\RuleWatchGraph" href="../../classes/Composer_DependencyResolver_RuleWatchGraph.xhtml">RuleWatchGraph</a>
+          </li>
+          <li class="separator">propagateLiteral</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="../../source/ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/RuleWatchGraph.php.xhtml#line91">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>Composer\DependencyResolver\RuleWatchGraph::</small>propagateLiteral</h1>
+        <h4>Propagates a decision on a literal to all rules watching the literal</h4>
+        <p>If a decision, e.g. +A has been made, then all rules containing -A, e.g.
+(-A|+B|+C) now need to satisfy at least one of the other literals, so
+that the rule as a whole becomes true, since with +A applied the rule
+is now (false|+B|+C) so essentially (+B|+C).
+
+This means that all rules watching the literal -A need to be updated to
+watch 2 other literals which can still be satisfied instead. So literals
+that conflict with previously made decisions are not an option.
+
+Alternatively it can occur that a unit clause results: e.g. if in the
+above example the rule was (-A|+B), then A turning true means that
+B must now be decided true as well.</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function propagateLiteral(int
+        $decidedLiteral,
+            int
+        $level,
+            <a title="Composer\DependencyResolver\Decisions" href="../../classes/Composer_DependencyResolver_Decisions.xhtml">Decisions</a>
+        $decisions )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$decidedLiteral</code>
+                —
+                int</dt>
+          <dd>The literal which was decided (A in our example)</dd>
+          <dt><code>$level</code>
+                —
+                int</dt>
+          <dd>The level at which the decision took place and at which<br/>all resulting decisions should be made.</dd>
+          <dt><code>$decisions</code>
+                —
+                <a title="Composer\DependencyResolver\Decisions" href="../../classes/Composer_DependencyResolver_Decisions.xhtml">Composer\DependencyResolver\Decisions</a></dt>
+          <dd>Used to check previous decisions and to<br/>register decisions resulting from propagation</dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>Rule|null</dt>
+          <dd>If a conflict is found the conflicting rule is returned<br/>
+        </dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

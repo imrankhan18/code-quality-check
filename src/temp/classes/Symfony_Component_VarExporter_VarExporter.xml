@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\VarExporter\VarExporter" namespace="Symfony\Component\VarExporter" name="VarExporter" abstract="false" final="true" start="30" end="115">
+  <file path="//var/www/html/vendor/symfony/var-exporter" file="VarExporter.php" realpath="/var/www/html/vendor/symfony/var-exporter/VarExporter.php" size="3639" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="04475eb40b4ba0c54465a8f011ad7ab6d6defd50" relative="ar/www/html/vendor/symfony/var-exporter/VarExporter.php"/>
+  <docblock>
+    <description compact="Exports serializable PHP values to PHP code.">VarExporter allows serializing PHP data structures to plain PHP code (like var_export())
+while preserving all the semantics associated with serialize() (unlike var_export()).
+
+By leveraging OPcache, the generated PHP code is faster than doing the same with unserialize().</description>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+  </docblock>
+  <method name="export" start="41" end="114" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Exports a serializable PHP value to PHP code."/>
+      <param description="The value to export" type="mixed" variable="$value"/>
+      <param description="&amp;$isStaticValue Set to true after execution if the provided value is static, false otherwise" type="object">
+        <type full="Symfony\Component\VarExporter\bool" namespace="Symfony\Component\VarExporter" name="bool"/>
+      </param>
+      <param description="&amp;$classes Classes found in the value are added to this list as both keys and values" type="object">
+        <type full="Symfony\Component\VarExporter\bool" namespace="Symfony\Component\VarExporter" name="bool"/>
+      </param>
+      <throws description="When the provided value cannot be serialized" type="object">
+        <type full="Symfony\Component\VarExporter\Exception\ExceptionInterface" namespace="Symfony\Component\VarExporter\Exception" name="ExceptionInterface"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="isStaticValue" byreference="true" type="bool" default="NULL"/>
+    <parameter name="foundClasses" byreference="true" type="array" default=""/>
+  </method>
+</class>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\UploadedFile" namespace="GuzzleHttp\Psr7" name="UploadedFile" abstract="false" final="false" start="12" end="211">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="UploadedFile.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/UploadedFile.php" size="4859" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="708136e23745f3e862a513227d9ea0f358a3abd6" relative="ar/www/html/vendor/guzzlehttp/psr7/src/UploadedFile.php"/>
+  <implements full="Psr\Http\Message\UploadedFileInterface" namespace="Psr\Http\Message" name="UploadedFileInterface"/>
+  <constant type="array" name="ERRORS" value=""/>
+  <member name="clientFilename" visibility="private" static="false" line="28">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Psr7\string|null" namespace="GuzzleHttp\Psr7" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="clientMediaType" visibility="private" static="false" line="33">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Psr7\string|null" namespace="GuzzleHttp\Psr7" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="error" visibility="private" static="false" line="38">
+    <docblock>
+      <description/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="file" visibility="private" static="false" line="43">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Psr7\string|null" namespace="GuzzleHttp\Psr7" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="moved" default="false" type="boolean" visibility="private" static="false" line="48">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Psr7\bool" namespace="GuzzleHttp\Psr7" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="size" visibility="private" static="false" line="53">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Psr7\int|null" namespace="GuzzleHttp\Psr7" name="int|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="stream" visibility="private" static="false" line="58">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Psr7\StreamInterface|null" namespace="GuzzleHttp\Psr7" name="StreamInterface|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="63" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$streamOrFile">
+        <type full="GuzzleHttp\Psr7\StreamInterface|string|resource" namespace="GuzzleHttp\Psr7" name="StreamInterface|string|resource"/>
+      </param>
+    </docblock>
+    <parameter name="streamOrFile" byreference="false" type="{unknown}"/>
+    <parameter name="size" byreference="false" nullable="true" type="int"/>
+    <parameter name="errorStatus" byreference="false" type="int"/>
+    <parameter name="clientFilename" byreference="false" type="string" default="NULL"/>
+    <parameter name="clientMediaType" byreference="false" type="string" default="NULL"/>
+  </constructor>
+  <method name="setStreamOrFile" start="87" end="100" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Depending on the value set file or stream variable"/>
+      <param type="object" variable="$streamOrFile">
+        <type full="GuzzleHttp\Psr7\StreamInterface|string|resource" namespace="GuzzleHttp\Psr7" name="StreamInterface|string|resource"/>
+      </param>
+      <throws type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="streamOrFile" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setError" start="105" end="114" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="error" byreference="false" type="int"/>
+  </method>
+  <method name="isStringNotEmpty" start="116" end="119" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="param" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="isOk" start="124" end="127" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Return true if there is no upload error"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isMoved" start="129" end="132" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="validateActive" start="137" end="146" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <throws description="if is moved or not ok" type="object">
+        <type full="RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="getStream" start="148" end="160" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+  </method>
+  <method name="moveTo" start="162" end="190" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="targetPath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getSize" start="192" end="195" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="true"/>
+  </method>
+  <method name="getError" start="197" end="200" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getClientFilename" start="202" end="205" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="getClientMediaType" start="207" end="210" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <interface full="Psr\Http\Message\UploadedFileInterface" namespace="Psr\Http\Message" name="UploadedFileInterface">
+    <method name="getStream" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve a stream representing the uploaded file.">This method MUST return a StreamInterface instance, representing the
+uploaded file. The purpose of this method is to allow utilizing native PHP
+stream functionality to manipulate the file upload, such as
+stream_copy_to_stream() (though the result will need to be decorated in a
+native PHP stream wrapper to work with such functions).
+
+If the moveTo() method has been called previously, this method MUST raise
+an exception.</description>
+        <return description="Stream representation of the uploaded file." type="object">
+          <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+        </return>
+        <throws description="in cases when no stream is available or can be" type="object">created.<type full="\RuntimeException" namespace="" name="RuntimeException"/></throws>
+      </docblock>
+    </method>
+    <method name="moveTo" start="65" end="65" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Move the uploaded file to a new location.">Use this method as an alternative to move_uploaded_file(). This method is
+guaranteed to work in both SAPI and non-SAPI environments.
+Implementations must determine which environment they are in, and use the
+appropriate method (move_uploaded_file(), rename(), or a stream
+operation) to perform the operation.
+
+$targetPath may be an absolute path, or a relative path. If it is a
+relative path, resolution should be the same as used by PHP's rename()
+function.
+
+The original file or stream MUST be removed on completion.
+
+If this method is called more than once, any subsequent calls MUST raise
+an exception.
+
+When used in an SAPI environment where $_FILES is populated, when writing
+files via moveTo(), is_uploaded_file() and move_uploaded_file() SHOULD be
+used to ensure permissions and upload status are verified correctly.
+
+If you wish to move to a stream, use getStream(), as SAPI operations
+cannot guarantee writing to stream destinations.</description>
+        <see value="http://php.net/is_uploaded_file"/>
+        <see value="http://php.net/move_uploaded_file"/>
+        <param description="Path to which to move the uploaded file." type="string" variable="$targetPath"/>
+        <throws description="if the $targetPath specified is invalid." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+        <throws description="on any error during the move operation, or on" type="object">the second or subsequent call to the method.<type full="\RuntimeException" namespace="" name="RuntimeException"/></throws>
+      </docblock>
+      <parameter name="targetPath" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getSize" start="76" end="76" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the file size.">Implementations SHOULD return the value stored in the "size" key of
+the file in the $_FILES array if available, as PHP calculates this based
+on the actual size transmitted.</description>
+        <return description="The file size in bytes or null if unknown." type="object">
+          <type full="Psr\Http\Message\int|null" namespace="Psr\Http\Message" name="int|null"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getError" start="92" end="92" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the error associated with the uploaded file.">The return value MUST be one of PHP's UPLOAD_ERR_XXX constants.
+
+If the file was uploaded successfully, this method MUST return
+UPLOAD_ERR_OK.
+
+Implementations SHOULD return the value stored in the "error" key of
+the file in the $_FILES array.</description>
+        <see value="http://php.net/manual/en/features.file-upload.errors.php"/>
+        <return description="One of PHP's UPLOAD_ERR_XXX constants." type="int"/>
+      </docblock>
+    </method>
+    <method name="getClientFilename" start="107" end="107" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the filename sent by the client.">Do not trust the value returned by this method. A client could send
+a malicious filename with the intention to corrupt or hack your
+application.
+
+Implementations SHOULD return the value stored in the "name" key of
+the file in the $_FILES array.</description>
+        <return description="The filename sent by the client or null if none" type="object">was provided.<type full="Psr\Http\Message\string|null" namespace="Psr\Http\Message" name="string|null"/></return>
+      </docblock>
+    </method>
+    <method name="getClientMediaType" start="122" end="122" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the media type sent by the client.">Do not trust the value returned by this method. A client could send
+a malicious media type with the intention to corrupt or hack your
+application.
+
+Implementations SHOULD return the value stored in the "type" key of
+the file in the $_FILES array.</description>
+        <return description="The media type sent by the client or null if none" type="object">was provided.<type full="Psr\Http\Message\string|null" namespace="Psr\Http\Message" name="string|null"/></return>
+      </docblock>
+    </method>
+  </interface>
+</class>

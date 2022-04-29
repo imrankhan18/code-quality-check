@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PHPStan\PhpDocParser\Parser\PhpDocParser" namespace="PHPStan\PhpDocParser\Parser" name="PhpDocParser" abstract="false" final="false" start="13" end="464">
+  <file path="//var/www/html/vendor/phpstan/phpdoc-parser/src/Parser" file="PhpDocParser.php" realpath="/var/www/html/vendor/phpstan/phpdoc-parser/src/Parser/PhpDocParser.php" size="13687" time="2022-04-22T11:11:01+00:00" unixtime="1650625861" sha1="bb0016c03254110a24b4060b5769e007a83232d7" relative="ar/www/html/vendor/phpstan/phpdoc-parser/src/Parser/PhpDocParser.php"/>
+  <constant type="array" name="DISALLOWED_DESCRIPTION_START_TOKENS" value=""/>
+  <member name="typeParser" visibility="private" static="false" line="22">
+    <docblock>
+      <var type="object">
+        <type full="PHPStan\PhpDocParser\Parser\TypeParser" namespace="PHPStan\PhpDocParser\Parser" name="TypeParser"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="constantExprParser" visibility="private" static="false" line="25">
+    <docblock>
+      <var type="object">
+        <type full="PHPStan\PhpDocParser\Parser\ConstExprParser" namespace="PHPStan\PhpDocParser\Parser" name="ConstExprParser"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="27" end="31" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="typeParser" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TypeParser" namespace="PHPStan\PhpDocParser\Parser" name="TypeParser"/>
+    </parameter>
+    <parameter name="constantExprParser" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\ConstExprParser" namespace="PHPStan\PhpDocParser\Parser" name="ConstExprParser"/>
+    </parameter>
+  </constructor>
+  <method name="parse" start="34" end="65" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="PhpDocNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseChild" start="68" end="76" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="PhpDocChildNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseText" start="79" end="103" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTextNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="PhpDocTextNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseTag" start="106" end="113" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="PhpDocTagNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseTagValue" start="116" end="221" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="PhpDocTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="tag" byreference="false" type="string"/>
+  </method>
+  <method name="parseParamTagValue" start="224" end="232" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="ParamTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseVarTagValue" start="235" end="241" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\VarTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="VarTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseReturnTagValue" start="244" end="249" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\ReturnTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="ReturnTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseThrowsTagValue" start="252" end="257" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\ThrowsTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="ThrowsTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseMixinTagValue" start="259" end="264" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\MixinTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="MixinTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseDeprecatedTagValue" start="266" end="270" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\DeprecatedTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="DeprecatedTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parsePropertyTagValue" start="273" end="279" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="PropertyTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseMethodTagValue" start="282" end="314" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="MethodTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseMethodTagValueParameter" start="317" end="344" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueParameterNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="MethodTagValueParameterNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseTemplateTagValue" start="346" end="361" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="TemplateTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseExtendsTagValue" start="363" end="382" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="PhpDocTagValueNode"/>
+    </return>
+    <parameter name="tagName" byreference="false" type="string"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseTypeAliasTagValue" start="384" end="395" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="TypeAliasTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <inline>
+      <comment value="support psalm-type syntax" line="389"/>
+    </inline>
+  </method>
+  <method name="parseTypeAliasImportTagValue" start="397" end="421" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode" namespace="PHPStan\PhpDocParser\Ast\PhpDoc" name="TypeAliasImportTagValueNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseOptionalVariableName" start="423" end="437" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseRequiredVariableName" start="440" end="446" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseOptionalDescription" start="449" end="462" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="limitStartToken" byreference="false" type="boolean" default="false"/>
+  </method>
+</class>

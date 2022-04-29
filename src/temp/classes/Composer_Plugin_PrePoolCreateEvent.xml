@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Plugin\PrePoolCreateEvent" namespace="Composer\Plugin" name="PrePoolCreateEvent" abstract="false" final="false" start="25" end="180">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Plugin" file="PrePoolCreateEvent.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Plugin/PrePoolCreateEvent.php" size="5194" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="a9f19a48e5305c9f38f8dfc1b640c32c9a9ce1ca" relative="ar/www/html/vendor/composer/composer/src/Composer/Plugin/PrePoolCreateEvent.php"/>
+  <docblock>
+    <description compact="The pre command run event."/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <extends full="Composer\EventDispatcher\Event" namespace="Composer\EventDispatcher" name="Event"/>
+  <member name="repositories" visibility="private" static="false" line="30">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Plugin\RepositoryInterface" namespace="Composer\Plugin" name="RepositoryInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="request" visibility="private" static="false" line="34">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="acceptableStabilities" visibility="private" static="false" line="39">
+    <docblock>
+      <description/>
+      <var description="array of stability =&gt; BasePackage::STABILITY_* value" type="array" of="object">
+        <type full="Composer\Plugin\int" namespace="Composer\Plugin" name="int"/>
+      </var>
+      <phpstan value="-var array&lt;string, BasePackage::STABILITY_*&gt;"/>
+    </docblock>
+  </member>
+  <member name="stabilityFlags" visibility="private" static="false" line="44">
+    <docblock>
+      <description/>
+      <var description="array of package name =&gt; BasePackage::STABILITY_* value" type="array" of="object">
+        <type full="Composer\Plugin\int" namespace="Composer\Plugin" name="int"/>
+      </var>
+      <phpstan value="-var array&lt;string, BasePackage::STABILITY_*&gt;"/>
+    </docblock>
+  </member>
+  <member name="rootAliases" visibility="private" static="false" line="49">
+    <docblock>
+      <description/>
+      <var description="of package =&gt; version =&gt; [alias, alias_normalized]" type="array" of="object">
+        <type full="Composer\Plugin\array" namespace="Composer\Plugin" name="array"/>
+      </var>
+      <phpstan value="-var array&lt;string, array&lt;string, array{alias: string, alias_normalized: string}&gt;&gt;"/>
+    </docblock>
+  </member>
+  <member name="rootReferences" visibility="private" static="false" line="54">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Plugin\string" namespace="Composer\Plugin" name="string"/>
+      </var>
+      <phpstan value="-var array&lt;string, string&gt;"/>
+    </docblock>
+  </member>
+  <member name="packages" visibility="private" static="false" line="58">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Plugin\BasePackage" namespace="Composer\Plugin" name="BasePackage"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="unacceptableFixedPackages" visibility="private" static="false" line="62">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Plugin\BasePackage" namespace="Composer\Plugin" name="BasePackage"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="79" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The event name" type="string" variable="$name"/>
+      <param type="array" variable="$repositories" of="object">
+        <type full="Composer\Plugin\RepositoryInterface" namespace="Composer\Plugin" name="RepositoryInterface"/>
+      </param>
+      <param description="array of stability =&gt; BasePackage::STABILITY_* value" type="array" variable="$acceptableStabilities" of="object">
+        <type full="Composer\Plugin\int" namespace="Composer\Plugin" name="int"/>
+      </param>
+      <param description="array of package name =&gt; BasePackage::STABILITY_* value" type="array" variable="$stabilityFlags" of="object">
+        <type full="Composer\Plugin\int" namespace="Composer\Plugin" name="int"/>
+      </param>
+      <param description="array of package =&gt; version =&gt; [alias, alias_normalized]" type="array" variable="$rootAliases" of="object">
+        <type full="Composer\Plugin\array" namespace="Composer\Plugin" name="array"/>
+      </param>
+      <param type="array" variable="$rootReferences" of="object">
+        <type full="Composer\Plugin\string" namespace="Composer\Plugin" name="string"/>
+      </param>
+      <param type="array" variable="$packages" of="object">
+        <type full="Composer\Plugin\BasePackage" namespace="Composer\Plugin" name="BasePackage"/>
+      </param>
+      <param type="array" variable="$unacceptableFixedPackages" of="object">
+        <type full="Composer\Plugin\BasePackage" namespace="Composer\Plugin" name="BasePackage"/>
+      </param>
+      <phpstan value="-param array&lt;string, BasePackage::STABILITY_*&gt; $acceptableStabilities"/>
+      <phpstan value="-param array&lt;string, BasePackage::STABILITY_*&gt; $stabilityFlags"/>
+      <phpstan value="-param array&lt;string, array&lt;string, array{alias: string, alias_normalized: string}&gt;&gt; $rootAliases"/>
+      <phpstan value="-param array&lt;string, string&gt; $rootReferences"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="repositories" byreference="false" type="array"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="acceptableStabilities" byreference="false" type="array"/>
+    <parameter name="stabilityFlags" byreference="false" type="array"/>
+    <parameter name="rootAliases" byreference="false" type="array"/>
+    <parameter name="rootReferences" byreference="false" type="array"/>
+    <parameter name="packages" byreference="false" type="array"/>
+    <parameter name="unacceptableFixedPackages" byreference="false" type="array"/>
+  </constructor>
+  <method name="getRepositories" start="96" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Plugin\RepositoryInterface" namespace="Composer\Plugin" name="RepositoryInterface"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getRequest" start="104" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </return>
+  </method>
+  <method name="getAcceptableStabilities" start="113" end="116" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="array of stability =&gt; BasePackage::STABILITY_* value" type="array" of="object">
+        <type full="Composer\Plugin\int" namespace="Composer\Plugin" name="int"/>
+      </return>
+      <phpstan value="-return array&lt;string, BasePackage::STABILITY_*&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getStabilityFlags" start="122" end="125" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="array of package name =&gt; BasePackage::STABILITY_* value" type="array" of="object">
+        <type full="Composer\Plugin\int" namespace="Composer\Plugin" name="int"/>
+      </return>
+      <phpstan value="-return array&lt;string, BasePackage::STABILITY_*&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getRootAliases" start="131" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="of package =&gt; version =&gt; [alias, alias_normalized]" type="array" of="object">
+        <type full="Composer\Plugin\array" namespace="Composer\Plugin" name="array"/>
+      </return>
+      <phpstan value="-return array&lt;string, array&lt;string, array{alias: string, alias_normalized: string}&gt;&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getRootReferences" start="140" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Plugin\string" namespace="Composer\Plugin" name="string"/>
+      </return>
+      <phpstan value="-return array&lt;string, string&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getPackages" start="148" end="151" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Plugin\BasePackage" namespace="Composer\Plugin" name="BasePackage"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getUnacceptableFixedPackages" start="156" end="159" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Plugin\BasePackage" namespace="Composer\Plugin" name="BasePackage"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="setPackages" start="166" end="169" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$packages" of="object">
+        <type full="Composer\Plugin\BasePackage" namespace="Composer\Plugin" name="BasePackage"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Plugin\void" namespace="Composer\Plugin" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="packages" byreference="false" type="array"/>
+  </method>
+  <method name="setUnacceptableFixedPackages" start="176" end="179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$packages" of="object">
+        <type full="Composer\Plugin\BasePackage" namespace="Composer\Plugin" name="BasePackage"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Plugin\void" namespace="Composer\Plugin" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="packages" byreference="false" type="array"/>
+  </method>
+  <parent full="Composer\EventDispatcher\Event" namespace="Composer\EventDispatcher" name="Event">
+    <member name="name" visibility="protected" static="false" line="25">
+      <docblock>
+        <description/>
+        <var description="This event's name" type="string"/>
+      </docblock>
+    </member>
+    <member name="args" visibility="protected" static="false" line="30">
+      <docblock>
+        <description/>
+        <var description="Arguments passed by the user, these will be forwarded to CLI script handlers" type="array" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="flags" visibility="protected" static="false" line="35">
+      <docblock>
+        <description/>
+        <var description="Flags usable in PHP script handlers" type="array" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="49" end="54" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Constructor."/>
+        <param description="The event name" type="string" variable="$name"/>
+        <param description="Arguments passed by the user" type="array" variable="$args" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </param>
+        <param description="Optional flags to pass data not as argument" type="array" variable="$flags" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </param>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="args" byreference="false" type="array" default=""/>
+      <parameter name="flags" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="getName" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's name."/>
+        <return description="The event name" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getArguments" start="71" end="74" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's arguments."/>
+        <return description="The event arguments" type="array" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getFlags" start="81" end="84" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's flags."/>
+        <return description="The event flags" type="array" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="isPropagationStopped" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks if stopPropagation has been called"/>
+        <return description="Whether propagation has been stopped" type="object">
+          <type full="Composer\EventDispatcher\bool" namespace="Composer\EventDispatcher" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="stopPropagation" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Prevents the event from being passed to further listeners"/>
+        <return type="object">
+          <type full="Composer\EventDispatcher\void" namespace="Composer\EventDispatcher" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+    </method>
+  </parent>
+</class>

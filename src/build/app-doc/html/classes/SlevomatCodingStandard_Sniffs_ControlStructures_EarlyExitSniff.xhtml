@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#SlevomatCodingStandard_Sniffs_ControlStructures">SlevomatCodingStandard\Sniffs\ControlStructures</a>
+          </li>
+          <li class="separator">EarlyExitSniff</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/ControlStructures/EarlyExitSniff.php.xhtml#line34">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>SlevomatCodingStandard\Sniffs\ControlStructures\</small>EarlyExitSniff</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class EarlyExitSniff
+                implements
+                <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">Sniff</a>
+            {<br/><ul class="none"><li>// constants</li><li>const CODE_EARLY_EXIT_NOT_USED = 'EarlyExitNotUsed';</li><li>const CODE_USELESS_ELSEIF = 'UselessElseIf';</li><li>const CODE_USELESS_ELSE = 'UselessElse';</li></ul><ul class="none"><li>// members</li><li>public <span title="SlevomatCodingStandard\Sniffs\ControlStructures\bool">bool</span> <a href="#members">$ignoreStandaloneIfInScope</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\ControlStructures\bool">bool</span> <a href="#members">$ignoreOneLineTrailingIf</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\ControlStructures\bool">bool</span> <a href="#members">$ignoreTrailingIfWithOneInstruction</a> =
+                        false;
+                    </li></ul><ul class="none"><li>// methods</li><li>public array <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/register.xhtml">register</a>()
+                    </li><li>public void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/process.xhtml">process</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/processElse.xhtml">processElse</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/processElseIf.xhtml">processElseIf</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/processIf.xhtml">processIf</a>()
+                    </li><li>private string <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/getScopeCode.xhtml">getScopeCode</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/getScopeCodePointers.xhtml">getScopeCodePointers</a>()
+                    </li><li>private string <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/getEarlyExitCode.xhtml">getEarlyExitCode</a>()
+                    </li><li>private ?int <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/findEarlyExitInScope.xhtml">findEarlyExitInScope</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/isEarlyExitInScope.xhtml">isEarlyExitInScope</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/getAllConditionsPointers.xhtml">getAllConditionsPointers</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">PHP_CodeSniffer\Sniffs\Sniff</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CODE_EARLY_EXIT_NOT_USED">CODE_EARLY_EXIT_NOT_USED</td>
+              <td>'EarlyExitNotUsed'</td>
+            </tr>
+            <tr>
+              <td id="CODE_USELESS_ELSEIF">CODE_USELESS_ELSEIF</td>
+              <td>'UselessElseIf'</td>
+            </tr>
+            <tr>
+              <td id="CODE_USELESS_ELSE">CODE_USELESS_ELSE</td>
+              <td>'UselessElse'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="ignoreOneLineTrailingIf"><strong>$ignoreOneLineTrailingIf</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\ControlStructures\bool" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_bool.xhtml">SlevomatCodingStandard\Sniffs\ControlStructures\bool</a></li>
+            <li id="ignoreStandaloneIfInScope"><strong>$ignoreStandaloneIfInScope</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\ControlStructures\bool" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_bool.xhtml">SlevomatCodingStandard\Sniffs\ControlStructures\bool</a></li>
+            <li id="ignoreTrailingIfWithOneInstruction"><strong>$ignoreTrailingIfWithOneInstruction</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\ControlStructures\bool" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_bool.xhtml">SlevomatCodingStandard\Sniffs\ControlStructures\bool</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="findEarlyExitInScope">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/findEarlyExitInScope.xhtml">findEarlyExitInScope()</a>
+            </li>
+            <li id="getAllConditionsPointers">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/getAllConditionsPointers.xhtml">getAllConditionsPointers()</a>
+            </li>
+            <li id="getEarlyExitCode">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/getEarlyExitCode.xhtml">getEarlyExitCode()</a>
+            </li>
+            <li id="getScopeCode">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/getScopeCode.xhtml">getScopeCode()</a>
+            </li>
+            <li id="getScopeCodePointers">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/getScopeCodePointers.xhtml">getScopeCodePointers()</a>
+            </li>
+            <li id="isEarlyExitInScope">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/isEarlyExitInScope.xhtml">isEarlyExitInScope()</a>
+            </li>
+            <li id="processElse">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/processElse.xhtml">processElse()</a>
+            </li>
+            <li id="processElseIf">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/processElseIf.xhtml">processElseIf()</a>
+            </li>
+            <li id="processIf">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/processIf.xhtml">processIf()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="process">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/process.xhtml">process()</a>
+            </li>
+            <li id="register">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\EarlyExitSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_EarlyExitSniff/register.xhtml">register()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

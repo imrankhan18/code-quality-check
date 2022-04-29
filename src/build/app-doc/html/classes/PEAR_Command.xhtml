@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_Command</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_Command</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/Command.php.xhtml#line100">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_Command</h1>
+        <h4>PEAR command class, a simple factory class for administrative commands.</h4>
+        <p>How to implement command classes:<br/><br/>- The class must be called PEAR_Command_Nnn, installed in the<br/>"PEAR/Common" subdir, with a method called getCommands() that<br/>returns an array of the commands implemented by the class (see<br/>PEAR/Command/Install.php for an example).<br/><br/>- The class must implement a run() function that is called with three<br/>params:<br/><br/>(string) command name<br/>(array) assoc array with options, freely defined by each<br/>command, for example:<br/>array('force' =&gt; true)<br/>(array) list of the other parameters<br/><br/>The run() function returns a PEAR_CommandResponse object. Use<br/>these methods to get information:<br/><br/>int getStatus() Returns PEAR_COMMAND_(SUCCESS|FAILURE|PARTIAL)<br/>*_PARTIAL means that you need to issue at least<br/>one more command to complete the operation<br/>(used for example for validation steps).<br/><br/>string getMessage() Returns a message for the user. Remember,<br/>no HTML or other interface-specific markup.<br/><br/>If something unexpected happens, run() returns a PEAR error.<br/><br/>- DON'T OUTPUT ANYTHING! Return text for output instead.<br/><br/>- DON'T USE HTML! The text you return will be used from both Gtk,<br/>web and command-line interfaces, so for now, keep everything to<br/>plain text.<br/><br/>- DON'T USE EXIT OR DIE! Always use pear errors. From static<br/>classes do PEAR::raiseError(), from other classes do<br/>  $this-&gt;raiseError().</p>
+        <ul>
+          <li>Author: Stig Bakken &lt;ssb@php.net&gt;</li>
+          <li>Copyright: 1997-2009 The Authors</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_Command
+            {<br/><ul class="none"><li>// methods</li><li>public static  <a title="PEAR_Command" href="../classes/PEAR_Command/factory.xhtml">factory</a>()
+                    </li><li>public static void <a title="PEAR_Command" href="../classes/PEAR_Command/getObject.xhtml">getObject</a>()
+                    </li><li>public static object|PEAR_Error <a title="PEAR_Command" href="../classes/PEAR_Command/getFrontendObject.xhtml">getFrontendObject</a>()
+                    </li><li>public static  <a title="PEAR_Command" href="../classes/PEAR_Command/setFrontendClass.xhtml">setFrontendClass</a>()
+                    </li><li>public static  <a title="PEAR_Command" href="../classes/PEAR_Command/setFrontendType.xhtml">setFrontendType</a>()
+                    </li><li>public static bool <a title="PEAR_Command" href="../classes/PEAR_Command/registerCommands.xhtml">registerCommands</a>()
+                    </li><li>public static array <a title="PEAR_Command" href="../classes/PEAR_Command/getCommands.xhtml">getCommands</a>()
+                    </li><li>public static array <a title="PEAR_Command" href="../classes/PEAR_Command/getShortcuts.xhtml">getShortcuts</a>()
+                    </li><li>public static void <a title="PEAR_Command" href="../classes/PEAR_Command/getGetoptArgs.xhtml">getGetoptArgs</a>()
+                    </li><li>public static string <a title="PEAR_Command" href="../classes/PEAR_Command/getDescription.xhtml">getDescription</a>()
+                    </li><li>public static void <a title="PEAR_Command" href="../classes/PEAR_Command/getHelp.xhtml">getHelp</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="factory"><a title="PEAR_Command" href="../classes/PEAR_Command/factory.xhtml">factory()</a>
+                — Get the right object for executing a command.</li>
+            <li id="getCommands"><a title="PEAR_Command" href="../classes/PEAR_Command/getCommands.xhtml">getCommands()</a>
+                — Get the list of currently supported commands, and what classes implement them.</li>
+            <li id="getDescription"><a title="PEAR_Command" href="../classes/PEAR_Command/getDescription.xhtml">getDescription()</a>
+                — Get description for a command.</li>
+            <li id="getFrontendObject"><a title="PEAR_Command" href="../classes/PEAR_Command/getFrontendObject.xhtml">getFrontendObject()</a>
+                — Get instance of frontend object.</li>
+            <li id="getGetoptArgs"><a title="PEAR_Command" href="../classes/PEAR_Command/getGetoptArgs.xhtml">getGetoptArgs()</a>
+                — Compiles arguments for getopt.</li>
+            <li id="getHelp"><a title="PEAR_Command" href="../classes/PEAR_Command/getHelp.xhtml">getHelp()</a>
+                — Get help for command.</li>
+            <li id="getObject">
+              <a title="PEAR_Command" href="../classes/PEAR_Command/getObject.xhtml">getObject()</a>
+            </li>
+            <li id="getShortcuts"><a title="PEAR_Command" href="../classes/PEAR_Command/getShortcuts.xhtml">getShortcuts()</a>
+                — Get the list of command shortcuts.</li>
+            <li id="registerCommands"><a title="PEAR_Command" href="../classes/PEAR_Command/registerCommands.xhtml">registerCommands()</a>
+                — Scan through the Command directory looking for classes and see what commands they implement.</li>
+            <li id="setFrontendClass"><a title="PEAR_Command" href="../classes/PEAR_Command/setFrontendClass.xhtml">setFrontendClass()</a>
+                — Load current frontend class.</li>
+            <li id="setFrontendType"><a title="PEAR_Command" href="../classes/PEAR_Command/setFrontendType.xhtml">setFrontendType()</a>
+                — Set current frontend.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Composer\Downloader\DownloaderInterface" namespace="Composer\Downloader" name="DownloaderInterface" abstract="false" final="false" start="24" end="99">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Downloader" file="DownloaderInterface.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Downloader/DownloaderInterface.php" size="4137" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="379a4b28472e022b2ca2f69f7ed737e02bfccbff" relative="ar/www/html/vendor/composer/composer/src/Composer/Downloader/DownloaderInterface.php"/>
+  <docblock>
+    <description compact="Downloader interface."/>
+    <author value="Konstantin Kudryashov &lt;ever.zet@gmail.com&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <method name="getInstallationSource" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns installation source (either source or dist)."/>
+      <return description="&quot;source&quot; or &quot;dist&quot;" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="download" start="39" end="39" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This should do any network-related tasks to prepare for an upcoming install/update"/>
+      <param description="download path" type="string" variable="$path"/>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="prepare" start="55" end="55" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Do anything that needs to be done between all downloads have been completed and the actual operation is executed">All packages get first downloaded, then all together prepared, then all together installed/updated/uninstalled. Therefore
+for error recovery it is important to avoid failing during install/update/uninstall as much as possible, and risky things or
+user prompts should happen in the prepare step rather. In case of failure, cleanup() will be called so that changes can
+be undone as much as possible.</description>
+      <param description="one of install/update/uninstall" type="string" variable="$type"/>
+      <param description="package instance" type="object" variable="$package">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="download path" type="string" variable="$path"/>
+      <param description="previous package instance in case of an update" type="object" variable="$prevPackage">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="install" start="64" end="64" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Installs specific package into specific folder."/>
+      <param description="package instance" type="object" variable="$package">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="download path" type="string" variable="$path"/>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="update" start="74" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Updates specific package in specific folder from initial to target version."/>
+      <param description="initial package" type="object" variable="$initial">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="updated package" type="object" variable="$target">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="download path" type="string" variable="$path"/>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="initial" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="target" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="remove" start="83" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes specific package from specific folder."/>
+      <param description="package instance" type="object" variable="$package">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="download path" type="string" variable="$path"/>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="cleanup" start="98" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Do anything to cleanup changes applied in the prepare or install/update/uninstall steps">Note that cleanup will be called for all packages, either after install/update/uninstall is complete,
+or if any package failed any operation. This is to give all installers a change to cleanup things
+they did previously, so you need to keep track of changes applied in the installer/downloader themselves.</description>
+      <param description="one of install/update/uninstall" type="string" variable="$type"/>
+      <param description="package instance" type="object" variable="$package">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="download path" type="string" variable="$path"/>
+      <param description="previous package instance in case of an update" type="object" variable="$prevPackage">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <implementors>
+    <class full="Composer\Downloader\TarDownloader" namespace="Composer\Downloader" name="TarDownloader"/>
+    <class full="Composer\Downloader\PharDownloader" namespace="Composer\Downloader" name="PharDownloader"/>
+    <class full="Composer\Downloader\RarDownloader" namespace="Composer\Downloader" name="RarDownloader"/>
+    <class full="Composer\Downloader\ArchiveDownloader" namespace="Composer\Downloader" name="ArchiveDownloader"/>
+    <class full="Composer\Downloader\ZipDownloader" namespace="Composer\Downloader" name="ZipDownloader"/>
+    <class full="Composer\Downloader\SvnDownloader" namespace="Composer\Downloader" name="SvnDownloader"/>
+    <class full="Composer\Downloader\PerforceDownloader" namespace="Composer\Downloader" name="PerforceDownloader"/>
+    <class full="Composer\Downloader\GzipDownloader" namespace="Composer\Downloader" name="GzipDownloader"/>
+    <class full="Composer\Downloader\VcsDownloader" namespace="Composer\Downloader" name="VcsDownloader"/>
+    <class full="Composer\Downloader\XzDownloader" namespace="Composer\Downloader" name="XzDownloader"/>
+    <class full="Composer\Downloader\FileDownloader" namespace="Composer\Downloader" name="FileDownloader"/>
+    <class full="Composer\Downloader\HgDownloader" namespace="Composer\Downloader" name="HgDownloader"/>
+    <class full="Composer\Downloader\FossilDownloader" namespace="Composer\Downloader" name="FossilDownloader"/>
+    <class full="Composer\Downloader\GitDownloader" namespace="Composer\Downloader" name="GitDownloader"/>
+    <class full="Composer\Downloader\PathDownloader" namespace="Composer\Downloader" name="PathDownloader"/>
+  </implementors>
+</interface>

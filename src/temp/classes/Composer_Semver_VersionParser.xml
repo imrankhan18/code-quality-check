@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Semver\VersionParser" namespace="Composer\Semver" name="VersionParser" abstract="false" final="false" start="24" end="586">
+  <file path="//var/www/html/vendor/composer/semver/src" file="VersionParser.php" realpath="/var/www/html/vendor/composer/semver/src/VersionParser.php" size="21733" time="2022-04-01T19:23:25+00:00" unixtime="1648841005" sha1="e882401e35cf1fa2bdb5b2c3ecb3788338136f4b" relative="ar/www/html/vendor/composer/semver/src/VersionParser.php"/>
+  <docblock>
+    <description compact="Version parser."/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="modifierRegex" default="'[._-]?(?:(stable|beta|b|RC|alpha|a|patch|pl|p)((?:[.-]?\d+)*+)?)?([.-]?dev)?'" type="string" visibility="private" static="true" line="39">
+    <docblock>
+      <description compact="Regex to match pre-release data (sort of).">Due to backwards compatibility:
+  - Instead of enforcing hyphen, an underscore, dot or nothing at all are also accepted.
+  - Only stabilities as recognized by Composer are allowed to precede a numerical identifier.
+  - Numerical-only pre-release identifiers are not supported, see tests.
+
+                       |--------------|
+[major].[minor].[patch] -[pre-release] +[build-metadata]</description>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="stabilitiesRegex" default="'stable|RC|beta|alpha|dev'" type="string" visibility="private" static="true" line="42">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <method name="parseStability" start="52" end="79" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns the stability of a version."/>
+      <param type="string" variable="$version"/>
+      <return type="string"/>
+      <phpstan value="-return 'stable'|'RC'|'beta'|'alpha'|'dev'"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="normalizeStability" start="86" end="91" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$stability"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="stability" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="normalize" start="103" end="187" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Normalizes a version string to be able to perform comparisons on it."/>
+      <param type="string" variable="$version"/>
+      <param description="optional complete version string to give more context" type="object" variable="$fullVersion">
+        <type full="Composer\Semver\?string" namespace="Composer\Semver" name="?string"/>
+      </param>
+      <throws type="object">
+        <type full="\UnexpectedValueException" namespace="" name="UnexpectedValueException"/>
+      </throws>
+      <return type="string"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+    <parameter name="fullVersion" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="strip off aliasing" line="111"/>
+      <comment value="strip off stability flag" line="116"/>
+      <comment value="normalize master/trunk/default branches to dev-name for BC with 1.x as these used to be valid constraints" line="121"/>
+      <comment value="if requirement is branch-like, use full name" line="126"/>
+      <comment value="strip off build metadata" line="131"/>
+      <comment value="match classical versioning" line="136"/>
+      <comment value="add version modifiers if a version was matched" line="149"/>
+      <comment value="match dev branches" line="165"/>
+    </inline>
+  </method>
+  <method name="parseNumericAliasPrefix" start="196" end="203" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Extract numeric prefix from alias, if it is in numeric format, suitable for version comparison."/>
+      <param description="Branch name (e.g. 2.1.x-dev)" type="string" variable="$branch"/>
+      <return description="Numeric prefix if present (e.g. 2.1.) or false" type="object">
+        <type full="Composer\Semver\string|false" namespace="Composer\Semver" name="string|false"/>
+      </return>
+    </docblock>
+    <parameter name="branch" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="normalizeBranch" start="212" end="226" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Normalizes a branch name to be able to perform comparisons on it."/>
+      <param type="string" variable="$name"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="normalizeDefaultBranch" start="237" end="244" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Normalizes a default branch name (i.e. master on git) to 9999999-dev."/>
+      <param type="string" variable="$name"/>
+      <return type="string"/>
+      <deprecated value="No need to use this anymore in theory, Composer 2 does not normalize any branch names to 9999999-dev anymore"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="parseConstraints" start="253" end="293" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Parses a constraint string into MultiConstraint and/or Constraint objects."/>
+      <param type="string" variable="$constraints"/>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </return>
+    </docblock>
+    <parameter name="constraints" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="parseConstraint" start="304" end="522" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$constraint"/>
+      <throws type="object">
+        <type full="\UnexpectedValueException" namespace="" name="UnexpectedValueException"/>
+      </throws>
+      <return type="array"/>
+      <phpstan value="-return non-empty-array&lt;ConstraintInterface&gt;"/>
+    </docblock>
+    <parameter name="constraint" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="strip off aliasing" line="306"/>
+      <comment value="strip @stability flags, and keep it for later use" line="311"/>
+      <comment value="get rid of #refs as those are used by composer only" line="319"/>
+      <comment value="Tilde Range" line="334"/>
+      <comment value="Like wildcard constraints, unsuffixed tilde constraints say that they must be greater than the previous" line="336"/>
+      <comment value="version, to ensure that unstable instances of the current version are allowed. However, if a stability" line="337"/>
+      <comment value="suffix is added to the constraint, then a &gt;= match on the current version is used instead." line="338"/>
+      <comment value="Caret Range" line="384"/>
+      <comment value="Allows changes that do not modify the left-most non-zero digit in the [major, minor, patch] tuple." line="386"/>
+      <comment value="In other words, this allows patch and minor updates for versions 1.0.0 and above, patch updates for" line="387"/>
+      <comment value="versions 0.X &gt;=0.1.0, and no updates for versions 0.0.X" line="388"/>
+      <comment value="X Range" line="419"/>
+      <comment value="Any of X, x, or * may be used to &quot;stand in&quot; for one of the numeric values in the [major, minor, patch] tuple." line="421"/>
+      <comment value="A partial version range is treated as an X-Range, so the special character is in fact optional." line="422"/>
+      <comment value="Hyphen Range" line="445"/>
+      <comment value="Specifies an inclusive set. If a partial version is provided as the first version in the inclusive range," line="447"/>
+      <comment value="then the missing pieces are replaced with zeroes. If a partial version is provided as the second version in" line="448"/>
+      <comment value="the inclusive range, then all versions that start with the supplied parts of the tuple are accepted, but" line="449"/>
+      <comment value="nothing that would be greater than the provided tuple parts." line="450"/>
+      <comment value="Basic Comparators" line="484"/>
+    </inline>
+  </method>
+  <method name="manipulateVersionString" start="538" end="559" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Increment, decrement, or simply pad a version number.">Support function for <link xmlns="http://xml.phpdox.net/src" value="parseConstraint()"/></description>
+      <param description="Array with version parts in array indexes 1,2,3,4" type="array" variable="$matches"/>
+      <param description="1,2,3,4 - which segment of the version to increment/decrement" type="int" variable="$position"/>
+      <param type="int" variable="$increment"/>
+      <param description="The string to pad version parts after $position" type="string" variable="$pad"/>
+      <return description="The new version" type="object">
+        <type full="Composer\Semver\string|null" namespace="Composer\Semver" name="string|null"/>
+      </return>
+      <phpstan value="-param string[] $matches"/>
+    </docblock>
+    <parameter name="matches" byreference="false" type="array"/>
+    <parameter name="position" byreference="false" type="{unknown}"/>
+    <parameter name="increment" byreference="false" type="integer" default="0"/>
+    <parameter name="pad" byreference="false" type="string" default="'0'"/>
+  </method>
+  <method name="expandStability" start="568" end="585" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Expand shorthand stability string to long version."/>
+      <param type="string" variable="$stability"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="stability" byreference="false" type="{unknown}"/>
+  </method>
+  <extenders>
+    <extender full="Composer\Package\Version\VersionParser" namespace="Composer\Package\Version" name="VersionParser"/>
+  </extenders>
+</class>

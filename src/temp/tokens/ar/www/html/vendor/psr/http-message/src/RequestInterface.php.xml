@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="//var/www/html/vendor/psr/http-message/src" file="RequestInterface.php" realpath="/var/www/html/vendor/psr/http-message/src/RequestInterface.php" size="4814" time="2016-08-06T14:39:51+00:00" unixtime="1470494391" sha1="bd020d9e1b339da190eac3c973ec06b11e995da6" relative="ar/www/html/vendor/psr/http-message/src/RequestInterface.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2"/>
+  <line no="3">
+    <token name="T_NAMESPACE">namespace</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Psr</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Http</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Message</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="4"/>
+  <line no="5">
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="6">
+    <token name="T_DOC_COMMENT"> * Representation of an outgoing, client-side request.</token>
+  </line>
+  <line no="7">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="8">
+    <token name="T_DOC_COMMENT"> * Per the HTTP specification, this interface includes properties for</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT"> * each of the following:</token>
+  </line>
+  <line no="10">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="11">
+    <token name="T_DOC_COMMENT"> * - Protocol version</token>
+  </line>
+  <line no="12">
+    <token name="T_DOC_COMMENT"> * - HTTP method</token>
+  </line>
+  <line no="13">
+    <token name="T_DOC_COMMENT"> * - URI</token>
+  </line>
+  <line no="14">
+    <token name="T_DOC_COMMENT"> * - Headers</token>
+  </line>
+  <line no="15">
+    <token name="T_DOC_COMMENT"> * - Message body</token>
+  </line>
+  <line no="16">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="17">
+    <token name="T_DOC_COMMENT"> * During construction, implementations MUST attempt to set the Host header from</token>
+  </line>
+  <line no="18">
+    <token name="T_DOC_COMMENT"> * a provided URI if no Host header is provided.</token>
+  </line>
+  <line no="19">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="20">
+    <token name="T_DOC_COMMENT"> * Requests are considered immutable; all methods that might change state MUST</token>
+  </line>
+  <line no="21">
+    <token name="T_DOC_COMMENT"> * be implemented such that they retain the internal state of the current</token>
+  </line>
+  <line no="22">
+    <token name="T_DOC_COMMENT"> * message and return an instance that contains the changed state.</token>
+  </line>
+  <line no="23">
+    <token name="T_DOC_COMMENT"> */</token>
+  </line>
+  <line no="24">
+    <token name="T_INTERFACE">interface</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">RequestInterface</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_EXTENDS">extends</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">MessageInterface</token>
+  </line>
+  <line no="25">
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="26">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="27">
+    <token name="T_DOC_COMMENT">     * Retrieves the message's request target.</token>
+  </line>
+  <line no="28">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="29">
+    <token name="T_DOC_COMMENT">     * Retrieves the message's request-target either as it will appear (for</token>
+  </line>
+  <line no="30">
+    <token name="T_DOC_COMMENT">     * clients), as it appeared at request (for servers), or as it was</token>
+  </line>
+  <line no="31">
+    <token name="T_DOC_COMMENT">     * specified for the instance (see withRequestTarget()).</token>
+  </line>
+  <line no="32">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="33">
+    <token name="T_DOC_COMMENT">     * In most cases, this will be the origin-form of the composed URI,</token>
+  </line>
+  <line no="34">
+    <token name="T_DOC_COMMENT">     * unless a value was provided to the concrete implementation (see</token>
+  </line>
+  <line no="35">
+    <token name="T_DOC_COMMENT">     * withRequestTarget() below).</token>
+  </line>
+  <line no="36">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="37">
+    <token name="T_DOC_COMMENT">     * If no URI is available, and no request-target has been specifically</token>
+  </line>
+  <line no="38">
+    <token name="T_DOC_COMMENT">     * provided, this method MUST return the string "/".</token>
+  </line>
+  <line no="39">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="40">
+    <token name="T_DOC_COMMENT">     * @return string</token>
+  </line>
+  <line no="41">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="42">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getRequestTarget</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="43"/>
+  <line no="44">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="45">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specific request-target.</token>
+  </line>
+  <line no="46">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="47">
+    <token name="T_DOC_COMMENT">     * If the request needs a non-origin-form request-target &#x2014; e.g., for</token>
+  </line>
+  <line no="48">
+    <token name="T_DOC_COMMENT">     * specifying an absolute-form, authority-form, or asterisk-form &#x2014;</token>
+  </line>
+  <line no="49">
+    <token name="T_DOC_COMMENT">     * this method may be used to create an instance with the specified</token>
+  </line>
+  <line no="50">
+    <token name="T_DOC_COMMENT">     * request-target, verbatim.</token>
+  </line>
+  <line no="51">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="52">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="53">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that has the</token>
+  </line>
+  <line no="54">
+    <token name="T_DOC_COMMENT">     * changed request target.</token>
+  </line>
+  <line no="55">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="56">
+    <token name="T_DOC_COMMENT">     * @link http://tools.ietf.org/html/rfc7230#section-5.3 (for the various</token>
+  </line>
+  <line no="57">
+    <token name="T_DOC_COMMENT">     *     request-target forms allowed in request messages)</token>
+  </line>
+  <line no="58">
+    <token name="T_DOC_COMMENT">     * @param mixed $requestTarget</token>
+  </line>
+  <line no="59">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="60">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="61">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withRequestTarget</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$requestTarget</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="62"/>
+  <line no="63">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="64">
+    <token name="T_DOC_COMMENT">     * Retrieves the HTTP method of the request.</token>
+  </line>
+  <line no="65">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="66">
+    <token name="T_DOC_COMMENT">     * @return string Returns the request method.</token>
+  </line>
+  <line no="67">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="68">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getMethod</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="69"/>
+  <line no="70">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="71">
+    <token name="T_DOC_COMMENT">     * Return an instance with the provided HTTP method.</token>
+  </line>
+  <line no="72">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="73">
+    <token name="T_DOC_COMMENT">     * While HTTP method names are typically all uppercase characters, HTTP</token>
+  </line>
+  <line no="74">
+    <token name="T_DOC_COMMENT">     * method names are case-sensitive and thus implementations SHOULD NOT</token>
+  </line>
+  <line no="75">
+    <token name="T_DOC_COMMENT">     * modify the given string.</token>
+  </line>
+  <line no="76">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="77">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="78">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that has the</token>
+  </line>
+  <line no="79">
+    <token name="T_DOC_COMMENT">     * changed request method.</token>
+  </line>
+  <line no="80">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="81">
+    <token name="T_DOC_COMMENT">     * @param string $method Case-sensitive method.</token>
+  </line>
+  <line no="82">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="83">
+    <token name="T_DOC_COMMENT">     * @throws \InvalidArgumentException for invalid HTTP methods.</token>
+  </line>
+  <line no="84">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="85">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withMethod</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$method</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="86"/>
+  <line no="87">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="88">
+    <token name="T_DOC_COMMENT">     * Retrieves the URI instance.</token>
+  </line>
+  <line no="89">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="90">
+    <token name="T_DOC_COMMENT">     * This method MUST return a UriInterface instance.</token>
+  </line>
+  <line no="91">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="92">
+    <token name="T_DOC_COMMENT">     * @link http://tools.ietf.org/html/rfc3986#section-4.3</token>
+  </line>
+  <line no="93">
+    <token name="T_DOC_COMMENT">     * @return UriInterface Returns a UriInterface instance</token>
+  </line>
+  <line no="94">
+    <token name="T_DOC_COMMENT">     *     representing the URI of the request.</token>
+  </line>
+  <line no="95">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="96">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getUri</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="97"/>
+  <line no="98">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="99">
+    <token name="T_DOC_COMMENT">     * Returns an instance with the provided URI.</token>
+  </line>
+  <line no="100">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="101">
+    <token name="T_DOC_COMMENT">     * This method MUST update the Host header of the returned request by</token>
+  </line>
+  <line no="102">
+    <token name="T_DOC_COMMENT">     * default if the URI contains a host component. If the URI does not</token>
+  </line>
+  <line no="103">
+    <token name="T_DOC_COMMENT">     * contain a host component, any pre-existing Host header MUST be carried</token>
+  </line>
+  <line no="104">
+    <token name="T_DOC_COMMENT">     * over to the returned request.</token>
+  </line>
+  <line no="105">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="106">
+    <token name="T_DOC_COMMENT">     * You can opt-in to preserving the original state of the Host header by</token>
+  </line>
+  <line no="107">
+    <token name="T_DOC_COMMENT">     * setting `$preserveHost` to `true`. When `$preserveHost` is set to</token>
+  </line>
+  <line no="108">
+    <token name="T_DOC_COMMENT">     * `true`, this method interacts with the Host header in the following ways:</token>
+  </line>
+  <line no="109">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="110">
+    <token name="T_DOC_COMMENT">     * - If the Host header is missing or empty, and the new URI contains</token>
+  </line>
+  <line no="111">
+    <token name="T_DOC_COMMENT">     *   a host component, this method MUST update the Host header in the returned</token>
+  </line>
+  <line no="112">
+    <token name="T_DOC_COMMENT">     *   request.</token>
+  </line>
+  <line no="113">
+    <token name="T_DOC_COMMENT">     * - If the Host header is missing or empty, and the new URI does not contain a</token>
+  </line>
+  <line no="114">
+    <token name="T_DOC_COMMENT">     *   host component, this method MUST NOT update the Host header in the returned</token>
+  </line>
+  <line no="115">
+    <token name="T_DOC_COMMENT">     *   request.</token>
+  </line>
+  <line no="116">
+    <token name="T_DOC_COMMENT">     * - If a Host header is present and non-empty, this method MUST NOT update</token>
+  </line>
+  <line no="117">
+    <token name="T_DOC_COMMENT">     *   the Host header in the returned request.</token>
+  </line>
+  <line no="118">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="119">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="120">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that has the</token>
+  </line>
+  <line no="121">
+    <token name="T_DOC_COMMENT">     * new UriInterface instance.</token>
+  </line>
+  <line no="122">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="123">
+    <token name="T_DOC_COMMENT">     * @link http://tools.ietf.org/html/rfc3986#section-4.3</token>
+  </line>
+  <line no="124">
+    <token name="T_DOC_COMMENT">     * @param UriInterface $uri New request URI to use.</token>
+  </line>
+  <line no="125">
+    <token name="T_DOC_COMMENT">     * @param bool $preserveHost Preserve the original state of the Host header.</token>
+  </line>
+  <line no="126">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="127">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="128">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withUri</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">UriInterface</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$uri</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$preserveHost</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">false</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="129">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="130"/>
+</source>

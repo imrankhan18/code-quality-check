@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="React\Promise\Promise" namespace="React\Promise" name="Promise" abstract="false" final="false" start="5" end="256">
+  <file path="//var/www/html/vendor/react/promise/src" file="Promise.php" realpath="/var/www/html/vendor/react/promise/src/Promise.php" size="8844" time="2022-02-11T10:27:51+00:00" unixtime="1644575271" sha1="7b898d54970f7da01337b38e4543d876ca3afa66" relative="ar/www/html/vendor/react/promise/src/Promise.php"/>
+  <implements full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface"/>
+  <implements full="React\Promise\CancellablePromiseInterface" namespace="React\Promise" name="CancellablePromiseInterface"/>
+  <member name="canceller" visibility="private" static="false" line="7"/>
+  <member name="result" visibility="private" static="false" line="8"/>
+  <member name="handlers" default="" type="array" visibility="private" static="false" line="10"/>
+  <member name="progressHandlers" default="" type="array" visibility="private" static="false" line="11"/>
+  <member name="requiredCancelRequests" default="0" type="integer" visibility="private" static="false" line="13"/>
+  <member name="cancelRequests" default="0" type="integer" visibility="private" static="false" line="14"/>
+  <constructor name="__construct" start="16" end="26" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="resolver" byreference="false" type="callable"/>
+    <parameter name="canceller" byreference="false" type="callable" default="NULL"/>
+    <inline>
+      <comment value="Explicitly overwrite arguments with null values before invoking" line="20"/>
+      <comment value="resolver function. This ensure that these arguments do not show up" line="21"/>
+      <comment value="in the stack trace in PHP 7+ only." line="22"/>
+    </inline>
+  </constructor>
+  <method name="then" start="28" end="56" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onProgress" byreference="false" type="callable" default="NULL"/>
+    <inline>
+      <comment value="This promise has a canceller, so we create a new child promise which" line="38"/>
+      <comment value="has a canceller that invokes the parent canceller if all other" line="39"/>
+      <comment value="followers are also cancelled. We keep a reference to this promise" line="40"/>
+      <comment value="instance for the static canceller function and clear this to avoid" line="41"/>
+      <comment value="keeping a cyclic reference between parent and follower." line="42"/>
+    </inline>
+  </method>
+  <method name="done" start="58" end="72" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onProgress" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="otherwise" start="74" end="83" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="onRejected" byreference="false" type="callable"/>
+  </method>
+  <method name="always" start="85" end="96" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="onFulfilledOrRejected" byreference="false" type="callable"/>
+  </method>
+  <method name="progress" start="98" end="101" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="onProgress" byreference="false" type="callable"/>
+  </method>
+  <method name="cancel" start="103" end="113" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="resolver" start="115" end="140" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onProgress" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="reject" start="142" end="149" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="reason" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="settle" start="151" end="170" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="promise" byreference="false" type="object">
+      <type full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface"/>
+    </parameter>
+  </method>
+  <method name="unwrap" start="172" end="181" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="promise" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="extract" start="183" end="190" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="promise" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="call" start="192" end="255" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="cb" byreference="false" type="callable"/>
+    <inline>
+      <comment value="Explicitly overwrite argument with null value. This ensure that this" line="194"/>
+      <comment value="argument does not show up in the stack trace in PHP 7+ only." line="195"/>
+      <comment value="Use reflection to inspect number of arguments expected by this callback." line="199"/>
+      <comment value="We did some careful benchmarking here: Using reflection to avoid unneeded" line="200"/>
+      <comment value="function arguments is actually faster than blindly passing them." line="201"/>
+      <comment value="Also, this helps avoiding unnecessary function arguments in the call stack" line="202"/>
+      <comment value="if the callback creates an Exception (creating garbage cycles)." line="203"/>
+    </inline>
+  </method>
+  <interface full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface">
+    <extends full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    <method name="done" start="22" end="22" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Consumes the promise's ultimate value if the promise fulfills, or handles the ultimate error.">It will cause a fatal error if either `$onFulfilled` or
+`$onRejected` throw or return a rejected promise.
+
+Since the purpose of `done()` is consumption rather than transformation,
+`done()` always returns `null`.</description>
+        <param type="object" variable="$onFulfilled">
+          <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+        </param>
+        <param type="object" variable="$onRejected">
+          <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+        </param>
+        <param description="This argument is deprecated and should not be used anymore." type="object" variable="$onProgress">
+          <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+        </param>
+        <return type="object">
+          <type full="React\Promise\void" namespace="React\Promise" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+      <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+      <parameter name="onProgress" byreference="false" type="callable" default="NULL"/>
+    </method>
+    <method name="otherwise" start="37" end="37" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Registers a rejection handler for promise. It is a shortcut for:">```php
+$promise-&gt;then(null, $onRejected);
+```
+
+Additionally, you can type hint the `$reason` argument of `$onRejected` to catch
+only specific errors.</description>
+        <param type="object" variable="$onRejected">
+          <type full="React\Promise\callable" namespace="React\Promise" name="callable"/>
+        </param>
+        <return type="object">
+          <type full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface"/>
+        </return>
+      </docblock>
+      <parameter name="onRejected" byreference="false" type="callable"/>
+    </method>
+    <method name="always" start="84" end="84" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Allows you to execute &quot;cleanup&quot; type tasks in a promise chain.">It arranges for `$onFulfilledOrRejected` to be called, with no arguments,
+when the promise is either fulfilled or rejected.
+
+* If `$promise` fulfills, and `$onFulfilledOrRejected` returns successfully,
+   `$newPromise` will fulfill with the same value as `$promise`.
+* If `$promise` fulfills, and `$onFulfilledOrRejected` throws or returns a
+   rejected promise, `$newPromise` will reject with the thrown exception or
+   rejected promise's reason.
+* If `$promise` rejects, and `$onFulfilledOrRejected` returns successfully,
+   `$newPromise` will reject with the same reason as `$promise`.
+* If `$promise` rejects, and `$onFulfilledOrRejected` throws or returns a
+   rejected promise, `$newPromise` will reject with the thrown exception or
+   rejected promise's reason.
+
+`always()` behaves similarly to the synchronous finally statement. When combined
+with `otherwise()`, `always()` allows you to write code that is similar to the familiar
+synchronous catch/finally pair.
+
+Consider the following synchronous code:
+
+```php
+try {
+    return doSomething();
+} catch(\Exception $e) {
+    return handleError($e);
+} finally {
+    cleanup();
+}
+```
+
+Similar asynchronous code (with `doSomething()` that returns a promise) can be
+written:
+
+```php
+return doSomething()
+    -&gt;otherwise('handleError')
+    -&gt;always('cleanup');
+```</description>
+        <param type="object" variable="$onFulfilledOrRejected">
+          <type full="React\Promise\callable" namespace="React\Promise" name="callable"/>
+        </param>
+        <return type="object">
+          <type full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface"/>
+        </return>
+      </docblock>
+      <parameter name="onFulfilledOrRejected" byreference="false" type="callable"/>
+    </method>
+    <method name="progress" start="97" end="97" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Registers a handler for progress updates from promise. It is a shortcut for:">```php
+$promise-&gt;then(null, null, $onProgress);
+```</description>
+        <param type="object" variable="$onProgress">
+          <type full="React\Promise\callable" namespace="React\Promise" name="callable"/>
+        </param>
+        <return type="object">
+          <type full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface"/>
+        </return>
+        <deprecated value="2.6.0 Progress support is deprecated and should not be used anymore."/>
+      </docblock>
+      <parameter name="onProgress" byreference="false" type="callable"/>
+    </method>
+  </interface>
+  <interface full="React\Promise\CancellablePromiseInterface" namespace="React\Promise" name="CancellablePromiseInterface">
+    <extends full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    <method name="cancel" start="16" end="16" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="The `cancel()` method notifies the creator of the promise that there is no further interest in the results of the operation.">Once a promise is settled (either fulfilled or rejected), calling `cancel()` on
+a promise has no effect.</description>
+        <return type="object">
+          <type full="React\Promise\void" namespace="React\Promise" name="void"/>
+        </return>
+      </docblock>
+    </method>
+  </interface>
+</class>

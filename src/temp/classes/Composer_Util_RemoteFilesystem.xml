@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\RemoteFilesystem" namespace="Composer\Util" name="RemoteFilesystem" abstract="false" final="false" start="29" end="733">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="RemoteFilesystem.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/RemoteFilesystem.php" size="27577" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="2b22bc957700b26d61d63b91cda2ddc410680391" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/RemoteFilesystem.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+    <author value="François Pluchino &lt;francois.pluchino@opendisplay.com&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <member name="io" visibility="private" static="false" line="32">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="private" static="false" line="34">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="scheme" visibility="private" static="false" line="36">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="bytesMax" visibility="private" static="false" line="38">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="originUrl" visibility="private" static="false" line="40">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="fileUrl" visibility="private" static="false" line="42">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="fileName" visibility="private" static="false" line="44">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="retry" default="false" type="boolean" visibility="private" static="false" line="46">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="progress" visibility="private" static="false" line="48">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="lastProgress" visibility="private" static="false" line="50">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?int" namespace="Composer\Util" name="?int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="options" default="" type="array" visibility="private" static="false" line="52">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="disableTls" default="false" type="boolean" visibility="private" static="false" line="54">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="lastHeaders" visibility="private" static="false" line="56">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="storeAuth" default="false" type="boolean" visibility="private" static="false" line="58">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="authHelper" visibility="private" static="false" line="60">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\AuthHelper" namespace="Composer\Util" name="AuthHelper"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="degradedMode" default="false" type="boolean" visibility="private" static="false" line="62">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="redirects" visibility="private" static="false" line="64">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="maxRedirects" default="20" type="integer" visibility="private" static="false" line="66">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="proxyManager" visibility="private" static="false" line="68">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\ProxyManager" namespace="Composer\Util\Http" name="ProxyManager"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="79" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor."/>
+      <param description="The IO instance" type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param description="The config" type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param description="The options" type="array" variable="$options" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <param type="object" variable="$disableTls">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <param type="object" variable="$authHelper">
+        <type full="Composer\Util\AuthHelper" namespace="Composer\Util" name="AuthHelper"/>
+      </param>
+    </docblock>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="disableTls" byreference="false" type="boolean" default="false"/>
+    <parameter name="authHelper" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\AuthHelper" namespace="Composer\Util" name="AuthHelper"/>
+    </parameter>
+    <inline>
+      <comment value="Setup TLS options" line="83"/>
+      <comment value="The cafile option can be set via config.json" line="84"/>
+      <comment value="handle the other externally set options normally." line="91"/>
+    </inline>
+  </constructor>
+  <method name="copy" start="109" end="112" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Copy the remote file in local."/>
+      <param description="The origin URL" type="string" variable="$originUrl"/>
+      <param description="The file URL" type="string" variable="$fileUrl"/>
+      <param description="the local filename" type="string" variable="$fileName"/>
+      <param description="Display the progression" type="object" variable="$progress">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <param description="Additional context options" type="array" variable="$options" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <return description="true" type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <parameter name="fileUrl" byreference="false" type="string"/>
+    <parameter name="fileName" byreference="false" type="string"/>
+    <parameter name="progress" byreference="false" type="boolean" default="true"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getContents" start="124" end="127" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the content."/>
+      <param description="The origin URL" type="string" variable="$originUrl"/>
+      <param description="The file URL" type="string" variable="$fileUrl"/>
+      <param description="Display the progression" type="object" variable="$progress">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <param description="Additional context options" type="array" variable="$options" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <return description="The content" type="object">
+        <type full="Composer\Util\bool|string" namespace="Composer\Util" name="bool|string"/>
+      </return>
+    </docblock>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <parameter name="fileUrl" byreference="false" type="string"/>
+    <parameter name="progress" byreference="false" type="boolean" default="true"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getOptions" start="134" end="137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the options set in the constructor"/>
+      <return description="Options" type="array" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setOptions" start="145" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Merges new options"/>
+      <param type="array" variable="$options" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="isTlsDisabled" start="155" end="158" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check is disable TLS."/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getLastHeaders" start="165" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the headers of the last request"/>
+      <return type="array" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="findStatusCode" start="174" end="186" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="array of returned headers like from getLastHeaders()" type="array" variable="$headers" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\int|null" namespace="Composer\Util" name="int|null"/>
+      </return>
+    </docblock>
+    <parameter name="headers" byreference="false" type="array"/>
+  </method>
+  <method name="findStatusMessage" start="192" end="204" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="array of returned headers like from getLastHeaders()" type="array" variable="$headers" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <parameter name="headers" byreference="false" type="array"/>
+  </method>
+  <method name="get" start="220" end="501" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Get file content or copy action."/>
+      <param description="The origin URL" type="string" variable="$originUrl"/>
+      <param description="The file URL" type="string" variable="$fileUrl"/>
+      <param description="context options" type="array" variable="$additionalOptions" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <param description="the local filename" type="string" variable="$fileName"/>
+      <param description="Display the progression" type="object" variable="$progress">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <throws type="object">
+        <type full="Composer\Util\TransportException|\Exception" namespace="Composer\Util\TransportException|" name="Exception"/>
+      </throws>
+      <throws description="When the file could not be downloaded" type="object">
+        <type full="Composer\Downloader\TransportException" namespace="Composer\Downloader" name="TransportException"/>
+      </throws>
+      <return type="object">
+        <type full="Composer\Util\bool|string" namespace="Composer\Util" name="bool|string"/>
+      </return>
+    </docblock>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <parameter name="fileUrl" byreference="false" type="string"/>
+    <parameter name="additionalOptions" byreference="false" type="array" default=""/>
+    <parameter name="fileName" byreference="false" type="string" default="NULL"/>
+    <parameter name="progress" byreference="false" type="boolean" default="true"/>
+    <inline>
+      <comment value="The first request counts." line="231"/>
+      <comment value="Check for secure HTTP, but allow insecure Packagist calls to $hashed providers as file integrity is verified with sha256" line="281"/>
+      <comment value="check for bitbucket login page asking to authenticate" line="370"/>
+      <comment value="check for gitlab 404 when downloading archives" line="383"/>
+      <comment value="handle 3xx redirects, 304 Not Modified is excluded" line="394"/>
+      <comment value="fail 4xx and 5xx responses and capture the response" line="401"/>
+      <comment value="decode gzip" line="421"/>
+      <comment value="handle copy command if download was successful" line="441"/>
+    </inline>
+  </method>
+  <method name="getRemoteContents" start="514" end="541" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Get contents of remote URL."/>
+      <param description="The origin URL" type="string" variable="$originUrl"/>
+      <param description="The file URL" type="string" variable="$fileUrl"/>
+      <param description="The stream context" type="resource" variable="$context"/>
+      <param type="array" variable="$responseHeaders" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <param description="The maximum allowed file size" type="int" variable="$maxFileSize"/>
+      <return description="The response contents or false on failure" type="object">
+        <type full="Composer\Util\string|false" namespace="Composer\Util" name="string|false"/>
+      </return>
+    </docblock>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <parameter name="fileUrl" byreference="false" type="string"/>
+    <parameter name="context" byreference="false" type="{unknown}"/>
+    <parameter name="responseHeaders" byreference="true" type="array" default="NULL"/>
+    <parameter name="maxFileSize" byreference="false" type="int" default="NULL"/>
+    <inline>
+      <comment value="https://www.php.net/manual/en/reserved.variables.httpresponseheader.php" line="533"/>
+    </inline>
+  </method>
+  <method name="callbackGet" start="557" end="586" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Get notification action."/>
+      <param description="The notification code" type="int" variable="$notificationCode"/>
+      <param description="The severity level" type="int" variable="$severity"/>
+      <param description="The message" type="string" variable="$message"/>
+      <param description="The message code" type="int" variable="$messageCode"/>
+      <param description="The loaded size" type="int" variable="$bytesTransferred"/>
+      <param description="The total size" type="int" variable="$bytesMax"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+      <throws type="object">
+        <type full="Composer\Downloader\TransportException" namespace="Composer\Downloader" name="TransportException"/>
+      </throws>
+    </docblock>
+    <parameter name="notificationCode" byreference="false" type="int"/>
+    <parameter name="severity" byreference="false" type="int"/>
+    <parameter name="message" byreference="false" nullable="true" type="string"/>
+    <parameter name="messageCode" byreference="false" type="int"/>
+    <parameter name="bytesTransferred" byreference="false" type="int"/>
+    <parameter name="bytesMax" byreference="false" type="int"/>
+  </method>
+  <method name="promptAuthAndRetry" start="595" end="605" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="object" variable="$httpStatus">
+        <type full="Composer\Util\positive-int" namespace="Composer\Util" name="positive-int"/>
+      </param>
+      <param type="object" variable="$reason">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </param>
+      <param type="array" variable="$headers" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="httpStatus" byreference="false" type="{unknown}"/>
+    <parameter name="reason" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getOptionsForUrl" start="613" end="642" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$originUrl"/>
+      <param type="array" variable="$additionalOptions" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </return>
+    </docblock>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <parameter name="additionalOptions" byreference="false" type="array"/>
+  </method>
+  <method name="handleRedirect" start="651" end="693" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$http_response_header" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <param type="array" variable="$additionalOptions" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <param type="object" variable="$result">
+        <type full="Composer\Util\string|false" namespace="Composer\Util" name="string|false"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\bool|string" namespace="Composer\Util" name="bool|string"/>
+      </return>
+    </docblock>
+    <parameter name="http_response_header" byreference="false" type="array"/>
+    <parameter name="additionalOptions" byreference="false" type="array"/>
+    <parameter name="result" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="decodeResult" start="701" end="718" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$result">
+        <type full="Composer\Util\string|false" namespace="Composer\Util" name="string|false"/>
+      </param>
+      <param type="array" variable="$http_response_header" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="result" byreference="false" type="{unknown}"/>
+    <parameter name="http_response_header" byreference="false" type="array"/>
+    <inline>
+      <comment value="decode gzip" line="703"/>
+    </inline>
+  </method>
+  <method name="normalizeResult" start="725" end="732" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$result">
+        <type full="Composer\Util\string|false" namespace="Composer\Util" name="string|false"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="result" byreference="false" type="{unknown}"/>
+  </method>
+</class>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface" abstract="false" final="false" start="21" end="108">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Config" file="ConfigSourceInterface.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Config/ConfigSourceInterface.php" size="2495" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="a8ae5cb2d7305e9097a1e41f3a32915e3a22ea9f" relative="ar/www/html/vendor/composer/composer/src/Composer/Config/ConfigSourceInterface.php"/>
+  <docblock>
+    <description compact="Configuration Source Interface"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+    <author value="Beau Simensen &lt;beau@dflydev.com&gt;"/>
+  </docblock>
+  <method name="addRepository" start="32" end="32" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a repository"/>
+      <param description="Name" type="string" variable="$name"/>
+      <param description="Configuration" type="array" variable="$config" of="object">
+        <type full="Composer\Config\mixed[]|fal" namespace="Composer\Config" name="mixed[]|fal"/>
+      </param>
+      <param description="Whether the repo should be appended (true) or prepended (false)" type="object" variable="$append">
+        <type full="Composer\Config\bool" namespace="Composer\Config" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Config\void" namespace="Composer\Config" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="config" byreference="false" type="{unknown}"/>
+    <parameter name="append" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="removeRepository" start="41" end="41" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove a repository"/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Config\void" namespace="Composer\Config" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="addConfigSetting" start="51" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a config setting"/>
+      <param description="Name" type="string" variable="$name"/>
+      <param description="Value" type="mixed" variable="$value"/>
+      <return type="object">
+        <type full="Composer\Config\void" namespace="Composer\Config" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="removeConfigSetting" start="60" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove a config setting"/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Config\void" namespace="Composer\Config" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="addProperty" start="70" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a property"/>
+      <param description="Name" type="string" variable="$name"/>
+      <param description="Value" type="array" variable="$value" of="object">
+        <type full="Composer\Config\string|string" namespace="Composer\Config" name="string|string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Config\void" namespace="Composer\Config" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="removeProperty" start="79" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove a property"/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Config\void" namespace="Composer\Config" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="addLink" start="90" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a package link"/>
+      <param description="Type (require, require-dev, provide, suggest, replace, conflict)" type="string" variable="$type"/>
+      <param description="Name" type="string" variable="$name"/>
+      <param description="Value" type="string" variable="$value"/>
+      <return type="object">
+        <type full="Composer\Config\void" namespace="Composer\Config" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" type="string"/>
+  </method>
+  <method name="removeLink" start="100" end="100" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove a package link"/>
+      <param description="Type (require, require-dev, provide, suggest, replace, conflict)" type="string" variable="$type"/>
+      <param description="Name" type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Config\void" namespace="Composer\Config" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="getName" start="107" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gives a user-friendly name to this source (file path or so)"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <implementors>
+    <class full="Composer\Config\JsonConfigSource" namespace="Composer\Config" name="JsonConfigSource"/>
+  </implementors>
+</interface>

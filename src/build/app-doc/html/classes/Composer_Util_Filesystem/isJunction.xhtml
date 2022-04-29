@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Util\Filesystem::isJunction</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#Composer_Util">Composer\Util</a>
+          </li>
+          <li class="separator">
+            <a title="Composer\Util\Filesystem" href="../../classes/Composer_Util_Filesystem.xhtml">Filesystem</a>
+          </li>
+          <li class="separator">isJunction</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="../../source/ar/www/html/vendor/composer/composer/src/Composer/Util/Filesystem.php.xhtml#line853">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>Composer\Util\Filesystem::</small>isJunction</h1>
+        <h4>Returns whether the target directory is a Windows NTFS Junction.</h4>
+        <p>We test if the path is a directory and not an ordinary link, then check
+that the mode value returned from lstat (which gives the status of the
+link itself) is not a directory, by replicating the POSIX S_ISDIR test.
+
+This logic works because PHP does not set the mode value for a junction,
+since there is no universal file type flag for it. Unfortunately an
+uninitialized variable in PHP prior to 7.2.16 and 7.3.3 may cause a
+random value to be returned. See https://bugs.php.net/bug.php?id=77552
+
+If this random value passes the S_ISDIR test, then a junction will not be
+detected and a recursive delete operation could lead to loss of data in
+the target directory. Note that Windows rmdir can handle this situation
+and will only delete the junction (from Windows 7 onwards).</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function isJunction(string
+        $junction )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$junction</code>
+                —
+                string</dt>
+          <dd>Path to check.</dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>bool</dt>
+          <dd><br/>
+        </dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

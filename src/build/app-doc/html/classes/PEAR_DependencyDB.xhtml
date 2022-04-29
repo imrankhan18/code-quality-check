@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_DependencyDB</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_DependencyDB</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/DependencyDB.php.xhtml#line36">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_DependencyDB</h1>
+        <h4>Track dependency relationships between installed packages</h4>
+        <p/>
+        <ul>
+          <li>Author: Greg Beaver &lt;cellog@php.net&gt;</li>
+          <li>Copyright: 1997-2009 The Authors</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_DependencyDB
+            {<br/><ul class="none"><li>// members</li><li>public <span title="PEAR_Config">PEAR_Config</span> <a href="#members">$_config</a>;
+                    </li><li>public <span title="PEAR_Registry">PEAR_Registry</span> <a href="#members">$_registry</a>;
+                    </li><li>public boolean <a href="#members">$_depdb</a> =
+                        false;
+                    </li><li>public boolean <a href="#members">$_lockfile</a> =
+                        false;
+                    </li><li>public <span title="resource|false">resource|false</span> <a href="#members">$_lockFp</a> =
+                        false;
+                    </li><li>public string <a href="#members">$_version</a> =
+                        '1.0';
+                    </li><li>public <span title="array|null">array|null</span> <a href="#members">$_cache</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public static PEAR_DependencyDB|PEAR_Error <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/singleton.xhtml">singleton</a>()
+                    </li><li>public void <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/setConfig.xhtml">setConfig</a>()
+                    </li><li>public void <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/hasWriteAccess.xhtml">hasWriteAccess</a>()
+                    </li><li>public void|PEAR_Error <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/assertDepsDB.xhtml">assertDepsDB</a>()
+                    </li><li>public array|false <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/getDependentPackages.xhtml">getDependentPackages</a>()
+                    </li><li>public array|false <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/getDependentPackageDependencies.xhtml">getDependentPackageDependencies</a>()
+                    </li><li>public array|false <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/getDependencies.xhtml">getDependencies</a>()
+                    </li><li>public void <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/dependsOn.xhtml">dependsOn</a>()
+                    </li><li>public void <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_dependsOn.xhtml">_dependsOn</a>()
+                    </li><li>public void <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/installPackage.xhtml">installPackage</a>()
+                    </li><li>public void <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/uninstallPackage.xhtml">uninstallPackage</a>()
+                    </li><li>public true|PEAR_Error <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/rebuildDB.xhtml">rebuildDB</a>()
+                    </li><li>public true|PEAR_Error <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_lock.xhtml">_lock</a>()
+                    </li><li>public true|PEAR_Error <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_unlock.xhtml">_unlock</a>()
+                    </li><li>public array|PEAR_Error <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_getDepDB.xhtml">_getDepDB</a>()
+                    </li><li>public true|PEAR_Error <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_writeDepDB.xhtml">_writeDepDB</a>()
+                    </li><li>public void <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_setPackageDeps.xhtml">_setPackageDeps</a>()
+                    </li><li>public void <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_registerDep.xhtml">_registerDep</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_cache"><strong>$_cache</strong>
+                —
+                <a title="array|null" href="../classes/array|null.xhtml">array|null</a><br/><span class="indent">Cached dependency database file</span></li>
+            <li id="_config"><strong>$_config</strong>
+                —
+                <a title="PEAR_Config" href="../classes/PEAR_Config.xhtml">PEAR_Config</a><br/><span class="indent">This is initialized by {@link setConfig()}</span></li>
+            <li id="_depdb"><strong>$_depdb</strong>
+                —
+                string<br/><span class="indent">Filename of the dependency DB (usually .depdb)</span></li>
+            <li id="_lockFp"><strong>$_lockFp</strong>
+                —
+                <a title="resource|false" href="../classes/resource|false.xhtml">resource|false</a><br/><span class="indent">Open file resource for locking the lockfile</span></li>
+            <li id="_lockfile"><strong>$_lockfile</strong>
+                —
+                string<br/><span class="indent">File name of the lockfile (usually .depdblock)</span></li>
+            <li id="_registry"><strong>$_registry</strong>
+                —
+                <a title="PEAR_Registry" href="../classes/PEAR_Registry.xhtml">PEAR_Registry</a><br/><span class="indent">This is initialized by {@link setConfig()}</span></li>
+            <li id="_version"><strong>$_version</strong>
+                —
+                string<br/><span class="indent">API version of this class, used to validate a file on-disk</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="_dependsOn">
+              <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_dependsOn.xhtml">_dependsOn()</a>
+            </li>
+            <li id="_getDepDB"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_getDepDB.xhtml">_getDepDB()</a>
+                — Load the dependency database from disk, or return the cache</li>
+            <li id="_lock"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_lock.xhtml">_lock()</a>
+                — Register usage of the dependency DB to prevent race conditions</li>
+            <li id="_registerDep">
+              <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_registerDep.xhtml">_registerDep()</a>
+            </li>
+            <li id="_setPackageDeps"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_setPackageDeps.xhtml">_setPackageDeps()</a>
+                — Register all dependencies from a package in the dependencies database, in essence "installing" the package's dependency information</li>
+            <li id="_unlock"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_unlock.xhtml">_unlock()</a>
+                — Release usage of dependency DB</li>
+            <li id="_writeDepDB"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/_writeDepDB.xhtml">_writeDepDB()</a>
+                — Write out the dependency database to disk</li>
+            <li id="assertDepsDB"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/assertDepsDB.xhtml">assertDepsDB()</a>
+                — Create the dependency database, if it doesn't exist.  Error if the database is newer than the code reading it.</li>
+            <li id="dependsOn"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/dependsOn.xhtml">dependsOn()</a>
+                — Determine whether $parent depends on $child, near or deep</li>
+            <li id="getDependencies"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/getDependencies.xhtml">getDependencies()</a>
+                — Get a list of dependencies of this installed package</li>
+            <li id="getDependentPackageDependencies"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/getDependentPackageDependencies.xhtml">getDependentPackageDependencies()</a>
+                — Get a list of the actual dependencies of installed packages that depend on a package.</li>
+            <li id="getDependentPackages"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/getDependentPackages.xhtml">getDependentPackages()</a>
+                — Get a list of installed packages that depend on this package</li>
+            <li id="hasWriteAccess">
+              <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/hasWriteAccess.xhtml">hasWriteAccess()</a>
+            </li>
+            <li id="installPackage"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/installPackage.xhtml">installPackage()</a>
+                — Register dependencies of a package that is being installed or upgraded</li>
+            <li id="rebuildDB"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/rebuildDB.xhtml">rebuildDB()</a>
+                — Rebuild the dependency DB by reading registry entries.</li>
+            <li id="setConfig"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/setConfig.xhtml">setConfig()</a>
+                — Set up the registry/location of dependency DB</li>
+            <li id="singleton"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/singleton.xhtml">singleton()</a>
+                — Get a raw dependency database.  Calls setConfig() and assertDepsDB()</li>
+            <li id="uninstallPackage"><a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB/uninstallPackage.xhtml">uninstallPackage()</a>
+                — Remove dependencies of a package that is being uninstalled, or upgraded.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\PoolBuilder" namespace="Composer\DependencyResolver" name="PoolBuilder" abstract="false" final="false" start="39" end="718">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="PoolBuilder.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/PoolBuilder.php" size="31242" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="613c80ceae6f04582913dcf234ec9bb51f57a661" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/PoolBuilder.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <member name="acceptableStabilities" visibility="private" static="false" line="45">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </var>
+      <phpstan value="-var array&lt;string, BasePackage::STABILITY_*&gt;"/>
+    </docblock>
+  </member>
+  <member name="stabilityFlags" visibility="private" static="false" line="50">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </var>
+      <phpstan value="-var array&lt;string, BasePackage::STABILITY_*&gt;"/>
+    </docblock>
+  </member>
+  <member name="rootAliases" visibility="private" static="false" line="55">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\array" namespace="Composer\DependencyResolver" name="array"/>
+      </var>
+      <phpstan value="-var array&lt;string, array&lt;string, array{alias: string, alias_normalized: string}&gt;&gt;"/>
+    </docblock>
+  </member>
+  <member name="rootReferences" visibility="private" static="false" line="60">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </var>
+      <phpstan value="-var array&lt;string, string&gt;"/>
+    </docblock>
+  </member>
+  <member name="eventDispatcher" visibility="private" static="false" line="64">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\DependencyResolver\?EventDispatcher" namespace="Composer\DependencyResolver" name="?EventDispatcher"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="poolOptimizer" visibility="private" static="false" line="68">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\DependencyResolver\PoolOptimizer|null" namespace="Composer\DependencyResolver" name="PoolOptimizer|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="io" visibility="private" static="false" line="72">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="aliasMap" default="" type="array" visibility="private" static="false" line="77">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\array" namespace="Composer\DependencyResolver" name="array"/>
+      </var>
+      <phpstan value="-var array&lt;string, AliasPackage[]&gt;"/>
+    </docblock>
+  </member>
+  <member name="packagesToLoad" default="" type="array" visibility="private" static="false" line="82">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\ConstraintInterface" namespace="Composer\DependencyResolver" name="ConstraintInterface"/>
+      </var>
+      <phpstan value="-var array&lt;string, ConstraintInterface&gt;"/>
+    </docblock>
+  </member>
+  <member name="loadedPackages" default="" type="array" visibility="private" static="false" line="87">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\ConstraintInterface" namespace="Composer\DependencyResolver" name="ConstraintInterface"/>
+      </var>
+      <phpstan value="-var array&lt;string, ConstraintInterface&gt;"/>
+    </docblock>
+  </member>
+  <member name="loadedPerRepo" default="" type="array" visibility="private" static="false" line="92">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\array" namespace="Composer\DependencyResolver" name="array"/>
+      </var>
+      <phpstan value="-var array&lt;int, array&lt;string, array&lt;string, PackageInterface&gt;&gt;&gt;"/>
+    </docblock>
+  </member>
+  <member name="packages" default="" type="array" visibility="private" static="false" line="96">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\BasePackage" namespace="Composer\DependencyResolver" name="BasePackage"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="unacceptableFixedOrLockedPackages" default="" type="array" visibility="private" static="false" line="100">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\BasePackage" namespace="Composer\DependencyResolver" name="BasePackage"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="updateAllowList" default="" type="array" visibility="private" static="false" line="102">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="skippedLoad" default="" type="array" visibility="private" static="false" line="104">
+    <docblock>
+      <var description="array&lt;PackageInterface&gt;&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="pathRepoUnlocked" default="" type="array" visibility="private" static="false" line="114">
+    <docblock>
+      <description compact="Keeps a list of dependencies which are locked but were auto-unlocked as they are path repositories">This half-unlocked state means the package itself will update but the UPDATE_LISTED_WITH_TRANSITIVE_DEPS
+flags will not apply until the package really gets unlocked in some other way than being a path repo</description>
+      <var description="true&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="maxExtendedReqs" default="" type="array" visibility="private" static="false" line="126">
+    <docblock>
+      <description compact="Keeps a list of dependencies which are root requirements, and as such have already their maximum required range loaded and can not be extended by markPackageNameForLoading">Packages get cleared from this list if they get unlocked as in that case
+we need to actually load them</description>
+      <var description="true&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="updateAllowWarned" default="" type="array" visibility="private" static="false" line="131">
+    <docblock>
+      <description/>
+      <var type="array"/>
+      <phpstan value="-var array&lt;string, bool&gt;"/>
+    </docblock>
+  </member>
+  <member name="indexCounter" default="0" type="integer" visibility="private" static="false" line="134">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="146" end="155" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="array of stability =&gt; BasePackage::STABILITY_* value" type="array" variable="$acceptableStabilities" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </param>
+      <param description="an array of package name =&gt; BasePackage::STABILITY_* value" type="array" variable="$stabilityFlags" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </param>
+      <param type="array" variable="$rootAliases" of="object">
+        <type full="Composer\DependencyResolver\array" namespace="Composer\DependencyResolver" name="array"/>
+      </param>
+      <param description="an array of package name =&gt; source reference" type="array" variable="$rootReferences" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </param>
+      <phpstan value="-param array&lt;string, BasePackage::STABILITY_*&gt; $acceptableStabilities"/>
+      <phpstan value="-param array&lt;string, BasePackage::STABILITY_*&gt; $stabilityFlags"/>
+      <phpstan value="-param array&lt;string, array&lt;string, array{alias: string, alias_normalized: string}&gt;&gt; $rootAliases"/>
+      <phpstan value="-param array&lt;string, string&gt; $rootReferences"/>
+    </docblock>
+    <parameter name="acceptableStabilities" byreference="false" type="array"/>
+    <parameter name="stabilityFlags" byreference="false" type="array"/>
+    <parameter name="rootAliases" byreference="false" type="array"/>
+    <parameter name="rootReferences" byreference="false" type="array"/>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="eventDispatcher" byreference="false" type="object" default="NULL">
+      <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+    </parameter>
+    <parameter name="poolOptimizer" byreference="false" type="object" default="NULL">
+      <type full="Composer\DependencyResolver\PoolOptimizer" namespace="Composer\DependencyResolver" name="PoolOptimizer"/>
+    </parameter>
+  </constructor>
+  <method name="buildPool" start="161" end="297" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$repositories" of="object">
+        <type full="Composer\DependencyResolver\RepositoryInterface" namespace="Composer\DependencyResolver" name="RepositoryInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+    <parameter name="repositories" byreference="false" type="array"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <inline>
+      <comment value="clean up packagesToLoad for anything we manually marked loaded above" line="226"/>
+    </inline>
+  </method>
+  <method name="markPackageNameForLoading" start="303" end="356" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Skip platform requires at this stage" line="305"/>
+      <comment value="Root require (which was not unlocked) already loaded the maximum range so no" line="310"/>
+      <comment value="need to check anything here" line="311"/>
+      <comment value="Root requires can not be overruled by dependencies so there is no point in" line="316"/>
+      <comment value="extending the loaded constraint for those." line="317"/>
+      <comment value="This is triggered when loading a root require which was locked but got unlocked, then" line="318"/>
+      <comment value="we make sure that we load at most the intervals covered by the root constraint." line="319"/>
+      <comment value="Not yet loaded or already marked for a reload, set the constraint to be loaded" line="325"/>
+      <comment value="No need to load this package with this constraint because it is" line="345"/>
+      <comment value="a subset of the constraint with which we have already loaded packages" line="346"/>
+      <comment value="We have already loaded that package but not in the constraint that's" line="351"/>
+      <comment value="required. We extend the constraint and mark that package as not being loaded" line="352"/>
+      <comment value="yet so we get the required package versions" line="353"/>
+    </inline>
+  </method>
+  <method name="loadPackagesMarkedForLoading" start="362" end="392" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$repositories" of="object">
+        <type full="Composer\DependencyResolver\RepositoryInterface" namespace="Composer\DependencyResolver" name="RepositoryInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="repositories" byreference="false" type="array"/>
+  </method>
+  <method name="loadPackage" start="399" end="496" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$propagateUpdate">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param type="array" variable="$repositories" of="object">
+        <type full="Composer\DependencyResolver\RepositoryInterface" namespace="Composer\DependencyResolver" name="RepositoryInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="repositories" byreference="false" type="array"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="propagateUpdate" byreference="false" type="bool"/>
+    <inline>
+      <comment value="we're simply setting the root references on all versions for a name here and rely on the solver to pick the" line="410"/>
+      <comment value="right version. It'd be more work to figure out which versions and which aliases of those versions this may" line="411"/>
+      <comment value="apply to" line="412"/>
+      <comment value="if propagateUpdate is false we are loading a fixed or locked package, root aliases do not apply as they are" line="420"/>
+      <comment value="manually loaded as separate packages in this case" line="421"/>
+      <comment value="if we're doing a partial update with deps we also need to unlock packages which are being replaced in case" line="474"/>
+      <comment value="they are currently locked and thus prevent this updateable package from being installable/updateable" line="475"/>
+    </inline>
+  </method>
+  <method name="isRootRequire" start="504" end="509" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Checks if a particular name is required directly in the request"/>
+      <param description="packageName" type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="getSkippedRootRequires" start="515" end="551" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="isUpdateAllowed" start="558" end="568" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Checks whether the update allow list allows this package in the lock file to be updated"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="warnAboutNonMatchingUpdateAllowList" start="573" end="595" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+  </method>
+  <method name="unlockPackage" start="605" end="664" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Reverts the decision to use a locked package if a partial update with transitive dependencies found that this package actually needs to be updated"/>
+      <param type="array" variable="$repositories" of="object">
+        <type full="Composer\DependencyResolver\RepositoryInterface" namespace="Composer\DependencyResolver" name="RepositoryInterface"/>
+      </param>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="repositories" byreference="false" type="array"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <inline>
+      <comment value="remove locked package by this name which was already initialized" line="639"/>
+    </inline>
+  </method>
+  <method name="removeLoadedPackage" start="671" end="684" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$repositories" of="object">
+        <type full="Composer\DependencyResolver\RepositoryInterface" namespace="Composer\DependencyResolver" name="RepositoryInterface"/>
+      </param>
+      <param type="int" variable="$index"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="repositories" byreference="false" type="array"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="runOptimizer" start="689" end="717" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+  </method>
+</class>

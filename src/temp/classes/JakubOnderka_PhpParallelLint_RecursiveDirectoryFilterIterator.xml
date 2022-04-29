@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="JakubOnderka\PhpParallelLint\RecursiveDirectoryFilterIterator" namespace="JakubOnderka\PhpParallelLint" name="RecursiveDirectoryFilterIterator" abstract="false" final="false" start="204" end="293">
+  <file path="//var/www/html/vendor/php-parallel-lint/php-parallel-lint/src" file="Manager.php" realpath="/var/www/html/vendor/php-parallel-lint/php-parallel-lint/src/Manager.php" size="9430" time="2022-02-21T12:50:22+00:00" unixtime="1645447822" sha1="663e0857726445433cb424f6df4a8d6ad54c7ef0" relative="ar/www/html/vendor/php-parallel-lint/php-parallel-lint/src/Manager.php"/>
+  <extends full="RecursiveFilterIterator" namespace="" name="RecursiveFilterIterator"/>
+  <member name="iterator" visibility="private" static="false" line="207">
+    <docblock>
+      <var type="object">
+        <type full="\RecursiveDirectoryIterator" namespace="" name="RecursiveDirectoryIterator"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="excluded" default="" type="array" visibility="private" static="false" line="210">
+    <docblock>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="216" end="221" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$iterator">
+        <type full="\RecursiveDirectoryIterator" namespace="" name="RecursiveDirectoryIterator"/>
+      </param>
+      <param type="array" variable="$excluded"/>
+    </docblock>
+    <parameter name="iterator" byreference="false" type="object">
+      <type full="RecursiveDirectoryIterator" namespace="" name="RecursiveDirectoryIterator"/>
+    </parameter>
+    <parameter name="excluded" byreference="false" type="array"/>
+  </constructor>
+  <method name="accept" start="231" end="241" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="hasChildren" start="251" end="254" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getChildren" start="264" end="267" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPathname" start="273" end="283" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="normalizeDirectorySeparator" start="289" end="292" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="RecursiveFilterIterator" namespace="" name="RecursiveFilterIterator">
+    <implements full="OuterIterator" namespace="" name="OuterIterator"/>
+    <constructor name="__construct" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Create a RecursiveFilterIterator from a RecursiveIterator"/>
+      <return type="void"/>
+    </docblock>
+    <parameter name="iterator" optional="false" byreference="false" type="object" class="RecursiveIterator"/>
+  </constructor>
+    <method name="getChildren" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Return the inner iterator's children contained in a RecursiveFilterIterator"/>
+      <return type="RecursiveFilterIterator"/>
+    </docblock>
+  </method>
+    <method name="hasChildren" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Check whether the inner iterator's current element has children"/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+    <method name="accept" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+    <constructor name="__construct" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+    <parameter name="iterator" optional="false" byreference="false" type="object" class="Iterator"/>
+  </constructor>
+    <method name="current" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="getInnerIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="Iterator"/>
+    </docblock>
+  </method>
+    <method name="key" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="next" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="rewind" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="valid" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+  </parent>
+  <interface full="OuterIterator" namespace="" name="OuterIterator">
+    <extends full="Iterator" namespace="" name="Iterator"/>
+    <method name="getInnerIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Returns the inner iterator for the current entry"/>
+      <return type="Iterator"/>
+    </docblock>
+  </method>
+    <method name="current" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="key" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="scalar"/>
+    </docblock>
+  </method>
+    <method name="next" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="rewind" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="valid" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="League\Container\ServiceProvider\BootableServiceProviderInterface" namespace="League\Container\ServiceProvider" name="BootableServiceProviderInterface" abstract="false" final="false" start="7" end="16">
+  <file path="//var/www/html/vendor/league/container/src/ServiceProvider" file="BootableServiceProviderInterface.php" realpath="/var/www/html/vendor/league/container/src/ServiceProvider/BootableServiceProviderInterface.php" size="396" time="2021-11-16T10:29:06+00:00" unixtime="1637058546" sha1="ecc1052aedfb041c993c5efaba6c0b01a6fa9b96" relative="ar/www/html/vendor/league/container/src/ServiceProvider/BootableServiceProviderInterface.php"/>
+  <extends full="League\Container\ServiceProvider\ServiceProviderInterface" namespace="League\Container\ServiceProvider" name="ServiceProviderInterface"/>
+  <method name="boot" start="15" end="15" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Method will be invoked on registration of a service provider implementing this interface. Provides ability for eager loading of Service Providers."/>
+      <return type="object">
+        <type full="League\Container\ServiceProvider\void" namespace="League\Container\ServiceProvider" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <parent full="League\Container\ServiceProvider\ServiceProviderInterface" namespace="League\Container\ServiceProvider" name="ServiceProviderInterface">
+    <extends full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface"/>
+    <method name="getIdentifier" start="11" end="11" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="provides" start="12" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="id" byreference="false" type="string"/>
+    </method>
+    <method name="register" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="setIdentifier" start="14" end="14" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\ServiceProvider\ServiceProviderInterface" namespace="League\Container\ServiceProvider" name="ServiceProviderInterface"/>
+      </return>
+      <parameter name="id" byreference="false" type="string"/>
+    </method>
+  </parent>
+  <parent full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface">
+    <method name="getContainer" start="9" end="9" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </return>
+    </method>
+    <method name="setContainer" start="10" end="10" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface"/>
+      </return>
+      <parameter name="container" byreference="false" type="object">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </parameter>
+    </method>
+  </parent>
+</interface>

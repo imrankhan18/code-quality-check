@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\UriResolver" namespace="GuzzleHttp\Psr7" name="UriResolver" abstract="false" final="true" start="16" end="211">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="UriResolver.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/UriResolver.php" size="8558" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="6b636a334b3e64436028571b7a19824fea9ab430" relative="ar/www/html/vendor/guzzlehttp/psr7/src/UriResolver.php"/>
+  <docblock>
+    <description compact="Resolves a URI reference in the context of a base URI and the opposite way."/>
+    <author value="Tobias Schultze"/>
+    <link value="https://tools.ietf.org/html/rfc3986#section-5"/>
+  </docblock>
+  <method name="removeDotSegments" start="23" end="51" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Removes dot segments from a path and returns the new path."/>
+      <link value="http://tools.ietf.org/html/rfc3986#section-5.2.4"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="resolve" start="58" end="105" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Converts the relative URI into a new URI that is resolved against the base URI."/>
+      <link value="http://tools.ietf.org/html/rfc3986#section-5.2"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="base" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="rel" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+  </method>
+  <method name="relativize" start="128" end="172" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns the target URI as a relative reference from the base URI.">This method is the counterpart to resolve():
+
+   (string) $target === (string) UriResolver::resolve($base, UriResolver::relativize($base, $target))
+
+One use-case is to use the current request URI as base URI and then generate relative links in your documents
+to reduce the document size or offer self-contained downloadable document archives.
+
+   $base = new Uri('http://example.com/a/b/');
+   echo UriResolver::relativize($base, new Uri('http://example.com/a/b/c'));  // prints 'c'.
+   echo UriResolver::relativize($base, new Uri('http://example.com/a/x/y'));  // prints '../x/y'.
+   echo UriResolver::relativize($base, new Uri('http://example.com/a/b/?q')); // prints '?q'.
+   echo UriResolver::relativize($base, new Uri('http://example.org/a/b/'));   // prints '//example.org/a/b/'.
+
+This method also accepts a target that is already relative and will try to relativize it further. Only a
+relative-path reference will be returned as-is.
+
+   echo UriResolver::relativize($base, new Uri('/a/b/c'));  // prints 'c' as well</description>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="base" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="target" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <inline>
+      <comment value="We must remove the path before removing the authority because if the path starts with two slashes, the URI" line="147"/>
+      <comment value="would turn invalid. And we also cannot set a relative path before removing the authority, as that is also" line="148"/>
+      <comment value="invalid." line="149"/>
+      <comment value="If the base URI has a query but the target has none, we cannot return an empty path reference as it would" line="161"/>
+      <comment value="inherit the base query component when resolving." line="162"/>
+    </inline>
+  </method>
+  <method name="getRelativePath" start="174" end="205" abstract="false" final="false" static="true" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="base" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="target" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <inline>
+      <comment value="A reference to am empty last segment or an empty first sub-segment must be prefixed with &quot;./&quot;." line="190"/>
+      <comment value="This also applies to a segment with a colon character (e.g., &quot;file:colon&quot;) that cannot be used" line="191"/>
+      <comment value="as the first segment of a relative-path reference, as it would be mistaken for a scheme name." line="192"/>
+    </inline>
+  </method>
+  <constructor name="__construct" start="207" end="210" abstract="false" final="false" static="false" visibility="private">
+    <inline>
+      <comment value="cannot be instantiated" line="209"/>
+    </inline>
+  </constructor>
+</class>

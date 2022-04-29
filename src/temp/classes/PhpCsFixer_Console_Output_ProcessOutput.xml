@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Console\Output\ProcessOutput" namespace="PhpCsFixer\Console\Output" name="ProcessOutput" abstract="false" final="true" start="26" end="132">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Console/Output" file="ProcessOutput.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Console/Output/ProcessOutput.php" size="4855" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="742823743802858aa2046e782e608e65a6c2ebc0" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Console/Output/ProcessOutput.php"/>
+  <docblock>
+    <description compact="Output writer to show the process of a FixCommand."/>
+    <internal/>
+  </docblock>
+  <implements full="PhpCsFixer\Console\Output\ProcessOutputInterface" namespace="PhpCsFixer\Console\Output" name="ProcessOutputInterface"/>
+  <member name="eventStatusMap" default="" type="array" visibility="private" static="true" line="31">
+    <docblock>
+      <description compact="File statuses map."/>
+    </docblock>
+  </member>
+  <member name="output" visibility="private" static="false" line="41"/>
+  <member name="eventDispatcher" visibility="private" static="false" line="43"/>
+  <member name="files" visibility="private" static="false" line="45"/>
+  <member name="processedFiles" default="0" type="integer" visibility="private" static="false" line="47"/>
+  <member name="symbolsPerLine" visibility="private" static="false" line="52">
+    <docblock>
+      <description/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="54" end="65" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="output" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+    </parameter>
+    <parameter name="dispatcher" byreference="false" type="object">
+      <type full="Symfony\Component\EventDispatcher\EventDispatcherInterface" namespace="Symfony\Component\EventDispatcher" name="EventDispatcherInterface"/>
+    </parameter>
+    <parameter name="width" byreference="false" type="int"/>
+    <parameter name="nbFiles" byreference="false" type="int"/>
+    <inline>
+      <comment value="max number of characters per line" line="61"/>
+      <comment value="- total length x 2 (e.g. &quot;  1 / 123&quot; =&gt; 6 digits and padding spaces)" line="62"/>
+      <comment value="- 11               (extra spaces, parentheses and percentage characters, e.g. &quot; x / x (100%)&quot;)" line="63"/>
+    </inline>
+  </constructor>
+  <destructor name="__destruct" start="67" end="70" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="__sleep" start="76" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This class is not intended to be serialized, and cannot be deserialized (see __wakeup method)."/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="__wakeup" start="87" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Disable the deserialization of the class to prevent attacker executing code by leveraging the __destruct method."/>
+      <see value="https://owasp.org/www-community/vulnerabilities/PHP_Object_Injection"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="onFixerFileProcessed" start="92" end="115" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="event" byreference="false" type="object">
+      <type full="PhpCsFixer\FixerFileProcessedEvent" namespace="PhpCsFixer" name="FixerFileProcessedEvent"/>
+    </parameter>
+  </method>
+  <method name="printLegend" start="117" end="131" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <interface full="PhpCsFixer\Console\Output\ProcessOutputInterface" namespace="PhpCsFixer\Console\Output" name="ProcessOutputInterface">
+    <method name="printLegend" start="22" end="22" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+    </method>
+  </interface>
+</class>

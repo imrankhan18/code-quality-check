@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\Traits\FilesystemCommonTrait" namespace="Symfony\Component\Cache\Traits" name="FilesystemCommonTrait" abstract="false" final="false" start="21" end="196">
+  <file path="//var/www/html/vendor/symfony/cache/Traits" file="FilesystemCommonTrait.php" realpath="/var/www/html/vendor/symfony/cache/Traits/FilesystemCommonTrait.php" size="5499" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="f6e1af54a79e8fb667035f57315455851de1e39e" relative="ar/www/html/vendor/symfony/cache/Traits/FilesystemCommonTrait.php"/>
+  <docblock>
+    <description/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+    <internal/>
+  </docblock>
+  <member name="directory" visibility="private" static="false" line="23"/>
+  <member name="tmp" visibility="private" static="false" line="24"/>
+  <method name="init" start="26" end="51" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="namespace" byreference="false" type="string"/>
+    <parameter name="directory" byreference="false" nullable="true" type="string"/>
+    <inline>
+      <comment value="On Windows the whole path is limited to 258 chars" line="45"/>
+    </inline>
+  </method>
+  <method name="doClear" start="56" end="69" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="namespace" byreference="false" type="string"/>
+  </method>
+  <method name="doDelete" start="74" end="84" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="ids" byreference="false" type="array"/>
+  </method>
+  <method name="doUnlink" start="86" end="89" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="write" start="91" end="119" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="data" byreference="false" type="string"/>
+    <parameter name="expiresAt" byreference="false" type="int" default="NULL"/>
+  </method>
+  <method name="getFile" start="121" end="132" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="id" byreference="false" type="string"/>
+    <parameter name="mkdir" byreference="false" type="boolean" default="false"/>
+    <parameter name="directory" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Use MD5 to favor speed over security, which is not an issue here" line="123"/>
+    </inline>
+  </method>
+  <method name="getFileKey" start="134" end="137" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="scanHashDir" start="139" end="164" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="Generator" namespace="" name="Generator"/>
+    </return>
+    <parameter name="directory" byreference="false" type="string"/>
+  </method>
+  <method name="throwError" start="169" end="172" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+    </docblock>
+    <parameter name="type" byreference="false" type="int"/>
+    <parameter name="message" byreference="false" type="string"/>
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="line" byreference="false" type="int"/>
+  </method>
+  <method name="__sleep" start="177" end="180" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="__wakeup" start="182" end="185" abstract="false" final="false" static="false" visibility="public"/>
+  <destructor name="__destruct" start="187" end="195" abstract="false" final="false" static="false" visibility="public"/>
+  <users>
+    <class full="Symfony\Component\Cache\Adapter\FilesystemAdapter" namespace="Symfony\Component\Cache\Adapter" name="FilesystemAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\PhpFilesAdapter" namespace="Symfony\Component\Cache\Adapter" name="PhpFilesAdapter"/>
+    <trait full="Symfony\Component\Cache\Traits\FilesystemTrait" namespace="Symfony\Component\Cache\Traits" name="FilesystemTrait"/>
+  </users>
+</trait>

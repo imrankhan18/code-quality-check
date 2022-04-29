@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#SlevomatCodingStandard_Sniffs_Namespaces">SlevomatCodingStandard\Sniffs\Namespaces</a>
+          </li>
+          <li class="separator">ReferenceUsedNamesOnlySniff</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Namespaces/ReferenceUsedNamesOnlySniff.php.xhtml#line52">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>SlevomatCodingStandard\Sniffs\Namespaces\</small>ReferenceUsedNamesOnlySniff</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ReferenceUsedNamesOnlySniff
+                implements
+                <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">Sniff</a>
+            {<br/><ul class="none"><li>// constants</li><li>const CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME = 'ReferenceViaFullyQualifiedName';</li><li>const CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME_WITHOUT_NAMESPACE = 'ReferenceViaFullyQualifiedNameWithoutNamespace';</li><li>const CODE_REFERENCE_VIA_FALLBACK_GLOBAL_NAME = 'ReferenceViaFallbackGlobalName';</li><li>const CODE_PARTIAL_USE = 'PartialUse';</li><li>const SOURCE_CODE = 1;</li><li>const SOURCE_ANNOTATION = 2;</li><li>const SOURCE_ANNOTATION_CONSTANT_FETCH = 3;</li><li>const SOURCE_ATTRIBUTE = 4;</li></ul><ul class="none"><li>// members</li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$searchAnnotations</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFullyQualifiedExceptions</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFullyQualifiedGlobalClasses</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFullyQualifiedGlobalFunctions</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFallbackGlobalFunctions</a> =
+                        true;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFullyQualifiedGlobalConstants</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFallbackGlobalConstants</a> =
+                        true;
+                    </li><li>public array <a href="#members">$specialExceptionNames</a> =
+                        ;
+                    </li><li>public array <a href="#members">$ignoredNames</a> =
+                        ;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowPartialUses</a> =
+                        true;
+                    </li><li>public array <a href="#members">$namespacesRequiredToUse</a> =
+                        ;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFullyQualifiedNameForCollidingClasses</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFullyQualifiedNameForCollidingFunctions</a> =
+                        false;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Namespaces\bool">bool</span> <a href="#members">$allowFullyQualifiedNameForCollidingConstants</a> =
+                        false;
+                    </li><li>private  <a href="#members">$normalizedSpecialExceptionNames</a>;
+                    </li><li>private  <a href="#members">$normalizedIgnoredNames</a>;
+                    </li><li>private  <a href="#members">$normalizedNamespacesRequiredToUse</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public array <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/register.xhtml">register</a>()
+                    </li><li>public void <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/process.xhtml">process</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getSpecialExceptionNames.xhtml">getSpecialExceptionNames</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getIgnoredNames.xhtml">getIgnoredNames</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getNamespacesRequiredToUse.xhtml">getNamespacesRequiredToUse</a>()
+                    </li><li>private int <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getUseStatementPlacePointer.xhtml">getUseStatementPlacePointer</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/isRequiredToBeUsed.xhtml">isRequiredToBeUsed</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getReferences.xhtml">getReferences</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">PHP_CodeSniffer\Sniffs\Sniff</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME">CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME</td>
+              <td>'ReferenceViaFullyQualifiedName'</td>
+            </tr>
+            <tr>
+              <td id="CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME_WITHOUT_NAMESPACE">CODE_REFERENCE_VIA_FULLY_QUALIFIED_NAME_WITHOUT_NAMESPACE</td>
+              <td>'ReferenceViaFullyQualifiedNameWithoutNamespace'</td>
+            </tr>
+            <tr>
+              <td id="CODE_REFERENCE_VIA_FALLBACK_GLOBAL_NAME">CODE_REFERENCE_VIA_FALLBACK_GLOBAL_NAME</td>
+              <td>'ReferenceViaFallbackGlobalName'</td>
+            </tr>
+            <tr>
+              <td id="CODE_PARTIAL_USE">CODE_PARTIAL_USE</td>
+              <td>'PartialUse'</td>
+            </tr>
+            <tr>
+              <td id="SOURCE_CODE">SOURCE_CODE</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="SOURCE_ANNOTATION">SOURCE_ANNOTATION</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="SOURCE_ANNOTATION_CONSTANT_FETCH">SOURCE_ANNOTATION_CONSTANT_FETCH</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="SOURCE_ATTRIBUTE">SOURCE_ATTRIBUTE</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="normalizedIgnoredNames"><strong>$normalizedIgnoredNames</strong>
+                —
+                array</li>
+            <li id="normalizedNamespacesRequiredToUse"><strong>$normalizedNamespacesRequiredToUse</strong>
+                —
+                array</li>
+            <li id="normalizedSpecialExceptionNames"><strong>$normalizedSpecialExceptionNames</strong>
+                —
+                array</li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="allowFallbackGlobalConstants"><strong>$allowFallbackGlobalConstants</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowFallbackGlobalFunctions"><strong>$allowFallbackGlobalFunctions</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowFullyQualifiedExceptions"><strong>$allowFullyQualifiedExceptions</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowFullyQualifiedGlobalClasses"><strong>$allowFullyQualifiedGlobalClasses</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowFullyQualifiedGlobalConstants"><strong>$allowFullyQualifiedGlobalConstants</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowFullyQualifiedGlobalFunctions"><strong>$allowFullyQualifiedGlobalFunctions</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowFullyQualifiedNameForCollidingClasses"><strong>$allowFullyQualifiedNameForCollidingClasses</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowFullyQualifiedNameForCollidingConstants"><strong>$allowFullyQualifiedNameForCollidingConstants</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowFullyQualifiedNameForCollidingFunctions"><strong>$allowFullyQualifiedNameForCollidingFunctions</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="allowPartialUses"><strong>$allowPartialUses</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="ignoredNames"><strong>$ignoredNames</strong>
+                —
+                array</li>
+            <li id="namespacesRequiredToUse"><strong>$namespacesRequiredToUse</strong>
+                —
+                array<br/><span class="indent">If empty, all namespaces are required to be used</span></li>
+            <li id="searchAnnotations"><strong>$searchAnnotations</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Namespaces\bool" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_bool.xhtml">SlevomatCodingStandard\Sniffs\Namespaces\bool</a></li>
+            <li id="specialExceptionNames"><strong>$specialExceptionNames</strong>
+                —
+                array</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="getIgnoredNames">
+              <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getIgnoredNames.xhtml">getIgnoredNames()</a>
+            </li>
+            <li id="getNamespacesRequiredToUse">
+              <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getNamespacesRequiredToUse.xhtml">getNamespacesRequiredToUse()</a>
+            </li>
+            <li id="getReferences">
+              <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getReferences.xhtml">getReferences()</a>
+            </li>
+            <li id="getSpecialExceptionNames">
+              <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getSpecialExceptionNames.xhtml">getSpecialExceptionNames()</a>
+            </li>
+            <li id="getUseStatementPlacePointer">
+              <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/getUseStatementPlacePointer.xhtml">getUseStatementPlacePointer()</a>
+            </li>
+            <li id="isRequiredToBeUsed">
+              <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/isRequiredToBeUsed.xhtml">isRequiredToBeUsed()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="process">
+              <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/process.xhtml">process()</a>
+            </li>
+            <li id="register">
+              <a title="SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff" href="../classes/SlevomatCodingStandard_Sniffs_Namespaces_ReferenceUsedNamesOnlySniff/register.xhtml">register()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

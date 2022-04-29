@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Composer" namespace="Composer" name="Composer" abstract="false" final="false" start="27" end="162">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer" file="Composer.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Composer.php" size="4277" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="4c70e2f111ab66928a34dcbff7ba4b8bd4dec2c2" relative="ar/www/html/vendor/composer/composer/src/Composer/Composer.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+    <author value="Konstantin Kudryashiv &lt;ever.zet@gmail.com&gt;"/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <extends full="Composer\PartialComposer" namespace="Composer" name="PartialComposer"/>
+  <constant type="string" name="VERSION" value="'2.3.5'"/>
+  <constant type="string" name="BRANCH_ALIAS_VERSION" value="''"/>
+  <constant type="string" name="RELEASE_DATE" value="'2022-04-13 16:43:00'"/>
+  <constant type="string" name="SOURCE_VERSION" value="''"/>
+  <constant type="string" name="RUNTIME_API_VERSION" value="'2.2.2'">
+    <docblock>
+      <description compact="Version number of the internal composer-runtime-api package">This is used to version features available to projects at runtime
+like the platform-check file, the Composer\InstalledVersions class
+and possibly others in the future.</description>
+      <var type="string"/>
+    </docblock>
+  </constant>
+  <method name="getVersion" start="73" end="86" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <inline>
+      <comment value="no replacement done, this must be a source checkout" line="75"/>
+      <comment value="we have a branch alias and version is a commit id, this must be a snapshot build" line="80"/>
+    </inline>
+  </method>
+  <member name="locker" visibility="private" static="false" line="91">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Package\Locker" namespace="Composer\Package" name="Locker"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="downloadManager" visibility="private" static="false" line="96">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Downloader\DownloadManager" namespace="Composer\Downloader" name="DownloadManager"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="pluginManager" visibility="private" static="false" line="101">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Plugin\PluginManager" namespace="Composer\Plugin" name="PluginManager"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="autoloadGenerator" visibility="private" static="false" line="106">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Autoload\AutoloadGenerator" namespace="Composer\Autoload" name="AutoloadGenerator"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="archiveManager" visibility="private" static="false" line="111">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Package\Archiver\ArchiveManager" namespace="Composer\Package\Archiver" name="ArchiveManager"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="setLocker" start="113" end="116" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="locker" byreference="false" type="object">
+      <type full="Composer\Package\Locker" namespace="Composer\Package" name="Locker"/>
+    </parameter>
+  </method>
+  <method name="getLocker" start="118" end="121" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Composer\Package\Locker" namespace="Composer\Package" name="Locker"/>
+    </return>
+  </method>
+  <method name="setDownloadManager" start="123" end="126" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="manager" byreference="false" type="object">
+      <type full="Composer\Downloader\DownloadManager" namespace="Composer\Downloader" name="DownloadManager"/>
+    </parameter>
+  </method>
+  <method name="getDownloadManager" start="128" end="131" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Composer\Downloader\DownloadManager" namespace="Composer\Downloader" name="DownloadManager"/>
+    </return>
+  </method>
+  <method name="setArchiveManager" start="133" end="136" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="manager" byreference="false" type="object">
+      <type full="Composer\Package\Archiver\ArchiveManager" namespace="Composer\Package\Archiver" name="ArchiveManager"/>
+    </parameter>
+  </method>
+  <method name="getArchiveManager" start="138" end="141" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Composer\Package\Archiver\ArchiveManager" namespace="Composer\Package\Archiver" name="ArchiveManager"/>
+    </return>
+  </method>
+  <method name="setPluginManager" start="143" end="146" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="manager" byreference="false" type="object">
+      <type full="Composer\Plugin\PluginManager" namespace="Composer\Plugin" name="PluginManager"/>
+    </parameter>
+  </method>
+  <method name="getPluginManager" start="148" end="151" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Composer\Plugin\PluginManager" namespace="Composer\Plugin" name="PluginManager"/>
+    </return>
+  </method>
+  <method name="setAutoloadGenerator" start="153" end="156" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="autoloadGenerator" byreference="false" type="object">
+      <type full="Composer\Autoload\AutoloadGenerator" namespace="Composer\Autoload" name="AutoloadGenerator"/>
+    </parameter>
+  </method>
+  <method name="getAutoloadGenerator" start="158" end="161" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Composer\Autoload\AutoloadGenerator" namespace="Composer\Autoload" name="AutoloadGenerator"/>
+    </return>
+  </method>
+  <parent full="Composer\PartialComposer" namespace="Composer" name="PartialComposer">
+    <method name="setPackage" start="59" end="62" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\void" namespace="Composer" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\RootPackageInterface" namespace="Composer\Package" name="RootPackageInterface"/>
+      </parameter>
+    </method>
+    <method name="getPackage" start="67" end="70" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Package\RootPackageInterface" namespace="Composer\Package" name="RootPackageInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Composer\Package\RootPackageInterface" namespace="Composer\Package" name="RootPackageInterface"/>
+      </return>
+    </method>
+    <method name="setConfig" start="75" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\void" namespace="Composer" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="config" byreference="false" type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </parameter>
+    </method>
+    <method name="getConfig" start="83" end="86" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Config" namespace="Composer" name="Config"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </return>
+    </method>
+    <method name="setLoop" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\void" namespace="Composer" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="loop" byreference="false" type="object">
+        <type full="Composer\Util\Loop" namespace="Composer\Util" name="Loop"/>
+      </parameter>
+    </method>
+    <method name="getLoop" start="99" end="102" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Util\Loop" namespace="Composer\Util" name="Loop"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Composer\Util\Loop" namespace="Composer\Util" name="Loop"/>
+      </return>
+    </method>
+    <method name="setRepositoryManager" start="107" end="110" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\void" namespace="Composer" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="manager" byreference="false" type="object">
+        <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+      </parameter>
+    </method>
+    <method name="getRepositoryManager" start="115" end="118" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+      </return>
+    </method>
+    <method name="setInstallationManager" start="123" end="126" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\void" namespace="Composer" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="manager" byreference="false" type="object">
+        <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+      </parameter>
+    </method>
+    <method name="getInstallationManager" start="131" end="134" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+      </return>
+    </method>
+    <method name="setEventDispatcher" start="139" end="142" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\void" namespace="Composer" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="eventDispatcher" byreference="false" type="object">
+        <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+      </parameter>
+    </method>
+    <method name="getEventDispatcher" start="147" end="150" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+      </return>
+    </method>
+  </parent>
+</class>

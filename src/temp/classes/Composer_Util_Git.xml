@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Git" namespace="Composer\Util" name="Git" abstract="false" final="false" start="22" end="531">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Git.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Git.php" size="22174" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="e4148aa3a04cac78571dad295943029131374a46" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Git.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="version" default="false" type="boolean" visibility="private" static="true" line="25">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\string|false|null" namespace="Composer\Util" name="string|false|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="io" visibility="protected" static="false" line="28">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="protected" static="false" line="30">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="process" visibility="protected" static="false" line="32">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="filesystem" visibility="protected" static="false" line="34">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="36" end="42" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="process" byreference="false" type="object">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+    <parameter name="fs" byreference="false" type="object">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+  </constructor>
+  <method name="runCommand" start="54" end="269" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$commandCallable">
+        <type full="Composer\Util\callable" namespace="Composer\Util" name="callable"/>
+      </param>
+      <param type="string" variable="$url"/>
+      <param type="object" variable="$cwd">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </param>
+      <param type="object" variable="$initialClone">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <param description="the output will be written into this var if passed by ref" type="mixed" variable="$commandOutput">if a callable is passed it will be used as output handler</param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="commandCallable" byreference="false" type="callable"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="cwd" byreference="false" nullable="true" type="string"/>
+    <parameter name="initialClone" byreference="false" type="boolean" default="false"/>
+    <parameter name="commandOutput" byreference="true" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="Ensure we are allowed to use this URL by config" line="56"/>
+      <comment value="public github, autoswitch protocols" line="80"/>
+      <comment value="if we have a private github url and the ssh protocol is disabled then we skip it and directly fallback to https" line="106"/>
+    </inline>
+  </method>
+  <method name="syncMirror" start="277" end="313" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$url"/>
+      <param type="string" variable="$dir"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="dir" byreference="false" type="string"/>
+    <inline>
+      <comment value="update the repo if it is a valid git repository" line="285"/>
+      <comment value="clean up directory and do a fresh clone into it" line="303"/>
+    </inline>
+  </method>
+  <method name="fetchRefOrSyncMirror" start="322" end="333" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$url"/>
+      <param type="string" variable="$dir"/>
+      <param type="string" variable="$ref"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="dir" byreference="false" type="string"/>
+    <parameter name="ref" byreference="false" type="string"/>
+  </method>
+  <method name="getNoShowSignatureFlag" start="338" end="346" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="process" byreference="false" type="object">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+  </method>
+  <method name="checkRefIsInMirror" start="354" end="365" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$dir"/>
+      <param type="string" variable="$ref"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="dir" byreference="false" type="string"/>
+    <parameter name="ref" byreference="false" type="string"/>
+  </method>
+  <method name="isAuthenticationFailure" start="373" end="395" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$url"/>
+      <param type="array" variable="$match" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="match" byreference="true" type="array"/>
+  </method>
+  <method name="getMirrorDefaultBranch" start="397" end="427" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="dir" byreference="false" type="string"/>
+    <parameter name="isLocalPathRepository" byreference="false" type="bool"/>
+  </method>
+  <method name="cleanEnv" start="432" end="454" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="added in git 1.7.1, prevents prompting the user for username/password" line="434"/>
+      <comment value="clean up rogue git env vars in case this is running in a git hook" line="439"/>
+      <comment value="Run processes with predictable LANGUAGE" line="447"/>
+      <comment value="clean up env for OSX, see https://github.com/composer/composer/issues/2146#issuecomment-35478940" line="452"/>
+    </inline>
+  </method>
+  <method name="getGitHubDomainsRegex" start="459" end="462" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\non-empty-string" namespace="Composer\Util" name="non-empty-string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+  </method>
+  <method name="getGitLabDomainsRegex" start="467" end="470" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\non-empty-string" namespace="Composer\Util" name="non-empty-string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+  </method>
+  <method name="throwException" start="478" end="488" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$message">
+        <type full="Composer\Util\non-empty-string" namespace="Composer\Util" name="non-empty-string"/>
+      </param>
+      <param type="string" variable="$url"/>
+      <return type="object">
+        <type full="Composer\Util\never" namespace="Composer\Util" name="never"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="message" byreference="false" type="{unknown}"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <inline>
+      <comment value="git might delete a directory when it fails and php will not know" line="480"/>
+    </inline>
+  </method>
+  <method name="getVersion" start="495" end="505" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Retrieves the current git version."/>
+      <return description="The git version number, if present." type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="process" byreference="false" type="object">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+  </method>
+  <method name="maskCredentials" start="513" end="530" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$error"/>
+      <param type="array" variable="$credentials" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="error" byreference="false" type="string"/>
+    <parameter name="credentials" byreference="false" type="array"/>
+  </method>
+</class>

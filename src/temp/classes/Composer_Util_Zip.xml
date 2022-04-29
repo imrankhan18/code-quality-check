@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Zip" namespace="Composer\Util" name="Zip" abstract="false" final="false" start="18" end="109">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Zip.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Zip.php" size="3577" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="3b4cf95bf44b35a97909598ef431762619766e89" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Zip.php"/>
+  <docblock>
+    <description/>
+    <author value="Andreas Schempp &lt;andreas.schempp@terminal42.ch&gt;"/>
+  </docblock>
+  <method name="getComposerJson" start="27" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Gets content of the root composer.json inside a ZIP archive."/>
+      <param type="string" variable="$pathToZip"/>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="pathToZip" byreference="false" type="string"/>
+  </method>
+  <method name="locateFile" start="68" end="108" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="Find a file by name, returning the one that has the shortest path."/>
+      <param type="object" variable="$zip">
+        <type full="\ZipArchive" namespace="" name="ZipArchive"/>
+      </param>
+      <param type="string" variable="$filename"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="zip" byreference="false" type="object">
+      <type full="ZipArchive" namespace="" name="ZipArchive"/>
+    </parameter>
+    <parameter name="filename" byreference="false" type="string"/>
+    <inline>
+      <comment value="return root composer.json if it is there and is a file" line="70"/>
+    </inline>
+  </method>
+</class>

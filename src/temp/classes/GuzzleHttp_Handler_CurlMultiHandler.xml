@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Handler\CurlMultiHandler" namespace="GuzzleHttp\Handler" name="CurlMultiHandler" abstract="false" final="false" start="22" end="261">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Handler" file="CurlMultiHandler.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php" size="7923" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="38420651a6195f9d19cbc8c4a5a04fcad7cc2c24" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php"/>
+  <docblock>
+    <description compact="Returns an asynchronous response using curl_multi_* functions.">When using the CurlMultiHandler, custom curl options can be specified as an
+associative array of curl option constants mapping to values in the
+**curl** key of the provided request options.</description>
+    <property value="resource|\CurlMultiHandle $_mh Internal use only. Lazy loaded multi-handle."/>
+    <final/>
+  </docblock>
+  <member name="factory" visibility="private" static="false" line="27">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Handler\CurlFactoryInterface" namespace="GuzzleHttp\Handler" name="CurlFactoryInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="selectTimeout" visibility="private" static="false" line="32">
+    <docblock>
+      <description/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="active" default="0" type="integer" visibility="private" static="false" line="37">
+    <docblock>
+      <description/>
+      <var description="Will be higher than 0 when `curl_multi_exec` is still running." type="int"/>
+    </docblock>
+  </member>
+  <member name="handles" default="" type="array" visibility="private" static="false" line="44">
+    <docblock>
+      <description/>
+      <var description="Request entry handles, indexed by handle id in `addRequest`." type="array"/>
+      <see value="CurlMultiHandler::addRequest"/>
+    </docblock>
+  </member>
+  <member name="delays" default="" type="array" visibility="private" static="false" line="51">
+    <docblock>
+      <description/>
+      <var description="float&gt; An array of delay times, indexed by handle id in `addRequest`." type="object">
+        <type full="GuzzleHttp\Handler\array&lt;int" namespace="GuzzleHttp\Handler" name="array&lt;int"/>
+      </var>
+      <see value="CurlMultiHandler::addRequest"/>
+    </docblock>
+  </member>
+  <member name="options" default="" type="array" visibility="private" static="false" line="56">
+    <docblock>
+      <description/>
+      <var description="An associative array of CURLMOPT_* options and corresponding values for curl_multi_setopt()" type="object">
+        <type full="GuzzleHttp\Handler\array&lt;mixed&gt;" namespace="GuzzleHttp\Handler" name="array&lt;mixed&gt;"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="67" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This handler accepts the following options:">- handle_factory: An optional factory  used to create curl handles
+- select_timeout: Optional timeout (in seconds) to block before timing
+  out while selecting curl handles. Defaults to 1 second.
+- options: An associative array of CURLMOPT_* options and
+  corresponding values for curl_multi_setopt()</description>
+    </docblock>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="__get" start="91" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="GuzzleHttp\Handler\resource|\CurlMultiHandle" namespace="GuzzleHttp\Handler\resource|" name="CurlMultiHandle"/>
+      </return>
+      <throws description="when another field as `_mh` will be gotten" type="object">
+        <type full="\BadMethodCallException" namespace="" name="BadMethodCallException"/>
+      </throws>
+      <throws description="when curl can not initialize a multi handle" type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <destructor name="__destruct" start="113" end="119" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="__invoke" start="121" end="136" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="tick" start="141" end="169" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Ticks the curl event loop."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="Add any delayed handles if needed." line="143"/>
+      <comment value="Step through the task queue which may add additional requests." line="157"/>
+    </inline>
+  </method>
+  <method name="execute" start="174" end="185" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Runs until all outstanding connections have completed."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="addRequest" start="187" end="197" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="entry" byreference="false" type="array"/>
+  </method>
+  <method name="cancel" start="206" end="223" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Cancels a handle from sending and removes references to it."/>
+      <param description="Handle ID to cancel and remove." type="int" variable="$id"/>
+      <return description="True on success, false on failure." type="object">
+        <type full="GuzzleHttp\Handler\bool" namespace="GuzzleHttp\Handler" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Cannot cancel if it has been processed." line="212"/>
+    </inline>
+  </method>
+  <method name="processMessages" start="225" end="247" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="timeToNext" start="249" end="260" abstract="false" final="false" static="false" visibility="private">
+    <return type="int" nullable="false"/>
+  </method>
+</class>

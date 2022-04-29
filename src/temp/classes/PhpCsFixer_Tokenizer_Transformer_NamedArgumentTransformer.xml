@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Tokenizer\Transformer\NamedArgumentTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="NamedArgumentTransformer" abstract="false" final="true" start="27" end="85">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Transformer" file="NamedArgumentTransformer.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Transformer/NamedArgumentTransformer.php" size="2032" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="137dfbd793ac45b5facabb51d4f2417f0d9b38a2" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Transformer/NamedArgumentTransformer.php"/>
+  <docblock>
+    <description compact="Transform named argument tokens."/>
+    <internal/>
+  </docblock>
+  <extends full="PhpCsFixer\Tokenizer\AbstractTransformer" namespace="PhpCsFixer\Tokenizer" name="AbstractTransformer"/>
+  <method name="getPriority" start="32" end="36" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <inline>
+      <comment value="needs to run after TypeColonTransformer" line="34"/>
+    </inline>
+  </method>
+  <method name="getRequiredPhpVersionId" start="41" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="process" start="49" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+    <inline>
+      <comment value="if equals any [';', '{', '}', [T_OPEN_TAG]] than it is a goto label" line="63"/>
+      <comment value="if equals ')' than likely it is a type colon, but sure not a name argument" line="64"/>
+      <comment value="if equals '?' than it is part of ternary statement" line="65"/>
+    </inline>
+  </method>
+  <method name="getCustomTokens" start="78" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <parent full="PhpCsFixer\Tokenizer\AbstractTransformer" namespace="PhpCsFixer\Tokenizer" name="AbstractTransformer">
+    <implements full="PhpCsFixer\Tokenizer\TransformerInterface" namespace="PhpCsFixer\Tokenizer" name="TransformerInterface"/>
+    <method name="getName" start="29" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPriority" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="getCustomTokens" start="48" end="48" abstract="true" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+  </parent>
+  <interface full="PhpCsFixer\Tokenizer\TransformerInterface" namespace="PhpCsFixer\Tokenizer" name="TransformerInterface">
+    <method name="getCustomTokens" start="36" end="36" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get tokens created by Transformer."/>
+        <return type="array" of="object">
+          <type full="PhpCsFixer\Tokenizer\int" namespace="PhpCsFixer\Tokenizer" name="int"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getName" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return the name of the transformer.">The name must be all lowercase and without any spaces.</description>
+        <return description="The name of the fixer" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPriority" start="52" end="52" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the priority of the transformer.">The default priority is 0 and higher priorities are executed first.</description>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="getRequiredPhpVersionId" start="62" end="62" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return minimal required PHP version id to transform the code.">Custom Token kinds from Transformers are always registered, but sometimes
+there is no need to analyse the Tokens if for sure we cannot find examined
+token kind, e.g. transforming `T_FUNCTION` in `&lt;?php use function Foo\\bar;`
+code.</description>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="process" start="67" end="67" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Process Token to transform it into custom token when needed."/>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="tokens" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+      </parameter>
+      <parameter name="token" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+      </parameter>
+      <parameter name="index" byreference="false" type="int"/>
+    </method>
+  </interface>
+</class>

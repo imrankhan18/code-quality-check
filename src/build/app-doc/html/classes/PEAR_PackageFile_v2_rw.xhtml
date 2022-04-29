@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_PackageFile_v2_rw</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_PackageFile_v2_rw</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/PackageFile/v2/rw.php.xhtml#line29">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_PackageFile_v2_rw</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Greg Beaver &lt;cellog@php.net&gt;</li>
+          <li>Copyright: 1997-2009 The Authors</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_PackageFile_v2_rw
+                extends <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2.xhtml">PEAR_PackageFile_v2</a>
+            {<br/><ul class="none"><li>// Inherited members from <span title="PEAR_PackageFile_v2">PEAR_PackageFile_v2</span></li><li>public array <a href="#members">$_packageInfo</a>;
+                        </li><li>public <span title="string|false">string|false</span> <a href="#members">$_archiveFile</a>;
+                        </li><li>public <span title="string|false">string|false</span> <a href="#members">$_packageFile</a>;
+                        </li><li>public <span title="PEAR_Common">PEAR_Common</span> <a href="#members">$_logger</a>;
+                        </li><li>public integer <a href="#members">$_isValid</a>;
+                        </li><li>public boolean <a href="#members">$_filesValid</a>;
+                        </li><li>public <span title="PEAR_Registry">PEAR_Registry</span> <a href="#members">$_registry</a>;
+                        </li><li>public <span title="PEAR_Config">PEAR_Config</span> <a href="#members">$_config</a>;
+                        </li><li>public boolean <a href="#members">$_requestedGroup</a>;
+                        </li><li>public <span title="PEAR_ErrorStack">PEAR_ErrorStack</span> <a href="#members">$_stack</a>;
+                        </li><li>public  <a href="#members">$_tasksNs</a>;
+                        </li><li>public boolean <a href="#members">$_incomplete</a>;
+                        </li><li>public <span title="PEAR_PackageFile_v2_Validator">PEAR_PackageFile_v2_Validator</span> <a href="#members">$_v2Validator</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public bool <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setProvidesExtension.xhtml">setProvidesExtension</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPackage.xhtml">setPackage</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/_setPackageVersion2_1.xhtml">_setPackageVersion2_1</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setUri.xhtml">setUri</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setChannel.xhtml">setChannel</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setExtends.xhtml">setExtends</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setSummary.xhtml">setSummary</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setDescription.xhtml">setDescription</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addMaintainer.xhtml">addMaintainer</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/updateMaintainer.xhtml">updateMaintainer</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/deleteMaintainer.xhtml">deleteMaintainer</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setReleaseVersion.xhtml">setReleaseVersion</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setAPIVersion.xhtml">setAPIVersion</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setReleaseStability.xhtml">setReleaseStability</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setAPIStability.xhtml">setAPIStability</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setLicense.xhtml">setLicense</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setNotes.xhtml">setNotes</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setInstalledAs.xhtml">setInstalledAs</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/installedFile.xhtml">installedFile</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/clearContents.xhtml">clearContents</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addBundledPackage.xhtml">addBundledPackage</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addTaskToFile.xhtml">addTaskToFile</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addFile.xhtml">addFile</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addCompatiblePackage.xhtml">addCompatiblePackage</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/resetUsesrole.xhtml">resetUsesrole</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addUsesrole.xhtml">addUsesrole</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/resetUsestask.xhtml">resetUsestask</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addUsestask.xhtml">addUsestask</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/clearCompatible.xhtml">clearCompatible</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/clearDeps.xhtml">clearDeps</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPhpDep.xhtml">setPhpDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPearinstallerDep.xhtml">setPearinstallerDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addConflictingPackageDepWithChannel.xhtml">addConflictingPackageDepWithChannel</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addConflictingPackageDepWithUri.xhtml">addConflictingPackageDepWithUri</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addDependencyGroup.xhtml">addDependencyGroup</a>()
+                    </li><li>public array <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/_constructDep.xhtml">_constructDep</a>()
+                    </li><li>public bool <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addGroupPackageDepWithChannel.xhtml">addGroupPackageDepWithChannel</a>()
+                    </li><li>public bool <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addGroupPackageDepWithURI.xhtml">addGroupPackageDepWithURI</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addGroupExtensionDep.xhtml">addGroupExtensionDep</a>()
+                    </li><li>public boolean <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/_addGroupDependency.xhtml">_addGroupDependency</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addPackageDepWithChannel.xhtml">addPackageDepWithChannel</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addPackageDepWithUri.xhtml">addPackageDepWithUri</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addSubpackageDepWithChannel.xhtml">addSubpackageDepWithChannel</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addSubpackageDepWithUri.xhtml">addSubpackageDepWithUri</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addExtensionDep.xhtml">addExtensionDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addOsDep.xhtml">addOsDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addArchDep.xhtml">addArchDep</a>()
+                    </li><li>public bool <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPackageType.xhtml">setPackageType</a>()
+                    </li><li>public bool <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addRelease.xhtml">addRelease</a>()
+                    </li><li>public array|null <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/_getCurrentRelease.xhtml">_getCurrentRelease</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addInstallAs.xhtml">addInstallAs</a>()
+                    </li><li>public bool <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addIgnore.xhtml">addIgnore</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addBinarypackage.xhtml">addBinarypackage</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addConfigureOption.xhtml">addConfigureOption</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPhpInstallCondition.xhtml">setPhpInstallCondition</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addExtensionInstallCondition.xhtml">addExtensionInstallCondition</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setOsInstallCondition.xhtml">setOsInstallCondition</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setArchInstallCondition.xhtml">setArchInstallCondition</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setSourcePackage.xhtml">setSourcePackage</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/generateChangeLogEntry.xhtml">generateChangeLogEntry</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setChangelogEntry.xhtml">setChangelogEntry</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/clearChangeLog.xhtml">clearChangeLog</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="PEAR_PackageFile_v2">PEAR_PackageFile_v2</span></li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/PEAR_PackageFile_v2.xhtml">PEAR_PackageFile_v2</a>()
+                        </li><li>public PEAR_Downloader <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPEARDownloader.xhtml">getPEARDownloader</a>()
+                        </li><li>public PEAR_Dependency2 <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPEARDependency2.xhtml">getPEARDependency2</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getInstalledBinary.xhtml">getInstalledBinary</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/installBinary.xhtml">installBinary</a>()
+                        </li><li>public string|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getProvidesExtension.xhtml">getProvidesExtension</a>()
+                        </li><li>public bool <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isExtension.xhtml">isExtension</a>()
+                        </li><li>public bool <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isEquivalent.xhtml">isEquivalent</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentPackage.xhtml">_differentPackage</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentVersion.xhtml">_differentVersion</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentState.xhtml">_differentState</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentRole.xhtml">_differentRole</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentEmail.xhtml">_differentEmail</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentName.xhtml">_differentName</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_unmatchedMaintainers.xhtml">_unmatchedMaintainers</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentNotes.xhtml">_differentNotes</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentSummary.xhtml">_differentSummary</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentDescription.xhtml">_differentDescription</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_missingFile.xhtml">_missingFile</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRawState.xhtml">setRawState</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRawCompatible.xhtml">setRawCompatible</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRawPackage.xhtml">setRawPackage</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRawChannel.xhtml">setRawChannel</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRequestedGroup.xhtml">setRequestedGroup</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getRequestedGroup.xhtml">getRequestedGroup</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setLastInstalledVersion.xhtml">setLastInstalledVersion</a>()
+                        </li><li>public string|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLastInstalledVersion.xhtml">getLastInstalledVersion</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/listPostinstallScripts.xhtml">listPostinstallScripts</a>()
+                        </li><li>public bool <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/initPostinstallScripts.xhtml">initPostinstallScripts</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/runPostinstallScripts.xhtml">runPostinstallScripts</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/flattenFilelist.xhtml">flattenFilelist</a>()
+                        </li><li>public array <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_getFlattenedFilelist.xhtml">_getFlattenedFilelist</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setConfig.xhtml">setConfig</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setLogger.xhtml">setLogger</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setDeps.xhtml">setDeps</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setCompatible.xhtml">setCompatible</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setPackagefile.xhtml">setPackagefile</a>()
+                        </li><li>public array <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getValidationWarnings.xhtml">getValidationWarnings</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPackageFile.xhtml">getPackageFile</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getArchiveFile.xhtml">getArchiveFile</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/fromArray.xhtml">fromArray</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isIncomplete.xhtml">isIncomplete</a>()
+                        </li><li>public array <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/toArray.xhtml">toArray</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getArray.xhtml">getArray</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/packageInfo.xhtml">packageInfo</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getName.xhtml">getName</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPackage.xhtml">getPackage</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getChannel.xhtml">getChannel</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getUri.xhtml">getUri</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getExtends.xhtml">getExtends</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getSummary.xhtml">getSummary</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDescription.xhtml">getDescription</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getMaintainers.xhtml">getMaintainers</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLeads.xhtml">getLeads</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDevelopers.xhtml">getDevelopers</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getContributors.xhtml">getContributors</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getHelpers.xhtml">getHelpers</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setDate.xhtml">setDate</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setTime.xhtml">setTime</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDate.xhtml">getDate</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getTime.xhtml">getTime</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getVersion.xhtml">getVersion</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getStability.xhtml">getStability</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getState.xhtml">getState</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLicense.xhtml">getLicense</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLicenseLocation.xhtml">getLicenseLocation</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getNotes.xhtml">getNotes</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getUsesrole.xhtml">getUsesrole</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getUsestask.xhtml">getUsestask</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getFilelist.xhtml">getFilelist</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getConfigureOptions.xhtml">getConfigureOptions</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/resetFilelist.xhtml">resetFilelist</a>()
+                        </li><li>public array <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getInstallationFilelist.xhtml">getInstallationFilelist</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setInstalledAs.xhtml">setInstalledAs</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getInstalledLocation.xhtml">getInstalledLocation</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/installedFile.xhtml">installedFile</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getContents.xhtml">getContents</a>()
+                        </li><li>public bool <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setFileAttribute.xhtml">setFileAttribute</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setDirtree.xhtml">setDirtree</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDirtree.xhtml">getDirtree</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/resetDirtree.xhtml">resetDirtree</a>()
+                        </li><li>public boolean <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isCompatible.xhtml">isCompatible</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getCompatible.xhtml">getCompatible</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDependencies.xhtml">getDependencies</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isSubpackageOf.xhtml">isSubpackageOf</a>()
+                        </li><li>public bool <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isSubpackage.xhtml">isSubpackage</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/dependsOn.xhtml">dependsOn</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDependencyGroup.xhtml">getDependencyGroup</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDeps.xhtml">getDeps</a>()
+                        </li><li>public php|extsrc|extbin|zendextsrc|zendextbin|bundle|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPackageType.xhtml">getPackageType</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getReleases.xhtml">getReleases</a>()
+                        </li><li>public array <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getChangelog.xhtml">getChangelog</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/hasDeps.xhtml">hasDeps</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPackagexmlVersion.xhtml">getPackagexmlVersion</a>()
+                        </li><li>public array|false <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getSourcePackage.xhtml">getSourcePackage</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getBundledPackages.xhtml">getBundledPackages</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLastModified.xhtml">getLastModified</a>()
+                        </li><li>public string <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getFileContents.xhtml">getFileContents</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getRW.xhtml">getRW</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDefaultGenerator.xhtml">getDefaultGenerator</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/analyzeSourceCode.xhtml">analyzeSourceCode</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/validate.xhtml">validate</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getTasksNs.xhtml">getTasksNs</a>()
+                        </li><li>public boolean <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getTask.xhtml">getTask</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_ksplice.xhtml">_ksplice</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_insertBefore.xhtml">_insertBefore</a>()
+                        </li><li>public void <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_mergeTag.xhtml">_mergeTag</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2.xhtml">PEAR_PackageFile_v2</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_archiveFile"><strong>$_archiveFile</strong>
+                —
+                <a title="string|false" href="../classes/string|false.xhtml">string|false</a><br/><span class="indent">path to package .tgz or false if this is a local/extracted package.xml</span></li>
+            <li id="_config"><strong>$_config</strong>
+                —
+                <a title="PEAR_Config" href="../classes/PEAR_Config.xhtml">PEAR_Config</a></li>
+            <li id="_filesValid">
+              <strong>$_filesValid</strong>
+              <br/>
+              <span class="indent">True if the filelist has been validated</span>
+            </li>
+            <li id="_incomplete"><strong>$_incomplete</strong>
+                —
+                boolean<br/><span class="indent">Determines whether this packagefile was initialized only with partial package info</span></li>
+            <li id="_isValid"><strong>$_isValid</strong>
+                —
+                int<br/><span class="indent">This is set to the highest validation level that has been validated</span></li>
+            <li id="_logger"><strong>$_logger</strong>
+                —
+                <a title="PEAR_Common" href="../classes/PEAR_Common.xhtml">PEAR_Common</a><br/><span class="indent">This is used by file analysis routines to log progress information</span></li>
+            <li id="_packageFile"><strong>$_packageFile</strong>
+                —
+                <a title="string|false" href="../classes/string|false.xhtml">string|false</a><br/><span class="indent">path to package .xml or false if this is an abstract parsed-from-string xml</span></li>
+            <li id="_packageInfo"><strong>$_packageInfo</strong>
+                —
+                array<br/><span class="indent">Parsed package information</span></li>
+            <li id="_registry"><strong>$_registry</strong>
+                —
+                <a title="PEAR_Registry" href="../classes/PEAR_Registry.xhtml">PEAR_Registry</a></li>
+            <li id="_requestedGroup"><strong>$_requestedGroup</strong>
+                —
+                string<br/><span class="indent">Optional Dependency group requested for installation</span></li>
+            <li id="_stack"><strong>$_stack</strong>
+                —
+                <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack.xhtml">PEAR_ErrorStack</a></li>
+            <li id="_tasksNs">
+              <strong>$_tasksNs</strong>
+              <br/>
+              <span class="indent">Namespace prefix used for tasks in this package.xml - use tasks: whenever possible</span>
+            </li>
+            <li id="_v2Validator"><strong>$_v2Validator</strong>
+                —
+                <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator.xhtml">PEAR_PackageFile_v2_Validator</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="_addGroupDependency">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/_addGroupDependency.xhtml">_addGroupDependency()</a>
+            </li>
+            <li id="_constructDep">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/_constructDep.xhtml">_constructDep()</a>
+            </li>
+            <li id="_getCurrentRelease"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/_getCurrentRelease.xhtml">_getCurrentRelease()</a>
+                — Get the current release tag in order to add to it</li>
+            <li id="_setPackageVersion2_1"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/_setPackageVersion2_1.xhtml">_setPackageVersion2_1()</a>
+                — set this as a package.xml version 2.1</li>
+            <li id="addArchDep">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addArchDep.xhtml">addArchDep()</a>
+            </li>
+            <li id="addBinarypackage"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addBinarypackage.xhtml">addBinarypackage()</a>
+                — Add an extension binary package for this extension source code release</li>
+            <li id="addBundledPackage">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addBundledPackage.xhtml">addBundledPackage()</a>
+            </li>
+            <li id="addCompatiblePackage">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addCompatiblePackage.xhtml">addCompatiblePackage()</a>
+            </li>
+            <li id="addConfigureOption"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addConfigureOption.xhtml">addConfigureOption()</a>
+                — Add a configureoption to an extension source package</li>
+            <li id="addConflictingPackageDepWithChannel"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addConflictingPackageDepWithChannel.xhtml">addConflictingPackageDepWithChannel()</a>
+                — Mark a package as conflicting with this package</li>
+            <li id="addConflictingPackageDepWithUri"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addConflictingPackageDepWithUri.xhtml">addConflictingPackageDepWithUri()</a>
+                — Mark a package as conflicting with this package</li>
+            <li id="addDependencyGroup">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addDependencyGroup.xhtml">addDependencyGroup()</a>
+            </li>
+            <li id="addExtensionDep">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addExtensionDep.xhtml">addExtensionDep()</a>
+            </li>
+            <li id="addExtensionInstallCondition">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addExtensionInstallCondition.xhtml">addExtensionInstallCondition()</a>
+            </li>
+            <li id="addFile">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addFile.xhtml">addFile()</a>
+            </li>
+            <li id="addGroupExtensionDep">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addGroupExtensionDep.xhtml">addGroupExtensionDep()</a>
+            </li>
+            <li id="addGroupPackageDepWithChannel">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addGroupPackageDepWithChannel.xhtml">addGroupPackageDepWithChannel()</a>
+            </li>
+            <li id="addGroupPackageDepWithURI">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addGroupPackageDepWithURI.xhtml">addGroupPackageDepWithURI()</a>
+            </li>
+            <li id="addIgnore"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addIgnore.xhtml">addIgnore()</a>
+                — Add a file to the current release that should be ignored</li>
+            <li id="addInstallAs"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addInstallAs.xhtml">addInstallAs()</a>
+                — Add a file to the current release that should be installed under a different name</li>
+            <li id="addMaintainer"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addMaintainer.xhtml">addMaintainer()</a>
+                — Adds a new maintainer - no checking of duplicates is performed, use updatemaintainer for that purpose.</li>
+            <li id="addOsDep">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addOsDep.xhtml">addOsDep()</a>
+            </li>
+            <li id="addPackageDepWithChannel">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addPackageDepWithChannel.xhtml">addPackageDepWithChannel()</a>
+            </li>
+            <li id="addPackageDepWithUri">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addPackageDepWithUri.xhtml">addPackageDepWithUri()</a>
+            </li>
+            <li id="addRelease">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addRelease.xhtml">addRelease()</a>
+            </li>
+            <li id="addSubpackageDepWithChannel">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addSubpackageDepWithChannel.xhtml">addSubpackageDepWithChannel()</a>
+            </li>
+            <li id="addSubpackageDepWithUri">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addSubpackageDepWithUri.xhtml">addSubpackageDepWithUri()</a>
+            </li>
+            <li id="addTaskToFile">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addTaskToFile.xhtml">addTaskToFile()</a>
+            </li>
+            <li id="addUsesrole">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addUsesrole.xhtml">addUsesrole()</a>
+            </li>
+            <li id="addUsestask">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/addUsestask.xhtml">addUsestask()</a>
+            </li>
+            <li id="clearChangeLog"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/clearChangeLog.xhtml">clearChangeLog()</a>
+                — Remove the changelog entirely</li>
+            <li id="clearCompatible"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/clearCompatible.xhtml">clearCompatible()</a>
+                — Remove all compatible tags</li>
+            <li id="clearContents"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/clearContents.xhtml">clearContents()</a>
+                — Reset the listing of package contents</li>
+            <li id="clearDeps"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/clearDeps.xhtml">clearDeps()</a>
+                — Reset dependencies prior to adding new ones</li>
+            <li id="deleteMaintainer">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/deleteMaintainer.xhtml">deleteMaintainer()</a>
+            </li>
+            <li id="generateChangeLogEntry"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/generateChangeLogEntry.xhtml">generateChangeLogEntry()</a>
+                — Generate a valid change log entry from the current package.xml</li>
+            <li id="installedFile"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/installedFile.xhtml">installedFile()</a>
+                — This is only used at install-time, after all serialization is over.</li>
+            <li id="resetUsesrole"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/resetUsesrole.xhtml">resetUsesrole()</a>
+                — Removes the &lt;usesrole&gt; tag entirely</li>
+            <li id="resetUsestask"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/resetUsestask.xhtml">resetUsestask()</a>
+                — Removes the &lt;usestask&gt; tag entirely</li>
+            <li id="setAPIStability">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setAPIStability.xhtml">setAPIStability()</a>
+            </li>
+            <li id="setAPIVersion">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setAPIVersion.xhtml">setAPIVersion()</a>
+            </li>
+            <li id="setArchInstallCondition"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setArchInstallCondition.xhtml">setArchInstallCondition()</a>
+                — Set an installation condition based on architecture for the current release set</li>
+            <li id="setChangelogEntry">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setChangelogEntry.xhtml">setChangelogEntry()</a>
+            </li>
+            <li id="setChannel">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setChannel.xhtml">setChannel()</a>
+            </li>
+            <li id="setDescription">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setDescription.xhtml">setDescription()</a>
+            </li>
+            <li id="setExtends">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setExtends.xhtml">setExtends()</a>
+            </li>
+            <li id="setInstalledAs"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setInstalledAs.xhtml">setInstalledAs()</a>
+                — This is only used at install-time, after all serialization is over.</li>
+            <li id="setLicense">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setLicense.xhtml">setLicense()</a>
+            </li>
+            <li id="setNotes">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setNotes.xhtml">setNotes()</a>
+            </li>
+            <li id="setOsInstallCondition"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setOsInstallCondition.xhtml">setOsInstallCondition()</a>
+                — Set an installation condition based on operating system for the current release set</li>
+            <li id="setPackage">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPackage.xhtml">setPackage()</a>
+            </li>
+            <li id="setPackageType"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPackageType.xhtml">setPackageType()</a>
+                — Set the kind of package, and erase all release tags</li>
+            <li id="setPearinstallerDep">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPearinstallerDep.xhtml">setPearinstallerDep()</a>
+            </li>
+            <li id="setPhpDep">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPhpDep.xhtml">setPhpDep()</a>
+            </li>
+            <li id="setPhpInstallCondition"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setPhpInstallCondition.xhtml">setPhpInstallCondition()</a>
+                — Set an installation condition based on php version for the current release set</li>
+            <li id="setProvidesExtension">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setProvidesExtension.xhtml">setProvidesExtension()</a>
+            </li>
+            <li id="setReleaseStability"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setReleaseStability.xhtml">setReleaseStability()</a>
+                — snapshot|devel|alpha|beta|stable</li>
+            <li id="setReleaseVersion">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setReleaseVersion.xhtml">setReleaseVersion()</a>
+            </li>
+            <li id="setSourcePackage"><a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setSourcePackage.xhtml">setSourcePackage()</a>
+                — For extension binary releases, this is used to specify either the static URI to a source package, or the package name and channel of the extsrc/zendextsrc package it is based on.</li>
+            <li id="setSummary">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setSummary.xhtml">setSummary()</a>
+            </li>
+            <li id="setUri">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/setUri.xhtml">setUri()</a>
+            </li>
+            <li id="updateMaintainer">
+              <a title="PEAR_PackageFile_v2_rw" href="../classes/PEAR_PackageFile_v2_rw/updateMaintainer.xhtml">updateMaintainer()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2.xhtml">PEAR_PackageFile_v2</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="PEAR_PackageFile_v2"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/PEAR_PackageFile_v2.xhtml">PEAR_PackageFile_v2()</a>
+                — PHP 4 style constructor for backwards compatibility.</li>
+            <li id="_differentDescription">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentDescription.xhtml">_differentDescription()</a>
+            </li>
+            <li id="_differentEmail">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentEmail.xhtml">_differentEmail()</a>
+            </li>
+            <li id="_differentName">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentName.xhtml">_differentName()</a>
+            </li>
+            <li id="_differentNotes">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentNotes.xhtml">_differentNotes()</a>
+            </li>
+            <li id="_differentPackage">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentPackage.xhtml">_differentPackage()</a>
+            </li>
+            <li id="_differentRole">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentRole.xhtml">_differentRole()</a>
+            </li>
+            <li id="_differentState">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentState.xhtml">_differentState()</a>
+            </li>
+            <li id="_differentSummary">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentSummary.xhtml">_differentSummary()</a>
+            </li>
+            <li id="_differentVersion">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_differentVersion.xhtml">_differentVersion()</a>
+            </li>
+            <li id="_getFlattenedFilelist">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_getFlattenedFilelist.xhtml">_getFlattenedFilelist()</a>
+            </li>
+            <li id="_insertBefore">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_insertBefore.xhtml">_insertBefore()</a>
+            </li>
+            <li id="_ksplice"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_ksplice.xhtml">_ksplice()</a>
+                — Key-friendly array_splice</li>
+            <li id="_mergeTag">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_mergeTag.xhtml">_mergeTag()</a>
+            </li>
+            <li id="_missingFile">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_missingFile.xhtml">_missingFile()</a>
+            </li>
+            <li id="_unmatchedMaintainers">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/_unmatchedMaintainers.xhtml">_unmatchedMaintainers()</a>
+            </li>
+            <li id="analyzeSourceCode">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/analyzeSourceCode.xhtml">analyzeSourceCode()</a>
+            </li>
+            <li id="dependsOn">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/dependsOn.xhtml">dependsOn()</a>
+            </li>
+            <li id="flattenFilelist"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/flattenFilelist.xhtml">flattenFilelist()</a>
+                — Convert a recursive set of &lt;dir&gt; and &lt;file&gt; tags into a single &lt;dir&gt; tag with &lt;file&gt; tags.</li>
+            <li id="fromArray"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/fromArray.xhtml">fromArray()</a>
+                — Directly set the array that defines this packagefile</li>
+            <li id="getArchiveFile">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getArchiveFile.xhtml">getArchiveFile()</a>
+            </li>
+            <li id="getArray">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getArray.xhtml">getArray()</a>
+            </li>
+            <li id="getBundledPackages">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getBundledPackages.xhtml">getBundledPackages()</a>
+            </li>
+            <li id="getChangelog">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getChangelog.xhtml">getChangelog()</a>
+            </li>
+            <li id="getChannel">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getChannel.xhtml">getChannel()</a>
+            </li>
+            <li id="getCompatible">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getCompatible.xhtml">getCompatible()</a>
+            </li>
+            <li id="getConfigureOptions"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getConfigureOptions.xhtml">getConfigureOptions()</a>
+                — Return configure options array, if any</li>
+            <li id="getContents"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getContents.xhtml">getContents()</a>
+                — Retrieve the contents tag</li>
+            <li id="getContributors">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getContributors.xhtml">getContributors()</a>
+            </li>
+            <li id="getDate">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDate.xhtml">getDate()</a>
+            </li>
+            <li id="getDefaultGenerator">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDefaultGenerator.xhtml">getDefaultGenerator()</a>
+            </li>
+            <li id="getDependencies">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDependencies.xhtml">getDependencies()</a>
+            </li>
+            <li id="getDependencyGroup"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDependencyGroup.xhtml">getDependencyGroup()</a>
+                — Get the contents of a dependency group</li>
+            <li id="getDeps"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDeps.xhtml">getDeps()</a>
+                — Retrieve a partial package.xml 1.0 representation of dependencies</li>
+            <li id="getDescription">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDescription.xhtml">getDescription()</a>
+            </li>
+            <li id="getDevelopers">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDevelopers.xhtml">getDevelopers()</a>
+            </li>
+            <li id="getDirtree">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getDirtree.xhtml">getDirtree()</a>
+            </li>
+            <li id="getExtends">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getExtends.xhtml">getExtends()</a>
+            </li>
+            <li id="getFileContents"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getFileContents.xhtml">getFileContents()</a>
+                — Get the contents of a file listed within the package.xml</li>
+            <li id="getFilelist"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getFilelist.xhtml">getFilelist()</a>
+                — This should only be used to retrieve filenames and install attributes</li>
+            <li id="getHelpers">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getHelpers.xhtml">getHelpers()</a>
+            </li>
+            <li id="getInstallationFilelist"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getInstallationFilelist.xhtml">getInstallationFilelist()</a>
+                — Retrieve a list of files that should be installed on this computer</li>
+            <li id="getInstalledBinary">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getInstalledBinary.xhtml">getInstalledBinary()</a>
+            </li>
+            <li id="getInstalledLocation">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getInstalledLocation.xhtml">getInstalledLocation()</a>
+            </li>
+            <li id="getLastInstalledVersion">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLastInstalledVersion.xhtml">getLastInstalledVersion()</a>
+            </li>
+            <li id="getLastModified">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLastModified.xhtml">getLastModified()</a>
+            </li>
+            <li id="getLeads">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLeads.xhtml">getLeads()</a>
+            </li>
+            <li id="getLicense">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLicense.xhtml">getLicense()</a>
+            </li>
+            <li id="getLicenseLocation">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getLicenseLocation.xhtml">getLicenseLocation()</a>
+            </li>
+            <li id="getMaintainers">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getMaintainers.xhtml">getMaintainers()</a>
+            </li>
+            <li id="getName">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getName.xhtml">getName()</a>
+            </li>
+            <li id="getNotes">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getNotes.xhtml">getNotes()</a>
+            </li>
+            <li id="getPEARDependency2"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPEARDependency2.xhtml">getPEARDependency2()</a>
+                — To make unit-testing easier</li>
+            <li id="getPEARDownloader"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPEARDownloader.xhtml">getPEARDownloader()</a>
+                — To make unit-testing easier</li>
+            <li id="getPackage">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPackage.xhtml">getPackage()</a>
+            </li>
+            <li id="getPackageFile">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPackageFile.xhtml">getPackageFile()</a>
+            </li>
+            <li id="getPackageType">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPackageType.xhtml">getPackageType()</a>
+            </li>
+            <li id="getPackagexmlVersion">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getPackagexmlVersion.xhtml">getPackagexmlVersion()</a>
+            </li>
+            <li id="getProvidesExtension">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getProvidesExtension.xhtml">getProvidesExtension()</a>
+            </li>
+            <li id="getRW">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getRW.xhtml">getRW()</a>
+            </li>
+            <li id="getReleases">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getReleases.xhtml">getReleases()</a>
+            </li>
+            <li id="getRequestedGroup">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getRequestedGroup.xhtml">getRequestedGroup()</a>
+            </li>
+            <li id="getSourcePackage">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getSourcePackage.xhtml">getSourcePackage()</a>
+            </li>
+            <li id="getStability">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getStability.xhtml">getStability()</a>
+            </li>
+            <li id="getState">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getState.xhtml">getState()</a>
+            </li>
+            <li id="getSummary">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getSummary.xhtml">getSummary()</a>
+            </li>
+            <li id="getTask"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getTask.xhtml">getTask()</a>
+                — Determine whether a task name is a valid task.  Custom tasks may be defined using subdirectories by putting a "-" in the name, as in &lt;tasks:mycustom-task&gt;</li>
+            <li id="getTasksNs">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getTasksNs.xhtml">getTasksNs()</a>
+            </li>
+            <li id="getTime">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getTime.xhtml">getTime()</a>
+            </li>
+            <li id="getUri">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getUri.xhtml">getUri()</a>
+            </li>
+            <li id="getUsesrole"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getUsesrole.xhtml">getUsesrole()</a>
+                — Return the &lt;usesrole&gt; tag contents, if any</li>
+            <li id="getUsestask"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getUsestask.xhtml">getUsestask()</a>
+                — Return the &lt;usestask&gt; tag contents, if any</li>
+            <li id="getValidationWarnings"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getValidationWarnings.xhtml">getValidationWarnings()</a>
+                — Wrapper to {@link PEAR_ErrorStack::getErrors()}</li>
+            <li id="getVersion">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/getVersion.xhtml">getVersion()</a>
+            </li>
+            <li id="hasDeps">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/hasDeps.xhtml">hasDeps()</a>
+            </li>
+            <li id="initPostinstallScripts"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/initPostinstallScripts.xhtml">initPostinstallScripts()</a>
+                — Initialize post-install scripts for running</li>
+            <li id="installBinary"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/installBinary.xhtml">installBinary()</a>
+                — Installation of source package has failed, attempt to download and install the binary version of this package.</li>
+            <li id="installedFile"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/installedFile.xhtml">installedFile()</a>
+                — This is only used at install-time, after all serialization is over.</li>
+            <li id="isCompatible"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isCompatible.xhtml">isCompatible()</a>
+                — Determines whether this package claims it is compatible with the version of the package that has a recommended version dependency</li>
+            <li id="isEquivalent"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isEquivalent.xhtml">isEquivalent()</a>
+                — Tests whether every part of the package.xml 1.0 is represented in this package.xml 2.0</li>
+            <li id="isExtension">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isExtension.xhtml">isExtension()</a>
+            </li>
+            <li id="isIncomplete">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isIncomplete.xhtml">isIncomplete()</a>
+            </li>
+            <li id="isSubpackage"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isSubpackage.xhtml">isSubpackage()</a>
+                — Determines whether the passed in package is a subpackage of this package.</li>
+            <li id="isSubpackageOf">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/isSubpackageOf.xhtml">isSubpackageOf()</a>
+            </li>
+            <li id="listPostinstallScripts"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/listPostinstallScripts.xhtml">listPostinstallScripts()</a>
+                — Determines whether this package.xml has post-install scripts or not</li>
+            <li id="packageInfo">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/packageInfo.xhtml">packageInfo()</a>
+            </li>
+            <li id="resetDirtree">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/resetDirtree.xhtml">resetDirtree()</a>
+            </li>
+            <li id="resetFilelist"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/resetFilelist.xhtml">resetFilelist()</a>
+                — This is only used at install-time, after all serialization is over.</li>
+            <li id="runPostinstallScripts">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/runPostinstallScripts.xhtml">runPostinstallScripts()</a>
+            </li>
+            <li id="setCompatible"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setCompatible.xhtml">setCompatible()</a>
+                — WARNING - do not use this function directly unless you know what you're doing</li>
+            <li id="setConfig">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setConfig.xhtml">setConfig()</a>
+            </li>
+            <li id="setDate">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setDate.xhtml">setDate()</a>
+            </li>
+            <li id="setDeps"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setDeps.xhtml">setDeps()</a>
+                — WARNING - do not use this function directly unless you know what you're doing</li>
+            <li id="setDirtree">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setDirtree.xhtml">setDirtree()</a>
+            </li>
+            <li id="setFileAttribute">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setFileAttribute.xhtml">setFileAttribute()</a>
+            </li>
+            <li id="setInstalledAs"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setInstalledAs.xhtml">setInstalledAs()</a>
+                — This is only used at install-time, after all serialization is over.</li>
+            <li id="setLastInstalledVersion"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setLastInstalledVersion.xhtml">setLastInstalledVersion()</a>
+                — For saving in the registry.</li>
+            <li id="setLogger">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setLogger.xhtml">setLogger()</a>
+            </li>
+            <li id="setPackagefile">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setPackagefile.xhtml">setPackagefile()</a>
+            </li>
+            <li id="setRawChannel"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRawChannel.xhtml">setRawChannel()</a>
+                — WARNING - do not use this function unless you know what you're doing</li>
+            <li id="setRawCompatible"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRawCompatible.xhtml">setRawCompatible()</a>
+                — WARNING - do not use this function unless you know what you're doing</li>
+            <li id="setRawPackage"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRawPackage.xhtml">setRawPackage()</a>
+                — WARNING - do not use this function unless you know what you're doing</li>
+            <li id="setRawState"><a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRawState.xhtml">setRawState()</a>
+                — WARNING - do not use this function unless you know what you're doing</li>
+            <li id="setRequestedGroup">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setRequestedGroup.xhtml">setRequestedGroup()</a>
+            </li>
+            <li id="setTime">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/setTime.xhtml">setTime()</a>
+            </li>
+            <li id="toArray">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/toArray.xhtml">toArray()</a>
+            </li>
+            <li id="validate">
+              <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2/validate.xhtml">validate()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Handler\CurlFactoryInterface" namespace="GuzzleHttp\Handler" name="CurlFactoryInterface" abstract="false" final="false" start="7" end="25">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Handler" file="CurlFactoryInterface.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlFactoryInterface.php" size="657" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="a052471d3b1bb1ec988dcefea93bce148abdc9b5" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlFactoryInterface.php"/>
+  <method name="create" start="17" end="17" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a cURL handle resource."/>
+      <param description="Request" type="object" variable="$request">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <param description="Transfer options" type="array" variable="$options"/>
+      <throws description="when an option cannot be applied" type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="release" start="24" end="24" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Release an easy handle, allowing it to be reused or closed.">This function must call unset on the easy handle's "handle" property.</description>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+  </method>
+  <implementors>
+    <class full="GuzzleHttp\Handler\CurlFactory" namespace="GuzzleHttp\Handler" name="CurlFactory"/>
+  </implementors>
+</interface>

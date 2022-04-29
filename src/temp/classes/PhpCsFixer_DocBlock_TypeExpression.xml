@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\DocBlock\TypeExpression" namespace="PhpCsFixer\DocBlock" name="TypeExpression" abstract="false" final="true" start="25" end="471">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/DocBlock" file="TypeExpression.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/DocBlock/TypeExpression.php" size="12799" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="cb41567f0512c5994dfac20deddec16fed122d3d" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/DocBlock/TypeExpression.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <constant type="string" name="REGEX_TYPES" value="'&#10;    (?&lt;types&gt; # several types separated by `|` or `&amp;`&#10;        (?&lt;type&gt; # single type&#10;            (?&lt;nullable&gt;\??)&#10;            (?:&#10;                (?&lt;object_like_array&gt;&#10;                    (?&lt;object_like_array_start&gt;array\h*\{)&#10;                        (?&lt;object_like_array_keys&gt;&#10;                            (?&lt;object_like_array_key&gt;&#10;                                \h*[^?:\h]+\h*\??\h*:\h*(?&amp;types)&#10;                            )&#10;                            (?:\h*,(?&amp;object_like_array_key))*&#10;                        )&#10;                    \h*\}&#10;                )&#10;                |&#10;                (?&lt;callable&gt; # callable syntax, e.g. `callable(string): bool`&#10;                    (?&lt;callable_start&gt;(?:callable|Closure)\h*\(\h*)&#10;                        (?&lt;callable_arguments&gt;&#10;                            (?&amp;types)&#10;                            (?:&#10;                                \h*,\h*&#10;                                (?&amp;types)&#10;                            )*&#10;                        )?&#10;                    \h*\)&#10;                    (?:&#10;                        \h*\:\h*&#10;                        (?&lt;callable_return&gt;(?&amp;types))&#10;                    )?&#10;                )&#10;                |&#10;                (?&lt;generic&gt; # generic syntax, e.g.: `array&lt;int, \Foo\Bar&gt;`&#10;                    (?&lt;generic_start&gt;&#10;                        (?&amp;name)+&#10;                        \h*&lt;\h*&#10;                    )&#10;                        (?&lt;generic_types&gt;&#10;                            (?&amp;types)&#10;                            (?:&#10;                                \h*,\h*&#10;                                (?&amp;types)&#10;                            )*&#10;                        )&#10;                    \h*&gt;&#10;                )&#10;                |&#10;                (?&lt;class_constant&gt; # class constants with optional wildcard, e.g.: `Foo::*`, `Foo::CONST_A`, `FOO::CONST_*`&#10;                    (?&amp;name)::(\*|\w+\*?)&#10;                )&#10;                |&#10;                (?&lt;array&gt; # array expression, e.g.: `string[]`, `string[][]`&#10;                    (?&amp;name)(\[\])+&#10;                )&#10;                |&#10;                (?&lt;constant&gt; # single constant value (case insensitive), e.g.: 1, `\'a\'`&#10;                    (?i)&#10;                    null | true | false&#10;                    | [\d.]+&#10;                    | \'[^\']+?\' | &quot;[^&quot;]+?&quot;&#10;                    | [@$]?(?:this | self | static)&#10;                    (?-i)&#10;                )&#10;                |&#10;                (?&lt;name&gt; # single type, e.g.: `null`, `int`, `\Foo\Bar`&#10;                    [\\\\\w-]++&#10;                )&#10;            )&#10;        )&#10;        (?:&#10;            \h*(?&lt;glue&gt;[|&amp;])\h*&#10;            (?&amp;type)&#10;        )*&#10;    )&#10;    '">
+    <docblock>
+      <description compact="Regex to match any types, shall be used with `x` modifier."/>
+      <internal/>
+    </docblock>
+  </constant>
+  <member name="value" visibility="private" static="false" line="111">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="isUnionType" default="false" type="boolean" visibility="private" static="false" line="113"/>
+  <member name="innerTypeExpressions" default="" type="array" visibility="private" static="false" line="118">
+    <docblock>
+      <description/>
+      <var description="int, expression: self}&gt;" type="object">
+        <type full="PhpCsFixer\DocBlock\list&lt;array{start_index:" namespace="PhpCsFixer\DocBlock" name="list&lt;array{start_index:"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="typesGlue" default="'|'" type="string" visibility="private" static="false" line="120"/>
+  <member name="namespace" visibility="private" static="false" line="125">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\DocBlock\null|NamespaceAnalysis" namespace="PhpCsFixer\DocBlock" name="null|NamespaceAnalysis"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="namespaceUses" visibility="private" static="false" line="130">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="PhpCsFixer\DocBlock\NamespaceUseAnalysis" namespace="PhpCsFixer\DocBlock" name="NamespaceUseAnalysis"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="135" end="142" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$namespaceUses" of="object">
+        <type full="PhpCsFixer\DocBlock\NamespaceUseAnalysis" namespace="PhpCsFixer\DocBlock" name="NamespaceUseAnalysis"/>
+      </param>
+    </docblock>
+    <parameter name="value" byreference="false" type="string"/>
+    <parameter name="namespace" byreference="false" nullable="true" type="object">
+      <type full="PhpCsFixer\Tokenizer\Analyzer\Analysis\NamespaceAnalysis" namespace="PhpCsFixer\Tokenizer\Analyzer\Analysis" name="NamespaceAnalysis"/>
+    </parameter>
+    <parameter name="namespaceUses" byreference="false" type="array"/>
+  </constructor>
+  <method name="toString" start="144" end="147" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getTypes" start="152" end="162" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\DocBlock\string" namespace="PhpCsFixer\DocBlock" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="sortTypes" start="167" end="194" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="self $b): int $compareCallback" type="object" variable="$a">
+        <type full="PhpCsFixer\DocBlock\callable(self" namespace="PhpCsFixer\DocBlock" name="callable(self"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="compareCallback" byreference="false" type="callable"/>
+  </method>
+  <method name="getTypesGlue" start="196" end="199" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getCommonType" start="201" end="234" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="allowsNull" start="236" end="245" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="parse" start="247" end="329" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="parseCommaSeparatedInnerTypes" start="331" end="354" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="startIndex" byreference="false" type="int"/>
+    <parameter name="value" byreference="false" type="string"/>
+  </method>
+  <method name="parseObjectLikeArrayKeys" start="356" end="379" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="startIndex" byreference="false" type="int"/>
+    <parameter name="value" byreference="false" type="string"/>
+  </method>
+  <method name="inner" start="381" end="384" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PhpCsFixer\DocBlock\TypeExpression" namespace="PhpCsFixer\DocBlock" name="TypeExpression"/>
+    </return>
+    <parameter name="value" byreference="false" type="string"/>
+  </method>
+  <method name="getParentType" start="386" end="403" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="true"/>
+    <parameter name="type1" byreference="false" type="string"/>
+    <parameter name="type2" byreference="false" type="string"/>
+  </method>
+  <method name="normalize" start="405" end="454" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="type" byreference="false" type="string"/>
+  </method>
+  <method name="getAliases" start="459" end="470" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return description="string&gt;" type="object">
+        <type full="PhpCsFixer\DocBlock\array&lt;string" namespace="PhpCsFixer\DocBlock" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+</class>

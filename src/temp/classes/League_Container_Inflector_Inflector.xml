@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="League\Container\Inflector\Inflector" namespace="League\Container\Inflector" name="Inflector" abstract="false" final="false" start="11" end="97">
+  <file path="//var/www/html/vendor/league/container/src/Inflector" file="Inflector.php" realpath="/var/www/html/vendor/league/container/src/Inflector/Inflector.php" size="2342" time="2021-11-16T10:29:06+00:00" unixtime="1637058546" sha1="ea70ba5fc97fa820f94a94731fe4549ae4fdab7b" relative="ar/www/html/vendor/league/container/src/Inflector/Inflector.php"/>
+  <implements full="League\Container\Argument\ArgumentResolverInterface" namespace="League\Container\Argument" name="ArgumentResolverInterface"/>
+  <implements full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+  <uses full="League\Container\Argument\ArgumentResolverTrait" namespace="League\Container\Argument" name="ArgumentResolverTrait" start="13" end="13"/>
+  <uses full="League\Container\ContainerAwareTrait" namespace="League\Container" name="ContainerAwareTrait" start="14" end="14"/>
+  <member name="type" visibility="protected" static="false" line="19">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="callback" visibility="protected" static="false" line="24">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="League\Container\Inflector\callable|null" namespace="League\Container\Inflector" name="callable|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="methods" default="" type="array" visibility="protected" static="false" line="29">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="properties" default="" type="array" visibility="protected" static="false" line="34">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="36" end="40" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="callback" byreference="false" type="callable" default="NULL"/>
+  </constructor>
+  <method name="getType" start="42" end="45" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="invokeMethod" start="47" end="51" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="args" byreference="false" type="array"/>
+  </method>
+  <method name="invokeMethods" start="53" end="60" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+    </return>
+    <parameter name="methods" byreference="false" type="array"/>
+  </method>
+  <method name="setProperty" start="62" end="66" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+    </return>
+    <parameter name="property" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setProperties" start="68" end="75" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+    </return>
+    <parameter name="properties" byreference="false" type="array"/>
+  </method>
+  <method name="inflect" start="77" end="96" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="object" byreference="false" type="object"/>
+    <inline>
+      <comment value="array_combine() can technically return false" line="82"/>
+    </inline>
+  </method>
+  <interface full="League\Container\Argument\ArgumentResolverInterface" namespace="League\Container\Argument" name="ArgumentResolverInterface">
+    <extends full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface"/>
+    <method name="resolveArguments" start="12" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="arguments" byreference="false" type="array"/>
+    </method>
+    <method name="reflectArguments" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="method" byreference="false" type="object">
+        <type full="ReflectionFunctionAbstract" namespace="" name="ReflectionFunctionAbstract"/>
+      </parameter>
+      <parameter name="args" byreference="false" type="array" default=""/>
+    </method>
+  </interface>
+  <interface full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface">
+    <method name="getType" start="9" end="9" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="inflect" start="10" end="10" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="object" byreference="false" type="object"/>
+    </method>
+    <method name="invokeMethod" start="11" end="11" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+      </return>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="args" byreference="false" type="array"/>
+    </method>
+    <method name="invokeMethods" start="12" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+      </return>
+      <parameter name="methods" byreference="false" type="array"/>
+    </method>
+    <method name="setProperties" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+      </return>
+      <parameter name="properties" byreference="false" type="array"/>
+    </method>
+    <method name="setProperty" start="14" end="14" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+      </return>
+      <parameter name="property" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+    </method>
+  </interface>
+  <trait full="League\Container\Argument\ArgumentResolverTrait" namespace="League\Container\Argument" name="ArgumentResolverTrait">
+    <method name="resolveArguments" start="16" end="64" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="arguments" byreference="false" type="array"/>
+    </method>
+    <method name="reflectArguments" start="66" end="108" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="method" byreference="false" type="object">
+        <type full="ReflectionFunctionAbstract" namespace="" name="ReflectionFunctionAbstract"/>
+      </parameter>
+      <parameter name="args" byreference="false" type="array" default=""/>
+    </method>
+    <method name="getContainer" start="110" end="110" abstract="true" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </return>
+    </method>
+  </trait>
+  <trait full="League\Container\ContainerAwareTrait" namespace="League\Container" name="ContainerAwareTrait">
+    <member name="container" visibility="protected" static="false" line="15">
+      <docblock>
+        <description/>
+        <var type="object">
+          <type full="League\Container\?DefinitionContainerInterface" namespace="League\Container" name="?DefinitionContainerInterface"/>
+        </var>
+      </docblock>
+    </member>
+    <method name="setContainer" start="17" end="30" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface"/>
+      </return>
+      <parameter name="container" byreference="false" type="object">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </parameter>
+    </method>
+    <method name="getContainer" start="32" end="39" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </return>
+    </method>
+  </trait>
+</class>

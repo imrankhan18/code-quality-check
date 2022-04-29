@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\Message" namespace="GuzzleHttp\Psr7" name="Message" abstract="false" final="true" start="11" end="242">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="Message.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/Message.php" size="8202" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="34975c91825f96157677588f99d79e876101a049" relative="ar/www/html/vendor/guzzlehttp/psr7/src/Message.php"/>
+  <method name="toString" start="18" end="46" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns the string representation of an HTTP message."/>
+      <param description="Message to convert to a string." type="object" variable="$message">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </param>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="message" byreference="false" type="object">
+      <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    </parameter>
+  </method>
+  <method name="bodySummary" start="56" end="84" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get a short summary of the message body.">Will return `null` if the response is not printable.</description>
+      <param description="The message to get the body summary" type="object" variable="$message">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </param>
+      <param description="The maximum allowed size of the summary" type="int" variable="$truncateAt"/>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="message" byreference="false" type="object">
+      <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    </parameter>
+    <parameter name="truncateAt" byreference="false" type="integer" default="120"/>
+    <inline>
+      <comment value="Matches any printable character, including unicode characters:" line="77"/>
+      <comment value="letters, marks, numbers, punctuation, spacing, and separators." line="78"/>
+    </inline>
+  </method>
+  <method name="rewindBody" start="96" end="103" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Attempts to rewind a message body and throws an exception on failure.">The body of the message will only be rewound if a call to `tell()`
+returns a value other than `0`.</description>
+      <param description="Message to rewind" type="object" variable="$message">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </param>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="message" byreference="false" type="object">
+      <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    </parameter>
+  </method>
+  <method name="parseMessage" start="114" end="167" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Parses an HTTP message into an associative array.">The array contains the "start-line" key containing the start line of
+the message, "headers" key containing an associative array of header
+array values, and a "body" key containing the body of the message.</description>
+      <param description="HTTP request or response to parse." type="string" variable="$message"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="message" byreference="false" type="string"/>
+    <inline>
+      <comment value="Put back the delimiter we split previously" line="129"/>
+      <comment value="If these aren't the same, then one line didn't match and there's an invalid header." line="146"/>
+    </inline>
+  </method>
+  <method name="parseRequestUri" start="175" end="190" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Constructs a URI for an HTTP request message."/>
+      <param description="Path from the start-line" type="string" variable="$path"/>
+      <param description="Array of headers (each value an array)." type="array" variable="$headers"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="headers" byreference="false" type="array"/>
+    <inline>
+      <comment value="If no host is found, then a full URI cannot be constructed." line="181"/>
+    </inline>
+  </method>
+  <method name="parseRequest" start="197" end="216" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Parses a request message string into a request object."/>
+      <param description="Request message string." type="string" variable="$message"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+    <parameter name="message" byreference="false" type="string"/>
+  </method>
+  <method name="parseResponse" start="223" end="241" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Parses a response message string into a response object."/>
+      <param description="Response message string." type="string" variable="$message"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </return>
+    <parameter name="message" byreference="false" type="string"/>
+    <inline>
+      <comment value="According to https://tools.ietf.org/html/rfc7230#section-3.1.2 the space" line="226"/>
+      <comment value="between status-code and reason-phrase is required. But browsers accept" line="227"/>
+      <comment value="responses without space and reason as well." line="228"/>
+    </inline>
+  </method>
+</class>

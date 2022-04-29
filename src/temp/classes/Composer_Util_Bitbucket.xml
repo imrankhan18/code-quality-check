@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Bitbucket" namespace="Composer\Util" name="Bitbucket" abstract="false" final="false" start="23" end="267">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Bitbucket.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Bitbucket.php" size="9607" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="c49e76d81551d40f8ea93fbef0df3f3ad162e94d" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Bitbucket.php"/>
+  <docblock>
+    <description/>
+    <author value="Paul Wenke &lt;wenke.paul@gmail.com&gt;"/>
+  </docblock>
+  <member name="io" visibility="private" static="false" line="26">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="private" static="false" line="28">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="process" visibility="private" static="false" line="30">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="httpDownloader" visibility="private" static="false" line="32">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="token" default="NULL" visibility="private" static="false" line="34">
+    <docblock>
+      <var description="string, expires_in?: int}|null" type="object">
+        <type full="Composer\Util\array{access_token:" namespace="Composer\Util" name="array{access_token:"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="time" visibility="private" static="false" line="36">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\int|null" namespace="Composer\Util" name="int|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constant type="string" name="OAUTH2_ACCESS_TOKEN_URL" value="'https://bitbucket.org/site/oauth2/access_token'"/>
+  <constructor name="__construct" start="49" end="56" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor."/>
+      <param description="The IO instance" type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param description="The composer configuration" type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param description="Process instance, injectable for mocking" type="object" variable="$process">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </param>
+      <param description="Remote Filesystem, injectable for mocking" type="object" variable="$httpDownloader">
+        <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+      </param>
+      <param description="Timestamp, injectable for mocking" type="int" variable="$time"/>
+    </docblock>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="process" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+    <parameter name="httpDownloader" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+    </parameter>
+    <parameter name="time" byreference="false" type="int" default="NULL"/>
+  </constructor>
+  <method name="getToken" start="61" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="authorizeOAuth" start="76" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Attempts to authorize a Bitbucket domain via OAuth"/>
+      <param description="The host this Bitbucket instance is located at" type="string" variable="$originUrl"/>
+      <return description="true on success" type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <inline>
+      <comment value="if available use token from git config" line="82"/>
+    </inline>
+  </method>
+  <method name="requestAccessToken" start="95" end="133" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="authorizeOAuthInteractively" start="144" end="188" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Authorizes a Bitbucket domain interactively via OAuth"/>
+      <param description="The host this Bitbucket instance is located at" type="string" variable="$originUrl"/>
+      <param description="The reason this authorization is required" type="string" variable="$message"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <throws type="object">
+        <type full="Composer\Util\TransportException|\Exception" namespace="Composer\Util\TransportException|" name="Exception"/>
+      </throws>
+      <return description="true on success" type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <parameter name="message" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="store value in user config" line="179"/>
+      <comment value="Remove conflicting basic auth credentials (if available)" line="182"/>
+    </inline>
+  </method>
+  <method name="requestToken" start="198" end="216" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieves an access token from Bitbucket."/>
+      <param type="string" variable="$originUrl"/>
+      <param type="string" variable="$consumerKey"/>
+      <param type="string" variable="$consumerSecret"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <parameter name="consumerKey" byreference="false" type="string"/>
+    <parameter name="consumerSecret" byreference="false" type="string"/>
+  </method>
+  <method name="storeInAuthConfig" start="227" end="244" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Store the new/updated credentials to the configuration"/>
+      <param type="string" variable="$originUrl"/>
+      <param type="string" variable="$consumerKey"/>
+      <param type="string" variable="$consumerSecret"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="originUrl" byreference="false" type="string"/>
+    <parameter name="consumerKey" byreference="false" type="string"/>
+    <parameter name="consumerSecret" byreference="false" type="string"/>
+  </method>
+  <method name="getTokenFromConfig" start="250" end="266" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$originUrl"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="originUrl" byreference="false" type="string"/>
+  </method>
+</class>

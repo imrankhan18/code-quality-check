@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\LockTransaction" namespace="Composer\DependencyResolver" name="LockTransaction" abstract="false" final="false" start="23" end="161">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="LockTransaction.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/LockTransaction.php" size="5808" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="a6b71c0eb4102036018765c04d5a97a5a605cd00" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/LockTransaction.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+    <internal/>
+  </docblock>
+  <extends full="Composer\DependencyResolver\Transaction" namespace="Composer\DependencyResolver" name="Transaction"/>
+  <member name="presentMap" visibility="protected" static="false" line="32">
+    <docblock>
+      <description compact="packages in current lock file, platform repo or otherwise present">Indexed by spl_object_hash</description>
+      <var description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="unlockableMap" visibility="protected" static="false" line="41">
+    <docblock>
+      <description compact="Packages which cannot be mapped, platform repo, root package, other fixed repos">Indexed by package id</description>
+      <var description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="resultPackages" visibility="protected" static="false" line="46">
+    <docblock>
+      <description/>
+      <var description="BasePackage[], non-dev: BasePackage[], all: BasePackage[]}" type="object">
+        <type full="Composer\DependencyResolver\array{dev:" namespace="Composer\DependencyResolver" name="array{dev:"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="52" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="BasePackage&gt; $presentMap" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </param>
+      <param description="BasePackage&gt; $unlockableMap" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </param>
+    </docblock>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="presentMap" byreference="false" type="array"/>
+    <parameter name="unlockableMap" byreference="false" type="array"/>
+    <parameter name="decisions" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Decisions" namespace="Composer\DependencyResolver" name="Decisions"/>
+    </parameter>
+  </constructor>
+  <method name="setResultPackages" start="65" end="80" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="decisions" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Decisions" namespace="Composer\DependencyResolver" name="Decisions"/>
+    </parameter>
+  </method>
+  <method name="setNonDevPackages" start="85" end="101" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="extractionResult" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\LockTransaction" namespace="Composer\DependencyResolver" name="LockTransaction"/>
+    </parameter>
+  </method>
+  <method name="getNewLockPackages" start="109" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$devMode">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param type="object" variable="$updateMirrors">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\BasePackage" namespace="Composer\DependencyResolver" name="BasePackage"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="devMode" byreference="false" type="bool"/>
+    <parameter name="updateMirrors" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getAliases" start="140" end="160" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Checks which of the given aliases from composer.json are actually in use for the lock file"/>
+      <param description="string version: string, alias: string, alias_normalized: string}&gt; $aliases" type="object">
+        <type full="Composer\DependencyResolver\array&lt;array{package:" namespace="Composer\DependencyResolver" name="array&lt;array{package:"/>
+      </param>
+      <return description="string, version: string, alias: string, alias_normalized: string}&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;array{package:" namespace="Composer\DependencyResolver" name="array&lt;array{package:"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="aliases" byreference="false" type="array"/>
+  </method>
+  <parent full="Composer\DependencyResolver\Transaction" namespace="Composer\DependencyResolver" name="Transaction">
+    <member name="operations" visibility="protected" static="false" line="30">
+      <docblock>
+        <description/>
+        <var type="array" of="object">
+          <type full="Composer\DependencyResolver\OperationInterface" namespace="Composer\DependencyResolver" name="OperationInterface"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="presentPackages" visibility="protected" static="false" line="36">
+      <docblock>
+        <description compact="Packages present at the beginning of the transaction"/>
+        <var type="array" of="object">
+          <type full="Composer\DependencyResolver\PackageInterface" namespace="Composer\DependencyResolver" name="PackageInterface"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="resultPackageMap" visibility="protected" static="false" line="42">
+      <docblock>
+        <description compact="Package set resulting from this transaction"/>
+        <var description="PackageInterface&gt;" type="object">
+          <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="resultPackagesByName" default="" type="array" visibility="protected" static="false" line="47">
+      <docblock>
+        <description/>
+        <var description="PackageInterface[]&gt;" type="object">
+          <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="53" end="58" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="array" variable="$presentPackages" of="object">
+          <type full="Composer\DependencyResolver\PackageInterface" namespace="Composer\DependencyResolver" name="PackageInterface"/>
+        </param>
+        <param type="array" variable="$resultPackages" of="object">
+          <type full="Composer\DependencyResolver\PackageInterface" namespace="Composer\DependencyResolver" name="PackageInterface"/>
+        </param>
+      </docblock>
+      <parameter name="presentPackages" byreference="false" type="array"/>
+      <parameter name="resultPackages" byreference="false" type="array"/>
+    </constructor>
+    <method name="getOperations" start="63" end="66" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="array" of="object">
+          <type full="Composer\DependencyResolver\OperationInterface" namespace="Composer\DependencyResolver" name="OperationInterface"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="calculateOperations" start="104" end="211" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return type="array" of="object">
+          <type full="Composer\DependencyResolver\OperationInterface" namespace="Composer\DependencyResolver" name="OperationInterface"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+      <inline>
+        <todo value="fix this:" line="188"/>
+        <comment value="we have to do this again here even though the above stack code did it because moving plugins moves them before uninstalls" line="189"/>
+        <todo value="skip updates which don't update? is this needed? we shouldn't schedule this update in the first place?" line="192"/>
+        <comment value="if ('update' === $opType) {" line="193"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="$targetPackage = $operation-&gt;getTargetPackage();" line="194"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="if ($targetPackage-&gt;isDev()) {" line="195"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="$initialPackage = $operation-&gt;getInitialPackage();" line="196"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="if ($targetPackage-&gt;getVersion() === $initialPackage-&gt;getVersion()" line="197"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="&amp;&amp; (!$targetPackage-&gt;getSourceReference() || $targetPackage-&gt;getSourceReference() === $initialPackage-&gt;getSourceReference())" line="198"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="&amp;&amp; (!$targetPackage-&gt;getDistReference() || $targetPackage-&gt;getDistReference() === $initialPackage-&gt;getDistReference())" line="199"/>
+        <comment xmlns="http://xml.phpdox.net/src" value=") {" line="200"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="$this-&gt;io-&gt;writeError('  - Skipping update of ' . $targetPackage-&gt;getPrettyName() . ' to the same reference-locked version', true, IOInterface::DEBUG);" line="201"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="$this-&gt;io-&gt;writeError('', true, IOInterface::DEBUG);" line="202"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="continue;" line="203"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="}" line="204"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="}" line="205"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="}" line="206"/>
+      </inline>
+    </method>
+    <method name="getRootPackages" start="221" end="242" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Determine which packages in the result are not required by any other packages in it.">These serve as a starting point to enumerate packages in a topological order despite potential cycles.
+If there are packages with a cycle on the top level the package with the lowest name gets picked</description>
+        <return description="PackageInterface&gt;" type="object">
+          <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getProvidersInResult" start="247" end="254" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return type="array" of="object">
+          <type full="Composer\DependencyResolver\PackageInterface" namespace="Composer\DependencyResolver" name="PackageInterface"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+      <parameter name="link" byreference="false" type="object">
+        <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+      </parameter>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - GuzzleHttp\MessageFormatter</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#GuzzleHttp">GuzzleHttp</a>
+          </li>
+          <li class="separator">MessageFormatter</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/guzzlehttp/guzzle/src/MessageFormatter.php.xhtml#line38">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>GuzzleHttp\</small>MessageFormatter</h1>
+        <h4>Formats log messages using variable substitutions for requests, responses, and other transactional data.</h4>
+        <p>The following variable substitutions are supported:<br/><br/>- {request}: Full HTTP request message<br/>- {response}: Full HTTP response message<br/>- {ts}: ISO 8601 date in GMT<br/>- {date_iso_8601} ISO 8601 date in GMT<br/>- {date_common_log} Apache common log date using the configured timezone.<br/>- {host}: Host of the request<br/>- {method}: Method of the request<br/>- {uri}: URI of the request<br/>- {version}: Protocol version<br/>- {target}: Request target of the request (path + query + fragment)<br/>- {hostname}: Hostname of the machine that sent the request<br/>- {code}: Status code of the response (if available)<br/>- {phrase}: Reason phrase of the response (if available)<br/>- {error}: Any error messages (if available)<br/>- {req_header_*}: Replace `*` with the lowercased name of a request header to add to the message<br/>- {res_header_*}: Replace `*` with the lowercased name of a response header to add to the message<br/>- {req_headers}: Request headers<br/>- {res_headers}: Response headers<br/>- {req_body}: Request body<br/>- {res_body}:       Response body</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class MessageFormatter
+                implements
+                <a title="GuzzleHttp\MessageFormatterInterface" href="../interfaces/GuzzleHttp_MessageFormatterInterface.xhtml">MessageFormatterInterface</a>
+            {<br/><ul class="none"><li>// constants</li><li>const CLF = "{hostname} {req_header_User-Agent} - [{date_common_log}] \"{method} {target} HTTP/{version}\" {code} {res_header_Content-Length}";</li><li>const DEBUG = "&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;\n{request}\n&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\n{response}\n--------\n{error}";</li><li>const SHORT = '[{ts}] "{method} {target} HTTP/{version}" {code}';</li></ul><ul class="none"><li>// members</li><li>private  <a href="#members">$template</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="GuzzleHttp\MessageFormatter" href="../classes/GuzzleHttp_MessageFormatter/__construct.xhtml">__construct</a>()
+                    </li><li>public string <a title="GuzzleHttp\MessageFormatter" href="../classes/GuzzleHttp_MessageFormatter/format.xhtml">format</a>()
+                    </li><li>private string <a title="GuzzleHttp\MessageFormatter" href="../classes/GuzzleHttp_MessageFormatter/headers.xhtml">headers</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="GuzzleHttp\MessageFormatterInterface" href="../interfaces/GuzzleHttp_MessageFormatterInterface.xhtml">GuzzleHttp\MessageFormatterInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CLF">CLF</td>
+              <td>"{hostname} {req_header_User-Agent} - [{date_common_log}] \"{method} {target} HTTP/{version}\" {code} {res_header_Content-Length}"</td>
+            </tr>
+            <tr>
+              <td id="DEBUG">DEBUG</td>
+              <td>"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;\n{request}\n&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\n{response}\n--------\n{error}"</td>
+            </tr>
+            <tr>
+              <td id="SHORT">SHORT</td>
+              <td>'[{ts}] "{method} {target} HTTP/{version}" {code}'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="template"><strong>$template</strong>
+                —
+                string</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="headers"><a title="GuzzleHttp\MessageFormatter" href="../classes/GuzzleHttp_MessageFormatter/headers.xhtml">headers()</a>
+                — Get headers from message as string</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="GuzzleHttp\MessageFormatter" href="../classes/GuzzleHttp_MessageFormatter/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="format"><a title="GuzzleHttp\MessageFormatter" href="../classes/GuzzleHttp_MessageFormatter/format.xhtml">format()</a>
+                — Returns a formatted message string.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

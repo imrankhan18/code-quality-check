@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_PackageFile_Generator_v1" namespace="" name="PEAR_PackageFile_Generator_v1" abstract="false" final="false" start="35" end="1285">
+  <file path="//usr/local/lib/php/PEAR/PackageFile/Generator" file="v1.php" realpath="/usr/local/lib/php/PEAR/PackageFile/Generator/v1.php" size="50353" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="e8f29ef5144b43ab6e704104e7c0568c3d21537a" relative="sr/local/lib/php/PEAR/PackageFile/Generator/v1.php"/>
+  <docblock>
+    <description compact="This class converts a PEAR_PackageFile_v1 object into any output format.">Supported output formats include array, XML string, and a PEAR_PackageFile_v2
+object, for converting package.xml 1.0 into package.xml 2.0 with no sweat.</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <member name="_packagefile" visibility="public" static="false" line="40">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_PackageFile_v1" namespace="" name="PEAR_PackageFile_v1"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="41" end="44" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="packagefile" byreference="true" type="{unknown}"/>
+  </constructor>
+  <method name="getPackagerVersion" start="46" end="49" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="toTgz" start="57" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_Packager" namespace="" name="PEAR_Packager"/>
+      </param>
+      <param description="if true, a .tgz is written, otherwise a .tar is written" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <param description="directory in which to save the .tgz" type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <return description="location of package or error object" type="object">
+        <type full="string|PEAR_Error" namespace="" name="string|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="packager" byreference="true" type="{unknown}"/>
+    <parameter name="compress" byreference="false" type="boolean" default="true"/>
+    <parameter name="where" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="{{{ Create the package file list" line="92"/>
+      <comment value="}}}" line="108"/>
+    </inline>
+  </method>
+  <method name="toPackageFile" start="135" end="159" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="directory to place the package.xml in, or null for a temporary dir" type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <param description="one of the PEAR_VALIDATE_* constants" type="int"/>
+      <param description="name of the generated file" type="string"/>
+      <param description="if true, then no analysis will be performed on role=&quot;php&quot; files" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="path to the created file on success" type="object">
+        <type full="string|PEAR_Error" namespace="" name="string|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="where" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_NORMAL"/>
+    <parameter name="name" byreference="false" type="string" default="'package.xml'"/>
+    <parameter name="nofilechecking" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_fixXmlEncoding" start="168" end="176" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="fix both XML encoding to be UTF8, and replace standard XML entities &lt; &gt; &quot; &amp; '"/>
+      <param type="string" variable="$string"/>
+      <return type="string"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="toXml" start="184" end="228" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an XML document based on the package info (as returned by the PEAR_Common::infoFrom* methods)."/>
+      <return description="XML data" type="string"/>
+    </docblock>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_NORMAL"/>
+    <parameter name="nofilevalidation" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_makeReleaseXml" start="243" end="352" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate part of an XML description with release information."/>
+      <param description="array with release information" type="array" variable="$pkginfo"/>
+      <param description="whether the result will be in a changelog element" type="object" variable="$changelog">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="XML data" type="string"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="pkginfo" byreference="false" type="{unknown}"/>
+    <parameter name="changelog" byreference="false" type="boolean" default="false"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_NORMAL"/>
+    <inline>
+      <comment value="XXX QUOTE ENTITIES IN PCDATA, OR EMBED IN CDATA BLOCKS!!" line="245"/>
+    </inline>
+  </method>
+  <method name="recursiveXmlFilelist" start="358" end="365" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <access value="protected"/>
+    </docblock>
+    <parameter name="list" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_addDir" start="374" end="385" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <param type="array"/>
+      <param type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <param type="object">
+        <type full="array|null" namespace="" name="array|null"/>
+      </param>
+      <access value="private"/>
+    </docblock>
+    <parameter name="dirs" byreference="true" type="{unknown}"/>
+    <parameter name="dir" byreference="false" type="{unknown}"/>
+    <parameter name="file" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_formatDir" start="393" end="415" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <param type="string"/>
+      <param type="string"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="dirs" byreference="false" type="{unknown}"/>
+    <parameter name="indent" byreference="false" type="string" default="''"/>
+    <parameter name="curdir" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="_formatFile" start="423" end="455" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <param type="array"/>
+      <param type="string"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="{unknown}"/>
+    <parameter name="indent" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_unIndent" start="466" end="481" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Unindent given string (?)"/>
+      <param description="The string that has to be unindented." type="string" variable="$str"/>
+      <return type="string"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="remove leading newlines" line="468"/>
+      <comment value="find whitespace at the beginning of the first line" line="470"/>
+      <comment value="remove the same amount of whitespace from following lines" line="474"/>
+    </inline>
+  </method>
+  <method name="dependenciesToV2" start="486" end="491" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="toV2" start="504" end="700" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Convert a package.xml version 1.0 into version 2.0">Note that this does a basic conversion, to allow more advanced
+features like bundles and multiple releases</description>
+      <param description="the classname to instantiate and return.  This must be" type="string">PEAR_PackageFile_v2 or a descendant</param>
+      <param description="if true, only valid, deterministic package.xml 1.0 as defined by the" type="boolean">strictest parameters will be converted</param>
+      <return type="object">
+        <type full="PEAR_PackageFile_v2|PEAR_Error" namespace="" name="PEAR_PackageFile_v2|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="class" byreference="false" type="string" default="'PEAR_PackageFile_v2'"/>
+    <parameter name="strict" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_convertDependencies2_0" start="707" end="792" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <param type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <access value="private"/>
+    </docblock>
+    <parameter name="release" byreference="true" type="{unknown}"/>
+    <parameter name="internal" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="this is a lot safer" line="710"/>
+    </inline>
+  </method>
+  <method name="_convertFilelist2_0" start="798" end="840" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="package" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_convertRelease2_0" start="878" end="1090" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Post-process special files with install-as/platform attributes and make the release tag.">This complex method follows this work-flow to create the release tags:
+
+&lt;pre&gt;
+- if any install-as/platform exist, create a generic release and fill it with
+  o &lt;install as=..&gt; tags for &lt;file name=... install-as=...&gt;
+  o &lt;install as=..&gt; tags for &lt;file name=... platform=!... install-as=..&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=...&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=... install-as=..&gt;
+- create a release for each platform encountered and fill with
+  o &lt;install as..&gt; tags for &lt;file name=... install-as=...&gt;
+  o &lt;install as..&gt; tags for &lt;file name=... platform=this platform install-as=..&gt;
+  o &lt;install as..&gt; tags for &lt;file name=... platform=!other platform install-as=..&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=!this platform&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=other platform&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=other platform install-as=..&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=!this platform install-as=..&gt;
+&lt;/pre&gt;
+
+It does this by accessing the $package parameter, which contains an array with
+indices:
+
+ - platform: mapping of file =&gt; OS the file should be installed on
+ - install-as: mapping of file =&gt; installed name
+ - osmap: mapping of OS =&gt; list of files that should be installed
+   on that OS
+ - notosmap: mapping of OS =&gt; list of files that should not be
+   installed on that OS</description>
+      <param type="array"/>
+      <param type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="release" byreference="true" type="{unknown}"/>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="- if any install-as/platform exist, create a generic release and fill it with" line="880"/>
+    </inline>
+  </method>
+  <method name="_processDep" start="1097" end="1146" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <return type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_processPhpDeps" start="1152" end="1208" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="deps" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_processMultipleDepsName" start="1216" end="1284" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="process multiple dependencies that have a name, like package deps"/>
+      <param type="array"/>
+      <return type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="deps" byreference="false" type="{unknown}"/>
+  </method>
+</class>

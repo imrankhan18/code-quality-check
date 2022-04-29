@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\HttpFactory" namespace="GuzzleHttp\Psr7" name="HttpFactory" abstract="false" final="true" start="26" end="100">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="HttpFactory.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/HttpFactory.php" size="3096" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="bb6b34eabd8f8f873ef4fdc3e22fb1d1b392cc3d" relative="ar/www/html/vendor/guzzlehttp/psr7/src/HttpFactory.php"/>
+  <docblock>
+    <description compact="Implements all of the PSR-17 interfaces.">Note: in consuming code it is recommended to require the implemented interfaces
+and inject the instance of this class multiple times.</description>
+  </docblock>
+  <implements full="Psr\Http\Message\RequestFactoryInterface" namespace="Psr\Http\Message" name="RequestFactoryInterface"/>
+  <implements full="Psr\Http\Message\ResponseFactoryInterface" namespace="Psr\Http\Message" name="ResponseFactoryInterface"/>
+  <implements full="Psr\Http\Message\ServerRequestFactoryInterface" namespace="Psr\Http\Message" name="ServerRequestFactoryInterface"/>
+  <implements full="Psr\Http\Message\StreamFactoryInterface" namespace="Psr\Http\Message" name="StreamFactoryInterface"/>
+  <implements full="Psr\Http\Message\UploadedFileFactoryInterface" namespace="Psr\Http\Message" name="UploadedFileFactoryInterface"/>
+  <implements full="Psr\Http\Message\UriFactoryInterface" namespace="Psr\Http\Message" name="UriFactoryInterface"/>
+  <method name="createUploadedFile" start="34" end="46" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UploadedFileInterface" namespace="Psr\Http\Message" name="UploadedFileInterface"/>
+    </return>
+    <parameter name="stream" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="size" byreference="false" type="int" default="NULL"/>
+    <parameter name="error" byreference="false" type="{unknown}" default="" constant="UPLOAD_ERR_OK"/>
+    <parameter name="clientFilename" byreference="false" type="string" default="NULL"/>
+    <parameter name="clientMediaType" byreference="false" type="string" default="NULL"/>
+  </method>
+  <method name="createStream" start="48" end="51" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+    <parameter name="content" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="createStreamFromFile" start="53" end="66" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="mode" byreference="false" type="string" default="'r'"/>
+  </method>
+  <method name="createStreamFromResource" start="68" end="71" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+    <parameter name="resource" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createServerRequest" start="73" end="84" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\ServerRequestInterface" namespace="Psr\Http\Message" name="ServerRequestInterface"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="serverParams" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createResponse" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </return>
+    <parameter name="code" byreference="false" type="integer" default="200"/>
+    <parameter name="reasonPhrase" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="createRequest" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createUri" start="96" end="99" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="uri" byreference="false" type="string" default="''"/>
+  </method>
+  <interface full="Psr\Http\Message\RequestFactoryInterface" namespace="Psr\Http\Message" name="RequestFactoryInterface">
+    <method name="createRequest" start="17" end="17" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a new request."/>
+        <param description="The HTTP method associated with the request." type="string" variable="$method"/>
+        <param description="The URI associated with the request. If" type="object" variable="$uri">the value is a string, the factory MUST create a UriInterface
+    instance based on it.<type full="Psr\Http\Message\UriInterface|string" namespace="Psr\Http\Message" name="UriInterface|string"/></param>
+        <return type="object">
+          <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="{unknown}"/>
+    </method>
+  </interface>
+  <interface full="Psr\Http\Message\ResponseFactoryInterface" namespace="Psr\Http\Message" name="ResponseFactoryInterface">
+    <method name="createResponse" start="17" end="17" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a new response."/>
+        <param description="HTTP status code; defaults to 200" type="int" variable="$code"/>
+        <param description="Reason phrase to associate with status code" type="string" variable="$reasonPhrase">in generated response; if none is provided implementations MAY use
+    the defaults as suggested in the HTTP specification.</param>
+        <return type="object">
+          <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+      </return>
+      <parameter name="code" byreference="false" type="integer" default="200"/>
+      <parameter name="reasonPhrase" byreference="false" type="string" default="''"/>
+    </method>
+  </interface>
+  <interface full="Psr\Http\Message\ServerRequestFactoryInterface" namespace="Psr\Http\Message" name="ServerRequestFactoryInterface">
+    <method name="createServerRequest" start="23" end="23" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a new server request.">Note that server-params are taken precisely as given - no parsing/processing
+of the given values is performed, and, in particular, no attempt is made to
+determine the HTTP method or URI, which must be provided explicitly.</description>
+        <param description="The HTTP method associated with the request." type="string" variable="$method"/>
+        <param description="The URI associated with the request. If" type="object" variable="$uri">the value is a string, the factory MUST create a UriInterface
+    instance based on it.<type full="Psr\Http\Message\UriInterface|string" namespace="Psr\Http\Message" name="UriInterface|string"/></param>
+        <param description="Array of SAPI parameters with which to seed" type="array" variable="$serverParams">the generated request instance.</param>
+        <return type="object">
+          <type full="Psr\Http\Message\ServerRequestInterface" namespace="Psr\Http\Message" name="ServerRequestInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\ServerRequestInterface" namespace="Psr\Http\Message" name="ServerRequestInterface"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="{unknown}"/>
+      <parameter name="serverParams" byreference="false" type="array" default=""/>
+    </method>
+  </interface>
+  <interface full="Psr\Http\Message\StreamFactoryInterface" namespace="Psr\Http\Message" name="StreamFactoryInterface">
+    <method name="createStream" start="16" end="16" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a new stream from a string.">The stream SHOULD be created with a temporary resource.</description>
+        <param description="String content with which to populate the stream." type="string" variable="$content"/>
+        <return type="object">
+          <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </return>
+      <parameter name="content" byreference="false" type="string" default="''"/>
+    </method>
+    <method name="createStreamFromFile" start="33" end="33" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a stream from an existing file.">The file MUST be opened using the given mode, which may be any mode
+supported by the `fopen` function.
+
+The `$filename` MAY be any string supported by `fopen()`.</description>
+        <param description="Filename or stream URI to use as basis of stream." type="string" variable="$filename"/>
+        <param description="Mode with which to open the underlying filename/stream." type="string" variable="$mode"/>
+        <return type="object">
+          <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+        </return>
+        <throws description="If the file cannot be opened." type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+        <throws description="If the mode is invalid." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </return>
+      <parameter name="filename" byreference="false" type="string"/>
+      <parameter name="mode" byreference="false" type="string" default="'r'"/>
+    </method>
+    <method name="createStreamFromResource" start="44" end="44" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a new stream from an existing resource.">The stream MUST be readable and may be writable.</description>
+        <param description="PHP resource to use as basis of stream." type="resource" variable="$resource"/>
+        <return type="object">
+          <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </return>
+      <parameter name="resource" byreference="false" type="{unknown}"/>
+    </method>
+  </interface>
+  <interface full="Psr\Http\Message\UploadedFileFactoryInterface" namespace="Psr\Http\Message" name="UploadedFileFactoryInterface">
+    <method name="createUploadedFile" start="27" end="33" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a new uploaded file.">If a size is not provided it will be determined by checking the size of
+the file.</description>
+        <see value="http://php.net/manual/features.file-upload.post-method.php"/>
+        <see value="http://php.net/manual/features.file-upload.errors.php"/>
+        <param description="Underlying stream representing the" type="object" variable="$stream">uploaded file content.<type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/></param>
+        <param description="in bytes" type="int" variable="$size"/>
+        <param description="PHP file upload error" type="int" variable="$error"/>
+        <param description="Filename as provided by the client, if any." type="string" variable="$clientFilename"/>
+        <param description="Media type as provided by the client, if any." type="string" variable="$clientMediaType"/>
+        <return type="object">
+          <type full="Psr\Http\Message\UploadedFileInterface" namespace="Psr\Http\Message" name="UploadedFileInterface"/>
+        </return>
+        <throws description="If the file resource is not readable." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\UploadedFileInterface" namespace="Psr\Http\Message" name="UploadedFileInterface"/>
+      </return>
+      <parameter name="stream" byreference="false" type="object">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </parameter>
+      <parameter name="size" byreference="false" type="int" default="NULL"/>
+      <parameter name="error" byreference="false" type="{unknown}" default="" constant="UPLOAD_ERR_OK"/>
+      <parameter name="clientFilename" byreference="false" type="string" default="NULL"/>
+      <parameter name="clientMediaType" byreference="false" type="string" default="NULL"/>
+    </method>
+  </interface>
+  <interface full="Psr\Http\Message\UriFactoryInterface" namespace="Psr\Http\Message" name="UriFactoryInterface">
+    <method name="createUri" start="16" end="16" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create a new URI."/>
+        <param type="string" variable="$uri"/>
+        <return type="object">
+          <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+        </return>
+        <throws description="If the given URI cannot be parsed." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </return>
+      <parameter name="uri" byreference="false" type="string" default="''"/>
+    </method>
+  </interface>
+</class>

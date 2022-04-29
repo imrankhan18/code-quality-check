@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Http\ProxyHelper" namespace="Composer\Util\Http" name="ProxyHelper" abstract="false" final="false" start="21" end="189">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util/Http" file="ProxyHelper.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Http/ProxyHelper.php" size="5659" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="72917fbac40599164e61840821900be339a078bb" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Http/ProxyHelper.php"/>
+  <docblock>
+    <description compact="Proxy discovery and helper class"/>
+    <internal/>
+    <author value="John Stevenson &lt;john-stevenson@blueyonder.co.uk&gt;"/>
+  </docblock>
+  <method name="getProxyData" start="30" end="58" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns proxy environment values"/>
+      <return description="string|null, string|null} httpProxy, httpsProxy, noProxy values" type="object">
+        <type full="Composer\Util\Http\array{string|null" namespace="Composer\Util\Http" name="array{string|null"/>
+      </return>
+      <throws description="on malformed url" type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <inline>
+      <comment value="Handle http_proxy/HTTP_PROXY on CLI only for security reasons" line="35"/>
+      <comment value="Prefer CGI_HTTP_PROXY if available" line="42"/>
+      <comment value="Handle https_proxy/HTTPS_PROXY" line="47"/>
+      <comment value="Handle no_proxy" line="54"/>
+    </inline>
+  </method>
+  <method name="getContextOptions" start="67" end="90" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns http context options for the proxy url"/>
+      <param type="string" variable="$proxyUrl"/>
+      <return description="array{proxy: string, header?: string}}" type="object">
+        <type full="Composer\Util\Http\array{http:" namespace="Composer\Util\Http" name="array{http:"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="proxyUrl" byreference="false" type="string"/>
+    <inline>
+      <comment value="Remove any authorization" line="71"/>
+      <comment value="Handle any authorization" line="77"/>
+    </inline>
+  </method>
+  <method name="setRequestFullUri" start="100" end="107" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Sets/unsets request_fulluri value in http context options array"/>
+      <param type="string" variable="$requestUrl"/>
+      <param description="Set by method" type="array" variable="$options" of="object">
+        <type full="Composer\Util\Http\mixed" namespace="Composer\Util\Http" name="mixed"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="requestUrl" byreference="false" type="string"/>
+    <parameter name="options" byreference="true" type="array"/>
+  </method>
+  <method name="getProxyEnv" start="117" end="126" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="Searches $_SERVER for case-sensitive values"/>
+      <param description="Names to search for" type="array" variable="$names" of="object">
+        <type full="Composer\Util\Http\string" namespace="Composer\Util\Http" name="string"/>
+      </param>
+      <param description="Name of any found value" type="object" variable="$name">
+        <type full="Composer\Util\Http\string|null" namespace="Composer\Util\Http" name="string|null"/>
+      </param>
+      <return description="The found value" type="object">
+        <type full="Composer\Util\Http\string|null" namespace="Composer\Util\Http" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="names" byreference="false" type="array"/>
+    <parameter name="name" byreference="true" nullable="true" type="string"/>
+  </method>
+  <method name="checkProxy" start="136" end="154" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="Checks and formats a proxy url from the environment"/>
+      <param type="string" variable="$proxyUrl"/>
+      <param type="string" variable="$envName"/>
+      <throws description="on malformed url" type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return description="The formatted proxy url" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="proxyUrl" byreference="false" type="string"/>
+    <parameter name="envName" byreference="false" type="string"/>
+    <inline>
+      <comment value="We need parse_url to have identified a host" line="141"/>
+      <comment value="We need a port because streams and curl use different defaults" line="148"/>
+    </inline>
+  </method>
+  <method name="formatParsedUrl" start="164" end="188" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="Formats a url from its component parts"/>
+      <param description="string host: string, port?: int, user?: string, pass?: string} $proxy" type="object">
+        <type full="Composer\Util\Http\array{scheme?:" namespace="Composer\Util\Http" name="array{scheme?:"/>
+      </param>
+      <param type="object" variable="$includeAuth">
+        <type full="Composer\Util\Http\bool" namespace="Composer\Util\Http" name="bool"/>
+      </param>
+      <return description="The formatted value" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="proxy" byreference="false" type="array"/>
+    <parameter name="includeAuth" byreference="false" type="bool"/>
+  </method>
+</class>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Validate" namespace="" name="PEAR_Validate" abstract="false" final="false" start="38" end="625">
+  <file path="//usr/local/lib/php/PEAR" file="Validate.php" realpath="/usr/local/lib/php/PEAR/Validate.php" size="22005" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="03a759de56a7313c99fc2390771eafffaedb418a" relative="sr/local/lib/php/PEAR/Validate.php"/>
+  <docblock>
+    <description compact="Validation class for package.xml - channel-level advanced validation"/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <member name="packageregex" default="" type="{unknown}" constant="_PEAR_COMMON_PACKAGE_NAME_PREG" visibility="public" static="false" line="40"/>
+  <member name="_packagexml" visibility="public" static="false" line="44">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_state" default="" type="{unknown}" constant="PEAR_VALIDATE_NORMAL" visibility="public" static="false" line="48">
+    <docblock>
+      <description/>
+      <var description="one of the PEAR_VALIDATE_* constants" type="int"/>
+    </docblock>
+  </member>
+  <member name="_failures" default="" type="array" visibility="public" static="false" line="54">
+    <docblock>
+      <description compact="Format: ('error' =&gt; array('field' =&gt; name, 'reason' =&gt; reason), 'warning' =&gt; same)"/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <method name="_validPackageName" start="62" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Override this method to handle validation of normal package names"/>
+      <param type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <access value="protected"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="validPackageName" start="72" end="80" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="package name to validate" type="string"/>
+      <param description="name of channel-specific validation package" type="string"/>
+      <final/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="validatepackagename" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="validGroupName" start="88" end="91" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="This validates a bundle name, and bundle names must conform to the PEAR naming convention, so the method is final and static."/>
+      <param type="string"/>
+      <final/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="validState" start="99" end="102" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Determine whether $state represents a valid stability level"/>
+      <param type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <final/>
+    </docblock>
+    <parameter name="state" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getValidStates" start="109" end="112" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get a list of valid stability levels"/>
+      <return type="array"/>
+      <final/>
+    </docblock>
+  </method>
+  <method name="validVersion" start="121" end="124" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Determine whether a version is a properly formatted version number that can be used by version_compare"/>
+      <param type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <final/>
+    </docblock>
+    <parameter name="ver" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPackageFile" start="129" end="132" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </param>
+    </docblock>
+    <parameter name="pf" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_addFailure" start="137" end="140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_addWarning" start="145" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getFailures" start="150" end="155" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="validate" start="160" end="191" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="one of the PEAR_VALIDATE_* constants" type="int"/>
+    </docblock>
+    <parameter name="state" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="validatePackageName" start="196" end="236" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="validateVersion" start="241" end="421" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+    <inline>
+      <comment value="version must be based upon state" line="258"/>
+    </inline>
+  </method>
+  <method name="validateMaintainers" start="426" end="431" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+    <inline>
+      <comment value="maintainers can only be truly validated server-side for most channels" line="428"/>
+      <comment value="but allow this customization for those who wish it" line="429"/>
+    </inline>
+  </method>
+  <method name="validateDate" start="436" end="458" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="validateTime" start="463" end="488" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+    <inline>
+      <comment value="packager automatically sets time, so only validate if pear validate is called" line="470"/>
+    </inline>
+  </method>
+  <method name="validateState" start="493" end="507" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+    <inline>
+      <comment value="this is the closest to &quot;final&quot; php4 can get" line="495"/>
+    </inline>
+  </method>
+  <method name="validateStability" start="512" end="532" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+    <inline>
+      <comment value="snapshot is not allowed" line="524"/>
+    </inline>
+  </method>
+  <method name="validateSummary" start="537" end="540" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="validateDescription" start="545" end="548" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="validateLicense" start="553" end="556" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="validateNotes" start="561" end="564" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="validateDependencies" start="570" end="573" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="for package.xml 2.0 only - channels can't use package.xml 1.0"/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="_validateFilelist" start="579" end="582" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="for package.xml 1.0 only"/>
+      <access value="private"/>
+    </docblock>
+    <inline>
+      <comment value="placeholder for now" line="581"/>
+    </inline>
+  </method>
+  <method name="validateMainFilelist" start="588" end="591" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="for package.xml 2.0 only"/>
+      <access value="protected"/>
+    </docblock>
+    <inline>
+      <comment value="placeholder for now" line="590"/>
+    </inline>
+  </method>
+  <method name="validateReleaseFilelist" start="597" end="600" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="for package.xml 2.0 only"/>
+      <access value="protected"/>
+    </docblock>
+    <inline>
+      <comment value="placeholder for now" line="599"/>
+    </inline>
+  </method>
+  <method name="validateChangelog" start="605" end="608" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="validateFilelist" start="613" end="616" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="validateDeps" start="621" end="624" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <extenders>
+    <extender full="PEAR_Validator_PECL" namespace="" name="PEAR_Validator_PECL"/>
+  </extenders>
+</class>

@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\IO\NullIO" namespace="Composer\IO" name="NullIO" abstract="false" final="false" start="20" end="129">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/IO" file="NullIO.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/IO/NullIO.php" size="2426" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="f36480c2ba0704f5d52fb278b24cfffd70429440" relative="ar/www/html/vendor/composer/composer/src/Composer/IO/NullIO.php"/>
+  <docblock>
+    <description compact="IOInterface that is not interactive and never writes the output"/>
+    <author value="Christophe Coevoet &lt;stof@notk.org&gt;"/>
+  </docblock>
+  <extends full="Composer\IO\BaseIO" namespace="Composer\IO" name="BaseIO"/>
+  <method name="isInteractive" start="25" end="28" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isVerbose" start="33" end="36" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isVeryVerbose" start="41" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isDebug" start="49" end="52" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isDecorated" start="57" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="write" start="65" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="messages" byreference="false" type="{unknown}"/>
+    <parameter name="newline" byreference="false" type="boolean" default="true"/>
+    <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+  </method>
+  <method name="writeError" start="72" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="messages" byreference="false" type="{unknown}"/>
+    <parameter name="newline" byreference="false" type="boolean" default="true"/>
+    <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+  </method>
+  <method name="overwrite" start="79" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="messages" byreference="false" type="{unknown}"/>
+    <parameter name="newline" byreference="false" type="boolean" default="true"/>
+    <parameter name="size" byreference="false" nullable="true" type="int" default="NULL"/>
+    <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+  </method>
+  <method name="overwriteError" start="86" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="messages" byreference="false" type="{unknown}"/>
+    <parameter name="newline" byreference="false" type="boolean" default="true"/>
+    <parameter name="size" byreference="false" nullable="true" type="int" default="NULL"/>
+    <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+  </method>
+  <method name="ask" start="93" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <parameter name="question" byreference="false" type="{unknown}"/>
+    <parameter name="default" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="askConfirmation" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="question" byreference="false" type="{unknown}"/>
+    <parameter name="default" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="askAndValidate" start="109" end="112" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <parameter name="question" byreference="false" type="{unknown}"/>
+    <parameter name="validator" byreference="false" type="{unknown}"/>
+    <parameter name="attempts" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="default" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="askAndHideAnswer" start="117" end="120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="question" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="select" start="125" end="128" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <parameter name="question" byreference="false" type="{unknown}"/>
+    <parameter name="choices" byreference="false" type="{unknown}"/>
+    <parameter name="default" byreference="false" type="{unknown}"/>
+    <parameter name="attempts" byreference="false" type="boolean" default="false"/>
+    <parameter name="errorMessage" byreference="false" type="string" default="'Value &quot;%s&quot; is invalid'"/>
+    <parameter name="multiselect" byreference="false" type="boolean" default="false"/>
+  </method>
+  <parent full="Composer\IO\BaseIO" namespace="Composer\IO" name="BaseIO">
+    <implements full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    <member name="authentications" default="" type="array" visibility="protected" static="false" line="23">
+      <docblock>
+        <var description="array{username: string|null, password: string|null}&gt;" type="object">
+          <type full="Composer\IO\array&lt;string" namespace="Composer\IO" name="array&lt;string"/>
+        </var>
+      </docblock>
+    </member>
+    <method name="getAuthentications" start="28" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+    </method>
+    <method name="resetAuthentications" start="36" end="39" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="hasAuthentication" start="44" end="47" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="repositoryName" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getAuthentication" start="52" end="59" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="repositoryName" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setAuthentication" start="64" end="67" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="repositoryName" byreference="false" type="{unknown}"/>
+      <parameter name="username" byreference="false" type="{unknown}"/>
+      <parameter name="password" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="writeRaw" start="72" end="75" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="messages" byreference="false" type="{unknown}"/>
+      <parameter name="newline" byreference="false" type="boolean" default="true"/>
+      <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+    </method>
+    <method name="writeErrorRaw" start="80" end="83" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="messages" byreference="false" type="{unknown}"/>
+      <parameter name="newline" byreference="false" type="boolean" default="true"/>
+      <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+    </method>
+    <method name="checkAndSetAuthentication" start="94" end="110" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Check for overwrite and set the authentication information for the repository."/>
+        <param description="The unique name of repository" type="string" variable="$repositoryName"/>
+        <param description="The username" type="string" variable="$username"/>
+        <param description="The password" type="string" variable="$password"/>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="repositoryName" byreference="false" type="string"/>
+      <parameter name="username" byreference="false" type="string"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+    </method>
+    <method name="loadConfiguration" start="115" end="160" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="config" byreference="false" type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </parameter>
+      <inline>
+        <comment value="reload oauth tokens from config if available" line="124"/>
+        <comment value="reload http basic credentials from config if available" line="149"/>
+        <comment value="setup process timeout" line="158"/>
+      </inline>
+    </method>
+    <method name="emergency" start="162" end="165" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+    <method name="alert" start="167" end="170" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+    <method name="critical" start="172" end="175" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+    <method name="error" start="177" end="180" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+    <method name="warning" start="182" end="185" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+    <method name="notice" start="187" end="190" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+    <method name="info" start="192" end="195" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+    <method name="debug" start="197" end="200" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+    <method name="log" start="202" end="217" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="level" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="context" byreference="false" type="array" default=""/>
+    </method>
+  </parent>
+  <interface full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface">
+    <extends full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+    <constant type="{unknown}" name="QUIET" value="1"/>
+    <constant type="{unknown}" name="NORMAL" value="2"/>
+    <constant type="{unknown}" name="VERBOSE" value="4"/>
+    <constant type="{unknown}" name="VERY_VERBOSE" value="8"/>
+    <constant type="{unknown}" name="DEBUG" value="16"/>
+    <method name="isInteractive" start="36" end="36" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Is this input means interactive?"/>
+        <return type="object">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="isVerbose" start="43" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Is this output verbose?"/>
+        <return type="object">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="isVeryVerbose" start="50" end="50" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Is the output very verbose?"/>
+        <return type="object">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="isDebug" start="57" end="57" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Is the output in debug verbosity?"/>
+        <return type="object">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="isDecorated" start="64" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Is this output decorated?"/>
+        <return type="object">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="write" start="75" end="75" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Writes a message to the output."/>
+        <param description="The message as an array of lines or a single string" type="array" variable="$messages" of="object">
+          <type full="Composer\IO\string|string" namespace="Composer\IO" name="string|string"/>
+        </param>
+        <param description="Whether to add a newline or not" type="object" variable="$newline">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </param>
+        <param description="Verbosity level from the VERBOSITY_* constants" type="int" variable="$verbosity"/>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="messages" byreference="false" type="{unknown}"/>
+      <parameter name="newline" byreference="false" type="boolean" default="true"/>
+      <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+    </method>
+    <method name="writeError" start="86" end="86" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Writes a message to the error output."/>
+        <param description="The message as an array of lines or a single string" type="array" variable="$messages" of="object">
+          <type full="Composer\IO\string|string" namespace="Composer\IO" name="string|string"/>
+        </param>
+        <param description="Whether to add a newline or not" type="object" variable="$newline">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </param>
+        <param description="Verbosity level from the VERBOSITY_* constants" type="int" variable="$verbosity"/>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="messages" byreference="false" type="{unknown}"/>
+      <parameter name="newline" byreference="false" type="boolean" default="true"/>
+      <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+    </method>
+    <method name="writeRaw" start="97" end="97" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Writes a message to the output, without formatting it."/>
+        <param description="The message as an array of lines or a single string" type="array" variable="$messages" of="object">
+          <type full="Composer\IO\string|string" namespace="Composer\IO" name="string|string"/>
+        </param>
+        <param description="Whether to add a newline or not" type="object" variable="$newline">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </param>
+        <param description="Verbosity level from the VERBOSITY_* constants" type="int" variable="$verbosity"/>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="messages" byreference="false" type="{unknown}"/>
+      <parameter name="newline" byreference="false" type="boolean" default="true"/>
+      <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+    </method>
+    <method name="writeErrorRaw" start="108" end="108" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Writes a message to the error output, without formatting it."/>
+        <param description="The message as an array of lines or a single string" type="array" variable="$messages" of="object">
+          <type full="Composer\IO\string|string" namespace="Composer\IO" name="string|string"/>
+        </param>
+        <param description="Whether to add a newline or not" type="object" variable="$newline">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </param>
+        <param description="Verbosity level from the VERBOSITY_* constants" type="int" variable="$verbosity"/>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="messages" byreference="false" type="{unknown}"/>
+      <parameter name="newline" byreference="false" type="boolean" default="true"/>
+      <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+    </method>
+    <method name="overwrite" start="120" end="120" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Overwrites a previous message to the output."/>
+        <param description="The message as an array of lines or a single string" type="array" variable="$messages" of="object">
+          <type full="Composer\IO\string|string" namespace="Composer\IO" name="string|string"/>
+        </param>
+        <param description="Whether to add a newline or not" type="object" variable="$newline">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </param>
+        <param description="The size of line" type="int" variable="$size"/>
+        <param description="Verbosity level from the VERBOSITY_* constants" type="int" variable="$verbosity"/>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="messages" byreference="false" type="{unknown}"/>
+      <parameter name="newline" byreference="false" type="boolean" default="true"/>
+      <parameter name="size" byreference="false" nullable="true" type="int" default="NULL"/>
+      <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+    </method>
+    <method name="overwriteError" start="132" end="132" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Overwrites a previous message to the error output."/>
+        <param description="The message as an array of lines or a single string" type="array" variable="$messages" of="object">
+          <type full="Composer\IO\string|string" namespace="Composer\IO" name="string|string"/>
+        </param>
+        <param description="Whether to add a newline or not" type="object" variable="$newline">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </param>
+        <param description="The size of line" type="int" variable="$size"/>
+        <param description="Verbosity level from the VERBOSITY_* constants" type="int" variable="$verbosity"/>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="messages" byreference="false" type="{unknown}"/>
+      <parameter name="newline" byreference="false" type="boolean" default="true"/>
+      <parameter name="size" byreference="false" nullable="true" type="int" default="NULL"/>
+      <parameter name="verbosity" byreference="false" type="{unknown}" default="" constant="self::NORMAL"/>
+    </method>
+    <method name="ask" start="143" end="143" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Asks a question to the user."/>
+        <param description="The question to ask" type="string" variable="$question"/>
+        <param description="The default answer if none is given by the user" type="object" variable="$default">
+          <type full="Composer\IO\string|bool|int|float|null" namespace="Composer\IO" name="string|bool|int|float|null"/>
+        </param>
+        <throws description="If there is no data to read in the input stream" type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+        <return description="The user answer" type="mixed"/>
+      </docblock>
+      <parameter name="question" byreference="false" type="string"/>
+      <parameter name="default" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="askConfirmation" start="155" end="155" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Asks a confirmation to the user.">The question will be asked until the user answers by nothing, yes, or no.</description>
+        <param description="The question to ask" type="string" variable="$question"/>
+        <param description="The default answer if the user enters nothing" type="object" variable="$default">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </param>
+        <return description="true if the user has confirmed, false otherwise" type="object">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="question" byreference="false" type="string"/>
+      <parameter name="default" byreference="false" type="boolean" default="true"/>
+    </method>
+    <method name="askAndValidate" start="172" end="172" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Asks for a value and validates the response.">The validator receives the data to validate. It must return the
+validated data when the data is valid and throw an exception
+otherwise.</description>
+        <param description="The question to ask" type="string" variable="$question"/>
+        <param description="A PHP callback" type="object" variable="$validator">
+          <type full="Composer\IO\callable" namespace="Composer\IO" name="callable"/>
+        </param>
+        <param description="Max number of times to ask before giving up (default of null means infinite)" type="object" variable="$attempts">
+          <type full="Composer\IO\null|int" namespace="Composer\IO" name="null|int"/>
+        </param>
+        <param description="The default answer if none is given by the user" type="mixed" variable="$default"/>
+        <throws description="When any of the validators return an error" type="object">
+          <type full="\Exception" namespace="" name="Exception"/>
+        </throws>
+        <return type="mixed"/>
+      </docblock>
+      <parameter name="question" byreference="false" type="string"/>
+      <parameter name="validator" byreference="false" type="callable"/>
+      <parameter name="attempts" byreference="false" nullable="true" type="int" default="NULL"/>
+      <parameter name="default" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="askAndHideAnswer" start="181" end="181" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Asks a question to the user and hide the answer."/>
+        <param description="The question to ask" type="string" variable="$question"/>
+        <return description="The answer" type="object">
+          <type full="Composer\IO\string|null" namespace="Composer\IO" name="string|null"/>
+        </return>
+      </docblock>
+      <parameter name="question" byreference="false" type="string"/>
+    </method>
+    <method name="select" start="196" end="196" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Asks the user to select a value."/>
+        <param description="The question to ask" type="string" variable="$question"/>
+        <param description="List of choices to pick from" type="array" variable="$choices" of="object">
+          <type full="Composer\IO\string" namespace="Composer\IO" name="string"/>
+        </param>
+        <param description="The default answer if the user enters nothing" type="object" variable="$default">
+          <type full="Composer\IO\bool|string" namespace="Composer\IO" name="bool|string"/>
+        </param>
+        <param description="Max number of times to ask before giving up (false by default, which means infinite)" type="object" variable="$attempts">
+          <type full="Composer\IO\bool|int" namespace="Composer\IO" name="bool|int"/>
+        </param>
+        <param description="Message which will be shown if invalid value from choice list would be picked" type="string" variable="$errorMessage"/>
+        <param description="Select more than one value separated by comma" type="object" variable="$multiselect">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </param>
+        <throws type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+        <return description="The selected value or values (the key of the choices array)" type="array" of="object">
+          <type full="Composer\IO\int|string|string[]|bo" namespace="Composer\IO" name="int|string|string[]|bo"/>
+        </return>
+      </docblock>
+      <parameter name="question" byreference="false" type="string"/>
+      <parameter name="choices" byreference="false" type="array"/>
+      <parameter name="default" byreference="false" type="{unknown}"/>
+      <parameter name="attempts" byreference="false" type="boolean" default="false"/>
+      <parameter name="errorMessage" byreference="false" type="string" default="'Value &quot;%s&quot; is invalid'"/>
+      <parameter name="multiselect" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getAuthentications" start="203" end="203" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get all authentication information entered."/>
+        <return description="array{username: string|null, password: string|null}&gt; The map of authentication data" type="object">
+          <type full="Composer\IO\array&lt;string" namespace="Composer\IO" name="array&lt;string"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="hasAuthentication" start="212" end="212" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Verify if the repository has a authentication information."/>
+        <param description="The unique name of repository" type="string" variable="$repositoryName"/>
+        <return type="object">
+          <type full="Composer\IO\bool" namespace="Composer\IO" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="repositoryName" byreference="false" type="string"/>
+    </method>
+    <method name="getAuthentication" start="221" end="221" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the username and password of repository."/>
+        <param description="The unique name of repository" type="string" variable="$repositoryName"/>
+        <return description="string|null, password: string|null}" type="object">
+          <type full="Composer\IO\array{username:" namespace="Composer\IO" name="array{username:"/>
+        </return>
+      </docblock>
+      <parameter name="repositoryName" byreference="false" type="string"/>
+    </method>
+    <method name="setAuthentication" start="232" end="232" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set the authentication information for the repository."/>
+        <param description="The unique name of repository" type="string" variable="$repositoryName"/>
+        <param description="The username" type="string" variable="$username"/>
+        <param description="The password" type="object" variable="$password">
+          <type full="Composer\IO\null|string" namespace="Composer\IO" name="null|string"/>
+        </param>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="repositoryName" byreference="false" type="string"/>
+      <parameter name="username" byreference="false" type="string"/>
+      <parameter name="password" byreference="false" nullable="true" type="string" default="NULL"/>
+    </method>
+    <method name="loadConfiguration" start="241" end="241" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Loads authentications from a config instance"/>
+        <param type="object" variable="$config">
+          <type full="Composer\Config" namespace="Composer" name="Config"/>
+        </param>
+        <return type="object">
+          <type full="Composer\IO\void" namespace="Composer\IO" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="config" byreference="false" type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </parameter>
+    </method>
+  </interface>
+</class>

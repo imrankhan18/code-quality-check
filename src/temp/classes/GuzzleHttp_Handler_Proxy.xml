@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Handler\Proxy" namespace="GuzzleHttp\Handler" name="Proxy" abstract="false" final="false" start="14" end="51">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Handler" file="Proxy.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/Proxy.php" size="2286" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="f3f07f4d99a6fc3484c285e4e4379f79911e0390" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Handler/Proxy.php"/>
+  <docblock>
+    <description compact="Provides basic proxies for handlers."/>
+    <final/>
+  </docblock>
+  <method name="wrapSync" start="25" end="30" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Sends synchronous requests to a specific handler while sending all other requests to another handler."/>
+      <param description="array): \GuzzleHttp\Promise\PromiseInterface $default Handler used for normal responses" type="object">
+        <type full="GuzzleHttp\Handler\callable(\Psr\Http\Message\RequestInterface" namespace="GuzzleHttp\Handler\callable(\Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <param description="array): \GuzzleHttp\Promise\PromiseInterface $sync    Handler used for synchronous responses." type="object">
+        <type full="GuzzleHttp\Handler\callable(\Psr\Http\Message\RequestInterface" namespace="GuzzleHttp\Handler\callable(\Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <return description="array): \GuzzleHttp\Promise\PromiseInterface Returns the composed handler." type="object">
+        <type full="GuzzleHttp\Handler\callable(\Psr\Http\Message\RequestInterface" namespace="GuzzleHttp\Handler\callable(\Psr\Http\Message" name="RequestInterface"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="default" byreference="false" type="callable"/>
+    <parameter name="sync" byreference="false" type="callable"/>
+  </method>
+  <method name="wrapStreaming" start="45" end="50" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Sends streaming requests to a streaming compatible handler while sending all other requests to a default handler.">This, for example, could be useful for taking advantage of the
+performance benefits of curl while still supporting true streaming
+through the StreamHandler.</description>
+      <param description="array): \GuzzleHttp\Promise\PromiseInterface $default   Handler used for non-streaming responses" type="object">
+        <type full="GuzzleHttp\Handler\callable(\Psr\Http\Message\RequestInterface" namespace="GuzzleHttp\Handler\callable(\Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <param description="array): \GuzzleHttp\Promise\PromiseInterface $streaming Handler used for streaming responses" type="object">
+        <type full="GuzzleHttp\Handler\callable(\Psr\Http\Message\RequestInterface" namespace="GuzzleHttp\Handler\callable(\Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <return description="array): \GuzzleHttp\Promise\PromiseInterface Returns the composed handler." type="object">
+        <type full="GuzzleHttp\Handler\callable(\Psr\Http\Message\RequestInterface" namespace="GuzzleHttp\Handler\callable(\Psr\Http\Message" name="RequestInterface"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="default" byreference="false" type="callable"/>
+    <parameter name="streaming" byreference="false" type="callable"/>
+  </method>
+</class>

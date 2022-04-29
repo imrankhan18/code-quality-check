@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Handler\MockHandler" namespace="GuzzleHttp\Handler" name="MockHandler" abstract="false" final="false" start="20" end="211">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Handler" file="MockHandler.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/MockHandler.php" size="6414" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="278cb92f31edf6df92616d2db346dea4f37896dc" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Handler/MockHandler.php"/>
+  <docblock>
+    <description compact="Handler that returns responses or throw exceptions from a queue."/>
+    <final/>
+  </docblock>
+  <implements full="Countable" namespace="" name="Countable"/>
+  <member name="queue" default="" type="array" visibility="private" static="false" line="25">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="lastRequest" visibility="private" static="false" line="30">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Handler\RequestInterface|null" namespace="GuzzleHttp\Handler" name="RequestInterface|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="lastOptions" default="" type="array" visibility="private" static="false" line="35">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="onFulfilled" visibility="private" static="false" line="40">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Handler\callable|null" namespace="GuzzleHttp\Handler" name="callable|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="onRejected" visibility="private" static="false" line="45">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Handler\callable|null" namespace="GuzzleHttp\Handler" name="callable|null"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="createWithMiddleware" start="55" end="58" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates a new MockHandler that uses the default handler stack list of middlewares."/>
+      <param description="Array of responses, callables, or exceptions." type="object" variable="$queue">
+        <type full="GuzzleHttp\Handler\array|null" namespace="GuzzleHttp\Handler" name="array|null"/>
+      </param>
+      <param description="Callback to invoke when the return value is fulfilled." type="object" variable="$onFulfilled">
+        <type full="GuzzleHttp\Handler\callable|null" namespace="GuzzleHttp\Handler" name="callable|null"/>
+      </param>
+      <param description="Callback to invoke when the return value is rejected." type="object" variable="$onRejected">
+        <type full="GuzzleHttp\Handler\callable|null" namespace="GuzzleHttp\Handler" name="callable|null"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\HandlerStack" namespace="GuzzleHttp" name="HandlerStack"/>
+    </return>
+    <parameter name="queue" byreference="false" type="array" default="NULL"/>
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <constructor name="__construct" start="69" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The passed in value must be an array of {@see \Psr\Http\Message\ResponseInterface} objects, Exceptions, callables, or Promises."/>
+      <param description="mixed&gt;|null $queue       The parameters to be passed to the append function, as an indexed array." type="object">
+        <type full="GuzzleHttp\Handler\array&lt;int" namespace="GuzzleHttp\Handler" name="array&lt;int"/>
+      </param>
+      <param description="Callback to invoke when the return value is fulfilled." type="object" variable="$onFulfilled">
+        <type full="GuzzleHttp\Handler\callable|null" namespace="GuzzleHttp\Handler" name="callable|null"/>
+      </param>
+      <param description="Callback to invoke when the return value is rejected." type="object" variable="$onRejected">
+        <type full="GuzzleHttp\Handler\callable|null" namespace="GuzzleHttp\Handler" name="callable|null"/>
+      </param>
+    </docblock>
+    <parameter name="queue" byreference="false" type="array" default="NULL"/>
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+  </constructor>
+  <method name="__invoke" start="80" end="144" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="append" start="152" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Adds one or more variadic requests, exceptions, callables, or promises to the queue."/>
+      <param type="mixed" variable="...$values"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="values" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getLastRequest" start="170" end="173" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the last received request."/>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+  </method>
+  <method name="getLastOptions" start="178" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the last received request options."/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="count" start="186" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the number of remaining items in the queue."/>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="reset" start="191" end="194" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="invokeStats" start="199" end="210" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="Promise or reason." type="mixed" variable="$reason"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="response" byreference="false" type="object" default="NULL">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </parameter>
+    <parameter name="reason" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <interface full="Countable" namespace="" name="Countable">
+    <method name="count" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Count elements of an object"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

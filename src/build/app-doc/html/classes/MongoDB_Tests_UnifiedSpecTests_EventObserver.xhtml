@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MongoDB\Tests\UnifiedSpecTests\EventObserver</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#MongoDB_Tests_UnifiedSpecTests">MongoDB\Tests\UnifiedSpecTests</a>
+          </li>
+          <li class="separator">EventObserver</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/mongodb/mongodb/tests/UnifiedSpecTests/EventObserver.php.xhtml#line39">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MongoDB\Tests\UnifiedSpecTests\</small>EventObserver</h1>
+        <h4>EventObserver handles "observeEvents" for client entities and assertions for "expectEvents" and special operations (e.g. assertSameLsidOnLastTwoCommands).</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class EventObserver
+                implements
+                <a title="MongoDB\Driver\Monitoring\CommandSubscriber" href="../interfaces/MongoDB_Driver_Monitoring_CommandSubscriber.xhtml">CommandSubscriber</a>
+            {<br/><ul class="none"><li>// members</li><li>private static array <a href="#members">$sensitiveCommands</a> =
+                        ;
+                    </li><li>private static array <a href="#members">$sensitiveCommandsWithSpeculativeAuthenticate</a> =
+                        ;
+                    </li><li>private static array <a href="#members">$supportedEvents</a> =
+                        ;
+                    </li><li>private static array <a href="#members">$unsupportedEvents</a> =
+                        ;
+                    </li><li>private array <a href="#members">$actualEvents</a> =
+                        ;
+                    </li><li>private  <a href="#members">$clientId</a>;
+                    </li><li>private <span title="MongoDB\Tests\UnifiedSpecTests\Context">Context</span> <a href="#members">$context</a>;
+                    </li><li>private array <a href="#members">$ignoreCommands</a> =
+                        ;
+                    </li><li>private array <a href="#members">$observeEvents</a> =
+                        ;
+                    </li><li>private <span title="MongoDB\Tests\UnifiedSpecTests\bool">bool</span> <a href="#members">$observeSensitiveCommands</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/commandFailed.xhtml">commandFailed</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/commandStarted.xhtml">commandStarted</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/commandSucceeded.xhtml">commandSucceeded</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/start.xhtml">start</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/stop.xhtml">stop</a>()
+                    </li><li>public array <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/getLsidsOnLastTwoCommands.xhtml">getLsidsOnLastTwoCommands</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assert.xhtml">assert</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assertEvent.xhtml">assertEvent</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assertCommandStartedEvent.xhtml">assertCommandStartedEvent</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assertCommandSucceededEvent.xhtml">assertCommandSucceededEvent</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assertCommandFailedEvent.xhtml">assertCommandFailedEvent</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/handleEvent.xhtml">handleEvent</a>()
+                    </li><li>private bool <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/isSensitiveCommand.xhtml">isSensitiveCommand</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="MongoDB\Driver\Monitoring\CommandSubscriber" href="../interfaces/MongoDB_Driver_Monitoring_CommandSubscriber.xhtml">MongoDB\Driver\Monitoring\CommandSubscriber</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="actualEvents"><strong>$actualEvents</strong>
+                —
+                array</li>
+            <li id="clientId"><strong>$clientId</strong>
+                —
+                string</li>
+            <li id="context"><strong>$context</strong>
+                —
+                <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context.xhtml">MongoDB\Tests\UnifiedSpecTests\Context</a></li>
+            <li id="ignoreCommands"><strong>$ignoreCommands</strong>
+                —
+                array<br/><span class="indent">The configureFailPoint command (used by failPoint and targetedFailPoint operations) is always ignored.</span></li>
+            <li id="observeEvents"><strong>$observeEvents</strong>
+                —
+                array</li>
+            <li id="observeSensitiveCommands"><strong>$observeSensitiveCommands</strong>
+                —
+                <a title="MongoDB\Tests\UnifiedSpecTests\bool" href="../classes/MongoDB_Tests_UnifiedSpecTests_bool.xhtml">MongoDB\Tests\UnifiedSpecTests\bool</a></li>
+            <li id="sensitiveCommands"><strong>$sensitiveCommands</strong>
+                —
+                array<br/><span class="indent">These commands are always considered sensitive (i.e. command and reply documents should be redacted).</span></li>
+            <li id="sensitiveCommandsWithSpeculativeAuthenticate"><strong>$sensitiveCommandsWithSpeculativeAuthenticate</strong>
+                —
+                array<br/><span class="indent">These commands are only considered sensitive when the command or reply document includes a speculativeAuthenticate field.</span></li>
+            <li id="supportedEvents"><strong>$supportedEvents</strong>
+                —
+                array</li>
+            <li id="unsupportedEvents"><strong>$unsupportedEvents</strong>
+                —
+                array<br/><span class="indent">These events are defined in the specification but unsupported by PHPLIB (e.g. CMAP events).</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="assertCommandFailedEvent">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assertCommandFailedEvent.xhtml">assertCommandFailedEvent()</a>
+            </li>
+            <li id="assertCommandStartedEvent">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assertCommandStartedEvent.xhtml">assertCommandStartedEvent()</a>
+            </li>
+            <li id="assertCommandSucceededEvent">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assertCommandSucceededEvent.xhtml">assertCommandSucceededEvent()</a>
+            </li>
+            <li id="assertEvent">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assertEvent.xhtml">assertEvent()</a>
+            </li>
+            <li id="handleEvent">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/handleEvent.xhtml">handleEvent()</a>
+            </li>
+            <li id="isSensitiveCommand">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/isSensitiveCommand.xhtml">isSensitiveCommand()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="assert">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/assert.xhtml">assert()</a>
+            </li>
+            <li id="commandFailed">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/commandFailed.xhtml">commandFailed()</a>
+            </li>
+            <li id="commandStarted">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/commandStarted.xhtml">commandStarted()</a>
+            </li>
+            <li id="commandSucceeded">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/commandSucceeded.xhtml">commandSucceeded()</a>
+            </li>
+            <li id="getLsidsOnLastTwoCommands">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/getLsidsOnLastTwoCommands.xhtml">getLsidsOnLastTwoCommands()</a>
+            </li>
+            <li id="start">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/start.xhtml">start()</a>
+            </li>
+            <li id="stop">
+              <a title="MongoDB\Tests\UnifiedSpecTests\EventObserver" href="../classes/MongoDB_Tests_UnifiedSpecTests_EventObserver/stop.xhtml">stop()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

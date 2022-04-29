@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Util\HttpDownloader</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Util">Composer\Util</a>
+          </li>
+          <li class="separator">HttpDownloader</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Util/HttpDownloader.php.xhtml#line33">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Util\</small>HttpDownloader</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Jordi Boggiano &lt;j.boggiano@seld.be&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class HttpDownloader
+            {<br/><ul class="none"><li>// constants</li><li>const STATUS_QUEUED = 1;</li><li>const STATUS_STARTED = 2;</li><li>const STATUS_COMPLETED = 3;</li><li>const STATUS_FAILED = 4;</li><li>const STATUS_ABORTED = 5;</li></ul><ul class="none"><li>// members</li><li>private <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>private <span title="Composer\Config">Config</span> <a href="#members">$config</a>;
+                    </li><li>private <span title="Composer\Util\array&lt;Job&gt;">array&lt;Job&gt;</span> <a href="#members">$jobs</a> =
+                        ;
+                    </li><li>private array <a href="#members">$options</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$runningJobs</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$maxJobs</a> =
+                        12;
+                    </li><li>private <span title="Composer\Util\?CurlDownloader">?CurlDownloader</span> <a href="#members">$curl</a>;
+                    </li><li>private <span title="Composer\Util\?RemoteFilesystem">?RemoteFilesystem</span> <a href="#members">$rfs</a>;
+                    </li><li>private integer <a href="#members">$idGen</a> =
+                        0;
+                    </li><li>private <span title="Composer\Util\bool">bool</span> <a href="#members">$disabled</a>;
+                    </li><li>private <span title="Composer\Util\bool">bool</span> <a href="#members">$allowAsync</a> =
+                        false;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/__construct.xhtml">__construct</a>()
+                    </li><li>public Response <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/get.xhtml">get</a>()
+                    </li><li>public PromiseInterface <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/add.xhtml">add</a>()
+                    </li><li>public Response <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/copy.xhtml">copy</a>()
+                    </li><li>public PromiseInterface <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/addCopy.xhtml">addCopy</a>()
+                    </li><li>public array <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/getOptions.xhtml">getOptions</a>()
+                    </li><li>public void <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/setOptions.xhtml">setOptions</a>()
+                    </li><li>private array <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/addJob.xhtml">addJob</a>()
+                    </li><li>private void <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/startJob.xhtml">startJob</a>()
+                    </li><li>private void <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/markJobDone.xhtml">markJobDone</a>()
+                    </li><li>public void <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/wait.xhtml">wait</a>()
+                    </li><li>public void <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/enableAsync.xhtml">enableAsync</a>()
+                    </li><li>public int <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/countActiveJobs.xhtml">countActiveJobs</a>()
+                    </li><li>private <span title="Response">Response</span> <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/getResponse.xhtml">getResponse</a>()
+                    </li><li>public static void <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/outputWarnings.xhtml">outputWarnings</a>()
+                    </li><li>public static ?array <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/getExceptionHints.xhtml">getExceptionHints</a>()
+                    </li><li>private bool <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/canUseCurl.xhtml">canUseCurl</a>()
+                    </li><li>public static bool <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/isCurlEnabled.xhtml">isCurlEnabled</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="STATUS_QUEUED">STATUS_QUEUED</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="STATUS_STARTED">STATUS_STARTED</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="STATUS_COMPLETED">STATUS_COMPLETED</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="STATUS_FAILED">STATUS_FAILED</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td id="STATUS_ABORTED">STATUS_ABORTED</td>
+              <td>5</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="allowAsync"><strong>$allowAsync</strong>
+                —
+                <a title="Composer\Util\bool" href="../classes/Composer_Util_bool.xhtml">Composer\Util\bool</a></li>
+            <li id="config"><strong>$config</strong>
+                —
+                <a title="Composer\Config" href="../classes/Composer_Config.xhtml">Composer\Config</a></li>
+            <li id="curl"><strong>$curl</strong>
+                —
+                <a title="Composer\Util\?CurlDownloader" href="../classes/Composer_Util_?CurlDownloader.xhtml">Composer\Util\?CurlDownloader</a></li>
+            <li id="disabled"><strong>$disabled</strong>
+                —
+                <a title="Composer\Util\bool" href="../classes/Composer_Util_bool.xhtml">Composer\Util\bool</a></li>
+            <li id="idGen"><strong>$idGen</strong>
+                —
+                int</li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="jobs"><strong>$jobs</strong>
+                —
+                <a title="Composer\Util\array&lt;Job&gt;" href="../classes/Composer_Util_array&lt;Job&gt;.xhtml">Composer\Util\array&lt;Job&gt;</a></li>
+            <li id="maxJobs"><strong>$maxJobs</strong>
+                —
+                int</li>
+            <li id="options"><strong>$options</strong>
+                —
+                array</li>
+            <li id="rfs"><strong>$rfs</strong>
+                —
+                <a title="Composer\Util\?RemoteFilesystem" href="../classes/Composer_Util_?RemoteFilesystem.xhtml">Composer\Util\?RemoteFilesystem</a></li>
+            <li id="runningJobs"><strong>$runningJobs</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="addJob">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/addJob.xhtml">addJob()</a>
+            </li>
+            <li id="canUseCurl">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/canUseCurl.xhtml">canUseCurl()</a>
+            </li>
+            <li id="getResponse">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/getResponse.xhtml">getResponse()</a>
+            </li>
+            <li id="markJobDone">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/markJobDone.xhtml">markJobDone()</a>
+            </li>
+            <li id="startJob">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/startJob.xhtml">startJob()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="add"><a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/add.xhtml">add()</a>
+                — Create an async download operation</li>
+            <li id="addCopy"><a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/addCopy.xhtml">addCopy()</a>
+                — Create an async copy operation</li>
+            <li id="copy"><a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/copy.xhtml">copy()</a>
+                — Copy a file synchronously</li>
+            <li id="countActiveJobs">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/countActiveJobs.xhtml">countActiveJobs()</a>
+            </li>
+            <li id="enableAsync">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/enableAsync.xhtml">enableAsync()</a>
+            </li>
+            <li id="get"><a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/get.xhtml">get()</a>
+                — Download a file synchronously</li>
+            <li id="getExceptionHints">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/getExceptionHints.xhtml">getExceptionHints()</a>
+            </li>
+            <li id="getOptions"><a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/getOptions.xhtml">getOptions()</a>
+                — Retrieve the options set in the constructor</li>
+            <li id="isCurlEnabled">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/isCurlEnabled.xhtml">isCurlEnabled()</a>
+            </li>
+            <li id="outputWarnings">
+              <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/outputWarnings.xhtml">outputWarnings()</a>
+            </li>
+            <li id="setOptions"><a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/setOptions.xhtml">setOptions()</a>
+                — Merges new options</li>
+            <li id="wait"><a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader/wait.xhtml">wait()</a>
+                — Wait for current async download jobs to complete</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

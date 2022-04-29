@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\HttpClient\Response\AsyncResponse</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Symfony_Component_HttpClient_Response">Symfony\Component\HttpClient\Response</a>
+          </li>
+          <li class="separator">AsyncResponse</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/symfony/http-client/Response/AsyncResponse.php.xhtml#line30">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Symfony\Component\HttpClient\Response\</small>AsyncResponse</h1>
+        <h4>Provides a single extension point to process a response's content stream.</h4>
+        <p/>
+        <ul>
+          <li>Author: Nicolas Grekas &lt;p@tchwork.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class AsyncResponse
+                implements
+                <a title="Symfony\Contracts\HttpClient\ResponseInterface" href="../interfaces/Symfony_Contracts_HttpClient_ResponseInterface.xhtml">ResponseInterface</a>,<a title="Symfony\Component\HttpClient\Response\StreamableInterface" href="../interfaces/Symfony_Component_HttpClient_Response_StreamableInterface.xhtml">StreamableInterface</a>
+            {<br/><ul class="none"><li>// constants</li><li>const FIRST_CHUNK_YIELDED = 1;</li><li>const LAST_CHUNK_YIELDED = 2;</li></ul><ul class="none"><li>// members</li><li>private  <a href="#members">$client</a>;
+                    </li><li>private  <a href="#members">$response</a>;
+                    </li><li>private array <a href="#members">$info</a> =
+                        ;
+                    </li><li>private  <a href="#members">$passthru</a>;
+                    </li><li>private  <a href="#members">$stream</a>;
+                    </li><li>private  <a href="#members">$yieldedState</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/__construct.xhtml">__construct</a>()
+                    </li><li>public int <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/getStatusCode.xhtml">getStatusCode</a>()
+                    </li><li>public array <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/getHeaders.xhtml">getHeaders</a>()
+                    </li><li>public void <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/getInfo.xhtml">getInfo</a>()
+                    </li><li>public void <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/toStream.xhtml">toStream</a>()
+                    </li><li>public void <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/cancel.xhtml">cancel</a>()
+                    </li><li>public void <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/__destruct.xhtml">__destruct</a>()
+                    </li><li>public static <span title="Generator">Generator</span> <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/stream.xhtml">stream</a>()
+                    </li><li>private static <span title="Generator">Generator</span> <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/passthru.xhtml">passthru</a>()
+                    </li><li>private static <span title="Generator">Generator</span> <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/passthruStream.xhtml">passthruStream</a>()
+                    </li><li>private ?<span title="Throwable">Throwable</span> <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/openBuffer.xhtml">openBuffer</a>()
+                    </li><li>private void <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/close.xhtml">close</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Symfony\Component\HttpClient\Response\CommonResponseTrait">CommonResponseTrait</span></li><li>public void <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/getContent.xhtml">getContent</a>()
+                        </li><li>public void <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/toArray.xhtml">toArray</a>()
+                        </li><li>public void <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/toStream.xhtml">toStream</a>()
+                        </li><li>public void <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/__sleep.xhtml">__sleep</a>()
+                        </li><li>public void <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/__wakeup.xhtml">__wakeup</a>()
+                        </li><li>protected abstract void <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/close.xhtml">close</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait.xhtml">Symfony\Component\HttpClient\Response\CommonResponseTrait</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Symfony\Contracts\HttpClient\ResponseInterface" href="../interfaces/Symfony_Contracts_HttpClient_ResponseInterface.xhtml">Symfony\Contracts\HttpClient\ResponseInterface</a>
+            </li>
+            <li>
+              <a title="Symfony\Component\HttpClient\Response\StreamableInterface" href="../interfaces/Symfony_Component_HttpClient_Response_StreamableInterface.xhtml">Symfony\Component\HttpClient\Response\StreamableInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="FIRST_CHUNK_YIELDED">FIRST_CHUNK_YIELDED</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="LAST_CHUNK_YIELDED">LAST_CHUNK_YIELDED</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="client">
+              <strong>$client</strong>
+            </li>
+            <li id="info">
+              <strong>$info</strong>
+            </li>
+            <li id="passthru">
+              <strong>$passthru</strong>
+            </li>
+            <li id="response">
+              <strong>$response</strong>
+            </li>
+            <li id="stream">
+              <strong>$stream</strong>
+            </li>
+            <li id="yieldedState">
+              <strong>$yieldedState</strong>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="close">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/close.xhtml">close()</a>
+            </li>
+            <li id="openBuffer">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/openBuffer.xhtml">openBuffer()</a>
+            </li>
+            <li id="passthru">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/passthru.xhtml">passthru()</a>
+            </li>
+            <li id="passthruStream">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/passthruStream.xhtml">passthruStream()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="__destruct">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/__destruct.xhtml">__destruct()</a>
+            </li>
+            <li id="cancel"><a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/cancel.xhtml">cancel()</a>
+                — {@inheritdoc}</li>
+            <li id="getHeaders">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/getHeaders.xhtml">getHeaders()</a>
+            </li>
+            <li id="getInfo">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/getInfo.xhtml">getInfo()</a>
+            </li>
+            <li id="getStatusCode">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/getStatusCode.xhtml">getStatusCode()</a>
+            </li>
+            <li id="stream">
+              <a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/stream.xhtml">stream()</a>
+            </li>
+            <li id="toStream"><a title="Symfony\Component\HttpClient\Response\AsyncResponse" href="../classes/Symfony_Component_HttpClient_Response_AsyncResponse/toStream.xhtml">toStream()</a>
+                — {@inheritdoc}</li>
+          </ul>
+          <h3>Inherited from <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait.xhtml">Symfony\Component\HttpClient\Response\CommonResponseTrait</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="close"><a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/close.xhtml">close()</a>
+                — Closes the response and all its network handles.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__sleep">
+              <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/__sleep.xhtml">__sleep()</a>
+            </li>
+            <li id="__wakeup">
+              <a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/__wakeup.xhtml">__wakeup()</a>
+            </li>
+            <li id="getContent"><a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/getContent.xhtml">getContent()</a>
+                — {@inheritdoc}</li>
+            <li id="toArray"><a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/toArray.xhtml">toArray()</a>
+                — {@inheritdoc}</li>
+            <li id="toStream"><a title="Symfony\Component\HttpClient\Response\CommonResponseTrait" href="../traits/Symfony_Component_HttpClient_Response_CommonResponseTrait/toStream.xhtml">toStream()</a>
+                — {@inheritdoc}</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

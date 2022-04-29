@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_ErrorStack" namespace="" name="PEAR_ErrorStack" abstract="false" final="false" start="141" end="976">
+  <file path="//usr/local/lib/php/PEAR" file="ErrorStack.php" realpath="/usr/local/lib/php/PEAR/ErrorStack.php" size="33804" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="6d4d399e81d5576a54b1e3f63a986b900332147c" relative="sr/local/lib/php/PEAR/ErrorStack.php"/>
+  <docblock>
+    <description compact="Error Stack Implementation">Usage:
+&lt;code&gt;
+// global error stack
+$global_stack = &amp;PEAR_ErrorStack::singleton('MyPackage');
+// local error stack
+$local_stack = new PEAR_ErrorStack('MyPackage');
+&lt;/code&gt;</description>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <version value="1.10.10"/>
+    <package value="PEAR_ErrorStack"/>
+    <category value="Debugging"/>
+    <copyright value="2004-2008 Greg Beaver"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <link value="http://pear.php.net/package/PEAR_ErrorStack"/>
+  </docblock>
+  <member name="_errors" default="" type="array" visibility="public" static="false" line="150">
+    <docblock>
+      <description compact="Errors are stored in the order that they are pushed on the stack."/>
+      <since value="0.4alpha Errors are no longer organized by error level. This renders pop() nearly unusable, and levels could be more easily handled in a callback anyway"/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_errorsByLevel" default="" type="array" visibility="public" static="false" line="160">
+    <docblock>
+      <description compact="Storage of errors by level.">Allows easy retrieval and deletion of only errors from a particular level</description>
+      <since value="PEAR 1.4.0dev"/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_package" visibility="public" static="false" line="167">
+    <docblock>
+      <description compact="Package name this error stack represents"/>
+      <var type="string"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="_compat" default="false" type="boolean" visibility="public" static="false" line="174">
+    <docblock>
+      <description compact="Determines whether a PEAR_Error is thrown upon every error addition"/>
+      <var type="boolean"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_msgCallback" default="false" type="boolean" visibility="public" static="false" line="183">
+    <docblock>
+      <description compact="If set to a valid callback, this will be used to generate the error message from the error code, otherwise the message passed in will be used"/>
+      <var type="object">
+        <type full="false|string|array" namespace="" name="false|string|array"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_contextCallback" default="false" type="boolean" visibility="public" static="false" line="194">
+    <docblock>
+      <description compact="If set to a valid callback, this will be used to generate the error context for an error.  For PHP-related errors, this will be a file and line number as retrieved from debug_backtrace(), but can be customized for other purposes.  The error might actually be in a separate configuration file, or in a database query."/>
+      <var type="object">
+        <type full="false|string|array" namespace="" name="false|string|array"/>
+      </var>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="_errorCallback" default="" type="array" visibility="public" static="false" line="206">
+    <docblock>
+      <description compact="If set to a valid callback, this will be called every time an error is pushed onto the stack.  The return value will be used to determine whether to allow an error to be pushed or logged.">The return value must be one an PEAR_ERRORSTACK_* constant</description>
+      <see value="PEAR_ERRORSTACK_PUSHANDLOG, PEAR_ERRORSTACK_PUSH, PEAR_ERRORSTACK_LOG"/>
+      <var type="object">
+        <type full="false|string|array" namespace="" name="false|string|array"/>
+      </var>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="_logger" default="false" type="boolean" visibility="public" static="false" line="213">
+    <docblock>
+      <description compact="PEAR::Log object for logging errors"/>
+      <var type="object">
+        <type full="false|Log" namespace="" name="false|Log"/>
+      </var>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="_errorMsgs" default="" type="array" visibility="public" static="false" line="220">
+    <docblock>
+      <description compact="Error messages - designed to be overridden"/>
+      <var type="array"/>
+      <abstract/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="231" end="238" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set up a new error stack"/>
+      <param description="name of the package this error stack represents" type="string" variable="$package"/>
+      <param description="callback used for error message generation" type="object" variable="$msgCallback">
+        <type full="callback" namespace="" name="callback"/>
+      </param>
+      <param description="callback used for context generation," type="object" variable="$contextCallback">defaults to <link xmlns="http://xml.phpdox.net/src" value="getFileLine()"/><type full="callback" namespace="" name="callback"/></param>
+      <param type="boolean" variable="$throwPEAR_Error"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="msgCallback" byreference="false" type="boolean" default="false"/>
+    <parameter name="contextCallback" byreference="false" type="boolean" default="false"/>
+    <parameter name="throwPEAR_Error" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="singleton" start="254" end="274" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Return a single error stack for this package.">Note that all parameters are ignored if the stack for package $package
+has already been instantiated</description>
+      <param description="name of the package this error stack represents" type="string" variable="$package"/>
+      <param description="callback used for error message generation" type="object" variable="$msgCallback">
+        <type full="callback" namespace="" name="callback"/>
+      </param>
+      <param description="callback used for context generation," type="object" variable="$contextCallback">defaults to <link xmlns="http://xml.phpdox.net/src" value="getFileLine()"/><type full="callback" namespace="" name="callback"/></param>
+      <param type="boolean" variable="$throwPEAR_Error"/>
+      <param description="class to instantiate" type="string" variable="$stackClass"/>
+      <return type="object">
+        <type full="PEAR_ErrorStack" namespace="" name="PEAR_ErrorStack"/>
+      </return>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="msgCallback" byreference="false" type="boolean" default="false"/>
+    <parameter name="contextCallback" byreference="false" type="boolean" default="false"/>
+    <parameter name="throwPEAR_Error" byreference="false" type="boolean" default="false"/>
+    <parameter name="stackClass" byreference="false" type="string" default="'PEAR_ErrorStack'"/>
+  </method>
+  <method name="_handleError" start="282" end="294" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Internal error handler for PEAR_ErrorStack class">Dies if the error is an exception (and would have died anyway)</description>
+      <access value="private"/>
+    </docblock>
+    <parameter name="err" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setDefaultLogger" start="300" end="307" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Set up a PEAR::Log object for all error stacks that don't have one"/>
+      <param type="object" variable="$log">
+        <type full="Log" namespace="" name="Log"/>
+      </param>
+    </docblock>
+    <parameter name="log" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="setLogger" start="313" end="320" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set up a PEAR::Log object for this error stack"/>
+      <param type="object" variable="$log">
+        <type full="Log" namespace="" name="Log"/>
+      </param>
+    </docblock>
+    <parameter name="log" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="setMessageCallback" start="329" end="338" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set an error code =&gt; error message mapping callback">This method sets the callback that can be used to generate error
+messages for any instance</description>
+      <param description="Callback function/method" type="object">
+        <type full="array|string" namespace="" name="array|string"/>
+      </param>
+    </docblock>
+    <parameter name="msgCallback" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMessageCallback" start="347" end="350" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get an error code =&gt; error message mapping callback">This method returns the current callback that can be used to generate error
+messages</description>
+      <return description="Callback function/method or false if none" type="object">
+        <type full="array|string|false" namespace="" name="array|string|false"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setDefaultCallback" start="360" end="367" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Sets a default callback to be used by all error stacks">This method sets the callback that can be used to generate error
+messages for a singleton</description>
+      <param description="Callback function/method" type="object">
+        <type full="array|string" namespace="" name="array|string"/>
+      </param>
+      <param description="Package name, or false for all packages" type="string"/>
+    </docblock>
+    <parameter name="callback" byreference="false" type="boolean" default="false"/>
+    <parameter name="package" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setContextCallback" start="377" end="389" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set a callback that generates context information (location of error) for an error stack">This method sets the callback that can be used to generate context
+information for an error.  Passing in NULL will disable context generation
+and remove the expensive call to debug_backtrace()</description>
+      <param description="Callback function/method" type="object">
+        <type full="array|string|null" namespace="" name="array|string|null"/>
+      </param>
+    </docblock>
+    <parameter name="contextCallback" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="pushCallback" start="406" end="409" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set an error Callback If set to a valid callback, this will be called every time an error is pushed onto the stack.  The return value will be used to determine whether to allow an error to be pushed or logged.">The return value must be one of the ERRORSTACK_* constants.
+
+This functionality can be used to emulate PEAR's pushErrorHandling, and
+the PEAR_ERROR_CALLBACK mode, without affecting the integrity of
+the error stack or logging</description>
+      <see value="PEAR_ERRORSTACK_PUSHANDLOG, PEAR_ERRORSTACK_PUSH, PEAR_ERRORSTACK_LOG"/>
+      <see value="popCallback()"/>
+      <param type="object" variable="$cb">
+        <type full="string|array" namespace="" name="string|array"/>
+      </param>
+    </docblock>
+    <parameter name="cb" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="popCallback" start="416" end="422" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove a callback from the error callback stack"/>
+      <see value="pushCallback()"/>
+      <return type="object">
+        <type full="array|string|false" namespace="" name="array|string|false"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="staticPushCallback" start="433" end="436" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Set a temporary overriding error callback for every package error stack">Use this to temporarily disable all existing callbacks (can be used
+to emulate the @ operator, for instance)</description>
+      <see value="PEAR_ERRORSTACK_PUSHANDLOG, PEAR_ERRORSTACK_PUSH, PEAR_ERRORSTACK_LOG"/>
+      <see value="staticPopCallback(), pushCallback()"/>
+      <param type="object" variable="$cb">
+        <type full="string|array" namespace="" name="string|array"/>
+      </param>
+    </docblock>
+    <parameter name="cb" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="staticPopCallback" start="443" end="450" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Remove a temporary overriding error callback"/>
+      <see value="staticPushCallback()"/>
+      <return type="object">
+        <type full="array|string|false" namespace="" name="array|string|false"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="push" start="493" end="583" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add an error to the stack">If the message generator exists, it is called with 2 parameters.
+ - the current Error Stack object
+ - an array that is in the same format as an error.  Available indices
+   are 'code', 'package', 'time', 'params', 'level', and 'context'
+
+Next, if the error should contain context information, this is
+handled by the context grabbing method.
+Finally, the error is pushed onto the proper error stack</description>
+      <param description="Package-specific error code" type="int" variable="$code"/>
+      <param description="Error level.  This is NOT spell-checked" type="string" variable="$level"/>
+      <param description="associative array of error parameters" type="array" variable="$params"/>
+      <param description="Error message, or a portion of it if the message" type="string" variable="$msg">is to be generated</param>
+      <param description="If this error re-packages an error pushed by" type="array" variable="$repackage">another package, place the array returned from
+                         <link xmlns="http://xml.phpdox.net/src" value="pop()"/> in this parameter
+</param>
+      <param description="Protected parameter: use this to pass in the" type="array" variable="$backtrace">{@link debug_backtrace()} that should be used
+                         to find error context</param>
+      <return description="if compatibility mode is on, a PEAR_Error is also" type="object">thrown.  If a PEAR_Error is returned, the userinfo
+property is set to the following array:
+
+&lt;code&gt;
+array(
+   'code' =&gt; $code,
+   'params' =&gt; $params,
+   'package' =&gt; $this-&gt;_package,
+   'level' =&gt; $level,
+   'time' =&gt; time(),
+   'context' =&gt; $context,
+   'message' =&gt; $msg,
+//['repackage' =&gt; $err] repackaged error array/Exception class
+);
+&lt;/code&gt;
+
+Normally, the previous array is returned.<type full="PEAR_Error|array" namespace="" name="PEAR_Error|array"/></return>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+    <parameter name="level" byreference="false" type="string" default="'error'"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="msg" byreference="false" type="boolean" default="false"/>
+    <parameter name="repackage" byreference="false" type="boolean" default="false"/>
+    <parameter name="backtrace" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="grab error context" line="497"/>
+      <comment value="save error" line="505"/>
+      <comment value="set up the error message, if necessary" line="522"/>
+      <comment value="try the overriding callback first" line="530"/>
+    </inline>
+  </method>
+  <method name="staticPush" start="603" end="616" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Static version of {@link push()}"/>
+      <param description="Package name this error belongs to" type="string" variable="$package"/>
+      <param description="Package-specific error code" type="int" variable="$code"/>
+      <param description="Error level.  This is NOT spell-checked" type="string" variable="$level"/>
+      <param description="associative array of error parameters" type="array" variable="$params"/>
+      <param description="Error message, or a portion of it if the message" type="string" variable="$msg">is to be generated</param>
+      <param description="If this error re-packages an error pushed by" type="array" variable="$repackage">another package, place the array returned from
+                         <link xmlns="http://xml.phpdox.net/src" value="pop()"/> in this parameter
+</param>
+      <param description="Protected parameter: use this to pass in the" type="array" variable="$backtrace">{@link debug_backtrace()} that should be used
+                         to find error context</param>
+      <return description="if compatibility mode is on, a PEAR_Error is also" type="object">thrown.  see docs for <link xmlns="http://xml.phpdox.net/src" value="push()"/><type full="PEAR_Error|array" namespace="" name="PEAR_Error|array"/></return>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+    <parameter name="level" byreference="false" type="string" default="'error'"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="msg" byreference="false" type="boolean" default="false"/>
+    <parameter name="repackage" byreference="false" type="boolean" default="false"/>
+    <parameter name="backtrace" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_log" start="624" end="650" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Log an error using PEAR::Log"/>
+      <param description="Error array" type="array" variable="$err"/>
+      <param description="Error level =&gt; Log constant map" type="array" variable="$levels"/>
+      <access value="protected"/>
+    </docblock>
+    <parameter name="err" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="pop" start="660" end="670" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Pop an error off of the error stack"/>
+      <return type="object">
+        <type full="false|array" namespace="" name="false|array"/>
+      </return>
+      <since value="0.4alpha it is no longer possible to specify a specific error level to return - the last error pushed will be returned, instead"/>
+    </docblock>
+  </method>
+  <method name="staticPop" start="679" end="687" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Pop an error off of the error stack, static method"/>
+      <param description="package name" type="string"/>
+      <return type="boolean"/>
+      <since value="PEAR1.5.0a1"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="hasErrors" start="695" end="701" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determine whether there are any errors on the stack"/>
+      <param description="Level name.  Use to determine if any errors" type="object">of level (string), or levels (array) have been pushed<type full="string|array" namespace="" name="string|array"/></param>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="level" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getErrors" start="710" end="738" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve all errors since last purge"/>
+      <param description="set in order to empty the error stack" type="boolean"/>
+      <param description="level name, to return only errors of a particular severity" type="string"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="purge" byreference="false" type="boolean" default="false"/>
+    <parameter name="level" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="staticHasErrors" start="749" end="763" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Determine whether there are any errors on a single error stack, or on any error stack">The optional parameter can be used to test the existence of any errors without the need of
+singleton instantiation</description>
+      <param description="Package name to check for errors" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="Level name to check for a particular severity" type="string"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="boolean" default="false"/>
+    <parameter name="level" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="staticGetErrors" start="776" end="798" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get a list of all errors since last purge, organized by package"/>
+      <since value="PEAR 1.4.0dev BC break! $level is now in the place $merge used to be"/>
+      <param description="Set to purge the error stack of existing errors" type="boolean" variable="$purge"/>
+      <param description="Set to a level name in order to retrieve only errors of a particular level" type="string" variable="$level"/>
+      <param description="Set to return a flat array, not organized by package" type="boolean" variable="$merge"/>
+      <param description="Function used to sort a merged array - default" type="array" variable="$sortfunc">sorts by time, and should be good for most cases</param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="purge" byreference="false" type="boolean" default="false"/>
+    <parameter name="level" byreference="false" type="boolean" default="false"/>
+    <parameter name="merge" byreference="false" type="boolean" default="false"/>
+    <parameter name="sortfunc" byreference="false" type="array" default=""/>
+  </method>
+  <method name="_sortErrors" start="804" end="813" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Error sorting function, sorts by time"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="a" byreference="false" type="{unknown}"/>
+    <parameter name="b" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getFileLine" start="828" end="874" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Standard file/line number/function/class context callback">This function uses a backtrace generated from <link xmlns="http://xml.phpdox.net/src" value="debug_backtrace()"/>and so will not work at all in PHP &lt; 4.3.0.  The frame should
+reference the frame that contains the source of the error.
+</description>
+      <return description="either array('file' =&gt; file, 'line' =&gt; line," type="object">'function' =&gt; function name, 'class' =&gt; class name) or
+        if this doesn't work, then false<type full="array|false" namespace="" name="array|false"/></return>
+      <param type="object">
+        <type full="unused" namespace="" name="unused"/>
+      </param>
+      <param description="backtrace frame." type="integer"/>
+      <param description="Results of debug_backtrace()" type="array"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="backtrace" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="getErrorMessage" start="903" end="931" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Standard error message generation callback">This method may also be called by a custom error message generator
+to fill in template values from the params array, simply
+set the third parameter to the error message template string to use
+
+The special variable %__msg% is reserved: use it only to specify
+where a message passed in by the user should be placed in the template,
+like so:
+
+Error message: %msg% - internal error
+
+If the message passed like so:
+
+&lt;code&gt;
+$stack-&gt;push(ERROR_CODE, 'error', array(), 'server error 500');
+&lt;/code&gt;
+
+The returned error message will be "Error message: server error 500 -
+internal error"</description>
+      <param type="object">
+        <type full="PEAR_ErrorStack" namespace="" name="PEAR_ErrorStack"/>
+      </param>
+      <param type="array"/>
+      <param description="Pre-generated error message template" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <parameter name="stack" byreference="true" type="{unknown}"/>
+    <parameter name="err" byreference="false" type="{unknown}"/>
+    <parameter name="template" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getErrorMessageTemplate" start="937" end="943" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Standard Error Message Template generator from code"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setErrorMessageTemplate" start="959" end="962" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the Error Message Template array">The array format must be:
+&lt;pre&gt;
+array(error code =&gt; 'message template',...)
+&lt;/pre&gt;
+Error message parameters passed into <link xmlns="http://xml.phpdox.net/src" value="push()"/> will be used as input
+for the error message.  If the template is 'message %foo% was %bar%', and the
+parameters are array('foo' =&gt; 'one', 'bar' =&gt; 'six'), the error message returned will
+be 'message one was six'
+</description>
+      <return type="string"/>
+    </docblock>
+    <parameter name="template" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="raiseError" start="970" end="975" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="emulate PEAR::raiseError()"/>
+      <return type="object">
+        <type full="PEAR_Error" namespace="" name="PEAR_Error"/>
+      </return>
+    </docblock>
+  </method>
+</class>

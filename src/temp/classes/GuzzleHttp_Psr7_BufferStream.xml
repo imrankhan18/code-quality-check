@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\BufferStream" namespace="GuzzleHttp\Psr7" name="BufferStream" abstract="false" final="true" start="17" end="149">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="BufferStream.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/BufferStream.php" size="3244" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="285e6258b9be5ba680959806cea31e8dff9dabb8" relative="ar/www/html/vendor/guzzlehttp/psr7/src/BufferStream.php"/>
+  <docblock>
+    <description compact="Provides a buffer stream that can be written to to fill a buffer, and read from to remove bytes from the buffer.">This stream returns a "hwm" metadata value that tells upstream consumers
+what the configured high water mark of the stream is, or the maximum
+preferred size of the buffer.</description>
+  </docblock>
+  <implements full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+  <member name="hwm" visibility="private" static="false" line="20">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="buffer" default="''" type="string" visibility="private" static="false" line="23">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="32" end="35" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="High water mark, representing the preferred maximum" type="int" variable="$hwm">buffer size. If the size of the buffer exceeds the high
+                water mark, then calls to write will continue to succeed
+                but will return 0 to inform writers to slow down
+                until the buffer has been drained by reading from it.</param>
+    </docblock>
+    <parameter name="hwm" byreference="false" type="integer" default="16384"/>
+  </constructor>
+  <method name="__toString" start="37" end="40" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getContents" start="42" end="48" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="close" start="50" end="53" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="detach" start="55" end="60" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getSize" start="62" end="65" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="true"/>
+  </method>
+  <method name="isReadable" start="67" end="70" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isWritable" start="72" end="75" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isSeekable" start="77" end="80" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="rewind" start="82" end="85" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="seek" start="87" end="90" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="offset" byreference="false" type="{unknown}"/>
+    <parameter name="whence" byreference="false" type="{unknown}" default="" constant="SEEK_SET"/>
+  </method>
+  <method name="eof" start="92" end="95" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="tell" start="97" end="100" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="read" start="105" end="120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Reads data from the buffer."/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="length" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="write" start="125" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Writes data to the buffer."/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMetadata" start="141" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <interface full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface">
+    <method name="__toString" start="28" end="28" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Reads all data from the stream into a string, from the beginning to end.">This method MUST attempt to seek to the beginning of the stream before
+reading data and read the stream until the end is reached.
+
+Warning: This could attempt to load a large amount of data into memory.
+
+This method MUST NOT raise an exception in order to conform with PHP's
+string casting operations.</description>
+        <see value="http://php.net/manual/en/language.oop5.magic.php#object.tostring"/>
+        <return type="string"/>
+      </docblock>
+    </method>
+    <method name="close" start="35" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Closes the stream and any underlying resources."/>
+        <return type="object">
+          <type full="Psr\Http\Message\void" namespace="Psr\Http\Message" name="void"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="detach" start="44" end="44" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Separates any underlying resources from the stream.">After the stream has been detached, the stream is in an unusable state.</description>
+        <return description="Underlying PHP stream, if any" type="object">
+          <type full="Psr\Http\Message\resource|null" namespace="Psr\Http\Message" name="resource|null"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getSize" start="51" end="51" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the size of the stream if known."/>
+        <return description="Returns the size in bytes if known, or null if unknown." type="object">
+          <type full="Psr\Http\Message\int|null" namespace="Psr\Http\Message" name="int|null"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="tell" start="59" end="59" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the current position of the file read/write pointer"/>
+        <return description="Position of the file pointer" type="int"/>
+        <throws description="on error." type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+    </method>
+    <method name="eof" start="66" end="66" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns true if the stream is at the end of the stream."/>
+        <return type="object">
+          <type full="Psr\Http\Message\bool" namespace="Psr\Http\Message" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="isSeekable" start="73" end="73" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns whether or not the stream is seekable."/>
+        <return type="object">
+          <type full="Psr\Http\Message\bool" namespace="Psr\Http\Message" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="seek" start="87" end="87" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Seek to a position in the stream."/>
+        <link value="http://www.php.net/manual/en/function.fseek.php"/>
+        <param description="Stream offset" type="int" variable="$offset"/>
+        <param description="Specifies how the cursor position will be calculated" type="int" variable="$whence">based on the seek offset. Valid values are identical to the built-in
+    PHP $whence values for `fseek()`.  SEEK_SET: Set position equal to
+    offset bytes SEEK_CUR: Set position to current location plus offset
+    SEEK_END: Set position to end-of-stream plus offset.</param>
+        <throws description="on failure." type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+      <parameter name="offset" byreference="false" type="{unknown}"/>
+      <parameter name="whence" byreference="false" type="{unknown}" default="" constant="SEEK_SET"/>
+    </method>
+    <method name="rewind" start="99" end="99" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Seek to the beginning of the stream.">If the stream is not seekable, this method will raise an exception;
+otherwise, it will perform a seek(0).</description>
+        <see value="seek()"/>
+        <link value="http://www.php.net/manual/en/function.fseek.php"/>
+        <throws description="on failure." type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+    </method>
+    <method name="isWritable" start="106" end="106" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns whether or not the stream is writable."/>
+        <return type="object">
+          <type full="Psr\Http\Message\bool" namespace="Psr\Http\Message" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="write" start="115" end="115" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Write data to the stream."/>
+        <param description="The string that is to be written." type="string" variable="$string"/>
+        <return description="Returns the number of bytes written to the stream." type="int"/>
+        <throws description="on failure." type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+      <parameter name="string" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="isReadable" start="122" end="122" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns whether or not the stream is readable."/>
+        <return type="object">
+          <type full="Psr\Http\Message\bool" namespace="Psr\Http\Message" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="read" start="134" end="134" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Read data from the stream."/>
+        <param description="Read up to $length bytes from the object and return" type="int" variable="$length">them. Fewer than $length bytes may be returned if underlying stream
+    call returns fewer bytes.</param>
+        <return description="Returns the data read from the stream, or an empty string" type="string">if no bytes are available.</return>
+        <throws description="if an error occurs." type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+      <parameter name="length" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getContents" start="143" end="143" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the remaining contents in a string"/>
+        <return type="string"/>
+        <throws description="if unable to read or an error occurs while" type="object">reading.<type full="\RuntimeException" namespace="" name="RuntimeException"/></throws>
+      </docblock>
+    </method>
+    <method name="getMetadata" start="157" end="157" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get stream metadata as an associative array or retrieve a specific key.">The keys returned are identical to the keys returned from PHP's
+stream_get_meta_data() function.</description>
+        <link value="http://php.net/manual/en/function.stream-get-meta-data.php"/>
+        <param description="Specific metadata to retrieve." type="string" variable="$key"/>
+        <return description="Returns an associative array if no key is" type="object">provided. Returns a specific key value if a key is provided and the
+    value is found, or null if the key is not found.<type full="Psr\Http\Message\array|mixed|null" namespace="Psr\Http\Message" name="array|mixed|null"/></return>
+      </docblock>
+      <parameter name="key" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+  </interface>
+</class>

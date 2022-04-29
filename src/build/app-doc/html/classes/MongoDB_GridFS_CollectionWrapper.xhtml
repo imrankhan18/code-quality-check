@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MongoDB\GridFS\CollectionWrapper</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#MongoDB_GridFS">MongoDB\GridFS</a>
+          </li>
+          <li class="separator">CollectionWrapper</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/mongodb/mongodb/src/GridFS/CollectionWrapper.php.xhtml#line40">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MongoDB\GridFS\</small>CollectionWrapper</h1>
+        <h4>CollectionWrapper abstracts the GridFS files and chunks collections.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class CollectionWrapper
+            {<br/><ul class="none"><li>// members</li><li>private  <a href="#members">$bucketName</a>;
+                    </li><li>private <span title="MongoDB\Collection">Collection</span> <a href="#members">$chunksCollection</a>;
+                    </li><li>private  <a href="#members">$databaseName</a>;
+                    </li><li>private boolean <a href="#members">$checkedIndexes</a> =
+                        false;
+                    </li><li>private <span title="MongoDB\Collection">Collection</span> <a href="#members">$filesCollection</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/deleteChunksByFilesId.xhtml">deleteChunksByFilesId</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/deleteFileAndChunksById.xhtml">deleteFileAndChunksById</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/dropCollections.xhtml">dropCollections</a>()
+                    </li><li>public Cursor <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findChunksByFileId.xhtml">findChunksByFileId</a>()
+                    </li><li>public stdClass|null <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findFileByFilenameAndRevision.xhtml">findFileByFilenameAndRevision</a>()
+                    </li><li>public stdClass|null <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findFileById.xhtml">findFileById</a>()
+                    </li><li>public Cursor <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findFiles.xhtml">findFiles</a>()
+                    </li><li>public array|object|null <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findOneFile.xhtml">findOneFile</a>()
+                    </li><li>public string <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/getBucketName.xhtml">getBucketName</a>()
+                    </li><li>public Collection <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/getChunksCollection.xhtml">getChunksCollection</a>()
+                    </li><li>public string <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/getDatabaseName.xhtml">getDatabaseName</a>()
+                    </li><li>public Collection <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/getFilesCollection.xhtml">getFilesCollection</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/insertChunk.xhtml">insertChunk</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/insertFile.xhtml">insertFile</a>()
+                    </li><li>public UpdateResult <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/updateFilenameForId.xhtml">updateFilenameForId</a>()
+                    </li><li>private void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/ensureChunksIndex.xhtml">ensureChunksIndex</a>()
+                    </li><li>private void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/ensureFilesIndex.xhtml">ensureFilesIndex</a>()
+                    </li><li>private void <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/ensureIndexes.xhtml">ensureIndexes</a>()
+                    </li><li>private bool <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/indexKeysMatch.xhtml">indexKeysMatch</a>()
+                    </li><li>private boolean <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/isFilesCollectionEmpty.xhtml">isFilesCollectionEmpty</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="bucketName"><strong>$bucketName</strong>
+                —
+                string</li>
+            <li id="checkedIndexes"><strong>$checkedIndexes</strong>
+                —
+                boolean</li>
+            <li id="chunksCollection"><strong>$chunksCollection</strong>
+                —
+                <a title="MongoDB\Collection" href="../classes/MongoDB_Collection.xhtml">MongoDB\Collection</a></li>
+            <li id="databaseName"><strong>$databaseName</strong>
+                —
+                string</li>
+            <li id="filesCollection"><strong>$filesCollection</strong>
+                —
+                <a title="MongoDB\Collection" href="../classes/MongoDB_Collection.xhtml">MongoDB\Collection</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="ensureChunksIndex"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/ensureChunksIndex.xhtml">ensureChunksIndex()</a>
+                — Create an index on the chunks collection if it does not already exist.</li>
+            <li id="ensureFilesIndex"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/ensureFilesIndex.xhtml">ensureFilesIndex()</a>
+                — Create an index on the files collection if it does not already exist.</li>
+            <li id="ensureIndexes"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/ensureIndexes.xhtml">ensureIndexes()</a>
+                — Ensure indexes on the files and chunks collections exist.</li>
+            <li id="indexKeysMatch">
+              <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/indexKeysMatch.xhtml">indexKeysMatch()</a>
+            </li>
+            <li id="isFilesCollectionEmpty"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/isFilesCollectionEmpty.xhtml">isFilesCollectionEmpty()</a>
+                — Returns whether the files collection is empty.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/__construct.xhtml">__construct()</a>
+                — Constructs a GridFS collection wrapper.</li>
+            <li id="deleteChunksByFilesId"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/deleteChunksByFilesId.xhtml">deleteChunksByFilesId()</a>
+                — Deletes all GridFS chunks for a given file ID.</li>
+            <li id="deleteFileAndChunksById"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/deleteFileAndChunksById.xhtml">deleteFileAndChunksById()</a>
+                — Deletes a GridFS file and related chunks by ID.</li>
+            <li id="dropCollections"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/dropCollections.xhtml">dropCollections()</a>
+                — Drops the GridFS files and chunks collections.</li>
+            <li id="findChunksByFileId"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findChunksByFileId.xhtml">findChunksByFileId()</a>
+                — Finds GridFS chunk documents for a given file ID and optional offset.</li>
+            <li id="findFileByFilenameAndRevision"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findFileByFilenameAndRevision.xhtml">findFileByFilenameAndRevision()</a>
+                — Finds a GridFS file document for a given filename and revision.</li>
+            <li id="findFileById"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findFileById.xhtml">findFileById()</a>
+                — Finds a GridFS file document for a given ID.</li>
+            <li id="findFiles"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findFiles.xhtml">findFiles()</a>
+                — Finds documents from the GridFS bucket's files collection.</li>
+            <li id="findOneFile"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/findOneFile.xhtml">findOneFile()</a>
+                — Finds a single document from the GridFS bucket's files collection.</li>
+            <li id="getBucketName"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/getBucketName.xhtml">getBucketName()</a>
+                — Return the bucket name.</li>
+            <li id="getChunksCollection"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/getChunksCollection.xhtml">getChunksCollection()</a>
+                — Return the chunks collection.</li>
+            <li id="getDatabaseName"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/getDatabaseName.xhtml">getDatabaseName()</a>
+                — Return the database name.</li>
+            <li id="getFilesCollection"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/getFilesCollection.xhtml">getFilesCollection()</a>
+                — Return the files collection.</li>
+            <li id="insertChunk"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/insertChunk.xhtml">insertChunk()</a>
+                — Inserts a document into the chunks collection.</li>
+            <li id="insertFile"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/insertFile.xhtml">insertFile()</a>
+                — Inserts a document into the files collection.</li>
+            <li id="updateFilenameForId"><a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper/updateFilenameForId.xhtml">updateFilenameForId()</a>
+                — Updates the filename field in the file document for a given ID.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

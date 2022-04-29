@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer">Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer</a>
+          </li>
+          <li class="separator">Plugin</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/dealerdirect/phpcodesniffer-composer-installer/src/Plugin.php.xhtml#line35">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\</small>Plugin</h1>
+        <h4>PHP_CodeSniffer standard installation manager.</h4>
+        <p/>
+        <ul>
+          <li>Author: Franck Nijhof &lt;franck.nijhof@dealerdirect.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Plugin
+                implements
+                <a title="Composer\Plugin\PluginInterface" href="../interfaces/Composer_Plugin_PluginInterface.xhtml">PluginInterface</a>,<a title="Composer\EventDispatcher\EventSubscriberInterface" href="../interfaces/Composer_EventDispatcher_EventSubscriberInterface.xhtml">EventSubscriberInterface</a>
+            {<br/><ul class="none"><li>// constants</li><li>const KEY_MAX_DEPTH = 'phpcodesniffer-search-depth';</li><li>const MESSAGE_ERROR_WRONG_MAX_DEPTH = 'The value of "%s" (in the composer.json "extra".section) must be an integer larger then %d, %s given.';</li><li>const MESSAGE_NOT_INSTALLED = 'PHPCodeSniffer is not installed';</li><li>const MESSAGE_NOTHING_TO_INSTALL = 'Nothing to install or update';</li><li>const MESSAGE_PLUGIN_UNINSTALLED = 'PHPCodeSniffer Composer Installer is uninstalled';</li><li>const MESSAGE_RUNNING_INSTALLER = 'Running PHPCodeSniffer Composer Installer';</li><li>const PACKAGE_NAME = 'squizlabs/php_codesniffer';</li><li>const PACKAGE_TYPE = 'phpcodesniffer-standard';</li><li>const PHPCS_CONFIG_REGEX = '`%s:[^\r\n]+`';</li><li>const PHPCS_CONFIG_KEY = 'installed_paths';</li><li>const PLUGIN_NAME = 'dealerdirect/phpcodesniffer-composer-installer';</li></ul><ul class="none"><li>// members</li><li>private <span title="Composer\Composer">Composer</span> <a href="#members">$composer</a>;
+                    </li><li>private  <a href="#members">$cwd</a>;
+                    </li><li>private <span title="Composer\Util\Filesystem">Filesystem</span> <a href="#members">$filesystem</a>;
+                    </li><li>private  <a href="#members">$installedPaths</a>;
+                    </li><li>private <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>private <span title="Composer\Util\ProcessExecutor">ProcessExecutor</span> <a href="#members">$processExecutor</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public static void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/run.xhtml">run</a>()
+                    </li><li>public void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/activate.xhtml">activate</a>()
+                    </li><li>public void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/deactivate.xhtml">deactivate</a>()
+                    </li><li>public void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/uninstall.xhtml">uninstall</a>()
+                    </li><li>private void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/init.xhtml">init</a>()
+                    </li><li>public static void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getSubscribedEvents.xhtml">getSubscribedEvents</a>()
+                    </li><li>public void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/onDependenciesChangedEvent.xhtml">onDependenciesChangedEvent</a>()
+                    </li><li>private void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/loadInstalledPaths.xhtml">loadInstalledPaths</a>()
+                    </li><li>private int <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/saveInstalledPaths.xhtml">saveInstalledPaths</a>()
+                    </li><li>private int <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/verifySaveSuccess.xhtml">verifySaveSuccess</a>()
+                    </li><li>protected void <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getPhpExecCommand.xhtml">getPhpExecCommand</a>()
+                    </li><li>private bool <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/cleanInstalledPaths.xhtml">cleanInstalledPaths</a>()
+                    </li><li>private bool <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/updateInstalledPaths.xhtml">updateInstalledPaths</a>()
+                    </li><li>private array <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getPHPCodingStandardPackages.xhtml">getPHPCodingStandardPackages</a>()
+                    </li><li>private PackageInterface|null <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getPHPCodeSnifferPackage.xhtml">getPHPCodeSnifferPackage</a>()
+                    </li><li>private string <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getPHPCodeSnifferInstallPath.xhtml">getPHPCodeSnifferInstallPath</a>()
+                    </li><li>private bool <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/isPHPCodeSnifferInstalled.xhtml">isPHPCodeSnifferInstalled</a>()
+                    </li><li>private bool <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/isRunningGlobally.xhtml">isRunningGlobally</a>()
+                    </li><li>private int <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getMaxDepth.xhtml">getMaxDepth</a>()
+                    </li><li>private int <a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getMinDepth.xhtml">getMinDepth</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Composer\Plugin\PluginInterface" href="../interfaces/Composer_Plugin_PluginInterface.xhtml">Composer\Plugin\PluginInterface</a>
+            </li>
+            <li>
+              <a title="Composer\EventDispatcher\EventSubscriberInterface" href="../interfaces/Composer_EventDispatcher_EventSubscriberInterface.xhtml">Composer\EventDispatcher\EventSubscriberInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="KEY_MAX_DEPTH">KEY_MAX_DEPTH</td>
+              <td>'phpcodesniffer-search-depth'</td>
+            </tr>
+            <tr>
+              <td id="MESSAGE_ERROR_WRONG_MAX_DEPTH">MESSAGE_ERROR_WRONG_MAX_DEPTH</td>
+              <td>'The value of "%s" (in the composer.json "extra".section) must be an integer larger then %d, %s given.'</td>
+            </tr>
+            <tr>
+              <td id="MESSAGE_NOT_INSTALLED">MESSAGE_NOT_INSTALLED</td>
+              <td>'PHPCodeSniffer is not installed'</td>
+            </tr>
+            <tr>
+              <td id="MESSAGE_NOTHING_TO_INSTALL">MESSAGE_NOTHING_TO_INSTALL</td>
+              <td>'Nothing to install or update'</td>
+            </tr>
+            <tr>
+              <td id="MESSAGE_PLUGIN_UNINSTALLED">MESSAGE_PLUGIN_UNINSTALLED</td>
+              <td>'PHPCodeSniffer Composer Installer is uninstalled'</td>
+            </tr>
+            <tr>
+              <td id="MESSAGE_RUNNING_INSTALLER">MESSAGE_RUNNING_INSTALLER</td>
+              <td>'Running PHPCodeSniffer Composer Installer'</td>
+            </tr>
+            <tr>
+              <td id="PACKAGE_NAME">PACKAGE_NAME</td>
+              <td>'squizlabs/php_codesniffer'</td>
+            </tr>
+            <tr>
+              <td id="PACKAGE_TYPE">PACKAGE_TYPE</td>
+              <td>'phpcodesniffer-standard'</td>
+            </tr>
+            <tr>
+              <td id="PHPCS_CONFIG_REGEX">PHPCS_CONFIG_REGEX</td>
+              <td>'`%s:[^\r\n]+`'</td>
+            </tr>
+            <tr>
+              <td id="PHPCS_CONFIG_KEY">PHPCS_CONFIG_KEY</td>
+              <td>'installed_paths'</td>
+            </tr>
+            <tr>
+              <td id="PLUGIN_NAME">PLUGIN_NAME</td>
+              <td>'dealerdirect/phpcodesniffer-composer-installer'</td>
+            </tr>
+            <tr>
+              <td id="PLUGIN_API_VERSION">PLUGIN_API_VERSION</td>
+              <td>'2.3.0'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="composer"><strong>$composer</strong>
+                —
+                <a title="Composer\Composer" href="../classes/Composer_Composer.xhtml">Composer\Composer</a></li>
+            <li id="cwd"><strong>$cwd</strong>
+                —
+                string</li>
+            <li id="filesystem"><strong>$filesystem</strong>
+                —
+                <a title="Composer\Util\Filesystem" href="../classes/Composer_Util_Filesystem.xhtml">Composer\Util\Filesystem</a></li>
+            <li id="installedPaths"><strong>$installedPaths</strong>
+                —
+                array</li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="processExecutor"><strong>$processExecutor</strong>
+                —
+                <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor.xhtml">Composer\Util\ProcessExecutor</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="cleanInstalledPaths"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/cleanInstalledPaths.xhtml">cleanInstalledPaths()</a>
+                — Iterate trough all known paths and check if they are still valid.</li>
+            <li id="getMaxDepth"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getMaxDepth.xhtml">getMaxDepth()</a>
+                — Determines the maximum search depth when searching for Coding Standards.</li>
+            <li id="getMinDepth"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getMinDepth.xhtml">getMinDepth()</a>
+                — Returns the minimal search depth for Coding Standard packages.</li>
+            <li id="getPHPCodeSnifferInstallPath"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getPHPCodeSnifferInstallPath.xhtml">getPHPCodeSnifferInstallPath()</a>
+                — Returns the path to the PHP_CodeSniffer package installation location</li>
+            <li id="getPHPCodeSnifferPackage"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getPHPCodeSnifferPackage.xhtml">getPHPCodeSnifferPackage()</a>
+                — Searches for the installed PHP_CodeSniffer Composer package</li>
+            <li id="getPHPCodingStandardPackages"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getPHPCodingStandardPackages.xhtml">getPHPCodingStandardPackages()</a>
+                — Iterates through Composers' local repository looking for valid Coding Standard packages.</li>
+            <li id="init"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/init.xhtml">init()</a>
+                — Prepares the plugin so it's main functionality can be run.</li>
+            <li id="isPHPCodeSnifferInstalled"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/isPHPCodeSnifferInstalled.xhtml">isPHPCodeSnifferInstalled()</a>
+                — Simple check if PHP_CodeSniffer is installed.</li>
+            <li id="isRunningGlobally"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/isRunningGlobally.xhtml">isRunningGlobally()</a>
+                — Test if composer is running "global" This check kinda dirty, but it is the "Composer Way"</li>
+            <li id="loadInstalledPaths"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/loadInstalledPaths.xhtml">loadInstalledPaths()</a>
+                — Load all paths from PHP_CodeSniffer into an array.</li>
+            <li id="saveInstalledPaths"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/saveInstalledPaths.xhtml">saveInstalledPaths()</a>
+                — Save all coding standard paths back into PHP_CodeSniffer</li>
+            <li id="updateInstalledPaths"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/updateInstalledPaths.xhtml">updateInstalledPaths()</a>
+                — Check all installed packages (including the root package) against the installed paths from PHP_CodeSniffer and add the missing ones.</li>
+            <li id="verifySaveSuccess"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/verifySaveSuccess.xhtml">verifySaveSuccess()</a>
+                — Verify that the paths which were expected to be saved, have been.</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="getPhpExecCommand"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getPhpExecCommand.xhtml">getPhpExecCommand()</a>
+                — Get the path to the current PHP version being used.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="activate"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/activate.xhtml">activate()</a>
+                — {@inheritDoc}</li>
+            <li id="deactivate"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/deactivate.xhtml">deactivate()</a>
+                — {@inheritDoc}</li>
+            <li id="getSubscribedEvents"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/getSubscribedEvents.xhtml">getSubscribedEvents()</a>
+                — {@inheritDoc}</li>
+            <li id="onDependenciesChangedEvent"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/onDependenciesChangedEvent.xhtml">onDependenciesChangedEvent()</a>
+                — Entry point for post install and post update events.</li>
+            <li id="run"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/run.xhtml">run()</a>
+                — Triggers the plugin's main functionality.</li>
+            <li id="uninstall"><a title="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" href="../classes/Dealerdirect_Composer_Plugin_Installers_PHPCodeSniffer_Plugin/uninstall.xhtml">uninstall()</a>
+                — {@inheritDoc}</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

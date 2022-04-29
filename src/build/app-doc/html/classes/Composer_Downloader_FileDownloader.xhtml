@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Downloader\FileDownloader</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Downloader">Composer\Downloader</a>
+          </li>
+          <li class="separator">FileDownloader</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Downloader/FileDownloader.php.xhtml#line45">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Downloader\</small>FileDownloader</h1>
+        <h4>Base downloader for files</h4>
+        <p/>
+        <ul>
+          <li>Author: Kirill chEbba Chebunin &lt;iam@chebba.org&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class FileDownloader
+                implements
+                <a title="Composer\Downloader\DownloaderInterface" href="../interfaces/Composer_Downloader_DownloaderInterface.xhtml">DownloaderInterface</a>,<a title="Composer\Downloader\ChangeReportInterface" href="../interfaces/Composer_Downloader_ChangeReportInterface.xhtml">ChangeReportInterface</a>
+            {<br/><ul class="none"><li>// members</li><li>protected <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>protected <span title="Composer\Config">Config</span> <a href="#members">$config</a>;
+                    </li><li>protected <span title="Composer\Util\HttpDownloader">HttpDownloader</span> <a href="#members">$httpDownloader</a>;
+                    </li><li>protected <span title="Composer\Util\Filesystem">Filesystem</span> <a href="#members">$filesystem</a>;
+                    </li><li>protected <span title="Composer\Downloader\?Cache">?Cache</span> <a href="#members">$cache</a>;
+                    </li><li>protected <span title="Composer\Downloader\?EventDispatcher">?EventDispatcher</span> <a href="#members">$eventDispatcher</a>;
+                    </li><li>protected <span title="Composer\Util\ProcessExecutor">ProcessExecutor</span> <a href="#members">$process</a>;
+                    </li><li>public static <span title="Composer\Downloader\array&lt;string">array&lt;string</span> <a href="#members">$downloadMetadata</a> =
+                        ;
+                    </li><li>private <span title="Composer\Downloader\array&lt;string">array&lt;string</span> <a href="#members">$lastCacheWrites</a> =
+                        ;
+                    </li><li>private <span title="Composer\Downloader\array&lt;string">array&lt;string</span> <a href="#members">$additionalCleanupPaths</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/__construct.xhtml">__construct</a>()
+                    </li><li>public string <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/getInstallationSource.xhtml">getInstallationSource</a>()
+                    </li><li>public <span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/download.xhtml">download</a>()
+                    </li><li>public <span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/prepare.xhtml">prepare</a>()
+                    </li><li>public <span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/cleanup.xhtml">cleanup</a>()
+                    </li><li>public <span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/install.xhtml">install</a>()
+                    </li><li>protected void <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/clearLastCacheWrite.xhtml">clearLastCacheWrite</a>()
+                    </li><li>protected void <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/addCleanupPath.xhtml">addCleanupPath</a>()
+                    </li><li>protected void <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/removeCleanupPath.xhtml">removeCleanupPath</a>()
+                    </li><li>public <span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/update.xhtml">update</a>()
+                    </li><li>public <span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/remove.xhtml">remove</a>()
+                    </li><li>protected string <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/getFileName.xhtml">getFileName</a>()
+                    </li><li>protected string <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/getInstallOperationAppendix.xhtml">getInstallOperationAppendix</a>()
+                    </li><li>protected string <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/processUrl.xhtml">processUrl</a>()
+                    </li><li>public ?string <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/getLocalChanges.xhtml">getLocalChanges</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Composer\Downloader\DownloaderInterface" href="../interfaces/Composer_Downloader_DownloaderInterface.xhtml">Composer\Downloader\DownloaderInterface</a>
+            </li>
+            <li>
+              <a title="Composer\Downloader\ChangeReportInterface" href="../interfaces/Composer_Downloader_ChangeReportInterface.xhtml">Composer\Downloader\ChangeReportInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="additionalCleanupPaths"><strong>$additionalCleanupPaths</strong>
+                —
+                <a title="Composer\Downloader\array&lt;string" href="../classes/Composer_Downloader_array&lt;string.xhtml">Composer\Downloader\array&lt;string</a></li>
+            <li id="lastCacheWrites"><strong>$lastCacheWrites</strong>
+                —
+                <a title="Composer\Downloader\array&lt;string" href="../classes/Composer_Downloader_array&lt;string.xhtml">Composer\Downloader\array&lt;string</a></li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="cache"><strong>$cache</strong>
+                —
+                <a title="Composer\Downloader\?Cache" href="../classes/Composer_Downloader_?Cache.xhtml">Composer\Downloader\?Cache</a></li>
+            <li id="config"><strong>$config</strong>
+                —
+                <a title="Composer\Config" href="../classes/Composer_Config.xhtml">Composer\Config</a></li>
+            <li id="eventDispatcher"><strong>$eventDispatcher</strong>
+                —
+                <a title="Composer\Downloader\?EventDispatcher" href="../classes/Composer_Downloader_?EventDispatcher.xhtml">Composer\Downloader\?EventDispatcher</a></li>
+            <li id="filesystem"><strong>$filesystem</strong>
+                —
+                <a title="Composer\Util\Filesystem" href="../classes/Composer_Util_Filesystem.xhtml">Composer\Util\Filesystem</a></li>
+            <li id="httpDownloader"><strong>$httpDownloader</strong>
+                —
+                <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader.xhtml">Composer\Util\HttpDownloader</a></li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="process"><strong>$process</strong>
+                —
+                <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor.xhtml">Composer\Util\ProcessExecutor</a></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="downloadMetadata"><strong>$downloadMetadata</strong>
+                —
+                <a title="Composer\Downloader\array&lt;string" href="../classes/Composer_Downloader_array&lt;string.xhtml">Composer\Downloader\array&lt;string</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="addCleanupPath">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/addCleanupPath.xhtml">addCleanupPath()</a>
+            </li>
+            <li id="clearLastCacheWrite">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/clearLastCacheWrite.xhtml">clearLastCacheWrite()</a>
+            </li>
+            <li id="getFileName"><a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/getFileName.xhtml">getFileName()</a>
+                — Gets file name for specific package</li>
+            <li id="getInstallOperationAppendix"><a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/getInstallOperationAppendix.xhtml">getInstallOperationAppendix()</a>
+                — Gets appendix message to add to the "- Upgrading x" string being output on update</li>
+            <li id="processUrl"><a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/processUrl.xhtml">processUrl()</a>
+                — Process the download url</li>
+            <li id="removeCleanupPath">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/removeCleanupPath.xhtml">removeCleanupPath()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/__construct.xhtml">__construct()</a>
+                — Constructor.</li>
+            <li id="cleanup">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/cleanup.xhtml">cleanup()</a>
+            </li>
+            <li id="download">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/download.xhtml">download()</a>
+            </li>
+            <li id="getInstallationSource">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/getInstallationSource.xhtml">getInstallationSource()</a>
+            </li>
+            <li id="getLocalChanges">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/getLocalChanges.xhtml">getLocalChanges()</a>
+            </li>
+            <li id="install">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/install.xhtml">install()</a>
+            </li>
+            <li id="prepare">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/prepare.xhtml">prepare()</a>
+            </li>
+            <li id="remove">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/remove.xhtml">remove()</a>
+            </li>
+            <li id="update">
+              <a title="Composer\Downloader\FileDownloader" href="../classes/Composer_Downloader_FileDownloader/update.xhtml">update()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

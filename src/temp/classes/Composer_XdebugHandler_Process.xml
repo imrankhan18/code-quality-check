@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\XdebugHandler\Process" namespace="Composer\XdebugHandler" name="Process" abstract="false" final="false" start="23" end="118">
+  <file path="//var/www/html/vendor/composer/xdebug-handler/src" file="Process.php" realpath="/var/www/html/vendor/composer/xdebug-handler/src/Process.php" size="3094" time="2022-02-25T21:32:43+00:00" unixtime="1645824763" sha1="7661ea0b8a55d89181f1ade7079c189fe71a9f2e" relative="ar/www/html/vendor/composer/xdebug-handler/src/Process.php"/>
+  <docblock>
+    <description compact="Process utility functions"/>
+    <author value="John Stevenson &lt;john-stevenson@blueyonder.co.uk&gt;"/>
+  </docblock>
+  <method name="escape" start="35" end="64" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Escapes a string to be used as a shell argument.">From https://github.com/johnstevenson/winbox-args
+MIT Licensed (c) John Stevenson &lt;john-stevenson@blueyonder.co.uk&gt;</description>
+      <param description="The argument to be escaped" type="string" variable="$arg"/>
+      <param description="Additionally escape cmd.exe meta characters" type="object" variable="$meta">
+        <type full="Composer\XdebugHandler\bool" namespace="Composer\XdebugHandler" name="bool"/>
+      </param>
+      <param description="The argument is the module to invoke" type="object" variable="$module">
+        <type full="Composer\XdebugHandler\bool" namespace="Composer\XdebugHandler" name="bool"/>
+      </param>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="arg" byreference="false" type="string"/>
+    <parameter name="meta" byreference="false" type="boolean" default="true"/>
+    <parameter name="module" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="escapeShellCommand" start="71" end="85" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Escapes an array of arguments that make up a shell command"/>
+      <param description="Argument list, with the module name first" type="array" variable="$args" of="object">
+        <type full="Composer\XdebugHandler\string" namespace="Composer\XdebugHandler" name="string"/>
+      </param>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="args" byreference="false" type="array"/>
+  </method>
+  <method name="setEnv" start="93" end="117" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Makes putenv environment changes available in $_SERVER and $_ENV"/>
+      <param type="string" variable="$name"/>
+      <param description="A null value unsets the variable" type="object" variable="$value">
+        <type full="Composer\XdebugHandler\?string" namespace="Composer\XdebugHandler" name="?string"/>
+      </param>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" nullable="true" type="string" default="NULL"/>
+    <inline>
+      <comment value="Update $_ENV if it is being used" line="107"/>
+    </inline>
+  </method>
+</class>

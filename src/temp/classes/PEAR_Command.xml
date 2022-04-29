@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Command" namespace="" name="PEAR_Command" abstract="false" final="false" start="100" end="389">
+  <file path="//usr/local/lib/php/PEAR" file="Command.php" realpath="/usr/local/lib/php/PEAR/Command.php" size="12427" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="fbc1ac3e90f011b48937ab18640a1370b84281f4" relative="sr/local/lib/php/PEAR/Command.php"/>
+  <docblock>
+    <description compact="PEAR command class, a simple factory class for administrative commands.">How to implement command classes:
+
+- The class must be called PEAR_Command_Nnn, installed in the
+  "PEAR/Common" subdir, with a method called getCommands() that
+  returns an array of the commands implemented by the class (see
+  PEAR/Command/Install.php for an example).
+
+- The class must implement a run() function that is called with three
+  params:
+
+   (string) command name
+   (array)  assoc array with options, freely defined by each
+            command, for example:
+            array('force' =&gt; true)
+   (array)  list of the other parameters
+
+  The run() function returns a PEAR_CommandResponse object.  Use
+  these methods to get information:
+
+   int getStatus()   Returns PEAR_COMMAND_(SUCCESS|FAILURE|PARTIAL)
+                     *_PARTIAL means that you need to issue at least
+                     one more command to complete the operation
+                     (used for example for validation steps).
+
+   string getMessage()  Returns a message for the user.  Remember,
+                        no HTML or other interface-specific markup.
+
+  If something unexpected happens, run() returns a PEAR error.
+
+- DON'T OUTPUT ANYTHING! Return text for output instead.
+
+- DON'T USE HTML! The text you return will be used from both Gtk,
+  web and command-line interfaces, so for now, keep everything to
+  plain text.
+
+- DON'T USE EXIT OR DIE! Always use pear errors.  From static
+  classes do PEAR::raiseError(), from other classes do
+  $this-&gt;raiseError().</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Stig Bakken &lt;ssb@php.net&gt;"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 0.1"/>
+  </docblock>
+  <method name="factory" start="112" end="135" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get the right object for executing a command."/>
+      <param description="The name of the command" type="string" variable="$command"/>
+      <param description="Instance of PEAR_Config object" type="object" variable="$config"/>
+      <return description="the command object or a PEAR error" type="object"/>
+    </docblock>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+    <parameter name="config" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getObject" start="139" end="152" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="command" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getFrontendObject" start="162" end="166" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get instance of frontend object."/>
+      <return type="object">
+        <type full="object|PEAR_Error" namespace="" name="object|PEAR_Error"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setFrontendClass" start="178" end="182" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Load current frontend class."/>
+      <param description="Name of class implementing the frontend" type="string" variable="$uiclass"/>
+      <return description="the frontend object, or a PEAR error" type="object"/>
+    </docblock>
+    <parameter name="uiclass" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setFrontendType" start="194" end="198" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Set current frontend."/>
+      <param description="Name of the frontend type (for example &quot;CLI&quot;)" type="string" variable="$uitype"/>
+      <return description="the frontend object, or a PEAR error" type="object"/>
+    </docblock>
+    <parameter name="uitype" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="registerCommands" start="218" end="288" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Scan through the Command directory looking for classes and see what commands they implement."/>
+      <param description="(optional) if FALSE (default), the new list of" type="object">commands should replace the current one.  If TRUE,
+              new entries will be merged with old.<type full="bool" namespace="" name="bool"/></param>
+      <param description="(optional) where (what directory) to look for" type="string">classes, defaults to the Command subdirectory of
+              the directory from where this file (__FILE__) is
+              included.</param>
+      <return description="TRUE on success, a PEAR error on failure" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="merge" byreference="false" type="boolean" default="false"/>
+    <parameter name="dir" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="getCommands" start="299" end="305" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get the list of currently supported commands, and what classes implement them."/>
+      <return description="command =&gt; implementing class" type="array"/>
+    </docblock>
+  </method>
+  <method name="getShortcuts" start="315" end="321" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get the list of command shortcuts."/>
+      <return description="shortcut =&gt; command" type="array"/>
+    </docblock>
+  </method>
+  <method name="getGetoptArgs" start="335" end="348" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Compiles arguments for getopt."/>
+      <param description="command to get optstring for" type="string" variable="$command"/>
+      <param description="(reference) short getopt format" type="string" variable="$short_args"/>
+      <param description="(reference) long getopt format" type="array" variable="$long_args"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+    <parameter name="short_args" byreference="true" type="{unknown}"/>
+    <parameter name="long_args" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getDescription" start="360" end="366" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get description for a command."/>
+      <param description="Name of the command" type="string" variable="$command"/>
+      <return description="command description" type="string"/>
+    </docblock>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getHelp" start="376" end="387" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get help for command."/>
+      <param description="Name of the command to return help for" type="string" variable="$command"/>
+    </docblock>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+  </method>
+</class>

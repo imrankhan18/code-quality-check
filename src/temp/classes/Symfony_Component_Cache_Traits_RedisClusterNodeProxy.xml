@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\Traits\RedisClusterNodeProxy" namespace="Symfony\Component\Cache\Traits" name="RedisClusterNodeProxy" abstract="false" final="false" start="25" end="53">
+  <file path="//var/www/html/vendor/symfony/cache/Traits" file="RedisClusterNodeProxy.php" realpath="/var/www/html/vendor/symfony/cache/Traits/RedisClusterNodeProxy.php" size="1358" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="d12fdd376de6c4d58d1ba54faf990bdb7d5e3a31" relative="ar/www/html/vendor/symfony/cache/Traits/RedisClusterNodeProxy.php"/>
+  <docblock>
+    <description compact="This file acts as a wrapper to the \RedisCluster implementation so it can accept the same type of calls as  individual \Redis objects.">Calls are made to individual nodes via: RedisCluster-&gt;{method}($host, ...args)'
+ according to https://github.com/phpredis/phpredis/blob/develop/cluster.markdown#directed-node-commands</description>
+    <author value="Jack Thomas &lt;jack.thomas@solidalpha.com&gt;"/>
+    <internal/>
+  </docblock>
+  <member name="host" visibility="private" static="false" line="27"/>
+  <member name="redis" visibility="private" static="false" line="28"/>
+  <constructor name="__construct" start="33" end="37" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$redis">
+        <type full="\RedisCluster|RedisClusterProxy" namespace="" name="RedisCluster|RedisClusterProxy"/>
+      </param>
+    </docblock>
+    <parameter name="host" byreference="false" type="array"/>
+    <parameter name="redis" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="__call" start="39" end="42" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="args" byreference="false" type="array"/>
+  </method>
+  <method name="scan" start="44" end="47" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="iIterator" byreference="true" type="{unknown}"/>
+    <parameter name="strPattern" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="iCount" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="getOption" start="49" end="52" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+</class>

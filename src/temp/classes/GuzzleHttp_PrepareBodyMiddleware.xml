@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\PrepareBodyMiddleware" namespace="GuzzleHttp" name="PrepareBodyMiddleware" abstract="false" final="false" start="14" end="104">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="PrepareBodyMiddleware.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/PrepareBodyMiddleware.php" size="3148" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="e2253c248484840a5ae92a83d779bb7bd7e644d5" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/PrepareBodyMiddleware.php"/>
+  <docblock>
+    <description compact="Prepares requests that contain a body, adding the Content-Length, Content-Type, and Expect headers."/>
+    <final/>
+  </docblock>
+  <member name="nextHandler" visibility="private" static="false" line="19">
+    <docblock>
+      <description/>
+      <var description="array): PromiseInterface" type="object">
+        <type full="GuzzleHttp\callable(RequestInterface" namespace="GuzzleHttp" name="callable(RequestInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="24" end="27" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="array): PromiseInterface $nextHandler Next handler to invoke." type="object">
+        <type full="GuzzleHttp\callable(RequestInterface" namespace="GuzzleHttp" name="callable(RequestInterface"/>
+      </param>
+    </docblock>
+    <parameter name="nextHandler" byreference="false" type="callable"/>
+  </constructor>
+  <method name="__invoke" start="29" end="65" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <inline>
+      <comment value="Don't do anything if the request has no body." line="33"/>
+      <comment value="Add a default content-type if possible." line="40"/>
+      <comment value="Add a default content-length or transfer-encoding header." line="49"/>
+      <comment value="Add the expect header if needed." line="61"/>
+    </inline>
+  </method>
+  <method name="addExpectHeader" start="70" end="103" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Add expect header"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="modify" byreference="true" type="array"/>
+    <inline>
+      <comment value="Determine if the Expect header should be used" line="72"/>
+      <comment value="Return if disabled or if you're not using HTTP/1.1 or HTTP/2.0" line="79"/>
+      <comment value="The expect header is unconditionally enabled" line="84"/>
+      <comment value="By default, send the expect header when the payload is &gt; 1mb" line="90"/>
+      <comment value="Always add if the body cannot be rewound, the size cannot be" line="95"/>
+      <comment value="determined, or the size is greater than the cutoff threshold" line="96"/>
+    </inline>
+  </method>
+</class>

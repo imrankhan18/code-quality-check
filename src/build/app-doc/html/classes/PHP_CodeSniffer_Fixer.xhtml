@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PHP_CodeSniffer\Fixer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#PHP_CodeSniffer">PHP_CodeSniffer</a>
+          </li>
+          <li class="separator">Fixer</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/squizlabs/php_codesniffer/src/Fixer.php.xhtml#line18">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>PHP_CodeSniffer\</small>Fixer</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Fixer
+            {<br/><ul class="none"><li>// members</li><li>public boolean <a href="#members">$enabled</a> =
+                        false;
+                    </li><li>public integer <a href="#members">$loops</a> =
+                        0;
+                    </li><li>private <span title="\PHP_CodeSniffer\Files\File">File</span> <a href="#members">$currentFile</a> =
+                        NULL;
+                    </li><li>private <span title="PHP_CodeSniffer\array&lt;int">array&lt;int</span> <a href="#members">$tokens</a> =
+                        ;
+                    </li><li>private array <a href="#members">$fixedTokens</a> =
+                        ;
+                    </li><li>private <span title="PHP_CodeSniffer\array&lt;int">array&lt;int</span> <a href="#members">$oldTokenValues</a> =
+                        ;
+                    </li><li>private array <a href="#members">$changeset</a> =
+                        ;
+                    </li><li>private boolean <a href="#members">$inChangeset</a> =
+                        false;
+                    </li><li>private boolean <a href="#members">$inConflict</a> =
+                        false;
+                    </li><li>private integer <a href="#members">$numFixes</a> =
+                        0;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/startFile.xhtml">startFile</a>()
+                    </li><li>public boolean <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/fixFile.xhtml">fixFile</a>()
+                    </li><li>public string <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/generateDiff.xhtml">generateDiff</a>()
+                    </li><li>public int <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/getFixCount.xhtml">getFixCount</a>()
+                    </li><li>public string <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/getContents.xhtml">getContents</a>()
+                    </li><li>public string <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/getTokenContent.xhtml">getTokenContent</a>()
+                    </li><li>public void <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/beginChangeset.xhtml">beginChangeset</a>()
+                    </li><li>public boolean <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/endChangeset.xhtml">endChangeset</a>()
+                    </li><li>public void <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/rollbackChangeset.xhtml">rollbackChangeset</a>()
+                    </li><li>public bool <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/replaceToken.xhtml">replaceToken</a>()
+                    </li><li>public bool <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/revertToken.xhtml">revertToken</a>()
+                    </li><li>public bool <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/substrToken.xhtml">substrToken</a>()
+                    </li><li>public bool <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/addNewline.xhtml">addNewline</a>()
+                    </li><li>public bool <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/addNewlineBefore.xhtml">addNewlineBefore</a>()
+                    </li><li>public bool <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/addContent.xhtml">addContent</a>()
+                    </li><li>public bool <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/addContentBefore.xhtml">addContentBefore</a>()
+                    </li><li>public void <a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/changeCodeBlockIndent.xhtml">changeCodeBlockIndent</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="changeset"><strong>$changeset</strong>
+                —
+                array<br/><span class="indent">A list of tokens that have been fixed during a changeset.</span></li>
+            <li id="currentFile"><strong>$currentFile</strong>
+                —
+                <a title="\PHP_CodeSniffer\Files\File" href="../classes/_PHP_CodeSniffer_Files_File.xhtml">\PHP_CodeSniffer\Files\File</a><br/><span class="indent">The file being fixed.</span></li>
+            <li id="fixedTokens"><strong>$fixedTokens</strong>
+                —
+                array<br/><span class="indent">A list of tokens that have already been fixed.</span></li>
+            <li id="inChangeset"><strong>$inChangeset</strong>
+                —
+                boolean<br/><span class="indent">Is there an open changeset.</span></li>
+            <li id="inConflict"><strong>$inConflict</strong>
+                —
+                boolean<br/><span class="indent">Is the current fixing loop in conflict?</span></li>
+            <li id="numFixes"><strong>$numFixes</strong>
+                —
+                integer<br/><span class="indent">The number of fixes that have been performed.</span></li>
+            <li id="oldTokenValues"><strong>$oldTokenValues</strong>
+                —
+                <a title="PHP_CodeSniffer\array&lt;int" href="../classes/PHP_CodeSniffer_array&lt;int.xhtml">PHP_CodeSniffer\array&lt;int</a><br/><span class="indent">The last value of each fixed token.</span></li>
+            <li id="tokens"><strong>$tokens</strong>
+                —
+                <a title="PHP_CodeSniffer\array&lt;int" href="../classes/PHP_CodeSniffer_array&lt;int.xhtml">PHP_CodeSniffer\array&lt;int</a><br/><span class="indent">The list of tokens that make up the file contents.</span></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="enabled"><strong>$enabled</strong>
+                —
+                boolean<br/><span class="indent">Is the fixer enabled and fixing a file?</span></li>
+            <li id="loops"><strong>$loops</strong>
+                —
+                integer<br/><span class="indent">The number of times we have looped over a file.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="addContent"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/addContent.xhtml">addContent()</a>
+                — Adds content to the end of a token's current content.</li>
+            <li id="addContentBefore"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/addContentBefore.xhtml">addContentBefore()</a>
+                — Adds content to the start of a token's current content.</li>
+            <li id="addNewline"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/addNewline.xhtml">addNewline()</a>
+                — Adds a newline to end of a token's content.</li>
+            <li id="addNewlineBefore"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/addNewlineBefore.xhtml">addNewlineBefore()</a>
+                — Adds a newline to the start of a token's content.</li>
+            <li id="beginChangeset"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/beginChangeset.xhtml">beginChangeset()</a>
+                — Start recording actions for a changeset.</li>
+            <li id="changeCodeBlockIndent"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/changeCodeBlockIndent.xhtml">changeCodeBlockIndent()</a>
+                — Adjust the indent of a code block.</li>
+            <li id="endChangeset"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/endChangeset.xhtml">endChangeset()</a>
+                — Stop recording actions for a changeset, and apply logged changes.</li>
+            <li id="fixFile"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/fixFile.xhtml">fixFile()</a>
+                — Attempt to fix the file by processing it until no fixes are made.</li>
+            <li id="generateDiff"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/generateDiff.xhtml">generateDiff()</a>
+                — Generates a text diff of the original file and the new content.</li>
+            <li id="getContents"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/getContents.xhtml">getContents()</a>
+                — Get the current content of the file, as a string.</li>
+            <li id="getFixCount"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/getFixCount.xhtml">getFixCount()</a>
+                — Get a count of fixes that have been performed on the file.</li>
+            <li id="getTokenContent"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/getTokenContent.xhtml">getTokenContent()</a>
+                — Get the current fixed content of a token.</li>
+            <li id="replaceToken"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/replaceToken.xhtml">replaceToken()</a>
+                — Replace the entire contents of a token.</li>
+            <li id="revertToken"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/revertToken.xhtml">revertToken()</a>
+                — Reverts the previous fix made to a token.</li>
+            <li id="rollbackChangeset"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/rollbackChangeset.xhtml">rollbackChangeset()</a>
+                — Stop recording actions for a changeset, and discard logged changes.</li>
+            <li id="startFile"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/startFile.xhtml">startFile()</a>
+                — Starts fixing a new file.</li>
+            <li id="substrToken"><a title="PHP_CodeSniffer\Fixer" href="../classes/PHP_CodeSniffer_Fixer/substrToken.xhtml">substrToken()</a>
+                — Replace the content of a token with a part of its current content.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Promise\EachPromise" namespace="GuzzleHttp\Promise" name="EachPromise" abstract="false" final="false" start="9" end="255">
+  <file path="//var/www/html/vendor/guzzlehttp/promises/src" file="EachPromise.php" realpath="/var/www/html/vendor/guzzlehttp/promises/src/EachPromise.php" size="8017" time="2021-10-22T20:56:57+00:00" unixtime="1634936217" sha1="2ce3d626b033e5749ff2278a2a4b8a42555030d6" relative="ar/www/html/vendor/guzzlehttp/promises/src/EachPromise.php"/>
+  <docblock>
+    <description compact="Represents a promise that iterates over many promises and invokes side-effect functions in the process."/>
+  </docblock>
+  <implements full="GuzzleHttp\Promise\PromisorInterface" namespace="GuzzleHttp\Promise" name="PromisorInterface"/>
+  <member name="pending" default="" type="array" visibility="private" static="false" line="11"/>
+  <member name="nextPendingIndex" default="0" type="integer" visibility="private" static="false" line="13"/>
+  <member name="iterable" visibility="private" static="false" line="16">
+    <docblock>
+      <var type="object">
+        <type full="\Iterator|null" namespace="" name="Iterator|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="concurrency" visibility="private" static="false" line="19">
+    <docblock>
+      <var type="object">
+        <type full="GuzzleHttp\Promise\callable|int|null" namespace="GuzzleHttp\Promise" name="callable|int|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="onFulfilled" visibility="private" static="false" line="22">
+    <docblock>
+      <var type="object">
+        <type full="GuzzleHttp\Promise\callable|null" namespace="GuzzleHttp\Promise" name="callable|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="onRejected" visibility="private" static="false" line="25">
+    <docblock>
+      <var type="object">
+        <type full="GuzzleHttp\Promise\callable|null" namespace="GuzzleHttp\Promise" name="callable|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="aggregate" visibility="private" static="false" line="28">
+    <docblock>
+      <var type="object">
+        <type full="GuzzleHttp\Promise\Promise|null" namespace="GuzzleHttp\Promise" name="Promise|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="mutex" visibility="private" static="false" line="31">
+    <docblock>
+      <var type="object">
+        <type full="GuzzleHttp\Promise\bool|null" namespace="GuzzleHttp\Promise" name="bool|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="54" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Configuration hash can include the following key value pairs:">- fulfilled: (callable) Invoked when a promise fulfills. The function
+  is invoked with three arguments: the fulfillment value, the index
+  position from the iterable list of the promise, and the aggregate
+  promise that manages all of the promises. The aggregate promise may
+  be resolved from within the callback to short-circuit the promise.
+- rejected: (callable) Invoked when a promise is rejected. The
+  function is invoked with three arguments: the rejection reason, the
+  index position from the iterable list of the promise, and the
+  aggregate promise that manages all of the promises. The aggregate
+  promise may be resolved from within the callback to short-circuit
+  the promise.
+- concurrency: (integer) Pass this configuration option to limit the
+  allowed number of outstanding concurrently executing promises,
+  creating a capped pool of promises. There is no limit by default.</description>
+      <param description="Promises or values to iterate." type="mixed" variable="$iterable"/>
+      <param description="Configuration options" type="array" variable="$config"/>
+    </docblock>
+    <parameter name="iterable" byreference="false" type="{unknown}"/>
+    <parameter name="config" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="promise" start="72" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <psalm value="-suppress InvalidNullableReturnType"/>
+    </docblock>
+    <inline>
+      <comment value="@psalm-suppress NullableReturnStatement" line="97"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="@phpstan-ignore-next-line" line="98"/>
+    </inline>
+  </method>
+  <method name="createPromise" start="104" end="131" abstract="false" final="false" static="false" visibility="private">
+    <inline>
+      <comment value="Clear the references when the promise is resolved." line="123"/>
+    </inline>
+  </method>
+  <method name="refillPending" start="133" end="159" abstract="false" final="false" static="false" visibility="private">
+    <inline>
+      <comment value="Add only up to N pending promises." line="141"/>
+      <comment value="Concurrency may be set to 0 to disallow new promises." line="146"/>
+      <comment value="Add the first pending promise." line="150"/>
+      <comment value="Note this is special handling for concurrency=1 so that we do" line="152"/>
+      <comment value="not advance the iterator after adding the first promise. This" line="153"/>
+      <comment value="helps work around issues with generators that might not have the" line="154"/>
+      <comment value="next value to yield until promise callbacks are called." line="155"/>
+    </inline>
+  </method>
+  <method name="addPending" start="161" end="200" abstract="false" final="false" static="false" visibility="private">
+    <inline>
+      <comment value="Iterable keys may not be unique, so we use a counter to" line="170"/>
+      <comment value="guarantee uniqueness" line="171"/>
+    </inline>
+  </method>
+  <method name="advanceIterator" start="202" end="225" abstract="false" final="false" static="false" visibility="private">
+    <inline>
+      <comment value="Place a lock on the iterator so that we ensure to not recurse," line="204"/>
+      <comment value="preventing fatal generator errors." line="205"/>
+    </inline>
+  </method>
+  <method name="step" start="227" end="243" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="idx" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="If the promise was already resolved, then ignore this step." line="229"/>
+      <comment value="Only refill pending promises if we are not locked, preventing the" line="236"/>
+      <comment value="EachPromise to recursively invoke the provided iterator, which" line="237"/>
+      <comment value="cause a fatal error: &quot;Cannot resume an already running generator&quot;" line="238"/>
+    </inline>
+  </method>
+  <method name="checkIfFinished" start="245" end="254" abstract="false" final="false" static="false" visibility="private"/>
+  <interface full="GuzzleHttp\Promise\PromisorInterface" namespace="GuzzleHttp\Promise" name="PromisorInterface">
+    <method name="promise" start="15" end="15" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a promise."/>
+        <return type="object">
+          <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+    </method>
+  </interface>
+</class>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="SlevomatCodingStandard\Helpers\TokenHelper" namespace="SlevomatCodingStandard\Helpers" name="TokenHelper" abstract="false" final="false" start="50" end="453">
+  <file path="//var/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Helpers" file="TokenHelper.php" realpath="/var/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Helpers/TokenHelper.php" size="11774" time="2022-03-29T12:44:16+00:00" unixtime="1648557856" sha1="87ff746745c37c1c5b9cfc0259e08e84b56378fc" relative="ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Helpers/TokenHelper.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <member name="typeKeywordTokenCodes" default="" type="array" visibility="public" static="true" line="54">
+    <docblock>
+      <var type="array" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="ineffectiveTokenCodes" default="" type="array" visibility="public" static="true" line="61">
+    <docblock>
+      <var type="array" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="inlineCommentTokenCodes" default="" type="array" visibility="public" static="true" line="79">
+    <docblock>
+      <var type="array" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="earlyExitTokenCodes" default="" type="array" visibility="public" static="true" line="89">
+    <docblock>
+      <var type="array" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="functionTokenCodes" default="" type="array" visibility="public" static="true" line="98">
+    <docblock>
+      <var type="array" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="findNext" start="107" end="112" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findNextAll" start="118" end="134" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+      <return type="array" of="object">
+        <type full="SlevomatCodingStandard\Helpers\int" namespace="SlevomatCodingStandard\Helpers" name="int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findNextContent" start="139" end="144" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="content" byreference="false" type="string"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findNextEffective" start="150" end="153" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$startPointer"/>
+      <param description="Search ends at this token, exclusive" type="object" variable="$endPointer">
+        <type full="SlevomatCodingStandard\Helpers\int|null" namespace="SlevomatCodingStandard\Helpers" name="int|null"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findNextExcluding" start="160" end="165" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+      <param description="Search starts at this token, inclusive" type="int" variable="$startPointer"/>
+      <param description="Search ends at this token, exclusive" type="object" variable="$endPointer">
+        <type full="SlevomatCodingStandard\Helpers\int|null" namespace="SlevomatCodingStandard\Helpers" name="int|null"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findNextLocal" start="170" end="175" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findNextAnyToken" start="181" end="184" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$startPointer"/>
+      <param description="Search ends at this token, exclusive" type="object" variable="$endPointer">
+        <type full="SlevomatCodingStandard\Helpers\int|null" namespace="SlevomatCodingStandard\Helpers" name="int|null"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findPrevious" start="191" end="196" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+      <param description="Search starts at this token, inclusive" type="int" variable="$startPointer"/>
+      <param description="Search ends at this token, exclusive" type="object" variable="$endPointer">
+        <type full="SlevomatCodingStandard\Helpers\int|null" namespace="SlevomatCodingStandard\Helpers" name="int|null"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findPreviousContent" start="201" end="206" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="content" byreference="false" type="string"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findPreviousEffective" start="212" end="215" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$startPointer"/>
+      <param description="Search ends at this token, exclusive" type="object" variable="$endPointer">
+        <type full="SlevomatCodingStandard\Helpers\int|null" namespace="SlevomatCodingStandard\Helpers" name="int|null"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findPreviousExcluding" start="222" end="227" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+      <param description="Search starts at this token, inclusive" type="int" variable="$startPointer"/>
+      <param description="Search ends at this token, exclusive" type="object" variable="$endPointer">
+        <type full="SlevomatCodingStandard\Helpers\int|null" namespace="SlevomatCodingStandard\Helpers" name="int|null"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findPreviousLocal" start="232" end="237" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$types" of="object">
+        <type full="SlevomatCodingStandard\Helpers\(int|string)|(int|string)" namespace="SlevomatCodingStandard\Helpers" name="(int|string)|(int|string)"/>
+      </param>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="findFirstTokenOnLine" start="242" end="257" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$pointer"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="pointer" byreference="false" type="int"/>
+  </method>
+  <method name="findLastTokenOnLine" start="262" end="273" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$pointer"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="pointer" byreference="false" type="int"/>
+  </method>
+  <method name="findFirstTokenOnNextLine" start="278" end="295" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$pointer"/>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="pointer" byreference="false" type="int"/>
+  </method>
+  <method name="findFirstNonWhitespaceOnLine" start="300" end="315" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$pointer"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="pointer" byreference="false" type="int"/>
+  </method>
+  <method name="findFirstNonWhitespaceOnNextLine" start="320" end="335" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$pointer"/>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="pointer" byreference="false" type="int"/>
+  </method>
+  <method name="findFirstNonWhitespaceOnPreviousLine" start="340" end="370" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Search starts at this token, inclusive" type="int" variable="$pointer"/>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="pointer" byreference="false" type="int"/>
+  </method>
+  <method name="getContent" start="372" end="383" abstract="false" final="false" static="true" visibility="public">
+    <return type="string" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="startPointer" byreference="false" type="int"/>
+    <parameter name="endPointer" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="getLastTokenPointer" start="385" end="392" abstract="false" final="false" static="true" visibility="public">
+    <return type="int" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+  </method>
+  <method name="getNameTokenCodes" start="398" end="401" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <return description="(int|string)&gt;" type="object">
+        <type full="SlevomatCodingStandard\Helpers\array&lt;int" namespace="SlevomatCodingStandard\Helpers" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getOnlyNameTokenCodes" start="407" end="410" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <return description="(int|string)&gt;" type="object">
+        <type full="SlevomatCodingStandard\Helpers\array&lt;int" namespace="SlevomatCodingStandard\Helpers" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getOnlyTypeHintTokenCodes" start="415" end="434" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return description="(int|string)&gt;" type="object">
+        <type full="SlevomatCodingStandard\Helpers\array&lt;int" namespace="SlevomatCodingStandard\Helpers" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getTypeHintTokenCodes" start="439" end="451" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return description="(int|string)&gt;" type="object">
+        <type full="SlevomatCodingStandard\Helpers\array&lt;int" namespace="SlevomatCodingStandard\Helpers" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+</class>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Package\Loader\ValidatingArrayLoader" namespace="Composer\Package\Loader" name="ValidatingArrayLoader" abstract="false" final="false" start="25" end="659">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Package/Loader" file="ValidatingArrayLoader.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Package/Loader/ValidatingArrayLoader.php" size="29426" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="3552d549ea0a200525d9c4136fdfae280463aea5" relative="ar/www/html/vendor/composer/composer/src/Composer/Package/Loader/ValidatingArrayLoader.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <implements full="Composer\Package\Loader\LoaderInterface" namespace="Composer\Package\Loader" name="LoaderInterface"/>
+  <constant type="integer" name="CHECK_ALL" value="3"/>
+  <constant type="integer" name="CHECK_UNBOUND_CONSTRAINTS" value="1"/>
+  <constant type="integer" name="CHECK_STRICT_CONSTRAINTS" value="2"/>
+  <member name="loader" visibility="private" static="false" line="32">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\Loader\LoaderInterface" namespace="Composer\Package\Loader" name="LoaderInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="versionParser" visibility="private" static="false" line="34">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\Version\VersionParser" namespace="Composer\Package\Version" name="VersionParser"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="errors" visibility="private" static="false" line="36">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Loader\string" namespace="Composer\Package\Loader" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="warnings" visibility="private" static="false" line="38">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Loader\string" namespace="Composer\Package\Loader" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="private" static="false" line="40">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Loader\mixed" namespace="Composer\Package\Loader" name="mixed"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="flags" visibility="private" static="false" line="42">
+    <docblock>
+      <var description="One or more of self::CHECK_* constants" type="int"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="48" end="57" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$strictName">
+        <type full="Composer\Package\Loader\true" namespace="Composer\Package\Loader" name="true"/>
+      </param>
+      <param type="int" variable="$flags"/>
+    </docblock>
+    <parameter name="loader" byreference="false" type="object">
+      <type full="Composer\Package\Loader\LoaderInterface" namespace="Composer\Package\Loader" name="LoaderInterface"/>
+    </parameter>
+    <parameter name="strictName" byreference="false" type="boolean" default="true"/>
+    <parameter name="parser" byreference="false" type="object" default="NULL">
+      <type full="Composer\Package\Version\VersionParser" namespace="Composer\Package\Version" name="VersionParser"/>
+    </parameter>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </constructor>
+  <method name="load" start="62" end="429" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </return>
+    <parameter name="config" byreference="false" type="array"/>
+    <parameter name="class" byreference="false" type="string" default="'Composer\Package\CompletePackage'"/>
+    <inline>
+      <todo value="validate event names &amp; listener syntax" line="118"/>
+      <comment value="check for license validity on newly updated branches" line="134"/>
+      <todo value="validate repositories" line="373"/>
+      <todo value="validate package repositories' packages using this recursively" line="374"/>
+      <comment value="branch alias validation" line="379"/>
+    </inline>
+  </method>
+  <method name="getWarnings" start="434" end="437" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Package\Loader\string" namespace="Composer\Package\Loader" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getErrors" start="442" end="445" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Package\Loader\string" namespace="Composer\Package\Loader" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="hasPackageNamingError" start="453" end="485" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <param type="object" variable="$isLink">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\Loader\string|null" namespace="Composer\Package\Loader" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="isLink" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="validateRegex" start="497" end="516" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$property"/>
+      <param type="string" variable="$regex"/>
+      <param type="object" variable="$mandatory">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </return>
+      <phpstan value="-param non-empty-string $property"/>
+      <phpstan value="-param non-empty-string $regex"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="property" byreference="false" type="string"/>
+    <parameter name="regex" byreference="false" type="string"/>
+    <parameter name="mandatory" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="validateString" start="526" end="545" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$property"/>
+      <param type="object" variable="$mandatory">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </return>
+      <phpstan value="-param non-empty-string $property"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="property" byreference="false" type="string"/>
+    <parameter name="mandatory" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="validateArray" start="555" end="574" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$property"/>
+      <param type="object" variable="$mandatory">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </return>
+      <phpstan value="-param non-empty-string $property"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="property" byreference="false" type="string"/>
+    <parameter name="mandatory" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="validateFlatArray" start="586" end="610" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$property"/>
+      <param type="object" variable="$regex">
+        <type full="Composer\Package\Loader\string|null" namespace="Composer\Package\Loader" name="string|null"/>
+      </param>
+      <param type="object" variable="$mandatory">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </return>
+      <phpstan value="-param non-empty-string      $property"/>
+      <phpstan value="-param non-empty-string|null $regex"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="property" byreference="false" type="string"/>
+    <parameter name="regex" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="mandatory" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="validateUrl" start="620" end="634" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$property"/>
+      <param type="object" variable="$mandatory">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </return>
+      <phpstan value="-param non-empty-string $property"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="property" byreference="false" type="string"/>
+    <parameter name="mandatory" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="filterUrl" start="642" end="658" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$value"/>
+      <param type="array" variable="$schemes" of="object">
+        <type full="Composer\Package\Loader\string" namespace="Composer\Package\Loader" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\Loader\bool" namespace="Composer\Package\Loader" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="schemes" byreference="false" type="array" default=""/>
+  </method>
+  <interface full="Composer\Package\Loader\LoaderInterface" namespace="Composer\Package\Loader" name="LoaderInterface">
+    <method name="load" start="38" end="38" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Converts a package from an array to a real instance"/>
+        <param description="package data" type="array" variable="$config" of="object">
+          <type full="Composer\Package\Loader\mixed" namespace="Composer\Package\Loader" name="mixed"/>
+        </param>
+        <param description="FQCN to be instantiated" type="string" variable="$class"/>
+        <return type="object">
+          <type full="Composer\Package\Loader\CompletePackage|CompleteAliasPackage|RootPackage|RootAliasPackage" namespace="Composer\Package\Loader" name="CompletePackage|CompleteAliasPackage|RootPackage|RootAliasPackage"/>
+        </return>
+        <phpstan value="-param class-string&lt;CompletePackage|RootPackage&gt; $class"/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+      </return>
+      <parameter name="config" byreference="false" type="array"/>
+      <parameter name="class" byreference="false" type="string" default="'Composer\Package\CompletePackage'"/>
+    </method>
+  </interface>
+</class>

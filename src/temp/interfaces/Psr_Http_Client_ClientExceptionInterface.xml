@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Psr\Http\Client\ClientExceptionInterface" namespace="Psr\Http\Client" name="ClientExceptionInterface" abstract="false" final="false" start="8" end="10">
+  <file path="//var/www/html/vendor/psr/http-client/src" file="ClientExceptionInterface.php" realpath="/var/www/html/vendor/psr/http-client/src/ClientExceptionInterface.php" size="171" time="2020-06-29T06:28:15+00:00" unixtime="1593412095" sha1="386e9bcd0c5df681ed3f5551e6ac3d13af24dbd4" relative="ar/www/html/vendor/psr/http-client/src/ClientExceptionInterface.php"/>
+  <docblock>
+    <description compact="Every HTTP client related exception MUST implement this interface."/>
+  </docblock>
+  <extends full="Throwable" namespace="" name="Throwable"/>
+  <parent full="Throwable" namespace="" name="Throwable">
+    <method name="getMessage" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the message"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getCode" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the exception code"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getFile" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the file in which the exception was created"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getLine" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the line on which the object was instantiated"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getTrace" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the stack trace"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+    <method name="getTraceAsString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the stack trace as a string"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getPrevious" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Returns the previous Throwable"/>
+      <return type="Throwable"/>
+    </docblock>
+  </method>
+    <method name="__toString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets a string representation of the thrown object"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  </parent>
+  <extenders>
+    <extender full="Psr\Http\Client\NetworkExceptionInterface" namespace="Psr\Http\Client" name="NetworkExceptionInterface"/>
+    <extender full="Psr\Http\Client\RequestExceptionInterface" namespace="Psr\Http\Client" name="RequestExceptionInterface"/>
+    <extender full="GuzzleHttp\Exception\GuzzleException" namespace="GuzzleHttp\Exception" name="GuzzleException"/>
+  </extenders>
+</interface>

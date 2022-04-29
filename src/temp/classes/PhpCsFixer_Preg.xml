@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Preg" namespace="PhpCsFixer" name="Preg" abstract="false" final="true" start="25" end="200">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src" file="Preg.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Preg.php" size="6388" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="a72a7952d22320f827fc8db134b14b4b5efb104c" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Preg.php"/>
+  <docblock>
+    <description compact="This class replaces preg_* functions to better handling UTF8 strings, ensuring no matter &quot;u&quot; modifier is present or absent subject will be handled correctly."/>
+    <author value="Kuba Werłos &lt;werlos@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <method name="match" start="32" end="45" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$matches" of="object">
+        <type full="PhpCsFixer\null|string" namespace="PhpCsFixer" name="null|string"/>
+      </param>
+      <throws type="object">
+        <type full="PhpCsFixer\PregException" namespace="PhpCsFixer" name="PregException"/>
+      </throws>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array" default="NULL"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="matchAll" start="52" end="65" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$matches" of="object">
+        <type full="PhpCsFixer\null|string" namespace="PhpCsFixer" name="null|string"/>
+      </param>
+      <throws type="object">
+        <type full="PhpCsFixer\PregException" namespace="PhpCsFixer" name="PregException"/>
+      </throws>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array" default="NULL"/>
+    <parameter name="flags" byreference="false" type="{unknown}" default="" constant="PREG_PATTERN_ORDER"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="replace" start="72" end="85" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$subject" of="object">
+        <type full="PhpCsFixer\string|string" namespace="PhpCsFixer" name="string|string"/>
+      </param>
+      <throws type="object">
+        <type full="PhpCsFixer\PregException" namespace="PhpCsFixer" name="PregException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="replacement" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="{unknown}"/>
+    <parameter name="limit" byreference="false" type="integer" default="1"/>
+    <parameter name="count" byreference="true" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="replaceCallback" start="90" end="103" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="PhpCsFixer\PregException" namespace="PhpCsFixer" name="PregException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="callback" byreference="false" type="callable"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="limit" byreference="false" type="integer" default="1"/>
+    <parameter name="count" byreference="true" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="split" start="110" end="123" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="PhpCsFixer\PregException" namespace="PhpCsFixer" name="PregException"/>
+      </throws>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\string" namespace="PhpCsFixer" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="limit" byreference="false" type="integer" default="1"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="addUtf8Modifier" start="130" end="137" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$pattern" of="object">
+        <type full="PhpCsFixer\string|string" namespace="PhpCsFixer" name="string|string"/>
+      </param>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\string|string" namespace="PhpCsFixer" name="string|string"/>
+      </return>
+    </docblock>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="removeUtf8Modifier" start="144" end="159" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$pattern" of="object">
+        <type full="PhpCsFixer\string|string" namespace="PhpCsFixer" name="string|string"/>
+      </param>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\string|string" namespace="PhpCsFixer" name="string|string"/>
+      </return>
+    </docblock>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="newPregException" start="169" end="199" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="Create PregException.">Create the generic PregException message and if possible due to finding
+an invalid pattern, tell more about such kind of error in the message.</description>
+      <param type="array" variable="$patterns" of="object">
+        <type full="PhpCsFixer\string" namespace="PhpCsFixer" name="string"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PhpCsFixer\PregException" namespace="PhpCsFixer" name="PregException"/>
+    </return>
+    <parameter name="error" byreference="false" type="int"/>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="patterns" byreference="false" type="array"/>
+  </method>
+</class>

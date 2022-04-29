@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Plugin\PreFileDownloadEvent" namespace="Composer\Plugin" name="PreFileDownloadEvent" abstract="false" final="false" start="23" end="173">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Plugin" file="PreFileDownloadEvent.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Plugin/PreFileDownloadEvent.php" size="3888" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="242901d33404050ab8c68bb6efc5a5835d9bcd49" relative="ar/www/html/vendor/composer/composer/src/Composer/Plugin/PreFileDownloadEvent.php"/>
+  <docblock>
+    <description compact="The pre file download event."/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <extends full="Composer\EventDispatcher\Event" namespace="Composer\EventDispatcher" name="Event"/>
+  <member name="httpDownloader" visibility="private" static="false" line="28">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="processedUrl" visibility="private" static="false" line="33">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="customCacheKey" visibility="private" static="false" line="38">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Plugin\string|null" namespace="Composer\Plugin" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="type" visibility="private" static="false" line="43">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="context" visibility="private" static="false" line="48">
+    <docblock>
+      <description/>
+      <var type="mixed"/>
+    </docblock>
+  </member>
+  <member name="transportOptions" default="" type="array" visibility="private" static="false" line="53">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Plugin\mixed" namespace="Composer\Plugin" name="mixed"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="64" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor."/>
+      <param description="The event name" type="string" variable="$name"/>
+      <param type="object" variable="$httpDownloader">
+        <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+      </param>
+      <param type="string" variable="$processedUrl"/>
+      <param type="string" variable="$type"/>
+      <param type="mixed" variable="$context"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="httpDownloader" byreference="false" type="object">
+      <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+    </parameter>
+    <parameter name="processedUrl" byreference="false" type="string"/>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="context" byreference="false" type="{unknown}" default="NULL"/>
+  </constructor>
+  <method name="getHttpDownloader" start="76" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+    </return>
+  </method>
+  <method name="getProcessedUrl" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieves the processed URL that will be downloaded."/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="setProcessedUrl" start="98" end="101" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sets the processed URL that will be downloaded."/>
+      <param description="New processed URL" type="string" variable="$processedUrl"/>
+      <return type="object">
+        <type full="Composer\Plugin\void" namespace="Composer\Plugin" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="processedUrl" byreference="false" type="string"/>
+  </method>
+  <method name="getCustomCacheKey" start="108" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieves a custom package cache key for this download."/>
+      <return type="object">
+        <type full="Composer\Plugin\string|null" namespace="Composer\Plugin" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="setCustomCacheKey" start="120" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sets a custom package cache key for this download."/>
+      <param description="New cache key" type="object" variable="$customCacheKey">
+        <type full="Composer\Plugin\string|null" namespace="Composer\Plugin" name="string|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Plugin\void" namespace="Composer\Plugin" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="customCacheKey" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="getType" start="130" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the type of this download (package, metadata)."/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getContext" start="143" end="146" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the context of this download, if any.">If this download is of type package, the package object is returned.
+If the type is metadata, an array{repository: RepositoryInterface} is returned.</description>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  <method name="getTransportOptions" start="155" end="158" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns transport options for the download.">Only available for events with type metadata, for packages set the transport options on the package itself.</description>
+      <return type="array" of="object">
+        <type full="Composer\Plugin\mixed" namespace="Composer\Plugin" name="mixed"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="setTransportOptions" start="169" end="172" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sets transport options for the download.">Only available for events with type metadata, for packages set the transport options on the package itself.</description>
+      <param type="array" variable="$options" of="object">
+        <type full="Composer\Plugin\mixed" namespace="Composer\Plugin" name="mixed"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Plugin\void" namespace="Composer\Plugin" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <parent full="Composer\EventDispatcher\Event" namespace="Composer\EventDispatcher" name="Event">
+    <member name="name" visibility="protected" static="false" line="25">
+      <docblock>
+        <description/>
+        <var description="This event's name" type="string"/>
+      </docblock>
+    </member>
+    <member name="args" visibility="protected" static="false" line="30">
+      <docblock>
+        <description/>
+        <var description="Arguments passed by the user, these will be forwarded to CLI script handlers" type="array" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="flags" visibility="protected" static="false" line="35">
+      <docblock>
+        <description/>
+        <var description="Flags usable in PHP script handlers" type="array" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="49" end="54" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Constructor."/>
+        <param description="The event name" type="string" variable="$name"/>
+        <param description="Arguments passed by the user" type="array" variable="$args" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </param>
+        <param description="Optional flags to pass data not as argument" type="array" variable="$flags" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </param>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="args" byreference="false" type="array" default=""/>
+      <parameter name="flags" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="getName" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's name."/>
+        <return description="The event name" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getArguments" start="71" end="74" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's arguments."/>
+        <return description="The event arguments" type="array" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getFlags" start="81" end="84" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's flags."/>
+        <return description="The event flags" type="array" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="isPropagationStopped" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks if stopPropagation has been called"/>
+        <return description="Whether propagation has been stopped" type="object">
+          <type full="Composer\EventDispatcher\bool" namespace="Composer\EventDispatcher" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="stopPropagation" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Prevents the event from being passed to further listeners"/>
+        <return type="object">
+          <type full="Composer\EventDispatcher\void" namespace="Composer\EventDispatcher" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+    </method>
+  </parent>
+</class>

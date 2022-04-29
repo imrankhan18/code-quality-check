@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_ErrorStack</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_ErrorStack</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/ErrorStack.php.xhtml#line141">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_ErrorStack</h1>
+        <h4>Error Stack Implementation</h4>
+        <p>Usage:<br/>&lt;code&gt;<br/>// global error stack<br/>$global_stack = &amp;PEAR_ErrorStack::singleton('MyPackage');<br/>// local error stack<br/>$local_stack = new PEAR_ErrorStack('MyPackage');<br/>&lt;/code&gt;</p>
+        <ul>
+          <li>Author: Greg Beaver &lt;cellog@php.net&gt;</li>
+          <li>Copyright: 2004-2008 Greg Beaver</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_ErrorStack
+            {<br/><ul class="none"><li>// members</li><li>public array <a href="#members">$_errors</a> =
+                        ;
+                    </li><li>public array <a href="#members">$_errorsByLevel</a> =
+                        ;
+                    </li><li>public  <a href="#members">$_package</a>;
+                    </li><li>public boolean <a href="#members">$_compat</a> =
+                        false;
+                    </li><li>public <span title="false|string|array">false|string|array</span> <a href="#members">$_msgCallback</a> =
+                        false;
+                    </li><li>public <span title="false|string|array">false|string|array</span> <a href="#members">$_contextCallback</a> =
+                        false;
+                    </li><li>public <span title="false|string|array">false|string|array</span> <a href="#members">$_errorCallback</a> =
+                        ;
+                    </li><li>public <span title="false|Log">false|Log</span> <a href="#members">$_logger</a> =
+                        false;
+                    </li><li>public array <a href="#members">$_errorMsgs</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/__construct.xhtml">__construct</a>()
+                    </li><li>public static PEAR_ErrorStack <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/singleton.xhtml">singleton</a>()
+                    </li><li>public void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/_handleError.xhtml">_handleError</a>()
+                    </li><li>public static void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setDefaultLogger.xhtml">setDefaultLogger</a>()
+                    </li><li>public void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setLogger.xhtml">setLogger</a>()
+                    </li><li>public void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setMessageCallback.xhtml">setMessageCallback</a>()
+                    </li><li>public array|string|false <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getMessageCallback.xhtml">getMessageCallback</a>()
+                    </li><li>public static void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setDefaultCallback.xhtml">setDefaultCallback</a>()
+                    </li><li>public void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setContextCallback.xhtml">setContextCallback</a>()
+                    </li><li>public void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/pushCallback.xhtml">pushCallback</a>()
+                    </li><li>public array|string|false <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/popCallback.xhtml">popCallback</a>()
+                    </li><li>public static void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticPushCallback.xhtml">staticPushCallback</a>()
+                    </li><li>public static array|string|false <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticPopCallback.xhtml">staticPopCallback</a>()
+                    </li><li>public PEAR_Error|array <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/push.xhtml">push</a>()
+                    </li><li>public static PEAR_Error|array <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticPush.xhtml">staticPush</a>()
+                    </li><li>public void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/_log.xhtml">_log</a>()
+                    </li><li>public false|array <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/pop.xhtml">pop</a>()
+                    </li><li>public static boolean <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticPop.xhtml">staticPop</a>()
+                    </li><li>public boolean <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/hasErrors.xhtml">hasErrors</a>()
+                    </li><li>public array <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getErrors.xhtml">getErrors</a>()
+                    </li><li>public static boolean <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticHasErrors.xhtml">staticHasErrors</a>()
+                    </li><li>public static array <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticGetErrors.xhtml">staticGetErrors</a>()
+                    </li><li>public static void <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/_sortErrors.xhtml">_sortErrors</a>()
+                    </li><li>public static array|false <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getFileLine.xhtml">getFileLine</a>()
+                    </li><li>public static string <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getErrorMessage.xhtml">getErrorMessage</a>()
+                    </li><li>public string <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getErrorMessageTemplate.xhtml">getErrorMessageTemplate</a>()
+                    </li><li>public string <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setErrorMessageTemplate.xhtml">setErrorMessageTemplate</a>()
+                    </li><li>public PEAR_Error <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/raiseError.xhtml">raiseError</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_compat"><strong>$_compat</strong>
+                —
+                boolean<br/><span class="indent">Determines whether a PEAR_Error is thrown upon every error addition</span></li>
+            <li id="_contextCallback"><strong>$_contextCallback</strong>
+                —
+                <a title="false|string|array" href="../classes/false|string|array.xhtml">false|string|array</a><br/><span class="indent">If set to a valid callback, this will be used to generate the error context for an error.  For PHP-related errors, this will be a file and line number as retrieved from debug_backtrace(), but can be customized for other purposes.  The error might actually be in a separate configuration file, or in a database query.</span></li>
+            <li id="_errorCallback"><strong>$_errorCallback</strong>
+                —
+                <a title="false|string|array" href="../classes/false|string|array.xhtml">false|string|array</a><br/><span class="indent">If set to a valid callback, this will be called every time an error is pushed onto the stack.  The return value will be used to determine whether to allow an error to be pushed or logged.</span></li>
+            <li id="_errorMsgs"><strong>$_errorMsgs</strong>
+                —
+                array<br/><span class="indent">Error messages - designed to be overridden</span></li>
+            <li id="_errors"><strong>$_errors</strong>
+                —
+                array<br/><span class="indent">Errors are stored in the order that they are pushed on the stack.</span></li>
+            <li id="_errorsByLevel"><strong>$_errorsByLevel</strong>
+                —
+                array<br/><span class="indent">Storage of errors by level.</span></li>
+            <li id="_logger"><strong>$_logger</strong>
+                —
+                <a title="false|Log" href="../classes/false|Log.xhtml">false|Log</a><br/><span class="indent">PEAR::Log object for logging errors</span></li>
+            <li id="_msgCallback"><strong>$_msgCallback</strong>
+                —
+                <a title="false|string|array" href="../classes/false|string|array.xhtml">false|string|array</a><br/><span class="indent">If set to a valid callback, this will be used to generate the error message from the error code, otherwise the message passed in will be used</span></li>
+            <li id="_package"><strong>$_package</strong>
+                —
+                string<br/><span class="indent">Package name this error stack represents</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/__construct.xhtml">__construct()</a>
+                — Set up a new error stack</li>
+            <li id="_handleError"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/_handleError.xhtml">_handleError()</a>
+                — Internal error handler for PEAR_ErrorStack class</li>
+            <li id="_log"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/_log.xhtml">_log()</a>
+                — Log an error using PEAR::Log</li>
+            <li id="_sortErrors"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/_sortErrors.xhtml">_sortErrors()</a>
+                — Error sorting function, sorts by time</li>
+            <li id="getErrorMessage"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getErrorMessage.xhtml">getErrorMessage()</a>
+                — Standard error message generation callback</li>
+            <li id="getErrorMessageTemplate"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getErrorMessageTemplate.xhtml">getErrorMessageTemplate()</a>
+                — Standard Error Message Template generator from code</li>
+            <li id="getErrors"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getErrors.xhtml">getErrors()</a>
+                — Retrieve all errors since last purge</li>
+            <li id="getFileLine"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getFileLine.xhtml">getFileLine()</a>
+                — Standard file/line number/function/class context callback</li>
+            <li id="getMessageCallback"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/getMessageCallback.xhtml">getMessageCallback()</a>
+                — Get an error code =&gt; error message mapping callback</li>
+            <li id="hasErrors"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/hasErrors.xhtml">hasErrors()</a>
+                — Determine whether there are any errors on the stack</li>
+            <li id="pop"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/pop.xhtml">pop()</a>
+                — Pop an error off of the error stack</li>
+            <li id="popCallback"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/popCallback.xhtml">popCallback()</a>
+                — Remove a callback from the error callback stack</li>
+            <li id="push"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/push.xhtml">push()</a>
+                — Add an error to the stack</li>
+            <li id="pushCallback"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/pushCallback.xhtml">pushCallback()</a>
+                — Set an error Callback If set to a valid callback, this will be called every time an error is pushed onto the stack.  The return value will be used to determine whether to allow an error to be pushed or logged.</li>
+            <li id="raiseError"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/raiseError.xhtml">raiseError()</a>
+                — emulate PEAR::raiseError()</li>
+            <li id="setContextCallback"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setContextCallback.xhtml">setContextCallback()</a>
+                — Set a callback that generates context information (location of error) for an error stack</li>
+            <li id="setDefaultCallback"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setDefaultCallback.xhtml">setDefaultCallback()</a>
+                — Sets a default callback to be used by all error stacks</li>
+            <li id="setDefaultLogger"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setDefaultLogger.xhtml">setDefaultLogger()</a>
+                — Set up a PEAR::Log object for all error stacks that don't have one</li>
+            <li id="setErrorMessageTemplate"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setErrorMessageTemplate.xhtml">setErrorMessageTemplate()</a>
+                — Set the Error Message Template array</li>
+            <li id="setLogger"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setLogger.xhtml">setLogger()</a>
+                — Set up a PEAR::Log object for this error stack</li>
+            <li id="setMessageCallback"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/setMessageCallback.xhtml">setMessageCallback()</a>
+                — Set an error code =&gt; error message mapping callback</li>
+            <li id="singleton"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/singleton.xhtml">singleton()</a>
+                — Return a single error stack for this package.</li>
+            <li id="staticGetErrors"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticGetErrors.xhtml">staticGetErrors()</a>
+                — Get a list of all errors since last purge, organized by package</li>
+            <li id="staticHasErrors"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticHasErrors.xhtml">staticHasErrors()</a>
+                — Determine whether there are any errors on a single error stack, or on any error stack</li>
+            <li id="staticPop"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticPop.xhtml">staticPop()</a>
+                — Pop an error off of the error stack, static method</li>
+            <li id="staticPopCallback"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticPopCallback.xhtml">staticPopCallback()</a>
+                — Remove a temporary overriding error callback</li>
+            <li id="staticPush"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticPush.xhtml">staticPush()</a>
+                — Static version of {@link push()}</li>
+            <li id="staticPushCallback"><a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack/staticPushCallback.xhtml">staticPushCallback()</a>
+                — Set a temporary overriding error callback for every package error stack</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

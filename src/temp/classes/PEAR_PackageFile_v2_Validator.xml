@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_PackageFile_v2_Validator" namespace="" name="PEAR_PackageFile_v2_Validator" abstract="false" final="false" start="28" end="2135">
+  <file path="//usr/local/lib/php/PEAR/PackageFile/v2" file="Validator.php" realpath="/usr/local/lib/php/PEAR/PackageFile/v2/Validator.php" size="85120" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="5f31170ac4238502c6d304ea77929703240d27c5" relative="sr/local/lib/php/PEAR/PackageFile/v2/Validator.php"/>
+  <docblock>
+    <description compact="Private validation class used by PEAR_PackageFile_v2 - do not use directly, its sole purpose is to split up the PEAR/PackageFile/v2.php file to make it smaller"/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a8"/>
+    <access value="private"/>
+  </docblock>
+  <member name="_packageInfo" visibility="public" static="false" line="33">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_pf" visibility="public" static="false" line="37">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_stack" visibility="public" static="false" line="41">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_ErrorStack" namespace="" name="PEAR_ErrorStack"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_isValid" default="0" type="integer" visibility="public" static="false" line="45">
+    <docblock>
+      <description/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="_filesValid" default="0" type="integer" visibility="public" static="false" line="49">
+    <docblock>
+      <description/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="_curState" default="0" type="integer" visibility="public" static="false" line="53">
+    <docblock>
+      <description/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <method name="validate" start="58" end="303" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+      </param>
+      <param type="int"/>
+    </docblock>
+    <parameter name="pf" byreference="true" type="{unknown}"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_NORMAL"/>
+    <inline>
+      <comment value="ignore post-installation array fields" line="121"/>
+    </inline>
+  </method>
+  <method name="_stupidSchemaValidate" start="305" end="406" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="structure" byreference="false" type="{unknown}"/>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+    <parameter name="root" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_processAttribs" start="408" end="441" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="choice" byreference="false" type="{unknown}"/>
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+    <parameter name="context" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_processStructure" start="443" end="465" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="key" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_validateStabilityVersion" start="467" end="490" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_validateMaintainers" start="492" end="514" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_validatePhpDep" start="516" end="549" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="installcondition" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_validatePearinstallerDep" start="551" end="593" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_validatePackageDep" start="595" end="678" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="group" byreference="false" type="{unknown}"/>
+    <parameter name="type" byreference="false" type="string" default="'&lt;package&gt;'"/>
+  </method>
+  <method name="_validateSubpackageDep" start="680" end="689" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="group" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_validateExtensionDep" start="691" end="748" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="group" byreference="false" type="boolean" default="false"/>
+    <parameter name="installcondition" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_validateOsDep" start="750" end="764" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="installcondition" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_validateArchDep" start="766" end="774" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="installcondition" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_validateInstallConditions" start="776" end="803" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="cond" byreference="false" type="{unknown}"/>
+    <parameter name="release" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_validateDependencies" start="805" end="923" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_validateCompatible" start="925" end="962" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_validateBundle" start="964" end="977" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="list" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_validateFilelist" start="979" end="1216" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="list" byreference="false" type="boolean" default="false"/>
+    <parameter name="allowignore" byreference="false" type="boolean" default="false"/>
+    <parameter name="dirs" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="_validateRelease" start="1218" end="1337" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_validateRole" start="1343" end="1346" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This is here to allow role extension through plugins"/>
+      <param type="string"/>
+    </docblock>
+    <parameter name="role" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_pearVersionTooLow" start="1348" end="1354" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidTagOrder" start="1356" end="1361" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="oktags" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="root" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_ignoreNotAllowed" start="1363" end="1368" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_fileNotAllowed" start="1370" end="1375" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_oldStyleFileNotAllowed" start="1377" end="1382" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_tagMissingAttribute" start="1384" end="1389" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+    <parameter name="attr" byreference="false" type="{unknown}"/>
+    <parameter name="context" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_tagHasNoAttribs" start="1391" end="1396" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+    <parameter name="context" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidInternalStructure" start="1398" end="1402" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_invalidFileRole" start="1404" end="1410" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="dir" byreference="false" type="{unknown}"/>
+    <parameter name="role" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidFileName" start="1412" end="1417" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="dir" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidFileInstallAs" start="1419" end="1424" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="as" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidDirName" start="1426" end="1431" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dir" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_filelistCannotContainFile" start="1433" end="1438" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="filelist" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_filelistMustContainDir" start="1440" end="1445" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="filelist" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_tagCannotBeEmpty" start="1447" end="1451" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_UrlOrChannel" start="1453" end="1459" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_NoChannel" start="1461" end="1467" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_UrlOrChannelGroup" start="1469" end="1475" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="group" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_NoChannelGroup" start="1477" end="1483" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="group" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_unknownChannel" start="1485" end="1489" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_noPackageVersion" start="1491" end="1495" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_NoBundledPackages" start="1497" end="1501" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_AtLeast2BundledPackages" start="1503" end="1507" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_ChannelOrUri" start="1509" end="1513" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_noChildTag" start="1515" end="1519" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="child" byreference="false" type="{unknown}"/>
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidVersion" start="1521" end="1525" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidState" start="1527" end="1542" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidTask" start="1544" end="1567" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="task" byreference="false" type="{unknown}"/>
+    <parameter name="ret" byreference="false" type="{unknown}"/>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_unknownTask" start="1569" end="1573" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="task" byreference="false" type="{unknown}"/>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_subpackageCannotProvideExtension" start="1575" end="1580" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_subpackagesCannotConflict" start="1582" end="1587" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_cannotProvideExtension" start="1589" end="1593" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="release" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_mustProvideExtension" start="1595" end="1599" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="release" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_cannotHaveSrcpackage" start="1601" end="1605" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="release" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_mustSrcPackage" start="1607" end="1611" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="release" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_mustSrcuri" start="1613" end="1617" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="release" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_uriDepsCannotHaveVersioning" start="1619" end="1623" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_conflictingDepsCannotHaveVersioning" start="1625" end="1630" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_DepchannelCannotBeUri" start="1632" end="1637" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_bundledPackagesMustBeFilename" start="1639" end="1644" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_binaryPackageMustBePackagename" start="1646" end="1651" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_fileNotFound" start="1653" end="1657" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_notInContents" start="1659" end="1663" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_cannotValidateNoPathSet" start="1665" end="1669" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_usesroletaskMustHaveChannelOrUri" start="1671" end="1675" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="role" byreference="false" type="{unknown}"/>
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_usesroletaskMustHavePackage" start="1677" end="1681" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="role" byreference="false" type="{unknown}"/>
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_usesroletaskMustHaveRoleTask" start="1683" end="1687" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_cannotConflictWithAllOs" start="1689" end="1693" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_invalidDepGroupName" start="1695" end="1699" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_multipleToplevelDirNotAllowed" start="1701" end="1706" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_multipleInstallAs" start="1708" end="1712" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_ignoreAndInstallAs" start="1714" end="1718" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_analyzeBundledPackages" start="1720" end="1765" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_analyzePhpFiles" start="1767" end="1832" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="analyzeSourceCode" start="1841" end="2060" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Analyze the source code of the given PHP file"/>
+      <param description="Filename of the PHP file" type="string"/>
+      <param description="whether to analyze $file as the file contents" type="boolean"/>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="Silence this function so we can catch PHP Warnings and show our own custom message" line="1871"/>
+      <comment value="for ($i = 0; $i &lt; sizeof($tokens); $i++) {" line="1882"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="@list($token, $data) = $tokens[$i];" line="1883"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="if (is_string($token)) {" line="1884"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="} else {" line="1886"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="print token_name($token) . ' ';" line="1887"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="}" line="1889"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="}" line="1890"/>
+    </inline>
+  </method>
+  <method name="_buildProvidesArray" start="2081" end="2134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Build a &quot;provides&quot; array from data returned by analyzeSourceCode().  The format of the built array is like this:">array(
+   'class;MyClass' =&gt; 'array('type' =&gt; 'class', 'name' =&gt; 'MyClass'),
+   ...
+ )</description>
+      <param description="array with information about a source file" type="array" variable="$srcinfo">as returned by the analyzeSourceCode() method.</param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="srcinfo" byreference="false" type="{unknown}"/>
+  </method>
+</class>

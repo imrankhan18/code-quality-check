@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Plugin\CommandEvent" namespace="Composer\Plugin" name="CommandEvent" abstract="false" final="false" start="24" end="88">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Plugin" file="CommandEvent.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Plugin/CommandEvent.php" size="2076" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="d94fd738def654a539c8ccddcd834381a17056b7" relative="ar/www/html/vendor/composer/composer/src/Composer/Plugin/CommandEvent.php"/>
+  <docblock>
+    <description compact="An event for all commands."/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <extends full="Composer\EventDispatcher\Event" namespace="Composer\EventDispatcher" name="Event"/>
+  <member name="commandName" visibility="private" static="false" line="29">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="input" visibility="private" static="false" line="34">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="output" visibility="private" static="false" line="39">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="51" end="57" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor."/>
+      <param description="The event name" type="string" variable="$name"/>
+      <param description="The command name" type="string" variable="$commandName"/>
+      <param type="object" variable="$input">
+        <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+      </param>
+      <param type="object" variable="$output">
+        <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+      </param>
+      <param description="Arguments passed by the user" type="array" variable="$args" of="object">
+        <type full="Composer\Plugin\mixed" namespace="Composer\Plugin" name="mixed"/>
+      </param>
+      <param description="Optional flags to pass data not as argument" type="array" variable="$flags" of="object">
+        <type full="Composer\Plugin\mixed" namespace="Composer\Plugin" name="mixed"/>
+      </param>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="commandName" byreference="false" type="string"/>
+    <parameter name="input" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+    </parameter>
+    <parameter name="output" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+    </parameter>
+    <parameter name="args" byreference="false" type="array" default=""/>
+    <parameter name="flags" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="getInput" start="64" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the command input interface"/>
+      <return type="object">
+        <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+    </return>
+  </method>
+  <method name="getOutput" start="74" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieves the command output interface"/>
+      <return type="object">
+        <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+    </return>
+  </method>
+  <method name="getCommandName" start="84" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieves the name of the command being run"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Composer\EventDispatcher\Event" namespace="Composer\EventDispatcher" name="Event">
+    <member name="name" visibility="protected" static="false" line="25">
+      <docblock>
+        <description/>
+        <var description="This event's name" type="string"/>
+      </docblock>
+    </member>
+    <member name="args" visibility="protected" static="false" line="30">
+      <docblock>
+        <description/>
+        <var description="Arguments passed by the user, these will be forwarded to CLI script handlers" type="array" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="flags" visibility="protected" static="false" line="35">
+      <docblock>
+        <description/>
+        <var description="Flags usable in PHP script handlers" type="array" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="49" end="54" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Constructor."/>
+        <param description="The event name" type="string" variable="$name"/>
+        <param description="Arguments passed by the user" type="array" variable="$args" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </param>
+        <param description="Optional flags to pass data not as argument" type="array" variable="$flags" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </param>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="args" byreference="false" type="array" default=""/>
+      <parameter name="flags" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="getName" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's name."/>
+        <return description="The event name" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getArguments" start="71" end="74" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's arguments."/>
+        <return description="The event arguments" type="array" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getFlags" start="81" end="84" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's flags."/>
+        <return description="The event flags" type="array" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="isPropagationStopped" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks if stopPropagation has been called"/>
+        <return description="Whether propagation has been stopped" type="object">
+          <type full="Composer\EventDispatcher\bool" namespace="Composer\EventDispatcher" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="stopPropagation" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Prevents the event from being passed to further listeners"/>
+        <return type="object">
+          <type full="Composer\EventDispatcher\void" namespace="Composer\EventDispatcher" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+    </method>
+  </parent>
+</class>

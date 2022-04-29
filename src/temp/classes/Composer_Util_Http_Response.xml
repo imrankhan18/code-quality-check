@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Http\Response" namespace="Composer\Util\Http" name="Response" abstract="false" final="false" start="22" end="134">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util/Http" file="Response.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Http/Response.php" size="3151" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="9a3722bd94b58e26d155f9005bc63983667f7182" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Http/Response.php"/>
+  <docblock>
+    <description/>
+    <phpstan value="-import-type Request from HttpDownloader"/>
+  </docblock>
+  <member name="request" visibility="private" static="false" line="25">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\Request" namespace="Composer\Util\Http" name="Request"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="code" visibility="private" static="false" line="27">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="headers" visibility="private" static="false" line="29">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\list&lt;string&gt;" namespace="Composer\Util\Http" name="list&lt;string&gt;"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="body" visibility="private" static="false" line="31">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\?string" namespace="Composer\Util\Http" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="39" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$request">
+        <type full="Composer\Util\Http\Request" namespace="Composer\Util\Http" name="Request"/>
+      </param>
+      <param type="int" variable="$code"/>
+      <param type="object" variable="$headers">
+        <type full="Composer\Util\Http\list&lt;string&gt;" namespace="Composer\Util\Http" name="list&lt;string&gt;"/>
+      </param>
+      <param type="object" variable="$body">
+        <type full="Composer\Util\Http\null|string" namespace="Composer\Util\Http" name="null|string"/>
+      </param>
+    </docblock>
+    <parameter name="request" byreference="false" type="array"/>
+    <parameter name="code" byreference="false" nullable="true" type="int"/>
+    <parameter name="headers" byreference="false" type="array"/>
+    <parameter name="body" byreference="false" nullable="true" type="string"/>
+  </constructor>
+  <method name="getStatusCode" start="53" end="56" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getStatusMessage" start="61" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\Http\string|null" namespace="Composer\Util\Http" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="getHeaders" start="78" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Util\Http\string" namespace="Composer\Util\Http" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getHeader" start="87" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Util\Http\?string" namespace="Composer\Util\Http" name="?string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="getBody" start="95" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\Http\?string" namespace="Composer\Util\Http" name="?string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="decodeJson" start="103" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  <method name="collect" start="112" end="116" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="@phpstan-ignore-next-line" line="114"/>
+    </inline>
+  </method>
+  <method name="findHeaderValue" start="123" end="133" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="array of returned headers like from getLastHeaders()" type="array" variable="$headers" of="object">
+        <type full="Composer\Util\Http\string" namespace="Composer\Util\Http" name="string"/>
+      </param>
+      <param description="header name (case insensitive)" type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Util\Http\string|null" namespace="Composer\Util\Http" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="headers" byreference="false" type="array"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <extenders>
+    <extender full="Composer\Util\Http\CurlResponse" namespace="Composer\Util\Http" name="CurlResponse"/>
+  </extenders>
+</class>

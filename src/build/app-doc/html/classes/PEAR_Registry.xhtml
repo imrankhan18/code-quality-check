@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_Registry</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_Registry</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/Registry.php.xhtml#line43">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_Registry</h1>
+        <h4>Administration class used to maintain the installed package database.</h4>
+        <p/>
+        <ul>
+          <li>Author: Stig Bakken &lt;ssb@php.net&gt;</li>
+          <li>Copyright: 1997-2009 The Authors</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_Registry
+                extends <a title="PEAR" href="../classes/PEAR.xhtml">PEAR</a>
+            {<br/><ul class="none"><li>// members</li><li>public string <a href="#members">$channels</a> =
+                        '';
+                    </li><li>public string <a href="#members">$statedir</a> =
+                        '';
+                    </li><li>public string <a href="#members">$filemap</a> =
+                        '';
+                    </li><li>public string <a href="#members">$channelsdir</a> =
+                        '';
+                    </li><li>public string <a href="#members">$lockfile</a> =
+                        '';
+                    </li><li>public  <a href="#members">$lock_fp</a> =
+                        NULL;
+                    </li><li>public integer <a href="#members">$lock_mode</a> =
+                        0;
+                    </li><li>public array <a href="#members">$pkginfo_cache</a> =
+                        ;
+                    </li><li>public array <a href="#members">$filemap_cache</a> =
+                        ;
+                    </li><li>public <span title="false|PEAR_ChannelFile">false|PEAR_ChannelFile</span> <a href="#members">$_pearChannel</a>;
+                    </li><li>public <span title="false|PEAR_ChannelFile">false|PEAR_ChannelFile</span> <a href="#members">$_peclChannel</a>;
+                    </li><li>public <span title="false|PEAR_ChannelFile">false|PEAR_ChannelFile</span> <a href="#members">$_docChannel</a>;
+                    </li><li>public <span title="PEAR_DependencyDB">PEAR_DependencyDB</span> <a href="#members">$_dependencyDB</a>;
+                    </li><li>public <span title="PEAR_Config">PEAR_Config</span> <a href="#members">$_config</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="PEAR">PEAR</span></li><li>public <span title="bool">bool</span> <a href="#members">$_debug</a>;
+                        </li><li>public  <a href="#members">$_default_error_mode</a>;
+                        </li><li>public  <a href="#members">$_default_error_options</a>;
+                        </li><li>public string <a href="#members">$_default_error_handler</a>;
+                        </li><li>public string <a href="#members">$_error_class</a>;
+                        </li><li>public array <a href="#members">$_expected_errors</a>;
+                        </li><li>protected static array <a href="#members">$bivalentMethods</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/setInstallDir.xhtml">setInstallDir</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/hasWriteAccess.xhtml">hasWriteAccess</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/setConfig.xhtml">setConfig</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_initializeChannelDirs.xhtml">_initializeChannelDirs</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_initializeDirs.xhtml">_initializeDirs</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_initializeDepDB.xhtml">_initializeDepDB</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_PEAR_Registry.xhtml">_PEAR_Registry</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/_assertStateDir.xhtml">_assertStateDir</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/_assertChannelStateDir.xhtml">_assertChannelStateDir</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/_assertChannelDir.xhtml">_assertChannelDir</a>()
+                    </li><li>public string <a title="PEAR_Registry" href="../classes/PEAR_Registry/_packageFileName.xhtml">_packageFileName</a>()
+                    </li><li>public string <a title="PEAR_Registry" href="../classes/PEAR_Registry/_channelFileName.xhtml">_channelFileName</a>()
+                    </li><li>public string <a title="PEAR_Registry" href="../classes/PEAR_Registry/_getChannelAliasFileName.xhtml">_getChannelAliasFileName</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_getChannelFromAlias.xhtml">_getChannelFromAlias</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_getAlias.xhtml">_getAlias</a>()
+                    </li><li>public string <a title="PEAR_Registry" href="../classes/PEAR_Registry/_channelDirectoryName.xhtml">_channelDirectoryName</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_openPackageFile.xhtml">_openPackageFile</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_closePackageFile.xhtml">_closePackageFile</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_openChannelFile.xhtml">_openChannelFile</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_closeChannelFile.xhtml">_closeChannelFile</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_rebuildFileMap.xhtml">_rebuildFileMap</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_readFileMap.xhtml">_readFileMap</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/_lock.xhtml">_lock</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_unlock.xhtml">_unlock</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_packageExists.xhtml">_packageExists</a>()
+                    </li><li>public boolean <a title="PEAR_Registry" href="../classes/PEAR_Registry/_channelExists.xhtml">_channelExists</a>()
+                    </li><li>public boolean <a title="PEAR_Registry" href="../classes/PEAR_Registry/_mirrorExists.xhtml">_mirrorExists</a>()
+                    </li><li>public boolean|PEAR_Error <a title="PEAR_Registry" href="../classes/PEAR_Registry/_addChannel.xhtml">_addChannel</a>()
+                    </li><li>public boolean|PEAR_Error <a title="PEAR_Registry" href="../classes/PEAR_Registry/_deleteChannel.xhtml">_deleteChannel</a>()
+                    </li><li>public boolean <a title="PEAR_Registry" href="../classes/PEAR_Registry/_isChannelAlias.xhtml">_isChannelAlias</a>()
+                    </li><li>public array|null <a title="PEAR_Registry" href="../classes/PEAR_Registry/_packageInfo.xhtml">_packageInfo</a>()
+                    </li><li>public array|null <a title="PEAR_Registry" href="../classes/PEAR_Registry/_channelInfo.xhtml">_channelInfo</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_listChannels.xhtml">_listChannels</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_listPackages.xhtml">_listPackages</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_listChannelPackages.xhtml">_listChannelPackages</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_listAllPackages.xhtml">_listAllPackages</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/_addPackage.xhtml">_addPackage</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/_addPackage2.xhtml">_addPackage2</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/_updatePackage.xhtml">_updatePackage</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/_updatePackage2.xhtml">_updatePackage2</a>()
+                    </li><li>public PEAR_PackageFile_v1|PEAR_PackageFile_v2|null <a title="PEAR_Registry" href="../classes/PEAR_Registry/_getPackage.xhtml">_getPackage</a>()
+                    </li><li>public PEAR_ChannelFile|PEAR_Error <a title="PEAR_Registry" href="../classes/PEAR_Registry/_getChannel.xhtml">_getChannel</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/packageExists.xhtml">packageExists</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/channelExists.xhtml">channelExists</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/mirrorExists.xhtml">mirrorExists</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/isAlias.xhtml">isAlias</a>()
+                    </li><li>public array|null <a title="PEAR_Registry" href="../classes/PEAR_Registry/packageInfo.xhtml">packageInfo</a>()
+                    </li><li>public array|null|PEAR_Error <a title="PEAR_Registry" href="../classes/PEAR_Registry/channelInfo.xhtml">channelInfo</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/channelName.xhtml">channelName</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/channelAlias.xhtml">channelAlias</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/listPackages.xhtml">listPackages</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/listAllPackages.xhtml">listAllPackages</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/listChannels.xhtml">listChannels</a>()
+                    </li><li>public bool <a title="PEAR_Registry" href="../classes/PEAR_Registry/addPackage.xhtml">addPackage</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/addPackage2.xhtml">addPackage2</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/updateChannel.xhtml">updateChannel</a>()
+                    </li><li>public boolean|PEAR_Error <a title="PEAR_Registry" href="../classes/PEAR_Registry/deleteChannel.xhtml">deleteChannel</a>()
+                    </li><li>public boolean|PEAR_Error <a title="PEAR_Registry" href="../classes/PEAR_Registry/addChannel.xhtml">addChannel</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/deletePackage.xhtml">deletePackage</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/updatePackage.xhtml">updatePackage</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/updatePackage2.xhtml">updatePackage2</a>()
+                    </li><li>public PEAR_ChannelFile|PEAR_Error <a title="PEAR_Registry" href="../classes/PEAR_Registry/getChannel.xhtml">getChannel</a>()
+                    </li><li>public PEAR_PackageFile_v1|PEAR_PackageFile_v2|null <a title="PEAR_Registry" href="../classes/PEAR_Registry/getPackage.xhtml">getPackage</a>()
+                    </li><li>public array|false <a title="PEAR_Registry" href="../classes/PEAR_Registry/getInstalledGroup.xhtml">getInstalledGroup</a>()
+                    </li><li>public PEAR_Validate|false <a title="PEAR_Registry" href="../classes/PEAR_Registry/getChannelValidator.xhtml">getChannelValidator</a>()
+                    </li><li>public array <a title="PEAR_Registry" href="../classes/PEAR_Registry/getChannels.xhtml">getChannels</a>()
+                    </li><li>public array|false <a title="PEAR_Registry" href="../classes/PEAR_Registry/checkFileMap.xhtml">checkFileMap</a>()
+                    </li><li>public void <a title="PEAR_Registry" href="../classes/PEAR_Registry/flushFileMap.xhtml">flushFileMap</a>()
+                    </li><li>public string <a title="PEAR_Registry" href="../classes/PEAR_Registry/apiVersion.xhtml">apiVersion</a>()
+                    </li><li>public array|PEAR_Error <a title="PEAR_Registry" href="../classes/PEAR_Registry/parsePackageName.xhtml">parsePackageName</a>()
+                    </li><li>public string <a title="PEAR_Registry" href="../classes/PEAR_Registry/parsedPackageNameToString.xhtml">parsedPackageNameToString</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="PEAR">PEAR</span></li><li>public void <a title="PEAR" href="../classes/PEAR/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/PEAR.xhtml">PEAR</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/_PEAR.xhtml">_PEAR</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/__call.xhtml">__call</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/__callStatic.xhtml">__callStatic</a>()
+                        </li><li>public static mixed <a title="PEAR" href="../classes/PEAR/getStaticProperty.xhtml">getStaticProperty</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/registerShutdownFunc.xhtml">registerShutdownFunc</a>()
+                        </li><li>public static bool <a title="PEAR" href="../classes/PEAR/isError.xhtml">isError</a>()
+                        </li><li>protected static void <a title="PEAR" href="../classes/PEAR/_setErrorHandling.xhtml">_setErrorHandling</a>()
+                        </li><li>public int <a title="PEAR" href="../classes/PEAR/expectError.xhtml">expectError</a>()
+                        </li><li>public array <a title="PEAR" href="../classes/PEAR/popExpect.xhtml">popExpect</a>()
+                        </li><li>public bool <a title="PEAR" href="../classes/PEAR/_checkDelExpect.xhtml">_checkDelExpect</a>()
+                        </li><li>public mixed <a title="PEAR" href="../classes/PEAR/delExpect.xhtml">delExpect</a>()
+                        </li><li>protected static  <a title="PEAR" href="../classes/PEAR/_raiseError.xhtml">_raiseError</a>()
+                        </li><li>protected static  <a title="PEAR" href="../classes/PEAR/_throwError.xhtml">_throwError</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/staticPushErrorHandling.xhtml">staticPushErrorHandling</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/staticPopErrorHandling.xhtml">staticPopErrorHandling</a>()
+                        </li><li>protected static bool <a title="PEAR" href="../classes/PEAR/_pushErrorHandling.xhtml">_pushErrorHandling</a>()
+                        </li><li>protected static bool <a title="PEAR" href="../classes/PEAR/_popErrorHandling.xhtml">_popErrorHandling</a>()
+                        </li><li>public static bool <a title="PEAR" href="../classes/PEAR/loadExtension.xhtml">loadExtension</a>()
+                        </li><li>public static int <a title="PEAR" href="../classes/PEAR/getSourceDateEpoch.xhtml">getSourceDateEpoch</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="PEAR" href="../classes/PEAR.xhtml">PEAR</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="bivalentMethods"><strong>$bivalentMethods</strong>
+                —
+                array<br/><span class="indent">List of methods that can be called both statically and non-statically.</span></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_config"><strong>$_config</strong>
+                —
+                <a title="PEAR_Config" href="../classes/PEAR_Config.xhtml">PEAR_Config</a></li>
+            <li id="_debug"><strong>$_debug</strong>
+                —
+                <a title="bool" href="../classes/bool.xhtml">bool</a><br/><span class="indent">Whether to enable internal debug messages.</span></li>
+            <li id="_default_error_handler"><strong>$_default_error_handler</strong>
+                —
+                string<br/><span class="indent">Default error handler (callback) for this object, if error mode is PEAR_ERROR_CALLBACK.</span></li>
+            <li id="_default_error_mode"><strong>$_default_error_mode</strong>
+                —
+                int<br/><span class="indent">Default error mode for this object.</span></li>
+            <li id="_default_error_options"><strong>$_default_error_options</strong>
+                —
+                int<br/><span class="indent">Default error options used for this object when error mode is PEAR_ERROR_TRIGGER.</span></li>
+            <li id="_dependencyDB"><strong>$_dependencyDB</strong>
+                —
+                <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB.xhtml">PEAR_DependencyDB</a></li>
+            <li id="_docChannel"><strong>$_docChannel</strong>
+                —
+                <a title="false|PEAR_ChannelFile" href="../classes/false|PEAR_ChannelFile.xhtml">false|PEAR_ChannelFile</a></li>
+            <li id="_error_class"><strong>$_error_class</strong>
+                —
+                string<br/><span class="indent">Which class to use for error objects.</span></li>
+            <li id="_expected_errors"><strong>$_expected_errors</strong>
+                —
+                array<br/><span class="indent">An array of expected errors.</span></li>
+            <li id="_pearChannel"><strong>$_pearChannel</strong>
+                —
+                <a title="false|PEAR_ChannelFile" href="../classes/false|PEAR_ChannelFile.xhtml">false|PEAR_ChannelFile</a></li>
+            <li id="_peclChannel"><strong>$_peclChannel</strong>
+                —
+                <a title="false|PEAR_ChannelFile" href="../classes/false|PEAR_ChannelFile.xhtml">false|PEAR_ChannelFile</a></li>
+            <li id="channels"><strong>$channels</strong>
+                —
+                string<br/><span class="indent">File containing all channel information.</span></li>
+            <li id="channelsdir"><strong>$channelsdir</strong>
+                —
+                string<br/><span class="indent">Directory where registry files for channels are stored.</span></li>
+            <li id="filemap"><strong>$filemap</strong>
+                —
+                string<br/><span class="indent">File where the file map is stored</span></li>
+            <li id="filemap_cache"><strong>$filemap_cache</strong>
+                —
+                array<br/><span class="indent">Cache of file map.  Structure: array( '/path/to/file' =&gt; 'package', ... )</span></li>
+            <li id="lock_fp"><strong>$lock_fp</strong>
+                —
+                resource<br/><span class="indent">File descriptor used during locking</span></li>
+            <li id="lock_mode"><strong>$lock_mode</strong>
+                —
+                int<br/><span class="indent">Mode used during locking</span></li>
+            <li id="lockfile"><strong>$lockfile</strong>
+                —
+                string<br/><span class="indent">Name of file used for locking the registry</span></li>
+            <li id="pkginfo_cache"><strong>$pkginfo_cache</strong>
+                —
+                array<br/><span class="indent">Cache of package information.  Structure: array(   'package' =&gt; array('id' =&gt; ... ),   ... )</span></li>
+            <li id="statedir"><strong>$statedir</strong>
+                —
+                string<br/><span class="indent">Directory where registry files are stored.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="PEAR_Registry" href="../classes/PEAR_Registry/__construct.xhtml">__construct()</a>
+                — PEAR_Registry constructor.</li>
+            <li id="_PEAR_Registry"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_PEAR_Registry.xhtml">_PEAR_Registry()</a>
+                — PEAR_Registry destructor.  Makes sure no locks are forgotten.</li>
+            <li id="_addChannel">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_addChannel.xhtml">_addChannel()</a>
+            </li>
+            <li id="_addPackage"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_addPackage.xhtml">_addPackage()</a>
+                — Add an installed package to the registry</li>
+            <li id="_addPackage2">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_addPackage2.xhtml">_addPackage2()</a>
+            </li>
+            <li id="_assertChannelDir"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_assertChannelDir.xhtml">_assertChannelDir()</a>
+                — Make sure the directory where we keep registry files for channels exists</li>
+            <li id="_assertChannelStateDir"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_assertChannelStateDir.xhtml">_assertChannelStateDir()</a>
+                — Make sure the directory where we keep registry files exists for a non-standard channel.</li>
+            <li id="_assertStateDir"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_assertStateDir.xhtml">_assertStateDir()</a>
+                — Make sure the directory where we keep registry files exists.</li>
+            <li id="_channelDirectoryName"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_channelDirectoryName.xhtml">_channelDirectoryName()</a>
+                — Get the name of the file where data for a given package is stored.</li>
+            <li id="_channelExists"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_channelExists.xhtml">_channelExists()</a>
+                — Determine whether a channel exists in the registry</li>
+            <li id="_channelFileName"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_channelFileName.xhtml">_channelFileName()</a>
+                — Get the name of the file where data for a given channel is stored.</li>
+            <li id="_channelInfo">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_channelInfo.xhtml">_channelInfo()</a>
+            </li>
+            <li id="_closeChannelFile">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_closeChannelFile.xhtml">_closeChannelFile()</a>
+            </li>
+            <li id="_closePackageFile">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_closePackageFile.xhtml">_closePackageFile()</a>
+            </li>
+            <li id="_deleteChannel"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_deleteChannel.xhtml">_deleteChannel()</a>
+                — Deletion fails if there are any packages installed from the channel</li>
+            <li id="_getAlias"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_getAlias.xhtml">_getAlias()</a>
+                — Get the alias of a channel from its alias or its name</li>
+            <li id="_getChannel">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_getChannel.xhtml">_getChannel()</a>
+            </li>
+            <li id="_getChannelAliasFileName">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_getChannelAliasFileName.xhtml">_getChannelAliasFileName()</a>
+            </li>
+            <li id="_getChannelFromAlias"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_getChannelFromAlias.xhtml">_getChannelFromAlias()</a>
+                — Get the name of a channel from its alias</li>
+            <li id="_getPackage">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_getPackage.xhtml">_getPackage()</a>
+            </li>
+            <li id="_initializeChannelDirs">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_initializeChannelDirs.xhtml">_initializeChannelDirs()</a>
+            </li>
+            <li id="_initializeDepDB">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_initializeDepDB.xhtml">_initializeDepDB()</a>
+            </li>
+            <li id="_initializeDirs">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_initializeDirs.xhtml">_initializeDirs()</a>
+            </li>
+            <li id="_isChannelAlias"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_isChannelAlias.xhtml">_isChannelAlias()</a>
+                — Determine whether a channel exists in the registry</li>
+            <li id="_listAllPackages">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_listAllPackages.xhtml">_listAllPackages()</a>
+            </li>
+            <li id="_listChannelPackages">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_listChannelPackages.xhtml">_listChannelPackages()</a>
+            </li>
+            <li id="_listChannels">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_listChannels.xhtml">_listChannels()</a>
+            </li>
+            <li id="_listPackages">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_listPackages.xhtml">_listPackages()</a>
+            </li>
+            <li id="_lock"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_lock.xhtml">_lock()</a>
+                — Lock the registry.</li>
+            <li id="_mirrorExists"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_mirrorExists.xhtml">_mirrorExists()</a>
+                — Determine whether a mirror exists within the default channel in the registry</li>
+            <li id="_openChannelFile">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_openChannelFile.xhtml">_openChannelFile()</a>
+            </li>
+            <li id="_openPackageFile">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_openPackageFile.xhtml">_openPackageFile()</a>
+            </li>
+            <li id="_packageExists">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_packageExists.xhtml">_packageExists()</a>
+            </li>
+            <li id="_packageFileName"><a title="PEAR_Registry" href="../classes/PEAR_Registry/_packageFileName.xhtml">_packageFileName()</a>
+                — Get the name of the file where data for a given package is stored.</li>
+            <li id="_packageInfo">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_packageInfo.xhtml">_packageInfo()</a>
+            </li>
+            <li id="_readFileMap">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_readFileMap.xhtml">_readFileMap()</a>
+            </li>
+            <li id="_rebuildFileMap">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_rebuildFileMap.xhtml">_rebuildFileMap()</a>
+            </li>
+            <li id="_unlock">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_unlock.xhtml">_unlock()</a>
+            </li>
+            <li id="_updatePackage">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_updatePackage.xhtml">_updatePackage()</a>
+            </li>
+            <li id="_updatePackage2">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/_updatePackage2.xhtml">_updatePackage2()</a>
+            </li>
+            <li id="addChannel">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/addChannel.xhtml">addChannel()</a>
+            </li>
+            <li id="addPackage"><a title="PEAR_Registry" href="../classes/PEAR_Registry/addPackage.xhtml">addPackage()</a>
+                — Add an installed package to the registry</li>
+            <li id="addPackage2">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/addPackage2.xhtml">addPackage2()</a>
+            </li>
+            <li id="apiVersion"><a title="PEAR_Registry" href="../classes/PEAR_Registry/apiVersion.xhtml">apiVersion()</a>
+                — Get the expected API version.  Channels API is version 1.1, as it is backwards compatible with 1.0</li>
+            <li id="channelAlias">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/channelAlias.xhtml">channelAlias()</a>
+            </li>
+            <li id="channelExists">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/channelExists.xhtml">channelExists()</a>
+            </li>
+            <li id="channelInfo"><a title="PEAR_Registry" href="../classes/PEAR_Registry/channelInfo.xhtml">channelInfo()</a>
+                — Retrieve a raw array of channel data.</li>
+            <li id="channelName">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/channelName.xhtml">channelName()</a>
+            </li>
+            <li id="checkFileMap"><a title="PEAR_Registry" href="../classes/PEAR_Registry/checkFileMap.xhtml">checkFileMap()</a>
+                — Test whether a file or set of files belongs to a package.</li>
+            <li id="deleteChannel"><a title="PEAR_Registry" href="../classes/PEAR_Registry/deleteChannel.xhtml">deleteChannel()</a>
+                — Deletion fails if there are any packages installed from the channel</li>
+            <li id="deletePackage">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/deletePackage.xhtml">deletePackage()</a>
+            </li>
+            <li id="flushFileMap"><a title="PEAR_Registry" href="../classes/PEAR_Registry/flushFileMap.xhtml">flushFileMap()</a>
+                — Force a reload of the filemap</li>
+            <li id="getChannel">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/getChannel.xhtml">getChannel()</a>
+            </li>
+            <li id="getChannelValidator">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/getChannelValidator.xhtml">getChannelValidator()</a>
+            </li>
+            <li id="getChannels">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/getChannels.xhtml">getChannels()</a>
+            </li>
+            <li id="getInstalledGroup"><a title="PEAR_Registry" href="../classes/PEAR_Registry/getInstalledGroup.xhtml">getInstalledGroup()</a>
+                — Get PEAR_PackageFile_v[1/2] objects representing the contents of a dependency group that are installed.</li>
+            <li id="getPackage">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/getPackage.xhtml">getPackage()</a>
+            </li>
+            <li id="hasWriteAccess">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/hasWriteAccess.xhtml">hasWriteAccess()</a>
+            </li>
+            <li id="isAlias"><a title="PEAR_Registry" href="../classes/PEAR_Registry/isAlias.xhtml">isAlias()</a>
+                — Determines whether the parameter is an alias of a channel</li>
+            <li id="listAllPackages">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/listAllPackages.xhtml">listAllPackages()</a>
+            </li>
+            <li id="listChannels">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/listChannels.xhtml">listChannels()</a>
+            </li>
+            <li id="listPackages">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/listPackages.xhtml">listPackages()</a>
+            </li>
+            <li id="mirrorExists">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/mirrorExists.xhtml">mirrorExists()</a>
+            </li>
+            <li id="packageExists">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/packageExists.xhtml">packageExists()</a>
+            </li>
+            <li id="packageInfo">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/packageInfo.xhtml">packageInfo()</a>
+            </li>
+            <li id="parsePackageName"><a title="PEAR_Registry" href="../classes/PEAR_Registry/parsePackageName.xhtml">parsePackageName()</a>
+                — Parse a package name, or validate a parsed package name array</li>
+            <li id="parsedPackageNameToString">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/parsedPackageNameToString.xhtml">parsedPackageNameToString()</a>
+            </li>
+            <li id="setConfig">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/setConfig.xhtml">setConfig()</a>
+            </li>
+            <li id="setInstallDir">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/setInstallDir.xhtml">setInstallDir()</a>
+            </li>
+            <li id="updateChannel"><a title="PEAR_Registry" href="../classes/PEAR_Registry/updateChannel.xhtml">updateChannel()</a>
+                — For future expandibility purposes, separate this</li>
+            <li id="updatePackage">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/updatePackage.xhtml">updatePackage()</a>
+            </li>
+            <li id="updatePackage2">
+              <a title="PEAR_Registry" href="../classes/PEAR_Registry/updatePackage2.xhtml">updatePackage2()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="PEAR" href="../classes/PEAR.xhtml">PEAR</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="_popErrorHandling"><a title="PEAR" href="../classes/PEAR/_popErrorHandling.xhtml">_popErrorHandling()</a>
+                — Pop the last error handler used</li>
+            <li id="_pushErrorHandling"><a title="PEAR" href="../classes/PEAR/_pushErrorHandling.xhtml">_pushErrorHandling()</a>
+                — Push a new error handler on top of the error handler options stack. With this you can easily override the actual error handler for some code and restore it later with popErrorHandling.</li>
+            <li id="_raiseError"><a title="PEAR" href="../classes/PEAR/_raiseError.xhtml">_raiseError()</a>
+                — This method is a wrapper that returns an instance of the configured error class with this object's default error handling applied.  If the $mode and $options parameters are not specified, the object's defaults are used.</li>
+            <li id="_setErrorHandling"><a title="PEAR" href="../classes/PEAR/_setErrorHandling.xhtml">_setErrorHandling()</a>
+                — Sets how errors generated by this object should be handled.</li>
+            <li id="_throwError"><a title="PEAR" href="../classes/PEAR/_throwError.xhtml">_throwError()</a>
+                — Simpler form of raiseError with fewer options.  In most cases message, code and userinfo are enough.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="PEAR"><a title="PEAR" href="../classes/PEAR/PEAR.xhtml">PEAR()</a>
+                — Only here for backwards compatibility.</li>
+            <li id="_PEAR"><a title="PEAR" href="../classes/PEAR/_PEAR.xhtml">_PEAR()</a>
+                — Destructor (the emulated type of...).  Does nothing right now, but is included for forward compatibility, so subclass destructors should always call it.</li>
+            <li id="__call">
+              <a title="PEAR" href="../classes/PEAR/__call.xhtml">__call()</a>
+            </li>
+            <li id="__callStatic">
+              <a title="PEAR" href="../classes/PEAR/__callStatic.xhtml">__callStatic()</a>
+            </li>
+            <li id="_checkDelExpect"><a title="PEAR" href="../classes/PEAR/_checkDelExpect.xhtml">_checkDelExpect()</a>
+                — This method checks unsets an error code if available</li>
+            <li id="delExpect"><a title="PEAR" href="../classes/PEAR/delExpect.xhtml">delExpect()</a>
+                — This method deletes all occurrences of the specified element from the expected error codes stack.</li>
+            <li id="expectError"><a title="PEAR" href="../classes/PEAR/expectError.xhtml">expectError()</a>
+                — This method is used to tell which errors you expect to get.</li>
+            <li id="getSourceDateEpoch"><a title="PEAR" href="../classes/PEAR/getSourceDateEpoch.xhtml">getSourceDateEpoch()</a>
+                — Get SOURCE_DATE_EPOCH environment variable See https://reproducible-builds.org/specs/source-date-epoch/</li>
+            <li id="getStaticProperty"><a title="PEAR" href="../classes/PEAR/getStaticProperty.xhtml">getStaticProperty()</a>
+                — If you have a class that's mostly/entirely static, and you need static properties, you can use this method to simulate them. Eg. in your method(s) do this: $myVar = &amp;PEAR::getStaticProperty('myclass', 'myVar'); You MUST use a reference, or they will not persist!</li>
+            <li id="isError"><a title="PEAR" href="../classes/PEAR/isError.xhtml">isError()</a>
+                — Tell whether a value is a PEAR error.</li>
+            <li id="loadExtension"><a title="PEAR" href="../classes/PEAR/loadExtension.xhtml">loadExtension()</a>
+                — OS independent PHP extension load. Remember to take care on the correct extension name for case sensitive OSes.</li>
+            <li id="popExpect"><a title="PEAR" href="../classes/PEAR/popExpect.xhtml">popExpect()</a>
+                — This method pops one element off the expected error codes stack.</li>
+            <li id="registerShutdownFunc"><a title="PEAR" href="../classes/PEAR/registerShutdownFunc.xhtml">registerShutdownFunc()</a>
+                — Use this function to register a shutdown method for static classes.</li>
+            <li id="staticPopErrorHandling">
+              <a title="PEAR" href="../classes/PEAR/staticPopErrorHandling.xhtml">staticPopErrorHandling()</a>
+            </li>
+            <li id="staticPushErrorHandling">
+              <a title="PEAR" href="../classes/PEAR/staticPushErrorHandling.xhtml">staticPushErrorHandling()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

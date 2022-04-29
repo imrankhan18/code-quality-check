@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Archive_Tar</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">Archive_Tar</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/Archive/Tar.php.xhtml#line80">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>Archive_Tar</h1>
+        <h4>Creates a (compressed) Tar archive</h4>
+        <p/>
+        <ul>
+          <li>Author: Vincent Blavet &lt;vincent@phpconcept.net&gt;</li>
+          <li>License: http://www.opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Archive_Tar
+                extends <a title="PEAR" href="../classes/PEAR.xhtml">PEAR</a>
+            {<br/><ul class="none"><li>// members</li><li>public string <a href="#members">$_tarname</a> =
+                        '';
+                    </li><li>public boolean <a href="#members">$_compress</a> =
+                        false;
+                    </li><li>public string <a href="#members">$_compress_type</a> =
+                        'none';
+                    </li><li>public string <a href="#members">$_separator</a> =
+                        ' ';
+                    </li><li>public <span title="file">file</span> <a href="#members">$_file</a> =
+                        0;
+                    </li><li>public string <a href="#members">$_temp_tarname</a> =
+                        '';
+                    </li><li>public string <a href="#members">$_ignore_regexp</a> =
+                        '';
+                    </li><li>public <span title=""/> <a href="#members">$error_object</a> =
+                        NULL;
+                    </li><li>public string <a href="#members">$_fmt</a> =
+                        '';
+                    </li><li>protected  <a href="#members">$buffer_length</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="PEAR">PEAR</span></li><li>public <span title="bool">bool</span> <a href="#members">$_debug</a>;
+                        </li><li>public  <a href="#members">$_default_error_mode</a>;
+                        </li><li>public  <a href="#members">$_default_error_options</a>;
+                        </li><li>public string <a href="#members">$_default_error_handler</a>;
+                        </li><li>public string <a href="#members">$_error_class</a>;
+                        </li><li>public array <a href="#members">$_expected_errors</a>;
+                        </li><li>protected static array <a href="#members">$bivalentMethods</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Archive_Tar" href="../classes/Archive_Tar/__destruct.xhtml">__destruct</a>()
+                    </li><li>public true <a title="Archive_Tar" href="../classes/Archive_Tar/create.xhtml">create</a>()
+                    </li><li>public true <a title="Archive_Tar" href="../classes/Archive_Tar/add.xhtml">add</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/extract.xhtml">extract</a>()
+                    </li><li>public array|int <a title="Archive_Tar" href="../classes/Archive_Tar/listContent.xhtml">listContent</a>()
+                    </li><li>public boolean <a title="Archive_Tar" href="../classes/Archive_Tar/createModify.xhtml">createModify</a>()
+                    </li><li>public true <a title="Archive_Tar" href="../classes/Archive_Tar/addModify.xhtml">addModify</a>()
+                    </li><li>public true <a title="Archive_Tar" href="../classes/Archive_Tar/addString.xhtml">addString</a>()
+                    </li><li>public boolean <a title="Archive_Tar" href="../classes/Archive_Tar/extractModify.xhtml">extractModify</a>()
+                    </li><li>public a <a title="Archive_Tar" href="../classes/Archive_Tar/extractInString.xhtml">extractInString</a>()
+                    </li><li>public true <a title="Archive_Tar" href="../classes/Archive_Tar/extractList.xhtml">extractList</a>()
+                    </li><li>public true <a title="Archive_Tar" href="../classes/Archive_Tar/setAttribute.xhtml">setAttribute</a>()
+                    </li><li>public void <a title="Archive_Tar" href="../classes/Archive_Tar/setIgnoreRegexp.xhtml">setIgnoreRegexp</a>()
+                    </li><li>public void <a title="Archive_Tar" href="../classes/Archive_Tar/setIgnoreList.xhtml">setIgnoreList</a>()
+                    </li><li>public void <a title="Archive_Tar" href="../classes/Archive_Tar/_error.xhtml">_error</a>()
+                    </li><li>public void <a title="Archive_Tar" href="../classes/Archive_Tar/_warning.xhtml">_warning</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_isArchive.xhtml">_isArchive</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_openWrite.xhtml">_openWrite</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_openRead.xhtml">_openRead</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_openReadWrite.xhtml">_openReadWrite</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_close.xhtml">_close</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_cleanFile.xhtml">_cleanFile</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_writeBlock.xhtml">_writeBlock</a>()
+                    </li><li>public null|string <a title="Archive_Tar" href="../classes/Archive_Tar/_readBlock.xhtml">_readBlock</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_jumpBlock.xhtml">_jumpBlock</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_writeFooter.xhtml">_writeFooter</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_addList.xhtml">_addList</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_addFile.xhtml">_addFile</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_addString.xhtml">_addString</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_writeHeader.xhtml">_writeHeader</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_writeHeaderBlock.xhtml">_writeHeaderBlock</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_writeLongHeader.xhtml">_writeLongHeader</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_readHeader.xhtml">_readHeader</a>()
+                    </li><li>private size <a title="Archive_Tar" href="../classes/Archive_Tar/_tarRecToSize.xhtml">_tarRecToSize</a>()
+                    </li><li>private bool <a title="Archive_Tar" href="../classes/Archive_Tar/_maliciousFilename.xhtml">_maliciousFilename</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_readLongHeader.xhtml">_readLongHeader</a>()
+                    </li><li>private a <a title="Archive_Tar" href="../classes/Archive_Tar/_extractInString.xhtml">_extractInString</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_extractList.xhtml">_extractList</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_openAppend.xhtml">_openAppend</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_append.xhtml">_append</a>()
+                    </li><li>public bool <a title="Archive_Tar" href="../classes/Archive_Tar/_dirCheck.xhtml">_dirCheck</a>()
+                    </li><li>private string <a title="Archive_Tar" href="../classes/Archive_Tar/_pathReduction.xhtml">_pathReduction</a>()
+                    </li><li>public string <a title="Archive_Tar" href="../classes/Archive_Tar/_translateWinPath.xhtml">_translateWinPath</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="PEAR">PEAR</span></li><li>public void <a title="PEAR" href="../classes/PEAR/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/PEAR.xhtml">PEAR</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/_PEAR.xhtml">_PEAR</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/__call.xhtml">__call</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/__callStatic.xhtml">__callStatic</a>()
+                        </li><li>public static mixed <a title="PEAR" href="../classes/PEAR/getStaticProperty.xhtml">getStaticProperty</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/registerShutdownFunc.xhtml">registerShutdownFunc</a>()
+                        </li><li>public static bool <a title="PEAR" href="../classes/PEAR/isError.xhtml">isError</a>()
+                        </li><li>protected static void <a title="PEAR" href="../classes/PEAR/_setErrorHandling.xhtml">_setErrorHandling</a>()
+                        </li><li>public int <a title="PEAR" href="../classes/PEAR/expectError.xhtml">expectError</a>()
+                        </li><li>public array <a title="PEAR" href="../classes/PEAR/popExpect.xhtml">popExpect</a>()
+                        </li><li>public bool <a title="PEAR" href="../classes/PEAR/_checkDelExpect.xhtml">_checkDelExpect</a>()
+                        </li><li>public mixed <a title="PEAR" href="../classes/PEAR/delExpect.xhtml">delExpect</a>()
+                        </li><li>protected static  <a title="PEAR" href="../classes/PEAR/_raiseError.xhtml">_raiseError</a>()
+                        </li><li>protected static  <a title="PEAR" href="../classes/PEAR/_throwError.xhtml">_throwError</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/staticPushErrorHandling.xhtml">staticPushErrorHandling</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/staticPopErrorHandling.xhtml">staticPopErrorHandling</a>()
+                        </li><li>protected static bool <a title="PEAR" href="../classes/PEAR/_pushErrorHandling.xhtml">_pushErrorHandling</a>()
+                        </li><li>protected static bool <a title="PEAR" href="../classes/PEAR/_popErrorHandling.xhtml">_popErrorHandling</a>()
+                        </li><li>public static bool <a title="PEAR" href="../classes/PEAR/loadExtension.xhtml">loadExtension</a>()
+                        </li><li>public static int <a title="PEAR" href="../classes/PEAR/getSourceDateEpoch.xhtml">getSourceDateEpoch</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="PEAR" href="../classes/PEAR.xhtml">PEAR</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="bivalentMethods"><strong>$bivalentMethods</strong>
+                —
+                array<br/><span class="indent">List of methods that can be called both statically and non-statically.</span></li>
+            <li id="buffer_length"><strong>$buffer_length</strong>
+                —
+                int</li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_compress"><strong>$_compress</strong>
+                —
+                boolean</li>
+            <li id="_compress_type"><strong>$_compress_type</strong>
+                —
+                string</li>
+            <li id="_debug"><strong>$_debug</strong>
+                —
+                <a title="bool" href="../classes/bool.xhtml">bool</a><br/><span class="indent">Whether to enable internal debug messages.</span></li>
+            <li id="_default_error_handler"><strong>$_default_error_handler</strong>
+                —
+                string<br/><span class="indent">Default error handler (callback) for this object, if error mode is PEAR_ERROR_CALLBACK.</span></li>
+            <li id="_default_error_mode"><strong>$_default_error_mode</strong>
+                —
+                int<br/><span class="indent">Default error mode for this object.</span></li>
+            <li id="_default_error_options"><strong>$_default_error_options</strong>
+                —
+                int<br/><span class="indent">Default error options used for this object when error mode is PEAR_ERROR_TRIGGER.</span></li>
+            <li id="_error_class"><strong>$_error_class</strong>
+                —
+                string<br/><span class="indent">Which class to use for error objects.</span></li>
+            <li id="_expected_errors"><strong>$_expected_errors</strong>
+                —
+                array<br/><span class="indent">An array of expected errors.</span></li>
+            <li id="_file"><strong>$_file</strong>
+                —
+                <a title="file" href="../classes/file.xhtml">file</a></li>
+            <li id="_fmt"><strong>$_fmt</strong>
+                —
+                string<br/><span class="indent">Format for data extraction</span></li>
+            <li id="_ignore_regexp"><strong>$_ignore_regexp</strong>
+                —
+                string</li>
+            <li id="_separator"><strong>$_separator</strong>
+                —
+                string</li>
+            <li id="_tarname"><strong>$_tarname</strong>
+                —
+                string</li>
+            <li id="_temp_tarname"><strong>$_temp_tarname</strong>
+                —
+                string</li>
+            <li id="error_object"><strong>$error_object</strong>
+                —
+                <a title="" href="../classes/.xhtml"/></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="_extractInString"><a title="Archive_Tar" href="../classes/Archive_Tar/_extractInString.xhtml">_extractInString()</a>
+                — This method extract from the archive one file identified by $p_filename.</li>
+            <li id="_maliciousFilename"><a title="Archive_Tar" href="../classes/Archive_Tar/_maliciousFilename.xhtml">_maliciousFilename()</a>
+                — Detect and report a malicious file name</li>
+            <li id="_pathReduction"><a title="Archive_Tar" href="../classes/Archive_Tar/_pathReduction.xhtml">_pathReduction()</a>
+                — Compress path by changing for example "/dir/foo/../bar" to "/dir/bar", rand emove double slashes.</li>
+            <li id="_tarRecToSize"><a title="Archive_Tar" href="../classes/Archive_Tar/_tarRecToSize.xhtml">_tarRecToSize()</a>
+                — Convert Tar record size to actual size</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="Archive_Tar" href="../classes/Archive_Tar/__construct.xhtml">__construct()</a>
+                — Archive_Tar Class constructor. This flavour of the constructor only declare a new Archive_Tar object, identifying it by the name of the tar file.</li>
+            <li id="__destruct">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/__destruct.xhtml">__destruct()</a>
+            </li>
+            <li id="_addFile">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_addFile.xhtml">_addFile()</a>
+            </li>
+            <li id="_addList">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_addList.xhtml">_addList()</a>
+            </li>
+            <li id="_addString">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_addString.xhtml">_addString()</a>
+            </li>
+            <li id="_append">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_append.xhtml">_append()</a>
+            </li>
+            <li id="_cleanFile">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_cleanFile.xhtml">_cleanFile()</a>
+            </li>
+            <li id="_close">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_close.xhtml">_close()</a>
+            </li>
+            <li id="_dirCheck"><a title="Archive_Tar" href="../classes/Archive_Tar/_dirCheck.xhtml">_dirCheck()</a>
+                — Check if a directory exists and create it (including parent dirs) if not.</li>
+            <li id="_error">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_error.xhtml">_error()</a>
+            </li>
+            <li id="_extractList">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_extractList.xhtml">_extractList()</a>
+            </li>
+            <li id="_isArchive">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_isArchive.xhtml">_isArchive()</a>
+            </li>
+            <li id="_jumpBlock">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_jumpBlock.xhtml">_jumpBlock()</a>
+            </li>
+            <li id="_openAppend">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_openAppend.xhtml">_openAppend()</a>
+            </li>
+            <li id="_openRead">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_openRead.xhtml">_openRead()</a>
+            </li>
+            <li id="_openReadWrite">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_openReadWrite.xhtml">_openReadWrite()</a>
+            </li>
+            <li id="_openWrite">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_openWrite.xhtml">_openWrite()</a>
+            </li>
+            <li id="_readBlock">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_readBlock.xhtml">_readBlock()</a>
+            </li>
+            <li id="_readHeader">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_readHeader.xhtml">_readHeader()</a>
+            </li>
+            <li id="_readLongHeader">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_readLongHeader.xhtml">_readLongHeader()</a>
+            </li>
+            <li id="_translateWinPath">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_translateWinPath.xhtml">_translateWinPath()</a>
+            </li>
+            <li id="_warning">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_warning.xhtml">_warning()</a>
+            </li>
+            <li id="_writeBlock">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_writeBlock.xhtml">_writeBlock()</a>
+            </li>
+            <li id="_writeFooter">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_writeFooter.xhtml">_writeFooter()</a>
+            </li>
+            <li id="_writeHeader">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_writeHeader.xhtml">_writeHeader()</a>
+            </li>
+            <li id="_writeHeaderBlock">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_writeHeaderBlock.xhtml">_writeHeaderBlock()</a>
+            </li>
+            <li id="_writeLongHeader">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/_writeLongHeader.xhtml">_writeLongHeader()</a>
+            </li>
+            <li id="add"><a title="Archive_Tar" href="../classes/Archive_Tar/add.xhtml">add()</a>
+                — This method add the files / directories that are listed in $p_filelist in the archive. If the archive does not exist it is created.</li>
+            <li id="addModify"><a title="Archive_Tar" href="../classes/Archive_Tar/addModify.xhtml">addModify()</a>
+                — This method add the files / directories listed in $p_filelist at the end of the existing archive. If the archive does not yet exists it is created.</li>
+            <li id="addString"><a title="Archive_Tar" href="../classes/Archive_Tar/addString.xhtml">addString()</a>
+                — This method add a single string as a file at the end of the existing archive. If the archive does not yet exists it is created.</li>
+            <li id="create"><a title="Archive_Tar" href="../classes/Archive_Tar/create.xhtml">create()</a>
+                — This method creates the archive file and add the files / directories that are listed in $p_filelist.</li>
+            <li id="createModify"><a title="Archive_Tar" href="../classes/Archive_Tar/createModify.xhtml">createModify()</a>
+                — This method creates the archive file and add the files / directories that are listed in $p_filelist.</li>
+            <li id="extract">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/extract.xhtml">extract()</a>
+            </li>
+            <li id="extractInString"><a title="Archive_Tar" href="../classes/Archive_Tar/extractInString.xhtml">extractInString()</a>
+                — This method extract from the archive one file identified by $p_filename.</li>
+            <li id="extractList"><a title="Archive_Tar" href="../classes/Archive_Tar/extractList.xhtml">extractList()</a>
+                — This method extract from the archive only the files indicated in the $p_filelist. These files are extracted in the current directory or in the directory indicated by the optional $p_path parameter.</li>
+            <li id="extractModify"><a title="Archive_Tar" href="../classes/Archive_Tar/extractModify.xhtml">extractModify()</a>
+                — This method extract all the content of the archive in the directory indicated by $p_path. When relevant the memorized path of the files/dir can be modified by removing the $p_remove_path path at the beginning of the file/dir path.</li>
+            <li id="listContent">
+              <a title="Archive_Tar" href="../classes/Archive_Tar/listContent.xhtml">listContent()</a>
+            </li>
+            <li id="setAttribute"><a title="Archive_Tar" href="../classes/Archive_Tar/setAttribute.xhtml">setAttribute()</a>
+                — This method set specific attributes of the archive. It uses a variable list of parameters, in the format attribute code + attribute values : $arch-&gt;setAttribute(ARCHIVE_TAR_ATT_SEPARATOR, ',');</li>
+            <li id="setIgnoreList"><a title="Archive_Tar" href="../classes/Archive_Tar/setIgnoreList.xhtml">setIgnoreList()</a>
+                — This method sets the regular expression for ignoring all files and directories matching the filenames in the array list at import, for example: $arch-&gt;setIgnoreList(array('CVS', '.svn', 'bin/tool'));</li>
+            <li id="setIgnoreRegexp"><a title="Archive_Tar" href="../classes/Archive_Tar/setIgnoreRegexp.xhtml">setIgnoreRegexp()</a>
+                — This method sets the regular expression for ignoring files and directories at import, for example: $arch-&gt;setIgnoreRegexp("#CVS|\.svn#");</li>
+          </ul>
+          <h3>Inherited from <a title="PEAR" href="../classes/PEAR.xhtml">PEAR</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="_popErrorHandling"><a title="PEAR" href="../classes/PEAR/_popErrorHandling.xhtml">_popErrorHandling()</a>
+                — Pop the last error handler used</li>
+            <li id="_pushErrorHandling"><a title="PEAR" href="../classes/PEAR/_pushErrorHandling.xhtml">_pushErrorHandling()</a>
+                — Push a new error handler on top of the error handler options stack. With this you can easily override the actual error handler for some code and restore it later with popErrorHandling.</li>
+            <li id="_raiseError"><a title="PEAR" href="../classes/PEAR/_raiseError.xhtml">_raiseError()</a>
+                — This method is a wrapper that returns an instance of the configured error class with this object's default error handling applied.  If the $mode and $options parameters are not specified, the object's defaults are used.</li>
+            <li id="_setErrorHandling"><a title="PEAR" href="../classes/PEAR/_setErrorHandling.xhtml">_setErrorHandling()</a>
+                — Sets how errors generated by this object should be handled.</li>
+            <li id="_throwError"><a title="PEAR" href="../classes/PEAR/_throwError.xhtml">_throwError()</a>
+                — Simpler form of raiseError with fewer options.  In most cases message, code and userinfo are enough.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="PEAR"><a title="PEAR" href="../classes/PEAR/PEAR.xhtml">PEAR()</a>
+                — Only here for backwards compatibility.</li>
+            <li id="_PEAR"><a title="PEAR" href="../classes/PEAR/_PEAR.xhtml">_PEAR()</a>
+                — Destructor (the emulated type of...).  Does nothing right now, but is included for forward compatibility, so subclass destructors should always call it.</li>
+            <li id="__call">
+              <a title="PEAR" href="../classes/PEAR/__call.xhtml">__call()</a>
+            </li>
+            <li id="__callStatic">
+              <a title="PEAR" href="../classes/PEAR/__callStatic.xhtml">__callStatic()</a>
+            </li>
+            <li id="_checkDelExpect"><a title="PEAR" href="../classes/PEAR/_checkDelExpect.xhtml">_checkDelExpect()</a>
+                — This method checks unsets an error code if available</li>
+            <li id="delExpect"><a title="PEAR" href="../classes/PEAR/delExpect.xhtml">delExpect()</a>
+                — This method deletes all occurrences of the specified element from the expected error codes stack.</li>
+            <li id="expectError"><a title="PEAR" href="../classes/PEAR/expectError.xhtml">expectError()</a>
+                — This method is used to tell which errors you expect to get.</li>
+            <li id="getSourceDateEpoch"><a title="PEAR" href="../classes/PEAR/getSourceDateEpoch.xhtml">getSourceDateEpoch()</a>
+                — Get SOURCE_DATE_EPOCH environment variable See https://reproducible-builds.org/specs/source-date-epoch/</li>
+            <li id="getStaticProperty"><a title="PEAR" href="../classes/PEAR/getStaticProperty.xhtml">getStaticProperty()</a>
+                — If you have a class that's mostly/entirely static, and you need static properties, you can use this method to simulate them. Eg. in your method(s) do this: $myVar = &amp;PEAR::getStaticProperty('myclass', 'myVar'); You MUST use a reference, or they will not persist!</li>
+            <li id="isError"><a title="PEAR" href="../classes/PEAR/isError.xhtml">isError()</a>
+                — Tell whether a value is a PEAR error.</li>
+            <li id="loadExtension"><a title="PEAR" href="../classes/PEAR/loadExtension.xhtml">loadExtension()</a>
+                — OS independent PHP extension load. Remember to take care on the correct extension name for case sensitive OSes.</li>
+            <li id="popExpect"><a title="PEAR" href="../classes/PEAR/popExpect.xhtml">popExpect()</a>
+                — This method pops one element off the expected error codes stack.</li>
+            <li id="registerShutdownFunc"><a title="PEAR" href="../classes/PEAR/registerShutdownFunc.xhtml">registerShutdownFunc()</a>
+                — Use this function to register a shutdown method for static classes.</li>
+            <li id="staticPopErrorHandling">
+              <a title="PEAR" href="../classes/PEAR/staticPopErrorHandling.xhtml">staticPopErrorHandling()</a>
+            </li>
+            <li id="staticPushErrorHandling">
+              <a title="PEAR" href="../classes/PEAR/staticPushErrorHandling.xhtml">staticPushErrorHandling()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

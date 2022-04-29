@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\StreamDecoratorTrait" namespace="GuzzleHttp\Psr7" name="StreamDecoratorTrait" abstract="false" final="false" start="14" end="155">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="StreamDecoratorTrait.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/StreamDecoratorTrait.php" size="3360" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="47be42b7d2f42ae75c3901cac83a876371c67658" relative="ar/www/html/vendor/guzzlehttp/psr7/src/StreamDecoratorTrait.php"/>
+  <docblock>
+    <description compact="Stream decorator trait"/>
+    <property value="StreamInterface $stream"/>
+  </docblock>
+  <constructor name="__construct" start="19" end="22" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Stream to decorate" type="object" variable="$stream">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </param>
+    </docblock>
+    <parameter name="stream" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+  </constructor>
+  <method name="__get" start="30" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic method used to create a new stream if streams are not added in the constructor of a decorator (e.g., LazyOpenStream)."/>
+      <return type="object">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </return>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="40" end="54" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getContents" start="56" end="59" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="__call" start="66" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Allow decorators to implement custom methods"/>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="args" byreference="false" type="array"/>
+    <inline>
+      <comment value="Always return the wrapped object if the result is a return $this" line="72"/>
+    </inline>
+  </method>
+  <method name="close" start="76" end="79" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="getMetadata" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="detach" start="91" end="94" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getSize" start="96" end="99" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="true"/>
+  </method>
+  <method name="eof" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="tell" start="106" end="109" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="isReadable" start="111" end="114" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isWritable" start="116" end="119" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isSeekable" start="121" end="124" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="rewind" start="126" end="129" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="seek" start="131" end="134" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="offset" byreference="false" type="{unknown}"/>
+    <parameter name="whence" byreference="false" type="{unknown}" default="" constant="SEEK_SET"/>
+  </method>
+  <method name="read" start="136" end="139" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+    <parameter name="length" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="write" start="141" end="144" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createStream" start="151" end="154" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Implement in subclasses to dynamically create streams when requested."/>
+      <throws type="object">
+        <type full="\BadMethodCallException" namespace="" name="BadMethodCallException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+  </method>
+  <users>
+    <class full="GuzzleHttp\Psr7\NoSeekStream" namespace="GuzzleHttp\Psr7" name="NoSeekStream"/>
+    <class full="GuzzleHttp\Psr7\LazyOpenStream" namespace="GuzzleHttp\Psr7" name="LazyOpenStream"/>
+    <class full="GuzzleHttp\Psr7\LimitStream" namespace="GuzzleHttp\Psr7" name="LimitStream"/>
+    <class full="GuzzleHttp\Psr7\MultipartStream" namespace="GuzzleHttp\Psr7" name="MultipartStream"/>
+    <class full="GuzzleHttp\Psr7\DroppingStream" namespace="GuzzleHttp\Psr7" name="DroppingStream"/>
+    <class full="GuzzleHttp\Psr7\InflateStream" namespace="GuzzleHttp\Psr7" name="InflateStream"/>
+    <class full="GuzzleHttp\Psr7\CachingStream" namespace="GuzzleHttp\Psr7" name="CachingStream"/>
+  </users>
+</trait>

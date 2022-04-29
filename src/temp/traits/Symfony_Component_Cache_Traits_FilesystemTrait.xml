@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\Traits\FilesystemTrait" namespace="Symfony\Component\Cache\Traits" name="FilesystemTrait" abstract="false" final="false" start="22" end="124">
+  <file path="//var/www/html/vendor/symfony/cache/Traits" file="FilesystemTrait.php" realpath="/var/www/html/vendor/symfony/cache/Traits/FilesystemTrait.php" size="2998" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="8eb94778e623646922a5bd008d3abb559621bc88" relative="ar/www/html/vendor/symfony/cache/Traits/FilesystemTrait.php"/>
+  <docblock>
+    <description/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+    <author value="Rob Frawley 2nd &lt;rmf@src.run&gt;"/>
+    <internal/>
+  </docblock>
+  <uses full="Symfony\Component\Cache\Traits\FilesystemCommonTrait" namespace="Symfony\Component\Cache\Traits" name="FilesystemCommonTrait" start="24" end="24"/>
+  <member name="marshaller" visibility="private" static="false" line="26"/>
+  <method name="prune" start="31" end="50" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="doFetch" start="55" end="79" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="ids" byreference="false" type="array"/>
+  </method>
+  <method name="doHave" start="84" end="89" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="id" byreference="false" type="string"/>
+  </method>
+  <method name="doSave" start="94" end="110" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="values" byreference="false" type="array"/>
+    <parameter name="lifetime" byreference="false" type="int"/>
+  </method>
+  <method name="getFileKey" start="112" end="123" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="file" byreference="false" type="string"/>
+    <inline>
+      <comment value="expiry" line="118"/>
+    </inline>
+  </method>
+  <users>
+    <class full="Symfony\Component\Cache\Adapter\FilesystemAdapter" namespace="Symfony\Component\Cache\Adapter" name="FilesystemAdapter"/>
+  </users>
+  <trait full="Symfony\Component\Cache\Traits\FilesystemCommonTrait" namespace="Symfony\Component\Cache\Traits" name="FilesystemCommonTrait">
+    <method name="doClear" start="56" end="69" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <parameter name="namespace" byreference="false" type="string"/>
+    </method>
+    <method name="doDelete" start="74" end="84" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <parameter name="ids" byreference="false" type="array"/>
+    </method>
+    <method name="doUnlink" start="86" end="89" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="file" byreference="false" type="string"/>
+    </method>
+    <method name="throwError" start="169" end="172" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <internal/>
+      </docblock>
+      <parameter name="type" byreference="false" type="int"/>
+      <parameter name="message" byreference="false" type="string"/>
+      <parameter name="file" byreference="false" type="string"/>
+      <parameter name="line" byreference="false" type="int"/>
+    </method>
+    <method name="__sleep" start="177" end="180" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="__wakeup" start="182" end="185" abstract="false" final="false" static="false" visibility="public"/>
+    <destructor name="__destruct" start="187" end="195" abstract="false" final="false" static="false" visibility="public"/>
+  </trait>
+</trait>

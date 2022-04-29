@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface" abstract="false" final="false" start="24" end="323">
+  <file path="//var/www/html/vendor/psr/http-message/src" file="UriInterface.php" realpath="/var/www/html/vendor/psr/http-message/src/UriInterface.php" size="12607" time="2016-08-06T14:39:51+00:00" unixtime="1470494391" sha1="a8f69d73e2ca020f5a56d580625c6d598f936a24" relative="ar/www/html/vendor/psr/http-message/src/UriInterface.php"/>
+  <docblock>
+    <description compact="Value object representing a URI.">This interface is meant to represent URIs according to RFC 3986 and to
+provide methods for most common operations. Additional functionality for
+working with URIs can be provided on top of the interface or externally.
+Its primary use is for HTTP requests, but may also be used in other
+contexts.
+
+Instances of this interface are considered immutable; all methods that
+might change state MUST be implemented such that they retain the internal
+state of the current instance and return an instance that contains the
+changed state.
+
+Typically the Host header will be also be present in the request message.
+For server-side requests, the scheme will typically be discoverable in the
+server parameters.</description>
+    <link value="http://tools.ietf.org/html/rfc3986 (the URI specification)"/>
+  </docblock>
+  <method name="getScheme" start="40" end="40" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the scheme component of the URI.">If no scheme is present, this method MUST return an empty string.
+
+The value returned MUST be normalized to lowercase, per RFC 3986
+Section 3.1.
+
+The trailing ":" character is not part of the scheme and MUST NOT be
+added.</description>
+      <see value="https://tools.ietf.org/html/rfc3986#section-3.1"/>
+      <return description="The URI scheme." type="string"/>
+    </docblock>
+  </method>
+  <method name="getAuthority" start="60" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the authority component of the URI.">If no authority information is present, this method MUST return an empty
+string.
+
+The authority syntax of the URI is:
+
+&lt;pre&gt;
+[user-info@]host[:port]
+&lt;/pre&gt;
+
+If the port component is not set or is the standard port for the current
+scheme, it SHOULD NOT be included.</description>
+      <see value="https://tools.ietf.org/html/rfc3986#section-3.2"/>
+      <return description="The URI authority, in &quot;[user-info@]host[:port]&quot; format." type="string"/>
+    </docblock>
+  </method>
+  <method name="getUserInfo" start="77" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the user information component of the URI.">If no user information is present, this method MUST return an empty
+string.
+
+If a user is present in the URI, this will return that value;
+additionally, if the password is also present, it will be appended to the
+user value, with a colon (":") separating the values.
+
+The trailing "@" character is not part of the user information and MUST
+NOT be added.</description>
+      <return description="The URI user information, in &quot;username[:password]&quot; format." type="string"/>
+    </docblock>
+  </method>
+  <method name="getHost" start="90" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the host component of the URI.">If no host is present, this method MUST return an empty string.
+
+The value returned MUST be normalized to lowercase, per RFC 3986
+Section 3.2.2.</description>
+      <see value="http://tools.ietf.org/html/rfc3986#section-3.2.2"/>
+      <return description="The URI host." type="string"/>
+    </docblock>
+  </method>
+  <method name="getPort" start="107" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the port component of the URI.">If a port is present, and it is non-standard for the current scheme,
+this method MUST return it as an integer. If the port is the standard port
+used with the current scheme, this method SHOULD return null.
+
+If no port is present, and no scheme is present, this method MUST return
+a null value.
+
+If no port is present, but a scheme is present, this method MAY return
+the standard port for that scheme, but SHOULD return null.</description>
+      <return description="The URI port." type="object">
+        <type full="Psr\Http\Message\null|int" namespace="Psr\Http\Message" name="null|int"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getPath" start="134" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the path component of the URI.">The path can either be empty or absolute (starting with a slash) or
+rootless (not starting with a slash). Implementations MUST support all
+three syntaxes.
+
+Normally, the empty path "" and absolute path "/" are considered equal as
+defined in RFC 7230 Section 2.7.3. But this method MUST NOT automatically
+do this normalization because in contexts with a trimmed base path, e.g.
+the front controller, this difference becomes significant. It's the task
+of the user to handle both "" and "/".
+
+The value returned MUST be percent-encoded, but MUST NOT double-encode
+any characters. To determine what characters to encode, please refer to
+RFC 3986, Sections 2 and 3.3.
+
+As an example, if the value should include a slash ("/") not intended as
+delimiter between path segments, that value MUST be passed in encoded
+form (e.g., "%2F") to the instance.</description>
+      <see value="https://tools.ietf.org/html/rfc3986#section-2"/>
+      <see value="https://tools.ietf.org/html/rfc3986#section-3.3"/>
+      <return description="The URI path." type="string"/>
+    </docblock>
+  </method>
+  <method name="getQuery" start="156" end="156" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the query string of the URI.">If no query string is present, this method MUST return an empty string.
+
+The leading "?" character is not part of the query and MUST NOT be
+added.
+
+The value returned MUST be percent-encoded, but MUST NOT double-encode
+any characters. To determine what characters to encode, please refer to
+RFC 3986, Sections 2 and 3.4.
+
+As an example, if a value in a key/value pair of the query string should
+include an ampersand ("&amp;") not intended as a delimiter between values,
+that value MUST be passed in encoded form (e.g., "%26") to the instance.</description>
+      <see value="https://tools.ietf.org/html/rfc3986#section-2"/>
+      <see value="https://tools.ietf.org/html/rfc3986#section-3.4"/>
+      <return description="The URI query string." type="string"/>
+    </docblock>
+  </method>
+  <method name="getFragment" start="174" end="174" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the fragment component of the URI.">If no fragment is present, this method MUST return an empty string.
+
+The leading "#" character is not part of the fragment and MUST NOT be
+added.
+
+The value returned MUST be percent-encoded, but MUST NOT double-encode
+any characters. To determine what characters to encode, please refer to
+RFC 3986, Sections 2 and 3.5.</description>
+      <see value="https://tools.ietf.org/html/rfc3986#section-2"/>
+      <see value="https://tools.ietf.org/html/rfc3986#section-3.5"/>
+      <return description="The URI fragment." type="string"/>
+    </docblock>
+  </method>
+  <method name="withScheme" start="191" end="191" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an instance with the specified scheme.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified scheme.
+
+Implementations MUST support the schemes "http" and "https" case
+insensitively, and MAY accommodate other schemes if required.
+
+An empty scheme is equivalent to removing the scheme.</description>
+      <param description="The scheme to use with the new instance." type="string" variable="$scheme"/>
+      <return description="A new instance with the specified scheme." resolution="static" type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </return>
+      <throws description="for invalid or unsupported schemes." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="scheme" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withUserInfo" start="207" end="207" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an instance with the specified user information.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified user information.
+
+Password is optional, but the user information MUST include the
+user; an empty string for the user is equivalent to removing user
+information.</description>
+      <param description="The user name to use for authority." type="string" variable="$user"/>
+      <param description="The password associated with $user." type="object" variable="$password">
+        <type full="Psr\Http\Message\null|string" namespace="Psr\Http\Message" name="null|string"/>
+      </param>
+      <return description="A new instance with the specified user information." resolution="static" type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </return>
+    </docblock>
+    <parameter name="user" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="withHost" start="221" end="221" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an instance with the specified host.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified host.
+
+An empty host value is equivalent to removing the host.</description>
+      <param description="The hostname to use with the new instance." type="string" variable="$host"/>
+      <return description="A new instance with the specified host." resolution="static" type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </return>
+      <throws description="for invalid hostnames." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withPort" start="240" end="240" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an instance with the specified port.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified port.
+
+Implementations MUST raise an exception for ports outside the
+established TCP and UDP port ranges.
+
+A null value provided for the port is equivalent to removing the port
+information.</description>
+      <param description="The port to use with the new instance; a null value" type="object" variable="$port">removes the port information.<type full="Psr\Http\Message\null|int" namespace="Psr\Http\Message" name="null|int"/></param>
+      <return description="A new instance with the specified port." resolution="static" type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </return>
+      <throws description="for invalid ports." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="port" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withPath" start="264" end="264" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an instance with the specified path.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified path.
+
+The path can either be empty or absolute (starting with a slash) or
+rootless (not starting with a slash). Implementations MUST support all
+three syntaxes.
+
+If the path is intended to be domain-relative rather than path relative then
+it must begin with a slash ("/"). Paths not starting with a slash ("/")
+are assumed to be relative to some base path known to the application or
+consumer.
+
+Users can provide both encoded and decoded path characters.
+Implementations ensure the correct encoding as outlined in getPath().</description>
+      <param description="The path to use with the new instance." type="string" variable="$path"/>
+      <return description="A new instance with the specified path." resolution="static" type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </return>
+      <throws description="for invalid paths." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withQuery" start="281" end="281" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an instance with the specified query string.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified query string.
+
+Users can provide both encoded and decoded query characters.
+Implementations ensure the correct encoding as outlined in getQuery().
+
+An empty query string value is equivalent to removing the query string.</description>
+      <param description="The query string to use with the new instance." type="string" variable="$query"/>
+      <return description="A new instance with the specified query string." resolution="static" type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </return>
+      <throws description="for invalid query strings." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="query" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withFragment" start="297" end="297" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an instance with the specified URI fragment.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified URI fragment.
+
+Users can provide both encoded and decoded fragment characters.
+Implementations ensure the correct encoding as outlined in getFragment().
+
+An empty fragment value is equivalent to removing the fragment.</description>
+      <param description="The fragment to use with the new instance." type="string" variable="$fragment"/>
+      <return description="A new instance with the specified fragment." resolution="static" type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </return>
+    </docblock>
+    <parameter name="fragment" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="__toString" start="322" end="322" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return the string representation as a URI reference.">Depending on which components of the URI are present, the resulting
+string is either a full URI or relative reference according to RFC 3986,
+Section 4.1. The method concatenates the various components of the URI,
+using the appropriate delimiters:
+
+- If a scheme is present, it MUST be suffixed by ":".
+- If an authority is present, it MUST be prefixed by "//".
+- The path can be concatenated without delimiters. But there are two
+  cases where the path has to be adjusted to make the URI reference
+  valid as PHP does not allow to throw an exception in __toString():
+    - If the path is rootless and an authority is present, the path MUST
+      be prefixed by "/".
+    - If the path is starting with more than one "/" and no authority is
+      present, the starting slashes MUST be reduced to one.
+- If a query is present, it MUST be prefixed by "?".
+- If a fragment is present, it MUST be prefixed by "#".</description>
+      <see value="http://tools.ietf.org/html/rfc3986#section-4.1"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <implementors>
+    <class full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri"/>
+  </implementors>
+</interface>

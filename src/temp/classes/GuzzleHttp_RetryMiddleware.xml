@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\RetryMiddleware" namespace="GuzzleHttp" name="RetryMiddleware" abstract="false" final="false" start="16" end="116">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="RetryMiddleware.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/RetryMiddleware.php" size="3604" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="bf5f1df55b07d399ece9a0e73e521ef8f3754177" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/RetryMiddleware.php"/>
+  <docblock>
+    <description compact="Middleware that retries requests based on the boolean result of invoking the provided &quot;decider&quot; function."/>
+    <final/>
+  </docblock>
+  <member name="nextHandler" visibility="private" static="false" line="21">
+    <docblock>
+      <description/>
+      <var description="array): PromiseInterface" type="object">
+        <type full="GuzzleHttp\callable(RequestInterface" namespace="GuzzleHttp" name="callable(RequestInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="decider" visibility="private" static="false" line="26">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="delay" visibility="private" static="false" line="31">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\callable(int)" namespace="GuzzleHttp" name="callable(int)"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="43" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Function that accepts the number of retries," type="object" variable="$decider">a request, [response], and [exception] and
+                                                                        returns true if the request is to be
+                                                                        retried.<type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/></param>
+      <param description="array): PromiseInterface $nextHandler Next handler to invoke." type="object">
+        <type full="GuzzleHttp\callable(RequestInterface" namespace="GuzzleHttp" name="callable(RequestInterface"/>
+      </param>
+      <param description="int)|null $delay       Function that accepts the number of retries" type="object">and returns the number of
+                                                                        milliseconds to delay.<type full="GuzzleHttp\(callable(int):" namespace="GuzzleHttp" name="(callable(int):"/></param>
+    </docblock>
+    <parameter name="decider" byreference="false" type="callable"/>
+    <parameter name="nextHandler" byreference="false" type="callable"/>
+    <parameter name="delay" byreference="false" type="callable" default="NULL"/>
+  </constructor>
+  <method name="exponentialDelay" start="55" end="58" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Default exponential backoff delay function."/>
+      <return description="milliseconds." type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="retries" byreference="false" type="int"/>
+  </method>
+  <method name="__invoke" start="60" end="72" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="onFulfilled" start="77" end="90" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Execute fulfilled closure"/>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="onRejected" start="95" end="108" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Execute rejected closure"/>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="req" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="doRetry" start="110" end="115" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="response" byreference="false" type="object" default="NULL">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </parameter>
+  </method>
+</class>

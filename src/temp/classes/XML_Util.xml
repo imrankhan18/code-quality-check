@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="XML_Util" namespace="" name="XML_Util" abstract="false" final="false" start="126" end="962">
+  <file path="//usr/local/lib/php/XML" file="Util.php" realpath="/usr/local/lib/php/XML/Util.php" size="32133" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="f903f08ccb83d394d7ab0b27d17688cd249710ea" relative="sr/local/lib/php/XML/Util.php"/>
+  <docblock>
+    <description compact="Utility class for working with XML documents"/>
+    <category value="XML"/>
+    <package value="XML_Util"/>
+    <author value="Stephan Schmidt &lt;schst@php.net&gt;"/>
+    <copyright value="2003-2008 Stephan Schmidt &lt;schst@php.net&gt;"/>
+    <license name="http://opensource.org/licenses/bsd-license New BSD License"/>
+    <version value="Release: 1.4.3"/>
+    <link value="http://pear.php.net/package/XML_Util"/>
+  </docblock>
+  <method name="apiVersion" start="133" end="136" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Return API version"/>
+      <return description="$version API version" type="string"/>
+    </docblock>
+  </method>
+  <method name="replaceEntities" start="176" end="207" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Replace XML entities">With the optional second parameter, you may select, which
+entities should be replaced.
+
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+// replace XML entites:
+$string = XML_Util::replaceEntities('This string contains &lt; &amp; &gt;.');
+&lt;/code&gt;
+
+With the optional third parameter, you may pass the character encoding
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+// replace XML entites in UTF-8:
+$string = XML_Util::replaceEntities(
+    'This string contains &lt; &amp; &gt; as well as ä, ö, ß, à and ê',
+    XML_UTIL_ENTITIES_HTML,
+    'UTF-8'
+);
+&lt;/code&gt;</description>
+      <param description="string where XML special chars" type="string" variable="$string">should be replaced</param>
+      <param description="setting for entities in attribute values" type="int" variable="$replaceEntities">(one of XML_UTIL_ENTITIES_XML,
+                               XML_UTIL_ENTITIES_XML_REQUIRED,
+                               XML_UTIL_ENTITIES_HTML)</param>
+      <param description="encoding value (if any)..." type="string" variable="$encoding">must be a valid encoding as determined
+                               by the htmlentities() function</param>
+      <return description="string with replaced chars" type="string"/>
+      <see value="reverseEntities()"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="replaceEntities" byreference="false" type="{unknown}" default="" constant="XML_UTIL_ENTITIES_XML"/>
+    <parameter name="encoding" byreference="false" type="string" default="'ISO-8859-1'"/>
+  </method>
+  <method name="reverseEntities" start="248" end="279" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Reverse XML entities">With the optional second parameter, you may select, which
+entities should be reversed.
+
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+// reverse XML entites:
+$string = XML_Util::reverseEntities('This string contains &amp;lt; &amp;amp; &amp;gt;.');
+&lt;/code&gt;
+
+With the optional third parameter, you may pass the character encoding
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+// reverse XML entites in UTF-8:
+$string = XML_Util::reverseEntities(
+    'This string contains &amp;lt; &amp;amp; &amp;gt; as well as'
+    . ' &amp;auml;, &amp;ouml;, &amp;szlig;, &amp;agrave; and &amp;ecirc;',
+    XML_UTIL_ENTITIES_HTML,
+    'UTF-8'
+);
+&lt;/code&gt;</description>
+      <param description="string where XML special chars" type="string" variable="$string">should be replaced</param>
+      <param description="setting for entities in attribute values" type="int" variable="$replaceEntities">(one of XML_UTIL_ENTITIES_XML,
+                               XML_UTIL_ENTITIES_XML_REQUIRED,
+                               XML_UTIL_ENTITIES_HTML)</param>
+      <param description="encoding value (if any)..." type="string" variable="$encoding">must be a valid encoding as determined
+                               by the html_entity_decode() function</param>
+      <return description="string with replaced chars" type="string"/>
+      <see value="replaceEntities()"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="replaceEntities" byreference="false" type="{unknown}" default="" constant="XML_UTIL_ENTITIES_XML"/>
+    <parameter name="encoding" byreference="false" type="string" default="'ISO-8859-1'"/>
+  </method>
+  <method name="getXMLDeclaration" start="299" end="318" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Build an xml declaration">&lt;code&gt;
+require_once 'XML/Util.php';
+
+// get an XML declaration:
+$xmlDecl = XML_Util::getXMLDeclaration('1.0', 'UTF-8', true);
+&lt;/code&gt;</description>
+      <param description="xml version" type="string" variable="$version"/>
+      <param description="character encoding" type="string" variable="$encoding"/>
+      <param description="document is standalone (or not)" type="object" variable="$standalone">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="xml declaration" type="string"/>
+      <uses value="attributesToString() to serialize the attributes of the XML declaration"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="string" default="'1.0'"/>
+    <parameter name="encoding" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="standalone" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="add encoding" line="305"/>
+      <comment value="add standalone, if specified" line="309"/>
+    </inline>
+  </method>
+  <method name="getDocTypeDeclaration" start="338" end="354" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Build a document type declaration">&lt;code&gt;
+require_once 'XML/Util.php';
+
+// get a doctype declaration:
+$xmlDecl = XML_Util::getDocTypeDeclaration('rootTag','myDocType.dtd');
+&lt;/code&gt;</description>
+      <param description="name of the root tag" type="string" variable="$root"/>
+      <param description="uri of the doctype definition" type="string" variable="$uri">(or array with uri and public id)</param>
+      <param description="internal dtd entries" type="string" variable="$internalDtd"/>
+      <return description="doctype declaration" type="string"/>
+      <since value="0.2"/>
+    </docblock>
+    <parameter name="root" byreference="false" type="{unknown}"/>
+    <parameter name="uri" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="internalDtd" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="attributesToString" start="392" end="449" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create string representation of an attribute list">&lt;code&gt;
+require_once 'XML/Util.php';
+
+// build an attribute string
+$att = array(
+             'foo'   =&gt;  'bar',
+             'argh'  =&gt;  'tomato'
+           );
+
+$attList = XML_Util::attributesToString($att);
+&lt;/code&gt;</description>
+      <param description="attribute array" type="array" variable="$attributes"/>
+      <param description="sort attribute list alphabetically," type="object" variable="$sort">may also be an assoc array containing
+                              the keys 'sort', 'multiline', 'indent',
+                              'linebreak' and 'entities'<type full="bool|array" namespace="" name="bool|array"/></param>
+      <param description="use linebreaks, if more than" type="object" variable="$multiline">one attribute is given<type full="bool" namespace="" name="bool"/></param>
+      <param description="string used for indentation of" type="string" variable="$indent">multiline attributes</param>
+      <param description="string used for linebreaks of" type="string" variable="$linebreak">multiline attributes</param>
+      <param description="setting for entities in attribute values" type="int" variable="$entities">(one of XML_UTIL_ENTITIES_NONE,
+                              XML_UTIL_ENTITIES_XML,
+                              XML_UTIL_ENTITIES_XML_REQUIRED,
+                              XML_UTIL_ENTITIES_HTML)</param>
+      <return description="string representation of the attributes" type="string"/>
+      <uses value="replaceEntities() to replace XML entities in attribute values"/>
+      <todo value="allow sort also to be an options array"/>
+    </docblock>
+    <parameter name="attributes" byreference="false" type="{unknown}"/>
+    <parameter name="sort" byreference="false" type="boolean" default="true"/>
+    <parameter name="multiline" byreference="false" type="boolean" default="false"/>
+    <parameter name="indent" byreference="false" type="string" default="'    '"/>
+    <parameter name="linebreak" byreference="false" type="string" default="&quot;\n&quot;"/>
+    <parameter name="entities" byreference="false" type="{unknown}" default="" constant="XML_UTIL_ENTITIES_XML"/>
+    <inline>
+      <comment value="second parameter may be an array" line="396"/>
+    </inline>
+  </method>
+  <method name="collapseEmptyTags" start="460" end="503" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Collapses empty tags."/>
+      <param description="XML" type="string" variable="$xml"/>
+      <param description="Whether to collapse all empty tags (XML_UTIL_COLLAPSE_ALL)" type="int" variable="$mode">or only XHTML (XML_UTIL_COLLAPSE_XHTML_ONLY) ones.</param>
+      <return description="XML" type="string"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+    <parameter name="mode" byreference="false" type="{unknown}" default="" constant="XML_UTIL_COLLAPSE_ALL"/>
+  </method>
+  <method name="createTag" start="541" end="567" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create a tag">This method will call XML_Util::createTagFromArray(), which
+is more flexible.
+
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+// create an XML tag:
+$tag = XML_Util::createTag('myNs:myTag',
+    array('foo' =&gt; 'bar'),
+    'This is inside the tag',
+    'http://www.w3c.org/myNs#');
+&lt;/code&gt;</description>
+      <param description="qualified tagname (including namespace)" type="string" variable="$qname"/>
+      <param description="array containg attributes" type="array" variable="$attributes"/>
+      <param description="the content" type="mixed" variable="$content"/>
+      <param description="URI of the namespace" type="string" variable="$namespaceUri"/>
+      <param description="whether to replace XML special chars in" type="int" variable="$replaceEntities">content, embedd it in a CData section
+                               or none of both</param>
+      <param description="whether to create a multiline tag where" type="object" variable="$multiline">each attribute gets written to a single line<type full="bool" namespace="" name="bool"/></param>
+      <param description="string used to indent attributes" type="string" variable="$indent">(_auto indents attributes so they start
+                               at the same column)</param>
+      <param description="string used for linebreaks" type="string" variable="$linebreak"/>
+      <param description="Whether to sort the attributes or not" type="object" variable="$sortAttributes">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <param description="How to handle a content-less, and thus collapseable, tag" type="int" variable="$collapseTagMode"/>
+      <return description="XML tag" type="string"/>
+      <see value="createTagFromArray()"/>
+      <uses value="createTagFromArray() to create the tag"/>
+    </docblock>
+    <parameter name="qname" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+    <parameter name="content" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="namespaceUri" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="replaceEntities" byreference="false" type="{unknown}" default="" constant="XML_UTIL_REPLACE_ENTITIES"/>
+    <parameter name="multiline" byreference="false" type="boolean" default="false"/>
+    <parameter name="indent" byreference="false" type="string" default="'_auto'"/>
+    <parameter name="linebreak" byreference="false" type="string" default="&quot;\n&quot;"/>
+    <parameter name="sortAttributes" byreference="false" type="boolean" default="true"/>
+    <parameter name="collapseTagMode" byreference="false" type="{unknown}" default="" constant="XML_UTIL_COLLAPSE_ALL"/>
+    <inline>
+      <comment value="add tag content" line="552"/>
+      <comment value="add namespace Uri" line="557"/>
+    </inline>
+  </method>
+  <method name="createTagFromArray" start="629" end="726" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create a tag from an array.">This method awaits an array in the following format
+&lt;pre&gt;
+array(
+    // qualified name of the tag
+    'qname' =&gt; $qname
+
+    // namespace prefix (optional, if qname is specified or no namespace)
+    'namespace' =&gt; $namespace
+
+    // local part of the tagname (optional, if qname is specified)
+    'localpart' =&gt; $localpart,
+
+    // array containing all attributes (optional)
+    'attributes' =&gt; array(),
+
+    // tag content (optional)
+    'content' =&gt; $content,
+
+    // namespaceUri for the given namespace (optional)
+    'namespaceUri' =&gt; $namespaceUri
+)
+&lt;/pre&gt;
+
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+$tag = array(
+    'qname'        =&gt; 'foo:bar',
+    'namespaceUri' =&gt; 'http://foo.com',
+    'attributes'   =&gt; array('key' =&gt; 'value', 'argh' =&gt; 'fruit&amp;vegetable'),
+    'content'      =&gt; 'I\'m inside the tag',
+);
+// creating a tag with qualified name and namespaceUri
+$string = XML_Util::createTagFromArray($tag);
+&lt;/code&gt;</description>
+      <param description="tag definition" type="array" variable="$tag"/>
+      <param description="whether to replace XML special chars in" type="int" variable="$replaceEntities">content, embedd it in a CData section
+                               or none of both</param>
+      <param description="whether to create a multiline tag where each" type="object" variable="$multiline">attribute gets written to a single line<type full="bool" namespace="" name="bool"/></param>
+      <param description="string used to indent attributes" type="string" variable="$indent">(_auto indents attributes so they start
+                               at the same column)</param>
+      <param description="string used for linebreaks" type="string" variable="$linebreak"/>
+      <param description="Whether to sort the attributes or not" type="object" variable="$sortAttributes">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <param description="How to handle a content-less, and thus collapseable, tag" type="int" variable="$collapseTagMode"/>
+      <return description="XML tag" type="string"/>
+      <see value="createTag()"/>
+      <uses value="attributesToString() to serialize the attributes of the tag"/>
+      <uses value="splitQualifiedName() to get local part and namespace of a qualified name"/>
+      <uses value="createCDataSection()"/>
+      <uses value="collapseEmptyTags()"/>
+      <uses value="raiseError()"/>
+    </docblock>
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+    <parameter name="replaceEntities" byreference="false" type="{unknown}" default="" constant="XML_UTIL_REPLACE_ENTITIES"/>
+    <parameter name="multiline" byreference="false" type="boolean" default="false"/>
+    <parameter name="indent" byreference="false" type="string" default="'_auto'"/>
+    <parameter name="linebreak" byreference="false" type="string" default="&quot;\n&quot;"/>
+    <parameter name="sortAttributes" byreference="false" type="boolean" default="true"/>
+    <parameter name="collapseTagMode" byreference="false" type="{unknown}" default="" constant="XML_UTIL_COLLAPSE_ALL"/>
+    <inline>
+      <comment value="if no attributes hav been set, use empty attributes" line="649"/>
+      <comment value="check for multiline attributes" line="695"/>
+      <comment value="create attribute list" line="702"/>
+    </inline>
+  </method>
+  <method name="createStartElement" start="752" end="790" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create a start element">&lt;code&gt;
+require_once 'XML/Util.php';
+
+// create an XML start element:
+$tag = XML_Util::createStartElement('myNs:myTag',
+    array('foo' =&gt; 'bar') ,'http://www.w3c.org/myNs#');
+&lt;/code&gt;</description>
+      <param description="qualified tagname (including namespace)" type="string" variable="$qname"/>
+      <param description="array containg attributes" type="array" variable="$attributes"/>
+      <param description="URI of the namespace" type="string" variable="$namespaceUri"/>
+      <param description="whether to create a multiline tag where each" type="object" variable="$multiline">attribute gets written to a single line<type full="bool" namespace="" name="bool"/></param>
+      <param description="string used to indent attributes (_auto indents" type="string" variable="$indent">attributes so they start at the same column)</param>
+      <param description="string used for linebreaks" type="string" variable="$linebreak"/>
+      <param description="Whether to sort the attributes or not" type="object" variable="$sortAttributes">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="XML start element" type="string"/>
+      <see value="createEndElement(), createTag()"/>
+    </docblock>
+    <parameter name="qname" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+    <parameter name="namespaceUri" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="multiline" byreference="false" type="boolean" default="false"/>
+    <parameter name="indent" byreference="false" type="string" default="'_auto'"/>
+    <parameter name="linebreak" byreference="false" type="string" default="&quot;\n&quot;"/>
+    <parameter name="sortAttributes" byreference="false" type="boolean" default="true"/>
+    <inline>
+      <comment value="if no attributes hav been set, use empty attributes" line="757"/>
+      <comment value="check for multiline attributes" line="766"/>
+      <comment value="create attribute list" line="783"/>
+    </inline>
+  </method>
+  <method name="createEndElement" start="807" end="811" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create an end element">&lt;code&gt;
+require_once 'XML/Util.php';
+
+// create an XML start element:
+$tag = XML_Util::createEndElement('myNs:myTag');
+&lt;/code&gt;</description>
+      <param description="qualified tagname (including namespace)" type="string" variable="$qname"/>
+      <return description="XML end element" type="string"/>
+      <see value="createStartElement(), createTag()"/>
+    </docblock>
+    <parameter name="qname" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createComment" start="827" end="831" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create an XML comment">&lt;code&gt;
+require_once 'XML/Util.php';
+
+// create an XML start element:
+$tag = XML_Util::createComment('I am a comment');
+&lt;/code&gt;</description>
+      <param description="content of the comment" type="string" variable="$content"/>
+      <return description="XML comment" type="string"/>
+    </docblock>
+    <parameter name="content" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createCDataSection" start="847" end="853" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create a CData section">&lt;code&gt;
+require_once 'XML/Util.php';
+
+// create a CData section
+$tag = XML_Util::createCDataSection('I am content.');
+&lt;/code&gt;</description>
+      <param description="data of the CData section" type="string" variable="$data"/>
+      <return description="CData section with content" type="string"/>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="splitQualifiedName" start="877" end="890" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Split qualified name and return namespace and local part">&lt;code&gt;
+require_once 'XML/Util.php';
+
+// split qualified tag
+$parts = XML_Util::splitQualifiedName('xslt:stylesheet');
+&lt;/code&gt;
+the returned array will contain two elements:
+&lt;pre&gt;
+array(
+    'namespace' =&gt; 'xslt',
+    'localPart' =&gt; 'stylesheet'
+);
+&lt;/pre&gt;</description>
+      <param description="qualified tag name" type="string" variable="$qname"/>
+      <param description="default namespace (optional)" type="string" variable="$defaultNs"/>
+      <return description="array containing namespace and local part" type="array"/>
+    </docblock>
+    <parameter name="qname" byreference="false" type="{unknown}"/>
+    <parameter name="defaultNs" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="isValidName" start="918" end="943" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Check, whether string is valid XML name">&lt;p&gt;XML names are used for tagname, attribute names and various
+other, lesser known entities.&lt;/p&gt;
+&lt;p&gt;An XML name may only consist of alphanumeric characters,
+dashes, undescores and periods, and has to start with a letter
+or an underscore.&lt;/p&gt;
+
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+// verify tag name
+$result = XML_Util::isValidName('invalidTag?');
+if (is_a($result, 'PEAR_Error')) {
+   print 'Invalid XML name: ' . $result-&gt;getMessage();
+}
+&lt;/code&gt;</description>
+      <param description="string that should be checked" type="string" variable="$string"/>
+      <return description="true, if string is a valid XML name, PEAR error otherwise" type="mixed"/>
+      <todo value="support for other charsets"/>
+      <todo value="PEAR CS - unable to avoid 85-char limit on second preg_match"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="check for invalid chars" line="920"/>
+      <comment value="check for invalid chars" line="928"/>
+      <comment value="XML name is valid" line="941"/>
+    </inline>
+  </method>
+  <method name="raiseError" start="957" end="961" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Replacement for XML_Util::raiseError">Avoids the necessity to always require
+PEAR.php</description>
+      <param description="error message" type="string" variable="$msg"/>
+      <param description="error code" type="int" variable="$code"/>
+      <return type="object">
+        <type full="PEAR_Error" namespace="" name="PEAR_Error"/>
+      </return>
+      <todo value="PEAR CS - should this use include_once instead?"/>
+    </docblock>
+    <parameter name="msg" byreference="false" type="{unknown}"/>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+</class>

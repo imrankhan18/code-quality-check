@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\MessageTrait" namespace="GuzzleHttp\Psr7" name="MessageTrait" abstract="false" final="false" start="13" end="266">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="MessageTrait.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/MessageTrait.php" size="8023" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="e714643e435da942f2f08a7518036ccb361c0dfc" relative="ar/www/html/vendor/guzzlehttp/psr7/src/MessageTrait.php"/>
+  <docblock>
+    <description compact="Trait implementing functionality common to requests and responses."/>
+  </docblock>
+  <member name="headers" default="" type="array" visibility="private" static="false" line="16">
+    <docblock>
+      <var description="string[]&gt; Map of all registered headers, as original name =&gt; array of values" type="object">
+        <type full="GuzzleHttp\Psr7\array&lt;string" namespace="GuzzleHttp\Psr7" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="headerNames" default="" type="array" visibility="private" static="false" line="19">
+    <docblock>
+      <var description="string&gt; Map of lowercase header name =&gt; original name at registration" type="object">
+        <type full="GuzzleHttp\Psr7\array&lt;string" namespace="GuzzleHttp\Psr7" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="protocol" default="'1.1'" type="string" visibility="private" static="false" line="22">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="stream" visibility="private" static="false" line="25">
+    <docblock>
+      <var type="object">
+        <type full="GuzzleHttp\Psr7\StreamInterface|null" namespace="GuzzleHttp\Psr7" name="StreamInterface|null"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="getProtocolVersion" start="27" end="30" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="withProtocolVersion" start="32" end="41" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    </return>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getHeaders" start="43" end="46" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="hasHeader" start="48" end="51" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getHeader" start="53" end="64" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getHeaderLine" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withHeader" start="71" end="85" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    </return>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withAddedHeader" start="87" end="103" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    </return>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withoutHeader" start="105" end="119" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    </return>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getBody" start="121" end="128" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+  </method>
+  <method name="withBody" start="130" end="139" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    </return>
+    <parameter name="body" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+  </method>
+  <method name="setHeaders" start="144" end="164" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="string|string[]&gt; $headers" type="object">
+        <type full="GuzzleHttp\Psr7\array&lt;string|int" namespace="GuzzleHttp\Psr7" name="array&lt;string|int"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="headers" byreference="false" type="array"/>
+  </method>
+  <method name="normalizeHeaderValue" start="171" end="182" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$value"/>
+      <return type="array" of="object">
+        <type full="GuzzleHttp\Psr7\string" namespace="GuzzleHttp\Psr7" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="trimAndValidateHeaderValues" start="198" end="213" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Trims whitespace from the header values.">Spaces and tabs ought to be excluded by parsers when extracting the field value from a header field.
+
+header-field = field-name ":" OWS field-value OWS
+OWS          = *( SP / HTAB )</description>
+      <param description="Header values" type="array" variable="$values" of="object">
+        <type full="GuzzleHttp\Psr7\mixed" namespace="GuzzleHttp\Psr7" name="mixed"/>
+      </param>
+      <return description="Trimmed header values" type="array" of="object">
+        <type full="GuzzleHttp\Psr7\string" namespace="GuzzleHttp\Psr7" name="string"/>
+      </return>
+      <see value="https://tools.ietf.org/html/rfc7230#section-3.2.4"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="values" byreference="false" type="array"/>
+  </method>
+  <method name="assertHeader" start="220" end="237" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <see value="https://tools.ietf.org/html/rfc7230#section-3.2"/>
+      <param type="mixed" variable="$header"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="assertValue" start="249" end="265" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <see value="https://tools.ietf.org/html/rfc7230#section-3.2 field-value    = *( field-content / obs-fold ) field-content  = field-vchar [ 1*( SP / HTAB ) field-vchar ] field-vchar    = VCHAR / obs-text VCHAR          = %x21-7E obs-text       = %x80-FF obs-fold       = CRLF 1*( SP / HTAB )"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="value" byreference="false" type="string"/>
+    <inline>
+      <comment value="The regular expression intentionally does not support the obs-fold production, because as" line="251"/>
+      <comment value="per RFC 7230#3.2.4:" line="252"/>
+      <comment value="A sender MUST NOT generate a message that includes" line="254"/>
+      <comment value="line folding (i.e., that has any field-value that contains a match to" line="255"/>
+      <comment value="the obs-fold rule) unless the message is intended for packaging" line="256"/>
+      <comment value="within the message/http media type." line="257"/>
+      <comment value="Clients must not send a request with line folding and a server sending folded headers is" line="259"/>
+      <comment value="likely very rare. Line folding is a fairly obscure feature of HTTP/1.1 and thus not accepting" line="260"/>
+      <comment value="folding is not likely to break any legitimate use case." line="261"/>
+    </inline>
+  </method>
+  <users>
+    <class full="GuzzleHttp\Psr7\Request" namespace="GuzzleHttp\Psr7" name="Request"/>
+    <class full="GuzzleHttp\Psr7\ServerRequest" namespace="GuzzleHttp\Psr7" name="ServerRequest"/>
+    <class full="GuzzleHttp\Psr7\Response" namespace="GuzzleHttp\Psr7" name="Response"/>
+  </users>
+</trait>

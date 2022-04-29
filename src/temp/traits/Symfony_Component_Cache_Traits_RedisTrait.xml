@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\Traits\RedisTrait" namespace="Symfony\Component\Cache\Traits" name="RedisTrait" abstract="false" final="false" start="31" end="591">
+  <file path="//var/www/html/vendor/symfony/cache/Traits" file="RedisTrait.php" realpath="/var/www/html/vendor/symfony/cache/Traits/RedisTrait.php" size="24891" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="8ead3e4b1f7420cd95fbef78b86c87950f92929e" relative="ar/www/html/vendor/symfony/cache/Traits/RedisTrait.php"/>
+  <docblock>
+    <description/>
+    <author value="Aurimas Niekis &lt;aurimas@niekis.lt&gt;"/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+    <internal/>
+  </docblock>
+  <member name="defaultConnectionOptions" default="" type="array" visibility="private" static="true" line="33"/>
+  <member name="redis" visibility="private" static="false" line="48"/>
+  <member name="marshaller" visibility="private" static="false" line="49"/>
+  <method name="init" start="54" end="74" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$redis">
+        <type full="\Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|RedisProxy|RedisClusterProxy" namespace="\Redis|\RedisArray|\RedisCluster|\Predis" name="ClientInterface|RedisProxy|RedisClusterProxy"/>
+      </param>
+    </docblock>
+    <parameter name="redis" byreference="false" type="{unknown}"/>
+    <parameter name="namespace" byreference="false" type="string"/>
+    <parameter name="defaultLifetime" byreference="false" type="int"/>
+    <parameter name="marshaller" byreference="false" nullable="true" type="object">
+      <type full="Symfony\Component\Cache\Marshaller\MarshallerInterface" namespace="Symfony\Component\Cache\Marshaller" name="MarshallerInterface"/>
+    </parameter>
+  </method>
+  <method name="createConnection" start="92" end="333" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates a Redis connection using a DSN configuration.">Example DSN:
+  - redis://localhost
+  - redis://example.com:1234
+  - redis://secret@example.com/13
+  - redis:///var/run/redis.sock
+  - redis://secret@/var/run/redis.sock/13</description>
+      <param description="See self::$defaultConnectionOptions" type="array" variable="$options"/>
+      <return description="According to the &quot;class&quot; option" type="object">
+        <type full="\Redis|\RedisArray|\RedisCluster|RedisClusterProxy|RedisProxy|\Predis\ClientInterface" namespace="\Redis|\RedisArray|\RedisCluster|RedisClusterProxy|RedisProxy|\Predis" name="ClientInterface"/>
+      </return>
+      <throws description="when the DSN is invalid" type="object">
+        <type full="Symfony\Component\Cache\Exception\InvalidArgumentException" namespace="Symfony\Component\Cache\Exception" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="dsn" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="doFetch" start="338" end="369" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="ids" byreference="false" type="array"/>
+  </method>
+  <method name="doHave" start="374" end="377" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="id" byreference="false" type="string"/>
+  </method>
+  <method name="doClear" start="382" end="441" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="namespace" byreference="false" type="string"/>
+  </method>
+  <method name="doDelete" start="446" end="478" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="ids" byreference="false" type="array"/>
+  </method>
+  <method name="doSave" start="483" end="506" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="values" byreference="false" type="array"/>
+    <parameter name="lifetime" byreference="false" type="int"/>
+  </method>
+  <method name="pipeline" start="508" end="564" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="Generator" namespace="" name="Generator"/>
+    </return>
+    <parameter name="generator" byreference="false" type="object">
+      <type full="Closure" namespace="" name="Closure"/>
+    </parameter>
+    <parameter name="redis" byreference="false" type="object" default="NULL"/>
+  </method>
+  <method name="getHosts" start="566" end="590" abstract="false" final="false" static="false" visibility="private">
+    <return type="array" nullable="false"/>
+  </method>
+  <users>
+    <class full="Symfony\Component\Cache\Adapter\RedisAdapter" namespace="Symfony\Component\Cache\Adapter" name="RedisAdapter"/>
+  </users>
+</trait>

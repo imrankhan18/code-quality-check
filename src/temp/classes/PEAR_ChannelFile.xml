@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_ChannelFile" namespace="" name="PEAR_ChannelFile" abstract="false" final="false" start="152" end="1560">
+  <file path="//usr/local/lib/php/PEAR" file="ChannelFile.php" realpath="/usr/local/lib/php/PEAR/ChannelFile.php" size="50844" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="5424d74af408ef07970119cf467c991423e69d45" relative="sr/local/lib/php/PEAR/ChannelFile.php"/>
+  <docblock>
+    <description compact="The Channel handling class"/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <member name="_stack" visibility="public" static="false" line="159">
+    <docblock>
+      <description/>
+      <access value="private"/>
+      <access value="private"/>
+      <var type="object">
+        <type full="PEAR_ErrorStack" namespace="" name="PEAR_ErrorStack"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_supportedVersions" default="" type="array" visibility="public" static="false" line="166">
+    <docblock>
+      <description compact="Supported channel.xml versions, for parsing"/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_channelInfo" visibility="public" static="false" line="173">
+    <docblock>
+      <description compact="Parsed channel information"/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_subchannelIndex" visibility="public" static="false" line="180">
+    <docblock>
+      <description compact="index into the subchannels array, used for parsing xml"/>
+      <var type="int"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_mirrorIndex" visibility="public" static="false" line="187">
+    <docblock>
+      <description compact="index into the mirrors array, used for parsing xml"/>
+      <var type="int"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_isValid" default="false" type="boolean" visibility="public" static="false" line="194">
+    <docblock>
+      <description compact="Flag used to determine the validity of parsed content"/>
+      <var type="boolean"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="196" end="201" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_getErrorMessage" start="207" end="262" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array"/>
+      <access value="protected"/>
+    </docblock>
+  </method>
+  <method name="fromXmlString" start="268" end="293" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="contents of package.xml file" type="string"/>
+      <return description="success of parsing" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="toArray" start="298" end="304" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="fromArray" start="311" end="321" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <return description="false if invalid" type="object">
+        <type full="PEAR_ChannelFile|false" namespace="" name="PEAR_ChannelFile|false"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="compatibility" byreference="false" type="boolean" default="false"/>
+    <parameter name="stackClass" byreference="false" type="string" default="'PEAR_ErrorStack'"/>
+  </method>
+  <method name="fromArrayWithErrors" start="330" end="336" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Unlike {@link fromArray()} this does not do any validation"/>
+      <param type="array"/>
+      <return type="object">
+        <type full="PEAR_ChannelFile" namespace="" name="PEAR_ChannelFile"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="compatibility" byreference="false" type="boolean" default="false"/>
+    <parameter name="stackClass" byreference="false" type="string" default="'PEAR_ErrorStack'"/>
+  </method>
+  <method name="_fromArray" start="342" end="345" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getErrors" start="352" end="355" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Wrapper to {@link PEAR_ErrorStack::getErrors()}"/>
+      <param description="determines whether to purge the error stack after retrieving" type="boolean"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="purge" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_unIndent" start="364" end="379" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Unindent given string (?)"/>
+      <param description="The string that has to be unindented." type="string" variable="$str"/>
+      <return type="string"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="remove leading newlines" line="366"/>
+      <comment value="find whitespace at the beginning of the first line" line="368"/>
+      <comment value="remove the same amount of whitespace from following lines" line="372"/>
+    </inline>
+  </method>
+  <method name="fromXmlFile" start="388" end="401" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Parse a channel.xml file.  Expects the name of a channel xml file as input."/>
+      <param description="name of channel xml file" type="string" variable="$descfile"/>
+      <return description="success of parsing" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="descfile" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="read the whole thing so we only get one cdata callback" line="396"/>
+      <comment value="for each block of cdata" line="397"/>
+    </inline>
+  </method>
+  <method name="fromAny" start="413" end="436" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Parse channel information from different sources">This method is able to extract information about a channel
+from an .xml file or a string</description>
+      <access value="public"/>
+      <param description="Filename of the source or the source itself" type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="toXml" start="445" end="493" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an XML document based on previous parsing and modifications"/>
+      <return description="XML data" type="string"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="_makeRestXml" start="499" end="514" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate the &lt;rest&gt; tag"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+    <parameter name="indent" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_makeMirrorsXml" start="520" end="545" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate the &lt;mirrors&gt; tag"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="channelInfo" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_makeFunctionsXml" start="551" end="565" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate the &lt;functions&gt; tag"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="functions" byreference="false" type="{unknown}"/>
+    <parameter name="indent" byreference="false" type="{unknown}"/>
+    <parameter name="rest" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_validateError" start="573" end="577" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Validation error.  Also marks the object contents as invalid"/>
+      <param type="object" variable="code">
+        <type full="error" namespace="" name="error"/>
+      </param>
+      <param description="error information" type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+  </method>
+  <method name="_validateWarning" start="585" end="588" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Validation warning.  Does not mark the object contents invalid."/>
+      <param type="object" variable="code">
+        <type full="error" namespace="" name="error"/>
+      </param>
+      <param description="error information" type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+  </method>
+  <method name="validate" start="596" end="682" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Validate parsed file."/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+  </method>
+  <method name="_validateFunctions" start="689" end="715" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="rest - protocol name this function applies to" type="string"/>
+      <param description="the functions" type="array"/>
+      <param description="the name of the parent element (mirror name, for instance)" type="string"/>
+    </docblock>
+    <parameter name="protocol" byreference="false" type="{unknown}"/>
+    <parameter name="functions" byreference="false" type="{unknown}"/>
+    <parameter name="parent" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="validChannelServer" start="722" end="728" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test whether a string contains a valid channel server."/>
+      <param description="the package version to test" type="string" variable="$ver"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="server" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getName" start="733" end="740" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getServer" start="745" end="752" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getPort" start="757" end="784" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="port number to connect to" type="object">
+        <type full="int|80" namespace="" name="int|80"/>
+      </return>
+    </docblock>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getSSL" start="789" end="808" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="Determines whether secure sockets layer (SSL) is used to connect to this channel" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getSummary" start="813" end="820" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getFunctions" start="827" end="849" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="protocol type" type="string"/>
+      <param description="Mirror name" type="string"/>
+      <return type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </return>
+    </docblock>
+    <parameter name="protocol" byreference="false" type="{unknown}"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getFunction" start="858" end="878" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Protocol type" type="string"/>
+      <param description="Function name (null to return the" type="string">first protocol of the type requested)</param>
+      <param description="Mirror name, if any" type="string"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="supports" start="887" end="911" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="protocol type" type="string"/>
+      <param description="protocol name" type="string"/>
+      <param type="string" variable="version"/>
+      <param description="mirror name" type="string"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+    <parameter name="version" byreference="false" type="string" default="'1.0'"/>
+  </method>
+  <method name="supportsREST" start="919" end="934" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determines whether a channel supports Representational State Transfer (REST) protocols for retrieving channel information"/>
+      <param type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getBaseURL" start="943" end="971" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the URL to access a base resource.">Hyperlinks in the returned xml will be used to retrieve the proper information
+needed.  This allows extreme extensibility and flexibility in implementation</description>
+      <param description="Resource Type to retrieve" type="string"/>
+    </docblock>
+    <parameter name="resourceType" byreference="false" type="{unknown}"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="resetREST" start="978" end="981" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Since REST does not implement RPC, provide this as a logical wrapper around resetFunctions for REST"/>
+      <param description="mirror name, if any" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+    </docblock>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="resetFunctions" start="988" end="1018" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Empty all protocol definitions"/>
+      <param description="protocol type" type="string"/>
+      <param description="mirror name, if any" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setDefaultPEARProtocols" start="1023" end="1042" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set a channel's protocols to the protocols supported by pearweb"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="string" default="'1.0'"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getMirrors" start="1047" end="1059" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="getMirror" start="1065" end="1074" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the unserialized XML representing a mirror"/>
+      <return type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </return>
+    </docblock>
+    <parameter name="server" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setName" start="1082" end="1085" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <return type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </return>
+      <error value="PEAR_CHANNELFILE_ERROR_NO_NAME"/>
+      <error value="PEAR_CHANNELFILE_ERROR_INVALID_NAME"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPort" start="1092" end="1120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the socket number (port) that is used to connect to this channel"/>
+      <param type="integer"/>
+      <param description="name of the mirror server, or false for the primary" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+    </docblock>
+    <parameter name="port" byreference="false" type="{unknown}"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setSSL" start="1127" end="1177" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the socket number (port) that is used to connect to this channel"/>
+      <param description="Determines whether to turn on SSL support or turn it off" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <param description="name of the mirror server, or false for the primary" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+    </docblock>
+    <parameter name="ssl" byreference="false" type="boolean" default="true"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setServer" start="1185" end="1217" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <return type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </return>
+      <error value="PEAR_CHANNELFILE_ERROR_NO_SERVER"/>
+      <error value="PEAR_CHANNELFILE_ERROR_INVALID_SERVER"/>
+    </docblock>
+    <parameter name="server" byreference="false" type="{unknown}"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setSummary" start="1225" end="1237" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <return description="success" type="boolean"/>
+      <error value="PEAR_CHANNELFILE_ERROR_NO_SUMMARY"/>
+      <warning value="PEAR_CHANNELFILE_ERROR_MULTILINE_SUMMARY"/>
+    </docblock>
+    <parameter name="summary" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setAlias" start="1244" end="1259" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <param description="determines whether the alias is in channel.xml or local" type="boolean"/>
+      <return description="success" type="boolean"/>
+    </docblock>
+    <parameter name="alias" byreference="false" type="{unknown}"/>
+    <parameter name="local" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getAlias" start="1264" end="1276" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setValidationPackage" start="1285" end="1292" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the package validation object if it differs from PEAR's default The class must be includeable via changing _ in the classname to path separator, but no checking of this is made."/>
+      <param description="pass in false to reset to the default packagename regex" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <return description="success" type="boolean"/>
+    </docblock>
+    <parameter name="validateclass" byreference="false" type="{unknown}"/>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addFunction" start="1302" end="1327" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a protocol to the provides section"/>
+      <param description="protocol type" type="string"/>
+      <param description="protocol version" type="string"/>
+      <param description="protocol name, if any" type="string"/>
+      <param description="mirror name, if this is a mirror's protocol" type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addMirrorFunction" start="1335" end="1375" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a protocol to a mirror's provides section"/>
+      <param description="mirror name (server)" type="string"/>
+      <param description="protocol type" type="string"/>
+      <param description="protocol version" type="string"/>
+      <param description="protocol name, if any" type="string"/>
+    </docblock>
+    <parameter name="mirror" byreference="false" type="{unknown}"/>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="setBaseURL" start="1382" end="1432" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Resource Type this url links to" type="string"/>
+      <param type="string" variable="URL"/>
+      <param description="mirror name, if this is not a primary server REST base URL" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+    </docblock>
+    <parameter name="resourceType" byreference="false" type="{unknown}"/>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="mirror" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addMirror" start="1439" end="1462" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="mirror server" type="string"/>
+      <param description="mirror http port" type="int"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="server" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="getValidationPackage" start="1468" end="1480" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the name of the validation package for this channel"/>
+      <return type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getValidationObject" start="1489" end="1532" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the object that can be used for custom validation"/>
+      <param description="the name of the package to validate.  If the package is" type="object">the channel validation package, PEAR_Validate is returned<type full="string|false" namespace="" name="string|false"/></param>
+      <return description="false is returned if the validation package" type="object">cannot be located<type full="PEAR_Validate|false" namespace="" name="PEAR_Validate|false"/></return>
+    </docblock>
+    <parameter name="package" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="isIncludeable" start="1534" end="1545" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="lastModified" start="1552" end="1559" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This function is used by the channel updater and retrieves a value set by the registry, or the current time if it has not been set"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+</class>

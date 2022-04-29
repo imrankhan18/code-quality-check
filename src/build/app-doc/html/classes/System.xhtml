@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - System</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">System</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/System.php.xhtml#line58">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>System</h1>
+        <h4>System offers cross platform compatible system functions</h4>
+        <p>Static functions for different operations. Should work under<br/>Unix and Windows. The names and usage has been taken from its respectively<br/>GNU commands. The functions will return (bool) false on error and will<br/>trigger the error with the PHP trigger_error() function (you can silence<br/>the error by prefixing a '@' sign after the function call, but this<br/>is not recommended practice. Instead use an error handler with<br/>{@link set_error_handler()}).<br/><br/>Documentation on this class you can find in:<br/>http://pear.php.net/manual/<br/><br/>Example usage:<br/>if (!@System::rm('-r file1 dir1')) {<br/>print "could not delete file1 or dir1";<br/>}<br/><br/>In case you need to to pass file names with spaces,<br/>pass the params as an array:<br/><br/>System::rm(array('-r', $file1, $dir1));</p>
+        <ul>
+          <li>Author: Tomas V.V. Cox &lt;cox@idecnet.com&gt;</li>
+          <li>Copyright: 1997-2006 The PHP Group</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class System
+            {<br/><ul class="none"><li>// methods</li><li>public static array <a title="System" href="../classes/System/_parseArgs.xhtml">_parseArgs</a>()
+                    </li><li>protected static bool <a title="System" href="../classes/System/raiseError.xhtml">raiseError</a>()
+                    </li><li>protected static array <a title="System" href="../classes/System/_dirToStruct.xhtml">_dirToStruct</a>()
+                    </li><li>protected static array <a title="System" href="../classes/System/_multipleToStruct.xhtml">_multipleToStruct</a>()
+                    </li><li>public static mixed <a title="System" href="../classes/System/rm.xhtml">rm</a>()
+                    </li><li>public static bool <a title="System" href="../classes/System/mkDir.xhtml">mkDir</a>()
+                    </li><li>public static boolean <a title="System" href="../classes/System/cat.xhtml">cat</a>()
+                    </li><li>public static mixed <a title="System" href="../classes/System/mktemp.xhtml">mktemp</a>()
+                    </li><li>public static void <a title="System" href="../classes/System/_removeTmpFiles.xhtml">_removeTmpFiles</a>()
+                    </li><li>public static string <a title="System" href="../classes/System/tmpdir.xhtml">tmpdir</a>()
+                    </li><li>public static mixed <a title="System" href="../classes/System/which.xhtml">which</a>()
+                    </li><li>public static array <a title="System" href="../classes/System/find.xhtml">find</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="_dirToStruct"><a title="System" href="../classes/System/_dirToStruct.xhtml">_dirToStruct()</a>
+                — Creates a nested array representing the structure of a directory</li>
+            <li id="_multipleToStruct"><a title="System" href="../classes/System/_multipleToStruct.xhtml">_multipleToStruct()</a>
+                — Creates a nested array representing the structure of a directory and files</li>
+            <li id="raiseError"><a title="System" href="../classes/System/raiseError.xhtml">raiseError()</a>
+                — Output errors with PHP trigger_error(). You can silence the errors with prefixing a "@" sign to the function call: @System::mkdir(..);</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="_parseArgs"><a title="System" href="../classes/System/_parseArgs.xhtml">_parseArgs()</a>
+                — returns the commandline arguments of a function</li>
+            <li id="_removeTmpFiles"><a title="System" href="../classes/System/_removeTmpFiles.xhtml">_removeTmpFiles()</a>
+                — Remove temporary files created my mkTemp. This function is executed at script shutdown time</li>
+            <li id="cat"><a title="System" href="../classes/System/cat.xhtml">cat()</a>
+                — Concatenate files</li>
+            <li id="find"><a title="System" href="../classes/System/find.xhtml">find()</a>
+                — The "find" command</li>
+            <li id="mkDir"><a title="System" href="../classes/System/mkDir.xhtml">mkDir()</a>
+                — Make directories.</li>
+            <li id="mktemp"><a title="System" href="../classes/System/mktemp.xhtml">mktemp()</a>
+                — Creates temporary files or directories. This function will remove the created files when the scripts finish its execution.</li>
+            <li id="rm"><a title="System" href="../classes/System/rm.xhtml">rm()</a>
+                — The rm command for removing files.</li>
+            <li id="tmpdir"><a title="System" href="../classes/System/tmpdir.xhtml">tmpdir()</a>
+                — Get the path of the temporal directory set in the system by looking in its environments variables.</li>
+            <li id="which"><a title="System" href="../classes/System/which.xhtml">which()</a>
+                — The "which" command (show the full path of a command)</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MongoDB\Model\ChangeStreamIterator</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#MongoDB_Model">MongoDB\Model</a>
+          </li>
+          <li class="separator">ChangeStreamIterator</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/mongodb/mongodb/src/Model/ChangeStreamIterator.php.xhtml#line49">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MongoDB\Model\</small>ChangeStreamIterator</h1>
+        <h4>ChangeStreamIterator wraps a change stream's tailable cursor.</h4>
+        <p>This iterator tracks the size of each batch in order to determine when the<br/>postBatchResumeToken is applicable. It also ensures that initial calls to<br/>rewind() do not execute getMore commands.</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ChangeStreamIterator
+                extends <a title="IteratorIterator" href="../classes/IteratorIterator.xhtml">IteratorIterator</a>
+                implements
+                <a title="MongoDB\Driver\Monitoring\CommandSubscriber" href="../interfaces/MongoDB_Driver_Monitoring_CommandSubscriber.xhtml">CommandSubscriber</a>
+            {<br/><ul class="none"><li>// members</li><li>private integer <a href="#members">$batchPosition</a> =
+                        0;
+                    </li><li>private  <a href="#members">$batchSize</a>;
+                    </li><li>private  <a href="#members">$isRewindNop</a>;
+                    </li><li>private boolean <a href="#members">$isValid</a> =
+                        false;
+                    </li><li>private <span title="MongoDB\Model\object|null">object|null</span> <a href="#members">$postBatchResumeToken</a>;
+                    </li><li>private <span title="MongoDB\Model\array|object|null">array|object|null</span> <a href="#members">$resumeToken</a>;
+                    </li><li>private <span title="MongoDB\Driver\Server">Server</span> <a href="#members">$server</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/__construct.xhtml">__construct</a>()
+                    </li><li>public final void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/commandFailed.xhtml">commandFailed</a>()
+                    </li><li>public final void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/commandStarted.xhtml">commandStarted</a>()
+                    </li><li>public final void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/commandSucceeded.xhtml">commandSucceeded</a>()
+                    </li><li>public void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/current.xhtml">current</a>()
+                    </li><li>public array|object|null <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/getResumeToken.xhtml">getResumeToken</a>()
+                    </li><li>public <span title="Server">Server</span> <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/getServer.xhtml">getServer</a>()
+                    </li><li>public void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/key.xhtml">key</a>()
+                    </li><li>public void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/next.xhtml">next</a>()
+                    </li><li>public void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/rewind.xhtml">rewind</a>()
+                    </li><li>public void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/valid.xhtml">valid</a>()
+                    </li><li>private array|object <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/extractResumeToken.xhtml">extractResumeToken</a>()
+                    </li><li>private boolean <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/isAtEndOfBatch.xhtml">isAtEndOfBatch</a>()
+                    </li><li>private void <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/onIteration.xhtml">onIteration</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="IteratorIterator">IteratorIterator</span></li><li>public void <a title="IteratorIterator" href="../classes/IteratorIterator/__construct.xhtml">__construct</a>()
+                        </li><li>public mixed <a title="IteratorIterator" href="../classes/IteratorIterator/current.xhtml">current</a>()
+                        </li><li>public Traversable <a title="IteratorIterator" href="../classes/IteratorIterator/getInnerIterator.xhtml">getInnerIterator</a>()
+                        </li><li>public scalar <a title="IteratorIterator" href="../classes/IteratorIterator/key.xhtml">key</a>()
+                        </li><li>public void <a title="IteratorIterator" href="../classes/IteratorIterator/next.xhtml">next</a>()
+                        </li><li>public void <a title="IteratorIterator" href="../classes/IteratorIterator/rewind.xhtml">rewind</a>()
+                        </li><li>public bool <a title="IteratorIterator" href="../classes/IteratorIterator/valid.xhtml">valid</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="IteratorIterator" href="../classes/IteratorIterator.xhtml">IteratorIterator</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="MongoDB\Driver\Monitoring\CommandSubscriber" href="../interfaces/MongoDB_Driver_Monitoring_CommandSubscriber.xhtml">MongoDB\Driver\Monitoring\CommandSubscriber</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="batchPosition"><strong>$batchPosition</strong>
+                —
+                integer</li>
+            <li id="batchSize"><strong>$batchSize</strong>
+                —
+                integer</li>
+            <li id="isRewindNop"><strong>$isRewindNop</strong>
+                —
+                boolean</li>
+            <li id="isValid"><strong>$isValid</strong>
+                —
+                boolean</li>
+            <li id="postBatchResumeToken"><strong>$postBatchResumeToken</strong>
+                —
+                <a title="MongoDB\Model\object|null" href="../classes/MongoDB_Model_object|null.xhtml">MongoDB\Model\object|null</a></li>
+            <li id="resumeToken"><strong>$resumeToken</strong>
+                —
+                <a title="MongoDB\Model\array|object|null" href="../classes/MongoDB_Model_array|object|null.xhtml">MongoDB\Model\array|object|null</a></li>
+            <li id="server"><strong>$server</strong>
+                —
+                <a title="MongoDB\Driver\Server" href="../classes/MongoDB_Driver_Server.xhtml">MongoDB\Driver\Server</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="extractResumeToken"><a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/extractResumeToken.xhtml">extractResumeToken()</a>
+                — Extracts the resume token (i.e. "_id" field) from a change document.</li>
+            <li id="isAtEndOfBatch"><a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/isAtEndOfBatch.xhtml">isAtEndOfBatch()</a>
+                — Return whether the iterator is positioned at the end of the batch.</li>
+            <li id="onIteration"><a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/onIteration.xhtml">onIteration()</a>
+                — Perform housekeeping after an iteration event.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="commandFailed">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/commandFailed.xhtml">commandFailed()</a>
+            </li>
+            <li id="commandStarted">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/commandStarted.xhtml">commandStarted()</a>
+            </li>
+            <li id="commandSucceeded">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/commandSucceeded.xhtml">commandSucceeded()</a>
+            </li>
+            <li id="current">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/current.xhtml">current()</a>
+            </li>
+            <li id="getResumeToken"><a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/getResumeToken.xhtml">getResumeToken()</a>
+                — Returns the resume token for the iterator's current position.</li>
+            <li id="getServer"><a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/getServer.xhtml">getServer()</a>
+                — Returns the server the cursor is running on.</li>
+            <li id="key">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/key.xhtml">key()</a>
+            </li>
+            <li id="next">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/next.xhtml">next()</a>
+            </li>
+            <li id="rewind">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/rewind.xhtml">rewind()</a>
+            </li>
+            <li id="valid">
+              <a title="MongoDB\Model\ChangeStreamIterator" href="../classes/MongoDB_Model_ChangeStreamIterator/valid.xhtml">valid()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="IteratorIterator" href="../classes/IteratorIterator.xhtml">IteratorIterator</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="current"><a title="IteratorIterator" href="../classes/IteratorIterator/current.xhtml">current()</a>
+                — Get the current value</li>
+            <li id="getInnerIterator"><a title="IteratorIterator" href="../classes/IteratorIterator/getInnerIterator.xhtml">getInnerIterator()</a>
+                — Get the inner iterator</li>
+            <li id="key"><a title="IteratorIterator" href="../classes/IteratorIterator/key.xhtml">key()</a>
+                — Get the key of the current element</li>
+            <li id="next"><a title="IteratorIterator" href="../classes/IteratorIterator/next.xhtml">next()</a>
+                — Forward to the next element</li>
+            <li id="rewind"><a title="IteratorIterator" href="../classes/IteratorIterator/rewind.xhtml">rewind()</a>
+                — Rewind to the first element</li>
+            <li id="valid"><a title="IteratorIterator" href="../classes/IteratorIterator/valid.xhtml">valid()</a>
+                — Checks if the iterator is valid</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\Cache\Adapter\ArrayAdapter</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Symfony_Component_Cache_Adapter">Symfony\Component\Cache\Adapter</a>
+          </li>
+          <li class="separator">ArrayAdapter</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/symfony/cache/Adapter/ArrayAdapter.php.xhtml#line29">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Symfony\Component\Cache\Adapter\</small>ArrayAdapter</h1>
+        <h4>An in-memory cache storage.</h4>
+        <p>Acts as a least-recently-used (LRU) storage when configured with a maximum number of items.</p>
+        <ul>
+          <li>Author: Nicolas Grekas &lt;p@tchwork.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ArrayAdapter
+                implements
+                <a title="Symfony\Component\Cache\Adapter\AdapterInterface" href="../interfaces/Symfony_Component_Cache_Adapter_AdapterInterface.xhtml">AdapterInterface</a>,<a title="Symfony\Contracts\Cache\CacheInterface" href="../interfaces/Symfony_Contracts_Cache_CacheInterface.xhtml">CacheInterface</a>,<a title="Psr\Log\LoggerAwareInterface" href="../interfaces/Psr_Log_LoggerAwareInterface.xhtml">LoggerAwareInterface</a>,<a title="Symfony\Component\Cache\ResettableInterface" href="../interfaces/Symfony_Component_Cache_ResettableInterface.xhtml">ResettableInterface</a>
+            {<br/><ul class="none"><li>// members</li><li>private  <a href="#members">$storeSerialized</a>;
+                    </li><li>private array <a href="#members">$values</a> =
+                        ;
+                    </li><li>private array <a href="#members">$expiries</a> =
+                        ;
+                    </li><li>private  <a href="#members">$defaultLifetime</a>;
+                    </li><li>private  <a href="#members">$maxLifetime</a>;
+                    </li><li>private  <a href="#members">$maxItems</a>;
+                    </li><li>private static  <a href="#members">$createCacheItem</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/get.xhtml">get</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/delete.xhtml">delete</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/hasItem.xhtml">hasItem</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/getItem.xhtml">getItem</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/getItems.xhtml">getItems</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/deleteItem.xhtml">deleteItem</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/deleteItems.xhtml">deleteItems</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/save.xhtml">save</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/saveDeferred.xhtml">saveDeferred</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/commit.xhtml">commit</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/clear.xhtml">clear</a>()
+                    </li><li>public array <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/getValues.xhtml">getValues</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/reset.xhtml">reset</a>()
+                    </li><li>private <span title="Generator">Generator</span> <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/generateItems.xhtml">generateItems</a>()
+                    </li><li>private void <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/freeze.xhtml">freeze</a>()
+                    </li><li>private void <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/unfreeze.xhtml">unfreeze</a>()
+                    </li><li>private bool <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/validateKeys.xhtml">validateKeys</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Psr\Log\LoggerAwareTrait">LoggerAwareTrait</span></li><li>public void <a title="Psr\Log\LoggerAwareTrait" href="../traits/Psr_Log_LoggerAwareTrait/setLogger.xhtml">setLogger</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="Psr\Log\LoggerAwareTrait" href="../traits/Psr_Log_LoggerAwareTrait.xhtml">Psr\Log\LoggerAwareTrait</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Symfony\Component\Cache\Adapter\AdapterInterface" href="../interfaces/Symfony_Component_Cache_Adapter_AdapterInterface.xhtml">Symfony\Component\Cache\Adapter\AdapterInterface</a>
+            </li>
+            <li>
+              <a title="Symfony\Contracts\Cache\CacheInterface" href="../interfaces/Symfony_Contracts_Cache_CacheInterface.xhtml">Symfony\Contracts\Cache\CacheInterface</a>
+            </li>
+            <li>
+              <a title="Psr\Log\LoggerAwareInterface" href="../interfaces/Psr_Log_LoggerAwareInterface.xhtml">Psr\Log\LoggerAwareInterface</a>
+            </li>
+            <li>
+              <a title="Symfony\Component\Cache\ResettableInterface" href="../interfaces/Symfony_Component_Cache_ResettableInterface.xhtml">Symfony\Component\Cache\ResettableInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="createCacheItem">
+              <strong>$createCacheItem</strong>
+            </li>
+            <li id="defaultLifetime">
+              <strong>$defaultLifetime</strong>
+            </li>
+            <li id="expiries">
+              <strong>$expiries</strong>
+            </li>
+            <li id="maxItems">
+              <strong>$maxItems</strong>
+            </li>
+            <li id="maxLifetime">
+              <strong>$maxLifetime</strong>
+            </li>
+            <li id="storeSerialized">
+              <strong>$storeSerialized</strong>
+            </li>
+            <li id="values">
+              <strong>$values</strong>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="logger"><strong>$logger</strong>
+                —
+                <a title="Psr\Log\LoggerInterface|null" href="../classes/Psr_Log_LoggerInterface|null.xhtml">Psr\Log\LoggerInterface|null</a><br/><span class="indent">The logger instance.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="freeze">
+              <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/freeze.xhtml">freeze()</a>
+            </li>
+            <li id="generateItems">
+              <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/generateItems.xhtml">generateItems()</a>
+            </li>
+            <li id="unfreeze">
+              <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/unfreeze.xhtml">unfreeze()</a>
+            </li>
+            <li id="validateKeys">
+              <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/validateKeys.xhtml">validateKeys()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="clear"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/clear.xhtml">clear()</a>
+                — {@inheritdoc}</li>
+            <li id="commit"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/commit.xhtml">commit()</a>
+                — {@inheritdoc}</li>
+            <li id="delete"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/delete.xhtml">delete()</a>
+                — {@inheritdoc}</li>
+            <li id="deleteItem"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/deleteItem.xhtml">deleteItem()</a>
+                — {@inheritdoc}</li>
+            <li id="deleteItems"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/deleteItems.xhtml">deleteItems()</a>
+                — {@inheritdoc}</li>
+            <li id="get"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/get.xhtml">get()</a>
+                — {@inheritdoc}</li>
+            <li id="getItem"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/getItem.xhtml">getItem()</a>
+                — {@inheritdoc}</li>
+            <li id="getItems"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/getItems.xhtml">getItems()</a>
+                — {@inheritdoc}</li>
+            <li id="getValues"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/getValues.xhtml">getValues()</a>
+                — Returns all cached values, with cache miss as null.</li>
+            <li id="hasItem"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/hasItem.xhtml">hasItem()</a>
+                — {@inheritdoc}</li>
+            <li id="reset"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/reset.xhtml">reset()</a>
+                — {@inheritdoc}</li>
+            <li id="save"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/save.xhtml">save()</a>
+                — {@inheritdoc}</li>
+            <li id="saveDeferred"><a title="Symfony\Component\Cache\Adapter\ArrayAdapter" href="../classes/Symfony_Component_Cache_Adapter_ArrayAdapter/saveDeferred.xhtml">saveDeferred()</a>
+                — {@inheritdoc}</li>
+          </ul>
+          <h3>Inherited from <a title="Psr\Log\LoggerAwareTrait" href="../traits/Psr_Log_LoggerAwareTrait.xhtml">Psr\Log\LoggerAwareTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="setLogger"><a title="Psr\Log\LoggerAwareTrait" href="../traits/Psr_Log_LoggerAwareTrait/setLogger.xhtml">setLogger()</a>
+                — Sets a logger.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

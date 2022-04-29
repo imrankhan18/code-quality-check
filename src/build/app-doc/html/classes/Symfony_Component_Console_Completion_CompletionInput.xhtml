@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\Console\Completion\CompletionInput</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Symfony_Component_Console_Completion">Symfony\Component\Console\Completion</a>
+          </li>
+          <li class="separator">CompletionInput</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/symfony/console/Completion/CompletionInput.php.xhtml#line27">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Symfony\Component\Console\Completion\</small>CompletionInput</h1>
+        <h4>An input specialized for shell completion.</h4>
+        <p>This input allows unfinished option names or values and exposes what kind of<br/>completion is expected.</p>
+        <ul>
+          <li>Author: Wouter de Jong &lt;wouter@wouterj.nl&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class CompletionInput
+                extends <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput.xhtml">ArgvInput</a>
+            {<br/><ul class="none"><li>// constants</li><li>const TYPE_ARGUMENT_VALUE = 'argument_value';</li><li>const TYPE_OPTION_VALUE = 'option_value';</li><li>const TYPE_OPTION_NAME = 'option_name';</li><li>const TYPE_NONE = 'none';</li></ul><ul class="none"><li>// members</li><li>private  <a href="#members">$tokens</a>;
+                    </li><li>private  <a href="#members">$currentIndex</a>;
+                    </li><li>private  <a href="#members">$completionType</a>;
+                    </li><li>private  <a href="#members">$completionName</a> =
+                        NULL;
+                    </li><li>private string <a href="#members">$completionValue</a> =
+                        '';
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="Symfony\Component\Console\Input\Input">Input</span></li><li>protected  <a href="#members">$definition</a>;
+                        </li><li>protected  <a href="#members">$stream</a>;
+                        </li><li>protected array <a href="#members">$options</a>;
+                        </li><li>protected array <a href="#members">$arguments</a>;
+                        </li><li>protected boolean <a href="#members">$interactive</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public static <span title="CompletionInput">CompletionInput</span> <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/fromString.xhtml">fromString</a>()
+                    </li><li>public static <span title="CompletionInput">CompletionInput</span> <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/fromTokens.xhtml">fromTokens</a>()
+                    </li><li>public void <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/bind.xhtml">bind</a>()
+                    </li><li>public string <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getCompletionType.xhtml">getCompletionType</a>()
+                    </li><li>public ?string <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getCompletionName.xhtml">getCompletionName</a>()
+                    </li><li>public string <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getCompletionValue.xhtml">getCompletionValue</a>()
+                    </li><li>public bool <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/mustSuggestOptionValuesFor.xhtml">mustSuggestOptionValuesFor</a>()
+                    </li><li>public bool <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/mustSuggestArgumentValuesFor.xhtml">mustSuggestArgumentValuesFor</a>()
+                    </li><li>protected bool <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/parseToken.xhtml">parseToken</a>()
+                    </li><li>private ?<span title="InputOption">InputOption</span> <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getOptionFromToken.xhtml">getOptionFromToken</a>()
+                    </li><li>private string <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getRelevantToken.xhtml">getRelevantToken</a>()
+                    </li><li>private bool <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/isCursorFree.xhtml">isCursorFree</a>()
+                    </li><li>public void <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/__toString.xhtml">__toString</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Symfony\Component\Console\Input\ArgvInput">ArgvInput</span></li><li>public void <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/__construct.xhtml">__construct</a>()
+                        </li><li>protected void <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/setTokens.xhtml">setTokens</a>()
+                        </li><li>protected void <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/parse.xhtml">parse</a>()
+                        </li><li>protected void <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/parseToken.xhtml">parseToken</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/getFirstArgument.xhtml">getFirstArgument</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/hasParameterOption.xhtml">hasParameterOption</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/getParameterOption.xhtml">getParameterOption</a>()
+                        </li><li>public string <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/__toString.xhtml">__toString</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="Symfony\Component\Console\Input\Input">Input</span></li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/bind.xhtml">bind</a>()
+                        </li><li>protected abstract void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/parse.xhtml">parse</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/validate.xhtml">validate</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/isInteractive.xhtml">isInteractive</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/setInteractive.xhtml">setInteractive</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getArguments.xhtml">getArguments</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getArgument.xhtml">getArgument</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/setArgument.xhtml">setArgument</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/hasArgument.xhtml">hasArgument</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getOptions.xhtml">getOptions</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getOption.xhtml">getOption</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/setOption.xhtml">setOption</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/hasOption.xhtml">hasOption</a>()
+                        </li><li>public string <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/escapeToken.xhtml">escapeToken</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/setStream.xhtml">setStream</a>()
+                        </li><li>public void <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getStream.xhtml">getStream</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput.xhtml">Symfony\Component\Console\Input\ArgvInput</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="TYPE_ARGUMENT_VALUE">TYPE_ARGUMENT_VALUE</td>
+              <td>'argument_value'</td>
+            </tr>
+            <tr>
+              <td id="TYPE_OPTION_VALUE">TYPE_OPTION_VALUE</td>
+              <td>'option_value'</td>
+            </tr>
+            <tr>
+              <td id="TYPE_OPTION_NAME">TYPE_OPTION_NAME</td>
+              <td>'option_name'</td>
+            </tr>
+            <tr>
+              <td id="TYPE_NONE">TYPE_NONE</td>
+              <td>'none'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="completionName">
+              <strong>$completionName</strong>
+            </li>
+            <li id="completionType">
+              <strong>$completionType</strong>
+            </li>
+            <li id="completionValue">
+              <strong>$completionValue</strong>
+            </li>
+            <li id="currentIndex">
+              <strong>$currentIndex</strong>
+            </li>
+            <li id="tokens">
+              <strong>$tokens</strong>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="arguments">
+              <strong>$arguments</strong>
+            </li>
+            <li id="definition">
+              <strong>$definition</strong>
+            </li>
+            <li id="interactive">
+              <strong>$interactive</strong>
+            </li>
+            <li id="options">
+              <strong>$options</strong>
+            </li>
+            <li id="stream">
+              <strong>$stream</strong>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="getOptionFromToken">
+              <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getOptionFromToken.xhtml">getOptionFromToken()</a>
+            </li>
+            <li id="getRelevantToken"><a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getRelevantToken.xhtml">getRelevantToken()</a>
+                — The token of the cursor, or the last token if the cursor is at the end of the input.</li>
+            <li id="isCursorFree"><a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/isCursorFree.xhtml">isCursorFree()</a>
+                — Whether the cursor is "free" (i.e. at the end of the input preceded by a space).</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="parseToken">
+              <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/parseToken.xhtml">parseToken()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__toString">
+              <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/__toString.xhtml">__toString()</a>
+            </li>
+            <li id="bind"><a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/bind.xhtml">bind()</a>
+                — {@inheritdoc}</li>
+            <li id="fromString"><a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/fromString.xhtml">fromString()</a>
+                — Converts a terminal string into tokens.</li>
+            <li id="fromTokens"><a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/fromTokens.xhtml">fromTokens()</a>
+                — Create an input based on an COMP_WORDS token list.</li>
+            <li id="getCompletionName"><a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getCompletionName.xhtml">getCompletionName()</a>
+                — The name of the input option or argument when completing a value.</li>
+            <li id="getCompletionType"><a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getCompletionType.xhtml">getCompletionType()</a>
+                — Returns the type of completion required.</li>
+            <li id="getCompletionValue"><a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/getCompletionValue.xhtml">getCompletionValue()</a>
+                — The value already typed by the user (or empty string).</li>
+            <li id="mustSuggestArgumentValuesFor">
+              <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/mustSuggestArgumentValuesFor.xhtml">mustSuggestArgumentValuesFor()</a>
+            </li>
+            <li id="mustSuggestOptionValuesFor">
+              <a title="Symfony\Component\Console\Completion\CompletionInput" href="../classes/Symfony_Component_Console_Completion_CompletionInput/mustSuggestOptionValuesFor.xhtml">mustSuggestOptionValuesFor()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput.xhtml">Symfony\Component\Console\Input\ArgvInput</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="parse"><a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/parse.xhtml">parse()</a>
+                — {@inheritdoc}</li>
+            <li id="parseToken">
+              <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/parseToken.xhtml">parseToken()</a>
+            </li>
+            <li id="setTokens">
+              <a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/setTokens.xhtml">setTokens()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__toString"><a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/__toString.xhtml">__toString()</a>
+                — Returns a stringified representation of the args passed to the command.</li>
+            <li id="getFirstArgument"><a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/getFirstArgument.xhtml">getFirstArgument()</a>
+                — {@inheritdoc}</li>
+            <li id="getParameterOption"><a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/getParameterOption.xhtml">getParameterOption()</a>
+                — {@inheritdoc}</li>
+            <li id="hasParameterOption"><a title="Symfony\Component\Console\Input\ArgvInput" href="../classes/Symfony_Component_Console_Input_ArgvInput/hasParameterOption.xhtml">hasParameterOption()</a>
+                — {@inheritdoc}</li>
+          </ul>
+          <h3>Inherited from <a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input.xhtml">Symfony\Component\Console\Input\Input</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="parse"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/parse.xhtml">parse()</a>
+                — Processes command line arguments.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="bind"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/bind.xhtml">bind()</a>
+                — {@inheritdoc}</li>
+            <li id="escapeToken"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/escapeToken.xhtml">escapeToken()</a>
+                — Escapes a token through escapeshellarg if it contains unsafe chars.</li>
+            <li id="getArgument"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getArgument.xhtml">getArgument()</a>
+                — {@inheritdoc}</li>
+            <li id="getArguments"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getArguments.xhtml">getArguments()</a>
+                — {@inheritdoc}</li>
+            <li id="getOption"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getOption.xhtml">getOption()</a>
+                — {@inheritdoc}</li>
+            <li id="getOptions"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getOptions.xhtml">getOptions()</a>
+                — {@inheritdoc}</li>
+            <li id="getStream"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/getStream.xhtml">getStream()</a>
+                — {@inheritdoc}</li>
+            <li id="hasArgument"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/hasArgument.xhtml">hasArgument()</a>
+                — {@inheritdoc}</li>
+            <li id="hasOption"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/hasOption.xhtml">hasOption()</a>
+                — {@inheritdoc}</li>
+            <li id="isInteractive"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/isInteractive.xhtml">isInteractive()</a>
+                — {@inheritdoc}</li>
+            <li id="setArgument"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/setArgument.xhtml">setArgument()</a>
+                — {@inheritdoc}</li>
+            <li id="setInteractive"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/setInteractive.xhtml">setInteractive()</a>
+                — {@inheritdoc}</li>
+            <li id="setOption"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/setOption.xhtml">setOption()</a>
+                — {@inheritdoc}</li>
+            <li id="setStream"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/setStream.xhtml">setStream()</a>
+                — {@inheritdoc}</li>
+            <li id="validate"><a title="Symfony\Component\Console\Input\Input" href="../classes/Symfony_Component_Console_Input_Input/validate.xhtml">validate()</a>
+                — {@inheritdoc}</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

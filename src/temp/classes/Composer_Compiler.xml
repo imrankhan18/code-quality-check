@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Compiler" namespace="Composer" name="Compiler" abstract="false" final="false" start="29" end="338">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer" file="Compiler.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Compiler.php" size="12243" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="88247528271c25e51ca6c7e3f8eb8ec51e54a1e8" relative="ar/www/html/vendor/composer/composer/src/Composer/Compiler.php"/>
+  <docblock>
+    <description compact="The Compiler class compiles composer into a phar"/>
+    <author value="Fabien Potencier &lt;fabien@symfony.com&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="version" visibility="private" static="false" line="32">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="branchAliasVersion" default="''" type="string" visibility="private" static="false" line="34">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="versionDate" visibility="private" static="false" line="36">
+    <docblock>
+      <var type="object">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="compile" start="47" end="198" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Compiles composer into a single phar file"/>
+      <param description="The full path to the file to create" type="string" variable="$pharFile"/>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="pharFile" byreference="false" type="string" default="'composer.phar'"/>
+    <inline>
+      <comment value="Add Composer sources" line="89"/>
+      <comment value="Add runtime utilities separately to make sure they retains the docblocks as these will get copied into projects" line="103"/>
+      <comment value="Add Composer resources" line="107"/>
+      <comment value="Add vendor files" line="117"/>
+      <comment value="Add bin/composer" line="170"/>
+      <comment value="Stubs" line="173"/>
+      <comment value="disabled for interoperability with systems without gzip ext" line="178"/>
+      <comment value="$phar-&gt;compressFiles(\Phar::GZ);" line="179"/>
+      <comment value="re-sign the phar with reproducible timestamp / signature" line="185"/>
+    </inline>
+  </method>
+  <method name="getRelativeFilePath" start="204" end="213" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$file">
+        <type full="\SplFileInfo" namespace="" name="SplFileInfo"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="file" byreference="false" type="object">
+      <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+    </parameter>
+  </method>
+  <method name="addFile" start="220" end="243" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$strip">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="phar" byreference="false" type="object">
+      <type full="Phar" namespace="" name="Phar"/>
+    </parameter>
+    <parameter name="file" byreference="false" type="object">
+      <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+    </parameter>
+    <parameter name="strip" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="addComposerBin" start="248" end="253" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="phar" byreference="false" type="object">
+      <type full="Phar" namespace="" name="Phar"/>
+    </parameter>
+  </method>
+  <method name="stripWhitespace" start="261" end="287" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Removes whitespace from a PHP source string while preserving line numbers."/>
+      <param description="A PHP string" type="string" variable="$source"/>
+      <return description="The PHP string with the whitespace removed" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="source" byreference="false" type="string"/>
+  </method>
+  <method name="getStub" start="292" end="337" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <inline>
+      <comment value="add warning once the phar is older than 60 days" line="326"/>
+    </inline>
+  </method>
+</class>

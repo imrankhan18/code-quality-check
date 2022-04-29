@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#SlevomatCodingStandard_Sniffs_Classes">SlevomatCodingStandard\Sniffs\Classes</a>
+          </li>
+          <li class="separator">ClassStructureSniff</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Classes/ClassStructureSniff.php.xhtml#line43">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>SlevomatCodingStandard\Sniffs\Classes\</small>ClassStructureSniff</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ClassStructureSniff
+                implements
+                <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">Sniff</a>
+            {<br/><ul class="none"><li>// constants</li><li>const CODE_INCORRECT_GROUP_ORDER = 'IncorrectGroupOrder';</li><li>const GROUP_USES = 'uses';</li><li>const GROUP_PUBLIC_CONSTANTS = 'public constants';</li><li>const GROUP_PROTECTED_CONSTANTS = 'protected constants';</li><li>const GROUP_PRIVATE_CONSTANTS = 'private constants';</li><li>const GROUP_PUBLIC_PROPERTIES = 'public properties';</li><li>const GROUP_PUBLIC_STATIC_PROPERTIES = 'public static properties';</li><li>const GROUP_PROTECTED_PROPERTIES = 'protected properties';</li><li>const GROUP_PROTECTED_STATIC_PROPERTIES = 'protected static properties';</li><li>const GROUP_PRIVATE_PROPERTIES = 'private properties';</li><li>const GROUP_PRIVATE_STATIC_PROPERTIES = 'private static properties';</li><li>const GROUP_CONSTRUCTOR = 'constructor';</li><li>const GROUP_STATIC_CONSTRUCTORS = 'static constructors';</li><li>const GROUP_DESTRUCTOR = 'destructor';</li><li>const GROUP_MAGIC_METHODS = 'magic methods';</li><li>const GROUP_PUBLIC_METHODS = 'public methods';</li><li>const GROUP_PUBLIC_ABSTRACT_METHODS = 'public abstract methods';</li><li>const GROUP_PUBLIC_FINAL_METHODS = 'public final methods';</li><li>const GROUP_PUBLIC_STATIC_METHODS = 'public static methods';</li><li>const GROUP_PUBLIC_STATIC_ABSTRACT_METHODS = 'public static abstract methods';</li><li>const GROUP_PUBLIC_STATIC_FINAL_METHODS = 'public static final methods';</li><li>const GROUP_PROTECTED_METHODS = 'protected methods';</li><li>const GROUP_PROTECTED_ABSTRACT_METHODS = 'protected abstract methods';</li><li>const GROUP_PROTECTED_FINAL_METHODS = 'protected final methods';</li><li>const GROUP_PROTECTED_STATIC_METHODS = 'protected static methods';</li><li>const GROUP_PROTECTED_STATIC_ABSTRACT_METHODS = 'protected static abstract methods';</li><li>const GROUP_PROTECTED_STATIC_FINAL_METHODS = 'protected static final methods';</li><li>const GROUP_PRIVATE_METHODS = 'private methods';</li><li>const GROUP_PRIVATE_STATIC_METHODS = 'private static methods';</li><li>const GROUP_SHORTCUT_CONSTANTS = 'constants';</li><li>const GROUP_SHORTCUT_PROPERTIES = 'properties';</li><li>const GROUP_SHORTCUT_STATIC_PROPERTIES = 'static properties';</li><li>const GROUP_SHORTCUT_METHODS = 'methods';</li><li>const GROUP_SHORTCUT_PUBLIC_METHODS = 'all public methods';</li><li>const GROUP_SHORTCUT_PROTECTED_METHODS = 'all protected methods';</li><li>const GROUP_SHORTCUT_PRIVATE_METHODS = 'all private methods';</li><li>const GROUP_SHORTCUT_STATIC_METHODS = 'static methods';</li><li>const GROUP_SHORTCUT_ABSTRACT_METHODS = 'abstract methods';</li><li>const GROUP_SHORTCUT_FINAL_METHODS = 'final methods';</li><li>const SHORTCUTS = ;</li><li>const SPECIAL_METHODS = ;</li></ul><ul class="none"><li>// members</li><li>public array <a href="#members">$groups</a> =
+                        ;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\Classes\bool">bool</span> <a href="#members">$enableFinalMethods</a> =
+                        false;
+                    </li><li>private <span title="SlevomatCodingStandard\Sniffs\Classes\array&lt;string">array&lt;string</span> <a href="#members">$normalizedGroups</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public array <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/register.xhtml">register</a>()
+                    </li><li>public int <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/process.xhtml">process</a>()
+                    </li><li>private ?array <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/findNextGroup.xhtml">findNextGroup</a>()
+                    </li><li>private string <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/getGroupForToken.xhtml">getGroupForToken</a>()
+                    </li><li>private int <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/getVisibilityForToken.xhtml">getVisibilityForToken</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/isMemberStatic.xhtml">isMemberStatic</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/isMethodFinal.xhtml">isMethodFinal</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/isMethodAbstract.xhtml">isMethodAbstract</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/isStaticConstructor.xhtml">isStaticConstructor</a>()
+                    </li><li>private string <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/getParentClassName.xhtml">getParentClassName</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/fixIncorrectGroupOrder.xhtml">fixIncorrectGroupOrder</a>()
+                    </li><li>private int <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/findPreviousMemberEndPointer.xhtml">findPreviousMemberEndPointer</a>()
+                    </li><li>private int <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/findGroupStartPointer.xhtml">findGroupStartPointer</a>()
+                    </li><li>private int <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/findGroupEndPointer.xhtml">findGroupEndPointer</a>()
+                    </li><li>private int <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/removeBlankLinesAfterMember.xhtml">removeBlankLinesAfterMember</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/getNormalizedGroups.xhtml">getNormalizedGroups</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/unpackShortcut.xhtml">unpackShortcut</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">PHP_CodeSniffer\Sniffs\Sniff</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CODE_INCORRECT_GROUP_ORDER">CODE_INCORRECT_GROUP_ORDER</td>
+              <td>'IncorrectGroupOrder'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_USES">GROUP_USES</td>
+              <td>'uses'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_CONSTANTS">GROUP_PUBLIC_CONSTANTS</td>
+              <td>'public constants'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_CONSTANTS">GROUP_PROTECTED_CONSTANTS</td>
+              <td>'protected constants'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PRIVATE_CONSTANTS">GROUP_PRIVATE_CONSTANTS</td>
+              <td>'private constants'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_PROPERTIES">GROUP_PUBLIC_PROPERTIES</td>
+              <td>'public properties'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_STATIC_PROPERTIES">GROUP_PUBLIC_STATIC_PROPERTIES</td>
+              <td>'public static properties'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_PROPERTIES">GROUP_PROTECTED_PROPERTIES</td>
+              <td>'protected properties'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_STATIC_PROPERTIES">GROUP_PROTECTED_STATIC_PROPERTIES</td>
+              <td>'protected static properties'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PRIVATE_PROPERTIES">GROUP_PRIVATE_PROPERTIES</td>
+              <td>'private properties'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PRIVATE_STATIC_PROPERTIES">GROUP_PRIVATE_STATIC_PROPERTIES</td>
+              <td>'private static properties'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_CONSTRUCTOR">GROUP_CONSTRUCTOR</td>
+              <td>'constructor'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_STATIC_CONSTRUCTORS">GROUP_STATIC_CONSTRUCTORS</td>
+              <td>'static constructors'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_DESTRUCTOR">GROUP_DESTRUCTOR</td>
+              <td>'destructor'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_MAGIC_METHODS">GROUP_MAGIC_METHODS</td>
+              <td>'magic methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_METHODS">GROUP_PUBLIC_METHODS</td>
+              <td>'public methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_ABSTRACT_METHODS">GROUP_PUBLIC_ABSTRACT_METHODS</td>
+              <td>'public abstract methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_FINAL_METHODS">GROUP_PUBLIC_FINAL_METHODS</td>
+              <td>'public final methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_STATIC_METHODS">GROUP_PUBLIC_STATIC_METHODS</td>
+              <td>'public static methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_STATIC_ABSTRACT_METHODS">GROUP_PUBLIC_STATIC_ABSTRACT_METHODS</td>
+              <td>'public static abstract methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PUBLIC_STATIC_FINAL_METHODS">GROUP_PUBLIC_STATIC_FINAL_METHODS</td>
+              <td>'public static final methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_METHODS">GROUP_PROTECTED_METHODS</td>
+              <td>'protected methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_ABSTRACT_METHODS">GROUP_PROTECTED_ABSTRACT_METHODS</td>
+              <td>'protected abstract methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_FINAL_METHODS">GROUP_PROTECTED_FINAL_METHODS</td>
+              <td>'protected final methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_STATIC_METHODS">GROUP_PROTECTED_STATIC_METHODS</td>
+              <td>'protected static methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_STATIC_ABSTRACT_METHODS">GROUP_PROTECTED_STATIC_ABSTRACT_METHODS</td>
+              <td>'protected static abstract methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PROTECTED_STATIC_FINAL_METHODS">GROUP_PROTECTED_STATIC_FINAL_METHODS</td>
+              <td>'protected static final methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PRIVATE_METHODS">GROUP_PRIVATE_METHODS</td>
+              <td>'private methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_PRIVATE_STATIC_METHODS">GROUP_PRIVATE_STATIC_METHODS</td>
+              <td>'private static methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_CONSTANTS">GROUP_SHORTCUT_CONSTANTS</td>
+              <td>'constants'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_PROPERTIES">GROUP_SHORTCUT_PROPERTIES</td>
+              <td>'properties'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_STATIC_PROPERTIES">GROUP_SHORTCUT_STATIC_PROPERTIES</td>
+              <td>'static properties'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_METHODS">GROUP_SHORTCUT_METHODS</td>
+              <td>'methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_PUBLIC_METHODS">GROUP_SHORTCUT_PUBLIC_METHODS</td>
+              <td>'all public methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_PROTECTED_METHODS">GROUP_SHORTCUT_PROTECTED_METHODS</td>
+              <td>'all protected methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_PRIVATE_METHODS">GROUP_SHORTCUT_PRIVATE_METHODS</td>
+              <td>'all private methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_STATIC_METHODS">GROUP_SHORTCUT_STATIC_METHODS</td>
+              <td>'static methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_ABSTRACT_METHODS">GROUP_SHORTCUT_ABSTRACT_METHODS</td>
+              <td>'abstract methods'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_SHORTCUT_FINAL_METHODS">GROUP_SHORTCUT_FINAL_METHODS</td>
+              <td>'final methods'</td>
+            </tr>
+            <tr>
+              <td id="SHORTCUTS">SHORTCUTS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="SPECIAL_METHODS">SPECIAL_METHODS</td>
+              <td/>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="normalizedGroups"><strong>$normalizedGroups</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Classes\array&lt;string" href="../classes/SlevomatCodingStandard_Sniffs_Classes_array&lt;string.xhtml">SlevomatCodingStandard\Sniffs\Classes\array&lt;string</a></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="enableFinalMethods"><strong>$enableFinalMethods</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\Classes\bool" href="../classes/SlevomatCodingStandard_Sniffs_Classes_bool.xhtml">SlevomatCodingStandard\Sniffs\Classes\bool</a></li>
+            <li id="groups"><strong>$groups</strong>
+                —
+                array</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="findGroupEndPointer">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/findGroupEndPointer.xhtml">findGroupEndPointer()</a>
+            </li>
+            <li id="findGroupStartPointer">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/findGroupStartPointer.xhtml">findGroupStartPointer()</a>
+            </li>
+            <li id="findNextGroup">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/findNextGroup.xhtml">findNextGroup()</a>
+            </li>
+            <li id="findPreviousMemberEndPointer">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/findPreviousMemberEndPointer.xhtml">findPreviousMemberEndPointer()</a>
+            </li>
+            <li id="fixIncorrectGroupOrder">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/fixIncorrectGroupOrder.xhtml">fixIncorrectGroupOrder()</a>
+            </li>
+            <li id="getGroupForToken">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/getGroupForToken.xhtml">getGroupForToken()</a>
+            </li>
+            <li id="getNormalizedGroups">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/getNormalizedGroups.xhtml">getNormalizedGroups()</a>
+            </li>
+            <li id="getParentClassName">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/getParentClassName.xhtml">getParentClassName()</a>
+            </li>
+            <li id="getVisibilityForToken">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/getVisibilityForToken.xhtml">getVisibilityForToken()</a>
+            </li>
+            <li id="isMemberStatic">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/isMemberStatic.xhtml">isMemberStatic()</a>
+            </li>
+            <li id="isMethodAbstract">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/isMethodAbstract.xhtml">isMethodAbstract()</a>
+            </li>
+            <li id="isMethodFinal">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/isMethodFinal.xhtml">isMethodFinal()</a>
+            </li>
+            <li id="isStaticConstructor">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/isStaticConstructor.xhtml">isStaticConstructor()</a>
+            </li>
+            <li id="removeBlankLinesAfterMember">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/removeBlankLinesAfterMember.xhtml">removeBlankLinesAfterMember()</a>
+            </li>
+            <li id="unpackShortcut">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/unpackShortcut.xhtml">unpackShortcut()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="process">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/process.xhtml">process()</a>
+            </li>
+            <li id="register">
+              <a title="SlevomatCodingStandard\Sniffs\Classes\ClassStructureSniff" href="../classes/SlevomatCodingStandard_Sniffs_Classes_ClassStructureSniff/register.xhtml">register()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

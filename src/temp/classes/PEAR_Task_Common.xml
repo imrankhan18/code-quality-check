@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Task_Common" namespace="" name="PEAR_Task_Common" abstract="false" final="false" start="55" end="207">
+  <file path="//usr/local/lib/php/PEAR/Task" file="Common.php" realpath="/usr/local/lib/php/PEAR/Task/Common.php" size="6175" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="992535974a002c51387f40f6c5dfcf77f31daf24" relative="sr/local/lib/php/PEAR/Task/Common.php"/>
+  <docblock>
+    <description compact="A task is an operation that manipulates the contents of a file.">Simple tasks operate on 1 file.  Multiple tasks are executed after all files have been
+processed and installed, and are designed to operate on all files containing the task.
+The Post-install script task simply takes advantage of the fact that it will be run
+after installation, replace is a simple task.
+
+Combining tasks is possible, but ordering is significant.
+
+&lt;file name="test.php" role="php"&gt;
+ &lt;tasks:replace from="@data-dir@" to="data_dir" type="pear-config"/&gt;
+ &lt;tasks:postinstallscript/&gt;
+&lt;/file&gt;
+
+This will first replace any instance of @data-dir@ in the test.php file
+with the path to the current data directory.  Then, it will include the
+test.php file and run the script it contains to configure the package post-installation.</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+    <abstract/>
+  </docblock>
+  <member name="type" default="'simple'" type="string" visibility="protected" static="false" line="68">
+    <docblock>
+      <description compact="Valid types for this version are 'simple' and 'multiple'">- simple tasks operate on the contents of a file and write out changes to disk
+- multiple tasks operate on the contents of many files and write out the
+  changes directly to disk
+
+Child task classes must override this property.</description>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="phase" default="" type="{unknown}" constant="PEAR_TASK_INSTALL" visibility="public" static="false" line="72">
+    <docblock>
+      <description compact="Determines which install phase this task is executed under"/>
+    </docblock>
+  </member>
+  <member name="config" visibility="protected" static="false" line="76">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="registry" visibility="protected" static="false" line="80">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="logger" visibility="public" static="false" line="84">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="installphase" visibility="protected" static="false" line="88">
+    <docblock>
+      <description/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="93" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+      <param type="object">
+        <type full="PEAR_Common" namespace="" name="PEAR_Common"/>
+      </param>
+    </docblock>
+    <parameter name="config" byreference="true" type="{unknown}"/>
+    <parameter name="logger" byreference="true" type="{unknown}"/>
+    <parameter name="phase" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="validateXml" start="121" end="123" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Validate the basic contents of a task tag."/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+      </param>
+      <param type="array"/>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+      <param description="the entire parsed &lt;file&gt; tag" type="array"/>
+      <return description="On error, return an array in format:" type="object">array(PEAR_TASK_ERROR_???[, param1][, param2][, ...])
+
+For PEAR_TASK_ERROR_MISSING_ATTRIB, pass the attribute name in
+For PEAR_TASK_ERROR_WRONG_ATTRIB_VALUE, pass the attribute name and
+an array of legal values in<type full="true|array" namespace="" name="true|array"/></return>
+      <abstract/>
+    </docblock>
+    <parameter name="pkg" byreference="false" type="{unknown}"/>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+    <parameter name="config" byreference="false" type="{unknown}"/>
+    <parameter name="fileXml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="init" start="133" end="135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize a task instance with the parameters"/>
+      <param description="raw parsed xml" type="array"/>
+      <param description="attributes from the &lt;file&gt; tag containing this task" type="array"/>
+      <param description="last installed version of this package" type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <abstract/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+    <parameter name="fileAttributes" byreference="false" type="{unknown}"/>
+    <parameter name="lastVersion" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="startSession" start="152" end="154" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Begin a task processing session.  All multiple tasks will be processed after each file has been successfully installed, all simple tasks should perform their task here and return any errors using the custom throwError() method to allow forward compatibility">This method MUST NOT write out any changes to disk</description>
+      <param type="object">
+        <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+      </param>
+      <param description="file contents" type="string"/>
+      <param description="the eventual final file location (informational only)" type="string"/>
+      <return description="false to skip this file, PEAR_Error to fail" type="object">(use $this-&gt;throwError), otherwise return the new contents<type full="string|false|PEAR_Error" namespace="" name="string|false|PEAR_Error"/></return>
+      <abstract/>
+    </docblock>
+    <parameter name="pkg" byreference="false" type="{unknown}"/>
+    <parameter name="contents" byreference="false" type="{unknown}"/>
+    <parameter name="dest" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="run" start="163" end="165" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="This method is used to process each of the tasks for a particular multiple class type.  Simple tasks need not implement this method."/>
+      <param description="an array of tasks" type="array"/>
+      <access value="protected"/>
+    </docblock>
+    <parameter name="tasks" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="hasPostinstallTasks" start="170" end="173" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <final/>
+    </docblock>
+  </method>
+  <method name="runPostinstallTasks" start="178" end="190" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <final/>
+    </docblock>
+  </method>
+  <method name="isScript" start="196" end="199" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determines whether a role is a script"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="throwError" start="201" end="206" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="msg" byreference="false" type="{unknown}"/>
+    <parameter name="code" byreference="false" type="integer" default="1"/>
+  </method>
+  <extenders>
+    <extender full="PEAR_Task_Replace" namespace="" name="PEAR_Task_Replace"/>
+    <extender full="PEAR_Task_Postinstallscript_rw" namespace="" name="PEAR_Task_Postinstallscript_rw"/>
+    <extender full="PEAR_Task_Postinstallscript" namespace="" name="PEAR_Task_Postinstallscript"/>
+    <extender full="PEAR_Task_Unixeol" namespace="" name="PEAR_Task_Unixeol"/>
+    <extender full="PEAR_Task_Windowseol_rw" namespace="" name="PEAR_Task_Windowseol_rw"/>
+    <extender full="PEAR_Task_Windowseol" namespace="" name="PEAR_Task_Windowseol"/>
+    <extender full="PEAR_Task_Replace_rw" namespace="" name="PEAR_Task_Replace_rw"/>
+    <extender full="PEAR_Task_Unixeol_rw" namespace="" name="PEAR_Task_Unixeol_rw"/>
+  </extenders>
+</class>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\SyncHelper" namespace="Composer\Util" name="SyncHelper" abstract="false" final="false" start="19" end="70">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="SyncHelper.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/SyncHelper.php" size="2553" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="e930601bd8b8e59317a7d80ae5ee0201d5303874" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/SyncHelper.php"/>
+  <method name="downloadAndInstallPackageSync" start="34" end="54" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Helps you download + install a single package in a synchronous way">This executes all the required steps and waits for promises to complete</description>
+      <param description="Loop instance which you can get from $composer-&gt;getLoop()" type="object" variable="$loop">
+        <type full="Composer\Util\Loop" namespace="Composer\Util" name="Loop"/>
+      </param>
+      <param description="Downloader instance you can get from $composer-&gt;getDownloadManager()-&gt;getDownloader('zip') for example" type="object" variable="$downloader">
+        <type full="Composer\Downloader\DownloaderInterface" namespace="Composer\Downloader" name="DownloaderInterface"/>
+      </param>
+      <param description="the installation path for the package" type="string" variable="$path"/>
+      <param description="the package to install" type="object" variable="$package">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="the previous package if this is an update and not an initial installation" type="object" variable="$prevPackage">
+        <type full="Composer\Util\PackageInterface|null" namespace="Composer\Util" name="PackageInterface|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="loop" byreference="false" type="object">
+      <type full="Composer\Util\Loop" namespace="Composer\Util" name="Loop"/>
+    </parameter>
+    <parameter name="downloader" byreference="false" type="object">
+      <type full="Composer\Downloader\DownloaderInterface" namespace="Composer\Downloader" name="DownloaderInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="await" start="64" end="69" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Waits for a promise to resolve"/>
+      <param description="Loop instance which you can get from $composer-&gt;getLoop()" type="object" variable="$loop">
+        <type full="Composer\Util\Loop" namespace="Composer\Util" name="Loop"/>
+      </param>
+      <param type="object" variable="$promise">
+        <type full="Composer\Util\PromiseInterface|null" namespace="Composer\Util" name="PromiseInterface|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="loop" byreference="false" type="object">
+      <type full="Composer\Util\Loop" namespace="Composer\Util" name="Loop"/>
+    </parameter>
+    <parameter name="promise" byreference="false" type="object" default="NULL">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </parameter>
+  </method>
+</class>

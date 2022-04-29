@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\Operation\MarkAliasInstalledOperation" namespace="Composer\DependencyResolver\Operation" name="MarkAliasInstalledOperation" abstract="false" final="false" start="22" end="53">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Operation" file="MarkAliasInstalledOperation.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Operation/MarkAliasInstalledOperation.php" size="1344" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="611e27c08fcc601dacf5a6a125f27dd860470be2" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Operation/MarkAliasInstalledOperation.php"/>
+  <docblock>
+    <description compact="Solver install operation."/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <extends full="Composer\DependencyResolver\Operation\SolverOperation" namespace="Composer\DependencyResolver\Operation" name="SolverOperation"/>
+  <implements full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+  <constant type="string" name="TYPE" value="'markAliasInstalled'"/>
+  <member name="package" visibility="protected" static="false" line="29">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Package\AliasPackage" namespace="Composer\Package" name="AliasPackage"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="31" end="34" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\AliasPackage" namespace="Composer\Package" name="AliasPackage"/>
+    </parameter>
+  </constructor>
+  <method name="getPackage" start="41" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns package instance."/>
+      <return type="object">
+        <type full="Composer\Package\AliasPackage" namespace="Composer\Package" name="AliasPackage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Package\AliasPackage" namespace="Composer\Package" name="AliasPackage"/>
+    </return>
+  </method>
+  <method name="show" start="49" end="52" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="lock" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="Composer\DependencyResolver\Operation\SolverOperation" namespace="Composer\DependencyResolver\Operation" name="SolverOperation">
+    <implements full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+    <constant type="{unknown}" name="TYPE" value="''">
+      <docblock>
+        <description/>
+        <abstract value="must be redefined by extending classes"/>
+      </docblock>
+    </constant>
+    <method name="getOperationType" start="32" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns operation type."/>
+        <return type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__toString" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+    </method>
+  </parent>
+  <interface full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface">
+    <method name="getOperationType" start="27" end="27" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns operation type."/>
+        <return type="string"/>
+      </docblock>
+    </method>
+    <method name="show" start="35" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Serializes the operation in a human readable format"/>
+        <param description="Whether this is an operation on the lock file" type="object" variable="$lock">
+          <type full="Composer\DependencyResolver\Operation\bool" namespace="Composer\DependencyResolver\Operation" name="bool"/>
+        </param>
+        <return type="string"/>
+      </docblock>
+      <parameter name="lock" byreference="false" type="bool"/>
+    </method>
+    <method name="__toString" start="42" end="42" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Serializes the operation in a human readable format"/>
+        <return type="string"/>
+      </docblock>
+    </method>
+  </interface>
+</class>

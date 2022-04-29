@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - NunoMaduro\PhpInsights\Domain\Collector</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#NunoMaduro_PhpInsights_Domain">NunoMaduro\PhpInsights\Domain</a>
+          </li>
+          <li class="separator">Collector</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/nunomaduro/phpinsights/src/Domain/Collector.php.xhtml#line10">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>NunoMaduro\PhpInsights\Domain\</small>Collector</h1>
+        <h4/>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Collector
+            {<br/><ul class="none"><li>// members</li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$analysedPaths</a>;
+                    </li><li>private  <a href="#members">$commonPath</a>;
+                    </li><li>private integer <a href="#members">$commentLines</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$logicalLines</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$functionLines</a> =
+                        0;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$files</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$directories</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$concreteNonFinalClasses</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$concreteFinalClasses</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$abstractClasses</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$traits</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$globalConstants</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$interfaces</a> =
+                        0;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$namespaces</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$complexity</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$totalMethodComplexity</a> =
+                        0;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;int&gt;">array&lt;int&gt;</span> <a href="#members">$methodComplexity</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string">array&lt;string</span> <a href="#members">$classComplexity</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$classConstants</a> =
+                        0;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string">array&lt;string</span> <a href="#members">$methodLines</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string">array&lt;string</span> <a href="#members">$classLines</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$staticAttributeAccesses</a> =
+                        0;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string">array&lt;string</span> <a href="#members">$superGlobalVariableAccesses</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;">array&lt;string&gt;</span> <a href="#members">$possibleConstantAccesses</a> =
+                        ;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string">array&lt;string</span> <a href="#members">$globalVariableAccesses</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$nonStaticMethodCalls</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$nonStaticAttributeAccesses</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$anonymousFunctions</a> =
+                        0;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string">array&lt;string</span> <a href="#members">$namedFunctions</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$publicMethods</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$staticMethods</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$nonStaticMethods</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$protectedMethods</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$privateMethods</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$staticMethodCalls</a> =
+                        0;
+                    </li><li>private string <a href="#members">$currentFilename</a> =
+                        '';
+                    </li><li>private integer <a href="#members">$currentClassComplexity</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$currentClassLines</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$currentMethodComplexity</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$currentMethodLines</a> =
+                        0;
+                    </li><li>private <span title="NunoMaduro\PhpInsights\Domain\array&lt;string">array&lt;string</span> <a href="#members">$globalFunctions</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addFile.xhtml">addFile</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementCommentLines.xhtml">incrementCommentLines</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementLogicalLines.xhtml">incrementLogicalLines</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentClassReset.xhtml">currentClassReset</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentClassIncrementComplexity.xhtml">currentClassIncrementComplexity</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentClassIncrementLines.xhtml">currentClassIncrementLines</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentMethodStart.xhtml">currentMethodStart</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentMethodIncrementComplexity.xhtml">currentMethodIncrementComplexity</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentMethodIncrementLines.xhtml">currentMethodIncrementLines</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentMethodStop.xhtml">currentMethodStop</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementFunctionLines.xhtml">incrementFunctionLines</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementComplexity.xhtml">incrementComplexity</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addPossibleConstantAccesses.xhtml">addPossibleConstantAccesses</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addGlobalFunctions.xhtml">addGlobalFunctions</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addGlobalVariableAccesses.xhtml">addGlobalVariableAccesses</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addSuperGlobalVariableAccesses.xhtml">addSuperGlobalVariableAccesses</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementNonStaticAttributeAccesses.xhtml">incrementNonStaticAttributeAccesses</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementStaticAttributeAccesses.xhtml">incrementStaticAttributeAccesses</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementNonStaticMethodCalls.xhtml">incrementNonStaticMethodCalls</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementStaticMethodCalls.xhtml">incrementStaticMethodCalls</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addNamespace.xhtml">addNamespace</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementInterfaces.xhtml">incrementInterfaces</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addAbstractClass.xhtml">addAbstractClass</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addConcreteFinalClass.xhtml">addConcreteFinalClass</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addConcreteNonFinalClass.xhtml">addConcreteNonFinalClass</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementNonStaticMethods.xhtml">incrementNonStaticMethods</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementStaticMethods.xhtml">incrementStaticMethods</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementPublicMethods.xhtml">incrementPublicMethods</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementProtectedMethods.xhtml">incrementProtectedMethods</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementPrivateMethods.xhtml">incrementPrivateMethods</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addNamedFunctions.xhtml">addNamedFunctions</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementAnonymousFunctions.xhtml">incrementAnonymousFunctions</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementClassConstants.xhtml">incrementClassConstants</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addGlobalConstant.xhtml">addGlobalConstant</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementTraits.xhtml">incrementTraits</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAnalysedPaths.xhtml">getAnalysedPaths</a>()
+                    </li><li>public string <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCommonPath.xhtml">getCommonPath</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getLines.xhtml">getLines</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCommentLines.xhtml">getCommentLines</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getFiles.xhtml">getFiles</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getDirectories.xhtml">getDirectories</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalConstants.xhtml">getGlobalConstants</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getTraits.xhtml">getTraits</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getClassLines.xhtml">getClassLines</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getPerClassLines.xhtml">getPerClassLines</a>()
+                    </li><li>public string <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentFilename.xhtml">getCurrentFilename</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentClassComplexity.xhtml">getCurrentClassComplexity</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentClassLines.xhtml">getCurrentClassLines</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentMethodComplexity.xhtml">getCurrentMethodComplexity</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentMethodLines.xhtml">getCurrentMethodLines</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getLogicalLines.xhtml">getLogicalLines</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMethodComplexity.xhtml">getMethodComplexity</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getClassConstants.xhtml">getClassConstants</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getFunctionLines.xhtml">getFunctionLines</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMethodLines.xhtml">getMethodLines</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalFunctions.xhtml">getGlobalFunctions</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getStaticAttributeAccesses.xhtml">getStaticAttributeAccesses</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getComplexity.xhtml">getComplexity</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getPossibleConstantAccesses.xhtml">getPossibleConstantAccesses</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalVariableAccesses.xhtml">getGlobalVariableAccesses</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNonStaticMethodCalls.xhtml">getNonStaticMethodCalls</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNonStaticAttributeAccesses.xhtml">getNonStaticAttributeAccesses</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAnonymousFunctions.xhtml">getAnonymousFunctions</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNamedFunctions.xhtml">getNamedFunctions</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getPublicMethods.xhtml">getPublicMethods</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getStaticMethods.xhtml">getStaticMethods</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNonStaticMethods.xhtml">getNonStaticMethods</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getConcreteNonFinalClasses.xhtml">getConcreteNonFinalClasses</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getConcreteFinalClasses.xhtml">getConcreteFinalClasses</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNamespaces.xhtml">getNamespaces</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getProtectedMethods.xhtml">getProtectedMethods</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getPrivateMethods.xhtml">getPrivateMethods</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getStaticMethodCalls.xhtml">getStaticMethodCalls</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getInterfaces.xhtml">getInterfaces</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAbstractClasses.xhtml">getAbstractClasses</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getSuperGlobalVariableAccesses.xhtml">getSuperGlobalVariableAccesses</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNonCommentLines.xhtml">getNonCommentLines</a>()
+                    </li><li>public float|int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageClassLength.xhtml">getAverageClassLength</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximumClassLength.xhtml">getMaximumClassLength</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageMethodLength.xhtml">getAverageMethodLength</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximumMethodLength.xhtml">getMaximumMethodLength</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageFunctionLength.xhtml">getAverageFunctionLength</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNotInClassesOrFunctions.xhtml">getNotInClassesOrFunctions</a>()
+                    </li><li>public float <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageComplexityPerLogicalLine.xhtml">getAverageComplexityPerLogicalLine</a>()
+                    </li><li>public float <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageComplexityPerClass.xhtml">getAverageComplexityPerClass</a>()
+                    </li><li>public array <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getClassComplexity.xhtml">getClassComplexity</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximumClassComplexity.xhtml">getMaximumClassComplexity</a>()
+                    </li><li>public float <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageComplexityPerMethod.xhtml">getAverageComplexityPerMethod</a>()
+                    </li><li>public float <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximumMethodComplexity.xhtml">getMaximumMethodComplexity</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalAccesses.xhtml">getGlobalAccesses</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalConstantAccesses.xhtml">getGlobalConstantAccesses</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAttributeAccesses.xhtml">getAttributeAccesses</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMethodCalls.xhtml">getMethodCalls</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getClasses.xhtml">getClasses</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMethods.xhtml">getMethods</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getFunctions.xhtml">getFunctions</a>()
+                    </li><li>public int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getConstants.xhtml">getConstants</a>()
+                    </li><li>public void <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/excludeComplexityFiles.xhtml">excludeComplexityFiles</a>()
+                    </li><li>private float <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverage.xhtml">getAverage</a>()
+                    </li><li>private int <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCount.xhtml">getCount</a>()
+                    </li><li>private int|float <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getSum.xhtml">getSum</a>()
+                    </li><li>private int|float <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximum.xhtml">getMaximum</a>()
+                    </li><li>private float <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/divide.xhtml">divide</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="abstractClasses"><strong>$abstractClasses</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="analysedPaths"><strong>$analysedPaths</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="anonymousFunctions">
+              <strong>$anonymousFunctions</strong>
+            </li>
+            <li id="classComplexity"><strong>$classComplexity</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string</a></li>
+            <li id="classConstants">
+              <strong>$classConstants</strong>
+            </li>
+            <li id="classLines"><strong>$classLines</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string</a></li>
+            <li id="commentLines">
+              <strong>$commentLines</strong>
+            </li>
+            <li id="commonPath">
+              <strong>$commonPath</strong>
+            </li>
+            <li id="complexity">
+              <strong>$complexity</strong>
+            </li>
+            <li id="concreteFinalClasses"><strong>$concreteFinalClasses</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="concreteNonFinalClasses"><strong>$concreteNonFinalClasses</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="currentClassComplexity">
+              <strong>$currentClassComplexity</strong>
+            </li>
+            <li id="currentClassLines">
+              <strong>$currentClassLines</strong>
+            </li>
+            <li id="currentFilename">
+              <strong>$currentFilename</strong>
+            </li>
+            <li id="currentMethodComplexity">
+              <strong>$currentMethodComplexity</strong>
+            </li>
+            <li id="currentMethodLines">
+              <strong>$currentMethodLines</strong>
+            </li>
+            <li id="directories"><strong>$directories</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="files"><strong>$files</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="functionLines">
+              <strong>$functionLines</strong>
+            </li>
+            <li id="globalConstants"><strong>$globalConstants</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="globalFunctions"><strong>$globalFunctions</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string</a></li>
+            <li id="globalVariableAccesses"><strong>$globalVariableAccesses</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string</a></li>
+            <li id="interfaces">
+              <strong>$interfaces</strong>
+            </li>
+            <li id="logicalLines">
+              <strong>$logicalLines</strong>
+            </li>
+            <li id="methodComplexity"><strong>$methodComplexity</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;int&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;int&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;int&gt;</a></li>
+            <li id="methodLines"><strong>$methodLines</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string</a></li>
+            <li id="namedFunctions"><strong>$namedFunctions</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string</a></li>
+            <li id="namespaces"><strong>$namespaces</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="nonStaticAttributeAccesses">
+              <strong>$nonStaticAttributeAccesses</strong>
+            </li>
+            <li id="nonStaticMethodCalls">
+              <strong>$nonStaticMethodCalls</strong>
+            </li>
+            <li id="nonStaticMethods">
+              <strong>$nonStaticMethods</strong>
+            </li>
+            <li id="possibleConstantAccesses"><strong>$possibleConstantAccesses</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+            <li id="privateMethods">
+              <strong>$privateMethods</strong>
+            </li>
+            <li id="protectedMethods">
+              <strong>$protectedMethods</strong>
+            </li>
+            <li id="publicMethods">
+              <strong>$publicMethods</strong>
+            </li>
+            <li id="staticAttributeAccesses">
+              <strong>$staticAttributeAccesses</strong>
+            </li>
+            <li id="staticMethodCalls">
+              <strong>$staticMethodCalls</strong>
+            </li>
+            <li id="staticMethods">
+              <strong>$staticMethods</strong>
+            </li>
+            <li id="superGlobalVariableAccesses"><strong>$superGlobalVariableAccesses</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string</a></li>
+            <li id="totalMethodComplexity">
+              <strong>$totalMethodComplexity</strong>
+            </li>
+            <li id="traits"><strong>$traits</strong>
+                —
+                <a title="NunoMaduro\PhpInsights\Domain\array&lt;string&gt;" href="../classes/NunoMaduro_PhpInsights_Domain_array&lt;string&gt;.xhtml">NunoMaduro\PhpInsights\Domain\array&lt;string&gt;</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="divide">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/divide.xhtml">divide()</a>
+            </li>
+            <li id="getAverage">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverage.xhtml">getAverage()</a>
+            </li>
+            <li id="getCount">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCount.xhtml">getCount()</a>
+            </li>
+            <li id="getMaximum"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximum.xhtml">getMaximum()</a>
+                — Returns the maximum value from the given array.</li>
+            <li id="getSum"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getSum.xhtml">getSum()</a>
+                — Returns the sum value from the given array.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/__construct.xhtml">__construct()</a>
+                — Creates a new instance of the Collector.</li>
+            <li id="addAbstractClass">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addAbstractClass.xhtml">addAbstractClass()</a>
+            </li>
+            <li id="addConcreteFinalClass">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addConcreteFinalClass.xhtml">addConcreteFinalClass()</a>
+            </li>
+            <li id="addConcreteNonFinalClass">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addConcreteNonFinalClass.xhtml">addConcreteNonFinalClass()</a>
+            </li>
+            <li id="addFile">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addFile.xhtml">addFile()</a>
+            </li>
+            <li id="addGlobalConstant">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addGlobalConstant.xhtml">addGlobalConstant()</a>
+            </li>
+            <li id="addGlobalFunctions">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addGlobalFunctions.xhtml">addGlobalFunctions()</a>
+            </li>
+            <li id="addGlobalVariableAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addGlobalVariableAccesses.xhtml">addGlobalVariableAccesses()</a>
+            </li>
+            <li id="addNamedFunctions">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addNamedFunctions.xhtml">addNamedFunctions()</a>
+            </li>
+            <li id="addNamespace">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addNamespace.xhtml">addNamespace()</a>
+            </li>
+            <li id="addPossibleConstantAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addPossibleConstantAccesses.xhtml">addPossibleConstantAccesses()</a>
+            </li>
+            <li id="addSuperGlobalVariableAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/addSuperGlobalVariableAccesses.xhtml">addSuperGlobalVariableAccesses()</a>
+            </li>
+            <li id="currentClassIncrementComplexity">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentClassIncrementComplexity.xhtml">currentClassIncrementComplexity()</a>
+            </li>
+            <li id="currentClassIncrementLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentClassIncrementLines.xhtml">currentClassIncrementLines()</a>
+            </li>
+            <li id="currentClassReset">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentClassReset.xhtml">currentClassReset()</a>
+            </li>
+            <li id="currentMethodIncrementComplexity">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentMethodIncrementComplexity.xhtml">currentMethodIncrementComplexity()</a>
+            </li>
+            <li id="currentMethodIncrementLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentMethodIncrementLines.xhtml">currentMethodIncrementLines()</a>
+            </li>
+            <li id="currentMethodStart">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentMethodStart.xhtml">currentMethodStart()</a>
+            </li>
+            <li id="currentMethodStop">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/currentMethodStop.xhtml">currentMethodStop()</a>
+            </li>
+            <li id="excludeComplexityFiles">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/excludeComplexityFiles.xhtml">excludeComplexityFiles()</a>
+            </li>
+            <li id="getAbstractClasses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAbstractClasses.xhtml">getAbstractClasses()</a>
+            </li>
+            <li id="getAnalysedPaths"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAnalysedPaths.xhtml">getAnalysedPaths()</a>
+                — Returns the analysed paths.</li>
+            <li id="getAnonymousFunctions">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAnonymousFunctions.xhtml">getAnonymousFunctions()</a>
+            </li>
+            <li id="getAttributeAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAttributeAccesses.xhtml">getAttributeAccesses()</a>
+            </li>
+            <li id="getAverageClassLength">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageClassLength.xhtml">getAverageClassLength()</a>
+            </li>
+            <li id="getAverageComplexityPerClass">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageComplexityPerClass.xhtml">getAverageComplexityPerClass()</a>
+            </li>
+            <li id="getAverageComplexityPerLogicalLine">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageComplexityPerLogicalLine.xhtml">getAverageComplexityPerLogicalLine()</a>
+            </li>
+            <li id="getAverageComplexityPerMethod">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageComplexityPerMethod.xhtml">getAverageComplexityPerMethod()</a>
+            </li>
+            <li id="getAverageFunctionLength">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageFunctionLength.xhtml">getAverageFunctionLength()</a>
+            </li>
+            <li id="getAverageMethodLength">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getAverageMethodLength.xhtml">getAverageMethodLength()</a>
+            </li>
+            <li id="getClassComplexity">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getClassComplexity.xhtml">getClassComplexity()</a>
+            </li>
+            <li id="getClassConstants">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getClassConstants.xhtml">getClassConstants()</a>
+            </li>
+            <li id="getClassLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getClassLines.xhtml">getClassLines()</a>
+            </li>
+            <li id="getClasses"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getClasses.xhtml">getClasses()</a>
+                — Get the amount of classes analysed.</li>
+            <li id="getCommentLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCommentLines.xhtml">getCommentLines()</a>
+            </li>
+            <li id="getCommonPath"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCommonPath.xhtml">getCommonPath()</a>
+                — Returns all files common path.</li>
+            <li id="getComplexity"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getComplexity.xhtml">getComplexity()</a>
+                — Returns the complexity of the analysed data.</li>
+            <li id="getConcreteFinalClasses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getConcreteFinalClasses.xhtml">getConcreteFinalClasses()</a>
+            </li>
+            <li id="getConcreteNonFinalClasses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getConcreteNonFinalClasses.xhtml">getConcreteNonFinalClasses()</a>
+            </li>
+            <li id="getConstants"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getConstants.xhtml">getConstants()</a>
+                — Get the amount of constants analysed.</li>
+            <li id="getCurrentClassComplexity">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentClassComplexity.xhtml">getCurrentClassComplexity()</a>
+            </li>
+            <li id="getCurrentClassLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentClassLines.xhtml">getCurrentClassLines()</a>
+            </li>
+            <li id="getCurrentFilename">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentFilename.xhtml">getCurrentFilename()</a>
+            </li>
+            <li id="getCurrentMethodComplexity">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentMethodComplexity.xhtml">getCurrentMethodComplexity()</a>
+            </li>
+            <li id="getCurrentMethodLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getCurrentMethodLines.xhtml">getCurrentMethodLines()</a>
+            </li>
+            <li id="getDirectories">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getDirectories.xhtml">getDirectories()</a>
+            </li>
+            <li id="getFiles">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getFiles.xhtml">getFiles()</a>
+            </li>
+            <li id="getFunctionLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getFunctionLines.xhtml">getFunctionLines()</a>
+            </li>
+            <li id="getFunctions"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getFunctions.xhtml">getFunctions()</a>
+                — Get the amount of functions analysed.</li>
+            <li id="getGlobalAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalAccesses.xhtml">getGlobalAccesses()</a>
+            </li>
+            <li id="getGlobalConstantAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalConstantAccesses.xhtml">getGlobalConstantAccesses()</a>
+            </li>
+            <li id="getGlobalConstants">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalConstants.xhtml">getGlobalConstants()</a>
+            </li>
+            <li id="getGlobalFunctions">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalFunctions.xhtml">getGlobalFunctions()</a>
+            </li>
+            <li id="getGlobalVariableAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getGlobalVariableAccesses.xhtml">getGlobalVariableAccesses()</a>
+            </li>
+            <li id="getInterfaces">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getInterfaces.xhtml">getInterfaces()</a>
+            </li>
+            <li id="getLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getLines.xhtml">getLines()</a>
+            </li>
+            <li id="getLogicalLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getLogicalLines.xhtml">getLogicalLines()</a>
+            </li>
+            <li id="getMaximumClassComplexity">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximumClassComplexity.xhtml">getMaximumClassComplexity()</a>
+            </li>
+            <li id="getMaximumClassLength">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximumClassLength.xhtml">getMaximumClassLength()</a>
+            </li>
+            <li id="getMaximumMethodComplexity">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximumMethodComplexity.xhtml">getMaximumMethodComplexity()</a>
+            </li>
+            <li id="getMaximumMethodLength">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMaximumMethodLength.xhtml">getMaximumMethodLength()</a>
+            </li>
+            <li id="getMethodCalls"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMethodCalls.xhtml">getMethodCalls()</a>
+                — Get the amount of calls to methods analysed.</li>
+            <li id="getMethodComplexity">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMethodComplexity.xhtml">getMethodComplexity()</a>
+            </li>
+            <li id="getMethodLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMethodLines.xhtml">getMethodLines()</a>
+            </li>
+            <li id="getMethods"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getMethods.xhtml">getMethods()</a>
+                — Get the amount of methods analysed.</li>
+            <li id="getNamedFunctions">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNamedFunctions.xhtml">getNamedFunctions()</a>
+            </li>
+            <li id="getNamespaces">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNamespaces.xhtml">getNamespaces()</a>
+            </li>
+            <li id="getNonCommentLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNonCommentLines.xhtml">getNonCommentLines()</a>
+            </li>
+            <li id="getNonStaticAttributeAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNonStaticAttributeAccesses.xhtml">getNonStaticAttributeAccesses()</a>
+            </li>
+            <li id="getNonStaticMethodCalls">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNonStaticMethodCalls.xhtml">getNonStaticMethodCalls()</a>
+            </li>
+            <li id="getNonStaticMethods">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNonStaticMethods.xhtml">getNonStaticMethods()</a>
+            </li>
+            <li id="getNotInClassesOrFunctions">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getNotInClassesOrFunctions.xhtml">getNotInClassesOrFunctions()</a>
+            </li>
+            <li id="getPerClassLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getPerClassLines.xhtml">getPerClassLines()</a>
+            </li>
+            <li id="getPossibleConstantAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getPossibleConstantAccesses.xhtml">getPossibleConstantAccesses()</a>
+            </li>
+            <li id="getPrivateMethods">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getPrivateMethods.xhtml">getPrivateMethods()</a>
+            </li>
+            <li id="getProtectedMethods">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getProtectedMethods.xhtml">getProtectedMethods()</a>
+            </li>
+            <li id="getPublicMethods">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getPublicMethods.xhtml">getPublicMethods()</a>
+            </li>
+            <li id="getStaticAttributeAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getStaticAttributeAccesses.xhtml">getStaticAttributeAccesses()</a>
+            </li>
+            <li id="getStaticMethodCalls">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getStaticMethodCalls.xhtml">getStaticMethodCalls()</a>
+            </li>
+            <li id="getStaticMethods">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getStaticMethods.xhtml">getStaticMethods()</a>
+            </li>
+            <li id="getSuperGlobalVariableAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getSuperGlobalVariableAccesses.xhtml">getSuperGlobalVariableAccesses()</a>
+            </li>
+            <li id="getTraits">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/getTraits.xhtml">getTraits()</a>
+            </li>
+            <li id="incrementAnonymousFunctions"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementAnonymousFunctions.xhtml">incrementAnonymousFunctions()</a>
+                — Increment if anonymous function.</li>
+            <li id="incrementClassConstants">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementClassConstants.xhtml">incrementClassConstants()</a>
+            </li>
+            <li id="incrementCommentLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementCommentLines.xhtml">incrementCommentLines()</a>
+            </li>
+            <li id="incrementComplexity"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementComplexity.xhtml">incrementComplexity()</a>
+                — Increase the complexity of the analysis.</li>
+            <li id="incrementFunctionLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementFunctionLines.xhtml">incrementFunctionLines()</a>
+            </li>
+            <li id="incrementInterfaces"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementInterfaces.xhtml">incrementInterfaces()</a>
+                — Increment if class is a interface.</li>
+            <li id="incrementLogicalLines">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementLogicalLines.xhtml">incrementLogicalLines()</a>
+            </li>
+            <li id="incrementNonStaticAttributeAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementNonStaticAttributeAccesses.xhtml">incrementNonStaticAttributeAccesses()</a>
+            </li>
+            <li id="incrementNonStaticMethodCalls"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementNonStaticMethodCalls.xhtml">incrementNonStaticMethodCalls()</a>
+                — Increment if calling non static method.</li>
+            <li id="incrementNonStaticMethods"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementNonStaticMethods.xhtml">incrementNonStaticMethods()</a>
+                — Increment if method.</li>
+            <li id="incrementPrivateMethods"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementPrivateMethods.xhtml">incrementPrivateMethods()</a>
+                — Increment if private method.</li>
+            <li id="incrementProtectedMethods"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementProtectedMethods.xhtml">incrementProtectedMethods()</a>
+                — Increment if protected method.</li>
+            <li id="incrementPublicMethods"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementPublicMethods.xhtml">incrementPublicMethods()</a>
+                — Increment if public method.</li>
+            <li id="incrementStaticAttributeAccesses">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementStaticAttributeAccesses.xhtml">incrementStaticAttributeAccesses()</a>
+            </li>
+            <li id="incrementStaticMethodCalls"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementStaticMethodCalls.xhtml">incrementStaticMethodCalls()</a>
+                — Increment if a calling a static method.</li>
+            <li id="incrementStaticMethods"><a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementStaticMethods.xhtml">incrementStaticMethods()</a>
+                — Increment if static method.</li>
+            <li id="incrementTraits">
+              <a title="NunoMaduro\PhpInsights\Domain\Collector" href="../classes/NunoMaduro_PhpInsights_Domain_Collector/incrementTraits.xhtml">incrementTraits()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

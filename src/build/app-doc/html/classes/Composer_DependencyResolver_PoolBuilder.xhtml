@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\DependencyResolver\PoolBuilder</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_DependencyResolver">Composer\DependencyResolver</a>
+          </li>
+          <li class="separator">PoolBuilder</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/PoolBuilder.php.xhtml#line39">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\DependencyResolver\</small>PoolBuilder</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Nils Adermann &lt;naderman@naderman.de&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PoolBuilder
+            {<br/><ul class="none"><li>// members</li><li>private  <a href="#members">$acceptableStabilities</a>;
+                    </li><li>private  <a href="#members">$stabilityFlags</a>;
+                    </li><li>private  <a href="#members">$rootAliases</a>;
+                    </li><li>private  <a href="#members">$rootReferences</a>;
+                    </li><li>private <span title="Composer\DependencyResolver\?EventDispatcher">?EventDispatcher</span> <a href="#members">$eventDispatcher</a>;
+                    </li><li>private <span title="Composer\DependencyResolver\PoolOptimizer|null">PoolOptimizer|null</span> <a href="#members">$poolOptimizer</a>;
+                    </li><li>private <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>private array <a href="#members">$aliasMap</a> =
+                        ;
+                    </li><li>private array <a href="#members">$packagesToLoad</a> =
+                        ;
+                    </li><li>private array <a href="#members">$loadedPackages</a> =
+                        ;
+                    </li><li>private array <a href="#members">$loadedPerRepo</a> =
+                        ;
+                    </li><li>private array <a href="#members">$packages</a> =
+                        ;
+                    </li><li>private array <a href="#members">$unacceptableFixedOrLockedPackages</a> =
+                        ;
+                    </li><li>private array <a href="#members">$updateAllowList</a> =
+                        ;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;string">array&lt;string</span> <a href="#members">$skippedLoad</a> =
+                        ;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;string">array&lt;string</span> <a href="#members">$pathRepoUnlocked</a> =
+                        ;
+                    </li><li>private <span title="Composer\DependencyResolver\array&lt;string">array&lt;string</span> <a href="#members">$maxExtendedReqs</a> =
+                        ;
+                    </li><li>private array <a href="#members">$updateAllowWarned</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$indexCounter</a> =
+                        0;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/__construct.xhtml">__construct</a>()
+                    </li><li>public <span title="Pool">Pool</span> <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/buildPool.xhtml">buildPool</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/markPackageNameForLoading.xhtml">markPackageNameForLoading</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/loadPackagesMarkedForLoading.xhtml">loadPackagesMarkedForLoading</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/loadPackage.xhtml">loadPackage</a>()
+                    </li><li>private bool <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/isRootRequire.xhtml">isRootRequire</a>()
+                    </li><li>private array <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/getSkippedRootRequires.xhtml">getSkippedRootRequires</a>()
+                    </li><li>private bool <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/isUpdateAllowed.xhtml">isUpdateAllowed</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/warnAboutNonMatchingUpdateAllowList.xhtml">warnAboutNonMatchingUpdateAllowList</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/unlockPackage.xhtml">unlockPackage</a>()
+                    </li><li>private void <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/removeLoadedPackage.xhtml">removeLoadedPackage</a>()
+                    </li><li>private <span title="Pool">Pool</span> <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/runOptimizer.xhtml">runOptimizer</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="acceptableStabilities"><strong>$acceptableStabilities</strong>
+                —
+                array</li>
+            <li id="aliasMap"><strong>$aliasMap</strong>
+                —
+                array</li>
+            <li id="eventDispatcher"><strong>$eventDispatcher</strong>
+                —
+                <a title="Composer\DependencyResolver\?EventDispatcher" href="../classes/Composer_DependencyResolver_?EventDispatcher.xhtml">Composer\DependencyResolver\?EventDispatcher</a></li>
+            <li id="indexCounter"><strong>$indexCounter</strong>
+                —
+                int</li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="loadedPackages"><strong>$loadedPackages</strong>
+                —
+                array</li>
+            <li id="loadedPerRepo"><strong>$loadedPerRepo</strong>
+                —
+                array</li>
+            <li id="maxExtendedReqs"><strong>$maxExtendedReqs</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;string" href="../classes/Composer_DependencyResolver_array&lt;string.xhtml">Composer\DependencyResolver\array&lt;string</a><br/><span class="indent">Keeps a list of dependencies which are root requirements, and as such have already their maximum required range loaded and can not be extended by markPackageNameForLoading</span></li>
+            <li id="packages"><strong>$packages</strong>
+                —
+                array</li>
+            <li id="packagesToLoad"><strong>$packagesToLoad</strong>
+                —
+                array</li>
+            <li id="pathRepoUnlocked"><strong>$pathRepoUnlocked</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;string" href="../classes/Composer_DependencyResolver_array&lt;string.xhtml">Composer\DependencyResolver\array&lt;string</a><br/><span class="indent">Keeps a list of dependencies which are locked but were auto-unlocked as they are path repositories</span></li>
+            <li id="poolOptimizer"><strong>$poolOptimizer</strong>
+                —
+                <a title="Composer\DependencyResolver\PoolOptimizer|null" href="../classes/Composer_DependencyResolver_PoolOptimizer|null.xhtml">Composer\DependencyResolver\PoolOptimizer|null</a></li>
+            <li id="rootAliases"><strong>$rootAliases</strong>
+                —
+                array</li>
+            <li id="rootReferences"><strong>$rootReferences</strong>
+                —
+                array</li>
+            <li id="skippedLoad"><strong>$skippedLoad</strong>
+                —
+                <a title="Composer\DependencyResolver\array&lt;string" href="../classes/Composer_DependencyResolver_array&lt;string.xhtml">Composer\DependencyResolver\array&lt;string</a></li>
+            <li id="stabilityFlags"><strong>$stabilityFlags</strong>
+                —
+                array</li>
+            <li id="unacceptableFixedOrLockedPackages"><strong>$unacceptableFixedOrLockedPackages</strong>
+                —
+                array</li>
+            <li id="updateAllowList"><strong>$updateAllowList</strong>
+                —
+                array</li>
+            <li id="updateAllowWarned"><strong>$updateAllowWarned</strong>
+                —
+                array</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="getSkippedRootRequires">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/getSkippedRootRequires.xhtml">getSkippedRootRequires()</a>
+            </li>
+            <li id="isRootRequire"><a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/isRootRequire.xhtml">isRootRequire()</a>
+                — Checks if a particular name is required directly in the request</li>
+            <li id="isUpdateAllowed"><a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/isUpdateAllowed.xhtml">isUpdateAllowed()</a>
+                — Checks whether the update allow list allows this package in the lock file to be updated</li>
+            <li id="loadPackage">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/loadPackage.xhtml">loadPackage()</a>
+            </li>
+            <li id="loadPackagesMarkedForLoading">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/loadPackagesMarkedForLoading.xhtml">loadPackagesMarkedForLoading()</a>
+            </li>
+            <li id="markPackageNameForLoading">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/markPackageNameForLoading.xhtml">markPackageNameForLoading()</a>
+            </li>
+            <li id="removeLoadedPackage">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/removeLoadedPackage.xhtml">removeLoadedPackage()</a>
+            </li>
+            <li id="runOptimizer">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/runOptimizer.xhtml">runOptimizer()</a>
+            </li>
+            <li id="unlockPackage"><a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/unlockPackage.xhtml">unlockPackage()</a>
+                — Reverts the decision to use a locked package if a partial update with transitive dependencies found that this package actually needs to be updated</li>
+            <li id="warnAboutNonMatchingUpdateAllowList">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/warnAboutNonMatchingUpdateAllowList.xhtml">warnAboutNonMatchingUpdateAllowList()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="buildPool">
+              <a title="Composer\DependencyResolver\PoolBuilder" href="../classes/Composer_DependencyResolver_PoolBuilder/buildPool.xhtml">buildPool()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

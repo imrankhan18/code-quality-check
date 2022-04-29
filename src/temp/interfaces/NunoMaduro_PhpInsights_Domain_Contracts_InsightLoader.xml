@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="NunoMaduro\PhpInsights\Domain\Contracts\InsightLoader" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="InsightLoader" abstract="false" final="false" start="12" end="27">
+  <file path="//var/www/html/vendor/nunomaduro/phpinsights/src/Domain/Contracts" file="InsightLoader.php" realpath="/var/www/html/vendor/nunomaduro/phpinsights/src/Domain/Contracts/InsightLoader.php" size="636" time="2022-03-21T20:51:37+00:00" unixtime="1647895897" sha1="a917dcb544e5e7475c3386623f526e8cd6839540" relative="ar/www/html/vendor/nunomaduro/phpinsights/src/Domain/Contracts/InsightLoader.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <constant type="{unknown}" name="INSIGHT_LOADER_TAG" value="'phpinsights.insight_loader'"/>
+  <method name="support" start="19" end="19" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if an Insight class could be load by this loader."/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="insightClass" byreference="false" type="string"/>
+  </method>
+  <method name="load" start="26" end="26" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a new instance of insight."/>
+      <param description="int|string|array&gt; $config Related to $insightClass" type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Contracts\array&lt;string" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="array&lt;string"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+    </return>
+    <parameter name="insightClass" byreference="false" type="string"/>
+    <parameter name="dir" byreference="false" type="string"/>
+    <parameter name="config" byreference="false" type="array"/>
+    <parameter name="collector" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Collector" namespace="NunoMaduro\PhpInsights\Domain" name="Collector"/>
+    </parameter>
+  </method>
+  <implementors>
+    <class full="NunoMaduro\PhpInsights\Domain\InsightLoader\FixerLoader" namespace="NunoMaduro\PhpInsights\Domain\InsightLoader" name="FixerLoader"/>
+    <class full="NunoMaduro\PhpInsights\Domain\InsightLoader\SniffLoader" namespace="NunoMaduro\PhpInsights\Domain\InsightLoader" name="SniffLoader"/>
+    <class full="NunoMaduro\PhpInsights\Domain\InsightLoader\InsightLoader" namespace="NunoMaduro\PhpInsights\Domain\InsightLoader" name="InsightLoader"/>
+  </implementors>
+</interface>

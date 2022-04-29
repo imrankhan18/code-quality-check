@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="NunoMaduro\PhpInsights\Domain\FileProcessors\SniffFileProcessor" namespace="NunoMaduro\PhpInsights\Domain\FileProcessors" name="SniffFileProcessor" abstract="false" final="true" start="19" end="75">
+  <file path="//var/www/html/vendor/nunomaduro/phpinsights/src/Domain/FileProcessors" file="SniffFileProcessor.php" realpath="/var/www/html/vendor/nunomaduro/phpinsights/src/Domain/FileProcessors/SniffFileProcessor.php" size="2140" time="2022-03-21T20:51:37+00:00" unixtime="1647895897" sha1="7e44ef27b0cfc356e512a45ed4bc47f12f7782da" relative="ar/www/html/vendor/nunomaduro/phpinsights/src/Domain/FileProcessors/SniffFileProcessor.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <implements full="NunoMaduro\PhpInsights\Domain\Contracts\FileProcessor" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="FileProcessor"/>
+  <member name="tokenListeners" default="" type="array" visibility="private" static="false" line="24">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\FileProcessors\array&lt;array&lt;\NunoMaduro\PhpInsights\Domain\Insights\SniffDecorator&gt;&gt;" namespace="NunoMaduro\PhpInsights\Domain\FileProcessors\array&lt;array&lt;\NunoMaduro\PhpInsights\Domain\Insights" name="SniffDecorator&gt;&gt;"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="fileFactory" visibility="private" static="false" line="26"/>
+  <member name="fixEnabled" visibility="private" static="false" line="28"/>
+  <constructor name="__construct" start="33" end="37" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="FileProcessor constructor."/>
+    </docblock>
+    <parameter name="fileFactory" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\FileFactory" namespace="NunoMaduro\PhpInsights\Domain" name="FileFactory"/>
+    </parameter>
+  </constructor>
+  <method name="support" start="39" end="42" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="insight" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+    </parameter>
+  </method>
+  <method name="addChecker" start="44" end="56" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="insight" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+    </parameter>
+  </method>
+  <method name="processFile" start="58" end="74" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="splFileInfo" byreference="false" type="object">
+      <type full="Symfony\Component\Finder\SplFileInfo" namespace="Symfony\Component\Finder" name="SplFileInfo"/>
+    </parameter>
+  </method>
+  <interface full="NunoMaduro\PhpInsights\Domain\Contracts\FileProcessor" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="FileProcessor">
+    <constant type="{unknown}" name="FILE_PROCESSOR_TAG" value="'phpinsights.file_processor'"/>
+    <method name="processFile" start="16" end="16" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="splFileInfo" byreference="false" type="object">
+        <type full="Symfony\Component\Finder\SplFileInfo" namespace="Symfony\Component\Finder" name="SplFileInfo"/>
+      </parameter>
+    </method>
+    <method name="support" start="21" end="21" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check if an Insight implementation could be add to current file processor."/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="insight" byreference="false" type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+      </parameter>
+    </method>
+    <method name="addChecker" start="23" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="insight" byreference="false" type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+      </parameter>
+    </method>
+  </interface>
+</class>

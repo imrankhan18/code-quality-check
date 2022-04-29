@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Package\Archiver\PharArchiver" namespace="Composer\Package\Archiver" name="PharArchiver" abstract="false" final="false" start="20" end="104">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Package/Archiver" file="PharArchiver.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Package/Archiver/PharArchiver.php" size="3183" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="acf4ad754e3740dcaaddee120f04d1ead3a72198" relative="ar/www/html/vendor/composer/composer/src/Composer/Package/Archiver/PharArchiver.php"/>
+  <docblock>
+    <description/>
+    <author value="Till Klampaeckel &lt;till@php.net&gt;"/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+    <author value="Matthieu Moquet &lt;matthieu@moquet.net&gt;"/>
+  </docblock>
+  <implements full="Composer\Package\Archiver\ArchiverInterface" namespace="Composer\Package\Archiver" name="ArchiverInterface"/>
+  <member name="formats" default="" type="array" visibility="protected" static="true" line="23">
+    <docblock>
+      <var description="int&gt;" type="object">
+        <type full="Composer\Package\Archiver\array&lt;string" namespace="Composer\Package\Archiver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="compressFormats" default="" type="array" visibility="protected" static="true" line="31">
+    <docblock>
+      <var description="int&gt;" type="object">
+        <type full="Composer\Package\Archiver\array&lt;string" namespace="Composer\Package\Archiver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="archive" start="39" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="sources" byreference="false" type="string"/>
+    <parameter name="target" byreference="false" type="string"/>
+    <parameter name="format" byreference="false" type="string"/>
+    <parameter name="excludes" byreference="false" type="array" default=""/>
+    <parameter name="ignoreFilters" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="Phar would otherwise load the file which we don't want" line="43"/>
+    </inline>
+  </method>
+  <method name="supports" start="100" end="103" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="format" byreference="false" type="string"/>
+    <parameter name="sourceType" byreference="false" nullable="true" type="string"/>
+  </method>
+  <interface full="Composer\Package\Archiver\ArchiverInterface" namespace="Composer\Package\Archiver" name="ArchiverInterface">
+    <method name="archive" start="33" end="33" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create an archive from the sources."/>
+        <param description="The sources directory" type="string" variable="$sources"/>
+        <param description="The target file" type="string" variable="$target"/>
+        <param description="The format used for archive" type="string" variable="$format"/>
+        <param description="A list of patterns for files to exclude" type="array" variable="$excludes" of="object">
+          <type full="Composer\Package\Archiver\string" namespace="Composer\Package\Archiver" name="string"/>
+        </param>
+        <param description="Whether to ignore filters when looking for files" type="object" variable="$ignoreFilters">
+          <type full="Composer\Package\Archiver\bool" namespace="Composer\Package\Archiver" name="bool"/>
+        </param>
+        <return description="The path to the written archive file" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="sources" byreference="false" type="string"/>
+      <parameter name="target" byreference="false" type="string"/>
+      <parameter name="format" byreference="false" type="string"/>
+      <parameter name="excludes" byreference="false" type="array" default=""/>
+      <parameter name="ignoreFilters" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="supports" start="43" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Format supported by the archiver."/>
+        <param description="The archive format" type="string" variable="$format"/>
+        <param description="The source type (git, svn, hg, etc.)" type="object" variable="$sourceType">
+          <type full="Composer\Package\Archiver\?string" namespace="Composer\Package\Archiver" name="?string"/>
+        </param>
+        <return description="true if the format is supported by the archiver" type="object">
+          <type full="Composer\Package\Archiver\bool" namespace="Composer\Package\Archiver" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="format" byreference="false" type="string"/>
+      <parameter name="sourceType" byreference="false" nullable="true" type="string"/>
+    </method>
+  </interface>
+</class>

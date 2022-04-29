@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Composer\Downloader\VcsCapableDownloaderInterface" namespace="Composer\Downloader" name="VcsCapableDownloaderInterface" abstract="false" final="false" start="22" end="32">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Downloader" file="VcsCapableDownloaderInterface.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Downloader/VcsCapableDownloaderInterface.php" size="836" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="f3df903a8428a9ff89194d88a3e7586f24e3b026" relative="ar/www/html/vendor/composer/composer/src/Composer/Downloader/VcsCapableDownloaderInterface.php"/>
+  <docblock>
+    <description compact="VCS Capable Downloader interface."/>
+    <author value="Steve Buzonas &lt;steve@fancyguy.com&gt;"/>
+  </docblock>
+  <method name="getVcsReference" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets the VCS Reference for the package at path"/>
+      <param description="package directory" type="object" variable="$package">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="package directory" type="string" variable="$path"/>
+      <return description="reference or null" type="object">
+        <type full="Composer\Downloader\string|null" namespace="Composer\Downloader" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <implementors>
+    <class full="Composer\Downloader\SvnDownloader" namespace="Composer\Downloader" name="SvnDownloader"/>
+    <class full="Composer\Downloader\PerforceDownloader" namespace="Composer\Downloader" name="PerforceDownloader"/>
+    <class full="Composer\Downloader\VcsDownloader" namespace="Composer\Downloader" name="VcsDownloader"/>
+    <class full="Composer\Downloader\HgDownloader" namespace="Composer\Downloader" name="HgDownloader"/>
+    <class full="Composer\Downloader\FossilDownloader" namespace="Composer\Downloader" name="FossilDownloader"/>
+    <class full="Composer\Downloader\GitDownloader" namespace="Composer\Downloader" name="GitDownloader"/>
+    <class full="Composer\Downloader\PathDownloader" namespace="Composer\Downloader" name="PathDownloader"/>
+  </implementors>
+</interface>

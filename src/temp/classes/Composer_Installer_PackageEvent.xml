@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Installer\PackageEvent" namespace="Composer\Installer" name="PackageEvent" abstract="false" final="false" start="26" end="130">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Installer" file="PackageEvent.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Installer/PackageEvent.php" size="2751" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="b2226e6efef33f040f60a730febcb5262cbe5817" relative="ar/www/html/vendor/composer/composer/src/Composer/Installer/PackageEvent.php"/>
+  <docblock>
+    <description compact="The Package Event."/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <extends full="Composer\EventDispatcher\Event" namespace="Composer\EventDispatcher" name="Event"/>
+  <member name="composer" visibility="private" static="false" line="31">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="io" visibility="private" static="false" line="36">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="devMode" visibility="private" static="false" line="41">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Installer\bool" namespace="Composer\Installer" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="localRepo" visibility="private" static="false" line="46">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="operations" visibility="private" static="false" line="51">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Installer\OperationInterface" namespace="Composer\Installer" name="OperationInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="operation" visibility="private" static="false" line="56">
+    <docblock>
+      <description/>
+      <var description="The operation instance which is being executed" type="object">
+        <type full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="69" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor."/>
+      <param type="string" variable="$eventName"/>
+      <param type="object" variable="$composer">
+        <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+      </param>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param type="object" variable="$devMode">
+        <type full="Composer\Installer\bool" namespace="Composer\Installer" name="bool"/>
+      </param>
+      <param type="object" variable="$localRepo">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </param>
+      <param type="array" variable="$operations" of="object">
+        <type full="Composer\Installer\OperationInterface" namespace="Composer\Installer" name="OperationInterface"/>
+      </param>
+      <param type="object" variable="$operation">
+        <type full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+      </param>
+    </docblock>
+    <parameter name="eventName" byreference="false" type="string"/>
+    <parameter name="composer" byreference="false" type="object">
+      <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+    </parameter>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="devMode" byreference="false" type="bool"/>
+    <parameter name="localRepo" byreference="false" type="object">
+      <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+    </parameter>
+    <parameter name="operations" byreference="false" type="array"/>
+    <parameter name="operation" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+    </parameter>
+  </constructor>
+  <method name="getComposer" start="84" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+    </return>
+  </method>
+  <method name="getIO" start="92" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </return>
+  </method>
+  <method name="isDevMode" start="100" end="103" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Installer\bool" namespace="Composer\Installer" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getLocalRepo" start="108" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+    </return>
+  </method>
+  <method name="getOperations" start="116" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Installer\OperationInterface" namespace="Composer\Installer" name="OperationInterface"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getOperation" start="126" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the package instance."/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+    </return>
+  </method>
+  <parent full="Composer\EventDispatcher\Event" namespace="Composer\EventDispatcher" name="Event">
+    <member name="name" visibility="protected" static="false" line="25">
+      <docblock>
+        <description/>
+        <var description="This event's name" type="string"/>
+      </docblock>
+    </member>
+    <member name="args" visibility="protected" static="false" line="30">
+      <docblock>
+        <description/>
+        <var description="Arguments passed by the user, these will be forwarded to CLI script handlers" type="array" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="flags" visibility="protected" static="false" line="35">
+      <docblock>
+        <description/>
+        <var description="Flags usable in PHP script handlers" type="array" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="49" end="54" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Constructor."/>
+        <param description="The event name" type="string" variable="$name"/>
+        <param description="Arguments passed by the user" type="array" variable="$args" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </param>
+        <param description="Optional flags to pass data not as argument" type="array" variable="$flags" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </param>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="args" byreference="false" type="array" default=""/>
+      <parameter name="flags" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="getName" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's name."/>
+        <return description="The event name" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getArguments" start="71" end="74" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's arguments."/>
+        <return description="The event arguments" type="array" of="object">
+          <type full="Composer\EventDispatcher\string" namespace="Composer\EventDispatcher" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getFlags" start="81" end="84" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the event's flags."/>
+        <return description="The event flags" type="array" of="object">
+          <type full="Composer\EventDispatcher\mixed" namespace="Composer\EventDispatcher" name="mixed"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="isPropagationStopped" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks if stopPropagation has been called"/>
+        <return description="Whether propagation has been stopped" type="object">
+          <type full="Composer\EventDispatcher\bool" namespace="Composer\EventDispatcher" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="stopPropagation" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Prevents the event from being passed to further listeners"/>
+        <return type="object">
+          <type full="Composer\EventDispatcher\void" namespace="Composer\EventDispatcher" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+    </method>
+  </parent>
+</class>

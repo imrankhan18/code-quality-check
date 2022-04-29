@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MongoDB\GridFS\Bucket</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#MongoDB_GridFS">MongoDB\GridFS</a>
+          </li>
+          <li class="separator">Bucket</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/mongodb/mongodb/src/GridFS/Bucket.php.xhtml#line65">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MongoDB\GridFS\</small>Bucket</h1>
+        <h4>Bucket provides a public API for interacting with the GridFS files and chunks collections.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Bucket
+            {<br/><ul class="none"><li>// members</li><li>private static string <a href="#members">$defaultBucketName</a> =
+                        'fs';
+                    </li><li>private static integer <a href="#members">$defaultChunkSizeBytes</a> =
+                        261120;
+                    </li><li>private static array <a href="#members">$defaultTypeMap</a> =
+                        ;
+                    </li><li>private static string <a href="#members">$streamWrapperProtocol</a> =
+                        'gridfs';
+                    </li><li>private <span title="MongoDB\GridFS\CollectionWrapper">CollectionWrapper</span> <a href="#members">$collectionWrapper</a>;
+                    </li><li>private  <a href="#members">$databaseName</a>;
+                    </li><li>private <span title="MongoDB\Driver\Manager">Manager</span> <a href="#members">$manager</a>;
+                    </li><li>private  <a href="#members">$bucketName</a>;
+                    </li><li>private  <a href="#members">$disableMD5</a>;
+                    </li><li>private  <a href="#members">$chunkSizeBytes</a>;
+                    </li><li>private <span title="MongoDB\Driver\ReadConcern">ReadConcern</span> <a href="#members">$readConcern</a>;
+                    </li><li>private <span title="MongoDB\Driver\ReadPreference">ReadPreference</span> <a href="#members">$readPreference</a>;
+                    </li><li>private  <a href="#members">$typeMap</a>;
+                    </li><li>private <span title="MongoDB\Driver\WriteConcern">WriteConcern</span> <a href="#members">$writeConcern</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/__construct.xhtml">__construct</a>()
+                    </li><li>public array <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/__debugInfo.xhtml">__debugInfo</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/delete.xhtml">delete</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/downloadToStream.xhtml">downloadToStream</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/downloadToStreamByName.xhtml">downloadToStreamByName</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/drop.xhtml">drop</a>()
+                    </li><li>public Cursor <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/find.xhtml">find</a>()
+                    </li><li>public array|object|null <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/findOne.xhtml">findOne</a>()
+                    </li><li>public string <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getBucketName.xhtml">getBucketName</a>()
+                    </li><li>public Collection <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getChunksCollection.xhtml">getChunksCollection</a>()
+                    </li><li>public integer <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getChunkSizeBytes.xhtml">getChunkSizeBytes</a>()
+                    </li><li>public string <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getDatabaseName.xhtml">getDatabaseName</a>()
+                    </li><li>public array|object <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getFileDocumentForStream.xhtml">getFileDocumentForStream</a>()
+                    </li><li>public mixed <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getFileIdForStream.xhtml">getFileIdForStream</a>()
+                    </li><li>public Collection <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getFilesCollection.xhtml">getFilesCollection</a>()
+                    </li><li>public ReadConcern <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getReadConcern.xhtml">getReadConcern</a>()
+                    </li><li>public ReadPreference <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getReadPreference.xhtml">getReadPreference</a>()
+                    </li><li>public array <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getTypeMap.xhtml">getTypeMap</a>()
+                    </li><li>public WriteConcern <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getWriteConcern.xhtml">getWriteConcern</a>()
+                    </li><li>public resource <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/openDownloadStream.xhtml">openDownloadStream</a>()
+                    </li><li>public resource <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/openDownloadStreamByName.xhtml">openDownloadStreamByName</a>()
+                    </li><li>public resource <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/openUploadStream.xhtml">openUploadStream</a>()
+                    </li><li>public void <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/rename.xhtml">rename</a>()
+                    </li><li>public mixed <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/uploadFromStream.xhtml">uploadFromStream</a>()
+                    </li><li>private string <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/createPathForFile.xhtml">createPathForFile</a>()
+                    </li><li>private string <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/createPathForUpload.xhtml">createPathForUpload</a>()
+                    </li><li>private string <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getFilesNamespace.xhtml">getFilesNamespace</a>()
+                    </li><li>private stdClass <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getRawFileDocumentForStream.xhtml">getRawFileDocumentForStream</a>()
+                    </li><li>private resource <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/openDownloadStreamByFile.xhtml">openDownloadStreamByFile</a>()
+                    </li><li>private void <a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/registerStreamWrapper.xhtml">registerStreamWrapper</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="bucketName"><strong>$bucketName</strong>
+                —
+                string</li>
+            <li id="chunkSizeBytes"><strong>$chunkSizeBytes</strong>
+                —
+                integer</li>
+            <li id="collectionWrapper"><strong>$collectionWrapper</strong>
+                —
+                <a title="MongoDB\GridFS\CollectionWrapper" href="../classes/MongoDB_GridFS_CollectionWrapper.xhtml">MongoDB\GridFS\CollectionWrapper</a></li>
+            <li id="databaseName"><strong>$databaseName</strong>
+                —
+                string</li>
+            <li id="defaultBucketName"><strong>$defaultBucketName</strong>
+                —
+                string</li>
+            <li id="defaultChunkSizeBytes"><strong>$defaultChunkSizeBytes</strong>
+                —
+                integer</li>
+            <li id="defaultTypeMap"><strong>$defaultTypeMap</strong>
+                —
+                array</li>
+            <li id="disableMD5"><strong>$disableMD5</strong>
+                —
+                boolean</li>
+            <li id="manager"><strong>$manager</strong>
+                —
+                <a title="MongoDB\Driver\Manager" href="../classes/MongoDB_Driver_Manager.xhtml">MongoDB\Driver\Manager</a></li>
+            <li id="readConcern"><strong>$readConcern</strong>
+                —
+                <a title="MongoDB\Driver\ReadConcern" href="../classes/MongoDB_Driver_ReadConcern.xhtml">MongoDB\Driver\ReadConcern</a></li>
+            <li id="readPreference"><strong>$readPreference</strong>
+                —
+                <a title="MongoDB\Driver\ReadPreference" href="../classes/MongoDB_Driver_ReadPreference.xhtml">MongoDB\Driver\ReadPreference</a></li>
+            <li id="streamWrapperProtocol"><strong>$streamWrapperProtocol</strong>
+                —
+                string</li>
+            <li id="typeMap"><strong>$typeMap</strong>
+                —
+                array</li>
+            <li id="writeConcern"><strong>$writeConcern</strong>
+                —
+                <a title="MongoDB\Driver\WriteConcern" href="../classes/MongoDB_Driver_WriteConcern.xhtml">MongoDB\Driver\WriteConcern</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="createPathForFile"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/createPathForFile.xhtml">createPathForFile()</a>
+                — Creates a path for an existing GridFS file.</li>
+            <li id="createPathForUpload"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/createPathForUpload.xhtml">createPathForUpload()</a>
+                — Creates a path for a new GridFS file, which does not yet have an ID.</li>
+            <li id="getFilesNamespace"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getFilesNamespace.xhtml">getFilesNamespace()</a>
+                — Returns the names of the files collection.</li>
+            <li id="getRawFileDocumentForStream"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getRawFileDocumentForStream.xhtml">getRawFileDocumentForStream()</a>
+                — Gets the file document of the GridFS file associated with a stream.</li>
+            <li id="openDownloadStreamByFile"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/openDownloadStreamByFile.xhtml">openDownloadStreamByFile()</a>
+                — Opens a readable stream for the GridFS file.</li>
+            <li id="registerStreamWrapper"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/registerStreamWrapper.xhtml">registerStreamWrapper()</a>
+                — Registers the GridFS stream wrapper if it is not already registered.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/__construct.xhtml">__construct()</a>
+                — Constructs a GridFS bucket.</li>
+            <li id="__debugInfo"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/__debugInfo.xhtml">__debugInfo()</a>
+                — Return internal properties for debugging purposes.</li>
+            <li id="delete"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/delete.xhtml">delete()</a>
+                — Delete a file from the GridFS bucket.</li>
+            <li id="downloadToStream"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/downloadToStream.xhtml">downloadToStream()</a>
+                — Writes the contents of a GridFS file to a writable stream.</li>
+            <li id="downloadToStreamByName"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/downloadToStreamByName.xhtml">downloadToStreamByName()</a>
+                — Writes the contents of a GridFS file, which is selected by name and revision, to a writable stream.</li>
+            <li id="drop"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/drop.xhtml">drop()</a>
+                — Drops the files and chunks collections associated with this GridFS bucket.</li>
+            <li id="find"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/find.xhtml">find()</a>
+                — Finds documents from the GridFS bucket's files collection matching the query.</li>
+            <li id="findOne"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/findOne.xhtml">findOne()</a>
+                — Finds a single document from the GridFS bucket's files collection matching the query.</li>
+            <li id="getBucketName"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getBucketName.xhtml">getBucketName()</a>
+                — Return the bucket name.</li>
+            <li id="getChunkSizeBytes"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getChunkSizeBytes.xhtml">getChunkSizeBytes()</a>
+                — Return the chunk size in bytes.</li>
+            <li id="getChunksCollection"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getChunksCollection.xhtml">getChunksCollection()</a>
+                — Return the chunks collection.</li>
+            <li id="getDatabaseName"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getDatabaseName.xhtml">getDatabaseName()</a>
+                — Return the database name.</li>
+            <li id="getFileDocumentForStream"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getFileDocumentForStream.xhtml">getFileDocumentForStream()</a>
+                — Gets the file document of the GridFS file associated with a stream.</li>
+            <li id="getFileIdForStream"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getFileIdForStream.xhtml">getFileIdForStream()</a>
+                — Gets the file document's ID of the GridFS file associated with a stream.</li>
+            <li id="getFilesCollection"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getFilesCollection.xhtml">getFilesCollection()</a>
+                — Return the files collection.</li>
+            <li id="getReadConcern"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getReadConcern.xhtml">getReadConcern()</a>
+                — Return the read concern for this GridFS bucket.</li>
+            <li id="getReadPreference"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getReadPreference.xhtml">getReadPreference()</a>
+                — Return the read preference for this GridFS bucket.</li>
+            <li id="getTypeMap"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getTypeMap.xhtml">getTypeMap()</a>
+                — Return the type map for this GridFS bucket.</li>
+            <li id="getWriteConcern"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/getWriteConcern.xhtml">getWriteConcern()</a>
+                — Return the write concern for this GridFS bucket.</li>
+            <li id="openDownloadStream"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/openDownloadStream.xhtml">openDownloadStream()</a>
+                — Opens a readable stream for reading a GridFS file.</li>
+            <li id="openDownloadStreamByName"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/openDownloadStreamByName.xhtml">openDownloadStreamByName()</a>
+                — Opens a readable stream stream to read a GridFS file, which is selected by name and revision.</li>
+            <li id="openUploadStream"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/openUploadStream.xhtml">openUploadStream()</a>
+                — Opens a writable stream for writing a GridFS file.</li>
+            <li id="rename"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/rename.xhtml">rename()</a>
+                — Renames the GridFS file with the specified ID.</li>
+            <li id="uploadFromStream"><a title="MongoDB\GridFS\Bucket" href="../classes/MongoDB_GridFS_Bucket/uploadFromStream.xhtml">uploadFromStream()</a>
+                — Writes the contents of a readable stream to a GridFS file.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

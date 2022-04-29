@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MongoDB\Tests\UnifiedSpecTests\Context</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#MongoDB_Tests_UnifiedSpecTests">MongoDB\Tests\UnifiedSpecTests</a>
+          </li>
+          <li class="separator">Context</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#tasks">Tasks</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/mongodb/mongodb/tests/UnifiedSpecTests/Context.php.xhtml#line47">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MongoDB\Tests\UnifiedSpecTests\</small>Context</h1>
+        <h4>Execution context for spec tests.</h4>
+        <p>This object tracks state that would be difficult to store on the test itself<br/>due to the design of PHPUnit's data providers and setUp/tearDown methods.</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Context
+            {<br/><ul class="none"><li>// members</li><li>private  <a href="#members">$activeClient</a>;
+                    </li><li>private <span title="MongoDB\Tests\UnifiedSpecTests\EntityMap">EntityMap</span> <a href="#members">$entityMap</a>;
+                    </li><li>private array <a href="#members">$eventCollectors</a> =
+                        ;
+                    </li><li>private array <a href="#members">$eventObserversByClient</a> =
+                        ;
+                    </li><li>private <span title="MongoDB\Client">Client</span> <a href="#members">$internalClient</a>;
+                    </li><li>private boolean <a href="#members">$inLoop</a> =
+                        false;
+                    </li><li>private  <a href="#members">$uri</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createEntities.xhtml">createEntities</a>()
+                    </li><li>public <span title="EntityMap">EntityMap</span> <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/getEntityMap.xhtml">getEntityMap</a>()
+                    </li><li>public <span title="Client">Client</span> <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/getInternalClient.xhtml">getInternalClient</a>()
+                    </li><li>public bool <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/isActiveClient.xhtml">isActiveClient</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/setActiveClient.xhtml">setActiveClient</a>()
+                    </li><li>public bool <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/isInLoop.xhtml">isInLoop</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/setInLoop.xhtml">setInLoop</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/assertExpectedEventsForClients.xhtml">assertExpectedEventsForClients</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/startEventObservers.xhtml">startEventObservers</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/stopEventObservers.xhtml">stopEventObservers</a>()
+                    </li><li>public <span title="EventObserver">EventObserver</span> <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/getEventObserverForClient.xhtml">getEventObserverForClient</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/startEventCollectors.xhtml">startEventCollectors</a>()
+                    </li><li>public void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/stopEventCollectors.xhtml">stopEventCollectors</a>()
+                    </li><li>private array <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/convertReadPreferenceTags.xhtml">convertReadPreferenceTags</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createClient.xhtml">createClient</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createEntityCollector.xhtml">createEntityCollector</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createCollection.xhtml">createCollection</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createDatabase.xhtml">createDatabase</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createSession.xhtml">createSession</a>()
+                    </li><li>private void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createBucket.xhtml">createBucket</a>()
+                    </li><li>private static array <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/prepareCollectionOrDatabaseOptions.xhtml">prepareCollectionOrDatabaseOptions</a>()
+                    </li><li>private static array <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/prepareBucketOptions.xhtml">prepareBucketOptions</a>()
+                    </li><li>private static array <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/prepareSessionOptions.xhtml">prepareSessionOptions</a>()
+                    </li><li>private static array <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/prepareDefaultTransactionOptions.xhtml">prepareDefaultTransactionOptions</a>()
+                    </li><li>private static string <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/removeMultipleMongoses.xhtml">removeMultipleMongoses</a>()
+                    </li><li>private static void <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/requireMultipleMongoses.xhtml">requireMultipleMongoses</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="tasks">Tasks</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th style="width:3em;">Line</th>
+              <th>Task</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="nummeric">297</td>
+            <td>Remove this once PHPC-1645 is implemented. Each client needs</td>
+          </tr>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="activeClient"><strong>$activeClient</strong>
+                —
+                string</li>
+            <li id="entityMap"><strong>$entityMap</strong>
+                —
+                <a title="MongoDB\Tests\UnifiedSpecTests\EntityMap" href="../classes/MongoDB_Tests_UnifiedSpecTests_EntityMap.xhtml">MongoDB\Tests\UnifiedSpecTests\EntityMap</a></li>
+            <li id="eventCollectors"><strong>$eventCollectors</strong>
+                —
+                array</li>
+            <li id="eventObserversByClient"><strong>$eventObserversByClient</strong>
+                —
+                array</li>
+            <li id="inLoop"><strong>$inLoop</strong>
+                —
+                boolean</li>
+            <li id="internalClient"><strong>$internalClient</strong>
+                —
+                <a title="MongoDB\Client" href="../classes/MongoDB_Client.xhtml">MongoDB\Client</a></li>
+            <li id="uri"><strong>$uri</strong>
+                —
+                string</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="convertReadPreferenceTags">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/convertReadPreferenceTags.xhtml">convertReadPreferenceTags()</a>
+            </li>
+            <li id="createBucket">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createBucket.xhtml">createBucket()</a>
+            </li>
+            <li id="createClient">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createClient.xhtml">createClient()</a>
+            </li>
+            <li id="createCollection">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createCollection.xhtml">createCollection()</a>
+            </li>
+            <li id="createDatabase">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createDatabase.xhtml">createDatabase()</a>
+            </li>
+            <li id="createEntityCollector">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createEntityCollector.xhtml">createEntityCollector()</a>
+            </li>
+            <li id="createSession">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createSession.xhtml">createSession()</a>
+            </li>
+            <li id="prepareBucketOptions">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/prepareBucketOptions.xhtml">prepareBucketOptions()</a>
+            </li>
+            <li id="prepareCollectionOrDatabaseOptions">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/prepareCollectionOrDatabaseOptions.xhtml">prepareCollectionOrDatabaseOptions()</a>
+            </li>
+            <li id="prepareDefaultTransactionOptions">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/prepareDefaultTransactionOptions.xhtml">prepareDefaultTransactionOptions()</a>
+            </li>
+            <li id="prepareSessionOptions">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/prepareSessionOptions.xhtml">prepareSessionOptions()</a>
+            </li>
+            <li id="removeMultipleMongoses"><a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/removeMultipleMongoses.xhtml">removeMultipleMongoses()</a>
+                — Removes mongos hosts beyond the first if the URI refers to a sharded cluster. Otherwise, the URI is returned as-is.</li>
+            <li id="requireMultipleMongoses"><a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/requireMultipleMongoses.xhtml">requireMultipleMongoses()</a>
+                — Requires multiple mongos hosts if the URI refers to a sharded cluster.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="assertExpectedEventsForClients">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/assertExpectedEventsForClients.xhtml">assertExpectedEventsForClients()</a>
+            </li>
+            <li id="createEntities"><a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/createEntities.xhtml">createEntities()</a>
+                — Create entities for "createEntities".</li>
+            <li id="getEntityMap">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/getEntityMap.xhtml">getEntityMap()</a>
+            </li>
+            <li id="getEventObserverForClient">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/getEventObserverForClient.xhtml">getEventObserverForClient()</a>
+            </li>
+            <li id="getInternalClient">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/getInternalClient.xhtml">getInternalClient()</a>
+            </li>
+            <li id="isActiveClient">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/isActiveClient.xhtml">isActiveClient()</a>
+            </li>
+            <li id="isInLoop">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/isInLoop.xhtml">isInLoop()</a>
+            </li>
+            <li id="setActiveClient">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/setActiveClient.xhtml">setActiveClient()</a>
+            </li>
+            <li id="setInLoop">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/setInLoop.xhtml">setInLoop()</a>
+            </li>
+            <li id="startEventCollectors">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/startEventCollectors.xhtml">startEventCollectors()</a>
+            </li>
+            <li id="startEventObservers">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/startEventObservers.xhtml">startEventObservers()</a>
+            </li>
+            <li id="stopEventCollectors">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/stopEventCollectors.xhtml">stopEventCollectors()</a>
+            </li>
+            <li id="stopEventObservers">
+              <a title="MongoDB\Tests\UnifiedSpecTests\Context" href="../classes/MongoDB_Tests_UnifiedSpecTests_Context/stopEventObservers.xhtml">stopEventObservers()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

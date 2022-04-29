@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#SlevomatCodingStandard_Sniffs_ControlStructures">SlevomatCodingStandard\Sniffs\ControlStructures</a>
+          </li>
+          <li class="separator">BlockControlStructureSpacingSniff</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/ControlStructures/BlockControlStructureSpacingSniff.php.xhtml#line13">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>SlevomatCodingStandard\Sniffs\ControlStructures\</small>BlockControlStructureSpacingSniff</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class BlockControlStructureSpacingSniff
+                extends <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing.xhtml">AbstractControlStructureSpacing</a>
+            {<br/><ul class="none"><li>// Inherited constants from <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing.xhtml">AbstractControlStructureSpacing</a></li><li>const <a href="#CODE_INCORRECT_LINES_COUNT_BEFORE_CONTROL_STRUCTURE">CODE_INCORRECT_LINES_COUNT_BEFORE_CONTROL_STRUCTURE</a> = 'IncorrectLinesCountBeforeControlStructure';</li><li>const <a href="#CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTROL_STRUCTURE">CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTROL_STRUCTURE</a> = 'IncorrectLinesCountBeforeFirstControlStructure';</li><li>const <a href="#CODE_INCORRECT_LINES_COUNT_AFTER_CONTROL_STRUCTURE">CODE_INCORRECT_LINES_COUNT_AFTER_CONTROL_STRUCTURE</a> = 'IncorrectLinesCountAfterControlStructure';</li><li>const <a href="#CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTROL_STRUCTURE">CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTROL_STRUCTURE</a> = 'IncorrectLinesCountAfterLastControlStructure';</li><li>const <a href="#KEYWORD_IF">KEYWORD_IF</a> = 'if';</li><li>const <a href="#KEYWORD_DO">KEYWORD_DO</a> = 'do';</li><li>const <a href="#KEYWORD_WHILE">KEYWORD_WHILE</a> = 'while';</li><li>const <a href="#KEYWORD_FOR">KEYWORD_FOR</a> = 'for';</li><li>const <a href="#KEYWORD_FOREACH">KEYWORD_FOREACH</a> = 'foreach';</li><li>const <a href="#KEYWORD_SWITCH">KEYWORD_SWITCH</a> = 'switch';</li><li>const <a href="#KEYWORD_CASE">KEYWORD_CASE</a> = 'case';</li><li>const <a href="#KEYWORD_DEFAULT">KEYWORD_DEFAULT</a> = 'default';</li><li>const <a href="#KEYWORD_TRY">KEYWORD_TRY</a> = 'try';</li><li>const <a href="#KEYWORD_PARENT">KEYWORD_PARENT</a> = 'parent';</li><li>const <a href="#KEYWORD_GOTO">KEYWORD_GOTO</a> = 'goto';</li><li>const <a href="#KEYWORD_BREAK">KEYWORD_BREAK</a> = 'break';</li><li>const <a href="#KEYWORD_CONTINUE">KEYWORD_CONTINUE</a> = 'continue';</li><li>const <a href="#KEYWORD_RETURN">KEYWORD_RETURN</a> = 'return';</li><li>const <a href="#KEYWORD_THROW">KEYWORD_THROW</a> = 'throw';</li><li>const <a href="#KEYWORD_YIELD">KEYWORD_YIELD</a> = 'yield';</li><li>const <a href="#KEYWORD_YIELD_FROM">KEYWORD_YIELD_FROM</a> = 'yield_from';</li></ul><ul class="none"><li>// members</li><li>public integer <a href="#members">$linesCountBefore</a> =
+                        1;
+                    </li><li>public integer <a href="#members">$linesCountBeforeFirst</a> =
+                        0;
+                    </li><li>public integer <a href="#members">$linesCountAfter</a> =
+                        1;
+                    </li><li>public integer <a href="#members">$linesCountAfterLast</a> =
+                        0;
+                    </li><li>public array <a href="#members">$controlStructures</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/process.xhtml">process</a>()
+                    </li><li>protected array <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getSupportedKeywords.xhtml">getSupportedKeywords</a>()
+                    </li><li>protected array <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getKeywordsToCheck.xhtml">getKeywordsToCheck</a>()
+                    </li><li>protected int <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getLinesCountBefore.xhtml">getLinesCountBefore</a>()
+                    </li><li>protected int <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getLinesCountBeforeFirst.xhtml">getLinesCountBeforeFirst</a>()
+                    </li><li>protected int <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getLinesCountAfter.xhtml">getLinesCountAfter</a>()
+                    </li><li>protected int <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getLinesCountAfterLast.xhtml">getLinesCountAfterLast</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/isWhilePartOfDo.xhtml">isWhilePartOfDo</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing">AbstractControlStructureSpacing</span></li><li>protected abstract array <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getSupportedKeywords.xhtml">getSupportedKeywords</a>()
+                        </li><li>protected abstract array <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getKeywordsToCheck.xhtml">getKeywordsToCheck</a>()
+                        </li><li>protected abstract void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getLinesCountBefore.xhtml">getLinesCountBefore</a>()
+                        </li><li>protected abstract void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getLinesCountBeforeFirst.xhtml">getLinesCountBeforeFirst</a>()
+                        </li><li>protected abstract void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getLinesCountAfter.xhtml">getLinesCountAfter</a>()
+                        </li><li>protected abstract void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getLinesCountAfterLast.xhtml">getLinesCountAfterLast</a>()
+                        </li><li>public array <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/register.xhtml">register</a>()
+                        </li><li>public void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/process.xhtml">process</a>()
+                        </li><li>protected void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/checkLinesBefore.xhtml">checkLinesBefore</a>()
+                        </li><li>protected void <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/checkLinesAfter.xhtml">checkLinesAfter</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing.xhtml">SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_BEFORE_CONTROL_STRUCTURE">CODE_INCORRECT_LINES_COUNT_BEFORE_CONTROL_STRUCTURE</td>
+              <td>'IncorrectLinesCountBeforeControlStructure'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTROL_STRUCTURE">CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTROL_STRUCTURE</td>
+              <td>'IncorrectLinesCountBeforeFirstControlStructure'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_AFTER_CONTROL_STRUCTURE">CODE_INCORRECT_LINES_COUNT_AFTER_CONTROL_STRUCTURE</td>
+              <td>'IncorrectLinesCountAfterControlStructure'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTROL_STRUCTURE">CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTROL_STRUCTURE</td>
+              <td>'IncorrectLinesCountAfterLastControlStructure'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_IF">KEYWORD_IF</td>
+              <td>'if'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_DO">KEYWORD_DO</td>
+              <td>'do'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_WHILE">KEYWORD_WHILE</td>
+              <td>'while'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_FOR">KEYWORD_FOR</td>
+              <td>'for'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_FOREACH">KEYWORD_FOREACH</td>
+              <td>'foreach'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_SWITCH">KEYWORD_SWITCH</td>
+              <td>'switch'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_CASE">KEYWORD_CASE</td>
+              <td>'case'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_DEFAULT">KEYWORD_DEFAULT</td>
+              <td>'default'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_TRY">KEYWORD_TRY</td>
+              <td>'try'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_PARENT">KEYWORD_PARENT</td>
+              <td>'parent'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_GOTO">KEYWORD_GOTO</td>
+              <td>'goto'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_BREAK">KEYWORD_BREAK</td>
+              <td>'break'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_CONTINUE">KEYWORD_CONTINUE</td>
+              <td>'continue'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_RETURN">KEYWORD_RETURN</td>
+              <td>'return'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_THROW">KEYWORD_THROW</td>
+              <td>'throw'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_YIELD">KEYWORD_YIELD</td>
+              <td>'yield'</td>
+            </tr>
+            <tr>
+              <td id="KEYWORD_YIELD_FROM">KEYWORD_YIELD_FROM</td>
+              <td>'yield_from'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="controlStructures"><strong>$controlStructures</strong>
+                —
+                array</li>
+            <li id="linesCountAfter"><strong>$linesCountAfter</strong>
+                —
+                int</li>
+            <li id="linesCountAfterLast"><strong>$linesCountAfterLast</strong>
+                —
+                int</li>
+            <li id="linesCountBefore"><strong>$linesCountBefore</strong>
+                —
+                int</li>
+            <li id="linesCountBeforeFirst"><strong>$linesCountBeforeFirst</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="isWhilePartOfDo">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/isWhilePartOfDo.xhtml">isWhilePartOfDo()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="getKeywordsToCheck">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getKeywordsToCheck.xhtml">getKeywordsToCheck()</a>
+            </li>
+            <li id="getLinesCountAfter">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getLinesCountAfter.xhtml">getLinesCountAfter()</a>
+            </li>
+            <li id="getLinesCountAfterLast">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getLinesCountAfterLast.xhtml">getLinesCountAfterLast()</a>
+            </li>
+            <li id="getLinesCountBefore">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getLinesCountBefore.xhtml">getLinesCountBefore()</a>
+            </li>
+            <li id="getLinesCountBeforeFirst">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getLinesCountBeforeFirst.xhtml">getLinesCountBeforeFirst()</a>
+            </li>
+            <li id="getSupportedKeywords">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/getSupportedKeywords.xhtml">getSupportedKeywords()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="process">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\BlockControlStructureSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_BlockControlStructureSpacingSniff/process.xhtml">process()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing.xhtml">SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="checkLinesAfter">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/checkLinesAfter.xhtml">checkLinesAfter()</a>
+            </li>
+            <li id="checkLinesBefore">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/checkLinesBefore.xhtml">checkLinesBefore()</a>
+            </li>
+            <li id="getKeywordsToCheck">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getKeywordsToCheck.xhtml">getKeywordsToCheck()</a>
+            </li>
+            <li id="getLinesCountAfter">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getLinesCountAfter.xhtml">getLinesCountAfter()</a>
+            </li>
+            <li id="getLinesCountAfterLast">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getLinesCountAfterLast.xhtml">getLinesCountAfterLast()</a>
+            </li>
+            <li id="getLinesCountBefore">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getLinesCountBefore.xhtml">getLinesCountBefore()</a>
+            </li>
+            <li id="getLinesCountBeforeFirst">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getLinesCountBeforeFirst.xhtml">getLinesCountBeforeFirst()</a>
+            </li>
+            <li id="getSupportedKeywords">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/getSupportedKeywords.xhtml">getSupportedKeywords()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="process">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/process.xhtml">process()</a>
+            </li>
+            <li id="register">
+              <a title="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" href="../classes/SlevomatCodingStandard_Sniffs_ControlStructures_AbstractControlStructureSpacing/register.xhtml">register()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

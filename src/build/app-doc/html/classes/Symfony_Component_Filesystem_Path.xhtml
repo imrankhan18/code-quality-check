@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\Filesystem\Path</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Symfony_Component_Filesystem">Symfony\Component\Filesystem</a>
+          </li>
+          <li class="separator">Path</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/symfony/filesystem/Path.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Symfony\Component\Filesystem\</small>Path</h1>
+        <h4>Contains utility methods for handling path strings.</h4>
+        <p>The methods in this class are able to deal with both UNIX and Windows paths<br/>with both forward and backward slashes. All methods return normalized parts<br/>containing only forward slashes and no excess "." and ".." segments.</p>
+        <ul>
+          <li>Author: Bernhard Schussek &lt;bschussek@gmail.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Path
+            {<br/><ul class="none"><li>// constants</li><li>const CLEANUP_THRESHOLD = 1250;</li><li>const CLEANUP_SIZE = 1000;</li></ul><ul class="none"><li>// members</li><li>private static <span title="Symfony\Component\Filesystem\array&lt;string">array&lt;string</span> <a href="#members">$buffer</a> =
+                        ;
+                    </li><li>private static integer <a href="#members">$bufferSize</a> =
+                        0;
+                    </li></ul><ul class="none"><li>// methods</li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/canonicalize.xhtml">canonicalize</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/normalize.xhtml">normalize</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getDirectory.xhtml">getDirectory</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getHomeDirectory.xhtml">getHomeDirectory</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getRoot.xhtml">getRoot</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getFilenameWithoutExtension.xhtml">getFilenameWithoutExtension</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getExtension.xhtml">getExtension</a>()
+                    </li><li>public static bool <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/hasExtension.xhtml">hasExtension</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/changeExtension.xhtml">changeExtension</a>()
+                    </li><li>public static bool <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/isAbsolute.xhtml">isAbsolute</a>()
+                    </li><li>public static bool <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/isRelative.xhtml">isRelative</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/makeAbsolute.xhtml">makeAbsolute</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/makeRelative.xhtml">makeRelative</a>()
+                    </li><li>public static bool <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/isLocal.xhtml">isLocal</a>()
+                    </li><li>public static ?string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getLongestCommonBasePath.xhtml">getLongestCommonBasePath</a>()
+                    </li><li>public static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/join.xhtml">join</a>()
+                    </li><li>public static bool <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/isBasePath.xhtml">isBasePath</a>()
+                    </li><li>private static array <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/findCanonicalParts.xhtml">findCanonicalParts</a>()
+                    </li><li>private static array <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/split.xhtml">split</a>()
+                    </li><li>private static string <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/toLower.xhtml">toLower</a>()
+                    </li><li>private void <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/__construct.xhtml">__construct</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CLEANUP_THRESHOLD">CLEANUP_THRESHOLD</td>
+              <td>1250</td>
+            </tr>
+            <tr>
+              <td id="CLEANUP_SIZE">CLEANUP_SIZE</td>
+              <td>1000</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="buffer"><strong>$buffer</strong>
+                —
+                <a title="Symfony\Component\Filesystem\array&lt;string" href="../classes/Symfony_Component_Filesystem_array&lt;string.xhtml">Symfony\Component\Filesystem\array&lt;string</a><br/><span class="indent">Buffers input/output of {@link canonicalize()}.</span></li>
+            <li id="bufferSize"><strong>$bufferSize</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="findCanonicalParts">
+              <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/findCanonicalParts.xhtml">findCanonicalParts()</a>
+            </li>
+            <li id="split"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/split.xhtml">split()</a>
+                — Splits a canonical path into its root directory and the remainder.</li>
+            <li id="toLower">
+              <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/toLower.xhtml">toLower()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="canonicalize"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/canonicalize.xhtml">canonicalize()</a>
+                — Canonicalizes the given path.</li>
+            <li id="changeExtension"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/changeExtension.xhtml">changeExtension()</a>
+                — Changes the extension of a path string.</li>
+            <li id="getDirectory"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getDirectory.xhtml">getDirectory()</a>
+                — Returns the directory part of the path.</li>
+            <li id="getExtension"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getExtension.xhtml">getExtension()</a>
+                — Returns the extension from a file path (without leading dot).</li>
+            <li id="getFilenameWithoutExtension"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getFilenameWithoutExtension.xhtml">getFilenameWithoutExtension()</a>
+                — Returns the file name without the extension from a file path.</li>
+            <li id="getHomeDirectory"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getHomeDirectory.xhtml">getHomeDirectory()</a>
+                — Returns canonical path of the user's home directory.</li>
+            <li id="getLongestCommonBasePath"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getLongestCommonBasePath.xhtml">getLongestCommonBasePath()</a>
+                — Returns the longest common base path in canonical form of a set of paths or `null` if the paths are on different Windows partitions.</li>
+            <li id="getRoot"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/getRoot.xhtml">getRoot()</a>
+                — Returns the root directory of a path.</li>
+            <li id="hasExtension"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/hasExtension.xhtml">hasExtension()</a>
+                — Returns whether the path has an (or the specified) extension.</li>
+            <li id="isAbsolute">
+              <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/isAbsolute.xhtml">isAbsolute()</a>
+            </li>
+            <li id="isBasePath"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/isBasePath.xhtml">isBasePath()</a>
+                — Returns whether a path is a base path of another path.</li>
+            <li id="isLocal"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/isLocal.xhtml">isLocal()</a>
+                — Returns whether the given path is on the local filesystem.</li>
+            <li id="isRelative">
+              <a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/isRelative.xhtml">isRelative()</a>
+            </li>
+            <li id="join"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/join.xhtml">join()</a>
+                — Joins two or more path strings into a canonical path.</li>
+            <li id="makeAbsolute"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/makeAbsolute.xhtml">makeAbsolute()</a>
+                — Turns a relative path into an absolute path in canonical form.</li>
+            <li id="makeRelative"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/makeRelative.xhtml">makeRelative()</a>
+                — Turns a path into a relative path.</li>
+            <li id="normalize"><a title="Symfony\Component\Filesystem\Path" href="../classes/Symfony_Component_Filesystem_Path/normalize.xhtml">normalize()</a>
+                — Normalizes the given path.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

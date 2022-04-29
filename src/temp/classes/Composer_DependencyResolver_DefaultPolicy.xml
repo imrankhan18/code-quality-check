@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\DefaultPolicy" namespace="Composer\DependencyResolver" name="DefaultPolicy" abstract="false" final="false" start="24" end="268">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="DefaultPolicy.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/DefaultPolicy.php" size="8978" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="1431a1441a64374f54af537ad869743bed6a47cb" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/DefaultPolicy.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <implements full="Composer\DependencyResolver\PolicyInterface" namespace="Composer\DependencyResolver" name="PolicyInterface"/>
+  <member name="preferStable" visibility="private" static="false" line="27">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="preferLowest" visibility="private" static="false" line="29">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="preferredPackageResultCachePerPool" visibility="private" static="false" line="31">
+    <docblock>
+      <var description="array&lt;string, array&lt;int, int&gt;&gt;&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="sortingCachePerPool" visibility="private" static="false" line="33">
+    <docblock>
+      <var description="array&lt;string, int&gt;&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="39" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$preferStable">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param type="object" variable="$preferLowest">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="preferStable" byreference="false" type="boolean" default="false"/>
+    <parameter name="preferLowest" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="versionCompare" start="51" end="61" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="One of Constraint::STR_OP_" type="string" variable="$operator"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+      <phpstan value="-param Constraint::STR_OP_* $operator"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="a" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="b" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="operator" byreference="false" type="string"/>
+  </method>
+  <method name="selectPreferredPackages" start="68" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$literals" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </param>
+      <param type="string" variable="$requiredPackage"/>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="literals" byreference="false" type="array"/>
+    <parameter name="requiredPackage" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="now sort the result across all packages to respect replaces across packages" line="99"/>
+    </inline>
+  </method>
+  <method name="groupLiteralsByName" start="117" end="130" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="array" variable="$literals" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </param>
+      <return description="int[]&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="literals" byreference="false" type="array"/>
+  </method>
+  <method name="compareByPriority" start="138" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <protected/>
+      <param type="object" variable="$requiredPackage">
+        <type full="Composer\DependencyResolver\null|string" namespace="Composer\DependencyResolver" name="null|string"/>
+      </param>
+      <param type="object" variable="$ignoreReplace">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="a" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="b" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="requiredPackage" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="ignoreReplace" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="prefer aliases to the original package" line="140"/>
+      <comment value="priority equal, sort by package id to make reproducible" line="175"/>
+    </inline>
+  </method>
+  <method name="replaces" start="191" end="203" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Checks if source replaces a package with the same name as target.">Replace constraints are ignored. This method should only be used for
+prioritisation, not for actual constraint verification.</description>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="source" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="target" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="pruneToBestVersion" start="209" end="230" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="array" variable="$literals" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="literals" byreference="false" type="array"/>
+  </method>
+  <method name="pruneRemoteAliases" start="240" end="267" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Assumes that locally aliased (in root package requires) packages take priority over branch-alias ones">If no package is a local alias, nothing happens</description>
+      <param type="array" variable="$literals" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="literals" byreference="false" type="array"/>
+  </method>
+  <interface full="Composer\DependencyResolver\PolicyInterface" namespace="Composer\DependencyResolver" name="PolicyInterface">
+    <method name="versionCompare" start="29" end="29" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$operator"/>
+        <return type="object">
+          <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+        </return>
+        <phpstan value="-param Constraint::STR_OP_* $operator"/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="a" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="b" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="operator" byreference="false" type="string"/>
+    </method>
+    <method name="selectPreferredPackages" start="36" end="36" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="array" variable="$literals" of="object">
+          <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+        </param>
+        <param type="object" variable="$requiredPackage">
+          <type full="Composer\DependencyResolver\null|string" namespace="Composer\DependencyResolver" name="null|string"/>
+        </param>
+        <return type="array" of="object">
+          <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+      <parameter name="pool" byreference="false" type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </parameter>
+      <parameter name="literals" byreference="false" type="array"/>
+      <parameter name="requiredPackage" byreference="false" nullable="true" type="string" default="NULL"/>
+    </method>
+  </interface>
+</class>

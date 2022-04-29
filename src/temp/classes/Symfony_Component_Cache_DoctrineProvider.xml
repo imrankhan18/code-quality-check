@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\DoctrineProvider" namespace="Symfony\Component\Cache" name="DoctrineProvider" abstract="false" final="false" start="27" end="124">
+  <file path="//var/www/html/vendor/symfony/cache" file="DoctrineProvider.php" realpath="/var/www/html/vendor/symfony/cache/DoctrineProvider.php" size="2526" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="ce8167fcf499bfb3512241e1a0b42c4dd017c5f4" relative="ar/www/html/vendor/symfony/cache/DoctrineProvider.php"/>
+  <docblock>
+    <description/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+    <deprecated value="Use Doctrine\Common\Cache\Psr6\DoctrineProvider instead"/>
+  </docblock>
+  <extends full="Doctrine\Common\Cache\CacheProvider" namespace="Doctrine\Common\Cache" name="CacheProvider" unresolved="true"/>
+  <implements full="Symfony\Component\Cache\PruneableInterface" namespace="Symfony\Component\Cache" name="PruneableInterface"/>
+  <implements full="Symfony\Component\Cache\ResettableInterface" namespace="Symfony\Component\Cache" name="ResettableInterface"/>
+  <member name="pool" visibility="private" static="false" line="29"/>
+  <constructor name="__construct" start="31" end="36" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Psr\Cache\CacheItemPoolInterface" namespace="Psr\Cache" name="CacheItemPoolInterface"/>
+    </parameter>
+  </constructor>
+  <method name="prune" start="41" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+  </method>
+  <method name="reset" start="49" end="55" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+  </method>
+  <method name="doFetch" start="62" end="67" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="doContains" start="74" end="77" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\bool" namespace="Symfony\Component\Cache" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="doSave" start="84" end="93" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\bool" namespace="Symfony\Component\Cache" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="lifeTime" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="doDelete" start="100" end="103" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\bool" namespace="Symfony\Component\Cache" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="doFlush" start="110" end="113" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\bool" namespace="Symfony\Component\Cache" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="doGetStats" start="120" end="123" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+      <return type="object">
+        <type full="Symfony\Component\Cache\array|null" namespace="Symfony\Component\Cache" name="array|null"/>
+      </return>
+    </docblock>
+  </method>
+  <interface full="Symfony\Component\Cache\PruneableInterface" namespace="Symfony\Component\Cache" name="PruneableInterface">
+    <method name="prune" start="22" end="22" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\bool" namespace="Symfony\Component\Cache" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+  </interface>
+  <interface full="Symfony\Component\Cache\ResettableInterface" namespace="Symfony\Component\Cache" name="ResettableInterface">
+    <extends full="Symfony\Contracts\Service\ResetInterface" namespace="Symfony\Contracts\Service" name="ResetInterface"/>
+  </interface>
+</class>

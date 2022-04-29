@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="SlevomatCodingStandard\Sniffs\TypeHints\DisallowArrayTypeHintSyntaxSniff" namespace="SlevomatCodingStandard\Sniffs\TypeHints" name="DisallowArrayTypeHintSyntaxSniff" abstract="false" final="false" start="32" end="265">
+  <file path="//var/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints" file="DisallowArrayTypeHintSyntaxSniff.php" realpath="/var/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints/DisallowArrayTypeHintSyntaxSniff.php" size="8304" time="2022-03-29T12:44:16+00:00" unixtime="1648557856" sha1="2fe0a8edc9325f96af270960b7050103e98c2cb2" relative="ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints/DisallowArrayTypeHintSyntaxSniff.php"/>
+  <implements full="PHP_CodeSniffer\Sniffs\Sniff" namespace="PHP_CodeSniffer\Sniffs" name="Sniff"/>
+  <constant type="string" name="CODE_DISALLOWED_ARRAY_TYPE_HINT_SYNTAX" value="'DisallowedArrayTypeHintSyntax'"/>
+  <member name="traversableTypeHints" default="" type="array" visibility="public" static="false" line="38">
+    <docblock>
+      <var type="array" of="object">
+        <type full="SlevomatCodingStandard\Sniffs\TypeHints\string" namespace="SlevomatCodingStandard\Sniffs\TypeHints" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="normalizedTraversableTypeHints" visibility="private" static="false" line="41">
+    <docblock>
+      <var description="int&gt;|null" type="object">
+        <type full="SlevomatCodingStandard\Sniffs\TypeHints\array&lt;string" namespace="SlevomatCodingStandard\Sniffs\TypeHints" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="register" start="46" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="(int|string)&gt;" type="object">
+        <type full="SlevomatCodingStandard\Sniffs\TypeHints\array&lt;int" namespace="SlevomatCodingStandard\Sniffs\TypeHints" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="process" start="57" end="139" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <phpcssuppress value="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"/>
+      <param type="int" variable="$docCommentOpenPointer"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="docCommentOpenPointer" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getArrayTypeNodes" start="144" end="166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="SlevomatCodingStandard\Sniffs\TypeHints\ArrayTypeNode" namespace="SlevomatCodingStandard\Sniffs\TypeHints" name="ArrayTypeNode"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="typeNode" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="fixArrayNode" start="168" end="175" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="node" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="findUnionTypeThatContainsArrayType" start="180" end="189" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$unionTypeNodes" of="object">
+        <type full="SlevomatCodingStandard\Sniffs\TypeHints\UnionTypeNode" namespace="SlevomatCodingStandard\Sniffs\TypeHints" name="UnionTypeNode"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="PHPStan\PhpDocParser\Ast\Type\UnionTypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="UnionTypeNode"/>
+    </return>
+    <parameter name="arrayTypeNode" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\ArrayTypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="ArrayTypeNode"/>
+    </parameter>
+    <parameter name="unionTypeNodes" byreference="false" type="array"/>
+  </method>
+  <method name="findGenericIdentifier" start="191" end="243" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="true"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="typeNode" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+    <parameter name="annotation" byreference="false" type="object">
+      <type full="SlevomatCodingStandard\Helpers\Annotation\Annotation" namespace="SlevomatCodingStandard\Helpers\Annotation" name="Annotation"/>
+    </parameter>
+  </method>
+  <method name="isTraversableType" start="245" end="248" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="type" byreference="false" type="string"/>
+  </method>
+  <method name="getNormalizedTraversableTypeHints" start="253" end="263" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return description="int&gt;" type="object">
+        <type full="SlevomatCodingStandard\Sniffs\TypeHints\array&lt;string" namespace="SlevomatCodingStandard\Sniffs\TypeHints" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <interface full="PHP_CodeSniffer\Sniffs\Sniff" namespace="PHP_CodeSniffer\Sniffs" name="Sniff">
+    <method name="register" start="40" end="40" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Registers the tokens that this sniff wants to listen for.">An example return value for a sniff that wants to listen for whitespace
+and any comments would be:
+
+&lt;code&gt;
+   return array(
+           T_WHITESPACE,
+           T_DOC_COMMENT,
+           T_COMMENT,
+          );
+&lt;/code&gt;</description>
+        <return type="array" of="object">
+          <type full="PHP_CodeSniffer\Sniffs\mixed" namespace="PHP_CodeSniffer\Sniffs" name="mixed"/>
+        </return>
+        <see value="Tokens.php"/>
+      </docblock>
+    </method>
+    <method name="process" start="77" end="77" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Called when one of the token types that this sniff is listening for is found.">The stackPtr variable indicates where in the stack the token was found.
+A sniff can acquire information this token, along with all the other
+tokens within the stack by first acquiring the token stack:
+
+&lt;code&gt;
+   $tokens = $phpcsFile-&gt;getTokens();
+   echo 'Encountered a '.$tokens[$stackPtr]['type'].' token';
+   echo 'token information: ';
+   print_r($tokens[$stackPtr]);
+&lt;/code&gt;
+
+If the sniff discovers an anomaly in the code, they can raise an error
+by calling addError() on the \PHP_CodeSniffer\Files\File object, specifying an error
+message and the position of the offending token:
+
+&lt;code&gt;
+   $phpcsFile-&gt;addError('Encountered an error', $stackPtr);
+&lt;/code&gt;</description>
+        <param description="The PHP_CodeSniffer file where the" type="object" variable="$phpcsFile">token was found.<type full="\PHP_CodeSniffer\Files\File" namespace="\PHP_CodeSniffer\Files" name="File"/></param>
+        <param description="The position in the PHP_CodeSniffer" type="int" variable="$stackPtr">file's token stack where the token
+                                              was found.</param>
+        <return description="Optionally returns a stack pointer. The sniff will not be" type="object">called again on the current file until the returned stack
+                 pointer is reached. Return (count($tokens) + 1) to skip
+                 the rest of the file.<type full="PHP_CodeSniffer\Sniffs\void|int" namespace="PHP_CodeSniffer\Sniffs" name="void|int"/></return>
+      </docblock>
+      <parameter name="phpcsFile" byreference="false" type="object">
+        <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+      </parameter>
+      <parameter name="stackPtr" byreference="false" type="{unknown}"/>
+    </method>
+  </interface>
+</class>

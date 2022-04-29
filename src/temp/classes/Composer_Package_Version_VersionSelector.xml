@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Package\Version\VersionSelector" namespace="Composer\Package\Version" name="VersionSelector" abstract="false" final="false" start="36" end="253">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Package/Version" file="VersionSelector.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Package/Version/VersionSelector.php" size="10503" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="097840514802e6bcd3504e06aff173dc594070b0" relative="ar/www/html/vendor/composer/composer/src/Composer/Package/Version/VersionSelector.php"/>
+  <docblock>
+    <description compact="Selects the best possible version for a package"/>
+    <author value="Ryan Weaver &lt;ryan@knpuniversity.com&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="repositorySet" visibility="private" static="false" line="39">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="platformConstraints" default="" type="array" visibility="private" static="false" line="42">
+    <docblock>
+      <var description="ConstraintInterface[]&gt;" type="object">
+        <type full="Composer\Package\Version\array&lt;string" namespace="Composer\Package\Version" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="parser" visibility="private" static="false" line="45">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\Version\VersionParser" namespace="Composer\Package\Version" name="VersionParser"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="50" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="If passed in, the versions found will be filtered against their requirements to eliminate any not matching the current platform packages" type="object" variable="$platformRepo">
+        <type full="Composer\Repository\PlatformRepository" namespace="Composer\Repository" name="PlatformRepository"/>
+      </param>
+    </docblock>
+    <parameter name="repositorySet" byreference="false" type="object">
+      <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+    </parameter>
+    <parameter name="platformRepo" byreference="false" type="object" default="NULL">
+      <type full="Composer\Repository\PlatformRepository" namespace="Composer\Repository" name="PlatformRepository"/>
+    </parameter>
+  </constructor>
+  <method name="findBestCandidate" start="71" end="158" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Given a package name and optional version, returns the latest PackageInterface that matches."/>
+      <param type="string" variable="$packageName"/>
+      <param type="string" variable="$targetPackageVersion"/>
+      <param type="string" variable="$preferredStability"/>
+      <param type="array" variable="$platformRequirementFilter" of="object">
+        <type full="Composer\Package\Version\PlatformRequirementFilterInterface|bool|string" namespace="Composer\Package\Version" name="PlatformRequirementFilterInterface|bool|string"/>
+      </param>
+      <param type="int" variable="$repoSetFlags"/>
+      <return type="object">
+        <type full="Composer\Package\Version\PackageInterface|false" namespace="Composer\Package\Version" name="PackageInterface|false"/>
+      </return>
+    </docblock>
+    <parameter name="packageName" byreference="false" type="string"/>
+    <parameter name="targetPackageVersion" byreference="false" type="string" default="NULL"/>
+    <parameter name="preferredStability" byreference="false" type="string" default="'stable'"/>
+    <parameter name="platformRequirementFilter" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="repoSetFlags" byreference="false" type="integer" default="0"/>
+    <inline>
+      <comment value="select highest version if we have many" line="119"/>
+      <comment value="if we end up with 9999999-dev as selected package, make sure we use the original version instead of the alias" line="152"/>
+    </inline>
+  </method>
+  <method name="findRecommendedRequireVersion" start="175" end="205" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Given a concrete version, this returns a ^ constraint (when possible) that should be used, for example, in composer.json.">For example:
+ * 1.2.1         -&gt; ^1.2
+ * 1.2           -&gt; ^1.2
+ * v3.2.1        -&gt; ^3.2
+ * 2.0-beta.1    -&gt; ^2.0@beta
+ * dev-master    -&gt; ^2.1@dev      (dev version with alias)
+ * dev-master    -&gt; dev-master    (dev versions are untouched)</description>
+      <param type="object" variable="$package">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Extensions which are versioned in sync with PHP should rather be required as &quot;*&quot; to simplify" line="177"/>
+      <comment value="the requires and have only one required version to change when bumping the php requirement" line="178"/>
+    </inline>
+  </method>
+  <method name="transformVersion" start="214" end="240" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$version"/>
+      <param type="string" variable="$prettyVersion"/>
+      <param type="string" variable="$stability"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="version" byreference="false" type="string"/>
+    <parameter name="prettyVersion" byreference="false" type="string"/>
+    <parameter name="stability" byreference="false" type="string"/>
+    <inline>
+      <comment value="attempt to transform 2.1.1 to 2.1" line="216"/>
+      <comment value="this allows you to upgrade through minor versions" line="217"/>
+      <comment value="check to see if we have a semver-looking version" line="220"/>
+      <comment value="append stability flag if not default" line="233"/>
+      <comment value="2.1 -&gt; ^2.1" line="238"/>
+    </inline>
+  </method>
+  <method name="getParser" start="245" end="252" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Package\Version\VersionParser" namespace="Composer\Package\Version" name="VersionParser"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Package\Version\VersionParser" namespace="Composer\Package\Version" name="VersionParser"/>
+    </return>
+  </method>
+</class>

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\Solver" namespace="Composer\DependencyResolver" name="Solver" abstract="false" final="false" start="24" end="828">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="Solver.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Solver.php" size="26961" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="f41458249f05994b7dc541cf1a905f1a1e711dc0" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Solver.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <constant type="integer" name="BRANCH_LITERALS" value="0"/>
+  <constant type="integer" name="BRANCH_LEVEL" value="1"/>
+  <member name="policy" visibility="protected" static="false" line="30">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\PolicyInterface" namespace="Composer\DependencyResolver" name="PolicyInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="pool" visibility="protected" static="false" line="32">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="rules" visibility="protected" static="false" line="35">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\RuleSet" namespace="Composer\DependencyResolver" name="RuleSet"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="watchGraph" visibility="protected" static="false" line="38">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\RuleWatchGraph" namespace="Composer\DependencyResolver" name="RuleWatchGraph"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="decisions" visibility="protected" static="false" line="40">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\Decisions" namespace="Composer\DependencyResolver" name="Decisions"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="fixedMap" visibility="protected" static="false" line="42">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\BasePackage" namespace="Composer\DependencyResolver" name="BasePackage"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="propagateIndex" visibility="protected" static="false" line="45">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="branches" default="" type="array" visibility="protected" static="false" line="47">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\mixed" namespace="Composer\DependencyResolver" name="mixed"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="problems" default="" type="array" visibility="protected" static="false" line="49">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\Problem" namespace="Composer\DependencyResolver" name="Problem"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="learnedPool" default="" type="array" visibility="protected" static="false" line="51">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\array&lt;Rule[" namespace="Composer\DependencyResolver" name="array&lt;Rule["/>
+      </var>
+    </docblock>
+  </member>
+  <member name="learnedWhy" default="" type="array" visibility="protected" static="false" line="53">
+    <docblock>
+      <var description="int&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="testFlagLearnedPositiveLiteral" default="false" type="boolean" visibility="public" static="false" line="56">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="io" visibility="protected" static="false" line="59">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="61" end="66" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="policy" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\PolicyInterface" namespace="Composer\DependencyResolver" name="PolicyInterface"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </constructor>
+  <method name="getRuleSetSize" start="71" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getPool" start="79" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+  </method>
+  <method name="makeAssertionRuleDecisions" start="89" end="157" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="setupFixedMap" start="162" end="168" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+  </method>
+  <method name="checkForRootRequireProblems" start="173" end="188" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="platformRequirementFilter" byreference="false" type="object">
+      <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+    </parameter>
+  </method>
+  <method name="solve" start="193" end="225" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\LockTransaction" namespace="Composer\DependencyResolver" name="LockTransaction"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\LockTransaction" namespace="Composer\DependencyResolver" name="LockTransaction"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="platformRequirementFilter" byreference="false" type="object" default="NULL">
+      <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+    </parameter>
+    <inline>
+      <comment value="make decisions based on root require/fix assertions" line="211"/>
+    </inline>
+  </method>
+  <method name="propagate" start="236" end="255" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Makes a decision and propagates it to all rules.">Evaluates each term affected by the decision (linked through watches)
+If we find unit rules we make new decisions based on them</description>
+      <param type="int" variable="$level"/>
+      <return description="A rule on conflict, otherwise null." type="object">
+        <type full="Composer\DependencyResolver\Rule|null" namespace="Composer\DependencyResolver" name="Rule|null"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </return>
+    <parameter name="level" byreference="false" type="int"/>
+  </method>
+  <method name="revert" start="264" end="286" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Reverts a decision at the given level."/>
+      <param type="int" variable="$level"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="level" byreference="false" type="int"/>
+  </method>
+  <method name="setPropagateLearn" start="305" end="347" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="setpropagatelearn">add free decision (a positive literal) to decision queue
+increase level and propagate decision
+return if no conflict.
+
+in conflict case, analyze conflict rule, add resulting
+rule to learnt rule set, make decision from learnt
+rule (always unit) and re-propagate.
+
+returns the new solver level or 0 if unsolvable</description>
+      <param type="int" variable="$level"/>
+      <param type="object" variable="$literal">
+        <type full="Composer\DependencyResolver\string|int" namespace="Composer\DependencyResolver" name="string|int"/>
+      </param>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="level" byreference="false" type="int"/>
+    <parameter name="literal" byreference="false" type="{unknown}"/>
+    <parameter name="rule" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+  </method>
+  <method name="selectAndInstall" start="354" end="367" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$level"/>
+      <param type="array" variable="$decisionQueue" of="object">
+        <type full="Composer\DependencyResolver\int" namespace="Composer\DependencyResolver" name="int"/>
+      </param>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="level" byreference="false" type="int"/>
+    <parameter name="decisionQueue" byreference="false" type="array"/>
+    <parameter name="rule" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+    <inline>
+      <comment value="choose best package to install from decisionQueue" line="356"/>
+      <comment value="if there are multiple candidates, then branch" line="361"/>
+    </inline>
+  </method>
+  <method name="analyze" start="373" end="515" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="int" variable="$level"/>
+      <return description="int, GenericRule, int}" type="object">
+        <type full="Composer\DependencyResolver\array{int" namespace="Composer\DependencyResolver" name="array{int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="level" byreference="false" type="int"/>
+    <parameter name="rule" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+  </method>
+  <method name="analyzeUnsolvableRule" start="521" end="546" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="true&gt; $ruleSeen" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="problem" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Problem" namespace="Composer\DependencyResolver" name="Problem"/>
+    </parameter>
+    <parameter name="conflictRule" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+    <parameter name="ruleSeen" byreference="true" type="array"/>
+  </method>
+  <method name="analyzeUnsolvable" start="551" end="598" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="conflictRule" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+  </method>
+  <method name="enableDisableLearnedRules" start="609" end="629" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="enable/disable learnt rules">we have enabled or disabled some of our rules. We now re-enable all
+of our learnt rules except the ones that were learnt from rules that
+are now disabled.</description>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="runSat" start="634" end="827" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="here's the main loop:" line="638"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="1) propagate new decisions (only needed once)" line="639"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="2) fulfill root requires/fixed packages" line="640"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="3) fulfill all unresolved rules" line="641"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="4) minimalize solution if we had choices" line="642"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="if we encounter a problem, we rewind to a safe level and restart" line="643"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="with step 1" line="644"/>
+    </inline>
+  </method>
+</class>

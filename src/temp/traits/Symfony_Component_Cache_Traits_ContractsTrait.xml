@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\Traits\ContractsTrait" namespace="Symfony\Component\Cache\Traits" name="ContractsTrait" abstract="false" final="false" start="28" end="109">
+  <file path="//var/www/html/vendor/symfony/cache/Traits" file="ContractsTrait.php" realpath="/var/www/html/vendor/symfony/cache/Traits/ContractsTrait.php" size="3887" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="644f2476d9230b338d0bf286d08ec0876d02236d" relative="ar/www/html/vendor/symfony/cache/Traits/ContractsTrait.php"/>
+  <docblock>
+    <description/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+    <internal/>
+  </docblock>
+  <uses full="Symfony\Contracts\Cache\CacheTrait" namespace="Symfony\Contracts\Cache" name="CacheTrait" start="30" end="32" unresolved="true">
+    <alias method="doGet" as="contractsGet" modifier="private"/>
+  </uses>
+  <member name="callbackWrapper" visibility="private" static="false" line="34"/>
+  <member name="computing" default="" type="array" visibility="private" static="false" line="35"/>
+  <method name="setCallbackWrapper" start="42" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Wraps the callback passed to -&gt;get() in a callable."/>
+      <return description="the previous callback wrapper" type="object">
+        <type full="Symfony\Component\Cache\Traits\callable" namespace="Symfony\Component\Cache\Traits" name="callable"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="callbackWrapper" byreference="false" nullable="true" type="callable"/>
+  </method>
+  <method name="doGet" start="60" end="108" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Symfony\Component\Cache\Adapter\AdapterInterface" namespace="Symfony\Component\Cache\Adapter" name="AdapterInterface"/>
+    </parameter>
+    <parameter name="key" byreference="false" type="string"/>
+    <parameter name="callback" byreference="false" type="callable"/>
+    <parameter name="beta" byreference="false" nullable="true" type="float"/>
+    <parameter name="metadata" byreference="true" type="array" default="NULL"/>
+  </method>
+  <users>
+    <class full="Symfony\Component\Cache\Adapter\FilesystemAdapter" namespace="Symfony\Component\Cache\Adapter" name="FilesystemAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\AbstractAdapter" namespace="Symfony\Component\Cache\Adapter" name="AbstractAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\DoctrineAdapter" namespace="Symfony\Component\Cache\Adapter" name="DoctrineAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\ProxyAdapter" namespace="Symfony\Component\Cache\Adapter" name="ProxyAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\Psr16Adapter" namespace="Symfony\Component\Cache\Adapter" name="Psr16Adapter"/>
+    <class full="Symfony\Component\Cache\Adapter\MemcachedAdapter" namespace="Symfony\Component\Cache\Adapter" name="MemcachedAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\CouchbaseBucketAdapter" namespace="Symfony\Component\Cache\Adapter" name="CouchbaseBucketAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\PhpFilesAdapter" namespace="Symfony\Component\Cache\Adapter" name="PhpFilesAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\PhpArrayAdapter" namespace="Symfony\Component\Cache\Adapter" name="PhpArrayAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\PdoAdapter" namespace="Symfony\Component\Cache\Adapter" name="PdoAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\ApcuAdapter" namespace="Symfony\Component\Cache\Adapter" name="ApcuAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\ChainAdapter" namespace="Symfony\Component\Cache\Adapter" name="ChainAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\RedisAdapter" namespace="Symfony\Component\Cache\Adapter" name="RedisAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\CouchbaseCollectionAdapter" namespace="Symfony\Component\Cache\Adapter" name="CouchbaseCollectionAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\TagAwareAdapter" namespace="Symfony\Component\Cache\Adapter" name="TagAwareAdapter"/>
+  </users>
+</trait>

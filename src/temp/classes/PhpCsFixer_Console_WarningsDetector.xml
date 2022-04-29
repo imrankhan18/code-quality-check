@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Console\WarningsDetector" namespace="PhpCsFixer\Console" name="WarningsDetector" abstract="false" final="true" start="25" end="76">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Console" file="WarningsDetector.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Console/WarningsDetector.php" size="2268" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="f624501c85b3eccabb846c7c234a4fcc20d38296" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Console/WarningsDetector.php"/>
+  <docblock>
+    <description/>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <member name="toolInfo" visibility="private" static="false" line="27"/>
+  <member name="warnings" default="" type="array" visibility="private" static="false" line="32">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="PhpCsFixer\Console\string" namespace="PhpCsFixer\Console" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="34" end="37" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="toolInfo" byreference="false" type="object">
+      <type full="PhpCsFixer\ToolInfoInterface" namespace="PhpCsFixer" name="ToolInfoInterface"/>
+    </parameter>
+  </constructor>
+  <method name="detectOldMajor" start="39" end="46" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <inline>
+      <todo value="3.99 to be activated with new MAJOR release 4.0" line="41"/>
+      <comment value="$currentMajorVersion = \intval(explode('.', Application::VERSION)[0], 10);" line="42"/>
+      <comment value="$nextMajorVersion = $currentMajorVersion + 1;" line="43"/>
+      <comment value="$this-&gt;warnings[] = &quot;You are running PHP CS Fixer v{$currentMajorVersion}, which is not maintained anymore. Please update to v{$nextMajorVersion}.&quot;;" line="44"/>
+      <comment value="$this-&gt;warnings[] = &quot;You may find an UPGRADE guide at https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/v{$nextMajorVersion}.0.0/UPGRADE-v{$nextMajorVersion}.md .&quot;;" line="45"/>
+    </inline>
+  </method>
+  <method name="detectOldVendor" start="48" end="60" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="getWarnings" start="65" end="75" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\Console\string" namespace="PhpCsFixer\Console" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+</class>

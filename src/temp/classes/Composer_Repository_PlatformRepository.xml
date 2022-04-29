@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Repository\PlatformRepository" namespace="Composer\Repository" name="PlatformRepository" abstract="false" final="false" start="33" end="744">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Repository" file="PlatformRepository.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Repository/PlatformRepository.php" size="32536" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="d9aab50c3726227827e3997d3163cdc7302574a6" relative="ar/www/html/vendor/composer/composer/src/Composer/Repository/PlatformRepository.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <extends full="Composer\Repository\ArrayRepository" namespace="Composer\Repository" name="ArrayRepository"/>
+  <constant type="string" name="PLATFORM_PACKAGE_REGEX" value="'{^(?:php(?:-64bit|-ipv6|-zts|-debug)?|hhvm|(?:ext|lib)-[a-z0-9](?:[_.-]?[a-z0-9]+)*|composer(?:-(?:plugin|runtime)-api)?)$}iD'">
+    <docblock>
+      <description/>
+      <deprecated value="use PlatformRepository::isPlatformPackage(string $name) instead"/>
+      <private/>
+    </docblock>
+  </constant>
+  <member name="lastSeenPlatformPhp" default="NULL" visibility="private" static="true" line="44">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Repository\?string" namespace="Composer\Repository" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="versionParser" visibility="private" static="false" line="49">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Package\Version\VersionParser" namespace="Composer\Package\Version" name="VersionParser"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="overrides" default="" type="array" visibility="private" static="false" line="58">
+    <docblock>
+      <description compact="Defines overrides so that the platform can be mocked">Keyed by package name (lowercased)</description>
+      <var description="array{name: string, version: string|false}&gt;" type="object">
+        <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="disabledPackages" default="" type="array" visibility="private" static="false" line="65">
+    <docblock>
+      <description compact="Stores which packages have been disabled and their actual version"/>
+      <var description="CompletePackageInterface&gt;" type="object">
+        <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="runtime" visibility="private" static="false" line="68">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Platform\Runtime" namespace="Composer\Platform" name="Runtime"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="hhvmDetector" visibility="private" static="false" line="70">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Platform\HhvmDetector" namespace="Composer\Platform" name="HhvmDetector"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="75" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="string|false&gt; $overrides" type="object">
+        <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+      </param>
+    </docblock>
+    <parameter name="packages" byreference="false" type="array" default=""/>
+    <parameter name="overrides" byreference="false" type="array" default=""/>
+    <parameter name="runtime" byreference="false" type="object" default="NULL">
+      <type full="Composer\Platform\Runtime" namespace="Composer\Platform" name="Runtime"/>
+    </parameter>
+    <parameter name="hhvmDetector" byreference="false" type="object" default="NULL">
+      <type full="Composer\Platform\HhvmDetector" namespace="Composer\Platform" name="HhvmDetector"/>
+    </parameter>
+  </constructor>
+  <method name="getRepoName" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="isPlatformPackageDisabled" start="100" end="103" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="getDisabledPackages" start="108" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="CompletePackageInterface&gt;" type="object">
+        <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="initialize" start="113" end="533" abstract="false" final="false" static="false" visibility="protected">
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="Add each of the override versions as options." line="119"/>
+      <comment value="Later we might even replace the extensions instead." line="120"/>
+      <comment value="The AF_INET6 constant is only defined if ext-sockets is available but" line="180"/>
+      <comment value="IPv6 support might still be available." line="181"/>
+      <comment value="Extensions scanning" line="190"/>
+      <comment value="Check for Xdebug in a restarted process" line="199"/>
+      <comment value="Another quick loop, just for possible libraries" line="204"/>
+      <comment value="Doing it this way to know that functions or constants exist before" line="205"/>
+      <comment value="relying on them." line="206"/>
+    </inline>
+  </method>
+  <method name="addPackage" start="538" end="585" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Skip if overridden" line="544"/>
+      <comment value="Skip if PHP is overridden and we are adding a php-* package" line="565"/>
+    </inline>
+  </method>
+  <method name="addOverriddenPackage" start="593" end="606" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="string name: string} $override" type="object">
+        <type full="Composer\Repository\array{version:" namespace="Composer\Repository" name="array{version:"/>
+      </param>
+      <param type="object" variable="$name">
+        <type full="Composer\Repository\string|null" namespace="Composer\Repository" name="string|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\CompletePackage" namespace="Composer\Package" name="CompletePackage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Package\CompletePackage" namespace="Composer\Package" name="CompletePackage"/>
+    </return>
+    <parameter name="override" byreference="false" type="array"/>
+    <parameter name="name" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="addDisabledPackage" start="611" end="617" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Repository\void" namespace="Composer\Repository" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\CompletePackage" namespace="Composer\Package" name="CompletePackage"/>
+    </parameter>
+  </method>
+  <method name="addExtension" start="622" end="649" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Parses the version and adds a new package to the repository"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="prettyVersion" byreference="false" type="string"/>
+  </method>
+  <method name="buildPackageName" start="655" end="658" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="addLibrary" start="669" end="701" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <param type="object" variable="$prettyVersion">
+        <type full="Composer\Repository\string|null" namespace="Composer\Repository" name="string|null"/>
+      </param>
+      <param type="object" variable="$description">
+        <type full="Composer\Repository\string|null" namespace="Composer\Repository" name="string|null"/>
+      </param>
+      <param type="array" variable="$replaces" of="object">
+        <type full="Composer\Repository\string" namespace="Composer\Repository" name="string"/>
+      </param>
+      <param type="array" variable="$provides" of="object">
+        <type full="Composer\Repository\string" namespace="Composer\Repository" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Repository\void" namespace="Composer\Repository" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="prettyVersion" byreference="false" nullable="true" type="string"/>
+    <parameter name="description" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="replaces" byreference="false" type="array" default=""/>
+    <parameter name="provides" byreference="false" type="array" default=""/>
+  </method>
+  <method name="isPlatformPackage" start="709" end="718" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Check if a package name is a platform package."/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="getPlatformPhpVersion" start="730" end="733" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns the last seen config.platform.php version if defined">This is a best effort attempt for internal purposes, retrieve the real
+packages from a PlatformRepository instance if you need a version guaranteed to
+be correct.</description>
+      <internal/>
+      <return type="object">
+        <type full="Composer\Repository\string|null" namespace="Composer\Repository" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="search" start="735" end="743" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+    <parameter name="query" byreference="false" type="string"/>
+    <parameter name="mode" byreference="false" type="integer" default="0"/>
+    <parameter name="type" byreference="false" nullable="true" type="string" default="NULL"/>
+    <inline>
+      <comment value="suppress vendor search as there are no vendors to match in platform packages" line="737"/>
+    </inline>
+  </method>
+  <parent full="Composer\Repository\ArrayRepository" namespace="Composer\Repository" name="ArrayRepository">
+    <implements full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+    <member name="packages" default="NULL" visibility="protected" static="false" line="35">
+      <docblock>
+        <var type="object">
+          <type full="Composer\Repository\?array&lt;BasePackage&gt;" namespace="Composer\Repository" name="?array&lt;BasePackage&gt;"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="packageMap" default="NULL" visibility="protected" static="false" line="40">
+      <docblock>
+        <description/>
+        <var description="indexed by package unique name and used to cache hasPackage calls" type="object">
+          <type full="Composer\Repository\?array&lt;BasePackage&gt;" namespace="Composer\Repository" name="?array&lt;BasePackage&gt;"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="45" end="50" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object" variable="$packages">
+          <type full="Composer\Repository\array&lt;PackageInterface&gt;" namespace="Composer\Repository" name="array&lt;PackageInterface&gt;"/>
+        </param>
+      </docblock>
+      <parameter name="packages" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="getRepoName" start="52" end="55" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="loadPackages" start="60" end="95" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="packageNameMap" byreference="false" type="array"/>
+      <parameter name="acceptableStabilities" byreference="false" type="array"/>
+      <parameter name="stabilityFlags" byreference="false" type="array"/>
+      <parameter name="alreadyLoaded" byreference="false" type="array" default=""/>
+      <inline>
+        <comment value="add aliases of packages that were selected, even if the aliases did not match" line="85"/>
+      </inline>
+    </method>
+    <method name="findPackage" start="100" end="119" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="constraint" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="findPackages" start="124" end="144" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="constraint" byreference="false" type="{unknown}" default="NULL"/>
+      <inline>
+        <comment value="normalize name" line="126"/>
+      </inline>
+    </method>
+    <method name="search" start="149" end="193" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="query" byreference="false" type="string"/>
+      <parameter name="mode" byreference="false" type="integer" default="0"/>
+      <parameter name="type" byreference="false" nullable="true" type="string" default="NULL"/>
+    </method>
+    <method name="hasPackage" start="198" end="208" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="addPackage" start="215" end="235" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Adds a new package to the repository"/>
+        <return type="object">
+          <type full="Composer\Repository\void" namespace="Composer\Repository" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <inline>
+        <comment value="invalidate package map cache" line="233"/>
+      </inline>
+    </method>
+    <method name="getProviders" start="240" end="261" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="packageName" byreference="false" type="string"/>
+    </method>
+    <method name="createAliasPackage" start="269" end="280" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <param type="string" variable="$alias"/>
+        <param type="string" variable="$prettyAlias"/>
+        <return type="object">
+          <type full="Composer\Repository\AliasPackage|CompleteAliasPackage" namespace="Composer\Repository" name="AliasPackage|CompleteAliasPackage"/>
+        </return>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+      </parameter>
+      <parameter name="alias" byreference="false" type="string"/>
+      <parameter name="prettyAlias" byreference="false" type="string"/>
+    </method>
+    <method name="removePackage" start="289" end="303" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Removes package from repository."/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Repository\void" namespace="Composer\Repository" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="getPackages" start="308" end="319" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+    </method>
+    <method name="count" start="326" end="333" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the number of packages in this repository"/>
+        <return description="Number of packages" type="int"/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="initialize" start="340" end="343" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Initializes the packages array. Mostly meant as an extension point."/>
+        <return type="object">
+          <type full="Composer\Repository\void" namespace="Composer\Repository" name="void"/>
+        </return>
+      </docblock>
+    </method>
+  </parent>
+  <interface full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface">
+    <extends full="Countable" namespace="" name="Countable"/>
+    <constant type="{unknown}" name="SEARCH_FULLTEXT" value="0"/>
+    <constant type="{unknown}" name="SEARCH_NAME" value="1"/>
+    <constant type="{unknown}" name="SEARCH_VENDOR" value="2"/>
+    <method name="hasPackage" start="39" end="39" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks if specified package registered (installed)."/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="findPackage" start="49" end="49" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Searches for the first match of a package by name and version."/>
+        <param description="package name" type="string" variable="$name"/>
+        <param description="package version or version constraint to match against" type="object" variable="$constraint">
+          <type full="Composer\Repository\string|ConstraintInterface" namespace="Composer\Repository" name="string|ConstraintInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Repository\BasePackage|null" namespace="Composer\Repository" name="BasePackage|null"/>
+        </return>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="constraint" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="findPackages" start="59" end="59" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Searches for all packages matching a name and optionally a version."/>
+        <param description="package name" type="string" variable="$name"/>
+        <param description="package version or version constraint to match against" type="object" variable="$constraint">
+          <type full="Composer\Repository\string|ConstraintInterface" namespace="Composer\Repository" name="string|ConstraintInterface"/>
+        </param>
+        <return type="array" of="object">
+          <type full="Composer\Repository\BasePackage" namespace="Composer\Repository" name="BasePackage"/>
+        </return>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="constraint" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="getPackages" start="66" end="66" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns list of registered packages."/>
+        <return type="array" of="object">
+          <type full="Composer\Repository\BasePackage" namespace="Composer\Repository" name="BasePackage"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="loadPackages" start="84" end="84" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns list of registered packages with the supplied name">- The packages returned are the packages found which match the constraints, acceptable stability and stability flags provided
+- The namesFound returned are names which should be considered as canonically found in this repository, that should not be looked up in any further lower priority repositories</description>
+        <param description="package names pointing to constraints" type="array" variable="$packageNameMap" of="object">
+          <type full="Composer\Repository\ConstraintInterface" namespace="Composer\Repository" name="ConstraintInterface"/>
+        </param>
+        <param description="BasePackage::STABILITY_*&gt; $acceptableStabilities array of stability =&gt; BasePackage::STABILITY_* value" type="object">
+          <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+        </param>
+        <param description="BasePackage::STABILITY_*&gt; $stabilityFlags        an array of package name =&gt; BasePackage::STABILITY_* value" type="object">
+          <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+        </param>
+        <param description="array&lt;string PackageInterface&gt;&gt; $alreadyLoaded         an array of package name =&gt; package version =&gt; package" type="object">
+          <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+        </param>
+        <return type="array"/>
+        <phpstan value="-param  array&lt;string, ConstraintInterface|null&gt; $packageNameMap"/>
+        <phpstan value="-return array{namesFound: array&lt;string&gt;, packages: array&lt;BasePackage&gt;}"/>
+      </docblock>
+      <parameter name="packageNameMap" byreference="false" type="array"/>
+      <parameter name="acceptableStabilities" byreference="false" type="array"/>
+      <parameter name="stabilityFlags" byreference="false" type="array"/>
+      <parameter name="alreadyLoaded" byreference="false" type="array" default=""/>
+    </method>
+    <method name="search" start="96" end="96" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Searches the repository for packages containing the query"/>
+        <param description="search query, for SEARCH_NAME and SEARCH_VENDOR regular expressions metacharacters are supported by implementations, and user input should be escaped through preg_quote by callers" type="string" variable="$query"/>
+        <param description="a set of SEARCH_* constants to search on, implementations should do a best effort only, default is SEARCH_FULLTEXT" type="int" variable="$mode"/>
+        <param description="The type of package to search for. Defaults to all types of packages" type="object" variable="$type">
+          <type full="Composer\Repository\?string" namespace="Composer\Repository" name="?string"/>
+        </param>
+        <return description="an array of array('name' =&gt; '...', 'description' =&gt; '...'|null, 'abandoned' =&gt; 'string'|true|unset) For SEARCH_VENDOR the name will be in &quot;vendor&quot; form" type="array" of="object">
+          <type full="Composer\Repository\array" namespace="Composer\Repository" name="array"/>
+        </return>
+        <phpstan value="-return list&lt;array{name: string, description: ?string, abandoned?: string|true, url?: string}&gt;"/>
+      </docblock>
+      <parameter name="query" byreference="false" type="string"/>
+      <parameter name="mode" byreference="false" type="integer" default="0"/>
+      <parameter name="type" byreference="false" nullable="true" type="string" default="NULL"/>
+    </method>
+    <method name="getProviders" start="108" end="108" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a list of packages providing a given package name">Packages which have the same name as $packageName should not be returned, only those that have a "provide" on it.</description>
+        <param description="package name which must be provided" type="string" variable="$packageName"/>
+        <return description="an array with the provider name as key and value of array('name' =&gt; '...', 'description' =&gt; '...', 'type' =&gt; '...')" type="array" of="object">
+          <type full="Composer\Repository\array" namespace="Composer\Repository" name="array"/>
+        </return>
+        <phpstan value="-return array&lt;string, array{name: string, description: string, type: string}&gt;"/>
+      </docblock>
+      <parameter name="packageName" byreference="false" type="string"/>
+    </method>
+    <method name="getRepoName" start="117" end="117" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a name representing this repository to the user">This is best effort and definitely can not always be very precise</description>
+        <return type="string"/>
+      </docblock>
+    </method>
+  </interface>
+</class>

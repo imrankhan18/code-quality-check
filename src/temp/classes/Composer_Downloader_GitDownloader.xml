@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Downloader\GitDownloader" namespace="Composer\Downloader" name="GitDownloader" abstract="false" final="false" start="30" end="654">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Downloader" file="GitDownloader.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Downloader/GitDownloader.php" size="25861" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="95ac1092a31a46cad2a5eca0eeae125990fb30ec" relative="ar/www/html/vendor/composer/composer/src/Composer/Downloader/GitDownloader.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <extends full="Composer\Downloader\VcsDownloader" namespace="Composer\Downloader" name="VcsDownloader"/>
+  <implements full="Composer\Downloader\DvcsDownloaderInterface" namespace="Composer\Downloader" name="DvcsDownloaderInterface"/>
+  <member name="hasStashedChanges" default="" type="array" visibility="private" static="false" line="36">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Downloader\bool" namespace="Composer\Downloader" name="bool"/>
+      </var>
+      <phpstan value="-var array&lt;string, bool&gt;"/>
+    </docblock>
+  </member>
+  <member name="hasDiscardedChanges" default="" type="array" visibility="private" static="false" line="41">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Downloader\bool" namespace="Composer\Downloader" name="bool"/>
+      </var>
+      <phpstan value="-var array&lt;string, bool&gt;"/>
+    </docblock>
+  </member>
+  <member name="gitUtil" visibility="private" static="false" line="45">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Util\Git" namespace="Composer\Util" name="Git"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="cachedPackages" default="" type="array" visibility="private" static="false" line="50">
+    <docblock>
+      <description/>
+      <var type="array"/>
+      <phpstan value="-var array&lt;int, array&lt;string, bool&gt;&gt;"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="52" end="56" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="process" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+    <parameter name="fs" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+  </constructor>
+  <method name="doDownload" start="61" end="81" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <inline>
+      <comment value="--dissociate option is only available since git 2.3.0-rc0" line="68"/>
+    </inline>
+  </method>
+  <method name="doInstall" start="86" end="146" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+  </method>
+  <method name="doUpdate" start="151" end="211" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="initial" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="target" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+  </method>
+  <method name="getLocalChanges" start="216" end="231" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="getUnpushedChanges" start="236" end="328" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Downloader\null|string" namespace="Composer\Downloader" name="null|string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <inline>
+      <comment value="use the first match as branch name for now" line="262"/>
+      <comment value="do two passes, as if we find anything we want to fetch and then re-try" line="267"/>
+    </inline>
+  </method>
+  <method name="cleanChanges" start="333" end="415" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="update" byreference="false" type="bool"/>
+  </method>
+  <method name="reapplyChanges" start="420" end="432" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="updateToCommit" start="443" end="502" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Updates the given path to the given commit ref"/>
+      <param type="string" variable="$path"/>
+      <param type="string" variable="$reference"/>
+      <param type="string" variable="$prettyVersion"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return description="if a string is returned, it is the commit reference that was checked out if the original could not be found" type="object">
+        <type full="Composer\Downloader\null|string" namespace="Composer\Downloader" name="null|string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="reference" byreference="false" type="string"/>
+    <parameter name="prettyVersion" byreference="false" type="string"/>
+    <inline>
+      <comment value="This uses the &quot;--&quot; sequence to separate branch from file parameters." line="447"/>
+      <comment value="Otherwise git tries the branch name as well as file name." line="449"/>
+      <comment value="If the non-existent branch is actually the name of a file, the file" line="450"/>
+      <comment value="is checked out." line="451"/>
+      <comment value="check whether non-commitish are branches or tags, and fetch branches with the remote name" line="460"/>
+      <comment value="try to checkout branch by name and then reset it so it's on the proper branch name" line="472"/>
+      <comment value="reference was not found (prints &quot;fatal: reference is not a tree: $ref&quot;)" line="495"/>
+    </inline>
+  </method>
+  <method name="updateOriginUrl" start="510" end="514" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <param type="string" variable="$url"/>
+      <return type="object">
+        <type full="Composer\Downloader\void" namespace="Composer\Downloader" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+  </method>
+  <method name="setPushUrl" start="522" end="534" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <param type="string" variable="$url"/>
+      <return type="object">
+        <type full="Composer\Downloader\void" namespace="Composer\Downloader" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <inline>
+      <comment value="set push url for github projects" line="524"/>
+    </inline>
+  </method>
+  <method name="getCommitLogs" start="539" end="549" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="fromReference" byreference="false" type="string"/>
+    <parameter name="toReference" byreference="false" type="string"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="discardChanges" start="558" end="568" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="stashChanges" start="577" end="587" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="viewDiff" start="596" end="604" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="Composer\Downloader\void" namespace="Composer\Downloader" name="void"/>
+      </return>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="normalizePath" start="611" end="630" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="hasMetadataRepository" start="635" end="640" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="getShortHash" start="646" end="653" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$reference"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="reference" byreference="false" type="string"/>
+  </method>
+  <parent full="Composer\Downloader\VcsDownloader" namespace="Composer\Downloader" name="VcsDownloader">
+    <implements full="Composer\Downloader\DownloaderInterface" namespace="Composer\Downloader" name="DownloaderInterface"/>
+    <implements full="Composer\Downloader\ChangeReportInterface" namespace="Composer\Downloader" name="ChangeReportInterface"/>
+    <implements full="Composer\Downloader\VcsCapableDownloaderInterface" namespace="Composer\Downloader" name="VcsCapableDownloaderInterface"/>
+    <member name="io" visibility="protected" static="false" line="34">
+      <docblock>
+        <var type="object">
+          <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="config" visibility="protected" static="false" line="36">
+      <docblock>
+        <var type="object">
+          <type full="Composer\Config" namespace="Composer" name="Config"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="process" visibility="protected" static="false" line="38">
+      <docblock>
+        <var type="object">
+          <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="filesystem" visibility="protected" static="false" line="40">
+      <docblock>
+        <var type="object">
+          <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="hasCleanedChanges" default="" type="array" visibility="protected" static="false" line="42">
+      <docblock>
+        <var description="true&gt;" type="object">
+          <type full="Composer\Downloader\array&lt;string" namespace="Composer\Downloader" name="array&lt;string"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="44" end="50" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="io" byreference="false" type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </parameter>
+      <parameter name="config" byreference="false" type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </parameter>
+      <parameter name="process" byreference="false" type="object" default="NULL">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </parameter>
+      <parameter name="fs" byreference="false" type="object" default="NULL">
+        <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+      </parameter>
+    </constructor>
+    <method name="getInstallationSource" start="55" end="58" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="download" start="63" end="91" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="prepare" start="96" end="108" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="type" byreference="false" type="string"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="cleanup" start="113" end="121" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="type" byreference="false" type="string"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="install" start="126" end="156" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="update" start="161" end="220" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="initial" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="target" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <inline>
+        <comment value="print the commit logs if in verbose mode and VCS metadata is present" line="191"/>
+        <comment value="because in case of missing metadata code would trigger another exception" line="192"/>
+      </inline>
+    </method>
+    <method name="remove" start="225" end="236" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="getVcsReference" start="241" end="253" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="string" nullable="true"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="cleanChanges" start="267" end="275" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Prompt the user to check if changes should be stashed/removed or the operation aborted"/>
+        <param type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param type="string" variable="$path"/>
+        <param description="if true (update) the changes can be stashed and reapplied after an update," type="object" variable="$update">if false (remove) the changes should be assumed to be lost if the operation is not aborted<type full="Composer\Downloader\bool" namespace="Composer\Downloader" name="bool"/></param>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+        <throws description="in case the operation must be aborted" type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="update" byreference="false" type="bool"/>
+      <inline>
+        <comment value="the default implementation just fails if there are any changes, override in child classes to provide stash-ability" line="269"/>
+      </inline>
+    </method>
+    <method name="reapplyChanges" start="286" end="288" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Reapply previously stashes changes if applicable, only called after an update (regardless if successful or not)"/>
+        <param type="string" variable="$path"/>
+        <return type="object">
+          <type full="Composer\Downloader\void" namespace="Composer\Downloader" name="void"/>
+        </return>
+        <throws description="in case the operation must be aborted or the patch does not apply cleanly" type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="doDownload" start="300" end="300" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Downloads data needed to run an install/update later"/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="download path" type="string" variable="$path"/>
+        <param description="package url" type="string" variable="$url"/>
+        <param description="previous package (in case of an update)" type="object" variable="$prevPackage">
+          <type full="Composer\Downloader\PackageInterface|null" namespace="Composer\Downloader" name="PackageInterface|null"/>
+        </param>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="url" byreference="false" type="string"/>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="doInstall" start="311" end="311" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Downloads specific package into specific folder."/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="download path" type="string" variable="$path"/>
+        <param description="package url" type="string" variable="$url"/>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="url" byreference="false" type="string"/>
+    </method>
+    <method name="doUpdate" start="323" end="323" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Updates specific package in specific folder from initial to target version."/>
+        <param description="initial package" type="object" variable="$initial">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="updated package" type="object" variable="$target">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="download path" type="string" variable="$path"/>
+        <param description="package url" type="string" variable="$url"/>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="initial" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="target" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="url" byreference="false" type="string"/>
+    </method>
+    <method name="getCommitLogs" start="333" end="333" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Fetches the commit logs between two commits"/>
+        <param description="the source reference" type="string" variable="$fromReference"/>
+        <param description="the target reference" type="string" variable="$toReference"/>
+        <param description="the package path" type="string" variable="$path"/>
+        <return type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="fromReference" byreference="false" type="string"/>
+      <parameter name="toReference" byreference="false" type="string"/>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="hasMetadataRepository" start="342" end="342" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Checks if VCS metadata repository has been initialized repository example: .git|.svn|.hg"/>
+        <param type="string" variable="$path"/>
+        <return type="object">
+          <type full="Composer\Downloader\bool" namespace="Composer\Downloader" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+  </parent>
+  <interface full="Composer\Downloader\DownloaderInterface" namespace="Composer\Downloader" name="DownloaderInterface">
+    <method name="getInstallationSource" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns installation source (either source or dist)."/>
+        <return description="&quot;source&quot; or &quot;dist&quot;" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="download" start="39" end="39" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This should do any network-related tasks to prepare for an upcoming install/update"/>
+        <param description="download path" type="string" variable="$path"/>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="prepare" start="55" end="55" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Do anything that needs to be done between all downloads have been completed and the actual operation is executed">All packages get first downloaded, then all together prepared, then all together installed/updated/uninstalled. Therefore
+for error recovery it is important to avoid failing during install/update/uninstall as much as possible, and risky things or
+user prompts should happen in the prepare step rather. In case of failure, cleanup() will be called so that changes can
+be undone as much as possible.</description>
+        <param description="one of install/update/uninstall" type="string" variable="$type"/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="download path" type="string" variable="$path"/>
+        <param description="previous package instance in case of an update" type="object" variable="$prevPackage">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="type" byreference="false" type="string"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="install" start="64" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Installs specific package into specific folder."/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="download path" type="string" variable="$path"/>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="update" start="74" end="74" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Updates specific package in specific folder from initial to target version."/>
+        <param description="initial package" type="object" variable="$initial">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="updated package" type="object" variable="$target">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="download path" type="string" variable="$path"/>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="initial" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="target" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="remove" start="83" end="83" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Removes specific package from specific folder."/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="download path" type="string" variable="$path"/>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="cleanup" start="98" end="98" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Do anything to cleanup changes applied in the prepare or install/update/uninstall steps">Note that cleanup will be called for all packages, either after install/update/uninstall is complete,
+or if any package failed any operation. This is to give all installers a change to cleanup things
+they did previously, so you need to keep track of changes applied in the installer/downloader themselves.</description>
+        <param description="one of install/update/uninstall" type="string" variable="$type"/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="download path" type="string" variable="$path"/>
+        <param description="previous package instance in case of an update" type="object" variable="$prevPackage">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+      <parameter name="type" byreference="false" type="string"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+  </interface>
+  <interface full="Composer\Downloader\ChangeReportInterface" namespace="Composer\Downloader" name="ChangeReportInterface">
+    <method name="getLocalChanges" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks for changes to the local copy"/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="package directory" type="string" variable="$path"/>
+        <return description="changes or null" type="object">
+          <type full="Composer\Downloader\string|null" namespace="Composer\Downloader" name="string|null"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+  </interface>
+  <interface full="Composer\Downloader\VcsCapableDownloaderInterface" namespace="Composer\Downloader" name="VcsCapableDownloaderInterface">
+    <method name="getVcsReference" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Gets the VCS Reference for the package at path"/>
+        <param description="package directory" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="package directory" type="string" variable="$path"/>
+        <return description="reference or null" type="object">
+          <type full="Composer\Downloader\string|null" namespace="Composer\Downloader" name="string|null"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+  </interface>
+  <interface full="Composer\Downloader\DvcsDownloaderInterface" namespace="Composer\Downloader" name="DvcsDownloaderInterface">
+    <method name="getUnpushedChanges" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks for unpushed changes to a current branch"/>
+        <param description="package directory" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="package directory" type="string" variable="$path"/>
+        <return description="changes or null" type="object">
+          <type full="Composer\Downloader\string|null" namespace="Composer\Downloader" name="string|null"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+  </interface>
+</class>

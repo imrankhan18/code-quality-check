@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet" abstract="false" final="false" start="32" end="352">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Repository" file="RepositorySet.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Repository/RepositorySet.php" size="13166" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="7c3dae2a0f4a2a8bb2eff704eebd8a5ab9a0ff40" relative="ar/www/html/vendor/composer/composer/src/Composer/Repository/RepositorySet.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <constant type="integer" name="ALLOW_UNACCEPTABLE_STABILITIES" value="1">
+    <docblock>
+      <description compact="Packages are returned even though their stability does not match the required stability"/>
+    </docblock>
+  </constant>
+  <constant type="integer" name="ALLOW_SHADOWED_REPOSITORIES" value="2">
+    <docblock>
+      <description compact="Packages will be looked up in all repositories, even after they have been found in a higher prio one"/>
+    </docblock>
+  </constant>
+  <member name="rootAliases" visibility="private" static="false" line="47">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Repository\array" namespace="Composer\Repository" name="array"/>
+      </var>
+      <phpstan value="-var array&lt;string, array&lt;string, array{alias: string, alias_normalized: string}&gt;&gt;"/>
+    </docblock>
+  </member>
+  <member name="rootReferences" visibility="private" static="false" line="53">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Repository\string" namespace="Composer\Repository" name="string"/>
+      </var>
+      <phpstan value="-var array&lt;string, string&gt;"/>
+    </docblock>
+  </member>
+  <member name="repositories" default="" type="array" visibility="private" static="false" line="56">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="acceptableStabilities" visibility="private" static="false" line="62">
+    <docblock>
+      <description/>
+      <var description="array of stability =&gt; BasePackage::STABILITY_* value" type="array" of="object">
+        <type full="Composer\Repository\int" namespace="Composer\Repository" name="int"/>
+      </var>
+      <phpstan value="-var array&lt;string, BasePackage::STABILITY_*&gt;"/>
+    </docblock>
+  </member>
+  <member name="stabilityFlags" visibility="private" static="false" line="68">
+    <docblock>
+      <description/>
+      <var description="array of package name =&gt; BasePackage::STABILITY_* value" type="array" of="object">
+        <type full="Composer\Repository\int" namespace="Composer\Repository" name="int"/>
+      </var>
+      <phpstan value="-var array&lt;string, BasePackage::STABILITY_*&gt;"/>
+    </docblock>
+  </member>
+  <member name="rootRequires" visibility="private" static="false" line="74">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Repository\ConstraintInterface" namespace="Composer\Repository" name="ConstraintInterface"/>
+      </var>
+      <phpstan value="-var array&lt;string, ConstraintInterface&gt;"/>
+    </docblock>
+  </member>
+  <member name="locked" default="false" type="boolean" visibility="private" static="false" line="77">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="allowInstalledRepositories" default="false" type="boolean" visibility="private" static="false" line="79">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="96" end="114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="In most cases if you are looking to use this class as a way to find packages from repositories passing minimumStability is all you need to worry about. The rest is for advanced pool creation including aliases, pinned references and other special cases."/>
+      <param type="string" variable="$minimumStability"/>
+      <param description="an array of package name =&gt; BasePackage::STABILITY_* value" type="array" variable="$stabilityFlags" of="object">
+        <type full="Composer\Repository\int" namespace="Composer\Repository" name="int"/>
+      </param>
+      <param type="array" variable="$rootAliases" of="object">
+        <type full="Composer\Repository\array" namespace="Composer\Repository" name="array"/>
+      </param>
+      <param description="an array of package name =&gt; source reference" type="array" variable="$rootReferences" of="object">
+        <type full="Composer\Repository\string" namespace="Composer\Repository" name="string"/>
+      </param>
+      <param description="an array of package name =&gt; constraint from the root package" type="array" variable="$rootRequires" of="object">
+        <type full="Composer\Repository\ConstraintInterface" namespace="Composer\Repository" name="ConstraintInterface"/>
+      </param>
+      <phpstan value="-param array&lt;string, BasePackage::STABILITY_*&gt; $stabilityFlags"/>
+      <phpstan value="-param list&lt;array{package: string, version: string, alias: string, alias_normalized: string}&gt; $rootAliases"/>
+      <phpstan value="-param array&lt;string, string&gt; $rootReferences"/>
+      <phpstan value="-param array&lt;string, ConstraintInterface&gt; $rootRequires"/>
+    </docblock>
+    <parameter name="minimumStability" byreference="false" type="string" default="'stable'"/>
+    <parameter name="stabilityFlags" byreference="false" type="array" default=""/>
+    <parameter name="rootAliases" byreference="false" type="array" default=""/>
+    <parameter name="rootReferences" byreference="false" type="array" default=""/>
+    <parameter name="rootRequires" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="allowInstalledRepositories" start="121" end="124" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$allow">
+        <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Repository\void" namespace="Composer\Repository" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="allow" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="getRootRequires" start="130" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="an array of package name =&gt; constraint from the root package, platform requirements excluded" type="array" of="object">
+        <type full="Composer\Repository\ConstraintInterface" namespace="Composer\Repository" name="ConstraintInterface"/>
+      </return>
+      <phpstan value="-return array&lt;string, ConstraintInterface&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="addRepository" start="145" end="160" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Adds a repository to this repository set">The first repos added have a higher priority. As soon as a package is found in any
+repository the search for that package ends, and following repos will not be consulted.</description>
+      <param description="A package repository" type="object" variable="$repo">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Repository\void" namespace="Composer\Repository" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="repo" byreference="false" type="object">
+      <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+    </parameter>
+  </method>
+  <method name="findPackages" start="172" end="211" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Find packages providing or matching a name and optionally meeting a constraint in all repositories">Returned in the order of repositories, matching priority</description>
+      <param type="string" variable="$name"/>
+      <param type="object" variable="$constraint">
+        <type full="Composer\Repository\ConstraintInterface|null" namespace="Composer\Repository" name="ConstraintInterface|null"/>
+      </param>
+      <param description="any of the ALLOW_* constants from this class to tweak what is returned" type="int" variable="$flags"/>
+      <return type="array" of="object">
+        <type full="Composer\Repository\BasePackage" namespace="Composer\Repository" name="BasePackage"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="constraint" byreference="false" type="object" default="NULL">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <inline>
+      <comment value="when using loadPackages above (!$loadFromAllRepos) the repos already filter for stability so no need to do it again" line="198"/>
+    </inline>
+  </method>
+  <method name="getProviders" start="219" end="229" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$packageName"/>
+      <return description="an array with the provider name as key and value of array('name' =&gt; '...', 'description' =&gt; '...', 'type' =&gt; '...')" type="array" of="object">
+        <type full="Composer\Repository\array" namespace="Composer\Repository" name="array"/>
+      </return>
+      <phpstan value="-return array&lt;string, array{name: string, description: string, type: string}&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="packageName" byreference="false" type="string"/>
+  </method>
+  <method name="isPackageAcceptable" start="238" end="241" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check for each given package name whether it would be accepted by this RepositorySet in the given $stability"/>
+      <param type="array" variable="$names" of="object">
+        <type full="Composer\Repository\string" namespace="Composer\Repository" name="string"/>
+      </param>
+      <param description="one of 'stable', 'RC', 'beta', 'alpha' or 'dev'" type="string" variable="$stability"/>
+      <return type="object">
+        <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="names" byreference="false" type="array"/>
+    <parameter name="stability" byreference="false" type="string"/>
+  </method>
+  <method name="createPool" start="248" end="261" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a pool for dependency resolution from the packages in this repository set."/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="eventDispatcher" byreference="false" type="object" default="NULL">
+      <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+    </parameter>
+    <parameter name="poolOptimizer" byreference="false" type="object" default="NULL">
+      <type full="Composer\DependencyResolver\PoolOptimizer" namespace="Composer\DependencyResolver" name="PoolOptimizer"/>
+    </parameter>
+  </method>
+  <method name="createPoolWithAllPackages" start="268" end="300" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a pool for dependency resolution from the packages in this repository set."/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+  </method>
+  <method name="createPoolForPackage" start="307" end="311" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$packageName"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+    <parameter name="packageName" byreference="false" type="string"/>
+    <parameter name="lockedRepo" byreference="false" type="object" default="NULL">
+      <type full="Composer\Repository\LockArrayRepository" namespace="Composer\Repository" name="LockArrayRepository"/>
+    </parameter>
+    <inline>
+      <todo value="unify this with above in some simpler version without &quot;request&quot;?" line="309"/>
+    </inline>
+  </method>
+  <method name="createPoolForPackages" start="318" end="331" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$packageNames" of="object">
+        <type full="Composer\Repository\string" namespace="Composer\Repository" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+    <parameter name="packageNames" byreference="false" type="array"/>
+    <parameter name="lockedRepo" byreference="false" type="object" default="NULL">
+      <type full="Composer\Repository\LockArrayRepository" namespace="Composer\Repository" name="LockArrayRepository"/>
+    </parameter>
+  </method>
+  <method name="getRootAliasesPerPackage" start="339" end="351" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$aliases" of="object">
+        <type full="Composer\Repository\array" namespace="Composer\Repository" name="array"/>
+      </param>
+      <phpstan value="-param list&lt;array{package: string, version: string, alias: string, alias_normalized: string}&gt; $aliases"/>
+      <return description="array&lt;string, array{alias: string, alias_normalized: string}&gt;&gt;" type="object">
+        <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="aliases" byreference="false" type="array"/>
+  </method>
+</class>

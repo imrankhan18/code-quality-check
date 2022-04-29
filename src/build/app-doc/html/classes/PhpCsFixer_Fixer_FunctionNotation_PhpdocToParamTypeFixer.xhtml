@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#PhpCsFixer_Fixer_FunctionNotation">PhpCsFixer\Fixer\FunctionNotation</a>
+          </li>
+          <li class="separator">PhpdocToParamTypeFixer</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Fixer/FunctionNotation/PhpdocToParamTypeFixer.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>PhpCsFixer\Fixer\FunctionNotation\</small>PhpdocToParamTypeFixer</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Jan Gantzert &lt;jan@familie-gantzert.de&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PhpdocToParamTypeFixer
+                extends <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer.xhtml">AbstractPhpdocToTypeDeclarationFixer</a>
+            {<br/><ul class="none"><li>// constants</li><li>const EXCLUDE_FUNC_NAMES = ;</li><li>const SKIPPED_TYPES = ;</li></ul><ul class="none"><li>// Inherited constants from <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer.xhtml">AbstractPhpdocToTypeDeclarationFixer</a></li><li>const <a href="#CLASS_REGEX">CLASS_REGEX</a> = '/^\\\\?[a-zA-Z_\\x7f-\\xff](?:\\\\?[a-zA-Z0-9_\\x7f-\\xff]+)*$/';</li></ul><ul class="none"><li>// Inherited members from <span title="PhpCsFixer\AbstractFixer">AbstractFixer</span></li><li>protected <span title="PhpCsFixer\null|array&lt;string">null|array&lt;string</span> <a href="#members">$configuration</a>;
+                        </li><li>protected <span title="PhpCsFixer\WhitespacesFixerConfig">WhitespacesFixerConfig</span> <a href="#members">$whitespacesConfig</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public <span title="FixerDefinitionInterface">FixerDefinitionInterface</span> <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/getDefinition.xhtml">getDefinition</a>()
+                    </li><li>public bool <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/isCandidate.xhtml">isCandidate</a>()
+                    </li><li>public int <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/getPriority.xhtml">getPriority</a>()
+                    </li><li>protected bool <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/isSkippedType.xhtml">isSkippedType</a>()
+                    </li><li>protected void <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/applyFix.xhtml">applyFix</a>()
+                    </li><li>private ?int <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/findCorrectVariable.xhtml">findCorrectVariable</a>()
+                    </li><li>private bool <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/hasParamTypeHint.xhtml">hasParamTypeHint</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer">AbstractPhpdocToTypeDeclarationFixer</span></li><li>public void <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/isRisky.xhtml">isRisky</a>()
+                        </li><li>protected abstract void <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/isSkippedType.xhtml">isSkippedType</a>()
+                        </li><li>protected void <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/createConfigurationDefinition.xhtml">createConfigurationDefinition</a>()
+                        </li><li>protected void <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/findFunctionDocComment.xhtml">findFunctionDocComment</a>()
+                        </li><li>protected array <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/getAnnotationsFromDocComment.xhtml">getAnnotationsFromDocComment</a>()
+                        </li><li>protected array <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/createTypeDeclarationTokens.xhtml">createTypeDeclarationTokens</a>()
+                        </li><li>protected void <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/getCommonTypeFromAnnotation.xhtml">getCommonTypeFromAnnotation</a>()
+                        </li><li>protected final void <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/isValidSyntax.xhtml">isValidSyntax</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="PhpCsFixer\AbstractFixer">AbstractFixer</span></li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/__construct.xhtml">__construct</a>()
+                        </li><li>public final void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/fix.xhtml">fix</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/isRisky.xhtml">isRisky</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getName.xhtml">getName</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getPriority.xhtml">getPriority</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/supports.xhtml">supports</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/configure.xhtml">configure</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getConfigurationDefinition.xhtml">getConfigurationDefinition</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/setWhitespacesConfig.xhtml">setWhitespacesConfig</a>()
+                        </li><li>protected abstract void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/applyFix.xhtml">applyFix</a>()
+                        </li><li>protected void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/createConfigurationDefinition.xhtml">createConfigurationDefinition</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer.xhtml">PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="EXCLUDE_FUNC_NAMES">EXCLUDE_FUNC_NAMES</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="SKIPPED_TYPES">SKIPPED_TYPES</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="CLASS_REGEX">CLASS_REGEX</td>
+              <td>'/^\\\\?[a-zA-Z_\\x7f-\\xff](?:\\\\?[a-zA-Z0-9_\\x7f-\\xff]+)*$/'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="configuration"><strong>$configuration</strong>
+                —
+                <a title="PhpCsFixer\null|array&lt;string" href="../classes/PhpCsFixer_null|array&lt;string.xhtml">PhpCsFixer\null|array&lt;string</a></li>
+            <li id="whitespacesConfig"><strong>$whitespacesConfig</strong>
+                —
+                <a title="PhpCsFixer\WhitespacesFixerConfig" href="../classes/PhpCsFixer_WhitespacesFixerConfig.xhtml">PhpCsFixer\WhitespacesFixerConfig</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="findCorrectVariable">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/findCorrectVariable.xhtml">findCorrectVariable()</a>
+            </li>
+            <li id="hasParamTypeHint"><a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/hasParamTypeHint.xhtml">hasParamTypeHint()</a>
+                — Determine whether the function already has a param type hint.</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="applyFix"><a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/applyFix.xhtml">applyFix()</a>
+                — {@inheritdoc}</li>
+            <li id="isSkippedType">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/isSkippedType.xhtml">isSkippedType()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="getDefinition"><a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/getDefinition.xhtml">getDefinition()</a>
+                — {@inheritdoc}</li>
+            <li id="getPriority"><a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/getPriority.xhtml">getPriority()</a>
+                — {@inheritdoc}</li>
+            <li id="isCandidate"><a title="PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_PhpdocToParamTypeFixer/isCandidate.xhtml">isCandidate()</a>
+                — {@inheritdoc}</li>
+          </ul>
+          <h3>Inherited from <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer.xhtml">PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="createConfigurationDefinition"><a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/createConfigurationDefinition.xhtml">createConfigurationDefinition()</a>
+                — {@inheritdoc}</li>
+            <li id="createTypeDeclarationTokens">
+              <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/createTypeDeclarationTokens.xhtml">createTypeDeclarationTokens()</a>
+            </li>
+            <li id="findFunctionDocComment">
+              <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/findFunctionDocComment.xhtml">findFunctionDocComment()</a>
+            </li>
+            <li id="getAnnotationsFromDocComment">
+              <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/getAnnotationsFromDocComment.xhtml">getAnnotationsFromDocComment()</a>
+            </li>
+            <li id="getCommonTypeFromAnnotation">
+              <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/getCommonTypeFromAnnotation.xhtml">getCommonTypeFromAnnotation()</a>
+            </li>
+            <li id="isSkippedType">
+              <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/isSkippedType.xhtml">isSkippedType()</a>
+            </li>
+            <li id="isValidSyntax">
+              <a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/isValidSyntax.xhtml">isValidSyntax()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="isRisky"><a title="PhpCsFixer\AbstractPhpdocToTypeDeclarationFixer" href="../classes/PhpCsFixer_AbstractPhpdocToTypeDeclarationFixer/isRisky.xhtml">isRisky()</a>
+                — {@inheritdoc}</li>
+          </ul>
+          <h3>Inherited from <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer.xhtml">PhpCsFixer\AbstractFixer</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="applyFix">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/applyFix.xhtml">applyFix()</a>
+            </li>
+            <li id="createConfigurationDefinition">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/createConfigurationDefinition.xhtml">createConfigurationDefinition()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="configure">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/configure.xhtml">configure()</a>
+            </li>
+            <li id="fix">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/fix.xhtml">fix()</a>
+            </li>
+            <li id="getConfigurationDefinition">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getConfigurationDefinition.xhtml">getConfigurationDefinition()</a>
+            </li>
+            <li id="getName"><a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getName.xhtml">getName()</a>
+                — {@inheritdoc}</li>
+            <li id="getPriority"><a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getPriority.xhtml">getPriority()</a>
+                — {@inheritdoc}</li>
+            <li id="isRisky"><a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/isRisky.xhtml">isRisky()</a>
+                — {@inheritdoc}</li>
+            <li id="setWhitespacesConfig">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/setWhitespacesConfig.xhtml">setWhitespacesConfig()</a>
+            </li>
+            <li id="supports"><a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/supports.xhtml">supports()</a>
+                — {@inheritdoc}</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

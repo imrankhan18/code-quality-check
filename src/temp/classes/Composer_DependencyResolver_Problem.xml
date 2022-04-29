@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\Problem" namespace="Composer\DependencyResolver" name="Problem" abstract="false" final="false" start="34" end="583">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="Problem.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Problem.php" size="27963" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="69368193eec01dcca08c865b8afc526c84cf4c2f" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Problem.php"/>
+  <docblock>
+    <description compact="Represents a problem detected while solving dependencies"/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <member name="reasonSeen" visibility="protected" static="false" line="40">
+    <docblock>
+      <description compact="A map containing the id of each rule part of this problem as a key"/>
+      <var description="true&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="reasons" default="" type="array" visibility="protected" static="false" line="46">
+    <docblock>
+      <description compact="A set of reasons for the problem, each is a rule or a root require and a rule"/>
+      <var description="array&lt;int, Rule&gt;&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="section" default="0" type="integer" visibility="protected" static="false" line="49">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <method name="addRule" start="57" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a rule as a reason"/>
+      <param description="A rule which is a reason for this problem" type="object" variable="$rule">
+        <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="rule" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+  </method>
+  <method name="getReasons" start="67" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve all reasons for this problem"/>
+      <return description="array&lt;int, Rule&gt;&gt; The problem's reasons" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getPrettyString" start="80" end="109" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A human readable textual representation of the problem's reasons"/>
+      <param type="object" variable="$isVerbose">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param description="BasePackage&gt; $installedMap A map of all present packages" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int|string" namespace="Composer\DependencyResolver" name="array&lt;int|string"/>
+      </param>
+      <param type="array" variable="$learnedPool" of="object">
+        <type full="Composer\DependencyResolver\array&lt;Rule[" namespace="Composer\DependencyResolver" name="array&lt;Rule["/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="repositorySet" byreference="false" type="object">
+      <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+    </parameter>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="isVerbose" byreference="false" type="bool"/>
+    <parameter name="installedMap" byreference="false" type="array" default=""/>
+    <parameter name="learnedPool" byreference="false" type="array" default=""/>
+    <inline>
+      <todo value="doesn't this entirely defeat the purpose of the problem sections? what's the point of sections?" line="82"/>
+    </inline>
+  </method>
+  <method name="formatDeduplicatedRules" start="120" end="163" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$rules" of="object">
+        <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+      </param>
+      <param type="string" variable="$indent"/>
+      <param type="object" variable="$isVerbose">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param description="BasePackage&gt; $installedMap A map of all present packages" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int|string" namespace="Composer\DependencyResolver" name="array&lt;int|string"/>
+      </param>
+      <param type="array" variable="$learnedPool" of="object">
+        <type full="Composer\DependencyResolver\array&lt;Rule[" namespace="Composer\DependencyResolver" name="array&lt;Rule["/>
+      </param>
+      <return type="string"/>
+      <internal/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="rules" byreference="false" type="array"/>
+    <parameter name="indent" byreference="false" type="string"/>
+    <parameter name="repositorySet" byreference="false" type="object">
+      <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+    </parameter>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="isVerbose" byreference="false" type="bool"/>
+    <parameter name="installedMap" byreference="false" type="array" default=""/>
+    <parameter name="learnedPool" byreference="false" type="array" default=""/>
+  </method>
+  <method name="isCausedByLock" start="168" end="179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="repositorySet" byreference="false" type="object">
+      <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+    </parameter>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+  </method>
+  <method name="addReason" start="188" end="197" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Store a reason descriptor but ignore duplicates"/>
+      <param description="A canonical identifier for the reason" type="string" variable="$id"/>
+      <param description="The reason descriptor" type="object" variable="$reason">
+        <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="id" byreference="false" type="string"/>
+    <parameter name="reason" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+    <inline>
+      <todo value="if a rule is part of a problem description in two sections, isn't this going to remove a message" line="190"/>
+      <comment value="that is important to understand the issue?" line="191"/>
+    </inline>
+  </method>
+  <method name="nextSection" start="202" end="205" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="getMissingPackageReason" start="213" end="376" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <param type="object" variable="$isVerbose">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param type="string" variable="$packageName"/>
+      <return description="string, 1: string}" type="object">
+        <type full="Composer\DependencyResolver\array{0:" namespace="Composer\DependencyResolver" name="array{0:"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="repositorySet" byreference="false" type="object">
+      <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+    </parameter>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="isVerbose" byreference="false" type="bool"/>
+    <parameter name="packageName" byreference="false" type="string"/>
+    <parameter name="constraint" byreference="false" type="object" default="NULL">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <inline>
+      <comment value="first check if the actual requested package is found in normal conditions" line="284"/>
+      <comment value="if so it must mean it is rejected by another constraint than the one given here" line="285"/>
+      <comment value="check if the package is found when bypassing stability checks" line="318"/>
+      <comment value="check if the package is found when bypassing the constraint and stability checks" line="328"/>
+    </inline>
+  </method>
+  <method name="getPackageList" start="385" end="423" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <param type="array" variable="$packages" of="object">
+        <type full="Composer\DependencyResolver\PackageInterface" namespace="Composer\DependencyResolver" name="PackageInterface"/>
+      </param>
+      <param type="object" variable="$isVerbose">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param type="object" variable="$useRemovedVersionGroup">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="packages" byreference="false" type="array"/>
+    <parameter name="isVerbose" byreference="false" type="bool"/>
+    <parameter name="pool" byreference="false" type="object" default="NULL">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="constraint" byreference="false" type="object" default="NULL">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <parameter name="useRemovedVersionGroup" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getPlatformPackageVersion" start="430" end="466" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$packageName"/>
+      <param description="the effective runtime version of the platform package" type="string" variable="$version"/>
+      <return description="a version string or null if it appears the package was artificially disabled" type="object">
+        <type full="Composer\DependencyResolver\?string" namespace="Composer\DependencyResolver" name="?string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="packageName" byreference="false" type="string"/>
+    <parameter name="version" byreference="false" type="string"/>
+  </method>
+  <method name="condenseVersionList" start="474" end="502" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param description="an array of pretty versions, with normalized versions as keys" type="array" variable="$versions" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </param>
+      <param type="int" variable="$max"/>
+      <param type="int" variable="$maxDev"/>
+      <return description="a list of pretty versions and '...' where versions were removed" type="object">
+        <type full="Composer\DependencyResolver\list&lt;string&gt;" namespace="Composer\DependencyResolver" name="list&lt;string&gt;"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="versions" byreference="false" type="array"/>
+    <parameter name="max" byreference="false" type="int"/>
+    <parameter name="maxDev" byreference="false" type="integer" default="16"/>
+  </method>
+  <method name="hasMultipleNames" start="508" end="520" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$packages" of="object">
+        <type full="Composer\DependencyResolver\PackageInterface" namespace="Composer\DependencyResolver" name="PackageInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="packages" byreference="false" type="array"/>
+  </method>
+  <method name="computeCheckForLowerPrioRepo" start="530" end="572" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$isVerbose">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param type="string" variable="$packageName"/>
+      <param type="array" variable="$higherRepoPackages" of="object">
+        <type full="Composer\DependencyResolver\PackageInterface" namespace="Composer\DependencyResolver" name="PackageInterface"/>
+      </param>
+      <param type="array" variable="$allReposPackages" of="object">
+        <type full="Composer\DependencyResolver\PackageInterface" namespace="Composer\DependencyResolver" name="PackageInterface"/>
+      </param>
+      <param type="string" variable="$reason"/>
+      <return description="string, 1: string}" type="object">
+        <type full="Composer\DependencyResolver\array{0:" namespace="Composer\DependencyResolver" name="array{0:"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="isVerbose" byreference="false" type="bool"/>
+    <parameter name="packageName" byreference="false" type="string"/>
+    <parameter name="higherRepoPackages" byreference="false" type="array"/>
+    <parameter name="allReposPackages" byreference="false" type="array"/>
+    <parameter name="reason" byreference="false" type="string"/>
+    <parameter name="constraint" byreference="false" type="object" default="NULL">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="constraintToText" start="579" end="582" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Turns a constraint into text usable in a sentence describing a request"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="constraint" byreference="false" type="object" default="NULL">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+</class>

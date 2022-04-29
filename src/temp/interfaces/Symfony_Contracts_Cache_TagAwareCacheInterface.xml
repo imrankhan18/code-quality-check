@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Symfony\Contracts\Cache\TagAwareCacheInterface" namespace="Symfony\Contracts\Cache" name="TagAwareCacheInterface" abstract="false" final="false" start="21" end="38">
+  <file path="//var/www/html/vendor/symfony/cache-contracts" file="TagAwareCacheInterface.php" realpath="/var/www/html/vendor/symfony/cache-contracts/TagAwareCacheInterface.php" size="1005" time="2022-01-02T09:53:40+00:00" unixtime="1641117220" sha1="e04dff2d269c1ba5daaba9b99a076ba2793e5259" relative="ar/www/html/vendor/symfony/cache-contracts/TagAwareCacheInterface.php"/>
+  <docblock>
+    <description compact="Allows invalidating cached items using tags."/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+  </docblock>
+  <extends full="Symfony\Contracts\Cache\CacheInterface" namespace="Symfony\Contracts\Cache" name="CacheInterface"/>
+  <method name="invalidateTags" start="37" end="37" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Invalidates cached items using tags.">When implemented on a PSR-6 pool, invalidation should not apply
+to deferred items. Instead, they should be committed as usual.
+This allows replacing old tagged values by new ones without
+race conditions.</description>
+      <param description="An array of tags to invalidate" type="array" variable="$tags" of="object">
+        <type full="Symfony\Contracts\Cache\string" namespace="Symfony\Contracts\Cache" name="string"/>
+      </param>
+      <return description="True on success" type="object">
+        <type full="Symfony\Contracts\Cache\bool" namespace="Symfony\Contracts\Cache" name="bool"/>
+      </return>
+      <throws description="When $tags is not valid" type="object">
+        <type full="Psr\Cache\InvalidArgumentException" namespace="Psr\Cache" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="tags" byreference="false" type="array"/>
+  </method>
+  <implementors>
+    <class full="Symfony\Component\Cache\Adapter\TraceableTagAwareAdapter" namespace="Symfony\Component\Cache\Adapter" name="TraceableTagAwareAdapter"/>
+    <class full="Symfony\Component\Cache\Adapter\TagAwareAdapter" namespace="Symfony\Component\Cache\Adapter" name="TagAwareAdapter"/>
+  </implementors>
+  <parent full="Symfony\Contracts\Cache\CacheInterface" namespace="Symfony\Contracts\Cache" name="CacheInterface">
+    <method name="get" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Fetches a value from the pool or computes it if not found.">On cache misses, a callback is called that should return the missing value.
+This callback is given a PSR-6 CacheItemInterface instance corresponding to the
+requested key, that could be used e.g. for expiration control. It could also
+be an ItemInterface instance when its additional features are needed.</description>
+        <param description="The key of the item to retrieve from the cache" type="string" variable="$key"/>
+        <param description="Should return the computed value for the given key/item" type="object" variable="$callback">
+          <type full="Symfony\Contracts\Cache\callable|CallbackInterface" namespace="Symfony\Contracts\Cache" name="callable|CallbackInterface"/>
+        </param>
+        <param description="A float that, as it grows, controls the likeliness of triggering" type="object" variable="$beta">early expiration. 0 disables it, INF forces immediate expiration.
+                                             The default (or providing null) is implementation dependent but should
+                                             typically be 1.0, which should provide optimal stampede protection.
+                                             See https://en.wikipedia.org/wiki/Cache_stampede#Probabilistic_early_expiration<type full="Symfony\Contracts\Cache\float|null" namespace="Symfony\Contracts\Cache" name="float|null"/></param>
+        <param description="&amp;$metadata The metadata of the cached item {@see ItemInterface::getMetadata()}" type="array"/>
+        <return type="mixed"/>
+        <throws description="When $key is not valid or when $beta is negative" type="object">
+          <type full="Psr\Cache\InvalidArgumentException" namespace="Psr\Cache" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="key" byreference="false" type="string"/>
+      <parameter name="callback" byreference="false" type="callable"/>
+      <parameter name="beta" byreference="false" type="float" default="NULL"/>
+      <parameter name="metadata" byreference="true" type="array" default="NULL"/>
+    </method>
+    <method name="delete" start="56" end="56" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Removes an item from the pool."/>
+        <param description="The key to delete" type="string" variable="$key"/>
+        <throws description="When $key is not valid" type="object">
+          <type full="Psr\Cache\InvalidArgumentException" namespace="Psr\Cache" name="InvalidArgumentException"/>
+        </throws>
+        <return description="True if the item was successfully removed, false if there was any error" type="object">
+          <type full="Symfony\Contracts\Cache\bool" namespace="Symfony\Contracts\Cache" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="key" byreference="false" type="string"/>
+    </method>
+  </parent>
+</interface>

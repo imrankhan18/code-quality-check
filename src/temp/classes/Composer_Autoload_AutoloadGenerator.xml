@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Autoload\AutoloadGenerator" namespace="Composer\Autoload" name="AutoloadGenerator" abstract="false" final="false" start="38" end="1377">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Autoload" file="AutoloadGenerator.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Autoload/AutoloadGenerator.php" size="50632" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="7935dca15d1fddb68aaf08d8832bc78f948cac1e" relative="ar/www/html/vendor/composer/composer/src/Composer/Autoload/AutoloadGenerator.php"/>
+  <docblock>
+    <description/>
+    <author value="Igor Wiedler &lt;igor@wiedler.ch&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="eventDispatcher" visibility="private" static="false" line="43">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="io" visibility="private" static="false" line="48">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Autoload\?IOInterface" namespace="Composer\Autoload" name="?IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="devMode" default="NULL" visibility="private" static="false" line="53">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Autoload\?bool" namespace="Composer\Autoload" name="?bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="classMapAuthoritative" default="false" type="boolean" visibility="private" static="false" line="58">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="apcu" default="false" type="boolean" visibility="private" static="false" line="63">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="apcuPrefix" visibility="private" static="false" line="68">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Autoload\string|null" namespace="Composer\Autoload" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="runScripts" default="false" type="boolean" visibility="private" static="false" line="73">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="platformRequirementFilter" visibility="private" static="false" line="78">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="80" end="86" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="eventDispatcher" byreference="false" type="object">
+      <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+    </parameter>
+    <parameter name="io" byreference="false" type="object" default="NULL">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </constructor>
+  <method name="setDevMode" start="92" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$devMode">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="devMode" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="setClassMapAuthoritative" start="103" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether generated autoloader considers the class map authoritative."/>
+      <param type="object" variable="$classMapAuthoritative">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="classMapAuthoritative" byreference="false" type="bool"/>
+  </method>
+  <method name="setApcu" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether generated autoloader considers APCu caching."/>
+      <param type="object" variable="$apcu">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <param type="object" variable="$apcuPrefix">
+        <type full="Composer\Autoload\string|null" namespace="Composer\Autoload" name="string|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="apcu" byreference="false" type="bool"/>
+    <parameter name="apcuPrefix" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="setRunScripts" start="127" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to run scripts or not"/>
+      <param type="object" variable="$runScripts">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="runScripts" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="setIgnorePlatformRequirements" start="144" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether platform requirements should be ignored.">If this is set to true, the platform check file will not be generated
+If this is set to false, the platform check file will be generated with all requirements
+If this is set to string[], those packages will be ignored from the platform check file</description>
+      <param type="array" variable="$ignorePlatformReqs" of="object">
+        <type full="Composer\Autoload\bool|string" namespace="Composer\Autoload" name="bool|string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+      <deprecated value="use setPlatformRequirementFilter instead"/>
+    </docblock>
+    <parameter name="ignorePlatformReqs" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPlatformRequirementFilter" start="154" end="157" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="platformRequirementFilter" byreference="false" type="object">
+      <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+    </parameter>
+  </method>
+  <method name="dump" start="166" end="437" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$targetDir"/>
+      <param type="object" variable="$scanPsrPackages">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <return type="int"/>
+      <throws type="object">
+        <type full="\Seld\JsonLint\ParsingException" namespace="\Seld\JsonLint" name="ParsingException"/>
+      </throws>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="localRepo" byreference="false" type="object">
+      <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+    </parameter>
+    <parameter name="rootPackage" byreference="false" type="object">
+      <type full="Composer\Package\RootPackageInterface" namespace="Composer\Package" name="RootPackageInterface"/>
+    </parameter>
+    <parameter name="installationManager" byreference="false" type="object">
+      <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+    </parameter>
+    <parameter name="targetDir" byreference="false" type="string"/>
+    <parameter name="scanPsrPackages" byreference="false" type="boolean" default="false"/>
+    <parameter name="suffix" byreference="false" nullable="true" type="string" default="NULL"/>
+    <inline>
+      <comment value="auto-set devMode based on whether dev dependencies are installed or not" line="173"/>
+      <comment value="Do not remove double realpath() calls." line="200"/>
+      <comment value="Fixes failing Windows realpath() implementation." line="201"/>
+      <comment value="See https://bugs.php.net/bug.php?id=72738" line="202"/>
+      <comment value="Collect information from all packages." line="240"/>
+      <comment value="Process the 'psr-0' base directories." line="252"/>
+      <comment value="Process the 'psr-4' base directories." line="264"/>
+      <comment value="add custom psr-0 autoloading if the root package has a target dir" line="288"/>
+    </inline>
+  </method>
+  <method name="addClassMapCode" start="451" end="463" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$basePath"/>
+      <param type="string" variable="$vendorPath"/>
+      <param type="string" variable="$dir"/>
+      <param description="string&gt; $excluded" type="object">
+        <type full="Composer\Autoload\null|array&lt;int" namespace="Composer\Autoload" name="null|array&lt;int"/>
+      </param>
+      <param type="object" variable="$namespaceFilter">
+        <type full="Composer\Autoload\null|string" namespace="Composer\Autoload" name="null|string"/>
+      </param>
+      <param type="object" variable="$autoloadType">
+        <type full="Composer\Autoload\null|string" namespace="Composer\Autoload" name="null|string"/>
+      </param>
+      <param description="string&gt; $classMap" type="object">
+        <type full="Composer\Autoload\array&lt;class-string" namespace="Composer\Autoload" name="array&lt;class-string"/>
+      </param>
+      <param description="array&lt;int string&gt;&gt; $ambiguousClasses" type="object">
+        <type full="Composer\Autoload\array&lt;class-string" namespace="Composer\Autoload" name="array&lt;class-string"/>
+      </param>
+      <param description="true&gt; $scannedFiles" type="object">
+        <type full="Composer\Autoload\array&lt;string" namespace="Composer\Autoload" name="array&lt;string"/>
+      </param>
+      <return description="string&gt;" type="object">
+        <type full="Composer\Autoload\array&lt;class-string" namespace="Composer\Autoload" name="array&lt;class-string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="filesystem" byreference="false" type="object">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+    <parameter name="basePath" byreference="false" type="string"/>
+    <parameter name="vendorPath" byreference="false" type="string"/>
+    <parameter name="dir" byreference="false" type="string"/>
+    <parameter name="excluded" byreference="false" nullable="true" type="array"/>
+    <parameter name="namespaceFilter" byreference="false" nullable="true" type="string"/>
+    <parameter name="autoloadType" byreference="false" nullable="true" type="string"/>
+    <parameter name="classMap" byreference="false" type="array"/>
+    <parameter name="ambiguousClasses" byreference="true" type="array"/>
+    <parameter name="scannedFiles" byreference="true" type="array"/>
+  </method>
+  <method name="generateClassMap" start="474" end="497" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$dir"/>
+      <param description="string&gt; $excluded" type="object">
+        <type full="Composer\Autoload\null|array&lt;int" namespace="Composer\Autoload" name="null|array&lt;int"/>
+      </param>
+      <param type="object" variable="$namespaceFilter">
+        <type full="Composer\Autoload\null|string" namespace="Composer\Autoload" name="null|string"/>
+      </param>
+      <param type="object" variable="$autoloadType">
+        <type full="Composer\Autoload\null|string" namespace="Composer\Autoload" name="null|string"/>
+      </param>
+      <param type="object" variable="$showAmbiguousWarning">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <param description="true&gt; $scannedFiles" type="object">
+        <type full="Composer\Autoload\array&lt;string" namespace="Composer\Autoload" name="array&lt;string"/>
+      </param>
+      <return description="string&gt;" type="object">
+        <type full="Composer\Autoload\array&lt;class-string" namespace="Composer\Autoload" name="array&lt;class-string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="dir" byreference="false" type="string"/>
+    <parameter name="excluded" byreference="false" nullable="true" type="array"/>
+    <parameter name="namespaceFilter" byreference="false" nullable="true" type="string"/>
+    <parameter name="autoloadType" byreference="false" nullable="true" type="string"/>
+    <parameter name="showAmbiguousWarning" byreference="false" type="bool"/>
+    <parameter name="scannedFiles" byreference="true" type="array"/>
+  </method>
+  <method name="buildPackageMap" start="504" end="522" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$installationManager">
+        <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+      </param>
+      <param type="array" variable="$packages" of="object">
+        <type full="Composer\Autoload\PackageInterface" namespace="Composer\Autoload" name="PackageInterface"/>
+      </param>
+      <return description="array{0: PackageInterface, 1: string}&gt;" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <parameter name="installationManager" byreference="false" type="object">
+      <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+    </parameter>
+    <parameter name="rootPackage" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="packages" byreference="false" type="array"/>
+    <inline>
+      <comment value="build package =&gt; install path map" line="506"/>
+    </inline>
+  </method>
+  <method name="validatePackage" start="528" end="543" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Autoload\void" namespace="Composer\Autoload" name="void"/>
+      </return>
+      <throws description="Throws an exception, if the package has illegal settings." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="parseAutoloads" start="560" end="590" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Compiles an ordered list of namespace =&gt; path mappings"/>
+      <param description="array{0: PackageInterface, 1: string}&gt; $packageMap array of array(package, installDir-relative-to-composer.json)" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </param>
+      <param description="root package instance" type="object" variable="$rootPackage">
+        <type full="Composer\Package\RootPackageInterface" namespace="Composer\Package" name="RootPackageInterface"/>
+      </param>
+      <param description="If an array, the list of packages that must be removed. If bool, whether to filter out require-dev packages" type="array" variable="$filteredDevPackages" of="object">
+        <type full="Composer\Autoload\bool|string" namespace="Composer\Autoload" name="bool|string"/>
+      </param>
+      <return type="array"/>
+      <phpstan value="-return array{ 'psr-0': array&lt;string, array&lt;string&gt;&gt;, 'psr-4': array&lt;string, array&lt;string&gt;&gt;, 'classmap': array&lt;int, string&gt;, 'files': array&lt;string, string&gt;, 'exclude-from-classmap': array&lt;int, string&gt;, }"/>
+    </docblock>
+    <parameter name="packageMap" byreference="false" type="array"/>
+    <parameter name="rootPackage" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="filteredDevPackages" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="createLoader" start="599" end="632" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Registers an autoloader based on an autoload-map returned by parseAutoloads"/>
+      <param description="mixed[]&gt; $autoloads see parseAutoloads return value" type="object">
+        <type full="Composer\Autoload\array&lt;string" namespace="Composer\Autoload" name="array&lt;string"/>
+      </param>
+      <param type="object" variable="$vendorDir">
+        <type full="Composer\Autoload\null|string" namespace="Composer\Autoload" name="null|string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\ClassLoader" namespace="Composer\Autoload" name="ClassLoader"/>
+      </return>
+    </docblock>
+    <parameter name="autoloads" byreference="false" type="array"/>
+    <parameter name="vendorDir" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="getIncludePathsFile" start="642" end="680" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="array{0: PackageInterface, 1: string}&gt; $packageMap" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </param>
+      <param type="string" variable="$basePath"/>
+      <param type="string" variable="$vendorPath"/>
+      <param type="string" variable="$vendorPathCode"/>
+      <param type="string" variable="$appBaseDirCode"/>
+      <return type="object">
+        <type full="Composer\Autoload\?string" namespace="Composer\Autoload" name="?string"/>
+      </return>
+    </docblock>
+    <parameter name="packageMap" byreference="false" type="array"/>
+    <parameter name="filesystem" byreference="false" type="object">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+    <parameter name="basePath" byreference="false" type="string"/>
+    <parameter name="vendorPath" byreference="false" type="string"/>
+    <parameter name="vendorPathCode" byreference="false" type="string"/>
+    <parameter name="appBaseDirCode" byreference="false" type="string"/>
+  </method>
+  <method name="getIncludeFilesFile" start="690" end="714" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="string&gt; $files" type="object">
+        <type full="Composer\Autoload\array&lt;string" namespace="Composer\Autoload" name="array&lt;string"/>
+      </param>
+      <param type="string" variable="$basePath"/>
+      <param type="string" variable="$vendorPath"/>
+      <param type="string" variable="$vendorPathCode"/>
+      <param type="string" variable="$appBaseDirCode"/>
+      <return type="object">
+        <type full="Composer\Autoload\?string" namespace="Composer\Autoload" name="?string"/>
+      </return>
+    </docblock>
+    <parameter name="files" byreference="false" type="array"/>
+    <parameter name="filesystem" byreference="false" type="object">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+    <parameter name="basePath" byreference="false" type="string"/>
+    <parameter name="vendorPath" byreference="false" type="string"/>
+    <parameter name="vendorPathCode" byreference="false" type="string"/>
+    <parameter name="appBaseDirCode" byreference="false" type="string"/>
+  </method>
+  <method name="getPathCode" start="722" end="746" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$basePath"/>
+      <param type="string" variable="$vendorPath"/>
+      <param type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="filesystem" byreference="false" type="object">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+    <parameter name="basePath" byreference="false" type="string"/>
+    <parameter name="vendorPath" byreference="false" type="string"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="getPlatformCheck" start="754" end="905" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="array{0: PackageInterface, 1: string}&gt; $packageMap" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </param>
+      <param type="object" variable="$checkPlatform">
+        <type full="Composer\Autoload\bool|'php-only'" namespace="Composer\Autoload" name="bool|'php-only'"/>
+      </param>
+      <param type="array" variable="$devPackageNames" of="object">
+        <type full="Composer\Autoload\string" namespace="Composer\Autoload" name="string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Autoload\?string" namespace="Composer\Autoload" name="?string"/>
+      </return>
+    </docblock>
+    <parameter name="packageMap" byreference="false" type="array"/>
+    <parameter name="checkPlatform" byreference="false" type="{unknown}"/>
+    <parameter name="devPackageNames" byreference="false" type="array"/>
+  </method>
+  <method name="getAutoloadFile" start="912" end="936" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$vendorPathToTargetDirCode"/>
+      <param type="string" variable="$suffix"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="vendorPathToTargetDirCode" byreference="false" type="string"/>
+    <parameter name="suffix" byreference="false" type="string"/>
+  </method>
+  <method name="getAutoloadRealFile" start="951" end="1095" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="object" variable="$useClassMap">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <param type="object" variable="$useIncludePath">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <param type="object" variable="$targetDirLoader">
+        <type full="Composer\Autoload\null|string" namespace="Composer\Autoload" name="null|string"/>
+      </param>
+      <param type="object" variable="$useIncludeFiles">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <param description="unused in this method" type="string" variable="$vendorPathCode"/>
+      <param description="unused in this method" type="string" variable="$appBaseDirCode"/>
+      <param type="string" variable="$suffix"/>
+      <param type="object" variable="$useGlobalIncludePath">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <param description="'true'|'false'" type="string" variable="$prependAutoloader"/>
+      <param type="object" variable="$checkPlatform">
+        <type full="Composer\Autoload\bool" namespace="Composer\Autoload" name="bool"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <parameter name="useClassMap" byreference="false" type="bool"/>
+    <parameter name="useIncludePath" byreference="false" type="bool"/>
+    <parameter name="targetDirLoader" byreference="false" nullable="true" type="string"/>
+    <parameter name="useIncludeFiles" byreference="false" type="bool"/>
+    <parameter name="vendorPathCode" byreference="false" type="string"/>
+    <parameter name="appBaseDirCode" byreference="false" type="string"/>
+    <parameter name="suffix" byreference="false" type="string"/>
+    <parameter name="useGlobalIncludePath" byreference="false" type="bool"/>
+    <parameter name="prependAutoloader" byreference="false" type="string"/>
+    <parameter name="checkPlatform" byreference="false" type="bool"/>
+    <inline>
+      <comment value="keeping PHP 5.6+ compatibility for the autoloader here by using call_user_func vs getInitializer()()" line="1007"/>
+    </inline>
+  </method>
+  <method name="getStaticFile" start="1104" end="1190" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$suffix"/>
+      <param type="string" variable="$targetDir"/>
+      <param description="input for findShortestPathCode" type="string" variable="$vendorPath"/>
+      <param description="input for findShortestPathCode" type="string" variable="$basePath"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="suffix" byreference="false" type="string"/>
+    <parameter name="targetDir" byreference="false" type="string"/>
+    <parameter name="vendorPath" byreference="false" type="string"/>
+    <parameter name="basePath" byreference="false" type="string"/>
+  </method>
+  <method name="parseAutoloadsType" start="1197" end="1280" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="array{0: PackageInterface, 1: string}&gt; $packageMap" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </param>
+      <param description="one of: 'psr-0'|'psr-4'|'classmap'|'files'" type="string" variable="$type"/>
+      <return description="string&gt;|array&lt;string, array&lt;string&gt;&gt;|array&lt;string, string&gt;" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <parameter name="packageMap" byreference="false" type="array"/>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="rootPackage" byreference="false" type="object">
+      <type full="Composer\Package\RootPackageInterface" namespace="Composer\Package" name="RootPackageInterface"/>
+    </parameter>
+  </method>
+  <method name="getFileIdentifier" start="1286" end="1289" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="filterPackageMap" start="1300" end="1344" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Filters out dev-dependencies"/>
+      <param description="array{0: PackageInterface, 1: string}&gt; $packageMap" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </param>
+      <param type="object" variable="$rootPackage">
+        <type full="Composer\Package\RootPackageInterface" namespace="Composer\Package" name="RootPackageInterface"/>
+      </param>
+      <return description="array{0: PackageInterface, 1: string}&gt;" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </return>
+      <phpstan value="-param array&lt;int, array{0: PackageInterface, 1: string}&gt; $packageMap"/>
+    </docblock>
+    <parameter name="packageMap" byreference="false" type="array"/>
+    <parameter name="rootPackage" byreference="false" type="object">
+      <type full="Composer\Package\RootPackageInterface" namespace="Composer\Package" name="RootPackageInterface"/>
+    </parameter>
+  </method>
+  <method name="sortPackageMap" start="1354" end="1376" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Sorts packages by dependency weight">Packages of equal weight are sorted alphabetically</description>
+      <param description="array{0: PackageInterface, 1: string}&gt; $packageMap" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </param>
+      <return description="array{0: PackageInterface, 1: string}&gt;" type="object">
+        <type full="Composer\Autoload\array&lt;int" namespace="Composer\Autoload" name="array&lt;int"/>
+      </return>
+    </docblock>
+    <parameter name="packageMap" byreference="false" type="array"/>
+  </method>
+</class>

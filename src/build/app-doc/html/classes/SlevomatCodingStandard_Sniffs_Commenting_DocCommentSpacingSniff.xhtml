@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#SlevomatCodingStandard_Sniffs_Commenting">SlevomatCodingStandard\Sniffs\Commenting</a>
+          </li>
+          <li class="separator">DocCommentSpacingSniff</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Commenting/DocCommentSpacingSniff.php.xhtml#line41">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>SlevomatCodingStandard\Sniffs\Commenting\</small>DocCommentSpacingSniff</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class DocCommentSpacingSniff
+                implements
+                <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">Sniff</a>
+            {<br/><ul class="none"><li>// constants</li><li>const CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTENT = 'IncorrectLinesCountBeforeFirstContent';</li><li>const CODE_INCORRECT_LINES_COUNT_BETWEEN_DESCRIPTION_AND_ANNOTATIONS = 'IncorrectLinesCountBetweenDescriptionAndAnnotations';</li><li>const CODE_INCORRECT_LINES_COUNT_BETWEEN_DIFFERENT_ANNOTATIONS_TYPES = 'IncorrectLinesCountBetweenDifferentAnnotationsTypes';</li><li>const CODE_INCORRECT_LINES_COUNT_BETWEEN_ANNOTATIONS_GROUPS = 'IncorrectLinesCountBetweenAnnotationsGroups';</li><li>const CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTENT = 'IncorrectLinesCountAfterLastContent';</li><li>const CODE_INCORRECT_ANNOTATIONS_GROUP = 'IncorrectAnnotationsGroup';</li><li>const CODE_INCORRECT_ORDER_OF_ANNOTATIONS_GROUPS = 'IncorrectOrderOfAnnotationsGroup';</li><li>const CODE_INCORRECT_ORDER_OF_ANNOTATIONS_IN_GROUP = 'IncorrectOrderOfAnnotationsInGroup';</li></ul><ul class="none"><li>// members</li><li>public integer <a href="#members">$linesCountBeforeFirstContent</a> =
+                        0;
+                    </li><li>public integer <a href="#members">$linesCountBetweenDescriptionAndAnnotations</a> =
+                        1;
+                    </li><li>public integer <a href="#members">$linesCountBetweenDifferentAnnotationsTypes</a> =
+                        0;
+                    </li><li>public integer <a href="#members">$linesCountBetweenAnnotationsGroups</a> =
+                        1;
+                    </li><li>public integer <a href="#members">$linesCountAfterLastContent</a> =
+                        0;
+                    </li><li>public array <a href="#members">$annotationsGroups</a> =
+                        ;
+                    </li><li>private  <a href="#members">$normalizedAnnotationsGroups</a> =
+                        NULL;
+                    </li></ul><ul class="none"><li>// methods</li><li>public array <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/register.xhtml">register</a>()
+                    </li><li>public void <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/process.xhtml">process</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesBeforeFirstContent.xhtml">checkLinesBeforeFirstContent</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesBetweenDescriptionAndFirstAnnotation.xhtml">checkLinesBetweenDescriptionAndFirstAnnotation</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesBetweenDifferentAnnotationsTypes.xhtml">checkLinesBetweenDifferentAnnotationsTypes</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkAnnotationsGroups.xhtml">checkAnnotationsGroups</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesBetweenAnnotationsGroups.xhtml">checkLinesBetweenAnnotationsGroups</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkAnnotationsGroupsOrder.xhtml">checkAnnotationsGroupsOrder</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/sortAnnotationsToGroups.xhtml">sortAnnotationsToGroups</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/isAnnotationNameInAnnotationNamespace.xhtml">isAnnotationNameInAnnotationNamespace</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/isAnnotationStartedFrom.xhtml">isAnnotationStartedFrom</a>()
+                    </li><li>private bool <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/isAnnotationMatched.xhtml">isAnnotationMatched</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesAfterLastContent.xhtml">checkLinesAfterLastContent</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/getAnnotationsGroups.xhtml">getAnnotationsGroups</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">PHP_CodeSniffer\Sniffs\Sniff</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTENT">CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTENT</td>
+              <td>'IncorrectLinesCountBeforeFirstContent'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_BETWEEN_DESCRIPTION_AND_ANNOTATIONS">CODE_INCORRECT_LINES_COUNT_BETWEEN_DESCRIPTION_AND_ANNOTATIONS</td>
+              <td>'IncorrectLinesCountBetweenDescriptionAndAnnotations'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_BETWEEN_DIFFERENT_ANNOTATIONS_TYPES">CODE_INCORRECT_LINES_COUNT_BETWEEN_DIFFERENT_ANNOTATIONS_TYPES</td>
+              <td>'IncorrectLinesCountBetweenDifferentAnnotationsTypes'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_BETWEEN_ANNOTATIONS_GROUPS">CODE_INCORRECT_LINES_COUNT_BETWEEN_ANNOTATIONS_GROUPS</td>
+              <td>'IncorrectLinesCountBetweenAnnotationsGroups'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTENT">CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTENT</td>
+              <td>'IncorrectLinesCountAfterLastContent'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_ANNOTATIONS_GROUP">CODE_INCORRECT_ANNOTATIONS_GROUP</td>
+              <td>'IncorrectAnnotationsGroup'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_ORDER_OF_ANNOTATIONS_GROUPS">CODE_INCORRECT_ORDER_OF_ANNOTATIONS_GROUPS</td>
+              <td>'IncorrectOrderOfAnnotationsGroup'</td>
+            </tr>
+            <tr>
+              <td id="CODE_INCORRECT_ORDER_OF_ANNOTATIONS_IN_GROUP">CODE_INCORRECT_ORDER_OF_ANNOTATIONS_IN_GROUP</td>
+              <td>'IncorrectOrderOfAnnotationsInGroup'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="normalizedAnnotationsGroups"><strong>$normalizedAnnotationsGroups</strong>
+                —
+                array</li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="annotationsGroups"><strong>$annotationsGroups</strong>
+                —
+                array</li>
+            <li id="linesCountAfterLastContent"><strong>$linesCountAfterLastContent</strong>
+                —
+                int</li>
+            <li id="linesCountBeforeFirstContent"><strong>$linesCountBeforeFirstContent</strong>
+                —
+                int</li>
+            <li id="linesCountBetweenAnnotationsGroups"><strong>$linesCountBetweenAnnotationsGroups</strong>
+                —
+                int</li>
+            <li id="linesCountBetweenDescriptionAndAnnotations"><strong>$linesCountBetweenDescriptionAndAnnotations</strong>
+                —
+                int</li>
+            <li id="linesCountBetweenDifferentAnnotationsTypes"><strong>$linesCountBetweenDifferentAnnotationsTypes</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="checkAnnotationsGroups">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkAnnotationsGroups.xhtml">checkAnnotationsGroups()</a>
+            </li>
+            <li id="checkAnnotationsGroupsOrder">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkAnnotationsGroupsOrder.xhtml">checkAnnotationsGroupsOrder()</a>
+            </li>
+            <li id="checkLinesAfterLastContent">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesAfterLastContent.xhtml">checkLinesAfterLastContent()</a>
+            </li>
+            <li id="checkLinesBeforeFirstContent">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesBeforeFirstContent.xhtml">checkLinesBeforeFirstContent()</a>
+            </li>
+            <li id="checkLinesBetweenAnnotationsGroups">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesBetweenAnnotationsGroups.xhtml">checkLinesBetweenAnnotationsGroups()</a>
+            </li>
+            <li id="checkLinesBetweenDescriptionAndFirstAnnotation">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesBetweenDescriptionAndFirstAnnotation.xhtml">checkLinesBetweenDescriptionAndFirstAnnotation()</a>
+            </li>
+            <li id="checkLinesBetweenDifferentAnnotationsTypes">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/checkLinesBetweenDifferentAnnotationsTypes.xhtml">checkLinesBetweenDifferentAnnotationsTypes()</a>
+            </li>
+            <li id="getAnnotationsGroups">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/getAnnotationsGroups.xhtml">getAnnotationsGroups()</a>
+            </li>
+            <li id="isAnnotationMatched">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/isAnnotationMatched.xhtml">isAnnotationMatched()</a>
+            </li>
+            <li id="isAnnotationNameInAnnotationNamespace">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/isAnnotationNameInAnnotationNamespace.xhtml">isAnnotationNameInAnnotationNamespace()</a>
+            </li>
+            <li id="isAnnotationStartedFrom">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/isAnnotationStartedFrom.xhtml">isAnnotationStartedFrom()</a>
+            </li>
+            <li id="sortAnnotationsToGroups">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/sortAnnotationsToGroups.xhtml">sortAnnotationsToGroups()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="process">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/process.xhtml">process()</a>
+            </li>
+            <li id="register">
+              <a title="SlevomatCodingStandard\Sniffs\Commenting\DocCommentSpacingSniff" href="../classes/SlevomatCodingStandard_Sniffs_Commenting_DocCommentSpacingSniff/register.xhtml">register()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

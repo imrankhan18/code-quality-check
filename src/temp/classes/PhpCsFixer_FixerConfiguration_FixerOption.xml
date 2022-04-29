@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\FixerConfiguration\FixerOption" namespace="PhpCsFixer\FixerConfiguration" name="FixerOption" abstract="false" final="true" start="17" end="170">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/FixerConfiguration" file="FixerOption.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/FixerConfiguration/FixerOption.php" size="3705" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="7f3818ed0cb9f803c1e27ef76588d6f45ea450f1" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/FixerConfiguration/FixerOption.php"/>
+  <implements full="PhpCsFixer\FixerConfiguration\FixerOptionInterface" namespace="PhpCsFixer\FixerConfiguration" name="FixerOptionInterface"/>
+  <member name="name" visibility="private" static="false" line="22">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="description" visibility="private" static="false" line="27">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="default" visibility="private" static="false" line="32">
+    <docblock>
+      <description/>
+      <var type="mixed"/>
+    </docblock>
+  </member>
+  <member name="isRequired" visibility="private" static="false" line="37">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\FixerConfiguration\bool" namespace="PhpCsFixer\FixerConfiguration" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="allowedTypes" visibility="private" static="false" line="42">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="PhpCsFixer\FixerConfiguration\null|string" namespace="PhpCsFixer\FixerConfiguration" name="null|string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="allowedValues" visibility="private" static="false" line="47">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\FixerConfiguration\null|array" namespace="PhpCsFixer\FixerConfiguration" name="null|array"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="normalizer" visibility="private" static="false" line="52">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\FixerConfiguration\null|\Closure" namespace="PhpCsFixer\FixerConfiguration\null|" name="Closure"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="58" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$default"/>
+      <param type="array" variable="$allowedTypes" of="object">
+        <type full="PhpCsFixer\FixerConfiguration\null|string" namespace="PhpCsFixer\FixerConfiguration" name="null|string"/>
+      </param>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="description" byreference="false" type="string"/>
+    <parameter name="isRequired" byreference="false" type="boolean" default="true"/>
+    <parameter name="default" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="allowedTypes" byreference="false" nullable="true" type="array" default="NULL"/>
+    <parameter name="allowedValues" byreference="false" nullable="true" type="array" default="NULL"/>
+    <parameter name="normalizer" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="Closure" namespace="" name="Closure"/>
+    </parameter>
+  </constructor>
+  <method name="getName" start="94" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getDescription" start="102" end="105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="hasDefault" start="110" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getDefault" start="118" end="125" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+  </method>
+  <method name="getAllowedTypes" start="130" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="array" nullable="true"/>
+  </method>
+  <method name="getAllowedValues" start="138" end="141" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="array" nullable="true"/>
+  </method>
+  <method name="getNormalizer" start="146" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="Closure" namespace="" name="Closure"/>
+    </return>
+  </method>
+  <method name="unbind" start="166" end="169" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Unbinds the given closure to avoid memory leaks.">The closures provided to this class were probably defined in a fixer
+class and thus bound to it by default. The configuration will then be
+stored in <see xmlns="http://xml.phpdox.net/src" value="AbstractFixer::$configurationDefinition"/>, leading to the
+following cyclic reference:
+    fixer -&gt; configuration definition -&gt; options -&gt; closures -&gt; fixer
+This cyclic reference prevent the garbage collector to free memory as
+all elements are still referenced.
+See <see xmlns="http://xml.phpdox.net/src" value="https://bugs.php.net/bug.php?id=69639 Bug #69639"/> for details.
+</description>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Closure" namespace="" name="Closure"/>
+    </return>
+    <parameter name="closure" byreference="false" type="object">
+      <type full="Closure" namespace="" name="Closure"/>
+    </parameter>
+  </method>
+  <interface full="PhpCsFixer\FixerConfiguration\FixerOptionInterface" namespace="PhpCsFixer\FixerConfiguration" name="FixerOptionInterface">
+    <method name="getName" start="19" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getDescription" start="21" end="21" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="hasDefault" start="23" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="getDefault" start="30" end="30" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws description="when no default value is defined" type="object">
+          <type full="\LogicException" namespace="" name="LogicException"/>
+        </throws>
+        <return type="mixed"/>
+      </docblock>
+    </method>
+    <method name="getAllowedTypes" start="35" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="array" of="object">
+          <type full="PhpCsFixer\FixerConfiguration\null|string" namespace="PhpCsFixer\FixerConfiguration" name="null|string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="true"/>
+    </method>
+    <method name="getAllowedValues" start="37" end="37" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="true"/>
+    </method>
+    <method name="getNormalizer" start="39" end="39" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="true">
+        <type full="Closure" namespace="" name="Closure"/>
+      </return>
+    </method>
+  </interface>
+</class>

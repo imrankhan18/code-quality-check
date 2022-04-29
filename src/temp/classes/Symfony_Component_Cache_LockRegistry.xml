@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\LockRegistry" namespace="Symfony\Component\Cache" name="LockRegistry" abstract="false" final="true" start="27" end="165">
+  <file path="//var/www/html/vendor/symfony/cache" file="LockRegistry.php" realpath="/var/www/html/vendor/symfony/cache/LockRegistry.php" size="7138" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="99671517c80fe9c5ee9b493ba49ee1b6dbb736c2" relative="ar/www/html/vendor/symfony/cache/LockRegistry.php"/>
+  <docblock>
+    <description compact="LockRegistry is used internally by existing adapters to protect against cache stampede.">It does so by wrapping the computation of items in a pool of locks.
+Foreach each apps, there can be at most 20 concurrent processes that
+compute items at the same time and only one per cache-key.</description>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+  </docblock>
+  <member name="openedFiles" default="" type="array" visibility="private" static="true" line="29"/>
+  <member name="lockedFiles" visibility="private" static="true" line="30"/>
+  <member name="signalingException" visibility="private" static="true" line="31"/>
+  <member name="signalingCallback" visibility="private" static="true" line="32"/>
+  <member name="files" default="" type="array" visibility="private" static="true" line="37">
+    <docblock>
+      <description compact="The number of items in this list controls the max number of concurrent processes."/>
+    </docblock>
+  </member>
+  <method name="setFiles" start="71" end="85" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Defines a set of existing files that will be used as keys to acquire locks."/>
+      <return description="The previously defined set of files" type="array"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="files" byreference="false" type="array"/>
+  </method>
+  <method name="compute" start="87" end="149" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="callback" byreference="false" type="callable"/>
+    <parameter name="item" byreference="false" type="object">
+      <type full="Symfony\Contracts\Cache\ItemInterface" namespace="Symfony\Contracts\Cache" name="ItemInterface"/>
+    </parameter>
+    <parameter name="save" byreference="true" type="bool"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Symfony\Contracts\Cache\CacheInterface" namespace="Symfony\Contracts\Cache" name="CacheInterface"/>
+    </parameter>
+    <parameter name="setMetadata" byreference="false" type="object" default="NULL">
+      <type full="Closure" namespace="" name="Closure"/>
+    </parameter>
+    <parameter name="logger" byreference="false" type="object" default="NULL">
+      <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+    </parameter>
+  </method>
+  <method name="open" start="151" end="164" abstract="false" final="false" static="true" visibility="private">
+    <parameter name="key" byreference="false" type="int"/>
+  </method>
+</class>

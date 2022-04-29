@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Autoload\AutoloadGenerator</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Autoload">Composer\Autoload</a>
+          </li>
+          <li class="separator">AutoloadGenerator</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Autoload/AutoloadGenerator.php.xhtml#line38">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Autoload\</small>AutoloadGenerator</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Igor Wiedler &lt;igor@wiedler.ch&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class AutoloadGenerator
+            {<br/><ul class="none"><li>// members</li><li>private <span title="Composer\EventDispatcher\EventDispatcher">EventDispatcher</span> <a href="#members">$eventDispatcher</a>;
+                    </li><li>private <span title="Composer\Autoload\?IOInterface">?IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>private <span title="Composer\Autoload\?bool">?bool</span> <a href="#members">$devMode</a> =
+                        NULL;
+                    </li><li>private <span title="Composer\Autoload\bool">bool</span> <a href="#members">$classMapAuthoritative</a> =
+                        false;
+                    </li><li>private <span title="Composer\Autoload\bool">bool</span> <a href="#members">$apcu</a> =
+                        false;
+                    </li><li>private <span title="Composer\Autoload\string|null">string|null</span> <a href="#members">$apcuPrefix</a>;
+                    </li><li>private <span title="Composer\Autoload\bool">bool</span> <a href="#members">$runScripts</a> =
+                        false;
+                    </li><li>private <span title="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface">PlatformRequirementFilterInterface</span> <a href="#members">$platformRequirementFilter</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setDevMode.xhtml">setDevMode</a>()
+                    </li><li>public void <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setClassMapAuthoritative.xhtml">setClassMapAuthoritative</a>()
+                    </li><li>public void <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setApcu.xhtml">setApcu</a>()
+                    </li><li>public void <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setRunScripts.xhtml">setRunScripts</a>()
+                    </li><li>public void <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setIgnorePlatformRequirements.xhtml">setIgnorePlatformRequirements</a>()
+                    </li><li>public void <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setPlatformRequirementFilter.xhtml">setPlatformRequirementFilter</a>()
+                    </li><li>public int <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/dump.xhtml">dump</a>()
+                    </li><li>private array <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/addClassMapCode.xhtml">addClassMapCode</a>()
+                    </li><li>private array <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/generateClassMap.xhtml">generateClassMap</a>()
+                    </li><li>public array&lt;int <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/buildPackageMap.xhtml">buildPackageMap</a>()
+                    </li><li>protected void <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/validatePackage.xhtml">validatePackage</a>()
+                    </li><li>public array <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/parseAutoloads.xhtml">parseAutoloads</a>()
+                    </li><li>public ClassLoader <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/createLoader.xhtml">createLoader</a>()
+                    </li><li>protected ?string <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getIncludePathsFile.xhtml">getIncludePathsFile</a>()
+                    </li><li>protected ?string <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getIncludeFilesFile.xhtml">getIncludeFilesFile</a>()
+                    </li><li>protected string <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getPathCode.xhtml">getPathCode</a>()
+                    </li><li>protected ?string <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getPlatformCheck.xhtml">getPlatformCheck</a>()
+                    </li><li>protected string <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getAutoloadFile.xhtml">getAutoloadFile</a>()
+                    </li><li>protected string <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getAutoloadRealFile.xhtml">getAutoloadRealFile</a>()
+                    </li><li>protected string <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getStaticFile.xhtml">getStaticFile</a>()
+                    </li><li>protected array&lt;int <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/parseAutoloadsType.xhtml">parseAutoloadsType</a>()
+                    </li><li>protected string <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getFileIdentifier.xhtml">getFileIdentifier</a>()
+                    </li><li>protected array&lt;int <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/filterPackageMap.xhtml">filterPackageMap</a>()
+                    </li><li>protected array&lt;int <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/sortPackageMap.xhtml">sortPackageMap</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="apcu"><strong>$apcu</strong>
+                —
+                <a title="Composer\Autoload\bool" href="../classes/Composer_Autoload_bool.xhtml">Composer\Autoload\bool</a></li>
+            <li id="apcuPrefix"><strong>$apcuPrefix</strong>
+                —
+                <a title="Composer\Autoload\string|null" href="../classes/Composer_Autoload_string|null.xhtml">Composer\Autoload\string|null</a></li>
+            <li id="classMapAuthoritative"><strong>$classMapAuthoritative</strong>
+                —
+                <a title="Composer\Autoload\bool" href="../classes/Composer_Autoload_bool.xhtml">Composer\Autoload\bool</a></li>
+            <li id="devMode"><strong>$devMode</strong>
+                —
+                <a title="Composer\Autoload\?bool" href="../classes/Composer_Autoload_?bool.xhtml">Composer\Autoload\?bool</a></li>
+            <li id="eventDispatcher"><strong>$eventDispatcher</strong>
+                —
+                <a title="Composer\EventDispatcher\EventDispatcher" href="../classes/Composer_EventDispatcher_EventDispatcher.xhtml">Composer\EventDispatcher\EventDispatcher</a></li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\Autoload\?IOInterface" href="../classes/Composer_Autoload_?IOInterface.xhtml">Composer\Autoload\?IOInterface</a></li>
+            <li id="platformRequirementFilter"><strong>$platformRequirementFilter</strong>
+                —
+                <a title="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" href="../classes/Composer_Filter_PlatformRequirementFilter_PlatformRequirementFilterInterface.xhtml">Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface</a></li>
+            <li id="runScripts"><strong>$runScripts</strong>
+                —
+                <a title="Composer\Autoload\bool" href="../classes/Composer_Autoload_bool.xhtml">Composer\Autoload\bool</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="addClassMapCode">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/addClassMapCode.xhtml">addClassMapCode()</a>
+            </li>
+            <li id="generateClassMap">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/generateClassMap.xhtml">generateClassMap()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="filterPackageMap"><a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/filterPackageMap.xhtml">filterPackageMap()</a>
+                — Filters out dev-dependencies</li>
+            <li id="getAutoloadFile">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getAutoloadFile.xhtml">getAutoloadFile()</a>
+            </li>
+            <li id="getAutoloadRealFile">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getAutoloadRealFile.xhtml">getAutoloadRealFile()</a>
+            </li>
+            <li id="getFileIdentifier">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getFileIdentifier.xhtml">getFileIdentifier()</a>
+            </li>
+            <li id="getIncludeFilesFile">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getIncludeFilesFile.xhtml">getIncludeFilesFile()</a>
+            </li>
+            <li id="getIncludePathsFile">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getIncludePathsFile.xhtml">getIncludePathsFile()</a>
+            </li>
+            <li id="getPathCode">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getPathCode.xhtml">getPathCode()</a>
+            </li>
+            <li id="getPlatformCheck">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getPlatformCheck.xhtml">getPlatformCheck()</a>
+            </li>
+            <li id="getStaticFile">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/getStaticFile.xhtml">getStaticFile()</a>
+            </li>
+            <li id="parseAutoloadsType">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/parseAutoloadsType.xhtml">parseAutoloadsType()</a>
+            </li>
+            <li id="sortPackageMap"><a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/sortPackageMap.xhtml">sortPackageMap()</a>
+                — Sorts packages by dependency weight</li>
+            <li id="validatePackage">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/validatePackage.xhtml">validatePackage()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="buildPackageMap">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/buildPackageMap.xhtml">buildPackageMap()</a>
+            </li>
+            <li id="createLoader"><a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/createLoader.xhtml">createLoader()</a>
+                — Registers an autoloader based on an autoload-map returned by parseAutoloads</li>
+            <li id="dump">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/dump.xhtml">dump()</a>
+            </li>
+            <li id="parseAutoloads"><a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/parseAutoloads.xhtml">parseAutoloads()</a>
+                — Compiles an ordered list of namespace =&gt; path mappings</li>
+            <li id="setApcu"><a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setApcu.xhtml">setApcu()</a>
+                — Whether generated autoloader considers APCu caching.</li>
+            <li id="setClassMapAuthoritative"><a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setClassMapAuthoritative.xhtml">setClassMapAuthoritative()</a>
+                — Whether generated autoloader considers the class map authoritative.</li>
+            <li id="setDevMode">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setDevMode.xhtml">setDevMode()</a>
+            </li>
+            <li id="setIgnorePlatformRequirements"><a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setIgnorePlatformRequirements.xhtml">setIgnorePlatformRequirements()</a>
+                — Whether platform requirements should be ignored.</li>
+            <li id="setPlatformRequirementFilter">
+              <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setPlatformRequirementFilter.xhtml">setPlatformRequirementFilter()</a>
+            </li>
+            <li id="setRunScripts"><a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator/setRunScripts.xhtml">setRunScripts()</a>
+                — Whether to run scripts or not</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\Request" namespace="GuzzleHttp\Psr7" name="Request" abstract="false" final="false" start="15" end="157">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="Request.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/Request.php" size="3899" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="30790dd1e146699eef590aedfdd1d56921c9d317" relative="ar/www/html/vendor/guzzlehttp/psr7/src/Request.php"/>
+  <docblock>
+    <description compact="PSR-7 request implementation."/>
+  </docblock>
+  <implements full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+  <uses full="GuzzleHttp\Psr7\MessageTrait" namespace="GuzzleHttp\Psr7" name="MessageTrait" start="17" end="17"/>
+  <member name="method" visibility="private" static="false" line="20">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="requestTarget" visibility="private" static="false" line="23">
+    <docblock>
+      <var type="object">
+        <type full="GuzzleHttp\Psr7\string|null" namespace="GuzzleHttp\Psr7" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="uri" visibility="private" static="false" line="26">
+    <docblock>
+      <var type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="35" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="HTTP method" type="string" variable="$method"/>
+      <param description="URI" type="object" variable="$uri">
+        <type full="GuzzleHttp\Psr7\string|UriInterface" namespace="GuzzleHttp\Psr7" name="string|UriInterface"/>
+      </param>
+      <param description="string|string[]&gt; $headers Request headers" type="object">
+        <type full="GuzzleHttp\Psr7\array&lt;string" namespace="GuzzleHttp\Psr7" name="array&lt;string"/>
+      </param>
+      <param description="Request body" type="object" variable="$body">
+        <type full="GuzzleHttp\Psr7\string|resource|StreamInterface|null" namespace="GuzzleHttp\Psr7" name="string|resource|StreamInterface|null"/>
+      </param>
+      <param description="Protocol version" type="string" variable="$version"/>
+    </docblock>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="body" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="version" byreference="false" type="string" default="'1.1'"/>
+  </constructor>
+  <method name="getRequestTarget" start="61" end="76" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="withRequestTarget" start="78" end="89" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+    <parameter name="requestTarget" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMethod" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="withMethod" start="96" end="102" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+    <parameter name="method" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getUri" start="104" end="107" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+  </method>
+  <method name="withUri" start="109" end="123" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="preserveHost" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="updateHostFromUri" start="125" end="146" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="Ensure Host is the first header." line="143"/>
+      <comment value="See: http://tools.ietf.org/html/rfc7230#section-5.4" line="144"/>
+    </inline>
+  </method>
+  <method name="assertMethod" start="151" end="156" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$method"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="method" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface">
+    <extends full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    <method name="getRequestTarget" start="42" end="42" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieves the message's request target.">Retrieves the message's request-target either as it will appear (for
+clients), as it appeared at request (for servers), or as it was
+specified for the instance (see withRequestTarget()).
+
+In most cases, this will be the origin-form of the composed URI,
+unless a value was provided to the concrete implementation (see
+withRequestTarget() below).
+
+If no URI is available, and no request-target has been specifically
+provided, this method MUST return the string "/".</description>
+        <return type="string"/>
+      </docblock>
+    </method>
+    <method name="withRequestTarget" start="61" end="61" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specific request-target.">If the request needs a non-origin-form request-target — e.g., for
+specifying an absolute-form, authority-form, or asterisk-form —
+this method may be used to create an instance with the specified
+request-target, verbatim.
+
+This method MUST be implemented in such a way as to retain the
+immutability of the message, and MUST return an instance that has the
+changed request target.</description>
+        <link value="http://tools.ietf.org/html/rfc7230#section-5.3 (for the various request-target forms allowed in request messages)"/>
+        <param type="mixed" variable="$requestTarget"/>
+        <return resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Request" namespace="GuzzleHttp\Psr7" name="Request"/>
+        </return>
+      </docblock>
+      <parameter name="requestTarget" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getMethod" start="68" end="68" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieves the HTTP method of the request."/>
+        <return description="Returns the request method." type="string"/>
+      </docblock>
+    </method>
+    <method name="withMethod" start="85" end="85" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the provided HTTP method.">While HTTP method names are typically all uppercase characters, HTTP
+method names are case-sensitive and thus implementations SHOULD NOT
+modify the given string.
+
+This method MUST be implemented in such a way as to retain the
+immutability of the message, and MUST return an instance that has the
+changed request method.</description>
+        <param description="Case-sensitive method." type="string" variable="$method"/>
+        <return resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Request" namespace="GuzzleHttp\Psr7" name="Request"/>
+        </return>
+        <throws description="for invalid HTTP methods." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="method" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getUri" start="96" end="96" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieves the URI instance.">This method MUST return a UriInterface instance.</description>
+        <link value="http://tools.ietf.org/html/rfc3986#section-4.3"/>
+        <return description="Returns a UriInterface instance" type="object">representing the URI of the request.<type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/></return>
+      </docblock>
+    </method>
+    <method name="withUri" start="128" end="128" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns an instance with the provided URI.">This method MUST update the Host header of the returned request by
+default if the URI contains a host component. If the URI does not
+contain a host component, any pre-existing Host header MUST be carried
+over to the returned request.
+
+You can opt-in to preserving the original state of the Host header by
+setting `$preserveHost` to `true`. When `$preserveHost` is set to
+`true`, this method interacts with the Host header in the following ways:
+
+- If the Host header is missing or empty, and the new URI contains
+  a host component, this method MUST update the Host header in the returned
+  request.
+- If the Host header is missing or empty, and the new URI does not contain a
+  host component, this method MUST NOT update the Host header in the returned
+  request.
+- If a Host header is present and non-empty, this method MUST NOT update
+  the Host header in the returned request.
+
+This method MUST be implemented in such a way as to retain the
+immutability of the message, and MUST return an instance that has the
+new UriInterface instance.</description>
+        <link value="http://tools.ietf.org/html/rfc3986#section-4.3"/>
+        <param description="New request URI to use." type="object" variable="$uri">
+          <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+        </param>
+        <param description="Preserve the original state of the Host header." type="object" variable="$preserveHost">
+          <type full="Psr\Http\Message\bool" namespace="Psr\Http\Message" name="bool"/>
+        </param>
+        <return resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Request" namespace="GuzzleHttp\Psr7" name="Request"/>
+        </return>
+      </docblock>
+      <parameter name="uri" byreference="false" type="object">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </parameter>
+      <parameter name="preserveHost" byreference="false" type="boolean" default="false"/>
+    </method>
+  </interface>
+  <trait full="GuzzleHttp\Psr7\MessageTrait" namespace="GuzzleHttp\Psr7" name="MessageTrait">
+    <method name="getProtocolVersion" start="27" end="30" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="withProtocolVersion" start="32" end="41" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="version" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getHeaders" start="43" end="46" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="hasHeader" start="48" end="51" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getHeader" start="53" end="64" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getHeaderLine" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withHeader" start="71" end="85" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withAddedHeader" start="87" end="103" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withoutHeader" start="105" end="119" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getBody" start="121" end="128" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </return>
+    </method>
+    <method name="withBody" start="130" end="139" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="body" byreference="false" type="object">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </parameter>
+    </method>
+  </trait>
+  <extenders>
+    <extender full="GuzzleHttp\Psr7\ServerRequest" namespace="GuzzleHttp\Psr7" name="ServerRequest"/>
+  </extenders>
+</class>

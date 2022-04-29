@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\DocBlock\DocBlock" namespace="PhpCsFixer\DocBlock" name="DocBlock" abstract="false" final="true" start="28" end="262">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/DocBlock" file="DocBlock.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/DocBlock/DocBlock.php" size="6812" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="025719c2bec4393f58a242c18fc13b0f5c46670a" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/DocBlock/DocBlock.php"/>
+  <docblock>
+    <description compact="This class represents a docblock.">It internally splits it up into "lines" that we can manipulate.</description>
+    <author value="Graham Campbell &lt;hello@gjcampbell.co.uk&gt;"/>
+  </docblock>
+  <member name="lines" default="" type="array" visibility="private" static="false" line="35">
+    <docblock>
+      <description compact="The array of lines."/>
+      <var type="array" of="object">
+        <type full="PhpCsFixer\DocBlock\Line" namespace="PhpCsFixer\DocBlock" name="Line"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="annotations" visibility="private" static="false" line="42">
+    <docblock>
+      <description compact="The array of annotations."/>
+      <var type="array" of="object">
+        <type full="PhpCsFixer\DocBlock\null|Annotation" namespace="PhpCsFixer\DocBlock" name="null|Annotation"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="namespace" visibility="private" static="false" line="47">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\DocBlock\null|NamespaceAnalysis" namespace="PhpCsFixer\DocBlock" name="null|NamespaceAnalysis"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="namespaceUses" visibility="private" static="false" line="52">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="PhpCsFixer\DocBlock\NamespaceUseAnalysis" namespace="PhpCsFixer\DocBlock" name="NamespaceUseAnalysis"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="54" end="62" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="content" byreference="false" type="string"/>
+    <parameter name="namespace" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="PhpCsFixer\Tokenizer\Analyzer\Analysis\NamespaceAnalysis" namespace="PhpCsFixer\Tokenizer\Analyzer\Analysis" name="NamespaceAnalysis"/>
+    </parameter>
+    <parameter name="namespaceUses" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="__toString" start="67" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the string representation of object."/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getLines" start="77" end="80" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get this docblock's lines."/>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\DocBlock\Line" namespace="PhpCsFixer\DocBlock" name="Line"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getLine" start="85" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get a single line."/>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="PhpCsFixer\DocBlock\Line" namespace="PhpCsFixer\DocBlock" name="Line"/>
+    </return>
+    <parameter name="pos" byreference="false" type="int"/>
+  </method>
+  <method name="getAnnotations" start="95" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get this docblock's annotations."/>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\DocBlock\Annotation" namespace="PhpCsFixer\DocBlock" name="Annotation"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="isMultiLine" start="121" end="124" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="makeMultiLine" start="129" end="152" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Take a one line doc block, and turn it into a multi line doc block."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="indent" byreference="false" type="string"/>
+    <parameter name="lineEnd" byreference="false" type="string"/>
+  </method>
+  <method name="makeSingleLine" start="154" end="177" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="getAnnotation" start="179" end="184" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="true">
+      <type full="PhpCsFixer\DocBlock\Annotation" namespace="PhpCsFixer\DocBlock" name="Annotation"/>
+    </return>
+    <parameter name="pos" byreference="false" type="int"/>
+  </method>
+  <method name="getAnnotationsOfType" start="195" end="210" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get specific types of annotations only.">If none exist, we're returning an empty array.</description>
+      <param type="array" variable="$types" of="object">
+        <type full="PhpCsFixer\DocBlock\string|string" namespace="PhpCsFixer\DocBlock" name="string|string"/>
+      </param>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\DocBlock\Annotation" namespace="PhpCsFixer\DocBlock" name="Annotation"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getContent" start="215" end="218" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the actual content of this docblock."/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="findAnnotationLength" start="220" end="241" abstract="false" final="false" static="false" visibility="private">
+    <return type="int" nullable="false"/>
+    <parameter name="start" byreference="false" type="int"/>
+  </method>
+  <method name="getSingleLineDocBlockEntry" start="243" end="261" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="line" byreference="false" type="object">
+      <type full="PhpCsFixer\DocBlock\Line" namespace="PhpCsFixer\DocBlock" name="Line"/>
+    </parameter>
+  </method>
+</class>

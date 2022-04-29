@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_Dependency2</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_Dependency2</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/Dependency2.php.xhtml#line37">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_Dependency2</h1>
+        <h4>Dependency check for PEAR packages</h4>
+        <p>This class handles both version 1.0 and 2.0 dependencies<br/>WARNING: *any* changes to this class must be duplicated in the<br/>test_PEAR_Dependency2 class found in tests/PEAR_Dependency2/setup.php.inc,<br/>or unit tests will not actually validate the changes</p>
+        <ul>
+          <li>Author: Greg Beaver &lt;cellog@php.net&gt;</li>
+          <li>Copyright: 1997-2009 The Authors</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_Dependency2
+            {<br/><ul class="none"><li>// members</li><li>public  <a href="#members">$_state</a>;
+                    </li><li>public  <a href="#members">$_options</a>;
+                    </li><li>public <span title="OS_Guess">OS_Guess</span> <a href="#members">$_os</a>;
+                    </li><li>public <span title="PEAR_Registry">PEAR_Registry</span> <a href="#members">$_registry</a>;
+                    </li><li>public <span title="PEAR_Config">PEAR_Config</span> <a href="#members">$_config</a>;
+                    </li><li>public <span title="PEAR_DependencyDB">PEAR_DependencyDB</span> <a href="#members">$_dependencydb</a>;
+                    </li><li>public  <a href="#members">$_currentPackage</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/__construct.xhtml">__construct</a>()
+                    </li><li>public static void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/_getExtraString.xhtml">_getExtraString</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/getPHP_OS.xhtml">getPHP_OS</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/getsysname.xhtml">getsysname</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateOsDependency.xhtml">validateOsDependency</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/matchSignature.xhtml">matchSignature</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateArchDependency.xhtml">validateArchDependency</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/extension_loaded.xhtml">extension_loaded</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/phpversion.xhtml">phpversion</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateExtensionDependency.xhtml">validateExtensionDependency</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePhpDependency.xhtml">validatePhpDependency</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/getPEARVersion.xhtml">getPEARVersion</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePearinstallerDependency.xhtml">validatePearinstallerDependency</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateSubpackageDependency.xhtml">validateSubpackageDependency</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePackageDependency.xhtml">validatePackageDependency</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/_validatePackageDownload.xhtml">_validatePackageDownload</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/_validatePackageInstall.xhtml">_validatePackageInstall</a>()
+                    </li><li>public PEAR_Error|true <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePackageUninstall.xhtml">validatePackageUninstall</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/_validatePackageUninstall.xhtml">_validatePackageUninstall</a>()
+                    </li><li>public true|PEAR_Error <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePackage.xhtml">validatePackage</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateDependency1.xhtml">validateDependency1</a>()
+                    </li><li>public static void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/normalizeDep.xhtml">normalizeDep</a>()
+                    </li><li>public static string <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/signOperator.xhtml">signOperator</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/raiseError.xhtml">raiseError</a>()
+                    </li><li>public void <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/warning.xhtml">warning</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_config"><strong>$_config</strong>
+                —
+                <a title="PEAR_Config" href="../classes/PEAR_Config.xhtml">PEAR_Config</a></li>
+            <li id="_currentPackage"><strong>$_currentPackage</strong>
+                —
+                array<br/><span class="indent">Output of PEAR_Registry::parsedPackageName()</span></li>
+            <li id="_dependencydb"><strong>$_dependencydb</strong>
+                —
+                <a title="PEAR_DependencyDB" href="../classes/PEAR_DependencyDB.xhtml">PEAR_DependencyDB</a></li>
+            <li id="_options">
+              <strong>$_options</strong>
+              <br/>
+              <span class="indent">Command-line options to install/upgrade/uninstall commands</span>
+            </li>
+            <li id="_os"><strong>$_os</strong>
+                —
+                <a title="OS_Guess" href="../classes/OS_Guess.xhtml">OS_Guess</a></li>
+            <li id="_registry"><strong>$_registry</strong>
+                —
+                <a title="PEAR_Registry" href="../classes/PEAR_Registry.xhtml">PEAR_Registry</a></li>
+            <li id="_state"><strong>$_state</strong>
+                —
+                integer<br/><span class="indent">One of the PEAR_VALIDATE_* states</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="_getExtraString">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/_getExtraString.xhtml">_getExtraString()</a>
+            </li>
+            <li id="_validatePackageDownload">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/_validatePackageDownload.xhtml">_validatePackageDownload()</a>
+            </li>
+            <li id="_validatePackageInstall">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/_validatePackageInstall.xhtml">_validatePackageInstall()</a>
+            </li>
+            <li id="_validatePackageUninstall">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/_validatePackageUninstall.xhtml">_validatePackageUninstall()</a>
+            </li>
+            <li id="extension_loaded"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/extension_loaded.xhtml">extension_loaded()</a>
+                — This makes unit-testing a heck of a lot easier</li>
+            <li id="getPEARVersion"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/getPEARVersion.xhtml">getPEARVersion()</a>
+                — This makes unit-testing a heck of a lot easier</li>
+            <li id="getPHP_OS"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/getPHP_OS.xhtml">getPHP_OS()</a>
+                — This makes unit-testing a heck of a lot easier</li>
+            <li id="getsysname"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/getsysname.xhtml">getsysname()</a>
+                — This makes unit-testing a heck of a lot easier</li>
+            <li id="matchSignature"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/matchSignature.xhtml">matchSignature()</a>
+                — This makes unit-testing a heck of a lot easier</li>
+            <li id="normalizeDep"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/normalizeDep.xhtml">normalizeDep()</a>
+                — Convert a 1.0 dep into a 2.0 dep</li>
+            <li id="phpversion"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/phpversion.xhtml">phpversion()</a>
+                — This makes unit-testing a heck of a lot easier</li>
+            <li id="raiseError">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/raiseError.xhtml">raiseError()</a>
+            </li>
+            <li id="signOperator"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/signOperator.xhtml">signOperator()</a>
+                — Converts text comparing operators to them sign equivalents</li>
+            <li id="validateArchDependency"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateArchDependency.xhtml">validateArchDependency()</a>
+                — Specify a complex dependency on an OS/processor/kernel version, Use OS for simple operating system dependency.</li>
+            <li id="validateDependency1"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateDependency1.xhtml">validateDependency1()</a>
+                — validate a package.xml 1.0 dependency</li>
+            <li id="validateExtensionDependency">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateExtensionDependency.xhtml">validateExtensionDependency()</a>
+            </li>
+            <li id="validateOsDependency"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateOsDependency.xhtml">validateOsDependency()</a>
+                — Specify a dependency on an OS.  Use arch for detailed os/processor information</li>
+            <li id="validatePackage"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePackage.xhtml">validatePackage()</a>
+                — validate a downloaded package against installed packages</li>
+            <li id="validatePackageDependency">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePackageDependency.xhtml">validatePackageDependency()</a>
+            </li>
+            <li id="validatePackageUninstall"><a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePackageUninstall.xhtml">validatePackageUninstall()</a>
+                — Verify that uninstalling packages passed in to command line is OK.</li>
+            <li id="validatePearinstallerDependency">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePearinstallerDependency.xhtml">validatePearinstallerDependency()</a>
+            </li>
+            <li id="validatePhpDependency">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validatePhpDependency.xhtml">validatePhpDependency()</a>
+            </li>
+            <li id="validateSubpackageDependency">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/validateSubpackageDependency.xhtml">validateSubpackageDependency()</a>
+            </li>
+            <li id="warning">
+              <a title="PEAR_Dependency2" href="../classes/PEAR_Dependency2/warning.xhtml">warning()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Loop" namespace="Composer\Util" name="Loop" abstract="false" final="false" start="22" end="135">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Loop.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Loop.php" size="3697" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="9ca6d0e03b1c5f38c75f04b09d61911f18167fea" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Loop.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="httpDownloader" visibility="private" static="false" line="25">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="processExecutor" visibility="private" static="false" line="27">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\ProcessExecutor|null" namespace="Composer\Util" name="ProcessExecutor|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="currentPromises" default="" type="array" visibility="private" static="false" line="29">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Util\PromiseInterface[]" namespace="Composer\Util" name="PromiseInterface[]"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="waitIndex" default="0" type="integer" visibility="private" static="false" line="31">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="33" end="42" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="httpDownloader" byreference="false" type="object">
+      <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+    </parameter>
+    <parameter name="processExecutor" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+  </constructor>
+  <method name="getHttpDownloader" start="47" end="50" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+    </return>
+  </method>
+  <method name="getProcessExecutor" start="55" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\ProcessExecutor|null" namespace="Composer\Util" name="ProcessExecutor|null"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </return>
+  </method>
+  <method name="wait" start="65" end="120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$promises" of="object">
+        <type full="Composer\Util\PromiseInterface" namespace="Composer\Util" name="PromiseInterface"/>
+      </param>
+      <param type="object" variable="$progress">
+        <type full="Composer\Util\?ProgressBar" namespace="Composer\Util" name="?ProgressBar"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="promises" byreference="false" type="array"/>
+    <parameter name="progress" byreference="false" type="object" default="NULL">
+      <type full="Symfony\Component\Console\Helper\ProgressBar" namespace="Symfony\Component\Console\Helper" name="ProgressBar"/>
+    </parameter>
+    <inline>
+      <comment value="keep track of every group of promises that is waited on, so abortJobs can" line="78"/>
+      <comment value="cancel them all, even if wait() was called within a wait()" line="79"/>
+      <comment value="as we skip progress updates if they are too quick, make sure we do one last one here at 100%" line="111"/>
+    </inline>
+  </method>
+  <method name="abortJobs" start="125" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+</class>

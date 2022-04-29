@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="League\Container\ReflectionContainer" namespace="League\Container" name="ReflectionContainer" abstract="false" final="false" start="15" end="107">
+  <file path="//var/www/html/vendor/league/container/src" file="ReflectionContainer.php" realpath="/var/www/html/vendor/league/container/src/ReflectionContainer.php" size="3152" time="2021-11-16T10:29:06+00:00" unixtime="1637058546" sha1="d5e4f5a3774156b9e228c21b9d872c76740a0a96" relative="ar/www/html/vendor/league/container/src/ReflectionContainer.php"/>
+  <implements full="League\Container\Argument\ArgumentResolverInterface" namespace="League\Container\Argument" name="ArgumentResolverInterface"/>
+  <implements full="Psr\Container\ContainerInterface" namespace="Psr\Container" name="ContainerInterface"/>
+  <uses full="League\Container\Argument\ArgumentResolverTrait" namespace="League\Container\Argument" name="ArgumentResolverTrait" start="17" end="17"/>
+  <uses full="League\Container\ContainerAwareTrait" namespace="League\Container" name="ContainerAwareTrait" start="18" end="18"/>
+  <member name="cacheResolutions" visibility="protected" static="false" line="23">
+    <docblock>
+      <description/>
+      <var type="boolean"/>
+    </docblock>
+  </member>
+  <member name="cache" default="" type="array" visibility="protected" static="false" line="28">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="30" end="33" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="cacheResolutions" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="get" start="35" end="66" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <parameter name="args" byreference="false" type="array" default=""/>
+  </method>
+  <method name="has" start="68" end="71" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="call" start="73" end="106" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="callable" byreference="false" type="callable"/>
+    <parameter name="args" byreference="false" type="array" default=""/>
+  </method>
+  <interface full="League\Container\Argument\ArgumentResolverInterface" namespace="League\Container\Argument" name="ArgumentResolverInterface">
+    <extends full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface"/>
+    <method name="resolveArguments" start="12" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="arguments" byreference="false" type="array"/>
+    </method>
+    <method name="reflectArguments" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="method" byreference="false" type="object">
+        <type full="ReflectionFunctionAbstract" namespace="" name="ReflectionFunctionAbstract"/>
+      </parameter>
+      <parameter name="args" byreference="false" type="array" default=""/>
+    </method>
+  </interface>
+  <interface full="Psr\Container\ContainerInterface" namespace="Psr\Container" name="ContainerInterface">
+    <method name="get" start="22" end="22" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Finds an entry of the container by its identifier and returns it."/>
+        <param description="Identifier of the entry to look for." type="string" variable="$id"/>
+        <throws description="No entry was found for **this** identifier." type="object">
+          <type full="Psr\Container\NotFoundExceptionInterface" namespace="Psr\Container" name="NotFoundExceptionInterface"/>
+        </throws>
+        <throws description="Error while retrieving the entry." type="object">
+          <type full="Psr\Container\ContainerExceptionInterface" namespace="Psr\Container" name="ContainerExceptionInterface"/>
+        </throws>
+        <return description="Entry." type="mixed"/>
+      </docblock>
+      <parameter name="id" byreference="false" type="string"/>
+    </method>
+    <method name="has" start="35" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns true if the container can return an entry for the given identifier.">Returns false otherwise.
+
+`has($id)` returning true does not mean that `get($id)` will not throw an exception.
+It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.</description>
+        <param description="Identifier of the entry to look for." type="string" variable="$id"/>
+        <return type="object">
+          <type full="Psr\Container\bool" namespace="Psr\Container" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="id" byreference="false" type="string"/>
+    </method>
+  </interface>
+  <trait full="League\Container\Argument\ArgumentResolverTrait" namespace="League\Container\Argument" name="ArgumentResolverTrait">
+    <method name="resolveArguments" start="16" end="64" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="arguments" byreference="false" type="array"/>
+    </method>
+    <method name="reflectArguments" start="66" end="108" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="method" byreference="false" type="object">
+        <type full="ReflectionFunctionAbstract" namespace="" name="ReflectionFunctionAbstract"/>
+      </parameter>
+      <parameter name="args" byreference="false" type="array" default=""/>
+    </method>
+    <method name="getContainer" start="110" end="110" abstract="true" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </return>
+    </method>
+  </trait>
+  <trait full="League\Container\ContainerAwareTrait" namespace="League\Container" name="ContainerAwareTrait">
+    <member name="container" visibility="protected" static="false" line="15">
+      <docblock>
+        <description/>
+        <var type="object">
+          <type full="League\Container\?DefinitionContainerInterface" namespace="League\Container" name="?DefinitionContainerInterface"/>
+        </var>
+      </docblock>
+    </member>
+    <method name="setContainer" start="17" end="30" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface"/>
+      </return>
+      <parameter name="container" byreference="false" type="object">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </parameter>
+    </method>
+    <method name="getContainer" start="32" end="39" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </return>
+    </method>
+  </trait>
+</class>

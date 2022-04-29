@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\Console\Helper\Table</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Symfony_Component_Console_Helper">Symfony\Component\Console\Helper</a>
+          </li>
+          <li class="separator">Table</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/symfony/console/Helper/Table.php.xhtml#line30">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Symfony\Component\Console\Helper\</small>Table</h1>
+        <h4>Provides helpers to display a table.</h4>
+        <p/>
+        <ul>
+          <li>Author: Fabien Potencier &lt;fabien@symfony.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Table
+            {<br/><ul class="none"><li>// constants</li><li>const SEPARATOR_TOP = 0;</li><li>const SEPARATOR_TOP_BOTTOM = 1;</li><li>const SEPARATOR_MID = 2;</li><li>const SEPARATOR_BOTTOM = 3;</li><li>const BORDER_OUTSIDE = 0;</li><li>const BORDER_INSIDE = 1;</li></ul><ul class="none"><li>// members</li><li>private  <a href="#members">$headerTitle</a>;
+                    </li><li>private  <a href="#members">$footerTitle</a>;
+                    </li><li>private array <a href="#members">$headers</a> =
+                        ;
+                    </li><li>private array <a href="#members">$rows</a> =
+                        ;
+                    </li><li>private boolean <a href="#members">$horizontal</a> =
+                        false;
+                    </li><li>private array <a href="#members">$effectiveColumnWidths</a> =
+                        ;
+                    </li><li>private  <a href="#members">$numberOfColumns</a>;
+                    </li><li>private <span title="Symfony\Component\Console\Output\OutputInterface">OutputInterface</span> <a href="#members">$output</a>;
+                    </li><li>private <span title="Symfony\Component\Console\Helper\TableStyle">TableStyle</span> <a href="#members">$style</a>;
+                    </li><li>private array <a href="#members">$columnStyles</a> =
+                        ;
+                    </li><li>private array <a href="#members">$columnWidths</a> =
+                        ;
+                    </li><li>private array <a href="#members">$columnMaxWidths</a> =
+                        ;
+                    </li><li>private static <span title="Symfony\Component\Console\Helper\array&lt;string">array&lt;string</span> <a href="#members">$styles</a>;
+                    </li><li>private boolean <a href="#members">$rendered</a> =
+                        false;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/__construct.xhtml">__construct</a>()
+                    </li><li>public static void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setStyleDefinition.xhtml">setStyleDefinition</a>()
+                    </li><li>public static TableStyle <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getStyleDefinition.xhtml">getStyleDefinition</a>()
+                    </li><li>public $this <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setStyle.xhtml">setStyle</a>()
+                    </li><li>public TableStyle <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getStyle.xhtml">getStyle</a>()
+                    </li><li>public $this <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setColumnStyle.xhtml">setColumnStyle</a>()
+                    </li><li>public TableStyle <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getColumnStyle.xhtml">getColumnStyle</a>()
+                    </li><li>public $this <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setColumnWidth.xhtml">setColumnWidth</a>()
+                    </li><li>public $this <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setColumnWidths.xhtml">setColumnWidths</a>()
+                    </li><li>public <span title="Table">Table</span> <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setColumnMaxWidth.xhtml">setColumnMaxWidth</a>()
+                    </li><li>public $this <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setHeaders.xhtml">setHeaders</a>()
+                    </li><li>public void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setRows.xhtml">setRows</a>()
+                    </li><li>public $this <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/addRows.xhtml">addRows</a>()
+                    </li><li>public $this <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/addRow.xhtml">addRow</a>()
+                    </li><li>public <span title="Table">Table</span> <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/appendRow.xhtml">appendRow</a>()
+                    </li><li>public $this <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setRow.xhtml">setRow</a>()
+                    </li><li>public <span title="Table">Table</span> <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setHeaderTitle.xhtml">setHeaderTitle</a>()
+                    </li><li>public <span title="Table">Table</span> <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setFooterTitle.xhtml">setFooterTitle</a>()
+                    </li><li>public <span title="Table">Table</span> <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setHorizontal.xhtml">setHorizontal</a>()
+                    </li><li>public void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/render.xhtml">render</a>()
+                    </li><li>private void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/renderRowSeparator.xhtml">renderRowSeparator</a>()
+                    </li><li>private string <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/renderColumnSeparator.xhtml">renderColumnSeparator</a>()
+                    </li><li>private void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/renderRow.xhtml">renderRow</a>()
+                    </li><li>private string <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/renderCell.xhtml">renderCell</a>()
+                    </li><li>private void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/calculateNumberOfColumns.xhtml">calculateNumberOfColumns</a>()
+                    </li><li>private <span title="TableRows">TableRows</span> <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/buildTableRows.xhtml">buildTableRows</a>()
+                    </li><li>private int <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/calculateRowCount.xhtml">calculateRowCount</a>()
+                    </li><li>private array <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/fillNextRows.xhtml">fillNextRows</a>()
+                    </li><li>private void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/fillCells.xhtml">fillCells</a>()
+                    </li><li>private array <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/copyRow.xhtml">copyRow</a>()
+                    </li><li>private int <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getNumberOfColumns.xhtml">getNumberOfColumns</a>()
+                    </li><li>private array <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getRowColumns.xhtml">getRowColumns</a>()
+                    </li><li>private void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/calculateColumnsWidth.xhtml">calculateColumnsWidth</a>()
+                    </li><li>private int <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getColumnSeparatorWidth.xhtml">getColumnSeparatorWidth</a>()
+                    </li><li>private int <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getCellWidth.xhtml">getCellWidth</a>()
+                    </li><li>private void <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/cleanup.xhtml">cleanup</a>()
+                    </li><li>private static array <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/initStyles.xhtml">initStyles</a>()
+                    </li><li>private <span title="TableStyle">TableStyle</span> <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/resolveStyle.xhtml">resolveStyle</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="SEPARATOR_TOP">SEPARATOR_TOP</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="SEPARATOR_TOP_BOTTOM">SEPARATOR_TOP_BOTTOM</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="SEPARATOR_MID">SEPARATOR_MID</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="SEPARATOR_BOTTOM">SEPARATOR_BOTTOM</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="BORDER_OUTSIDE">BORDER_OUTSIDE</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="BORDER_INSIDE">BORDER_INSIDE</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="columnMaxWidths">
+              <strong>$columnMaxWidths</strong>
+            </li>
+            <li id="columnStyles"><strong>$columnStyles</strong>
+                —
+                array</li>
+            <li id="columnWidths"><strong>$columnWidths</strong>
+                —
+                array<br/><span class="indent">User set column widths.</span></li>
+            <li id="effectiveColumnWidths">
+              <strong>$effectiveColumnWidths</strong>
+              <br/>
+              <span class="indent">Column widths cache.</span>
+            </li>
+            <li id="footerTitle">
+              <strong>$footerTitle</strong>
+            </li>
+            <li id="headerTitle">
+              <strong>$headerTitle</strong>
+            </li>
+            <li id="headers">
+              <strong>$headers</strong>
+              <br/>
+              <span class="indent">Table headers.</span>
+            </li>
+            <li id="horizontal">
+              <strong>$horizontal</strong>
+            </li>
+            <li id="numberOfColumns"><strong>$numberOfColumns</strong>
+                —
+                int<br/><span class="indent">Number of columns cache.</span></li>
+            <li id="output"><strong>$output</strong>
+                —
+                <a title="Symfony\Component\Console\Output\OutputInterface" href="../classes/Symfony_Component_Console_Output_OutputInterface.xhtml">Symfony\Component\Console\Output\OutputInterface</a></li>
+            <li id="rendered">
+              <strong>$rendered</strong>
+            </li>
+            <li id="rows">
+              <strong>$rows</strong>
+              <br/>
+              <span class="indent">Table rows.</span>
+            </li>
+            <li id="style"><strong>$style</strong>
+                —
+                <a title="Symfony\Component\Console\Helper\TableStyle" href="../classes/Symfony_Component_Console_Helper_TableStyle.xhtml">Symfony\Component\Console\Helper\TableStyle</a></li>
+            <li id="styles"><strong>$styles</strong>
+                —
+                <a title="Symfony\Component\Console\Helper\array&lt;string" href="../classes/Symfony_Component_Console_Helper_array&lt;string.xhtml">Symfony\Component\Console\Helper\array&lt;string</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="buildTableRows">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/buildTableRows.xhtml">buildTableRows()</a>
+            </li>
+            <li id="calculateColumnsWidth"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/calculateColumnsWidth.xhtml">calculateColumnsWidth()</a>
+                — Calculates columns widths.</li>
+            <li id="calculateNumberOfColumns"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/calculateNumberOfColumns.xhtml">calculateNumberOfColumns()</a>
+                — Calculate number of columns for this table.</li>
+            <li id="calculateRowCount">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/calculateRowCount.xhtml">calculateRowCount()</a>
+            </li>
+            <li id="cleanup"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/cleanup.xhtml">cleanup()</a>
+                — Called after rendering to cleanup cache data.</li>
+            <li id="copyRow">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/copyRow.xhtml">copyRow()</a>
+            </li>
+            <li id="fillCells"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/fillCells.xhtml">fillCells()</a>
+                — fill cells for a row that contains colspan &gt; 1.</li>
+            <li id="fillNextRows"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/fillNextRows.xhtml">fillNextRows()</a>
+                — fill rows that contains rowspan &gt; 1.</li>
+            <li id="getCellWidth">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getCellWidth.xhtml">getCellWidth()</a>
+            </li>
+            <li id="getColumnSeparatorWidth">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getColumnSeparatorWidth.xhtml">getColumnSeparatorWidth()</a>
+            </li>
+            <li id="getNumberOfColumns"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getNumberOfColumns.xhtml">getNumberOfColumns()</a>
+                — Gets number of columns by row.</li>
+            <li id="getRowColumns"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getRowColumns.xhtml">getRowColumns()</a>
+                — Gets list of columns for the given row.</li>
+            <li id="initStyles">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/initStyles.xhtml">initStyles()</a>
+            </li>
+            <li id="renderCell"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/renderCell.xhtml">renderCell()</a>
+                — Renders table cell with padding.</li>
+            <li id="renderColumnSeparator"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/renderColumnSeparator.xhtml">renderColumnSeparator()</a>
+                — Renders vertical column separator.</li>
+            <li id="renderRow"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/renderRow.xhtml">renderRow()</a>
+                — Renders table row.</li>
+            <li id="renderRowSeparator"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/renderRowSeparator.xhtml">renderRowSeparator()</a>
+                — Renders horizontal header separator.</li>
+            <li id="resolveStyle">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/resolveStyle.xhtml">resolveStyle()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="addRow">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/addRow.xhtml">addRow()</a>
+            </li>
+            <li id="addRows">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/addRows.xhtml">addRows()</a>
+            </li>
+            <li id="appendRow"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/appendRow.xhtml">appendRow()</a>
+                — Adds a row to the table, and re-renders the table.</li>
+            <li id="getColumnStyle"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getColumnStyle.xhtml">getColumnStyle()</a>
+                — Gets the current style for a column.</li>
+            <li id="getStyle"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getStyle.xhtml">getStyle()</a>
+                — Gets the current table style.</li>
+            <li id="getStyleDefinition"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/getStyleDefinition.xhtml">getStyleDefinition()</a>
+                — Gets a style definition by name.</li>
+            <li id="render"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/render.xhtml">render()</a>
+                — Renders table to output.</li>
+            <li id="setColumnMaxWidth"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setColumnMaxWidth.xhtml">setColumnMaxWidth()</a>
+                — Sets the maximum width of a column.</li>
+            <li id="setColumnStyle"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setColumnStyle.xhtml">setColumnStyle()</a>
+                — Sets table column style.</li>
+            <li id="setColumnWidth"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setColumnWidth.xhtml">setColumnWidth()</a>
+                — Sets the minimum width of a column.</li>
+            <li id="setColumnWidths"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setColumnWidths.xhtml">setColumnWidths()</a>
+                — Sets the minimum width of all columns.</li>
+            <li id="setFooterTitle">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setFooterTitle.xhtml">setFooterTitle()</a>
+            </li>
+            <li id="setHeaderTitle">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setHeaderTitle.xhtml">setHeaderTitle()</a>
+            </li>
+            <li id="setHeaders">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setHeaders.xhtml">setHeaders()</a>
+            </li>
+            <li id="setHorizontal">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setHorizontal.xhtml">setHorizontal()</a>
+            </li>
+            <li id="setRow">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setRow.xhtml">setRow()</a>
+            </li>
+            <li id="setRows">
+              <a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setRows.xhtml">setRows()</a>
+            </li>
+            <li id="setStyle"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setStyle.xhtml">setStyle()</a>
+                — Sets table style.</li>
+            <li id="setStyleDefinition"><a title="Symfony\Component\Console\Helper\Table" href="../classes/Symfony_Component_Console_Helper_Table/setStyleDefinition.xhtml">setStyleDefinition()</a>
+                — Sets a style definition.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

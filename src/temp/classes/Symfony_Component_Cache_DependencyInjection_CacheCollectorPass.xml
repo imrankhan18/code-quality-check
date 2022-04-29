@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\DependencyInjection\CacheCollectorPass" namespace="Symfony\Component\Cache\DependencyInjection" name="CacheCollectorPass" abstract="false" final="false" start="27" end="94">
+  <file path="//var/www/html/vendor/symfony/cache/DependencyInjection" file="CacheCollectorPass.php" realpath="/var/www/html/vendor/symfony/cache/DependencyInjection/CacheCollectorPass.php" size="3651" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="77a761284c9ca88462b4ca3e811164d37832b8b6" relative="ar/www/html/vendor/symfony/cache/DependencyInjection/CacheCollectorPass.php"/>
+  <docblock>
+    <description compact="Inject a data collector to all the cache services to be able to get detailed statistics."/>
+    <author value="Tobias Nyholm &lt;tobias.nyholm@gmail.com&gt;"/>
+  </docblock>
+  <implements full="Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface" namespace="Symfony\Component\DependencyInjection\Compiler" name="CompilerPassInterface" unresolved="true"/>
+  <member name="dataCollectorCacheId" visibility="private" static="false" line="29"/>
+  <member name="cachePoolTag" visibility="private" static="false" line="30"/>
+  <member name="cachePoolRecorderInnerSuffix" visibility="private" static="false" line="31"/>
+  <constructor name="__construct" start="33" end="42" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dataCollectorCacheId" byreference="false" type="string" default="'data_collector.cache'"/>
+    <parameter name="cachePoolTag" byreference="false" type="string" default="'cache.pool'"/>
+    <parameter name="cachePoolRecorderInnerSuffix" byreference="false" type="string" default="'.recorder_inner'"/>
+  </constructor>
+  <method name="process" start="47" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="container" byreference="false" type="object">
+      <type full="Symfony\Component\DependencyInjection\ContainerBuilder" namespace="Symfony\Component\DependencyInjection" name="ContainerBuilder"/>
+    </parameter>
+  </method>
+  <method name="addToCollector" start="60" end="93" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="id" byreference="false" type="string"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="container" byreference="false" type="object">
+      <type full="Symfony\Component\DependencyInjection\ContainerBuilder" namespace="Symfony\Component\DependencyInjection" name="ContainerBuilder"/>
+    </parameter>
+    <inline>
+      <comment value="Tell the collector to add the new instance" line="90"/>
+    </inline>
+  </method>
+</class>

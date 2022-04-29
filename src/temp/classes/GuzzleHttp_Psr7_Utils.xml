@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\Utils" namespace="GuzzleHttp\Psr7" name="Utils" abstract="false" final="true" start="12" end="412">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="Utils.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/Utils.php" size="14235" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="f0a3f9ec88e10ed3ec0259a9be0f8cba6ff49a52" relative="ar/www/html/vendor/guzzlehttp/psr7/src/Utils.php"/>
+  <method name="caselessRemove" start="19" end="34" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Remove the items given by the keys, case insensitively from the data."/>
+      <param type="array" variable="$keys" of="object">
+        <type full="GuzzleHttp\Psr7\string" namespace="GuzzleHttp\Psr7" name="string"/>
+      </param>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="keys" byreference="false" type="array"/>
+    <parameter name="data" byreference="false" type="array"/>
+  </method>
+  <method name="copyToStream" start="47" end="69" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Copy the contents of a stream into another stream until the given number of bytes have been read."/>
+      <param description="Stream to read from" type="object" variable="$source">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </param>
+      <param description="Stream to write to" type="object" variable="$dest">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </param>
+      <param description="Maximum number of bytes to read. Pass -1" type="int" variable="$maxLen">to read the entire stream.</param>
+      <throws description="on error." type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="source" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="dest" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="maxLen" byreference="false" type="integer" default="1"/>
+  </method>
+  <method name="copyToString" start="81" end="107" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Copy the contents of a stream into a string until the given number of bytes have been read."/>
+      <param description="Stream to read" type="object" variable="$stream">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </param>
+      <param description="Maximum number of bytes to read. Pass -1" type="int" variable="$maxLen">to read the entire stream.</param>
+      <throws description="on error." type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="stream" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="maxLen" byreference="false" type="integer" default="1"/>
+  </method>
+  <method name="hash" start="121" end="138" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Calculate a hash of a stream.">This method reads the entire stream to calculate a rolling hash, based
+on PHP's `hash_init` functions.</description>
+      <param description="Stream to calculate the hash for" type="object" variable="$stream">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </param>
+      <param description="Hash algorithm (e.g. md5, crc32, etc)" type="string" variable="$algo"/>
+      <param description="Whether or not to use raw output" type="object" variable="$rawOutput">
+        <type full="GuzzleHttp\Psr7\bool" namespace="GuzzleHttp\Psr7" name="bool"/>
+      </param>
+      <throws description="on error." type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="stream" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="algo" byreference="false" type="string"/>
+    <parameter name="rawOutput" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="modifyRequest" start="158" end="225" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Clone and modify a request with the given changes.">This method is useful for reducing the number of clones needed to mutate
+a message.
+
+The changes can be one of:
+- method: (string) Changes the HTTP method.
+- set_headers: (array) Sets the given headers.
+- remove_headers: (array) Remove the given headers.
+- body: (mixed) Sets the given body.
+- uri: (UriInterface) Set the URI.
+- query: (string) Set the query string value of the URI.
+- version: (string) Set the protocol version.</description>
+      <param description="Request to clone and modify." type="object" variable="$request">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <param description="Changes to apply." type="array" variable="$changes"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="changes" byreference="false" type="array"/>
+  </method>
+  <method name="readLine" start="233" end="250" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Read a line from the stream up to the maximum allowed buffer length."/>
+      <param description="Stream to read from" type="object" variable="$stream">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </param>
+      <param description="Maximum buffer length" type="object" variable="$maxLength">
+        <type full="GuzzleHttp\Psr7\int|null" namespace="GuzzleHttp\Psr7" name="int|null"/>
+      </param>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="stream" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="maxLength" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="streamFor" start="286" end="338" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create a new stream based on the input type.">Options is an associative array that can contain the following keys:
+- metadata: Array of custom metadata.
+- size: Size of the stream.
+
+This method accepts the following `$resource` types:
+- `Psr\Http\Message\StreamInterface`: Returns the value as-is.
+- `string`: Creates a stream object that uses the given string as the contents.
+- `resource`: Creates a stream object that wraps the given PHP stream resource.
+- `Iterator`: If the provided value implements `Iterator`, then a read-only
+  stream object will be created that wraps the given iterable. Each time the
+  stream is read from, data from the iterator will fill a buffer and will be
+  continuously called until the buffer is equal to the requested read size.
+  Subsequent read calls will first read from the buffer and then call `next`
+  on the underlying iterator until it is exhausted.
+- `object` with `__toString()`: If the object has the `__toString()` method,
+  the object will be cast to a string and then a stream will be returned that
+  uses the string value.
+- `NULL`: When `null` is passed, an empty stream object is returned.
+- `callable` When a callable is passed, a read-only stream object will be
+  created that invokes the given callable. The callable is invoked with the
+  number of suggested bytes to read. The callable can return any number of
+  bytes, but MUST return `false` when there is no more data to return. The
+  stream object that wraps the callable will invoke the callable until the
+  number of requested bytes are available. Any additional bytes will be
+  buffered and used in subsequent reads.</description>
+      <param description="Entity body data" type="object" variable="$resource">
+        <type full="GuzzleHttp\Psr7\resource|string|int|float|bool|StreamInterface|callable|\Iterator|null" namespace="GuzzleHttp\Psr7\resource|string|int|float|bool|StreamInterface|callable|" name="Iterator|null"/>
+      </param>
+      <param description="int metadata?: array}                                    $options  Additional options" type="object">
+        <type full="GuzzleHttp\Psr7\array{size?:" namespace="GuzzleHttp\Psr7" name="array{size?:"/>
+      </param>
+      <throws description="if the $resource arg is not valid." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+    <parameter name="resource" byreference="false" type="string" default="''"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="tryFopen" start="353" end="387" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Safely opens a PHP stream resource using a filename.">When fopen fails, PHP normally raises a warning. This function adds an
+error handler that checks for errors and throws an exception instead.</description>
+      <param description="File to open" type="string" variable="$filename"/>
+      <param description="Mode used to open the file" type="string" variable="$mode"/>
+      <return type="resource"/>
+      <throws description="if the file cannot be opened" type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <parameter name="filename" byreference="false" type="string"/>
+    <parameter name="mode" byreference="false" type="string"/>
+  </method>
+  <method name="uriFor" start="400" end="411" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns a UriInterface for the given value.">This function accepts a string or UriInterface and returns a
+UriInterface for the given value. If the value is already a
+UriInterface, it is returned as-is.</description>
+      <param type="object" variable="$uri">
+        <type full="GuzzleHttp\Psr7\string|UriInterface" namespace="GuzzleHttp\Psr7" name="string|UriInterface"/>
+      </param>
+      <throws type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+</class>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\RedirectMiddleware" namespace="GuzzleHttp" name="RedirectMiddleware" abstract="false" final="false" start="20" end="226">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="RedirectMiddleware.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/RedirectMiddleware.php" size="8046" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="900074a8aa95415fba66338444283b8ed0d0c00d" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/RedirectMiddleware.php"/>
+  <docblock>
+    <description compact="Request redirect middleware.">Apply this middleware like other middleware using
+{@see \GuzzleHttp\Middleware::redirect()}.</description>
+    <final/>
+  </docblock>
+  <constant type="string" name="HISTORY_HEADER" value="'X-Guzzle-Redirect-History'"/>
+  <constant type="string" name="STATUS_HISTORY_HEADER" value="'X-Guzzle-Redirect-Status-History'"/>
+  <member name="defaultSettings" default="" type="array" visibility="public" static="true" line="29">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="nextHandler" visibility="private" static="false" line="40">
+    <docblock>
+      <description/>
+      <var description="array): PromiseInterface" type="object">
+        <type full="GuzzleHttp\callable(RequestInterface" namespace="GuzzleHttp" name="callable(RequestInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="45" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="array): PromiseInterface $nextHandler Next handler to invoke." type="object">
+        <type full="GuzzleHttp\callable(RequestInterface" namespace="GuzzleHttp" name="callable(RequestInterface"/>
+      </param>
+    </docblock>
+    <parameter name="nextHandler" byreference="false" type="callable"/>
+  </constructor>
+  <method name="__invoke" start="50" end="75" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="checkRedirect" start="80" end="121" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="GuzzleHttp\ResponseInterface|PromiseInterface" namespace="GuzzleHttp" name="ResponseInterface|PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </parameter>
+    <inline>
+      <comment value="If authorization is handled by curl, unset it if host is different." line="91"/>
+      <comment value="Add headers to be able to track history of redirects." line="111"/>
+    </inline>
+  </method>
+  <method name="withTracking" start="126" end="142" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Enable tracking on promise."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="promise" byreference="false" type="object">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </parameter>
+    <parameter name="uri" byreference="false" type="string"/>
+    <parameter name="statusCode" byreference="false" type="int"/>
+  </method>
+  <method name="guardMax" start="149" end="159" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Check for too many redirects"/>
+      <throws description="Too many redirects." type="object">
+        <type full="GuzzleHttp\Exception\TooManyRedirectsException" namespace="GuzzleHttp\Exception" name="TooManyRedirectsException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </parameter>
+    <parameter name="options" byreference="true" type="array"/>
+  </method>
+  <method name="modifyRequest" start="161" end="207" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Request modifications to apply." line="163"/>
+      <comment value="Use a GET request if this is an entity enclosing request and we are" line="167"/>
+      <comment value="not forcing RFC compliance, but rather emulating what all browsers" line="168"/>
+      <comment value="would do." line="169"/>
+      <comment value="Add the Referer header if it is told to do so and only" line="190"/>
+      <comment value="add the header if we are not redirecting from https to http." line="191"/>
+      <comment value="Remove Authorization header if host is different." line="201"/>
+    </inline>
+  </method>
+  <method name="redirectUri" start="212" end="225" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Set the appropriate URL on the request based on the location header"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </parameter>
+    <parameter name="protocols" byreference="false" type="array"/>
+    <inline>
+      <comment value="Ensure that the redirect URI is allowed based on the protocols." line="219"/>
+    </inline>
+  </method>
+</class>

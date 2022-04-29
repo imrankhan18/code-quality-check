@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Fixer\ClassNotation\ClassDefinitionFixer" namespace="PhpCsFixer\Fixer\ClassNotation" name="ClassDefinitionFixer" abstract="false" final="true" start="33" end="450">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Fixer/ClassNotation" file="ClassDefinitionFixer.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Fixer/ClassNotation/ClassDefinitionFixer.php" size="17084" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="81de708af9b4cc64f60f2de8e869ae7cf81b15db" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Fixer/ClassNotation/ClassDefinitionFixer.php"/>
+  <docblock>
+    <description compact="Fixer for part of the rules defined in PSR2 ¶4.1 Extends and Implements and PSR12 ¶8. Anonymous Classes."/>
+  </docblock>
+  <extends full="PhpCsFixer\AbstractFixer" namespace="PhpCsFixer" name="AbstractFixer"/>
+  <implements full="PhpCsFixer\Fixer\ConfigurableFixerInterface" namespace="PhpCsFixer\Fixer" name="ConfigurableFixerInterface"/>
+  <implements full="PhpCsFixer\Fixer\WhitespacesAwareFixerInterface" namespace="PhpCsFixer\Fixer" name="WhitespacesAwareFixerInterface"/>
+  <method name="getDefinition" start="38" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PhpCsFixer\FixerDefinition\FixerDefinitionInterface" namespace="PhpCsFixer\FixerDefinition" name="FixerDefinitionInterface"/>
+    </return>
+  </method>
+  <method name="getPriority" start="110" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}">Must run before BracesFixer.
+Must run after NewWithBracesFixer.</description>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="isCandidate" start="118" end="121" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+  </method>
+  <method name="applyFix" start="126" end="134" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="file" byreference="false" type="object">
+      <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+    </parameter>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <inline>
+      <comment value="-4, one for count to index, 3 because min. of tokens for a classy location." line="128"/>
+    </inline>
+  </method>
+  <method name="createConfigurationDefinition" start="139" end="163" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PhpCsFixer\FixerConfiguration\FixerConfigurationResolverInterface" namespace="PhpCsFixer\FixerConfiguration" name="FixerConfigurationResolverInterface"/>
+    </return>
+  </method>
+  <method name="fixClassyDefinition" start="168" end="218" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="Class definition token start index" type="int" variable="$classyIndex"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="classyIndex" byreference="false" type="int"/>
+    <inline>
+      <comment value="PSR2 4.1 Lists of implements MAY be split across multiple lines, where each subsequent line is indented once." line="172"/>
+      <comment value="When doing so, the first item in the list MUST be on the next line, and there MUST be only one interface per line." line="173"/>
+      <comment value="PSR2: class definition open curly brace must go on a new line." line="191"/>
+      <comment value="PSR12: anonymous class curly brace on same line if not multi line implements." line="192"/>
+      <comment value="4.1 The extends and implements keywords MUST be declared on the same line as the class name." line="216"/>
+    </inline>
+  </method>
+  <method name="fixClassyDefinitionExtends" start="220" end="236" abstract="false" final="false" static="false" visibility="private">
+    <return type="array" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="classOpenIndex" byreference="false" type="int"/>
+    <parameter name="classExtendsInfo" byreference="false" type="array"/>
+  </method>
+  <method name="fixClassyDefinitionImplements" start="238" end="254" abstract="false" final="false" static="false" visibility="private">
+    <return type="array" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="classOpenIndex" byreference="false" type="int"/>
+    <parameter name="classImplementsInfo" byreference="false" type="array"/>
+  </method>
+  <method name="fixClassyDefinitionOpenSpacing" start="256" end="287" abstract="false" final="false" static="false" visibility="private">
+    <return type="int" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="classDefInfo" byreference="false" type="array"/>
+  </method>
+  <method name="getClassyDefinitionInfo" start="289" end="323" abstract="false" final="false" static="false" visibility="private">
+    <return type="array" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="classyIndex" byreference="false" type="int"/>
+  </method>
+  <method name="getClassyInheritanceInfo" start="325" end="345" abstract="false" final="false" static="false" visibility="private">
+    <return type="array" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="startIndex" byreference="false" type="int"/>
+    <parameter name="label" byreference="false" type="string"/>
+  </method>
+  <method name="makeClassyDefinitionSingleLine" start="347" end="410" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="startIndex" byreference="false" type="int"/>
+    <parameter name="endIndex" byreference="false" type="int"/>
+  </method>
+  <method name="makeClassyInheritancePartMultiLine" start="412" end="449" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="startIndex" byreference="false" type="int"/>
+    <parameter name="endIndex" byreference="false" type="int"/>
+  </method>
+  <parent full="PhpCsFixer\AbstractFixer" namespace="PhpCsFixer" name="AbstractFixer">
+    <implements full="PhpCsFixer\Fixer\FixerInterface" namespace="PhpCsFixer\Fixer" name="FixerInterface"/>
+    <member name="configuration" visibility="protected" static="false" line="41">
+      <docblock>
+        <description/>
+        <var description="mixed&gt;" type="object">
+          <type full="PhpCsFixer\null|array&lt;string" namespace="PhpCsFixer" name="null|array&lt;string"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="whitespacesConfig" visibility="protected" static="false" line="46">
+      <docblock>
+        <description/>
+        <var type="object">
+          <type full="PhpCsFixer\WhitespacesFixerConfig" namespace="PhpCsFixer" name="WhitespacesFixerConfig"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="53" end="66" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fix" start="68" end="77" abstract="false" final="true" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="file" byreference="false" type="object">
+        <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+      </parameter>
+      <parameter name="tokens" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+      </parameter>
+    </method>
+    <method name="isRisky" start="82" end="85" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="getName" start="90" end="96" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPriority" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="supports" start="109" end="112" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="file" byreference="false" type="object">
+        <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+      </parameter>
+    </method>
+    <method name="configure" start="114" end="158" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="configuration" byreference="false" type="array"/>
+    </method>
+    <method name="getConfigurationDefinition" start="160" end="171" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="PhpCsFixer\FixerConfiguration\FixerConfigurationResolverInterface" namespace="PhpCsFixer\FixerConfiguration" name="FixerConfigurationResolverInterface"/>
+      </return>
+    </method>
+    <method name="setWhitespacesConfig" start="173" end="180" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="config" byreference="false" type="object">
+        <type full="PhpCsFixer\WhitespacesFixerConfig" namespace="PhpCsFixer" name="WhitespacesFixerConfig"/>
+      </parameter>
+    </method>
+    <method name="applyFix" start="182" end="182" abstract="true" final="false" static="false" visibility="protected">
+      <return type="void" nullable="false"/>
+      <parameter name="file" byreference="false" type="object">
+        <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+      </parameter>
+      <parameter name="tokens" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+      </parameter>
+    </method>
+    <method name="createConfigurationDefinition" start="184" end="191" abstract="false" final="false" static="false" visibility="protected">
+      <return type="object" nullable="false">
+        <type full="PhpCsFixer\FixerConfiguration\FixerConfigurationResolverInterface" namespace="PhpCsFixer\FixerConfiguration" name="FixerConfigurationResolverInterface"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="PhpCsFixer\Fixer\FixerInterface" namespace="PhpCsFixer\Fixer" name="FixerInterface">
+    <method name="isCandidate" start="35" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check if the fixer is a candidate for given Tokens collection.">Fixer is a candidate when the collection contains tokens that may be fixed
+during fixer work. This could be considered as some kind of bloom filter.
+When this method returns true then to the Tokens collection may or may not
+need a fixing, but when this method returns false then the Tokens collection
+need no fixing for sure.</description>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="tokens" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+      </parameter>
+    </method>
+    <method name="isRisky" start="42" end="42" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check if fixer is risky or not.">Risky fixer could change code behavior!</description>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="fix" start="50" end="50" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Fixes a file."/>
+        <param description="A \SplFileInfo instance" type="object" variable="$file">
+          <type full="\SplFileInfo" namespace="" name="SplFileInfo"/>
+        </param>
+        <param description="Tokens collection" type="object" variable="$tokens">
+          <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+        </param>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="file" byreference="false" type="object">
+        <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+      </parameter>
+      <parameter name="tokens" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+      </parameter>
+    </method>
+    <method name="getDefinition" start="55" end="55" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the definition of the fixer."/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="PhpCsFixer\FixerDefinition\FixerDefinitionInterface" namespace="PhpCsFixer\FixerDefinition" name="FixerDefinitionInterface"/>
+      </return>
+    </method>
+    <method name="getName" start="64" end="64" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the name of the fixer.">The name must be all lowercase and without any spaces.</description>
+        <return description="The name of the fixer" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPriority" start="71" end="71" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the priority of the fixer.">The default priority is 0 and higher priorities are executed first.</description>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="supports" start="78" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns true if the file is supported by this fixer."/>
+        <return description="true if the file is supported by this fixer, false otherwise" type="object">
+          <type full="PhpCsFixer\Fixer\bool" namespace="PhpCsFixer\Fixer" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="file" byreference="false" type="object">
+        <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+      </parameter>
+    </method>
+  </interface>
+  <interface full="PhpCsFixer\Fixer\ConfigurableFixerInterface" namespace="PhpCsFixer\Fixer" name="ConfigurableFixerInterface">
+    <extends full="PhpCsFixer\Fixer\FixerInterface" namespace="PhpCsFixer\Fixer" name="FixerInterface"/>
+    <method name="configure" start="41" end="41" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set configuration.">New configuration must override current one, not patch it.
+Using empty array makes fixer to use default configuration
+(or reset configuration from previously configured back to default one).
+
+Some fixers may have no configuration, then - simply don't implement this interface.
+Other ones may have configuration that will change behavior of fixer,
+eg `php_unit_strict` fixer allows to configure which methods should be fixed.
+Finally, some fixers need configuration to work, eg `header_comment`.</description>
+        <param description="configuration depends on Fixer" type="array" variable="$configuration"/>
+        <throws type="object">
+          <type full="PhpCsFixer\ConfigurationException\InvalidFixerConfigurationException" namespace="PhpCsFixer\ConfigurationException" name="InvalidFixerConfigurationException"/>
+        </throws>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="configuration" byreference="false" type="array"/>
+    </method>
+    <method name="getConfigurationDefinition" start="46" end="46" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Defines the available configuration options of the fixer."/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="PhpCsFixer\FixerConfiguration\FixerConfigurationResolverInterface" namespace="PhpCsFixer\FixerConfiguration" name="FixerConfigurationResolverInterface"/>
+      </return>
+    </method>
+  </interface>
+  <interface full="PhpCsFixer\Fixer\WhitespacesAwareFixerInterface" namespace="PhpCsFixer\Fixer" name="WhitespacesAwareFixerInterface">
+    <extends full="PhpCsFixer\Fixer\FixerInterface" namespace="PhpCsFixer\Fixer" name="FixerInterface"/>
+    <method name="setWhitespacesConfig" start="24" end="24" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="config" byreference="false" type="object">
+        <type full="PhpCsFixer\WhitespacesFixerConfig" namespace="PhpCsFixer" name="WhitespacesFixerConfig"/>
+      </parameter>
+    </method>
+  </interface>
+</class>

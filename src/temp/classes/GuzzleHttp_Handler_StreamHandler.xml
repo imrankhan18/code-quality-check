@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Handler\StreamHandler" namespace="GuzzleHttp\Handler" name="StreamHandler" abstract="false" final="false" start="23" end="593">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Handler" file="StreamHandler.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/StreamHandler.php" size="20676" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="fb22fb7d7d9364ebbc3bcbc614998c9da8274c94" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Handler/StreamHandler.php"/>
+  <docblock>
+    <description compact="HTTP handler that uses PHP's HTTP stream wrapper."/>
+    <final/>
+  </docblock>
+  <member name="lastHeaders" default="" type="array" visibility="private" static="false" line="28">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <method name="__invoke" start="36" end="80" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sends an HTTP request."/>
+      <param description="Request to send." type="object" variable="$request">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <param description="Request transfer options." type="array" variable="$options"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <inline>
+      <comment value="Sleep if there is a delay specified." line="38"/>
+    </inline>
+  </method>
+  <method name="invokeStats" start="82" end="93" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="startTime" byreference="false" nullable="true" type="float"/>
+    <parameter name="response" byreference="false" type="object" default="NULL">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </parameter>
+    <parameter name="error" byreference="false" type="object" default="NULL">
+      <type full="Throwable" namespace="" name="Throwable"/>
+    </parameter>
+  </method>
+  <method name="createResponse" start="98" end="146" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="resource" variable="$stream"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="stream" byreference="false" type="{unknown}"/>
+    <parameter name="startTime" byreference="false" nullable="true" type="float"/>
+    <inline>
+      <comment value="Do not drain when the request is a HEAD request because they have" line="137"/>
+      <comment value="no body." line="138"/>
+    </inline>
+  </method>
+  <method name="createSink" start="148" end="157" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+    <parameter name="stream" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="checkDecode" start="162" end="191" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="resource" variable="$stream"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="headers" byreference="false" type="array"/>
+    <parameter name="stream" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Automatically decode responses when instructed." line="164"/>
+    </inline>
+  </method>
+  <method name="drain" start="201" end="217" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Drains the source stream into the &quot;sink&quot; client option."/>
+      <param description="Header specifying the amount of" type="string" variable="$contentLength">data to read.</param>
+      <throws description="when the sink option is invalid." type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </return>
+    <parameter name="source" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="sink" byreference="false" type="object">
+      <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+    </parameter>
+    <parameter name="contentLength" byreference="false" type="string"/>
+    <inline>
+      <comment value="If a content-length header is provided, then stop reading once" line="203"/>
+      <comment value="that number of bytes has been read. This can prevent infinitely" line="204"/>
+      <comment value="reading from a stream when dealing with servers that do not honor" line="205"/>
+      <comment value="Connection: Close headers." line="206"/>
+    </inline>
+  </method>
+  <method name="createResource" start="228" end="257" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Create a resource and check to ensure it was created successfully"/>
+      <param description="Callable that returns stream resource" type="object" variable="$callback">
+        <type full="GuzzleHttp\Handler\callable" namespace="GuzzleHttp\Handler" name="callable"/>
+      </param>
+      <return type="resource"/>
+      <throws description="on error" type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <parameter name="callback" byreference="false" type="callable"/>
+  </method>
+  <method name="createStream" start="262" end="341" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="resource"/>
+    </docblock>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <inline>
+      <comment value="HTTP/1.1 streams using the PHP stream wrapper require a" line="273"/>
+      <comment value="Connection: close header" line="274"/>
+      <comment value="Ensure SSL is verified by default" line="281"/>
+      <comment value="Microsoft NTLM authentication only supported with curl handler" line="309"/>
+    </inline>
+  </method>
+  <method name="resolveHost" start="343" end="365" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="getDefaultContext" start="367" end="402" abstract="false" final="false" static="false" visibility="private">
+    <return type="array" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+  </method>
+  <method name="add_proxy" start="407" end="435" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="as passed via Request transfer options." type="mixed" variable="$value"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="true" type="array"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="true" type="array"/>
+  </method>
+  <method name="parse_proxy" start="440" end="463" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Parses the given proxy URL to make it compatible with the format PHP's stream context expects."/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <inline>
+      <comment value="Return proxy as-is." line="458"/>
+    </inline>
+  </method>
+  <method name="add_timeout" start="468" end="473" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="as passed via Request transfer options." type="mixed" variable="$value"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="true" type="array"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="true" type="array"/>
+  </method>
+  <method name="add_verify" start="478" end="499" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="as passed via Request transfer options." type="mixed" variable="$value"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="true" type="array"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="true" type="array"/>
+  </method>
+  <method name="add_cert" start="504" end="516" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="as passed via Request transfer options." type="mixed" variable="$value"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="true" type="array"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="true" type="array"/>
+  </method>
+  <method name="add_progress" start="521" end="533" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="as passed via Request transfer options." type="mixed" variable="$value"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="true" type="array"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="true" type="array"/>
+  </method>
+  <method name="add_debug" start="538" end="570" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="as passed via Request transfer options." type="mixed" variable="$value"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="true" type="array"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="true" type="array"/>
+  </method>
+  <method name="addNotification" start="572" end="583" abstract="false" final="false" static="true" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="params" byreference="true" type="array"/>
+    <parameter name="notify" byreference="false" type="callable"/>
+    <inline>
+      <comment value="Wrap the existing function if needed." line="574"/>
+    </inline>
+  </method>
+  <method name="callArray" start="585" end="592" abstract="false" final="false" static="true" visibility="private">
+    <return type="callable" nullable="false"/>
+    <parameter name="functions" byreference="false" type="array"/>
+  </method>
+</class>

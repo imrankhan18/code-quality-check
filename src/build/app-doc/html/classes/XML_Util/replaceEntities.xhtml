@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - XML_Util::replaceEntities</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#"/>
+          </li>
+          <li class="separator">
+            <a title="XML_Util" href="../../classes/XML_Util.xhtml">XML_Util</a>
+          </li>
+          <li class="separator">replaceEntities</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="../../source/sr/local/lib/php/XML/Util.php.xhtml#line176">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>XML_Util::</small>replaceEntities</h1>
+        <h4>Replace XML entities</h4>
+        <p>With the optional second parameter, you may select, which
+entities should be replaced.
+
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+// replace XML entites:
+$string = XML_Util::replaceEntities('This string contains &lt; &amp; &gt;.');
+&lt;/code&gt;
+
+With the optional third parameter, you may pass the character encoding
+&lt;code&gt;
+require_once 'XML/Util.php';
+
+// replace XML entites in UTF-8:
+$string = XML_Util::replaceEntities(
+    'This string contains &lt; &amp; &gt; as well as ä, ö, ß, à and ê',
+    XML_UTIL_ENTITIES_HTML,
+    'UTF-8'
+);
+&lt;/code&gt;</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function replaceEntities(string
+        $string,
+            [int
+        $replaceEntities = XML_UTIL_ENTITIES_XML,
+            [string
+        $encoding = 'ISO-8859-1']] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$string</code>
+                —
+                string</dt>
+          <dd>string where XML special chars<br/>should be replaced</dd>
+          <dt><code>$replaceEntities</code>
+                —
+                int</dt>
+          <dd>setting for entities in attribute values<br/>(one of XML_UTIL_ENTITIES_XML,<br/>XML_UTIL_ENTITIES_XML_REQUIRED,<br/>                               XML_UTIL_ENTITIES_HTML)</dd>
+          <dt><code>$encoding</code>
+                —
+                string</dt>
+          <dd>encoding value (if any)...<br/>must be a valid encoding as determined<br/>                               by the htmlentities() function</dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>string</dt>
+          <dd>string with replaced chars</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

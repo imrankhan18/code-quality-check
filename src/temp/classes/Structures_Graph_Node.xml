@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Structures_Graph_Node" namespace="" name="Structures_Graph_Node" abstract="false" final="false" start="57" end="341">
+  <file path="//usr/local/lib/php/Structures/Graph" file="Node.php" realpath="/usr/local/lib/php/Structures/Graph/Node.php" size="11040" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="7a5da5dadeac91c625686b9e992dc79b0631878f" relative="sr/local/lib/php/Structures/Graph/Node.php"/>
+  <member name="_data" default="NULL" visibility="public" static="false" line="62">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_metadata" default="" type="array" visibility="public" static="false" line="64">
+    <docblock>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_arcs" default="" type="array" visibility="public" static="false" line="66">
+    <docblock>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_graph" default="NULL" visibility="public" static="false" line="68">
+    <docblock>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="78" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor"/>
+      <access value="public"/>
+    </docblock>
+  </constructor>
+  <method name="getGraph" start="90" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Node graph getter"/>
+      <return description="Graph where node is stored" type="object">
+        <type full="Structures_Graph" namespace="" name="Structures_Graph"/>
+      </return>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="setGraph" start="104" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Node graph setter. This method should not be called directly. Use Graph::addNode instead."/>
+      <param description="Set the graph for this node." type="object">
+        <type full="Structures_Graph" namespace="" name="Structures_Graph"/>
+      </param>
+      <see value="Structures_Graph::addNode()"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="graph" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getData" start="119" end="121" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Node data getter.">Each graph node can contain a reference to one variable. This is the getter for that reference.</description>
+      <return description="Data stored in node" type="mixed"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="setData" start="134" end="136" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Node data setter">Each graph node can contain a reference to one variable. This is the setter for that reference.</description>
+      <return description="Data to store in node" type="mixed"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="data" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="metadataKeyExists" start="151" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test for existence of metadata under a given key.">Each graph node can contain multiple 'metadata' entries, each stored under a different key, as in an
+associative array or in a dictionary. This method tests whether a given metadata key exists for this node.</description>
+      <param description="Key to test" type="string"/>
+      <return type="boolean"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMetadata" start="171" end="183" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Node metadata getter">Each graph node can contain multiple 'metadata' entries, each stored under a different key, as in an
+associative array or in a dictionary. This method gets the data under the given key. If the key does
+not exist, an error will be thrown, so testing using metadataKeyExists might be needed.</description>
+      <param type="string" variable="Key"/>
+      <param description="nullIfNonexistent (defaults to false)." type="boolean"/>
+      <return description="Metadata Data stored in node under given key" type="mixed"/>
+      <see value="metadataKeyExists"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+    <parameter name="nullIfNonexistent" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="unsetMetadata" start="198" end="200" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete metadata by key">Each graph node can contain multiple 'metadata' entries, each stored under a different key, as in an
+associative array or in a dictionary. This method removes any data that might be stored under the provided key.
+If the key does not exist, no error is thrown, so it is safe using this method without testing for key existence.</description>
+      <param type="string" variable="Key"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setMetadata" start="216" end="218" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Node metadata setter">Each graph node can contain multiple 'metadata' entries, each stored under a different key, as in an
+associative array or in a dictionary. This method stores data under the given key. If the key already exists,
+previously stored data is discarded.</description>
+      <param type="string" variable="Key"/>
+      <param type="mixed" variable="Data"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+    <parameter name="data" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_connectTo" start="223" end="225" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <access value="private"/>
+    </docblock>
+    <parameter name="destinationNode" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="connectTo" start="238" end="250" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Connect this node to another one.">If the graph is not directed, the reverse arc, connecting $destinationNode to $this is also created.</description>
+      <param description="Node to connect to" type="object">
+        <type full="Structures_Graph_Node" namespace="" name="Structures_Graph_Node"/>
+      </param>
+      <access value="public"/>
+    </docblock>
+    <parameter name="destinationNode" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="We only connect to nodes" line="239"/>
+      <comment value="Nodes must already be in graphs to be connected" line="241"/>
+      <comment value="Connect here" line="244"/>
+      <comment value="If graph is undirected, connect back" line="246"/>
+    </inline>
+  </method>
+  <method name="getNeighbours" start="261" end="263" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return nodes connected to this one."/>
+      <return description="Array of nodes" type="array"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="connectsTo" start="274" end="298" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test wether this node has an arc to the target node"/>
+      <return description="True if the two nodes are connected" type="boolean"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="target" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="inDegree" start="312" end="322" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Calculate the in degree of the node.">The indegree for a node is the number of arcs entering the node. For non directed graphs,
+the indegree is equal to the outdegree.</description>
+      <return description="In degree of the node" type="integer"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="outDegree" start="336" end="339" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Calculate the out degree of the node.">The outdegree for a node is the number of arcs exiting the node. For non directed graphs,
+the outdegree is always equal to the indegree.</description>
+      <return description="Out degree of the node" type="integer"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+</class>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Tokenizer\Analyzer\FunctionsAnalyzer" namespace="PhpCsFixer\Tokenizer\Analyzer" name="FunctionsAnalyzer" abstract="false" final="true" start="27" end="266">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer" file="FunctionsAnalyzer.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer/FunctionsAnalyzer.php" size="8941" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="6bd8d7f98ccc6aa03d5a4b9679ad3a921ce61a76" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer/FunctionsAnalyzer.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <member name="functionsAnalysis" default="" type="array" visibility="private" static="false" line="29"/>
+  <method name="isGlobalFunctionCall" start="34" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Important: risky because of the limited (file) scope of the tool."/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+    <inline>
+      <todo value="drop condition when PHP 8.0+ is required" line="56"/>
+      <comment value="figure out in which namespace we are" line="77"/>
+      <comment value="check if the call is to a function declared in the same namespace as the call is done," line="98"/>
+      <comment value="if the call is already in the global namespace than declared functions are in the same" line="99"/>
+      <comment value="global namespace and don't need checking" line="100"/>
+    </inline>
+  </method>
+  <method name="getFunctionArguments" start="139" end="152" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\Tokenizer\Analyzer\ArgumentAnalysis" namespace="PhpCsFixer\Tokenizer\Analyzer" name="ArgumentAnalysis"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="functionIndex" byreference="false" type="int"/>
+  </method>
+  <method name="getFunctionReturnType" start="154" end="179" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="true">
+      <type full="PhpCsFixer\Tokenizer\Analyzer\Analysis\TypeAnalysis" namespace="PhpCsFixer\Tokenizer\Analyzer\Analysis" name="TypeAnalysis"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="methodIndex" byreference="false" type="int"/>
+  </method>
+  <method name="isTheSameClassCall" start="181" end="204" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="buildFunctionsAnalysis" start="206" end="265" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <inline>
+      <comment value="find declarations" line="214"/>
+      <comment value="find imported functions" line="252"/>
+    </inline>
+  </method>
+</class>

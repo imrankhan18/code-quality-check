@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Composer\Plugin\PluginInterface" namespace="Composer\Plugin" name="PluginInterface" abstract="false" final="false" start="23" end="72">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Plugin" file="PluginInterface.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Plugin/PluginInterface.php" size="1822" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="16ecb1aebd0e5013a31718dd8cd5107bee9e0c77" relative="ar/www/html/vendor/composer/composer/src/Composer/Plugin/PluginInterface.php"/>
+  <docblock>
+    <description compact="Plugin interface"/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <constant type="{unknown}" name="PLUGIN_API_VERSION" value="'2.3.0'">
+    <docblock>
+      <description compact="Version number of the internal composer-plugin-api package">This is used to denote the API version of Plugin specific
+features, but is also bumped to a new major if Composer
+includes a major break in internal APIs which are susceptible
+to be used by plugins.</description>
+      <var type="string"/>
+    </docblock>
+  </constant>
+  <method name="activate" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Apply plugin modifications to Composer"/>
+      <param type="object" variable="$composer">
+        <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+      </param>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Plugin\void" namespace="Composer\Plugin" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="composer" byreference="false" type="object">
+      <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+    </parameter>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </method>
+  <method name="deactivate" start="59" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove any hooks from Composer">This will be called when a plugin is deactivated before being
+uninstalled, but also before it gets upgraded to a new version
+so the old one can be deactivated and the new one activated.</description>
+      <param type="object" variable="$composer">
+        <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+      </param>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Plugin\void" namespace="Composer\Plugin" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="composer" byreference="false" type="object">
+      <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+    </parameter>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </method>
+  <method name="uninstall" start="71" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Prepare the plugin to be uninstalled">This will be called after deactivate.</description>
+      <param type="object" variable="$composer">
+        <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+      </param>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Plugin\void" namespace="Composer\Plugin" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="composer" byreference="false" type="object">
+      <type full="Composer\Composer" namespace="Composer" name="Composer"/>
+    </parameter>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </method>
+  <implementors>
+    <class full="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer\Plugin" namespace="Dealerdirect\Composer\Plugin\Installers\PHPCodeSniffer" name="Plugin"/>
+  </implementors>
+</interface>

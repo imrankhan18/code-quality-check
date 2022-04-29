@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\PoolOptimizer" namespace="Composer\DependencyResolver" name="PoolOptimizer" abstract="false" final="false" start="29" end="503">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="PoolOptimizer.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/PoolOptimizer.php" size="20025" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="020d5623c08ea036d3acbb260da239c7dbe0b72c" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/PoolOptimizer.php"/>
+  <docblock>
+    <description compact="Optimizes a given pool"/>
+    <author value="Yanick Witschi &lt;yanick.witschi@terminal42.ch&gt;"/>
+  </docblock>
+  <member name="policy" visibility="private" static="false" line="34">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\DependencyResolver\PolicyInterface" namespace="Composer\DependencyResolver" name="PolicyInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="irremovablePackages" default="" type="array" visibility="private" static="false" line="39">
+    <docblock>
+      <description/>
+      <var description="true&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="requireConstraintsPerPackage" default="" type="array" visibility="private" static="false" line="44">
+    <docblock>
+      <description/>
+      <var description="array&lt;string, ConstraintInterface&gt;&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="conflictConstraintsPerPackage" default="" type="array" visibility="private" static="false" line="49">
+    <docblock>
+      <description/>
+      <var description="array&lt;string, ConstraintInterface&gt;&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="packagesToRemove" default="" type="array" visibility="private" static="false" line="54">
+    <docblock>
+      <description/>
+      <var description="true&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="aliasesPerPackage" default="" type="array" visibility="private" static="false" line="59">
+    <docblock>
+      <description/>
+      <var description="BasePackage[]&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="removedVersionsByPackage" default="" type="array" visibility="private" static="false" line="64">
+    <docblock>
+      <description/>
+      <var description="array&lt;string, string&gt;&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="policy" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\PolicyInterface" namespace="Composer\DependencyResolver" name="PolicyInterface"/>
+    </parameter>
+  </constructor>
+  <method name="optimize" start="74" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <inline>
+      <comment value="No need to run this recursively at the moment" line="84"/>
+      <comment value="because the current optimizations cannot provide" line="85"/>
+      <comment value="even more gains when ran again. Might change" line="86"/>
+      <comment value="in the future with additional optimizations." line="87"/>
+    </inline>
+  </method>
+  <method name="prepare" start="102" end="150" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <inline>
+      <comment value="Mark fixed or locked packages as irremovable" line="106"/>
+      <comment value="Extract requested package requirements" line="111"/>
+      <comment value="First pass over all packages to extract information and mark package constraints irremovable" line="116"/>
+      <comment value="Mark the packages as irremovable based on the constraints" line="140"/>
+    </inline>
+  </method>
+  <method name="markPackageIrremovable" start="155" end="168" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="applyRemovalsToPool" start="173" end="188" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return description="Optimized pool" type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </return>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+  </method>
+  <method name="optimizeByIdenticalDependencies" start="193" end="273" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+  </method>
+  <method name="calculateDependencyHash" start="278" end="316" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="markPackageForRemoval" start="322" end="330" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$id"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="id" byreference="false" type="int"/>
+    <inline>
+      <comment value="We are not allowed to remove packages if they have been marked as irremovable" line="324"/>
+    </inline>
+  </method>
+  <method name="keepPackage" start="337" end="385" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="array&lt;string array&lt;string, list&lt;BasePackage&gt;&gt;&gt;&gt; $identicalDefinitionsPerPackage" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </param>
+      <param description="array&lt;string array{groupHash: string, dependencyHash: string}&gt;&gt; $packageIdenticalDefinitionLookup" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="identicalDefinitionsPerPackage" byreference="false" type="array"/>
+    <parameter name="packageIdenticalDefinitionLookup" byreference="false" type="array"/>
+    <inline>
+      <comment value="Already marked to keep" line="339"/>
+      <comment value="record all the versions of the package group so we can list them later in Problem output" line="352"/>
+    </inline>
+  </method>
+  <method name="optimizeImpossiblePackagesAway" start="394" end="451" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Use the list of locked packages to constrain the loaded packages This will reduce packages with significant numbers of historical versions to a smaller number and reduce the resulting rule set that is generated"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+  </method>
+  <method name="extractRequireConstraintsPerPackage" start="462" end="467" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Disjunctive require constraints need to be considered in their own group. E.g. &quot;^2.14 || ^3.3&quot; needs to generate two require constraint groups in order for us to keep the best matching package for &quot;^2.14&quot; AND &quot;^3.3&quot; as otherwise, we'd only keep either one which can cause trouble (e.g. when using --prefer-lowest)."/>
+      <param type="string" variable="$package"/>
+      <param type="object" variable="$constraint">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="extractConflictConstraintsPerPackage" start="478" end="483" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Disjunctive conflict constraints need to be considered in their own group. E.g. &quot;^2.14 || ^3.3&quot; needs to generate two conflict constraint groups in order for us to keep the best matching package for &quot;^2.14&quot; AND &quot;^3.3&quot; as otherwise, we'd only keep either one which can cause trouble (e.g. when using --prefer-lowest)."/>
+      <param type="string" variable="$package"/>
+      <param type="object" variable="$constraint">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="expandDisjunctiveMultiConstraints" start="490" end="502" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$constraint">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\ConstraintInterface" namespace="Composer\DependencyResolver" name="ConstraintInterface"/>
+      </return>
+    </docblock>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Regular constraints and conjunctive MultiConstraints" line="500"/>
+    </inline>
+  </method>
+</class>

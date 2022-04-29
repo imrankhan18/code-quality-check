@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\XdebugHandler\XdebugHandler</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_XdebugHandler">Composer\XdebugHandler</a>
+          </li>
+          <li class="separator">XdebugHandler</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/xdebug-handler/src/XdebugHandler.php.xhtml#line24">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\XdebugHandler\</small>XdebugHandler</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: John Stevenson &lt;john-stevenson@blueyonder.co.uk&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class XdebugHandler
+            {<br/><ul class="none"><li>// constants</li><li>const SUFFIX_ALLOW = '_ALLOW_XDEBUG';</li><li>const SUFFIX_INIS = '_ORIGINAL_INIS';</li><li>const RESTART_ID = 'internal';</li><li>const RESTART_SETTINGS = 'XDEBUG_HANDLER_SETTINGS';</li><li>const DEBUG = 'XDEBUG_HANDLER_DEBUG';</li></ul><ul class="none"><li>// members</li><li>protected <span title="Composer\XdebugHandler\string|null">string|null</span> <a href="#members">$tmpIni</a>;
+                    </li><li>private static <span title="Composer\XdebugHandler\bool">bool</span> <a href="#members">$inRestart</a>;
+                    </li><li>private static  <a href="#members">$name</a>;
+                    </li><li>private static <span title="Composer\XdebugHandler\string|null">string|null</span> <a href="#members">$skipped</a>;
+                    </li><li>private static <span title="Composer\XdebugHandler\bool">bool</span> <a href="#members">$xdebugActive</a>;
+                    </li><li>private static <span title="Composer\XdebugHandler\string|null">string|null</span> <a href="#members">$xdebugMode</a>;
+                    </li><li>private static <span title="Composer\XdebugHandler\string|null">string|null</span> <a href="#members">$xdebugVersion</a>;
+                    </li><li>private <span title="Composer\XdebugHandler\bool">bool</span> <a href="#members">$cli</a>;
+                    </li><li>private <span title="Composer\XdebugHandler\string|null">string|null</span> <a href="#members">$debug</a>;
+                    </li><li>private  <a href="#members">$envAllowXdebug</a>;
+                    </li><li>private  <a href="#members">$envOriginalInis</a>;
+                    </li><li>private <span title="Composer\XdebugHandler\bool">bool</span> <a href="#members">$persistent</a>;
+                    </li><li>private <span title="Composer\XdebugHandler\string|null">string|null</span> <a href="#members">$script</a>;
+                    </li><li>private <span title="Composer\XdebugHandler\Status">Status</span> <a href="#members">$statusWriter</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/__construct.xhtml">__construct</a>()
+                    </li><li>public <span title="XdebugHandler">XdebugHandler</span> <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setLogger.xhtml">setLogger</a>()
+                    </li><li>public <span title="XdebugHandler">XdebugHandler</span> <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setMainScript.xhtml">setMainScript</a>()
+                    </li><li>public <span title="XdebugHandler">XdebugHandler</span> <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setPersistent.xhtml">setPersistent</a>()
+                    </li><li>public void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/check.xhtml">check</a>()
+                    </li><li>public static array <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/getAllIniFiles.xhtml">getAllIniFiles</a>()
+                    </li><li>public static ?array <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/getRestartSettings.xhtml">getRestartSettings</a>()
+                    </li><li>public static string <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/getSkippedVersion.xhtml">getSkippedVersion</a>()
+                    </li><li>public static bool <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/isXdebugActive.xhtml">isXdebugActive</a>()
+                    </li><li>protected bool <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/requiresRestart.xhtml">requiresRestart</a>()
+                    </li><li>protected void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/restart.xhtml">restart</a>()
+                    </li><li>private void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/doRestart.xhtml">doRestart</a>()
+                    </li><li>private bool <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/prepareRestart.xhtml">prepareRestart</a>()
+                    </li><li>private bool <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/writeTmpIni.xhtml">writeTmpIni</a>()
+                    </li><li>private array <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/getCommand.xhtml">getCommand</a>()
+                    </li><li>private bool <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setEnvironment.xhtml">setEnvironment</a>()
+                    </li><li>private void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/notify.xhtml">notify</a>()
+                    </li><li>private string <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/mergeLoadedConfig.xhtml">mergeLoadedConfig</a>()
+                    </li><li>private bool <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/checkMainScript.xhtml">checkMainScript</a>()
+                    </li><li>private void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setEnvRestartSettings.xhtml">setEnvRestartSettings</a>()
+                    </li><li>private void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/syncSettings.xhtml">syncSettings</a>()
+                    </li><li>private bool <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/checkConfiguration.xhtml">checkConfiguration</a>()
+                    </li><li>private void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/tryEnableSignals.xhtml">tryEnableSignals</a>()
+                    </li><li>private static void <a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setXdebugDetails.xhtml">setXdebugDetails</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="SUFFIX_ALLOW">SUFFIX_ALLOW</td>
+              <td>'_ALLOW_XDEBUG'</td>
+            </tr>
+            <tr>
+              <td id="SUFFIX_INIS">SUFFIX_INIS</td>
+              <td>'_ORIGINAL_INIS'</td>
+            </tr>
+            <tr>
+              <td id="RESTART_ID">RESTART_ID</td>
+              <td>'internal'</td>
+            </tr>
+            <tr>
+              <td id="RESTART_SETTINGS">RESTART_SETTINGS</td>
+              <td>'XDEBUG_HANDLER_SETTINGS'</td>
+            </tr>
+            <tr>
+              <td id="DEBUG">DEBUG</td>
+              <td>'XDEBUG_HANDLER_DEBUG'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="cli"><strong>$cli</strong>
+                —
+                <a title="Composer\XdebugHandler\bool" href="../classes/Composer_XdebugHandler_bool.xhtml">Composer\XdebugHandler\bool</a></li>
+            <li id="debug"><strong>$debug</strong>
+                —
+                <a title="Composer\XdebugHandler\string|null" href="../classes/Composer_XdebugHandler_string|null.xhtml">Composer\XdebugHandler\string|null</a></li>
+            <li id="envAllowXdebug"><strong>$envAllowXdebug</strong>
+                —
+                string</li>
+            <li id="envOriginalInis"><strong>$envOriginalInis</strong>
+                —
+                string</li>
+            <li id="inRestart"><strong>$inRestart</strong>
+                —
+                <a title="Composer\XdebugHandler\bool" href="../classes/Composer_XdebugHandler_bool.xhtml">Composer\XdebugHandler\bool</a></li>
+            <li id="name"><strong>$name</strong>
+                —
+                string</li>
+            <li id="persistent"><strong>$persistent</strong>
+                —
+                <a title="Composer\XdebugHandler\bool" href="../classes/Composer_XdebugHandler_bool.xhtml">Composer\XdebugHandler\bool</a></li>
+            <li id="script"><strong>$script</strong>
+                —
+                <a title="Composer\XdebugHandler\string|null" href="../classes/Composer_XdebugHandler_string|null.xhtml">Composer\XdebugHandler\string|null</a></li>
+            <li id="skipped"><strong>$skipped</strong>
+                —
+                <a title="Composer\XdebugHandler\string|null" href="../classes/Composer_XdebugHandler_string|null.xhtml">Composer\XdebugHandler\string|null</a></li>
+            <li id="statusWriter"><strong>$statusWriter</strong>
+                —
+                <a title="Composer\XdebugHandler\Status" href="../classes/Composer_XdebugHandler_Status.xhtml">Composer\XdebugHandler\Status</a></li>
+            <li id="xdebugActive"><strong>$xdebugActive</strong>
+                —
+                <a title="Composer\XdebugHandler\bool" href="../classes/Composer_XdebugHandler_bool.xhtml">Composer\XdebugHandler\bool</a></li>
+            <li id="xdebugMode"><strong>$xdebugMode</strong>
+                —
+                <a title="Composer\XdebugHandler\string|null" href="../classes/Composer_XdebugHandler_string|null.xhtml">Composer\XdebugHandler\string|null</a></li>
+            <li id="xdebugVersion"><strong>$xdebugVersion</strong>
+                —
+                <a title="Composer\XdebugHandler\string|null" href="../classes/Composer_XdebugHandler_string|null.xhtml">Composer\XdebugHandler\string|null</a></li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="tmpIni"><strong>$tmpIni</strong>
+                —
+                <a title="Composer\XdebugHandler\string|null" href="../classes/Composer_XdebugHandler_string|null.xhtml">Composer\XdebugHandler\string|null</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="checkConfiguration"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/checkConfiguration.xhtml">checkConfiguration()</a>
+                — Returns true if there are no known configuration issues</li>
+            <li id="checkMainScript"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/checkMainScript.xhtml">checkMainScript()</a>
+                — Returns true if the script name can be used</li>
+            <li id="doRestart"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/doRestart.xhtml">doRestart()</a>
+                — Executes the restarted command then deletes the tmp ini</li>
+            <li id="getCommand"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/getCommand.xhtml">getCommand()</a>
+                — Returns the command line arguments for the restart</li>
+            <li id="mergeLoadedConfig"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/mergeLoadedConfig.xhtml">mergeLoadedConfig()</a>
+                — Returns default, changed and command-line ini settings</li>
+            <li id="notify"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/notify.xhtml">notify()</a>
+                — Logs status messages</li>
+            <li id="prepareRestart"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/prepareRestart.xhtml">prepareRestart()</a>
+                — Returns true if everything was written for the restart</li>
+            <li id="setEnvRestartSettings"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setEnvRestartSettings.xhtml">setEnvRestartSettings()</a>
+                — Adds restart settings to the environment</li>
+            <li id="setEnvironment"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setEnvironment.xhtml">setEnvironment()</a>
+                — Returns true if the restart environment variables were set</li>
+            <li id="setXdebugDetails"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setXdebugDetails.xhtml">setXdebugDetails()</a>
+                — Sets static properties $xdebugActive, $xdebugVersion and $xdebugMode</li>
+            <li id="syncSettings"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/syncSettings.xhtml">syncSettings()</a>
+                — Syncs settings and the environment if called with existing settings</li>
+            <li id="tryEnableSignals"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/tryEnableSignals.xhtml">tryEnableSignals()</a>
+                — Enables async signals and control interrupts in the restarted process</li>
+            <li id="writeTmpIni"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/writeTmpIni.xhtml">writeTmpIni()</a>
+                — Returns true if the tmp ini file was written</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="requiresRestart"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/requiresRestart.xhtml">requiresRestart()</a>
+                — Allows an extending class to decide if there should be a restart</li>
+            <li id="restart"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/restart.xhtml">restart()</a>
+                — Allows an extending class to access the tmpIni</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/__construct.xhtml">__construct()</a>
+                — Constructor</li>
+            <li id="check"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/check.xhtml">check()</a>
+                — Checks if Xdebug is loaded and the process needs to be restarted</li>
+            <li id="getAllIniFiles"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/getAllIniFiles.xhtml">getAllIniFiles()</a>
+                — Returns an array of php.ini locations with at least one entry</li>
+            <li id="getRestartSettings"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/getRestartSettings.xhtml">getRestartSettings()</a>
+                — Returns an array of restart settings or null</li>
+            <li id="getSkippedVersion"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/getSkippedVersion.xhtml">getSkippedVersion()</a>
+                — Returns the Xdebug version that triggered a successful restart</li>
+            <li id="isXdebugActive"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/isXdebugActive.xhtml">isXdebugActive()</a>
+                — Returns whether Xdebug is loaded and active</li>
+            <li id="setLogger"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setLogger.xhtml">setLogger()</a>
+                — Activates status message output to a PSR3 logger</li>
+            <li id="setMainScript"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setMainScript.xhtml">setMainScript()</a>
+                — Sets the main script location if it cannot be called from argv</li>
+            <li id="setPersistent"><a title="Composer\XdebugHandler\XdebugHandler" href="../classes/Composer_XdebugHandler_XdebugHandler/setPersistent.xhtml">setPersistent()</a>
+                — Persist the settings to keep Xdebug out of sub-processes</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_PackageFile_Generator_v2" namespace="" name="PEAR_PackageFile_Generator_v2" abstract="false" final="false" start="37" end="886">
+  <file path="//usr/local/lib/php/PEAR/PackageFile/Generator" file="v2.php" realpath="/usr/local/lib/php/PEAR/PackageFile/Generator/v2.php" size="33225" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="82538a77d5be01f07f7c4cfcf68532bdeea3dcc4" relative="sr/local/lib/php/PEAR/PackageFile/Generator/v2.php"/>
+  <docblock>
+    <description compact="This class converts a PEAR_PackageFile_v2 object into any output format.">Supported output formats include array, XML string (using S. Schmidt's
+XML_Serializer, slightly customized)</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <author value="Stephan Schmidt (original XML_Serializer code)"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <member name="_defaultOptions" default="" type="array" visibility="public" static="false" line="44">
+    <docblock>
+      <description compact="default options for the serialization"/>
+      <access value="private"/>
+      <var description="$_defaultOptions" type="array"/>
+    </docblock>
+  </member>
+  <member name="options" default="" type="array" visibility="public" static="false" line="82">
+    <docblock>
+      <description compact="options for the serialization"/>
+      <access value="private"/>
+      <var description="$options" type="array"/>
+    </docblock>
+  </member>
+  <member name="_tagDepth" default="0" type="integer" visibility="public" static="false" line="88">
+    <docblock>
+      <description compact="current tag depth"/>
+      <var description="$_tagDepth" type="integer"/>
+    </docblock>
+  </member>
+  <member name="_serializedData" default="NULL" visibility="public" static="false" line="94">
+    <docblock>
+      <description compact="serilialized representation of the data"/>
+      <var description="$_serializedData" type="string"/>
+    </docblock>
+  </member>
+  <member name="_packagefile" visibility="public" static="false" line="98">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="102" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+      </param>
+    </docblock>
+    <parameter name="packagefile" byreference="true" type="{unknown}"/>
+  </constructor>
+  <method name="getPackagerVersion" start="113" end="116" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="toTgz" start="123" end="127" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_Packager" namespace="" name="PEAR_Packager"/>
+      </param>
+      <param description="generate a .tgz or a .tar" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <param description="temporary directory to package in" type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+    </docblock>
+    <parameter name="packager" byreference="true" type="{unknown}"/>
+    <parameter name="compress" byreference="false" type="boolean" default="true"/>
+    <parameter name="where" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="toTgz2" start="136" end="300" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Package up both a package.xml and package2.xml for the same release"/>
+      <param type="object">
+        <type full="PEAR_Packager" namespace="" name="PEAR_Packager"/>
+      </param>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1" namespace="" name="PEAR_PackageFile_v1"/>
+      </param>
+      <param description="generate a .tgz or a .tar" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <param description="temporary directory to package in" type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+    </docblock>
+    <parameter name="packager" byreference="true" type="{unknown}"/>
+    <parameter name="pf1" byreference="true" type="{unknown}"/>
+    <parameter name="compress" byreference="false" type="boolean" default="true"/>
+    <parameter name="where" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="{{{ Create the package file list" line="182"/>
+      <comment value="}}}" line="266"/>
+    </inline>
+  </method>
+  <method name="toPackageFile" start="302" end="327" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="where" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_NORMAL"/>
+    <parameter name="name" byreference="false" type="string" default="'package.xml'"/>
+  </method>
+  <method name="toV2" start="329" end="332" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="toXml" start="340" end="406" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return an XML document based on the package info (as returned by the PEAR_Common::infoFrom* methods)."/>
+      <return description="XML data" type="string"/>
+    </docblock>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_NORMAL"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="Fix the notes a little bit" line="363"/>
+    </inline>
+  </method>
+  <method name="_recursiveXmlFilelist" start="409" end="428" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="list" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_addDir" start="430" end="446" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dirs" byreference="true" type="{unknown}"/>
+    <parameter name="dir" byreference="false" type="{unknown}"/>
+    <parameter name="file" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="tasks" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_formatDir" start="448" end="470" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dirs" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_deFormat" start="472" end="501" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dirs" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="resetOptions" start="509" end="512" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="reset all options to default options"/>
+      <access value="public"/>
+      <see value="setOption(), XML_Unserializer()"/>
+    </docblock>
+  </method>
+  <method name="setOption" start="522" end="525" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="set an option">You can use this method if you do not want to set all options in the constructor</description>
+      <access value="public"/>
+      <see value="resetOption(), XML_Serializer()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setOptions" start="535" end="538" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="sets several options at once">You can use this method if you do not want to set all options in the constructor</description>
+      <access value="public"/>
+      <see value="resetOption(), XML_Unserializer(), setOption()"/>
+    </docblock>
+    <parameter name="options" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="serialize" start="547" end="593" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="serialize data"/>
+      <access value="public"/>
+      <param description="data to serialize" type="mixed" variable="$data"/>
+      <return description="true on success, pear error on failure" type="boolean"/>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="if options have been specified, use them instead" line="549"/>
+      <comment value="of the previously defined ones" line="550"/>
+      <comment value="start depth is zero" line="562"/>
+      <comment value="serialize an array" line="565"/>
+      <comment value="add doctype declaration" line="571"/>
+      <comment value="build xml declaration" line="578"/>
+    </inline>
+  </method>
+  <method name="getSerializedData" start="601" end="607" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="get the result of the serialization"/>
+      <access value="public"/>
+      <return description="serialized XML" type="string"/>
+    </docblock>
+  </method>
+  <method name="_serializeValue" start="620" end="635" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="serialize any value">This method checks for the type of the value and calls the appropriate method</description>
+      <access value="private"/>
+      <param type="mixed" variable="$value"/>
+      <param type="string" variable="$tagName"/>
+      <param type="array" variable="$attributes"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="tagName" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="_serializeArray" start="647" end="828" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="serialize an array"/>
+      <access value="private"/>
+      <param description="array to serialize" type="array" variable="$array"/>
+      <param description="name of the root tag" type="string" variable="$tagName"/>
+      <param description="attributes for the root tag" type="array" variable="$attributes"/>
+      <return description="$string      serialized data" type="string"/>
+      <uses value="XML_Util::isValidName() to check, whether key has to be substituted"/>
+    </docblock>
+    <parameter name="array" byreference="true" type="{unknown}"/>
+    <parameter name="tagName" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="check for special attributes" line="651"/>
+      <comment value="if mode is set to simpleXML, check whether" line="670"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="the array is associative or indexed" line="671"/>
+      <comment value="check for empty array =&gt; create empty tag" line="734"/>
+    </inline>
+  </method>
+  <method name="_createXMLTag" start="846" end="885" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="create a tag from an array this method awaits an array in the following format array(       'qname'        =&gt; $tagName,       'attributes'   =&gt; array(),       'content'      =&gt; $content,      // optional       'namespace'    =&gt; $namespace     // optional       'namespaceUri' =&gt; $namespaceUri  // optional   )"/>
+      <access value="private"/>
+      <param description="tag definition" type="array" variable="$tag"/>
+      <param description="whether to replace XML entities in content or not" type="boolean" variable="$replaceEntities"/>
+      <return description="$string XML tag" type="string"/>
+    </docblock>
+    <parameter name="tag" byreference="false" type="{unknown}"/>
+    <parameter name="replaceEntities" byreference="false" type="boolean" default="true"/>
+  </method>
+</class>

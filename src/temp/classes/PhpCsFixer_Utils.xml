@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Utils" namespace="PhpCsFixer" name="Utils" abstract="false" final="true" start="27" end="173">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src" file="Utils.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Utils.php" size="4977" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="aef043f14398e9c8a6a655afb8c55c568ce2b392" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Utils.php"/>
+  <docblock>
+    <description/>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+    <author value="Graham Campbell &lt;hello@gjcampbell.co.uk&gt;"/>
+    <author value="Odín del Río &lt;odin.drp@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <member name="deprecations" default="" type="array" visibility="private" static="true" line="32">
+    <docblock>
+      <description/>
+      <var description="true&gt;" type="object">
+        <type full="PhpCsFixer\array&lt;string" namespace="PhpCsFixer" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="34" end="37" abstract="false" final="false" static="false" visibility="private">
+    <inline>
+      <comment value="cannot create instance of util. class" line="36"/>
+    </inline>
+  </constructor>
+  <method name="camelCaseToUnderscore" start="42" end="45" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Converts a camel cased string to a snake cased string."/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="string" byreference="false" type="string"/>
+  </method>
+  <method name="calculateTrailingWhitespaceIndent" start="52" end="68" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Calculate the trailing whitespace.">What we're doing here is grabbing everything after the final newline.</description>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+  </method>
+  <method name="stableSort" start="81" end="100" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Perform stable sorting using provided comparison function.">Stability is ensured by using Schwartzian transform.</description>
+      <param type="array" variable="$elements" of="object">
+        <type full="PhpCsFixer\mixed" namespace="PhpCsFixer" name="mixed"/>
+      </param>
+      <param description="a callable that takes a single element and returns the value to compare" type="object" variable="$getComparedValue">
+        <type full="PhpCsFixer\callable" namespace="PhpCsFixer" name="callable"/>
+      </param>
+      <param description="a callable that compares two values" type="object" variable="$compareValues">
+        <type full="PhpCsFixer\callable" namespace="PhpCsFixer" name="callable"/>
+      </param>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\mixed" namespace="PhpCsFixer" name="mixed"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="elements" byreference="false" type="array"/>
+    <parameter name="getComparedValue" byreference="false" type="callable"/>
+    <parameter name="compareValues" byreference="false" type="callable"/>
+  </method>
+  <method name="sortFixers" start="109" end="122" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Sort fixers by their priorities."/>
+      <param type="array" variable="$fixers" of="object">
+        <type full="PhpCsFixer\FixerInterface" namespace="PhpCsFixer" name="FixerInterface"/>
+      </param>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\FixerInterface" namespace="PhpCsFixer" name="FixerInterface"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="fixers" byreference="false" type="array"/>
+    <inline>
+      <comment value="Schwartzian transform is used to improve the efficiency and avoid" line="111"/>
+      <comment value="`usort(): Array was modified by the user comparison function` warning for mocked objects." line="112"/>
+    </inline>
+  </method>
+  <method name="naturalLanguageJoinWithBackticks" start="131" end="148" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Join names in natural language wrapped in backticks, e.g. `a`, `b` and `c`."/>
+      <param type="array" variable="$names" of="object">
+        <type full="PhpCsFixer\string" namespace="PhpCsFixer" name="string"/>
+      </param>
+      <throws type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="names" byreference="false" type="array"/>
+  </method>
+  <method name="triggerDeprecation" start="150" end="164" abstract="false" final="false" static="true" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="futureException" byreference="false" type="object">
+      <type full="Exception" namespace="" name="Exception"/>
+    </parameter>
+  </method>
+  <method name="getTriggeredDeprecations" start="166" end="172" abstract="false" final="false" static="true" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+</class>

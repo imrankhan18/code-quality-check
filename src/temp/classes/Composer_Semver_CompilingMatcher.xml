@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Semver\CompilingMatcher" namespace="Composer\Semver" name="CompilingMatcher" abstract="false" final="false" start="20" end="94">
+  <file path="//var/www/html/vendor/composer/semver/src" file="CompilingMatcher.php" realpath="/var/www/html/vendor/composer/semver/src/CompilingMatcher.php" size="2849" time="2022-04-01T19:23:25+00:00" unixtime="1648841005" sha1="3491056ca61fda116d8da91e12d3e5a342ef4b0e" relative="ar/www/html/vendor/composer/semver/src/CompilingMatcher.php"/>
+  <docblock>
+    <description compact="Helper class to evaluate constraint by compiling and reusing the code to evaluate"/>
+  </docblock>
+  <member name="compiledCheckerCache" default="" type="array" visibility="private" static="true" line="26">
+    <docblock>
+      <description/>
+      <var type="array"/>
+      <phpstan value="-var array&lt;string, callable&gt;"/>
+    </docblock>
+  </member>
+  <member name="resultCache" default="" type="array" visibility="private" static="true" line="31">
+    <docblock>
+      <description/>
+      <var type="array"/>
+      <phpstan value="-var array&lt;string, bool&gt;"/>
+    </docblock>
+  </member>
+  <member name="enabled" visibility="private" static="true" line="34">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Semver\bool" namespace="Composer\Semver" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="transOpInt" default="" type="array" visibility="private" static="true" line="39">
+    <docblock>
+      <description/>
+      <phpstan value="-var array&lt;Constraint::OP_*, Constraint::STR_OP_*&gt;"/>
+    </docblock>
+  </member>
+  <method name="clear" start="53" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Clears the memoization cache once you are done"/>
+      <return type="object">
+        <type full="Composer\Semver\void" namespace="Composer\Semver" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="match" start="69" end="93" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Evaluates the expression: $constraint match $operator $version"/>
+      <param type="object" variable="$constraint">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <param type="int" variable="$operator"/>
+      <param type="string" variable="$version"/>
+      <phpstan value="-param Constraint::OP_*  $operator"/>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <parameter name="operator" byreference="false" type="{unknown}"/>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+</class>

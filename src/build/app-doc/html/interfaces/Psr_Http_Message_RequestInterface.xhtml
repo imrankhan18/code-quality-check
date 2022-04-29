@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Psr\Http\Message\RequestInterface</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.xhtml">Interfaces</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.xhtml#Psr_Http_Message">Psr\Http\Message</a>
+          </li>
+          <li class="separator">RequestInterface</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/psr/http-message/src/RequestInterface.php.xhtml#line24">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Psr\Http\Message\</small>RequestInterface</h1>
+        <h4>Representation of an outgoing, client-side request.</h4>
+        <p>Per the HTTP specification, this interface includes properties for<br/>each of the following:<br/><br/>- Protocol version<br/>- HTTP method<br/>- URI<br/>- Headers<br/>- Message body<br/><br/>During construction, implementations MUST attempt to set the Host header from<br/>a provided URI if no Host header is provided.<br/><br/>Requests are considered immutable; all methods that might change state MUST<br/>be implemented such that they retain the internal state of the current<br/>message and return an instance that contains the changed state.</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">interface RequestInterface
+                extends <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface.xhtml">MessageInterface</a>
+            {<br/><ul class="none"><li>// methods</li><li>public string <a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/getRequestTarget.xhtml">getRequestTarget</a>()
+                    </li><li>public RequestInterface <a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/withRequestTarget.xhtml">withRequestTarget</a>()
+                    </li><li>public string <a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/getMethod.xhtml">getMethod</a>()
+                    </li><li>public RequestInterface <a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/withMethod.xhtml">withMethod</a>()
+                    </li><li>public UriInterface <a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/getUri.xhtml">getUri</a>()
+                    </li><li>public RequestInterface <a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/withUri.xhtml">withUri</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Psr\Http\Message\MessageInterface">MessageInterface</span></li><li>public string <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getProtocolVersion.xhtml">getProtocolVersion</a>()
+                        </li><li>public RequestInterface <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withProtocolVersion.xhtml">withProtocolVersion</a>()
+                        </li><li>public array <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getHeaders.xhtml">getHeaders</a>()
+                        </li><li>public bool <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/hasHeader.xhtml">hasHeader</a>()
+                        </li><li>public array <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getHeader.xhtml">getHeader</a>()
+                        </li><li>public string <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getHeaderLine.xhtml">getHeaderLine</a>()
+                        </li><li>public RequestInterface <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withHeader.xhtml">withHeader</a>()
+                        </li><li>public RequestInterface <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withAddedHeader.xhtml">withAddedHeader</a>()
+                        </li><li>public RequestInterface <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withoutHeader.xhtml">withoutHeader</a>()
+                        </li><li>public StreamInterface <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getBody.xhtml">getBody</a>()
+                        </li><li>public RequestInterface <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withBody.xhtml">withBody</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface.xhtml">Psr\Http\Message\MessageInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="getMethod"><a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/getMethod.xhtml">getMethod()</a>
+                — Retrieves the HTTP method of the request.</li>
+            <li id="getRequestTarget"><a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/getRequestTarget.xhtml">getRequestTarget()</a>
+                — Retrieves the message's request target.</li>
+            <li id="getUri"><a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/getUri.xhtml">getUri()</a>
+                — Retrieves the URI instance.</li>
+            <li id="withMethod"><a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/withMethod.xhtml">withMethod()</a>
+                — Return an instance with the provided HTTP method.</li>
+            <li id="withRequestTarget"><a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/withRequestTarget.xhtml">withRequestTarget()</a>
+                — Return an instance with the specific request-target.</li>
+            <li id="withUri"><a title="Psr\Http\Message\RequestInterface" href="../interfaces/Psr_Http_Message_RequestInterface/withUri.xhtml">withUri()</a>
+                — Returns an instance with the provided URI.</li>
+          </ul>
+          <h3>Inherited from <a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface.xhtml">Psr\Http\Message\MessageInterface</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="getBody"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getBody.xhtml">getBody()</a>
+                — Gets the body of the message.</li>
+            <li id="getHeader"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getHeader.xhtml">getHeader()</a>
+                — Retrieves a message header value by the given case-insensitive name.</li>
+            <li id="getHeaderLine"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getHeaderLine.xhtml">getHeaderLine()</a>
+                — Retrieves a comma-separated string of the values for a single header.</li>
+            <li id="getHeaders"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getHeaders.xhtml">getHeaders()</a>
+                — Retrieves all message header values.</li>
+            <li id="getProtocolVersion"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/getProtocolVersion.xhtml">getProtocolVersion()</a>
+                — Retrieves the HTTP protocol version as a string.</li>
+            <li id="hasHeader"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/hasHeader.xhtml">hasHeader()</a>
+                — Checks if a header exists by the given case-insensitive name.</li>
+            <li id="withAddedHeader"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withAddedHeader.xhtml">withAddedHeader()</a>
+                — Return an instance with the specified header appended with the given value.</li>
+            <li id="withBody"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withBody.xhtml">withBody()</a>
+                — Return an instance with the specified message body.</li>
+            <li id="withHeader"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withHeader.xhtml">withHeader()</a>
+                — Return an instance with the provided value replacing the specified header.</li>
+            <li id="withProtocolVersion"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withProtocolVersion.xhtml">withProtocolVersion()</a>
+                — Return an instance with the specified HTTP protocol version.</li>
+            <li id="withoutHeader"><a title="Psr\Http\Message\MessageInterface" href="../interfaces/Psr_Http_Message_MessageInterface/withoutHeader.xhtml">withoutHeader()</a>
+                — Return an instance without the specified header.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

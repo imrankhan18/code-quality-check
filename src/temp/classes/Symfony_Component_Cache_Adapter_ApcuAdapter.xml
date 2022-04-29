@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\Adapter\ApcuAdapter" namespace="Symfony\Component\Cache\Adapter" name="ApcuAdapter" abstract="false" final="false" start="21" end="138">
+  <file path="//var/www/html/vendor/symfony/cache/Adapter" file="ApcuAdapter.php" realpath="/var/www/html/vendor/symfony/cache/Adapter/ApcuAdapter.php" size="3959" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="3ad7751377404034928b17363ee9b06e2be21bce" relative="ar/www/html/vendor/symfony/cache/Adapter/ApcuAdapter.php"/>
+  <docblock>
+    <description/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+  </docblock>
+  <extends full="Symfony\Component\Cache\Adapter\AbstractAdapter" namespace="Symfony\Component\Cache\Adapter" name="AbstractAdapter"/>
+  <member name="marshaller" visibility="private" static="false" line="23"/>
+  <constructor name="__construct" start="28" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <throws description="if APCu is not enabled" type="object">
+        <type full="Symfony\Component\Cache\Exception\CacheException" namespace="Symfony\Component\Cache\Exception" name="CacheException"/>
+      </throws>
+    </docblock>
+    <parameter name="namespace" byreference="false" type="string" default="''"/>
+    <parameter name="defaultLifetime" byreference="false" type="integer" default="0"/>
+    <parameter name="version" byreference="false" type="string" default="NULL"/>
+    <parameter name="marshaller" byreference="false" type="object" default="NULL">
+      <type full="Symfony\Component\Cache\Marshaller\MarshallerInterface" namespace="Symfony\Component\Cache\Marshaller" name="MarshallerInterface"/>
+    </parameter>
+  </constructor>
+  <method name="isSupported" start="50" end="53" abstract="false" final="false" static="true" visibility="public"/>
+  <method name="doFetch" start="58" end="82" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="ids" byreference="false" type="array"/>
+  </method>
+  <method name="doHave" start="87" end="90" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="id" byreference="false" type="string"/>
+  </method>
+  <method name="doClear" start="95" end="100" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="namespace" byreference="false" type="string"/>
+  </method>
+  <method name="doDelete" start="105" end="112" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="ids" byreference="false" type="array"/>
+  </method>
+  <method name="doSave" start="117" end="137" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="values" byreference="false" type="array"/>
+    <parameter name="lifetime" byreference="false" type="int"/>
+  </method>
+  <parent full="Symfony\Component\Cache\Adapter\AbstractAdapter" namespace="Symfony\Component\Cache\Adapter" name="AbstractAdapter">
+    <implements full="Symfony\Component\Cache\Adapter\AdapterInterface" namespace="Symfony\Component\Cache\Adapter" name="AdapterInterface"/>
+    <implements full="Symfony\Contracts\Cache\CacheInterface" namespace="Symfony\Contracts\Cache" name="CacheInterface"/>
+    <implements full="Psr\Log\LoggerAwareInterface" namespace="Psr\Log" name="LoggerAwareInterface"/>
+    <implements full="Symfony\Component\Cache\ResettableInterface" namespace="Symfony\Component\Cache" name="ResettableInterface"/>
+    <uses full="Symfony\Component\Cache\Traits\AbstractAdapterTrait" namespace="Symfony\Component\Cache\Traits" name="AbstractAdapterTrait"/>
+    <uses full="Symfony\Component\Cache\Traits\ContractsTrait" namespace="Symfony\Component\Cache\Traits" name="ContractsTrait"/>
+    <constant type="{unknown}" name="NS_SEPARATOR" value="':'">
+      <docblock>
+        <description/>
+        <internal/>
+      </docblock>
+    </constant>
+    <constructor name="__construct" start="39" end="95" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="namespace" byreference="false" type="string" default="''"/>
+      <parameter name="defaultLifetime" byreference="false" type="integer" default="0"/>
+    </constructor>
+    <method name="createSystemCache" start="104" end="125" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Returns the best possible adapter that your runtime supports.">Using ApcuAdapter makes system caches compatible with read-only filesystems.</description>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Adapter\AdapterInterface" namespace="Symfony\Component\Cache\Adapter" name="AdapterInterface"/>
+        </return>
+      </docblock>
+      <parameter name="namespace" byreference="false" type="string"/>
+      <parameter name="defaultLifetime" byreference="false" type="int"/>
+      <parameter name="version" byreference="false" type="string"/>
+      <parameter name="directory" byreference="false" type="string"/>
+      <parameter name="logger" byreference="false" type="object" default="NULL">
+        <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+      </parameter>
+    </method>
+    <method name="createConnection" start="127" end="144" abstract="false" final="false" static="true" visibility="public">
+      <parameter name="dsn" byreference="false" type="string"/>
+      <parameter name="options" byreference="false" type="array" default=""/>
+    </method>
+    <method name="commit" start="151" end="207" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Adapter\bool" namespace="Symfony\Component\Cache\Adapter" name="bool"/>
+        </return>
+      </docblock>
+      <inline>
+        <comment value="When bulk-save failed, retry each item individually" line="188"/>
+      </inline>
+    </method>
+  </parent>
+  <interface full="Symfony\Component\Cache\Adapter\AdapterInterface" namespace="Symfony\Component\Cache\Adapter" name="AdapterInterface">
+    <extends full="Psr\Cache\CacheItemPoolInterface" namespace="Psr\Cache" name="CacheItemPoolInterface"/>
+    <method name="getItem" start="32" end="32" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\CacheItem" namespace="Symfony\Component\Cache" name="CacheItem"/>
+        </return>
+      </docblock>
+      <parameter name="key" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getItems" start="39" end="39" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return description="CacheItem&gt;" type="object">
+          <type full="\Traversable&lt;string" namespace="" name="Traversable&lt;string"/>
+        </return>
+      </docblock>
+      <parameter name="keys" byreference="false" type="array" default=""/>
+    </method>
+    <method name="clear" start="46" end="46" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Adapter\bool" namespace="Symfony\Component\Cache\Adapter" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="prefix" byreference="false" type="string" default="''"/>
+    </method>
+  </interface>
+  <interface full="Symfony\Contracts\Cache\CacheInterface" namespace="Symfony\Contracts\Cache" name="CacheInterface">
+    <method name="get" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Fetches a value from the pool or computes it if not found.">On cache misses, a callback is called that should return the missing value.
+This callback is given a PSR-6 CacheItemInterface instance corresponding to the
+requested key, that could be used e.g. for expiration control. It could also
+be an ItemInterface instance when its additional features are needed.</description>
+        <param description="The key of the item to retrieve from the cache" type="string" variable="$key"/>
+        <param description="Should return the computed value for the given key/item" type="object" variable="$callback">
+          <type full="Symfony\Contracts\Cache\callable|CallbackInterface" namespace="Symfony\Contracts\Cache" name="callable|CallbackInterface"/>
+        </param>
+        <param description="A float that, as it grows, controls the likeliness of triggering" type="object" variable="$beta">early expiration. 0 disables it, INF forces immediate expiration.
+                                             The default (or providing null) is implementation dependent but should
+                                             typically be 1.0, which should provide optimal stampede protection.
+                                             See https://en.wikipedia.org/wiki/Cache_stampede#Probabilistic_early_expiration<type full="Symfony\Contracts\Cache\float|null" namespace="Symfony\Contracts\Cache" name="float|null"/></param>
+        <param description="&amp;$metadata The metadata of the cached item {@see ItemInterface::getMetadata()}" type="array"/>
+        <return type="mixed"/>
+        <throws description="When $key is not valid or when $beta is negative" type="object">
+          <type full="Psr\Cache\InvalidArgumentException" namespace="Psr\Cache" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="key" byreference="false" type="string"/>
+      <parameter name="callback" byreference="false" type="callable"/>
+      <parameter name="beta" byreference="false" type="float" default="NULL"/>
+      <parameter name="metadata" byreference="true" type="array" default="NULL"/>
+    </method>
+    <method name="delete" start="56" end="56" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Removes an item from the pool."/>
+        <param description="The key to delete" type="string" variable="$key"/>
+        <throws description="When $key is not valid" type="object">
+          <type full="Psr\Cache\InvalidArgumentException" namespace="Psr\Cache" name="InvalidArgumentException"/>
+        </throws>
+        <return description="True if the item was successfully removed, false if there was any error" type="object">
+          <type full="Symfony\Contracts\Cache\bool" namespace="Symfony\Contracts\Cache" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="key" byreference="false" type="string"/>
+    </method>
+  </interface>
+  <interface full="Psr\Log\LoggerAwareInterface" namespace="Psr\Log" name="LoggerAwareInterface">
+    <method name="setLogger" start="17" end="17" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Sets a logger instance on the object."/>
+        <param type="object" variable="$logger">
+          <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+        </param>
+        <return type="object">
+          <type full="Psr\Log\void" namespace="Psr\Log" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="logger" byreference="false" type="object">
+        <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+      </parameter>
+    </method>
+  </interface>
+  <interface full="Symfony\Component\Cache\ResettableInterface" namespace="Symfony\Component\Cache" name="ResettableInterface">
+    <extends full="Symfony\Contracts\Service\ResetInterface" namespace="Symfony\Contracts\Service" name="ResetInterface"/>
+  </interface>
+  <trait full="Symfony\Component\Cache\Traits\AbstractAdapterTrait" namespace="Symfony\Component\Cache\Traits" name="AbstractAdapterTrait">
+    <uses full="Psr\Log\LoggerAwareTrait" namespace="Psr\Log" name="LoggerAwareTrait"/>
+    <member name="maxIdLength" visibility="protected" static="false" line="48">
+      <docblock>
+        <description/>
+        <var description="The maximum length to enforce for identifiers or null when no limit applies" type="object">
+          <type full="Symfony\Component\Cache\Traits\int|null" namespace="Symfony\Component\Cache\Traits" name="int|null"/>
+        </var>
+      </docblock>
+    </member>
+    <method name="doFetch" start="57" end="57" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Fetches several cache items."/>
+        <param description="The cache identifiers to fetch" type="array" variable="$ids"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\array|\Traversable" namespace="Symfony\Component\Cache\Traits\array|" name="Traversable"/>
+        </return>
+      </docblock>
+      <parameter name="ids" byreference="false" type="array"/>
+    </method>
+    <method name="doHave" start="66" end="66" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Confirms if the cache contains specified cache item."/>
+        <param description="The identifier for which to check existence" type="string" variable="$id"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="id" byreference="false" type="string"/>
+    </method>
+    <method name="doClear" start="75" end="75" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Deletes all items in the pool."/>
+        <param description="The prefix used for all identifiers managed by this pool" type="string" variable="$namespace"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="namespace" byreference="false" type="string"/>
+    </method>
+    <method name="doDelete" start="84" end="84" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Removes multiple items from the pool."/>
+        <param description="An array of identifiers that should be removed from the pool" type="array" variable="$ids"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="ids" byreference="false" type="array"/>
+    </method>
+    <method name="doSave" start="94" end="94" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Persists several cache items immediately."/>
+        <param description="The values to cache, indexed by their cache identifier" type="array" variable="$values"/>
+        <param description="The lifetime of the cached values, 0 for persisting until manual cleaning" type="int" variable="$lifetime"/>
+        <return description="The identifiers that failed to be cached or a boolean stating if caching succeeded or not" type="object">
+          <type full="Symfony\Component\Cache\Traits\array|bool" namespace="Symfony\Component\Cache\Traits" name="array|bool"/>
+        </return>
+      </docblock>
+      <parameter name="values" byreference="false" type="array"/>
+      <parameter name="lifetime" byreference="false" type="int"/>
+    </method>
+    <method name="hasItem" start="101" end="116" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="key" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="clear" start="123" end="157" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="prefix" byreference="false" type="string" default="''"/>
+    </method>
+    <method name="deleteItem" start="164" end="167" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="key" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="deleteItems" start="174" end="207" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="keys" byreference="false" type="array"/>
+      <inline>
+        <comment value="When bulk-delete failed, retry each item individually" line="192"/>
+      </inline>
+    </method>
+    <method name="getItem" start="212" end="234" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <parameter name="key" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getItems" start="239" end="262" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <parameter name="keys" byreference="false" type="array" default=""/>
+    </method>
+    <method name="save" start="269" end="277" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="item" byreference="false" type="object">
+        <type full="Psr\Cache\CacheItemInterface" namespace="Psr\Cache" name="CacheItemInterface"/>
+      </parameter>
+    </method>
+    <method name="saveDeferred" start="284" end="292" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+        <return type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="item" byreference="false" type="object">
+        <type full="Psr\Cache\CacheItemInterface" namespace="Psr\Cache" name="CacheItemInterface"/>
+      </parameter>
+    </method>
+    <method name="enableVersioning" start="304" end="312" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Enables/disables versioning of items.">When versioning is enabled, clearing the cache is atomic and doesn't require listing existing keys to proceed,
+but old keys may need garbage collection and extra round-trips to the back-end are required.
+
+Calling this method also clears the memoized namespace version and thus forces a resynchonization of it.</description>
+        <return description="the previous state of versioning" type="object">
+          <type full="Symfony\Component\Cache\Traits\bool" namespace="Symfony\Component\Cache\Traits" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="enable" byreference="false" type="boolean" default="true"/>
+    </method>
+    <method name="reset" start="317" end="324" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+    </method>
+    <method name="__sleep" start="329" end="332" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="__wakeup" start="334" end="337" abstract="false" final="false" static="false" visibility="public"/>
+    <destructor name="__destruct" start="339" end="344" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="handleUnserializeCallback" start="415" end="418" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <internal/>
+      </docblock>
+      <parameter name="class" byreference="false" type="string"/>
+    </method>
+  </trait>
+  <trait full="Psr\Log\LoggerAwareTrait" namespace="Psr\Log" name="LoggerAwareTrait">
+    <member name="logger" visibility="protected" static="false" line="15">
+      <docblock>
+        <description compact="The logger instance."/>
+        <var type="object">
+          <type full="Psr\Log\LoggerInterface|null" namespace="Psr\Log" name="LoggerInterface|null"/>
+        </var>
+      </docblock>
+    </member>
+    <method name="setLogger" start="22" end="25" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Sets a logger."/>
+        <param type="object" variable="$logger">
+          <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+        </param>
+      </docblock>
+      <parameter name="logger" byreference="false" type="object">
+        <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+      </parameter>
+    </method>
+  </trait>
+  <trait full="Symfony\Component\Cache\Traits\ContractsTrait" namespace="Symfony\Component\Cache\Traits" name="ContractsTrait">
+    <uses full="Symfony\Contracts\Cache\CacheTrait" namespace="Symfony\Contracts\Cache" name="CacheTrait" unresolved="true"/>
+    <method name="setCallbackWrapper" start="42" end="58" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Wraps the callback passed to -&gt;get() in a callable."/>
+        <return description="the previous callback wrapper" type="object">
+          <type full="Symfony\Component\Cache\Traits\callable" namespace="Symfony\Component\Cache\Traits" name="callable"/>
+        </return>
+      </docblock>
+      <return type="callable" nullable="false"/>
+      <parameter name="callbackWrapper" byreference="false" nullable="true" type="callable"/>
+    </method>
+  </trait>
+</class>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Psr\Http\Message\UriInterface::getPath</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#Psr_Http_Message">Psr\Http\Message</a>
+          </li>
+          <li class="separator">
+            <a title="Psr\Http\Message\UriInterface" href="../../interfaces/Psr_Http_Message_UriInterface.xhtml">UriInterface</a>
+          </li>
+          <li class="separator">getPath</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="../../source/ar/www/html/vendor/psr/http-message/src/UriInterface.php.xhtml#line134">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>Psr\Http\Message\UriInterface::</small>getPath</h1>
+        <h4>Retrieve the path component of the URI.</h4>
+        <p>The path can either be empty or absolute (starting with a slash) or
+rootless (not starting with a slash). Implementations MUST support all
+three syntaxes.
+
+Normally, the empty path "" and absolute path "/" are considered equal as
+defined in RFC 7230 Section 2.7.3. But this method MUST NOT automatically
+do this normalization because in contexts with a trimmed base path, e.g.
+the front controller, this difference becomes significant. It's the task
+of the user to handle both "" and "/".
+
+The value returned MUST be percent-encoded, but MUST NOT double-encode
+any characters. To determine what characters to encode, please refer to
+RFC 3986, Sections 2 and 3.3.
+
+As an example, if the value should include a slash ("/") not intended as
+delimiter between path segments, that value MUST be passed in encoded
+form (e.g., "%2F") to the instance.</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function getPath()
+            </code>
+        </div>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>string</dt>
+          <dd>The URI path.</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

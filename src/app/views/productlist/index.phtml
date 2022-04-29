@@ -1,0 +1,25 @@
+<?php
+$list = '';
+$list .= "<form action='/productlist/editproduct/' method='post'><table>
+        <tr>
+
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        </tr>";
+foreach ($productlist as $k => $v) {
+    $list .= "<tr>
+    <td>" . $v['_id']['$oid'] . "</td>
+    <td>" . $v['name'] . "</td>
+    <td>" . $v['price'] . "</td>
+    <td>" . $v['category'] . "</td>
+    <td>" . $v['quantity'] . "</td>
+    <input type='hidden' name='" . $v['quantity'] . "' value='" . $v['quantity'] . "'>
+    <td><a href='/productlist/editproduct?id=" . $v['_id']['$oid'] . "' class='btn btn-secondary'>Edit</a></td>
+
+    </tr>";
+}
+$list .= "</table></form>";
+echo $list;

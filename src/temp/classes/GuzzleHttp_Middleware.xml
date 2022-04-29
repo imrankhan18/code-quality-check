@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Middleware" namespace="GuzzleHttp" name="Middleware" abstract="false" final="true" start="16" end="260">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="Middleware.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Middleware.php" size="11158" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="6dafd9e5e6c8497e5187dac37452a659c2a024d0" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Middleware.php"/>
+  <docblock>
+    <description compact="Functions used to create and wrap handlers with handler middleware."/>
+  </docblock>
+  <method name="cookies" start="26" end="46" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that adds cookies to requests.">The options array must be set to a CookieJarInterface in order to use
+cookies. This is typically handled for you by a client.</description>
+      <return description="Returns a function that accepts the next handler." type="object">
+        <type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+  </method>
+  <method name="httpErrors" start="56" end="74" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that throws exceptions for 4xx or 5xx responses when the &quot;http_errors&quot; request option is set to true."/>
+      <param description="The body summarizer to use in exception messages." type="object" variable="$bodySummarizer">
+        <type full="GuzzleHttp\BodySummarizerInterface|null" namespace="GuzzleHttp" name="BodySummarizerInterface|null"/>
+      </param>
+      <return description="callable Returns a function that accepts the next handler." type="object">
+        <type full="GuzzleHttp\callable(callable):" namespace="GuzzleHttp" name="callable(callable):"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="bodySummarizer" byreference="false" type="object" default="NULL">
+      <type full="GuzzleHttp\BodySummarizerInterface" namespace="GuzzleHttp" name="BodySummarizerInterface"/>
+    </parameter>
+  </method>
+  <method name="history" start="85" end="115" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that pushes history data to an ArrayAccess container."/>
+      <param description="array&gt; $container Container to hold the history (by reference)." type="object">
+        <type full="GuzzleHttp\array|\ArrayAccess&lt;int" namespace="GuzzleHttp\array|" name="ArrayAccess&lt;int"/>
+      </param>
+      <return description="callable Returns a function that accepts the next handler." type="object">
+        <type full="GuzzleHttp\callable(callable):" namespace="GuzzleHttp" name="callable(callable):"/>
+      </return>
+      <throws description="if container is not an array or ArrayAccess." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="container" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="tap" start="130" end="144" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that invokes a callback before and after sending a request.">The provided listener cannot modify or alter the response. It simply
+"taps" into the chain to be notified before returning the promise. The
+before listener accepts a request and options array, and the after
+listener accepts a request, options array, and response promise.</description>
+      <param description="Function to invoke before forwarding the request." type="object" variable="$before">
+        <type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/>
+      </param>
+      <param description="Function invoked after forwarding." type="object" variable="$after">
+        <type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/>
+      </param>
+      <return description="Returns a function that accepts the next handler." type="object">
+        <type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="before" byreference="false" type="callable" default="NULL"/>
+    <parameter name="after" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="redirect" start="151" end="156" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that handles request redirects."/>
+      <return description="Returns a function that accepts the next handler." type="object">
+        <type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+  </method>
+  <method name="retry" start="173" end="178" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that retries requests based on the boolean result of invoking the provided &quot;decider&quot; function.">If no delay function is provided, a simple implementation of exponential
+backoff will be utilized.</description>
+      <param description="Function that accepts the number of retries," type="object" variable="$decider">a request, [response], and [exception] and
+                         returns true if the request is to be retried.<type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/></param>
+      <param description="Function that accepts the number of retries and" type="object" variable="$delay">returns the number of milliseconds to delay.<type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/></param>
+      <return description="Returns a function that accepts the next handler." type="object">
+        <type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="decider" byreference="false" type="callable"/>
+    <parameter name="delay" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="log" start="192" end="216" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that logs requests, responses, and errors using a message formatter."/>
+      <phpstan value="-param \Psr\Log\LogLevel::* $logLevel  Level at which to log requests."/>
+      <param description="Logs messages." type="object" variable="$logger">
+        <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+      </param>
+      <param description="Formatter used to create message strings." type="object" variable="$formatter">
+        <type full="GuzzleHttp\MessageFormatterInterface|MessageFormatter" namespace="GuzzleHttp" name="MessageFormatterInterface|MessageFormatter"/>
+      </param>
+      <param description="Level at which to log requests." type="string" variable="$logLevel"/>
+      <return description="Returns a function that accepts the next handler." type="object">
+        <type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="logger" byreference="false" type="object">
+      <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+    </parameter>
+    <parameter name="formatter" byreference="false" type="{unknown}"/>
+    <parameter name="logLevel" byreference="false" type="string" default="'info'"/>
+    <inline>
+      <comment value="To be compatible with Guzzle 7.1.x we need to allow users to pass a MessageFormatter" line="194"/>
+    </inline>
+  </method>
+  <method name="prepareBody" start="222" end="227" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="This middleware adds a default content-type if possible, a default content-length or transfer-encoding header, and the expect header."/>
+    </docblock>
+    <return type="callable" nullable="false"/>
+  </method>
+  <method name="mapRequest" start="236" end="243" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that applies a map function to the request before passing to the next handler."/>
+      <param description="Function that accepts a RequestInterface and returns" type="object" variable="$fn">a RequestInterface.<type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/></param>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="fn" byreference="false" type="callable"/>
+  </method>
+  <method name="mapResponse" start="252" end="259" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Middleware that applies a map function to the resolved promise's response."/>
+      <param description="Function that accepts a ResponseInterface and" type="object" variable="$fn">returns a ResponseInterface.<type full="GuzzleHttp\callable" namespace="GuzzleHttp" name="callable"/></param>
+    </docblock>
+    <return type="callable" nullable="false"/>
+    <parameter name="fn" byreference="false" type="callable"/>
+  </method>
+</class>

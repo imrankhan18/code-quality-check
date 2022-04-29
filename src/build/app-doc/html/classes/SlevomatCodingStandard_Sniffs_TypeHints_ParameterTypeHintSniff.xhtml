@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#SlevomatCodingStandard_Sniffs_TypeHints">SlevomatCodingStandard\Sniffs\TypeHints</a>
+          </li>
+          <li class="separator">ParameterTypeHintSniff</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints/ParameterTypeHintSniff.php.xhtml#line48">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>SlevomatCodingStandard\Sniffs\TypeHints\</small>ParameterTypeHintSniff</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ParameterTypeHintSniff
+                implements
+                <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">Sniff</a>
+            {<br/><ul class="none"><li>// constants</li><li>const CODE_MISSING_ANY_TYPE_HINT = 'MissingAnyTypeHint';</li><li>const CODE_MISSING_NATIVE_TYPE_HINT = 'MissingNativeTypeHint';</li><li>const CODE_MISSING_TRAVERSABLE_TYPE_HINT_SPECIFICATION = 'MissingTraversableTypeHintSpecification';</li><li>const CODE_USELESS_ANNOTATION = 'UselessAnnotation';</li><li>const CODE_USELESS_SUPPRESS = 'UselessSuppress';</li><li>const NAME = 'SlevomatCodingStandard.TypeHints.ParameterTypeHint';</li></ul><ul class="none"><li>// members</li><li>public <span title="SlevomatCodingStandard\Sniffs\TypeHints\bool|null">bool|null</span> <a href="#members">$enableObjectTypeHint</a> =
+                        NULL;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\TypeHints\bool|null">bool|null</span> <a href="#members">$enableMixedTypeHint</a> =
+                        NULL;
+                    </li><li>public <span title="SlevomatCodingStandard\Sniffs\TypeHints\bool|null">bool|null</span> <a href="#members">$enableUnionTypeHint</a> =
+                        NULL;
+                    </li><li>public array <a href="#members">$traversableTypeHints</a> =
+                        ;
+                    </li><li>private <span title="SlevomatCodingStandard\Sniffs\TypeHints\array&lt;int">array&lt;int</span> <a href="#members">$normalizedTraversableTypeHints</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public array <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/register.xhtml">register</a>()
+                    </li><li>public void <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/process.xhtml">process</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/checkTypeHints.xhtml">checkTypeHints</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/checkTraversableTypeHintSpecification.xhtml">checkTraversableTypeHintSpecification</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/checkUselessAnnotations.xhtml">checkUselessAnnotations</a>()
+                    </li><li>private void <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/reportUselessSuppress.xhtml">reportUselessSuppress</a>()
+                    </li><li>private string <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/getSniffName.xhtml">getSniffName</a>()
+                    </li><li>private array <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/getTraversableTypeHints.xhtml">getTraversableTypeHints</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="PHP_CodeSniffer\Sniffs\Sniff" href="../interfaces/PHP_CodeSniffer_Sniffs_Sniff.xhtml">PHP_CodeSniffer\Sniffs\Sniff</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CODE_MISSING_ANY_TYPE_HINT">CODE_MISSING_ANY_TYPE_HINT</td>
+              <td>'MissingAnyTypeHint'</td>
+            </tr>
+            <tr>
+              <td id="CODE_MISSING_NATIVE_TYPE_HINT">CODE_MISSING_NATIVE_TYPE_HINT</td>
+              <td>'MissingNativeTypeHint'</td>
+            </tr>
+            <tr>
+              <td id="CODE_MISSING_TRAVERSABLE_TYPE_HINT_SPECIFICATION">CODE_MISSING_TRAVERSABLE_TYPE_HINT_SPECIFICATION</td>
+              <td>'MissingTraversableTypeHintSpecification'</td>
+            </tr>
+            <tr>
+              <td id="CODE_USELESS_ANNOTATION">CODE_USELESS_ANNOTATION</td>
+              <td>'UselessAnnotation'</td>
+            </tr>
+            <tr>
+              <td id="CODE_USELESS_SUPPRESS">CODE_USELESS_SUPPRESS</td>
+              <td>'UselessSuppress'</td>
+            </tr>
+            <tr>
+              <td id="NAME">NAME</td>
+              <td>'SlevomatCodingStandard.TypeHints.ParameterTypeHint'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="normalizedTraversableTypeHints"><strong>$normalizedTraversableTypeHints</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\TypeHints\array&lt;int" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_array&lt;int.xhtml">SlevomatCodingStandard\Sniffs\TypeHints\array&lt;int</a></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="enableMixedTypeHint"><strong>$enableMixedTypeHint</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\TypeHints\bool|null" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_bool|null.xhtml">SlevomatCodingStandard\Sniffs\TypeHints\bool|null</a></li>
+            <li id="enableObjectTypeHint"><strong>$enableObjectTypeHint</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\TypeHints\bool|null" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_bool|null.xhtml">SlevomatCodingStandard\Sniffs\TypeHints\bool|null</a></li>
+            <li id="enableUnionTypeHint"><strong>$enableUnionTypeHint</strong>
+                —
+                <a title="SlevomatCodingStandard\Sniffs\TypeHints\bool|null" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_bool|null.xhtml">SlevomatCodingStandard\Sniffs\TypeHints\bool|null</a></li>
+            <li id="traversableTypeHints"><strong>$traversableTypeHints</strong>
+                —
+                array</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="checkTraversableTypeHintSpecification">
+              <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/checkTraversableTypeHintSpecification.xhtml">checkTraversableTypeHintSpecification()</a>
+            </li>
+            <li id="checkTypeHints">
+              <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/checkTypeHints.xhtml">checkTypeHints()</a>
+            </li>
+            <li id="checkUselessAnnotations">
+              <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/checkUselessAnnotations.xhtml">checkUselessAnnotations()</a>
+            </li>
+            <li id="getSniffName">
+              <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/getSniffName.xhtml">getSniffName()</a>
+            </li>
+            <li id="getTraversableTypeHints">
+              <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/getTraversableTypeHints.xhtml">getTraversableTypeHints()</a>
+            </li>
+            <li id="reportUselessSuppress">
+              <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/reportUselessSuppress.xhtml">reportUselessSuppress()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="process">
+              <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/process.xhtml">process()</a>
+            </li>
+            <li id="register">
+              <a title="SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff" href="../classes/SlevomatCodingStandard_Sniffs_TypeHints_ParameterTypeHintSniff/register.xhtml">register()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

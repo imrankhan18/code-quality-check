@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\RuleSet\RuleSet" namespace="PhpCsFixer\RuleSet" name="RuleSet" abstract="false" final="true" start="26" end="146">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/RuleSet" file="RuleSet.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/RuleSet/RuleSet.php" size="4097" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="7ba76c546c138c2344d6cece199cf7f6ed92c565" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/RuleSet/RuleSet.php"/>
+  <docblock>
+    <description compact="Set of rules to be used by fixer."/>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <implements full="PhpCsFixer\RuleSet\RuleSetInterface" namespace="PhpCsFixer\RuleSet" name="RuleSetInterface"/>
+  <member name="rules" visibility="private" static="false" line="36">
+    <docblock>
+      <description compact="Group of rules generated from input set.">The key is name of rule, value is bool if the rule/set should be used.
+The key must not point to any set.</description>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="38" end="61" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="set" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="hasRule" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="rule" byreference="false" type="string"/>
+  </method>
+  <method name="getRuleConfiguration" start="74" end="85" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="array" nullable="true"/>
+    <parameter name="rule" byreference="false" type="string"/>
+  </method>
+  <method name="getRules" start="90" end="93" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="resolveSet" start="98" end="120" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Resolve input set into group of rules."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="rules" byreference="false" type="array"/>
+    <inline>
+      <comment value="expand sets" line="102"/>
+      <comment value="filter out all resolvedRules that are off" line="116"/>
+    </inline>
+  </method>
+  <method name="resolveSubset" start="128" end="145" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Resolve set rules as part of another set.">If set value is false then disable all fixers in set,
+if not then get value from set item.</description>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="setName" byreference="false" type="string"/>
+    <parameter name="setValue" byreference="false" type="bool"/>
+  </method>
+  <interface full="PhpCsFixer\RuleSet\RuleSetInterface" namespace="PhpCsFixer\RuleSet" name="RuleSetInterface">
+    <constructor name="__construct" start="26" end="26" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="set" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="getRuleConfiguration" start="33" end="33" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get configuration for given rule."/>
+        <param description="name of rule" type="string" variable="$rule"/>
+      </docblock>
+      <return type="array" nullable="true"/>
+      <parameter name="rule" byreference="false" type="string"/>
+    </method>
+    <method name="getRules" start="38" end="38" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get all rules from rules set."/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="hasRule" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check given rule is in rules set."/>
+        <param description="name of rule" type="string" variable="$rule"/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="rule" byreference="false" type="string"/>
+    </method>
+  </interface>
+</class>

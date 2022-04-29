@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Installer_Role" namespace="" name="PEAR_Installer_Role" abstract="false" final="false" start="31" end="266">
+  <file path="//usr/local/lib/php/PEAR/Installer" file="Role.php" realpath="/usr/local/lib/php/PEAR/Installer/Role.php" size="7868" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="177244c0433cda636e2386f2e22677c3c592f1f8" relative="sr/local/lib/php/PEAR/Installer/Role.php"/>
+  <docblock>
+    <description/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <method name="initializeConfig" start="39" end="52" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Set up any additional configuration variables that file roles require">Never call this directly, it is called by the PEAR_Config constructor</description>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+    </docblock>
+    <parameter name="config" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="factory" start="60" end="78" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+      </param>
+      <param description="role name" type="string"/>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+      <return type="object">
+        <type full="PEAR_Installer_Role_Common" namespace="" name="PEAR_Installer_Role_Common"/>
+      </return>
+    </docblock>
+    <parameter name="pkg" byreference="false" type="{unknown}"/>
+    <parameter name="role" byreference="false" type="{unknown}"/>
+    <parameter name="config" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getValidRoles" start="88" end="111" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get a list of file roles that are valid for the particular release type.">For instance, src files serve no purpose in regular php releases.</description>
+      <param type="string"/>
+      <param description="clear cache" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="release" byreference="false" type="{unknown}"/>
+    <parameter name="clear" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getInstallableRoles" start="122" end="145" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get a list of roles that require their files to be installed">Most roles must be installed, but src and package roles, for instance
+are pseudo-roles.  src files are compiled into a new extension.  Package
+roles are actually fully bundled releases of a package</description>
+      <param description="clear cache" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="clear" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getBaseinstallRoles" start="156" end="179" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Return an array of roles that are affected by the baseinstalldir attribute">Most roles ignore this attribute, and instead install directly into:
+PackageName/filepath
+so a tests file tests/file.phpt is installed into PackageName/tests/filepath.php</description>
+      <param description="clear cache" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="clear" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getPhpRoles" start="187" end="210" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Return an array of file roles that should be analyzed for PHP content at package time, like the &quot;php&quot; role."/>
+      <param description="clear cache" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="clear" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="registerRoles" start="222" end="265" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Scan through the Command directory looking for classes and see what commands they implement."/>
+      <param description="which directory to look for classes, defaults to" type="string">the Installer/Roles subdirectory of
+              the directory from where this file (__FILE__) is
+              included.</param>
+      <return description="TRUE on success, a PEAR error on failure" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="dir" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+</class>

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Repository\VcsRepository</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Repository">Composer\Repository</a>
+          </li>
+          <li class="separator">VcsRepository</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Repository/VcsRepository.php.xhtml#line34">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Repository\</small>VcsRepository</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Jordi Boggiano &lt;j.boggiano@seld.be&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class VcsRepository
+                extends <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository.xhtml">ArrayRepository</a>
+                implements
+                <a title="Composer\Repository\ConfigurableRepositoryInterface" href="../interfaces/Composer_Repository_ConfigurableRepositoryInterface.xhtml">ConfigurableRepositoryInterface</a>
+            {<br/><ul class="none"><li>// members</li><li>protected  <a href="#members">$url</a>;
+                    </li><li>protected <span title="Composer\Repository\?string">?string</span> <a href="#members">$packageName</a>;
+                    </li><li>protected <span title="Composer\Repository\bool">bool</span> <a href="#members">$isVerbose</a>;
+                    </li><li>protected <span title="Composer\Repository\bool">bool</span> <a href="#members">$isVeryVerbose</a>;
+                    </li><li>protected <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>protected <span title="Composer\Config">Config</span> <a href="#members">$config</a>;
+                    </li><li>protected <span title="Composer\Package\Version\VersionParser">VersionParser</span> <a href="#members">$versionParser</a>;
+                    </li><li>protected  <a href="#members">$type</a>;
+                    </li><li>protected <span title="Composer\Repository\?LoaderInterface">?LoaderInterface</span> <a href="#members">$loader</a>;
+                    </li><li>protected <span title="Composer\Repository\array&lt;string">array&lt;string</span> <a href="#members">$repoConfig</a>;
+                    </li><li>protected <span title="Composer\Util\HttpDownloader">HttpDownloader</span> <a href="#members">$httpDownloader</a>;
+                    </li><li>protected <span title="Composer\Util\ProcessExecutor">ProcessExecutor</span> <a href="#members">$processExecutor</a>;
+                    </li><li>protected <span title="Composer\Repository\bool">bool</span> <a href="#members">$branchErrorOccurred</a> =
+                        false;
+                    </li><li>private <span title="Composer\Repository\array&lt;string">array&lt;string</span> <a href="#members">$drivers</a>;
+                    </li><li>private <span title="Composer\Repository\?VcsDriverInterface">?VcsDriverInterface</span> <a href="#members">$driver</a>;
+                    </li><li>private <span title="Composer\Repository\?VersionCacheInterface">?VersionCacheInterface</span> <a href="#members">$versionCache</a>;
+                    </li><li>private array <a href="#members">$emptyReferences</a> =
+                        ;
+                    </li><li>private <span title="Composer\Repository\array&lt;'tags'|'branches'">array&lt;'tags'|'branches'</span> <a href="#members">$versionTransportExceptions</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="Composer\Repository\ArrayRepository">ArrayRepository</span></li><li>protected <span title="Composer\Repository\?array&lt;BasePackage&gt;">?array&lt;BasePackage&gt;</span> <a href="#members">$packages</a>;
+                        </li><li>protected <span title="Composer\Repository\?array&lt;BasePackage&gt;">?array&lt;BasePackage&gt;</span> <a href="#members">$packageMap</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getRepoName.xhtml">getRepoName</a>()
+                    </li><li>public void <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getRepoConfig.xhtml">getRepoConfig</a>()
+                    </li><li>public void <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/setLoader.xhtml">setLoader</a>()
+                    </li><li>public ?<span title="VcsDriverInterface">VcsDriverInterface</span> <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getDriver.xhtml">getDriver</a>()
+                    </li><li>public bool <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/hadInvalidBranches.xhtml">hadInvalidBranches</a>()
+                    </li><li>public array <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getEmptyReferences.xhtml">getEmptyReferences</a>()
+                    </li><li>public array <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getVersionTransportExceptions.xhtml">getVersionTransportExceptions</a>()
+                    </li><li>protected void <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/initialize.xhtml">initialize</a>()
+                    </li><li>protected array <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/preProcess.xhtml">preProcess</a>()
+                    </li><li>private string|false <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/validateBranch.xhtml">validateBranch</a>()
+                    </li><li>private string|false <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/validateTag.xhtml">validateTag</a>()
+                    </li><li>private CompleteAliasPackage|null|false <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getCachedPackageVersion.xhtml">getCachedPackageVersion</a>()
+                    </li><li>private bool <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/shouldRethrowTransportException.xhtml">shouldRethrowTransportException</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Composer\Repository\ArrayRepository">ArrayRepository</span></li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getRepoName.xhtml">getRepoName</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/loadPackages.xhtml">loadPackages</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/findPackage.xhtml">findPackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/findPackages.xhtml">findPackages</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/search.xhtml">search</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/hasPackage.xhtml">hasPackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/addPackage.xhtml">addPackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getProviders.xhtml">getProviders</a>()
+                        </li><li>protected AliasPackage|CompleteAliasPackage <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/createAliasPackage.xhtml">createAliasPackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/removePackage.xhtml">removePackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getPackages.xhtml">getPackages</a>()
+                        </li><li>public int <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/count.xhtml">count</a>()
+                        </li><li>protected void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/initialize.xhtml">initialize</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository.xhtml">Composer\Repository\ArrayRepository</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Composer\Repository\ConfigurableRepositoryInterface" href="../interfaces/Composer_Repository_ConfigurableRepositoryInterface.xhtml">Composer\Repository\ConfigurableRepositoryInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="SEARCH_FULLTEXT">SEARCH_FULLTEXT</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="SEARCH_NAME">SEARCH_NAME</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="SEARCH_VENDOR">SEARCH_VENDOR</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="driver"><strong>$driver</strong>
+                —
+                <a title="Composer\Repository\?VcsDriverInterface" href="../classes/Composer_Repository_?VcsDriverInterface.xhtml">Composer\Repository\?VcsDriverInterface</a></li>
+            <li id="drivers"><strong>$drivers</strong>
+                —
+                <a title="Composer\Repository\array&lt;string" href="../classes/Composer_Repository_array&lt;string.xhtml">Composer\Repository\array&lt;string</a></li>
+            <li id="emptyReferences"><strong>$emptyReferences</strong>
+                —
+                array</li>
+            <li id="versionCache"><strong>$versionCache</strong>
+                —
+                <a title="Composer\Repository\?VersionCacheInterface" href="../classes/Composer_Repository_?VersionCacheInterface.xhtml">Composer\Repository\?VersionCacheInterface</a></li>
+            <li id="versionTransportExceptions"><strong>$versionTransportExceptions</strong>
+                —
+                <a title="Composer\Repository\array&lt;'tags'|'branches'" href="../classes/Composer_Repository_array&lt;'tags'|'branches'.xhtml">Composer\Repository\array&lt;'tags'|'branches'</a></li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="branchErrorOccurred"><strong>$branchErrorOccurred</strong>
+                —
+                <a title="Composer\Repository\bool" href="../classes/Composer_Repository_bool.xhtml">Composer\Repository\bool</a></li>
+            <li id="config"><strong>$config</strong>
+                —
+                <a title="Composer\Config" href="../classes/Composer_Config.xhtml">Composer\Config</a></li>
+            <li id="httpDownloader"><strong>$httpDownloader</strong>
+                —
+                <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader.xhtml">Composer\Util\HttpDownloader</a></li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="isVerbose"><strong>$isVerbose</strong>
+                —
+                <a title="Composer\Repository\bool" href="../classes/Composer_Repository_bool.xhtml">Composer\Repository\bool</a></li>
+            <li id="isVeryVerbose"><strong>$isVeryVerbose</strong>
+                —
+                <a title="Composer\Repository\bool" href="../classes/Composer_Repository_bool.xhtml">Composer\Repository\bool</a></li>
+            <li id="loader"><strong>$loader</strong>
+                —
+                <a title="Composer\Repository\?LoaderInterface" href="../classes/Composer_Repository_?LoaderInterface.xhtml">Composer\Repository\?LoaderInterface</a></li>
+            <li id="packageMap"><strong>$packageMap</strong>
+                —
+                <a title="Composer\Repository\?array&lt;BasePackage&gt;" href="../classes/Composer_Repository_?array&lt;BasePackage&gt;.xhtml">Composer\Repository\?array&lt;BasePackage&gt;</a></li>
+            <li id="packageName"><strong>$packageName</strong>
+                —
+                <a title="Composer\Repository\?string" href="../classes/Composer_Repository_?string.xhtml">Composer\Repository\?string</a></li>
+            <li id="packages"><strong>$packages</strong>
+                —
+                <a title="Composer\Repository\?array&lt;BasePackage&gt;" href="../classes/Composer_Repository_?array&lt;BasePackage&gt;.xhtml">Composer\Repository\?array&lt;BasePackage&gt;</a></li>
+            <li id="processExecutor"><strong>$processExecutor</strong>
+                —
+                <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor.xhtml">Composer\Util\ProcessExecutor</a></li>
+            <li id="repoConfig"><strong>$repoConfig</strong>
+                —
+                <a title="Composer\Repository\array&lt;string" href="../classes/Composer_Repository_array&lt;string.xhtml">Composer\Repository\array&lt;string</a></li>
+            <li id="type"><strong>$type</strong>
+                —
+                string</li>
+            <li id="url"><strong>$url</strong>
+                —
+                string</li>
+            <li id="versionParser"><strong>$versionParser</strong>
+                —
+                <a title="Composer\Package\Version\VersionParser" href="../classes/Composer_Package_Version_VersionParser.xhtml">Composer\Package\Version\VersionParser</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="getCachedPackageVersion">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getCachedPackageVersion.xhtml">getCachedPackageVersion()</a>
+            </li>
+            <li id="shouldRethrowTransportException">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/shouldRethrowTransportException.xhtml">shouldRethrowTransportException()</a>
+            </li>
+            <li id="validateBranch">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/validateBranch.xhtml">validateBranch()</a>
+            </li>
+            <li id="validateTag">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/validateTag.xhtml">validateTag()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="initialize">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/initialize.xhtml">initialize()</a>
+            </li>
+            <li id="preProcess">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/preProcess.xhtml">preProcess()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="getDriver">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getDriver.xhtml">getDriver()</a>
+            </li>
+            <li id="getEmptyReferences">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getEmptyReferences.xhtml">getEmptyReferences()</a>
+            </li>
+            <li id="getRepoConfig">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getRepoConfig.xhtml">getRepoConfig()</a>
+            </li>
+            <li id="getRepoName">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getRepoName.xhtml">getRepoName()</a>
+            </li>
+            <li id="getVersionTransportExceptions">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/getVersionTransportExceptions.xhtml">getVersionTransportExceptions()</a>
+            </li>
+            <li id="hadInvalidBranches">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/hadInvalidBranches.xhtml">hadInvalidBranches()</a>
+            </li>
+            <li id="setLoader">
+              <a title="Composer\Repository\VcsRepository" href="../classes/Composer_Repository_VcsRepository/setLoader.xhtml">setLoader()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository.xhtml">Composer\Repository\ArrayRepository</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="createAliasPackage">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/createAliasPackage.xhtml">createAliasPackage()</a>
+            </li>
+            <li id="initialize"><a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/initialize.xhtml">initialize()</a>
+                — Initializes the packages array. Mostly meant as an extension point.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="addPackage"><a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/addPackage.xhtml">addPackage()</a>
+                — Adds a new package to the repository</li>
+            <li id="count"><a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/count.xhtml">count()</a>
+                — Returns the number of packages in this repository</li>
+            <li id="findPackage">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/findPackage.xhtml">findPackage()</a>
+            </li>
+            <li id="findPackages">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/findPackages.xhtml">findPackages()</a>
+            </li>
+            <li id="getPackages">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getPackages.xhtml">getPackages()</a>
+            </li>
+            <li id="getProviders">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getProviders.xhtml">getProviders()</a>
+            </li>
+            <li id="getRepoName">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getRepoName.xhtml">getRepoName()</a>
+            </li>
+            <li id="hasPackage">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/hasPackage.xhtml">hasPackage()</a>
+            </li>
+            <li id="loadPackages">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/loadPackages.xhtml">loadPackages()</a>
+            </li>
+            <li id="removePackage"><a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/removePackage.xhtml">removePackage()</a>
+                — Removes package from repository.</li>
+            <li id="search">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/search.xhtml">search()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

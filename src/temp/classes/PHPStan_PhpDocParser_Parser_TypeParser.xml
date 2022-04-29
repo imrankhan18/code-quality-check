@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PHPStan\PhpDocParser\Parser\TypeParser" namespace="PHPStan\PhpDocParser\Parser" name="TypeParser" abstract="false" final="false" start="11" end="550">
+  <file path="//var/www/html/vendor/phpstan/phpdoc-parser/src/Parser" file="TypeParser.php" realpath="/var/www/html/vendor/phpstan/phpdoc-parser/src/Parser/TypeParser.php" size="16587" time="2022-04-22T11:11:01+00:00" unixtime="1650625861" sha1="ddcdd908ec9c49be3c13229152209fc41b3a96a2" relative="ar/www/html/vendor/phpstan/phpdoc-parser/src/Parser/TypeParser.php"/>
+  <member name="constExprParser" visibility="private" static="false" line="15">
+    <docblock>
+      <var type="object">
+        <type full="PHPStan\PhpDocParser\Parser\ConstExprParser|null" namespace="PHPStan\PhpDocParser\Parser" name="ConstExprParser|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="17" end="20" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="constExprParser" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="PHPStan\PhpDocParser\Parser\ConstExprParser" namespace="PHPStan\PhpDocParser\Parser" name="ConstExprParser"/>
+    </parameter>
+  </constructor>
+  <method name="parse" start="23" end="40" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="subParse" start="43" end="69" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseAtomic" start="73" end="163" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <inline>
+      <comment value="because of ConstFetchNode" line="100"/>
+    </inline>
+  </method>
+  <method name="parseUnion" start="167" end="176" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="type" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="subParseUnion" start="180" end="191" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="type" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="parseIntersection" start="195" end="204" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="type" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="subParseIntersection" start="208" end="219" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="type" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="parseConditional" start="223" end="248" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="subjectType" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="parseConditionalForParameter" start="251" end="277" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="parameterName" byreference="false" type="string"/>
+  </method>
+  <method name="parseNullable" start="281" end="300" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="isHtml" start="303" end="331" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseGeneric" start="334" end="356" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\GenericTypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="GenericTypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="baseType" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="IdentifierTypeNode"/>
+    </parameter>
+  </method>
+  <method name="parseCallable" start="360" end="384" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="identifier" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="IdentifierTypeNode"/>
+    </parameter>
+  </method>
+  <method name="parseCallableParameter" start="388" end="404" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\CallableTypeParameterNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="CallableTypeParameterNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseCallableReturnType" start="408" end="434" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="tryParseCallable" start="438" end="451" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="identifier" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="IdentifierTypeNode"/>
+    </parameter>
+  </method>
+  <method name="tryParseArray" start="455" end="471" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="type" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="parseArrayShape" start="475" end="501" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\ArrayShapeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="ArrayShapeNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+    <parameter name="type" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Ast\Type\TypeNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="TypeNode"/>
+    </parameter>
+  </method>
+  <method name="parseArrayShapeItem" start="505" end="522" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PHPStan\PhpDocParser\Ast\Type\ArrayShapeItemNode" namespace="PHPStan\PhpDocParser\Ast\Type" name="ArrayShapeItemNode"/>
+    </return>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+  <method name="parseArrayShapeKey" start="528" end="548" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <phpstan value="-impure"/>
+      <return type="object">
+        <type full="PHPStan\PhpDocParser\Parser\Ast\ConstExpr\ConstExprIntegerNode|Ast\ConstExpr\ConstExprStringNode|Ast\Type\IdentifierTypeNode" namespace="PHPStan\PhpDocParser\Parser\Ast\ConstExpr\ConstExprIntegerNode|Ast\ConstExpr\ConstExprStringNode|Ast\Type" name="IdentifierTypeNode"/>
+      </return>
+    </docblock>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator"/>
+    </parameter>
+  </method>
+</class>

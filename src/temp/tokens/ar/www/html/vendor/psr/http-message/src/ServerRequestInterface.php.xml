@@ -1,0 +1,913 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="//var/www/html/vendor/psr/http-message/src" file="ServerRequestInterface.php" realpath="/var/www/html/vendor/psr/http-message/src/ServerRequestInterface.php" size="10098" time="2016-08-06T14:39:51+00:00" unixtime="1470494391" sha1="4ac1c2f317b9a223ca86ae25878ace9df23a26e7" relative="ar/www/html/vendor/psr/http-message/src/ServerRequestInterface.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2"/>
+  <line no="3">
+    <token name="T_NAMESPACE">namespace</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Psr</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Http</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Message</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="4"/>
+  <line no="5">
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="6">
+    <token name="T_DOC_COMMENT"> * Representation of an incoming, server-side HTTP request.</token>
+  </line>
+  <line no="7">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="8">
+    <token name="T_DOC_COMMENT"> * Per the HTTP specification, this interface includes properties for</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT"> * each of the following:</token>
+  </line>
+  <line no="10">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="11">
+    <token name="T_DOC_COMMENT"> * - Protocol version</token>
+  </line>
+  <line no="12">
+    <token name="T_DOC_COMMENT"> * - HTTP method</token>
+  </line>
+  <line no="13">
+    <token name="T_DOC_COMMENT"> * - URI</token>
+  </line>
+  <line no="14">
+    <token name="T_DOC_COMMENT"> * - Headers</token>
+  </line>
+  <line no="15">
+    <token name="T_DOC_COMMENT"> * - Message body</token>
+  </line>
+  <line no="16">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="17">
+    <token name="T_DOC_COMMENT"> * Additionally, it encapsulates all data as it has arrived to the</token>
+  </line>
+  <line no="18">
+    <token name="T_DOC_COMMENT"> * application from the CGI and/or PHP environment, including:</token>
+  </line>
+  <line no="19">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="20">
+    <token name="T_DOC_COMMENT"> * - The values represented in $_SERVER.</token>
+  </line>
+  <line no="21">
+    <token name="T_DOC_COMMENT"> * - Any cookies provided (generally via $_COOKIE)</token>
+  </line>
+  <line no="22">
+    <token name="T_DOC_COMMENT"> * - Query string arguments (generally via $_GET, or as parsed via parse_str())</token>
+  </line>
+  <line no="23">
+    <token name="T_DOC_COMMENT"> * - Upload files, if any (as represented by $_FILES)</token>
+  </line>
+  <line no="24">
+    <token name="T_DOC_COMMENT"> * - Deserialized body parameters (generally from $_POST)</token>
+  </line>
+  <line no="25">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="26">
+    <token name="T_DOC_COMMENT"> * $_SERVER values MUST be treated as immutable, as they represent application</token>
+  </line>
+  <line no="27">
+    <token name="T_DOC_COMMENT"> * state at the time of request; as such, no methods are provided to allow</token>
+  </line>
+  <line no="28">
+    <token name="T_DOC_COMMENT"> * modification of those values. The other values provide such methods, as they</token>
+  </line>
+  <line no="29">
+    <token name="T_DOC_COMMENT"> * can be restored from $_SERVER or the request body, and may need treatment</token>
+  </line>
+  <line no="30">
+    <token name="T_DOC_COMMENT"> * during the application (e.g., body parameters may be deserialized based on</token>
+  </line>
+  <line no="31">
+    <token name="T_DOC_COMMENT"> * content type).</token>
+  </line>
+  <line no="32">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="33">
+    <token name="T_DOC_COMMENT"> * Additionally, this interface recognizes the utility of introspecting a</token>
+  </line>
+  <line no="34">
+    <token name="T_DOC_COMMENT"> * request to derive and match additional parameters (e.g., via URI path</token>
+  </line>
+  <line no="35">
+    <token name="T_DOC_COMMENT"> * matching, decrypting cookie values, deserializing non-form-encoded body</token>
+  </line>
+  <line no="36">
+    <token name="T_DOC_COMMENT"> * content, matching authorization headers to users, etc). These parameters</token>
+  </line>
+  <line no="37">
+    <token name="T_DOC_COMMENT"> * are stored in an "attributes" property.</token>
+  </line>
+  <line no="38">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="39">
+    <token name="T_DOC_COMMENT"> * Requests are considered immutable; all methods that might change state MUST</token>
+  </line>
+  <line no="40">
+    <token name="T_DOC_COMMENT"> * be implemented such that they retain the internal state of the current</token>
+  </line>
+  <line no="41">
+    <token name="T_DOC_COMMENT"> * message and return an instance that contains the changed state.</token>
+  </line>
+  <line no="42">
+    <token name="T_DOC_COMMENT"> */</token>
+  </line>
+  <line no="43">
+    <token name="T_INTERFACE">interface</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">ServerRequestInterface</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_EXTENDS">extends</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">RequestInterface</token>
+  </line>
+  <line no="44">
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="45">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="46">
+    <token name="T_DOC_COMMENT">     * Retrieve server parameters.</token>
+  </line>
+  <line no="47">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="48">
+    <token name="T_DOC_COMMENT">     * Retrieves data related to the incoming request environment,</token>
+  </line>
+  <line no="49">
+    <token name="T_DOC_COMMENT">     * typically derived from PHP's $_SERVER superglobal. The data IS NOT</token>
+  </line>
+  <line no="50">
+    <token name="T_DOC_COMMENT">     * REQUIRED to originate from $_SERVER.</token>
+  </line>
+  <line no="51">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="52">
+    <token name="T_DOC_COMMENT">     * @return array</token>
+  </line>
+  <line no="53">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="54">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getServerParams</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="55"/>
+  <line no="56">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="57">
+    <token name="T_DOC_COMMENT">     * Retrieve cookies.</token>
+  </line>
+  <line no="58">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="59">
+    <token name="T_DOC_COMMENT">     * Retrieves cookies sent by the client to the server.</token>
+  </line>
+  <line no="60">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="61">
+    <token name="T_DOC_COMMENT">     * The data MUST be compatible with the structure of the $_COOKIE</token>
+  </line>
+  <line no="62">
+    <token name="T_DOC_COMMENT">     * superglobal.</token>
+  </line>
+  <line no="63">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="64">
+    <token name="T_DOC_COMMENT">     * @return array</token>
+  </line>
+  <line no="65">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="66">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getCookieParams</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="67"/>
+  <line no="68">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="69">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified cookies.</token>
+  </line>
+  <line no="70">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="71">
+    <token name="T_DOC_COMMENT">     * The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST</token>
+  </line>
+  <line no="72">
+    <token name="T_DOC_COMMENT">     * be compatible with the structure of $_COOKIE. Typically, this data will</token>
+  </line>
+  <line no="73">
+    <token name="T_DOC_COMMENT">     * be injected at instantiation.</token>
+  </line>
+  <line no="74">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="75">
+    <token name="T_DOC_COMMENT">     * This method MUST NOT update the related Cookie header of the request</token>
+  </line>
+  <line no="76">
+    <token name="T_DOC_COMMENT">     * instance, nor related values in the server params.</token>
+  </line>
+  <line no="77">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="78">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="79">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that has the</token>
+  </line>
+  <line no="80">
+    <token name="T_DOC_COMMENT">     * updated cookie values.</token>
+  </line>
+  <line no="81">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="82">
+    <token name="T_DOC_COMMENT">     * @param array $cookies Array of key/value pairs representing cookies.</token>
+  </line>
+  <line no="83">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="84">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="85">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withCookieParams</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$cookies</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="86"/>
+  <line no="87">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="88">
+    <token name="T_DOC_COMMENT">     * Retrieve query string arguments.</token>
+  </line>
+  <line no="89">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="90">
+    <token name="T_DOC_COMMENT">     * Retrieves the deserialized query string arguments, if any.</token>
+  </line>
+  <line no="91">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="92">
+    <token name="T_DOC_COMMENT">     * Note: the query params might not be in sync with the URI or server</token>
+  </line>
+  <line no="93">
+    <token name="T_DOC_COMMENT">     * params. If you need to ensure you are only getting the original</token>
+  </line>
+  <line no="94">
+    <token name="T_DOC_COMMENT">     * values, you may need to parse the query string from `getUri()-&gt;getQuery()`</token>
+  </line>
+  <line no="95">
+    <token name="T_DOC_COMMENT">     * or from the `QUERY_STRING` server param.</token>
+  </line>
+  <line no="96">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="97">
+    <token name="T_DOC_COMMENT">     * @return array</token>
+  </line>
+  <line no="98">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="99">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getQueryParams</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="100"/>
+  <line no="101">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="102">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified query string arguments.</token>
+  </line>
+  <line no="103">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="104">
+    <token name="T_DOC_COMMENT">     * These values SHOULD remain immutable over the course of the incoming</token>
+  </line>
+  <line no="105">
+    <token name="T_DOC_COMMENT">     * request. They MAY be injected during instantiation, such as from PHP's</token>
+  </line>
+  <line no="106">
+    <token name="T_DOC_COMMENT">     * $_GET superglobal, or MAY be derived from some other value such as the</token>
+  </line>
+  <line no="107">
+    <token name="T_DOC_COMMENT">     * URI. In cases where the arguments are parsed from the URI, the data</token>
+  </line>
+  <line no="108">
+    <token name="T_DOC_COMMENT">     * MUST be compatible with what PHP's parse_str() would return for</token>
+  </line>
+  <line no="109">
+    <token name="T_DOC_COMMENT">     * purposes of how duplicate query parameters are handled, and how nested</token>
+  </line>
+  <line no="110">
+    <token name="T_DOC_COMMENT">     * sets are handled.</token>
+  </line>
+  <line no="111">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="112">
+    <token name="T_DOC_COMMENT">     * Setting query string arguments MUST NOT change the URI stored by the</token>
+  </line>
+  <line no="113">
+    <token name="T_DOC_COMMENT">     * request, nor the values in the server params.</token>
+  </line>
+  <line no="114">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="115">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="116">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that has the</token>
+  </line>
+  <line no="117">
+    <token name="T_DOC_COMMENT">     * updated query string arguments.</token>
+  </line>
+  <line no="118">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="119">
+    <token name="T_DOC_COMMENT">     * @param array $query Array of query string arguments, typically from</token>
+  </line>
+  <line no="120">
+    <token name="T_DOC_COMMENT">     *     $_GET.</token>
+  </line>
+  <line no="121">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="122">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="123">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withQueryParams</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$query</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="124"/>
+  <line no="125">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="126">
+    <token name="T_DOC_COMMENT">     * Retrieve normalized file upload data.</token>
+  </line>
+  <line no="127">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="128">
+    <token name="T_DOC_COMMENT">     * This method returns upload metadata in a normalized tree, with each leaf</token>
+  </line>
+  <line no="129">
+    <token name="T_DOC_COMMENT">     * an instance of Psr\Http\Message\UploadedFileInterface.</token>
+  </line>
+  <line no="130">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="131">
+    <token name="T_DOC_COMMENT">     * These values MAY be prepared from $_FILES or the message body during</token>
+  </line>
+  <line no="132">
+    <token name="T_DOC_COMMENT">     * instantiation, or MAY be injected via withUploadedFiles().</token>
+  </line>
+  <line no="133">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="134">
+    <token name="T_DOC_COMMENT">     * @return array An array tree of UploadedFileInterface instances; an empty</token>
+  </line>
+  <line no="135">
+    <token name="T_DOC_COMMENT">     *     array MUST be returned if no data is present.</token>
+  </line>
+  <line no="136">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="137">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getUploadedFiles</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="138"/>
+  <line no="139">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="140">
+    <token name="T_DOC_COMMENT">     * Create a new instance with the specified uploaded files.</token>
+  </line>
+  <line no="141">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="142">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="143">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that has the</token>
+  </line>
+  <line no="144">
+    <token name="T_DOC_COMMENT">     * updated body parameters.</token>
+  </line>
+  <line no="145">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="146">
+    <token name="T_DOC_COMMENT">     * @param array $uploadedFiles An array tree of UploadedFileInterface instances.</token>
+  </line>
+  <line no="147">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="148">
+    <token name="T_DOC_COMMENT">     * @throws \InvalidArgumentException if an invalid structure is provided.</token>
+  </line>
+  <line no="149">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="150">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withUploadedFiles</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$uploadedFiles</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="151"/>
+  <line no="152">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="153">
+    <token name="T_DOC_COMMENT">     * Retrieve any parameters provided in the request body.</token>
+  </line>
+  <line no="154">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="155">
+    <token name="T_DOC_COMMENT">     * If the request Content-Type is either application/x-www-form-urlencoded</token>
+  </line>
+  <line no="156">
+    <token name="T_DOC_COMMENT">     * or multipart/form-data, and the request method is POST, this method MUST</token>
+  </line>
+  <line no="157">
+    <token name="T_DOC_COMMENT">     * return the contents of $_POST.</token>
+  </line>
+  <line no="158">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="159">
+    <token name="T_DOC_COMMENT">     * Otherwise, this method may return any results of deserializing</token>
+  </line>
+  <line no="160">
+    <token name="T_DOC_COMMENT">     * the request body content; as parsing returns structured content, the</token>
+  </line>
+  <line no="161">
+    <token name="T_DOC_COMMENT">     * potential types MUST be arrays or objects only. A null value indicates</token>
+  </line>
+  <line no="162">
+    <token name="T_DOC_COMMENT">     * the absence of body content.</token>
+  </line>
+  <line no="163">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="164">
+    <token name="T_DOC_COMMENT">     * @return null|array|object The deserialized body parameters, if any.</token>
+  </line>
+  <line no="165">
+    <token name="T_DOC_COMMENT">     *     These will typically be an array or object.</token>
+  </line>
+  <line no="166">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="167">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getParsedBody</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="168"/>
+  <line no="169">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="170">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified body parameters.</token>
+  </line>
+  <line no="171">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="172">
+    <token name="T_DOC_COMMENT">     * These MAY be injected during instantiation.</token>
+  </line>
+  <line no="173">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="174">
+    <token name="T_DOC_COMMENT">     * If the request Content-Type is either application/x-www-form-urlencoded</token>
+  </line>
+  <line no="175">
+    <token name="T_DOC_COMMENT">     * or multipart/form-data, and the request method is POST, use this method</token>
+  </line>
+  <line no="176">
+    <token name="T_DOC_COMMENT">     * ONLY to inject the contents of $_POST.</token>
+  </line>
+  <line no="177">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="178">
+    <token name="T_DOC_COMMENT">     * The data IS NOT REQUIRED to come from $_POST, but MUST be the results of</token>
+  </line>
+  <line no="179">
+    <token name="T_DOC_COMMENT">     * deserializing the request body content. Deserialization/parsing returns</token>
+  </line>
+  <line no="180">
+    <token name="T_DOC_COMMENT">     * structured data, and, as such, this method ONLY accepts arrays or objects,</token>
+  </line>
+  <line no="181">
+    <token name="T_DOC_COMMENT">     * or a null value if nothing was available to parse.</token>
+  </line>
+  <line no="182">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="183">
+    <token name="T_DOC_COMMENT">     * As an example, if content negotiation determines that the request data</token>
+  </line>
+  <line no="184">
+    <token name="T_DOC_COMMENT">     * is a JSON payload, this method could be used to create a request</token>
+  </line>
+  <line no="185">
+    <token name="T_DOC_COMMENT">     * instance with the deserialized parameters.</token>
+  </line>
+  <line no="186">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="187">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="188">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that has the</token>
+  </line>
+  <line no="189">
+    <token name="T_DOC_COMMENT">     * updated body parameters.</token>
+  </line>
+  <line no="190">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="191">
+    <token name="T_DOC_COMMENT">     * @param null|array|object $data The deserialized body data. This will</token>
+  </line>
+  <line no="192">
+    <token name="T_DOC_COMMENT">     *     typically be in an array or object.</token>
+  </line>
+  <line no="193">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="194">
+    <token name="T_DOC_COMMENT">     * @throws \InvalidArgumentException if an unsupported argument type is</token>
+  </line>
+  <line no="195">
+    <token name="T_DOC_COMMENT">     *     provided.</token>
+  </line>
+  <line no="196">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="197">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withParsedBody</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$data</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="198"/>
+  <line no="199">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="200">
+    <token name="T_DOC_COMMENT">     * Retrieve attributes derived from the request.</token>
+  </line>
+  <line no="201">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="202">
+    <token name="T_DOC_COMMENT">     * The request "attributes" may be used to allow injection of any</token>
+  </line>
+  <line no="203">
+    <token name="T_DOC_COMMENT">     * parameters derived from the request: e.g., the results of path</token>
+  </line>
+  <line no="204">
+    <token name="T_DOC_COMMENT">     * match operations; the results of decrypting cookies; the results of</token>
+  </line>
+  <line no="205">
+    <token name="T_DOC_COMMENT">     * deserializing non-form-encoded message bodies; etc. Attributes</token>
+  </line>
+  <line no="206">
+    <token name="T_DOC_COMMENT">     * will be application and request specific, and CAN be mutable.</token>
+  </line>
+  <line no="207">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="208">
+    <token name="T_DOC_COMMENT">     * @return array Attributes derived from the request.</token>
+  </line>
+  <line no="209">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="210">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getAttributes</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="211"/>
+  <line no="212">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="213">
+    <token name="T_DOC_COMMENT">     * Retrieve a single derived request attribute.</token>
+  </line>
+  <line no="214">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="215">
+    <token name="T_DOC_COMMENT">     * Retrieves a single derived request attribute as described in</token>
+  </line>
+  <line no="216">
+    <token name="T_DOC_COMMENT">     * getAttributes(). If the attribute has not been previously set, returns</token>
+  </line>
+  <line no="217">
+    <token name="T_DOC_COMMENT">     * the default value as provided.</token>
+  </line>
+  <line no="218">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="219">
+    <token name="T_DOC_COMMENT">     * This method obviates the need for a hasAttribute() method, as it allows</token>
+  </line>
+  <line no="220">
+    <token name="T_DOC_COMMENT">     * specifying a default value to return if the attribute is not found.</token>
+  </line>
+  <line no="221">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="222">
+    <token name="T_DOC_COMMENT">     * @see getAttributes()</token>
+  </line>
+  <line no="223">
+    <token name="T_DOC_COMMENT">     * @param string $name The attribute name.</token>
+  </line>
+  <line no="224">
+    <token name="T_DOC_COMMENT">     * @param mixed $default Default value to return if the attribute does not exist.</token>
+  </line>
+  <line no="225">
+    <token name="T_DOC_COMMENT">     * @return mixed</token>
+  </line>
+  <line no="226">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="227">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getAttribute</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$name</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$default</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">null</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="228"/>
+  <line no="229">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="230">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified derived request attribute.</token>
+  </line>
+  <line no="231">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="232">
+    <token name="T_DOC_COMMENT">     * This method allows setting a single derived request attribute as</token>
+  </line>
+  <line no="233">
+    <token name="T_DOC_COMMENT">     * described in getAttributes().</token>
+  </line>
+  <line no="234">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="235">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="236">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that has the</token>
+  </line>
+  <line no="237">
+    <token name="T_DOC_COMMENT">     * updated attribute.</token>
+  </line>
+  <line no="238">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="239">
+    <token name="T_DOC_COMMENT">     * @see getAttributes()</token>
+  </line>
+  <line no="240">
+    <token name="T_DOC_COMMENT">     * @param string $name The attribute name.</token>
+  </line>
+  <line no="241">
+    <token name="T_DOC_COMMENT">     * @param mixed $value The value of the attribute.</token>
+  </line>
+  <line no="242">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="243">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="244">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withAttribute</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$name</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="245"/>
+  <line no="246">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="247">
+    <token name="T_DOC_COMMENT">     * Return an instance that removes the specified derived request attribute.</token>
+  </line>
+  <line no="248">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="249">
+    <token name="T_DOC_COMMENT">     * This method allows removing a single derived request attribute as</token>
+  </line>
+  <line no="250">
+    <token name="T_DOC_COMMENT">     * described in getAttributes().</token>
+  </line>
+  <line no="251">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="252">
+    <token name="T_DOC_COMMENT">     * This method MUST be implemented in such a way as to retain the</token>
+  </line>
+  <line no="253">
+    <token name="T_DOC_COMMENT">     * immutability of the message, and MUST return an instance that removes</token>
+  </line>
+  <line no="254">
+    <token name="T_DOC_COMMENT">     * the attribute.</token>
+  </line>
+  <line no="255">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="256">
+    <token name="T_DOC_COMMENT">     * @see getAttributes()</token>
+  </line>
+  <line no="257">
+    <token name="T_DOC_COMMENT">     * @param string $name The attribute name.</token>
+  </line>
+  <line no="258">
+    <token name="T_DOC_COMMENT">     * @return static</token>
+  </line>
+  <line no="259">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="260">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withoutAttribute</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$name</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="261">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="262"/>
+</source>

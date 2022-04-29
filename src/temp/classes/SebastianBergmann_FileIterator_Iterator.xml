@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="SebastianBergmann\FileIterator\Iterator" namespace="SebastianBergmann\FileIterator" name="Iterator" abstract="false" final="false" start="22" end="119">
+  <file path="//var/www/html/vendor/phpunit/php-file-iterator/src" file="Iterator.php" realpath="/var/www/html/vendor/phpunit/php-file-iterator/src/Iterator.php" size="2972" time="2021-12-02T12:48:52+00:00" unixtime="1638449332" sha1="3bb17d3918f8fd5619025b1d1d721be260de0095" relative="ar/www/html/vendor/phpunit/php-file-iterator/src/Iterator.php"/>
+  <extends full="FilterIterator" namespace="" name="FilterIterator"/>
+  <constant type="integer" name="PREFIX" value="0"/>
+  <constant type="integer" name="SUFFIX" value="1"/>
+  <member name="basePath" visibility="private" static="false" line="31">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="suffixes" default="" type="array" visibility="private" static="false" line="36">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="prefixes" default="" type="array" visibility="private" static="false" line="41">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="exclude" default="" type="array" visibility="private" static="false" line="46">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="48" end="56" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="basePath" byreference="false" type="string"/>
+    <parameter name="iterator" byreference="false" type="object">
+      <type full="Iterator" namespace="" name="Iterator"/>
+    </parameter>
+    <parameter name="suffixes" byreference="false" type="array" default=""/>
+    <parameter name="prefixes" byreference="false" type="array" default=""/>
+    <parameter name="exclude" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="accept" start="58" end="71" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="acceptPath" start="73" end="87" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <inline>
+      <comment value="Filter files in hidden directories by checking path that is relative to the base path." line="75"/>
+    </inline>
+  </method>
+  <method name="acceptPrefix" start="89" end="92" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="filename" byreference="false" type="string"/>
+  </method>
+  <method name="acceptSuffix" start="94" end="97" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="filename" byreference="false" type="string"/>
+  </method>
+  <method name="acceptSubString" start="99" end="118" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="filename" byreference="false" type="string"/>
+    <parameter name="subStrings" byreference="false" type="array"/>
+    <parameter name="type" byreference="false" type="int"/>
+  </method>
+  <parent full="FilterIterator" namespace="" name="FilterIterator">
+    <implements full="OuterIterator" namespace="" name="OuterIterator"/>
+    <method name="accept" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Check whether the current element of the iterator is acceptable"/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+    <constructor name="__construct" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Construct a filterIterator"/>
+      <return type="void"/>
+    </docblock>
+    <parameter name="iterator" optional="false" byreference="false" type="object" class="Iterator"/>
+  </constructor>
+    <method name="current" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Get the current element value"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="getInnerIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Get the inner iterator"/>
+      <return type="Iterator"/>
+    </docblock>
+  </method>
+    <method name="key" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Get the current key"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="next" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Move the iterator forward"/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="rewind" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Rewind the iterator"/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="valid" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Check whether the current element is valid"/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+  </parent>
+  <interface full="OuterIterator" namespace="" name="OuterIterator">
+    <extends full="Iterator" namespace="" name="Iterator"/>
+    <method name="getInnerIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Returns the inner iterator for the current entry"/>
+      <return type="Iterator"/>
+    </docblock>
+  </method>
+    <method name="current" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="key" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="scalar"/>
+    </docblock>
+  </method>
+    <method name="next" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="rewind" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="valid" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

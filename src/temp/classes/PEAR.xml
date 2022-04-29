@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR" namespace="" name="PEAR" abstract="false" final="false" start="84" end="791">
+  <file path="//usr/local/lib/php" file="PEAR.php" realpath="/usr/local/lib/php/PEAR.php" size="36171" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="cb5b66c92d413046ba3a1b5b180f81df5a04ab62" relative="sr/local/lib/php/PEAR.php"/>
+  <docblock>
+    <description compact="Base class for other PEAR classes.  Provides rudimentary emulation of destructors.">If you want a destructor in your class, inherit PEAR and make a
+destructor method called _yourclassname (same name as the
+constructor, but with a "_" prefix).  Also, in your constructor you
+have to call the PEAR constructor: $this-&gt;PEAR();.
+The destructor method will be called without parameters.  Note that
+at in some SAPI implementations (such as Apache), any output during
+the request shutdown (in which destructors are called) seems to be
+discarded.  If you need to get any debug information from your
+destructor, use error_log(), syslog() or something similar.
+
+IMPORTANT! To use the emulated destructors you need to create the
+objects by reference: $obj =&amp; new PEAR_child;</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Stig Bakken &lt;ssb@php.net&gt;"/>
+    <author value="Tomas V.V. Cox &lt;cox@idecnet.com&gt;"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2006 The PHP Group"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <link value="http://pear.php.net/manual/en/core.pear.php#core.pear.pear"/>
+    <see value="PEAR_Error"/>
+    <since value="Class available since PHP 4.0.2"/>
+  </docblock>
+  <member name="_debug" default="false" type="boolean" visibility="public" static="false" line="92">
+    <docblock>
+      <description compact="Whether to enable internal debug messages."/>
+      <var type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_default_error_mode" default="NULL" visibility="public" static="false" line="100">
+    <docblock>
+      <description compact="Default error mode for this object."/>
+      <var type="int"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_default_error_options" default="NULL" visibility="public" static="false" line="109">
+    <docblock>
+      <description compact="Default error options used for this object when error mode is PEAR_ERROR_TRIGGER."/>
+      <var type="int"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_default_error_handler" default="''" type="string" visibility="public" static="false" line="118">
+    <docblock>
+      <description compact="Default error handler (callback) for this object, if error mode is PEAR_ERROR_CALLBACK."/>
+      <var type="string"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_error_class" default="'PEAR_Error'" type="string" visibility="public" static="false" line="126">
+    <docblock>
+      <description compact="Which class to use for error objects."/>
+      <var type="string"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_expected_errors" default="" type="array" visibility="public" static="false" line="134">
+    <docblock>
+      <description compact="An array of expected errors."/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="bivalentMethods" default="" type="array" visibility="protected" static="true" line="140">
+    <docblock>
+      <description compact="List of methods that can be called both statically and non-statically."/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="158" end="183" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor.  Registers this object in $_PEAR_destructor_object_list for destructor emulation if a destructor object exists."/>
+      <param description="(optional) which class to use for" type="string" variable="$error_class">error objects, defaults to PEAR_Error.</param>
+      <access value="public"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+  </constructor>
+  <method name="PEAR" start="192" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only here for backwards compatibility.">E.g. Archive_Tar calls $this-&gt;PEAR() in its constructor.</description>
+      <param description="Which class to use for error objects," type="string" variable="$error_class">defaults to PEAR_Error.</param>
+    </docblock>
+    <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_PEAR" start="208" end="212" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Destructor (the emulated type of...).  Does nothing right now, but is included for forward compatibility, so subclass destructors should always call it.">See the note in the class desciption about output from
+destructors.</description>
+      <access value="public"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="__call" start="214" end="225" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="method" byreference="false" type="{unknown}"/>
+    <parameter name="arguments" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="__callStatic" start="227" end="238" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="method" byreference="false" type="{unknown}"/>
+    <parameter name="arguments" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getStaticProperty" start="251" end="263" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="If you have a class that's mostly/entirely static, and you need static properties, you can use this method to simulate them. Eg. in your method(s) do this: $myVar = &amp;PEAR::getStaticProperty('myclass', 'myVar'); You MUST use a reference, or they will not persist!"/>
+      <param description="The calling classname, to prevent clashes" type="string" variable="$class"/>
+      <param description="The variable to retrieve." type="string" variable="$var"/>
+      <return description="A reference to the variable. If not set it will be" type="mixed">auto initialised to NULL.</return>
+    </docblock>
+    <parameter name="class" byreference="false" type="{unknown}"/>
+    <parameter name="var" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="registerShutdownFunc" start="274" end="283" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Use this function to register a shutdown method for static classes."/>
+      <param description="The function name (or array of class/method) to call" type="mixed" variable="$func"/>
+      <param description="The arguments to pass to the function" type="mixed" variable="$args"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="func" byreference="false" type="{unknown}"/>
+    <parameter name="args" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="if we are called statically, there is a potential" line="276"/>
+      <comment value="that no shutdown func is registered.  Bug #6445" line="277"/>
+    </inline>
+  </method>
+  <method name="isError" start="296" end="309" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Tell whether a value is a PEAR error."/>
+      <param description="the value to test" type="mixed" variable="$data"/>
+      <param description="if $data is an error object, return true" type="int" variable="$code">only if $code is a string and
+                       $obj-&gt;getMessage() == $code or
+                       $code is an integer and $obj-&gt;getCode() == $code</param>
+      <return description="true if parameter is an error" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_setErrorHandling" start="352" end="388" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Sets how errors generated by this object should be handled.">Can be invoked both in objects and statically.  If called
+statically, setErrorHandling sets the default behaviour for all
+PEAR objects.  If called in an object, setErrorHandling sets
+the default behaviour for that object.</description>
+      <param type="object" variable="$object">Object the method was called on (non-static mode)</param>
+      <param type="int" variable="$mode">One of PEAR_ERROR_RETURN, PEAR_ERROR_PRINT,
+       PEAR_ERROR_TRIGGER, PEAR_ERROR_DIE,
+       PEAR_ERROR_CALLBACK or PEAR_ERROR_EXCEPTION.</param>
+      <param type="mixed" variable="$options">When $mode is PEAR_ERROR_TRIGGER, this is the error level (one
+       of E_USER_NOTICE, E_USER_WARNING or E_USER_ERROR).
+
+       When $mode is PEAR_ERROR_CALLBACK, this parameter is expected
+       to be the callback function or method.  A callback
+       function is a string with the name of the function, a
+       callback method is an array of two elements: the element
+       at index 0 is the object, and the element at index 1 is
+       the name of the method to call in the object.
+
+       When $mode is PEAR_ERROR_PRINT or PEAR_ERROR_DIE, this is
+       a printf format string used when printing the error
+       message.</param>
+      <access value="public"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+      <see value="PEAR_ERROR_RETURN"/>
+      <see value="PEAR_ERROR_PRINT"/>
+      <see value="PEAR_ERROR_TRIGGER"/>
+      <see value="PEAR_ERROR_DIE"/>
+      <see value="PEAR_ERROR_CALLBACK"/>
+      <see value="PEAR_ERROR_EXCEPTION"/>
+      <since value="PHP 4.0.5"/>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+    <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="expectError" start="405" end="413" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method is used to tell which errors you expect to get.">Expected errors are always returned with error mode
+PEAR_ERROR_RETURN.  Expected error codes are stored in a stack,
+and this method pushes a new element onto it.  The list of
+expected errors are in effect until they are popped off the
+stack with the popExpect() method.
+
+Note that this method can not be called statically</description>
+      <param description="a single error code or an array of error codes to expect" type="mixed" variable="$code"/>
+      <return description="the new depth of the &quot;expected errors&quot; stack" type="int"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="string" default="'*'"/>
+  </method>
+  <method name="popExpect" start="421" end="424" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method pops one element off the expected error codes stack."/>
+      <return description="the list of error codes that were popped" type="array"/>
+    </docblock>
+  </method>
+  <method name="_checkDelExpect" start="434" end="450" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method checks unsets an error code if available"/>
+      <param description="error code" type="mixed"/>
+      <return description="true if the error code was unset, false otherwise" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <access value="private"/>
+      <since value="PHP 4.3.0"/>
+    </docblock>
+    <parameter name="error_code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="delExpect" start="461" end="483" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method deletes all occurrences of the specified element from the expected error codes stack."/>
+      <param description="error code that should be deleted" type="mixed" variable="$error_code"/>
+      <return description="list of error codes that were deleted or error" type="mixed"/>
+      <access value="public"/>
+      <since value="PHP 4.3.0"/>
+    </docblock>
+    <parameter name="error_code" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="$error_code is empty" line="481"/>
+      <comment value="IMPROVE ME" line="482"/>
+    </inline>
+  </method>
+  <method name="_raiseError" start="521" end="581" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="This method is a wrapper that returns an instance of the configured error class with this object's default error handling applied.  If the $mode and $options parameters are not specified, the object's defaults are used."/>
+      <param description="a text error message or a PEAR error object" type="mixed" variable="$message"/>
+      <param description="a numeric error code (it is up to your class" type="int" variable="$code">to define these if you want to use codes)</param>
+      <param description="One of PEAR_ERROR_RETURN, PEAR_ERROR_PRINT," type="int" variable="$mode">PEAR_ERROR_TRIGGER, PEAR_ERROR_DIE,
+                 PEAR_ERROR_CALLBACK, PEAR_ERROR_EXCEPTION.</param>
+      <param description="If $mode is PEAR_ERROR_TRIGGER, this parameter" type="mixed" variable="$options">specifies the PHP-internal error level (one of
+                 E_USER_NOTICE, E_USER_WARNING or E_USER_ERROR).
+                 If $mode is PEAR_ERROR_CALLBACK, this
+                 parameter specifies the callback function or
+                 method.  In other error modes this parameter
+                 is ignored.</param>
+      <param description="If you need to pass along for example debug" type="string" variable="$userinfo">information, this parameter is meant for that.</param>
+      <param description="The returned error object will be" type="string" variable="$error_class">instantiated from this class, if specified.</param>
+      <param description="If true, raiseError will only pass error codes," type="object" variable="$skipmsg">the error message parameter will be dropped.<type full="bool" namespace="" name="bool"/></param>
+      <return description="a PEAR error object" type="object"/>
+      <see value="PEAR::setErrorHandling"/>
+      <since value="PHP 4.0.5"/>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="skipmsg" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="The error is yet a PEAR error object" line="530"/>
+      <comment value="No mode given, try global ones" line="553"/>
+    </inline>
+  </method>
+  <method name="_throwError" start="598" end="607" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Simpler form of raiseError with fewer options.  In most cases message, code and userinfo are enough."/>
+      <param description="a text error message or a PEAR error object" type="mixed" variable="$message"/>
+      <param description="a numeric error code (it is up to your class" type="int" variable="$code">to define these if you want to use codes)</param>
+      <param description="If you need to pass along for example debug" type="string" variable="$userinfo">information, this parameter is meant for that.</param>
+      <return description="a PEAR error object" type="object"/>
+      <see value="PEAR::raiseError"/>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="staticPushErrorHandling" start="609" end="642" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="mode" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="staticPopErrorHandling" start="644" end="678" abstract="false" final="false" static="true" visibility="public"/>
+  <method name="_pushErrorHandling" start="692" end="711" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Push a new error handler on top of the error handler options stack. With this you can easily override the actual error handler for some code and restore it later with popErrorHandling."/>
+      <param description="(same as setErrorHandling)" type="mixed" variable="$mode"/>
+      <param description="(same as setErrorHandling)" type="mixed" variable="$options"/>
+      <return description="Always true" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <see value="PEAR::setErrorHandling"/>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+    <parameter name="mode" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_popErrorHandling" start="720" end="732" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Pop the last error handler used"/>
+      <return description="Always true" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <see value="PEAR::pushErrorHandling"/>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="loadExtension" start="741" end="768" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="OS independent PHP extension load. Remember to take care on the correct extension name for case sensitive OSes."/>
+      <param description="The extension name" type="string" variable="$ext"/>
+      <return description="Success or not on the dl() call" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="ext" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="if either returns true dl() will produce a FATAL error, stop that" line="747"/>
+    </inline>
+  </method>
+  <method name="getSourceDateEpoch" start="777" end="790" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get SOURCE_DATE_EPOCH environment variable See https://reproducible-builds.org/specs/source-date-epoch/"/>
+      <return type="int"/>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <extenders>
+    <extender full="PEAR_Packager" namespace="" name="PEAR_Packager"/>
+    <extender full="PEAR_Command_Registry" namespace="" name="PEAR_Command_Registry"/>
+    <extender full="PEAR_Command_Install" namespace="" name="PEAR_Command_Install"/>
+    <extender full="PEAR_Command_Mirror" namespace="" name="PEAR_Command_Mirror"/>
+    <extender full="PEAR_Command_Config" namespace="" name="PEAR_Command_Config"/>
+    <extender full="PEAR_Command_Auth" namespace="" name="PEAR_Command_Auth"/>
+    <extender full="PEAR_Command_Channels" namespace="" name="PEAR_Command_Channels"/>
+    <extender full="PEAR_Command_Common" namespace="" name="PEAR_Command_Common"/>
+    <extender full="PEAR_Command_Build" namespace="" name="PEAR_Command_Build"/>
+    <extender full="PEAR_Command_Test" namespace="" name="PEAR_Command_Test"/>
+    <extender full="PEAR_Command_Package" namespace="" name="PEAR_Command_Package"/>
+    <extender full="PEAR_Command_Pickle" namespace="" name="PEAR_Command_Pickle"/>
+    <extender full="PEAR_Command_Remote" namespace="" name="PEAR_Command_Remote"/>
+    <extender full="PEAR_Registry" namespace="" name="PEAR_Registry"/>
+    <extender full="PEAR_Config" namespace="" name="PEAR_Config"/>
+    <extender full="PEAR_Downloader" namespace="" name="PEAR_Downloader"/>
+    <extender full="PEAR_Frontend" namespace="" name="PEAR_Frontend"/>
+    <extender full="PEAR_Common" namespace="" name="PEAR_Common"/>
+    <extender full="PEAR_Installer" namespace="" name="PEAR_Installer"/>
+    <extender full="PEAR_Builder" namespace="" name="PEAR_Builder"/>
+    <extender full="PEAR_Frontend_CLI" namespace="" name="PEAR_Frontend_CLI"/>
+    <extender full="Archive_Tar" namespace="" name="Archive_Tar"/>
+  </extenders>
+</class>

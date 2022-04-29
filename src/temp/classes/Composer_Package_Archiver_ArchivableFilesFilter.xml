@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Package\Archiver\ArchivableFilesFilter" namespace="Composer\Package\Archiver" name="ArchivableFilesFilter" abstract="false" final="false" start="18" end="50">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Package/Archiver" file="ArchivableFilesFilter.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Package/Archiver/ArchivableFilesFilter.php" size="1132" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="f0704adf2e844aae825874c994e81617107e9878" relative="ar/www/html/vendor/composer/composer/src/Composer/Package/Archiver/ArchivableFilesFilter.php"/>
+  <extends full="FilterIterator" namespace="" name="FilterIterator"/>
+  <member name="dirs" default="" type="array" visibility="private" static="false" line="21">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Archiver\string" namespace="Composer\Package\Archiver" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="accept" start="26" end="36" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="true if the current element is acceptable, otherwise false." type="object">
+        <type full="Composer\Package\Archiver\bool" namespace="Composer\Package\Archiver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="addEmptyDir" start="43" end="49" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$sources"/>
+      <return type="object">
+        <type full="Composer\Package\Archiver\void" namespace="Composer\Package\Archiver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="phar" byreference="false" type="object">
+      <type full="PharData" namespace="" name="PharData"/>
+    </parameter>
+    <parameter name="sources" byreference="false" type="string"/>
+  </method>
+  <parent full="FilterIterator" namespace="" name="FilterIterator">
+    <implements full="OuterIterator" namespace="" name="OuterIterator"/>
+    <method name="accept" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Check whether the current element of the iterator is acceptable"/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+    <constructor name="__construct" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Construct a filterIterator"/>
+      <return type="void"/>
+    </docblock>
+    <parameter name="iterator" optional="false" byreference="false" type="object" class="Iterator"/>
+  </constructor>
+    <method name="current" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Get the current element value"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="getInnerIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Get the inner iterator"/>
+      <return type="Iterator"/>
+    </docblock>
+  </method>
+    <method name="key" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Get the current key"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="next" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Move the iterator forward"/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="rewind" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Rewind the iterator"/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="valid" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Check whether the current element is valid"/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+  </parent>
+  <interface full="OuterIterator" namespace="" name="OuterIterator">
+    <extends full="Iterator" namespace="" name="Iterator"/>
+    <method name="getInnerIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Returns the inner iterator for the current entry"/>
+      <return type="Iterator"/>
+    </docblock>
+  </method>
+    <method name="current" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="key" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="scalar"/>
+    </docblock>
+  </method>
+    <method name="next" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="rewind" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="valid" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

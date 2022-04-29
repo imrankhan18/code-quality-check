@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="drXdebugTraceFileParser" namespace="" name="drXdebugTraceFileParser" abstract="false" final="false" start="83" end="248">
+  <file path="//usr/local/lib/php/doc/xdebug/contrib" file="tracefile-analyser.php" realpath="/usr/local/lib/php/doc/xdebug/contrib/tracefile-analyser.php" size="6588" time="2022-04-28T12:56:58+00:00" unixtime="1651150618" sha1="64cd0609e102fee32f7ab34571fbca041e44b237" relative="sr/local/lib/php/doc/xdebug/contrib/tracefile-analyser.php"/>
+  <member name="handle" visibility="protected" static="false" line="85"/>
+  <member name="stack" visibility="protected" static="false" line="91">
+    <docblock>
+      <description compact="Stores the last function, time and memory for the entry point per stack depth. int=&gt;array(string, float, int)."/>
+    </docblock>
+  </member>
+  <member name="functions" visibility="protected" static="false" line="97">
+    <docblock>
+      <description compact="Stores per function the total time and memory increases and calls string=&gt;array(float, int, int)"/>
+    </docblock>
+  </member>
+  <member name="stackFunctions" visibility="protected" static="false" line="102">
+    <docblock>
+      <description compact="Stores which functions are on the stack"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="104" end="122" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="fileName" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="parse" start="124" end="146" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="parseLine" start="148" end="201" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="line" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="if ( preg_match( '@^Version: (.*)@', $line, $matches ) )" line="150"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="{" line="151"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="}" line="152"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="else if ( preg_match( '@^File format: (.*)@', $line, $matches ) )" line="153"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="{" line="154"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="}" line="155"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="else if ( preg_match( '@^TRACE.*@', $line, $matches ) )" line="156"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="{" line="157"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="}" line="158"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="else // assume a normal line" line="159"/>
+    </inline>
+  </method>
+  <method name="addToFunction" start="203" end="218" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="function" byreference="false" type="{unknown}"/>
+    <parameter name="time" byreference="false" type="{unknown}"/>
+    <parameter name="memory" byreference="false" type="{unknown}"/>
+    <parameter name="nestedTime" byreference="false" type="{unknown}"/>
+    <parameter name="nestedMemory" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getFunctions" start="220" end="247" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="sortKey" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+</class>

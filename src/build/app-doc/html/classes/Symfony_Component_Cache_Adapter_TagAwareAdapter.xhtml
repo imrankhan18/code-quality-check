@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\Cache\Adapter\TagAwareAdapter</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Symfony_Component_Cache_Adapter">Symfony\Component\Cache\Adapter</a>
+          </li>
+          <li class="separator">TagAwareAdapter</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/symfony/cache/Adapter/TagAwareAdapter.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Symfony\Component\Cache\Adapter\</small>TagAwareAdapter</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Nicolas Grekas &lt;p@tchwork.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class TagAwareAdapter
+                implements
+                <a title="Symfony\Component\Cache\Adapter\TagAwareAdapterInterface" href="../interfaces/Symfony_Component_Cache_Adapter_TagAwareAdapterInterface.xhtml">TagAwareAdapterInterface</a>,<a title="Symfony\Contracts\Cache\TagAwareCacheInterface" href="../interfaces/Symfony_Contracts_Cache_TagAwareCacheInterface.xhtml">TagAwareCacheInterface</a>,<a title="Symfony\Component\Cache\PruneableInterface" href="../interfaces/Symfony_Component_Cache_PruneableInterface.xhtml">PruneableInterface</a>,<a title="Symfony\Component\Cache\ResettableInterface" href="../interfaces/Symfony_Component_Cache_ResettableInterface.xhtml">ResettableInterface</a>,<a title="Psr\Log\LoggerAwareInterface" href="../interfaces/Psr_Log_LoggerAwareInterface.xhtml">LoggerAwareInterface</a>
+            {<br/><ul class="none"><li>// constants</li><li>const TAGS_PREFIX = "\0tags\0";</li></ul><ul class="none"><li>// members</li><li>private array <a href="#members">$deferred</a> =
+                        ;
+                    </li><li>private  <a href="#members">$tags</a>;
+                    </li><li>private array <a href="#members">$knownTagVersions</a> =
+                        ;
+                    </li><li>private  <a href="#members">$knownTagVersionsTtl</a>;
+                    </li><li>private static  <a href="#members">$createCacheItem</a>;
+                    </li><li>private static  <a href="#members">$setCacheItemTags</a>;
+                    </li><li>private static  <a href="#members">$getTagsByKey</a>;
+                    </li><li>private static  <a href="#members">$saveTags</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/invalidateTags.xhtml">invalidateTags</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/hasItem.xhtml">hasItem</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/getItem.xhtml">getItem</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/getItems.xhtml">getItems</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/clear.xhtml">clear</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/deleteItem.xhtml">deleteItem</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/deleteItems.xhtml">deleteItems</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/save.xhtml">save</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/saveDeferred.xhtml">saveDeferred</a>()
+                    </li><li>public bool <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/commit.xhtml">commit</a>()
+                    </li><li>public array <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/__sleep.xhtml">__sleep</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/__wakeup.xhtml">__wakeup</a>()
+                    </li><li>public void <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/__destruct.xhtml">__destruct</a>()
+                    </li><li>private <span title="Generator">Generator</span> <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/generateItems.xhtml">generateItems</a>()
+                    </li><li>private void <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/getTagVersions.xhtml">getTagVersions</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Symfony\Component\Cache\Traits\ContractsTrait">ContractsTrait</span></li><li>public callable <a title="Symfony\Component\Cache\Traits\ContractsTrait" href="../traits/Symfony_Component_Cache_Traits_ContractsTrait/setCallbackWrapper.xhtml">setCallbackWrapper</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="Psr\Log\LoggerAwareTrait">LoggerAwareTrait</span></li><li>public void <a title="Psr\Log\LoggerAwareTrait" href="../traits/Psr_Log_LoggerAwareTrait/setLogger.xhtml">setLogger</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="Symfony\Component\Cache\Traits\ProxyTrait">ProxyTrait</span></li><li>public void <a title="Symfony\Component\Cache\Traits\ProxyTrait" href="../traits/Symfony_Component_Cache_Traits_ProxyTrait/prune.xhtml">prune</a>()
+                        </li><li>public void <a title="Symfony\Component\Cache\Traits\ProxyTrait" href="../traits/Symfony_Component_Cache_Traits_ProxyTrait/reset.xhtml">reset</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="Symfony\Component\Cache\Traits\ContractsTrait" href="../traits/Symfony_Component_Cache_Traits_ContractsTrait.xhtml">Symfony\Component\Cache\Traits\ContractsTrait</a>
+            </li>
+            <li>
+              <a title="Psr\Log\LoggerAwareTrait" href="../traits/Psr_Log_LoggerAwareTrait.xhtml">Psr\Log\LoggerAwareTrait</a>
+            </li>
+            <li>
+              <a title="Symfony\Component\Cache\Traits\ProxyTrait" href="../traits/Symfony_Component_Cache_Traits_ProxyTrait.xhtml">Symfony\Component\Cache\Traits\ProxyTrait</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Symfony\Component\Cache\Adapter\TagAwareAdapterInterface" href="../interfaces/Symfony_Component_Cache_Adapter_TagAwareAdapterInterface.xhtml">Symfony\Component\Cache\Adapter\TagAwareAdapterInterface</a>
+            </li>
+            <li>
+              <a title="Symfony\Contracts\Cache\TagAwareCacheInterface" href="../interfaces/Symfony_Contracts_Cache_TagAwareCacheInterface.xhtml">Symfony\Contracts\Cache\TagAwareCacheInterface</a>
+            </li>
+            <li>
+              <a title="Symfony\Component\Cache\PruneableInterface" href="../interfaces/Symfony_Component_Cache_PruneableInterface.xhtml">Symfony\Component\Cache\PruneableInterface</a>
+            </li>
+            <li>
+              <a title="Symfony\Component\Cache\ResettableInterface" href="../interfaces/Symfony_Component_Cache_ResettableInterface.xhtml">Symfony\Component\Cache\ResettableInterface</a>
+            </li>
+            <li>
+              <a title="Psr\Log\LoggerAwareInterface" href="../interfaces/Psr_Log_LoggerAwareInterface.xhtml">Psr\Log\LoggerAwareInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="TAGS_PREFIX">TAGS_PREFIX</td>
+              <td>"\0tags\0"</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="createCacheItem">
+              <strong>$createCacheItem</strong>
+            </li>
+            <li id="deferred">
+              <strong>$deferred</strong>
+            </li>
+            <li id="getTagsByKey">
+              <strong>$getTagsByKey</strong>
+            </li>
+            <li id="knownTagVersions">
+              <strong>$knownTagVersions</strong>
+            </li>
+            <li id="knownTagVersionsTtl">
+              <strong>$knownTagVersionsTtl</strong>
+            </li>
+            <li id="saveTags">
+              <strong>$saveTags</strong>
+            </li>
+            <li id="setCacheItemTags">
+              <strong>$setCacheItemTags</strong>
+            </li>
+            <li id="tags">
+              <strong>$tags</strong>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="logger"><strong>$logger</strong>
+                —
+                <a title="Psr\Log\LoggerInterface|null" href="../classes/Psr_Log_LoggerInterface|null.xhtml">Psr\Log\LoggerInterface|null</a><br/><span class="indent">The logger instance.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="generateItems">
+              <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/generateItems.xhtml">generateItems()</a>
+            </li>
+            <li id="getTagVersions">
+              <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/getTagVersions.xhtml">getTagVersions()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="__destruct">
+              <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/__destruct.xhtml">__destruct()</a>
+            </li>
+            <li id="__sleep">
+              <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/__sleep.xhtml">__sleep()</a>
+            </li>
+            <li id="__wakeup">
+              <a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/__wakeup.xhtml">__wakeup()</a>
+            </li>
+            <li id="clear"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/clear.xhtml">clear()</a>
+                — {@inheritdoc}</li>
+            <li id="commit"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/commit.xhtml">commit()</a>
+                — {@inheritdoc}</li>
+            <li id="deleteItem"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/deleteItem.xhtml">deleteItem()</a>
+                — {@inheritdoc}</li>
+            <li id="deleteItems"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/deleteItems.xhtml">deleteItems()</a>
+                — {@inheritdoc}</li>
+            <li id="getItem"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/getItem.xhtml">getItem()</a>
+                — {@inheritdoc}</li>
+            <li id="getItems"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/getItems.xhtml">getItems()</a>
+                — {@inheritdoc}</li>
+            <li id="hasItem"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/hasItem.xhtml">hasItem()</a>
+                — {@inheritdoc}</li>
+            <li id="invalidateTags"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/invalidateTags.xhtml">invalidateTags()</a>
+                — {@inheritdoc}</li>
+            <li id="save"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/save.xhtml">save()</a>
+                — {@inheritdoc}</li>
+            <li id="saveDeferred"><a title="Symfony\Component\Cache\Adapter\TagAwareAdapter" href="../classes/Symfony_Component_Cache_Adapter_TagAwareAdapter/saveDeferred.xhtml">saveDeferred()</a>
+                — {@inheritdoc}</li>
+          </ul>
+          <h3>Inherited from <a title="Symfony\Component\Cache\Traits\ContractsTrait" href="../traits/Symfony_Component_Cache_Traits_ContractsTrait.xhtml">Symfony\Component\Cache\Traits\ContractsTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="setCallbackWrapper"><a title="Symfony\Component\Cache\Traits\ContractsTrait" href="../traits/Symfony_Component_Cache_Traits_ContractsTrait/setCallbackWrapper.xhtml">setCallbackWrapper()</a>
+                — Wraps the callback passed to -&gt;get() in a callable.</li>
+          </ul>
+          <h3>Inherited from <a title="Psr\Log\LoggerAwareTrait" href="../traits/Psr_Log_LoggerAwareTrait.xhtml">Psr\Log\LoggerAwareTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="setLogger"><a title="Psr\Log\LoggerAwareTrait" href="../traits/Psr_Log_LoggerAwareTrait/setLogger.xhtml">setLogger()</a>
+                — Sets a logger.</li>
+          </ul>
+          <h3>Inherited from <a title="Symfony\Component\Cache\Traits\ProxyTrait" href="../traits/Symfony_Component_Cache_Traits_ProxyTrait.xhtml">Symfony\Component\Cache\Traits\ProxyTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="prune"><a title="Symfony\Component\Cache\Traits\ProxyTrait" href="../traits/Symfony_Component_Cache_Traits_ProxyTrait/prune.xhtml">prune()</a>
+                — {@inheritdoc}</li>
+            <li id="reset"><a title="Symfony\Component\Cache\Traits\ProxyTrait" href="../traits/Symfony_Component_Cache_Traits_ProxyTrait/reset.xhtml">reset()</a>
+                — {@inheritdoc}</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

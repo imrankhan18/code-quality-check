@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Psr\SimpleCache\CacheInterface" namespace="Psr\SimpleCache" name="CacheInterface" abstract="false" final="false" start="5" end="114">
+  <file path="//var/www/html/vendor/psr/simple-cache/src" file="CacheInterface.php" realpath="/var/www/html/vendor/psr/simple-cache/src/CacheInterface.php" size="4608" time="2017-10-23T01:57:42+00:00" unixtime="1508723862" sha1="1e8259eda2a2bcb5b68335666f5531995137bb6d" relative="ar/www/html/vendor/psr/simple-cache/src/CacheInterface.php"/>
+  <method name="get" start="18" end="18" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetches a value from the cache."/>
+      <param description="The unique key of this item in the cache." type="string" variable="$key"/>
+      <param description="Default value to return if the key does not exist." type="mixed" variable="$default"/>
+      <return description="The value of the item from the cache, or $default in case of cache miss." type="mixed"/>
+      <throws type="object">MUST be thrown if the $key string is not a legal value.<type full="\Psr\SimpleCache\InvalidArgumentException" namespace="\Psr\SimpleCache" name="InvalidArgumentException"/></throws>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+    <parameter name="default" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="set" start="34" end="34" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time."/>
+      <param description="The key of the item to store." type="string" variable="$key"/>
+      <param description="The value of the item to store, must be serializable." type="mixed" variable="$value"/>
+      <param description="Optional. The TTL value of this item. If no value is sent and" type="object" variable="$ttl">the driver supports TTL then the library may set a default value
+                                     for it or let the driver take care of that.<type full="Psr\SimpleCache\null|int|\DateInterval" namespace="Psr\SimpleCache\null|int|" name="DateInterval"/></param>
+      <return description="True on success and false on failure." type="object">
+        <type full="Psr\SimpleCache\bool" namespace="Psr\SimpleCache" name="bool"/>
+      </return>
+      <throws type="object">MUST be thrown if the $key string is not a legal value.<type full="\Psr\SimpleCache\InvalidArgumentException" namespace="\Psr\SimpleCache" name="InvalidArgumentException"/></throws>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="ttl" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="delete" start="46" end="46" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete an item from the cache by its unique key."/>
+      <param description="The unique cache key of the item to delete." type="string" variable="$key"/>
+      <return description="True if the item was successfully removed. False if there was an error." type="object">
+        <type full="Psr\SimpleCache\bool" namespace="Psr\SimpleCache" name="bool"/>
+      </return>
+      <throws type="object">MUST be thrown if the $key string is not a legal value.<type full="\Psr\SimpleCache\InvalidArgumentException" namespace="\Psr\SimpleCache" name="InvalidArgumentException"/></throws>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="clear" start="53" end="53" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Wipes clean the entire cache's keys."/>
+      <return description="True on success and false on failure." type="object">
+        <type full="Psr\SimpleCache\bool" namespace="Psr\SimpleCache" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getMultiple" start="67" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Obtains multiple cache items by their unique keys."/>
+      <param description="A list of keys that can obtained in a single operation." type="object" variable="$keys">
+        <type full="Psr\SimpleCache\iterable" namespace="Psr\SimpleCache" name="iterable"/>
+      </param>
+      <param description="Default value to return for keys that do not exist." type="mixed" variable="$default"/>
+      <return description="A list of key =&gt; value pairs. Cache keys that do not exist or are stale will have $default as value." type="object">
+        <type full="Psr\SimpleCache\iterable" namespace="Psr\SimpleCache" name="iterable"/>
+      </return>
+      <throws type="object">MUST be thrown if $keys is neither an array nor a Traversable,
+  or if any of the $keys are not a legal value.<type full="\Psr\SimpleCache\InvalidArgumentException" namespace="\Psr\SimpleCache" name="InvalidArgumentException"/></throws>
+    </docblock>
+    <parameter name="keys" byreference="false" type="{unknown}"/>
+    <parameter name="default" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="setMultiple" start="83" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Persists a set of key =&gt; value pairs in the cache, with an optional TTL."/>
+      <param description="A list of key =&gt; value pairs for a multiple-set operation." type="object" variable="$values">
+        <type full="Psr\SimpleCache\iterable" namespace="Psr\SimpleCache" name="iterable"/>
+      </param>
+      <param description="Optional. The TTL value of this item. If no value is sent and" type="object" variable="$ttl">the driver supports TTL then the library may set a default value
+                                      for it or let the driver take care of that.<type full="Psr\SimpleCache\null|int|\DateInterval" namespace="Psr\SimpleCache\null|int|" name="DateInterval"/></param>
+      <return description="True on success and false on failure." type="object">
+        <type full="Psr\SimpleCache\bool" namespace="Psr\SimpleCache" name="bool"/>
+      </return>
+      <throws type="object">MUST be thrown if $values is neither an array nor a Traversable,
+  or if any of the $values are not a legal value.<type full="\Psr\SimpleCache\InvalidArgumentException" namespace="\Psr\SimpleCache" name="InvalidArgumentException"/></throws>
+    </docblock>
+    <parameter name="values" byreference="false" type="{unknown}"/>
+    <parameter name="ttl" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="deleteMultiple" start="96" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deletes multiple cache items in a single operation."/>
+      <param description="A list of string-based keys to be deleted." type="object" variable="$keys">
+        <type full="Psr\SimpleCache\iterable" namespace="Psr\SimpleCache" name="iterable"/>
+      </param>
+      <return description="True if the items were successfully removed. False if there was an error." type="object">
+        <type full="Psr\SimpleCache\bool" namespace="Psr\SimpleCache" name="bool"/>
+      </return>
+      <throws type="object">MUST be thrown if $keys is neither an array nor a Traversable,
+  or if any of the $keys are not a legal value.<type full="\Psr\SimpleCache\InvalidArgumentException" namespace="\Psr\SimpleCache" name="InvalidArgumentException"/></throws>
+    </docblock>
+    <parameter name="keys" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="has" start="113" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determines whether an item is present in the cache.">NOTE: It is recommended that has() is only to be used for cache warming type purposes
+and not to be used within your live applications operations for get/set, as this method
+is subject to a race condition where your has() will return true and immediately after,
+another script can remove it making the state of your app out of date.</description>
+      <param description="The cache item key." type="string" variable="$key"/>
+      <return type="object">
+        <type full="Psr\SimpleCache\bool" namespace="Psr\SimpleCache" name="bool"/>
+      </return>
+      <throws type="object">MUST be thrown if the $key string is not a legal value.<type full="\Psr\SimpleCache\InvalidArgumentException" namespace="\Psr\SimpleCache" name="InvalidArgumentException"/></throws>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+  </method>
+  <implementors>
+    <class full="Symfony\Component\Cache\Psr16Cache" namespace="Symfony\Component\Cache" name="Psr16Cache"/>
+  </implementors>
+</interface>

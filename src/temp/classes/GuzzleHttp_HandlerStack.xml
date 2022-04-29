@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\HandlerStack" namespace="GuzzleHttp" name="HandlerStack" abstract="false" final="false" start="15" end="275">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="HandlerStack.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/HandlerStack.php" size="8724" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="a2ea7adf581db39f309e72750d6cec5a321281a3" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/HandlerStack.php"/>
+  <docblock>
+    <description compact="Creates a composed Guzzle handler function by stacking middlewares on top of an HTTP handler function."/>
+    <final/>
+  </docblock>
+  <member name="handler" visibility="private" static="false" line="20">
+    <docblock>
+      <description/>
+      <var description="array): PromiseInterface)|null" type="object">
+        <type full="GuzzleHttp\(callable(RequestInterface" namespace="GuzzleHttp" name="(callable(RequestInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="stack" default="" type="array" visibility="private" static="false" line="25">
+    <docblock>
+      <description/>
+      <var description="array): PromiseInterface): callable), (string|null)}[]" type="object">
+        <type full="GuzzleHttp\array{(callable(callable(RequestInterface" namespace="GuzzleHttp" name="array{(callable(callable(RequestInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="cached" visibility="private" static="false" line="30">
+    <docblock>
+      <description/>
+      <var description="array): PromiseInterface)|null" type="object">
+        <type full="GuzzleHttp\(callable(RequestInterface" namespace="GuzzleHttp" name="(callable(RequestInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="create" start="47" end="56" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates a default handler stack that can be used by clients.">The returned handler will wrap the provided handler or use the most
+appropriate default handler for your system. The returned HandlerStack has
+support for cookies, redirects, HTTP error exceptions, and preparing a body
+before sending.
+
+The returned handler stack can be passed to a client in the "handler"
+option.</description>
+      <param description="array): PromiseInterface)|null $handler HTTP handler function to use with the stack. If no" type="object">handler is provided, the best handler for your
+                                                                           system will be utilized.<type full="GuzzleHttp\(callable(RequestInterface" namespace="GuzzleHttp" name="(callable(RequestInterface"/></param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\HandlerStack" namespace="GuzzleHttp" name="HandlerStack"/>
+    </return>
+    <parameter name="handler" byreference="false" nullable="true" type="callable" default="NULL"/>
+  </method>
+  <constructor name="__construct" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="array): PromiseInterface)|null $handler Underlying HTTP handler." type="object">
+        <type full="GuzzleHttp\(callable(RequestInterface" namespace="GuzzleHttp" name="(callable(RequestInterface"/>
+      </param>
+    </docblock>
+    <parameter name="handler" byreference="false" type="callable" default="NULL"/>
+  </constructor>
+  <method name="__invoke" start="71" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Invokes the handler stack as a composed handler"/>
+      <return type="object">
+        <type full="GuzzleHttp\ResponseInterface|PromiseInterface" namespace="GuzzleHttp" name="ResponseInterface|PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="83" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Dumps a string representation of the stack."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setHandler" start="114" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the HTTP handler that actually returns a promise."/>
+      <param description="array): PromiseInterface $handler Accepts a request and array of options and" type="object">returns a Promise.<type full="GuzzleHttp\callable(RequestInterface" namespace="GuzzleHttp" name="callable(RequestInterface"/></param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="handler" byreference="false" type="callable"/>
+  </method>
+  <method name="hasHandler" start="123" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns true if the builder has a handler."/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="unshift" start="134" end="138" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Unshift a middleware to the bottom of the stack."/>
+      <param description="callable $middleware Middleware function" type="object">
+        <type full="GuzzleHttp\callable(callable):" namespace="GuzzleHttp" name="callable(callable):"/>
+      </param>
+      <param description="Name to register for this middleware." type="string" variable="$name"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="middleware" byreference="false" type="callable"/>
+    <parameter name="name" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="push" start="146" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Push a middleware to the top of the stack."/>
+      <param description="callable $middleware Middleware function" type="object">
+        <type full="GuzzleHttp\callable(callable):" namespace="GuzzleHttp" name="callable(callable):"/>
+      </param>
+      <param description="Name to register for this middleware." type="string" variable="$name"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="middleware" byreference="false" type="callable"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="before" start="159" end="162" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a middleware before another middleware by name."/>
+      <param description="Middleware to find" type="string" variable="$findName"/>
+      <param description="callable $middleware Middleware function" type="object">
+        <type full="GuzzleHttp\callable(callable):" namespace="GuzzleHttp" name="callable(callable):"/>
+      </param>
+      <param description="Name to register for this middleware." type="string" variable="$withName"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="findName" byreference="false" type="string"/>
+    <parameter name="middleware" byreference="false" type="callable"/>
+    <parameter name="withName" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="after" start="171" end="174" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a middleware after another middleware by name."/>
+      <param description="Middleware to find" type="string" variable="$findName"/>
+      <param description="callable $middleware Middleware function" type="object">
+        <type full="GuzzleHttp\callable(callable):" namespace="GuzzleHttp" name="callable(callable):"/>
+      </param>
+      <param description="Name to register for this middleware." type="string" variable="$withName"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="findName" byreference="false" type="string"/>
+    <parameter name="middleware" byreference="false" type="callable"/>
+    <parameter name="withName" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="remove" start="181" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove a middleware by instance or name from the stack."/>
+      <param description="Middleware to remove by instance or name." type="object" variable="$remove">
+        <type full="GuzzleHttp\callable|string" namespace="GuzzleHttp" name="callable|string"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="remove" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="resolve" start="202" end="218" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Compose the middleware and handler into a single callable function."/>
+      <return description="array): PromiseInterface" type="object">
+        <type full="GuzzleHttp\callable(RequestInterface" namespace="GuzzleHttp" name="callable(RequestInterface"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+  </method>
+  <method name="findByName" start="220" end="229" abstract="false" final="false" static="false" visibility="private">
+    <return type="int" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="splice" start="234" end="253" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Splices a function into the middleware list at a specific position."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="findName" byreference="false" type="string"/>
+    <parameter name="withName" byreference="false" type="string"/>
+    <parameter name="middleware" byreference="false" type="callable"/>
+    <parameter name="before" byreference="false" type="bool"/>
+  </method>
+  <method name="debugCallable" start="260" end="274" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Provides a debug string for a given callable."/>
+      <param description="Function to write as a string." type="object" variable="$fn">
+        <type full="GuzzleHttp\callable|string" namespace="GuzzleHttp" name="callable|string"/>
+      </param>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="fn" byreference="false" type="{unknown}"/>
+  </method>
+</class>

@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Registry" namespace="" name="PEAR_Registry" abstract="false" final="false" start="43" end="2388">
+  <file path="//usr/local/lib/php/PEAR" file="Registry.php" realpath="/usr/local/lib/php/PEAR/Registry.php" size="75736" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="c5b50fc46e46baa3d7c52b82fec1f89fb6d06caa" relative="sr/local/lib/php/PEAR/Registry.php"/>
+  <docblock>
+    <description compact="Administration class used to maintain the installed package database."/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Stig Bakken &lt;ssb@php.net&gt;"/>
+    <author value="Tomas V. V. Cox &lt;cox@idecnet.com&gt;"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <extends full="PEAR" namespace="" name="PEAR"/>
+  <member name="channels" default="''" type="string" visibility="public" static="false" line="49">
+    <docblock>
+      <description compact="File containing all channel information."/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="statedir" default="''" type="string" visibility="public" static="false" line="54">
+    <docblock>
+      <description compact="Directory where registry files are stored."/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="filemap" default="''" type="string" visibility="public" static="false" line="59">
+    <docblock>
+      <description compact="File where the file map is stored"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="channelsdir" default="''" type="string" visibility="public" static="false" line="64">
+    <docblock>
+      <description compact="Directory where registry files for channels are stored."/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="lockfile" default="''" type="string" visibility="public" static="false" line="69">
+    <docblock>
+      <description compact="Name of file used for locking the registry"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="lock_fp" default="NULL" visibility="public" static="false" line="74">
+    <docblock>
+      <description compact="File descriptor used during locking"/>
+      <var type="resource"/>
+    </docblock>
+  </member>
+  <member name="lock_mode" default="0" type="integer" visibility="public" static="false" line="79">
+    <docblock>
+      <description compact="Mode used during locking"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="pkginfo_cache" default="" type="array" visibility="public" static="false" line="87">
+    <docblock>
+      <description compact="Cache of package information.  Structure: array(   'package' =&gt; array('id' =&gt; ... ),   ... )"/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="filemap_cache" default="" type="array" visibility="public" static="false" line="93">
+    <docblock>
+      <description compact="Cache of file map.  Structure: array( '/path/to/file' =&gt; 'package', ... )"/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_pearChannel" visibility="public" static="false" line="98">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="false|PEAR_ChannelFile" namespace="" name="false|PEAR_ChannelFile"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_peclChannel" visibility="public" static="false" line="103">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="false|PEAR_ChannelFile" namespace="" name="false|PEAR_ChannelFile"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_docChannel" visibility="public" static="false" line="108">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="false|PEAR_ChannelFile" namespace="" name="false|PEAR_ChannelFile"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_dependencyDB" visibility="public" static="false" line="113">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_DependencyDB" namespace="" name="PEAR_DependencyDB"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_config" visibility="public" static="false" line="118">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="133" end="141" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="PEAR_Registry constructor."/>
+      <param description="(optional) PEAR install directory (for .php files)" type="string"/>
+      <param description="PEAR_ChannelFile object representing the PEAR channel, if" type="object">default values are not desired.  Only used the very first time a PEAR
+       repository is initialized<type full="PEAR_ChannelFile" namespace="" name="PEAR_ChannelFile"/></param>
+      <param description="PEAR_ChannelFile object representing the PECL channel, if" type="object">default values are not desired.  Only used the very first time a PEAR
+       repository is initialized<type full="PEAR_ChannelFile" namespace="" name="PEAR_ChannelFile"/></param>
+      <access value="public"/>
+    </docblock>
+    <parameter name="pear_install_dir" byreference="false" type="{unknown}" default="" constant="PEAR_INSTALL_DIR"/>
+    <parameter name="pear_channel" byreference="false" type="boolean" default="false"/>
+    <parameter name="pecl_channel" byreference="false" type="boolean" default="false"/>
+    <parameter name="pear_metadata_dir" byreference="false" type="string" default="''"/>
+  </constructor>
+  <method name="setInstallDir" start="143" end="154" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="pear_install_dir" byreference="false" type="{unknown}" default="" constant="PEAR_INSTALL_DIR"/>
+    <parameter name="pear_metadata_dir" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="hasWriteAccess" start="156" end="180" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setConfig" start="182" end="188" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="config" byreference="true" type="{unknown}"/>
+    <parameter name="resetInstallDir" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="_initializeChannelDirs" start="190" end="291" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_initializeDirs" start="293" end="314" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="XXX Compatibility code should be removed in the future" line="296"/>
+      <comment value="rename all registry files if any to lowercase" line="297"/>
+    </inline>
+  </method>
+  <method name="_initializeDepDB" start="316" end="350" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_PEAR_Registry" start="357" end="363" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="PEAR_Registry destructor.  Makes sure no locks are forgotten."/>
+      <access value="private"/>
+    </docblock>
+  </method>
+  <method name="_assertStateDir" start="373" end="421" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Make sure the directory where we keep registry files exists."/>
+      <return description="TRUE if directory exists, FALSE if it could not be" type="object">created<type full="bool" namespace="" name="bool"/></return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_assertChannelStateDir" start="432" end="464" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Make sure the directory where we keep registry files exists for a non-standard channel."/>
+      <param description="channel name" type="string"/>
+      <return description="TRUE if directory exists, FALSE if it could not be" type="object">created<type full="bool" namespace="" name="bool"/></return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_assertChannelDir" start="474" end="505" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Make sure the directory where we keep registry files for channels exists"/>
+      <return description="TRUE if directory exists, FALSE if it could not be" type="object">created<type full="bool" namespace="" name="bool"/></return>
+      <access value="private"/>
+    </docblock>
+  </method>
+  <method name="_packageFileName" start="517" end="525" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the name of the file where data for a given package is stored."/>
+      <param description="channel name, or false if this is a PEAR package" type="string"/>
+      <param description="package name" type="string"/>
+      <return description="registry file name" type="string"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_channelFileName" start="532" end="541" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the name of the file where data for a given channel is stored."/>
+      <param description="channel name" type="string"/>
+      <return description="registry file name" type="string"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="noaliases" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_getChannelAliasFileName" start="547" end="551" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="alias" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_getChannelFromAlias" start="556" end="585" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the name of a channel from its alias"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_getAlias" start="590" end="614" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the alias of a channel from its alias or its name"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_channelDirectoryName" start="626" end="639" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the name of the file where data for a given package is stored."/>
+      <param description="channel name, or false if this is a PEAR package" type="string"/>
+      <param description="package name" type="string"/>
+      <return description="registry file name" type="string"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_openPackageFile" start="641" end="662" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="mode" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_closePackageFile" start="664" end="667" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="fp" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_openChannelFile" start="669" end="690" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="mode" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_closeChannelFile" start="692" end="695" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="fp" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_rebuildFileMap" start="697" end="773" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_readFileMap" start="775" end="797" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_lock" start="811" end="865" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Lock the registry."/>
+      <param description="lock mode, one of LOCK_EX, LOCK_SH or LOCK_UN." type="integer">See flock manual for more information.</param>
+      <return description="TRUE on success, FALSE if locking failed, or a" type="object">PEAR error if some other error occurs (such as the
+             lock file not being writable).<type full="bool" namespace="" name="bool"/></return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="mode" byreference="false" type="{unknown}" default="" constant="LOCK_EX"/>
+    <inline>
+      <comment value="XXX People reported problems with LOCK_SH and 'w'" line="831"/>
+    </inline>
+  </method>
+  <method name="_unlock" start="867" end="876" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_packageExists" start="878" end="881" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_channelExists" start="890" end="906" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determine whether a channel exists in the registry"/>
+      <param description="Channel name" type="string"/>
+      <param description="if true, then aliases will be ignored" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="noaliases" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_mirrorExists" start="916" end="930" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determine whether a mirror exists within the default channel in the registry"/>
+      <param description="Channel name" type="string"/>
+      <param description="Mirror name" type="string"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="mirror" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_addChannel" start="938" end="1017" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Channel object" type="object">
+        <type full="PEAR_ChannelFile" namespace="" name="PEAR_ChannelFile"/>
+      </param>
+      <param type="object">
+        <type full="donotuse" namespace="" name="donotuse"/>
+      </param>
+      <param description="Last-Modified HTTP tag from remote request" type="string"/>
+      <return description="True on creation, false if it already exists" type="object">
+        <type full="boolean|PEAR_Error" namespace="" name="boolean|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="update" byreference="false" type="boolean" default="false"/>
+    <parameter name="lastmodified" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_deleteChannel" start="1024" end="1087" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deletion fails if there are any packages installed from the channel"/>
+      <param description="channel name" type="object">
+        <type full="string|PEAR_ChannelFile" namespace="" name="string|PEAR_ChannelFile"/>
+      </param>
+      <return description="True on deletion, false if it doesn't exist" type="object">
+        <type full="boolean|PEAR_Error" namespace="" name="boolean|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_isChannelAlias" start="1094" end="1097" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determine whether a channel exists in the registry"/>
+      <param description="Channel Alias" type="string"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="alias" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_packageInfo" start="1106" end="1156" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <param type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <param type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <return type="object">
+        <type full="array|null" namespace="" name="array|null"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="key" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="channel" byreference="false" type="string" default="'pear.php.net'"/>
+    <inline>
+      <comment value="compatibility for package.xml version 2.0" line="1146"/>
+    </inline>
+  </method>
+  <method name="_channelInfo" start="1163" end="1179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Channel name" type="string"/>
+      <param description="whether to strictly retrieve info of channels, not just aliases" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="array|null" namespace="" name="array|null"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="noaliases" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_listChannels" start="1181" end="1222" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_listPackages" start="1224" end="1249" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_listChannelPackages" start="1251" end="1273" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_listAllPackages" start="1275" end="1283" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_addPackage" start="1292" end="1311" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add an installed package to the registry"/>
+      <param description="package name" type="string"/>
+      <param description="package info (parsed by PEAR_Common::infoFrom*() methods)" type="array"/>
+      <return description="success of saving" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_addPackage2" start="1318" end="1362" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </param>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_updatePackage" start="1370" end="1401" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Package name" type="string"/>
+      <param description="parsed package.xml 1.0" type="array"/>
+      <param description="this parameter is only here for BC.  Don't use it." type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <access value="private"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+    <parameter name="merge" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="_updatePackage2" start="1408" end="1426" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </param>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_getPackage" start="1434" end="1454" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Package name" type="string"/>
+      <param description="Channel name" type="string"/>
+      <return type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2|null" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2|null"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="string" default="'pear.php.net'"/>
+  </method>
+  <method name="_getChannel" start="1462" end="1555" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="channel name" type="string"/>
+      <param description="whether to strictly retrieve channel names" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="PEAR_ChannelFile|PEAR_Error" namespace="" name="PEAR_ChannelFile|PEAR_Error"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="noaliases" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="packageExists" start="1562" end="1570" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Package name" type="string"/>
+      <param description="Channel name" type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="string" default="'pear.php.net'"/>
+  </method>
+  <method name="channelExists" start="1581" end="1589" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="channel name" type="string"/>
+      <param description="if true, then aliases will be ignored" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="noaliases" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="mirrorExists" start="1599" end="1608" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="channel name mirror is in" type="string"/>
+      <param description="mirror name" type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="mirror" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="isAlias" start="1617" end="1625" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determines whether the parameter is an alias of a channel"/>
+      <param type="string"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="alias" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="packageInfo" start="1636" end="1644" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <param type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </param>
+      <param type="string"/>
+      <return type="object">
+        <type full="array|null" namespace="" name="array|null"/>
+      </return>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="key" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="channel" byreference="false" type="string" default="'pear.php.net'"/>
+  </method>
+  <method name="channelInfo" start="1658" end="1666" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a raw array of channel data.">Do not use this, instead use <link xmlns="http://xml.phpdox.net/src" value="getChannel()"/> for normal
+operations.  Array structure is undefined in this method
+</description>
+      <param description="channel name" type="string"/>
+      <param description="whether to strictly retrieve information only on non-aliases" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="array|null|PEAR_Error" namespace="" name="array|null|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="noaliases" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="channelName" start="1673" end="1681" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="channelAlias" start="1686" end="1694" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="listPackages" start="1697" end="1705" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="listAllPackages" start="1710" end="1718" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="listChannels" start="1723" end="1731" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="addPackage" start="1743" end="1764" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add an installed package to the registry"/>
+      <param description="package name or object" type="object">that will be passed to <link xmlns="http://xml.phpdox.net/src" value="addPackage2()"/><type full="string|PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="string|PEAR_PackageFile_v1|PEAR_PackageFile_v2"/></param>
+      <param description="package info (parsed by PEAR_Common::infoFrom*() methods)" type="array"/>
+      <return description="success of saving" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addPackage2" start="1769" end="1784" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="info" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="updateChannel" start="1793" end="1799" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="For future expandibility purposes, separate this"/>
+      <param type="object">
+        <type full="PEAR_ChannelFile" namespace="" name="PEAR_ChannelFile"/>
+      </param>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="lastmodified" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="deleteChannel" start="1809" end="1822" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deletion fails if there are any packages installed from the channel"/>
+      <param description="channel name" type="object">
+        <type full="string|PEAR_ChannelFile" namespace="" name="string|PEAR_ChannelFile"/>
+      </param>
+      <return description="True on deletion, false if it doesn't exist" type="object">
+        <type full="boolean|PEAR_Error" namespace="" name="boolean|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addChannel" start="1832" end="1849" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Channel object" type="object">
+        <type full="PEAR_ChannelFile" namespace="" name="PEAR_ChannelFile"/>
+      </param>
+      <param description="Last-Modified header from HTTP for caching" type="string"/>
+      <return description="True on creation, false if it already exists" type="object">
+        <type full="boolean|PEAR_Error" namespace="" name="boolean|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="lastmodified" byreference="false" type="boolean" default="false"/>
+    <parameter name="update" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="deletePackage" start="1854" end="1867" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="string" default="'pear.php.net'"/>
+  </method>
+  <method name="updatePackage" start="1872" end="1893" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+    <parameter name="merge" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="updatePackage2" start="1898" end="1921" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="info" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getChannel" start="1930" end="1941" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="channel name" type="string"/>
+      <param description="whether to strictly return raw channels (no aliases)" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="PEAR_ChannelFile|PEAR_Error" namespace="" name="PEAR_ChannelFile|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="noaliases" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getPackage" start="1950" end="1958" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="package name" type="string"/>
+      <param description="channel name" type="string"/>
+      <return type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2|null" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2|null"/>
+      </return>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="string" default="'pear.php.net'"/>
+  </method>
+  <method name="getInstalledGroup" start="1970" end="2003" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get PEAR_PackageFile_v[1/2] objects representing the contents of a dependency group that are installed.">This is used at uninstall-time</description>
+      <param type="array"/>
+      <return type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </return>
+    </docblock>
+    <parameter name="group" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getChannelValidator" start="2010" end="2018" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="channel name" type="string"/>
+      <return type="object">
+        <type full="PEAR_Validate|false" namespace="" name="PEAR_Validate|false"/>
+      </return>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getChannels" start="2025" end="2040" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="channel name" type="string"/>
+      <return description="an array of PEAR_ChannelFile objects representing every installed channel" type="array"/>
+    </docblock>
+  </method>
+  <method name="checkFileMap" start="2059" end="2125" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test whether a file or set of files belongs to a package.">If an array is passed in</description>
+      <param description="file path, absolute or relative to the pear" type="object">install dir<type full="string|array" namespace="" name="string|array"/></param>
+      <param description="name of PEAR package or array('package' =&gt; name, 'channel' =&gt;" type="object">channel) of a package that will be ignored<type full="string|array" namespace="" name="string|array"/></param>
+      <param description="API version - 1.1 will exclude any files belonging to a package" type="string"/>
+      <param description="private recursion variable" type="array"/>
+      <return description="which package and channel the file belongs to, or an empty" type="object">string if the file does not belong to an installed package,
+                    or belongs to the second parameter's package<type full="array|false" namespace="" name="array|false"/></return>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+    <parameter name="package" byreference="false" type="boolean" default="false"/>
+    <parameter name="api" byreference="false" type="string" default="'1.0'"/>
+    <parameter name="attrs" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="flushFileMap" start="2133" end="2137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Force a reload of the filemap"/>
+      <since value="1.5.0RC3"/>
+    </docblock>
+    <inline>
+      <comment value="ensure that the next read gets the full, current filemap" line="2136"/>
+    </inline>
+  </method>
+  <method name="apiVersion" start="2146" end="2149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the expected API version.  Channels API is version 1.1, as it is backwards compatible with 1.0"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="parsePackageName" start="2166" end="2332" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Parse a package name, or validate a parsed package name array"/>
+      <param description="pass in an array of format" type="object">array(
+                     'package' =&gt; 'pname',
+                    ['channel' =&gt; 'channame',]
+                    ['version' =&gt; 'version',]
+                    ['state' =&gt; 'state',]
+                    ['group' =&gt; 'groupname'])
+                    or a string of format
+                    [channel://][channame/]pname[-version|-state][/group=groupname]<type full="string|array" namespace="" name="string|array"/></param>
+      <return type="object">
+        <type full="array|PEAR_Error" namespace="" name="array|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="param" byreference="false" type="{unknown}"/>
+    <parameter name="defaultchannel" byreference="false" type="string" default="'pear.php.net'"/>
+    <inline>
+      <comment value="validation" line="2272"/>
+      <comment value="validate package name" line="2293"/>
+    </inline>
+  </method>
+  <method name="parsedPackageNameToString" start="2338" end="2387" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="parsed" byreference="false" type="{unknown}"/>
+    <parameter name="brief" byreference="false" type="boolean" default="false"/>
+  </method>
+  <parent full="PEAR" namespace="" name="PEAR">
+    <member name="_debug" default="false" type="boolean" visibility="public" static="false" line="92">
+      <docblock>
+        <description compact="Whether to enable internal debug messages."/>
+        <var type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </var>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_mode" default="NULL" visibility="public" static="false" line="100">
+      <docblock>
+        <description compact="Default error mode for this object."/>
+        <var type="int"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_options" default="NULL" visibility="public" static="false" line="109">
+      <docblock>
+        <description compact="Default error options used for this object when error mode is PEAR_ERROR_TRIGGER."/>
+        <var type="int"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_handler" default="''" type="string" visibility="public" static="false" line="118">
+      <docblock>
+        <description compact="Default error handler (callback) for this object, if error mode is PEAR_ERROR_CALLBACK."/>
+        <var type="string"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_error_class" default="'PEAR_Error'" type="string" visibility="public" static="false" line="126">
+      <docblock>
+        <description compact="Which class to use for error objects."/>
+        <var type="string"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_expected_errors" default="" type="array" visibility="public" static="false" line="134">
+      <docblock>
+        <description compact="An array of expected errors."/>
+        <var type="array"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="bivalentMethods" default="" type="array" visibility="protected" static="true" line="140">
+      <docblock>
+        <description compact="List of methods that can be called both statically and non-statically."/>
+        <var type="array"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="158" end="183" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Constructor.  Registers this object in $_PEAR_destructor_object_list for destructor emulation if a destructor object exists."/>
+        <param description="(optional) which class to use for" type="string" variable="$error_class">error objects, defaults to PEAR_Error.</param>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+    </constructor>
+    <method name="PEAR" start="192" end="195" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Only here for backwards compatibility.">E.g. Archive_Tar calls $this-&gt;PEAR() in its constructor.</description>
+        <param description="Which class to use for error objects," type="string" variable="$error_class">defaults to PEAR_Error.</param>
+      </docblock>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_PEAR" start="208" end="212" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Destructor (the emulated type of...).  Does nothing right now, but is included for forward compatibility, so subclass destructors should always call it.">See the note in the class desciption about output from
+destructors.</description>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="__call" start="214" end="225" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="method" byreference="false" type="{unknown}"/>
+      <parameter name="arguments" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__callStatic" start="227" end="238" abstract="false" final="false" static="true" visibility="public">
+      <parameter name="method" byreference="false" type="{unknown}"/>
+      <parameter name="arguments" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getStaticProperty" start="251" end="263" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="If you have a class that's mostly/entirely static, and you need static properties, you can use this method to simulate them. Eg. in your method(s) do this: $myVar = &amp;PEAR::getStaticProperty('myclass', 'myVar'); You MUST use a reference, or they will not persist!"/>
+        <param description="The calling classname, to prevent clashes" type="string" variable="$class"/>
+        <param description="The variable to retrieve." type="string" variable="$var"/>
+        <return description="A reference to the variable. If not set it will be" type="mixed">auto initialised to NULL.</return>
+      </docblock>
+      <parameter name="class" byreference="false" type="{unknown}"/>
+      <parameter name="var" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="registerShutdownFunc" start="274" end="283" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Use this function to register a shutdown method for static classes."/>
+        <param description="The function name (or array of class/method) to call" type="mixed" variable="$func"/>
+        <param description="The arguments to pass to the function" type="mixed" variable="$args"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="func" byreference="false" type="{unknown}"/>
+      <parameter name="args" byreference="false" type="array" default=""/>
+      <inline>
+        <comment value="if we are called statically, there is a potential" line="276"/>
+        <comment value="that no shutdown func is registered.  Bug #6445" line="277"/>
+      </inline>
+    </method>
+    <method name="isError" start="296" end="309" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Tell whether a value is a PEAR error."/>
+        <param description="the value to test" type="mixed" variable="$data"/>
+        <param description="if $data is an error object, return true" type="int" variable="$code">only if $code is a string and
+                       $obj-&gt;getMessage() == $code or
+                       $code is an integer and $obj-&gt;getCode() == $code</param>
+        <return description="true if parameter is an error" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_setErrorHandling" start="352" end="388" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Sets how errors generated by this object should be handled.">Can be invoked both in objects and statically.  If called
+statically, setErrorHandling sets the default behaviour for all
+PEAR objects.  If called in an object, setErrorHandling sets
+the default behaviour for that object.</description>
+        <param type="object" variable="$object">Object the method was called on (non-static mode)</param>
+        <param type="int" variable="$mode">One of PEAR_ERROR_RETURN, PEAR_ERROR_PRINT,
+       PEAR_ERROR_TRIGGER, PEAR_ERROR_DIE,
+       PEAR_ERROR_CALLBACK or PEAR_ERROR_EXCEPTION.</param>
+        <param type="mixed" variable="$options">When $mode is PEAR_ERROR_TRIGGER, this is the error level (one
+       of E_USER_NOTICE, E_USER_WARNING or E_USER_ERROR).
+
+       When $mode is PEAR_ERROR_CALLBACK, this parameter is expected
+       to be the callback function or method.  A callback
+       function is a string with the name of the function, a
+       callback method is an array of two elements: the element
+       at index 0 is the object, and the element at index 1 is
+       the name of the method to call in the object.
+
+       When $mode is PEAR_ERROR_PRINT or PEAR_ERROR_DIE, this is
+       a printf format string used when printing the error
+       message.</param>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+        <see value="PEAR_ERROR_RETURN"/>
+        <see value="PEAR_ERROR_PRINT"/>
+        <see value="PEAR_ERROR_TRIGGER"/>
+        <see value="PEAR_ERROR_DIE"/>
+        <see value="PEAR_ERROR_CALLBACK"/>
+        <see value="PEAR_ERROR_EXCEPTION"/>
+        <since value="PHP 4.0.5"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="expectError" start="405" end="413" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method is used to tell which errors you expect to get.">Expected errors are always returned with error mode
+PEAR_ERROR_RETURN.  Expected error codes are stored in a stack,
+and this method pushes a new element onto it.  The list of
+expected errors are in effect until they are popped off the
+stack with the popExpect() method.
+
+Note that this method can not be called statically</description>
+        <param description="a single error code or an array of error codes to expect" type="mixed" variable="$code"/>
+        <return description="the new depth of the &quot;expected errors&quot; stack" type="int"/>
+        <access value="public"/>
+      </docblock>
+      <parameter name="code" byreference="false" type="string" default="'*'"/>
+    </method>
+    <method name="popExpect" start="421" end="424" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method pops one element off the expected error codes stack."/>
+        <return description="the list of error codes that were popped" type="array"/>
+      </docblock>
+    </method>
+    <method name="_checkDelExpect" start="434" end="450" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method checks unsets an error code if available"/>
+        <param description="error code" type="mixed"/>
+        <return description="true if the error code was unset, false otherwise" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <access value="private"/>
+        <since value="PHP 4.3.0"/>
+      </docblock>
+      <parameter name="error_code" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="delExpect" start="461" end="483" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method deletes all occurrences of the specified element from the expected error codes stack."/>
+        <param description="error code that should be deleted" type="mixed" variable="$error_code"/>
+        <return description="list of error codes that were deleted or error" type="mixed"/>
+        <access value="public"/>
+        <since value="PHP 4.3.0"/>
+      </docblock>
+      <parameter name="error_code" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="$error_code is empty" line="481"/>
+        <comment value="IMPROVE ME" line="482"/>
+      </inline>
+    </method>
+    <method name="_raiseError" start="521" end="581" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="This method is a wrapper that returns an instance of the configured error class with this object's default error handling applied.  If the $mode and $options parameters are not specified, the object's defaults are used."/>
+        <param description="a text error message or a PEAR error object" type="mixed" variable="$message"/>
+        <param description="a numeric error code (it is up to your class" type="int" variable="$code">to define these if you want to use codes)</param>
+        <param description="One of PEAR_ERROR_RETURN, PEAR_ERROR_PRINT," type="int" variable="$mode">PEAR_ERROR_TRIGGER, PEAR_ERROR_DIE,
+                 PEAR_ERROR_CALLBACK, PEAR_ERROR_EXCEPTION.</param>
+        <param description="If $mode is PEAR_ERROR_TRIGGER, this parameter" type="mixed" variable="$options">specifies the PHP-internal error level (one of
+                 E_USER_NOTICE, E_USER_WARNING or E_USER_ERROR).
+                 If $mode is PEAR_ERROR_CALLBACK, this
+                 parameter specifies the callback function or
+                 method.  In other error modes this parameter
+                 is ignored.</param>
+        <param description="If you need to pass along for example debug" type="string" variable="$userinfo">information, this parameter is meant for that.</param>
+        <param description="The returned error object will be" type="string" variable="$error_class">instantiated from this class, if specified.</param>
+        <param description="If true, raiseError will only pass error codes," type="object" variable="$skipmsg">the error message parameter will be dropped.<type full="bool" namespace="" name="bool"/></param>
+        <return description="a PEAR error object" type="object"/>
+        <see value="PEAR::setErrorHandling"/>
+        <since value="PHP 4.0.5"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="skipmsg" byreference="false" type="boolean" default="false"/>
+      <inline>
+        <comment value="The error is yet a PEAR error object" line="530"/>
+        <comment value="No mode given, try global ones" line="553"/>
+      </inline>
+    </method>
+    <method name="_throwError" start="598" end="607" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Simpler form of raiseError with fewer options.  In most cases message, code and userinfo are enough."/>
+        <param description="a text error message or a PEAR error object" type="mixed" variable="$message"/>
+        <param description="a numeric error code (it is up to your class" type="int" variable="$code">to define these if you want to use codes)</param>
+        <param description="If you need to pass along for example debug" type="string" variable="$userinfo">information, this parameter is meant for that.</param>
+        <return description="a PEAR error object" type="object"/>
+        <see value="PEAR::raiseError"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="staticPushErrorHandling" start="609" end="642" abstract="false" final="false" static="true" visibility="public">
+      <parameter name="mode" byreference="false" type="{unknown}"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="staticPopErrorHandling" start="644" end="678" abstract="false" final="false" static="true" visibility="public"/>
+    <method name="_pushErrorHandling" start="692" end="711" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Push a new error handler on top of the error handler options stack. With this you can easily override the actual error handler for some code and restore it later with popErrorHandling."/>
+        <param description="(same as setErrorHandling)" type="mixed" variable="$mode"/>
+        <param description="(same as setErrorHandling)" type="mixed" variable="$options"/>
+        <return description="Always true" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <see value="PEAR::setErrorHandling"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="mode" byreference="false" type="{unknown}"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_popErrorHandling" start="720" end="732" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Pop the last error handler used"/>
+        <return description="Always true" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <see value="PEAR::pushErrorHandling"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="loadExtension" start="741" end="768" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="OS independent PHP extension load. Remember to take care on the correct extension name for case sensitive OSes."/>
+        <param description="The extension name" type="string" variable="$ext"/>
+        <return description="Success or not on the dl() call" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="ext" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="if either returns true dl() will produce a FATAL error, stop that" line="747"/>
+      </inline>
+    </method>
+    <method name="getSourceDateEpoch" start="777" end="790" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get SOURCE_DATE_EPOCH environment variable See https://reproducible-builds.org/specs/source-date-epoch/"/>
+        <return type="int"/>
+        <access value="public"/>
+      </docblock>
+    </method>
+  </parent>
+</class>

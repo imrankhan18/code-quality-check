@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\Operation\UpdateOperation" namespace="Composer\DependencyResolver\Operation" name="UpdateOperation" abstract="false" final="false" start="23" end="96">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Operation" file="UpdateOperation.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Operation/UpdateOperation.php" size="2986" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="bd2ab554c3aa4851a0604d25ddc3ccfbedd8982c" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Operation/UpdateOperation.php"/>
+  <docblock>
+    <description compact="Solver update operation."/>
+    <author value="Konstantin Kudryashov &lt;ever.zet@gmail.com&gt;"/>
+  </docblock>
+  <extends full="Composer\DependencyResolver\Operation\SolverOperation" namespace="Composer\DependencyResolver\Operation" name="SolverOperation"/>
+  <implements full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+  <constant type="string" name="TYPE" value="'update'"/>
+  <member name="initialPackage" visibility="protected" static="false" line="30">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="targetPackage" visibility="protected" static="false" line="35">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="41" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="initial package" type="object" variable="$initial">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="target package (updated)" type="object" variable="$target">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+    </docblock>
+    <parameter name="initial" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="target" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </constructor>
+  <method name="getInitialPackage" start="52" end="55" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns initial package."/>
+      <return type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </return>
+  </method>
+  <method name="getTargetPackage" start="62" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns target package."/>
+      <return type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </return>
+  </method>
+  <method name="show" start="70" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="lock" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="format" start="79" end="95" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$lock">
+        <type full="Composer\DependencyResolver\Operation\bool" namespace="Composer\DependencyResolver\Operation" name="bool"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="initialPackage" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="targetPackage" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="lock" byreference="false" type="boolean" default="false"/>
+  </method>
+  <parent full="Composer\DependencyResolver\Operation\SolverOperation" namespace="Composer\DependencyResolver\Operation" name="SolverOperation">
+    <implements full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface"/>
+    <constant type="{unknown}" name="TYPE" value="''">
+      <docblock>
+        <description/>
+        <abstract value="must be redefined by extending classes"/>
+      </docblock>
+    </constant>
+    <method name="getOperationType" start="32" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns operation type."/>
+        <return type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__toString" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+    </method>
+  </parent>
+  <interface full="Composer\DependencyResolver\Operation\OperationInterface" namespace="Composer\DependencyResolver\Operation" name="OperationInterface">
+    <method name="getOperationType" start="27" end="27" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns operation type."/>
+        <return type="string"/>
+      </docblock>
+    </method>
+    <method name="show" start="35" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Serializes the operation in a human readable format"/>
+        <param description="Whether this is an operation on the lock file" type="object" variable="$lock">
+          <type full="Composer\DependencyResolver\Operation\bool" namespace="Composer\DependencyResolver\Operation" name="bool"/>
+        </param>
+        <return type="string"/>
+      </docblock>
+      <parameter name="lock" byreference="false" type="bool"/>
+    </method>
+    <method name="__toString" start="42" end="42" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Serializes the operation in a human readable format"/>
+        <return type="string"/>
+      </docblock>
+    </method>
+  </interface>
+</class>

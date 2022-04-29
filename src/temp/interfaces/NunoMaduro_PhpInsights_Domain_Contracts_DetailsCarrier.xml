@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="NunoMaduro\PhpInsights\Domain\Contracts\DetailsCarrier" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="DetailsCarrier" abstract="false" final="false" start="12" end="15">
+  <file path="//var/www/html/vendor/nunomaduro/phpinsights/src/Domain/Contracts" file="DetailsCarrier.php" realpath="/var/www/html/vendor/nunomaduro/phpinsights/src/Domain/Contracts/DetailsCarrier.php" size="254" time="2022-03-21T20:51:37+00:00" unixtime="1647895897" sha1="dbf553523acfa8b59deb56bf699800bdf4e113ff" relative="ar/www/html/vendor/nunomaduro/phpinsights/src/Domain/Contracts/DetailsCarrier.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <extends full="NunoMaduro\PhpInsights\Domain\Contracts\HasDetails" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="HasDetails"/>
+  <method name="addDetails" start="14" end="14" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="details" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Details" namespace="NunoMaduro\PhpInsights\Domain" name="Details"/>
+    </parameter>
+  </method>
+  <parent full="NunoMaduro\PhpInsights\Domain\Contracts\HasDetails" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="HasDetails">
+    <extends full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+    <method name="getDetails" start="17" end="17" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the details of the insight."/>
+        <return description="\NunoMaduro\PhpInsights\Domain\Details&gt;" type="object">
+          <type full="NunoMaduro\PhpInsights\Domain\Contracts\array&lt;int" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="array&lt;int"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+  </parent>
+  <parent full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight">
+    <method name="hasIssue" start="15" end="15" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks if the insight detects an issue."/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="getTitle" start="20" end="20" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Gets the title of the insight."/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getInsightClass" start="25" end="25" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the class name of Insight used."/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+  <implementors>
+    <class full="NunoMaduro\PhpInsights\Domain\Insights\FixerDecorator" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="FixerDecorator"/>
+    <class full="NunoMaduro\PhpInsights\Domain\Insights\SniffDecorator" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="SniffDecorator"/>
+  </implementors>
+</interface>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Dependency2" namespace="" name="PEAR_Dependency2" abstract="false" final="false" start="37" end="1357">
+  <file path="//usr/local/lib/php/PEAR" file="Dependency2.php" realpath="/usr/local/lib/php/PEAR/Dependency2.php" size="50446" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="4e4b72a8e2683eed744fe45f26cc2d60a77d7e0a" relative="sr/local/lib/php/PEAR/Dependency2.php"/>
+  <docblock>
+    <description compact="Dependency check for PEAR packages">This class handles both version 1.0 and 2.0 dependencies
+WARNING: *any* changes to this class must be duplicated in the
+test_PEAR_Dependency2 class found in tests/PEAR_Dependency2/setup.php.inc,
+or unit tests will not actually validate the changes</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <member name="_state" visibility="public" static="false" line="44">
+    <docblock>
+      <description compact="One of the PEAR_VALIDATE_* states"/>
+      <see value="PEAR_VALIDATE_NORMAL"/>
+      <var type="integer"/>
+    </docblock>
+  </member>
+  <member name="_options" visibility="public" static="false" line="50">
+    <docblock>
+      <description compact="Command-line options to install/upgrade/uninstall commands"/>
+      <param type="array"/>
+    </docblock>
+  </member>
+  <member name="_os" visibility="public" static="false" line="55">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="OS_Guess" namespace="" name="OS_Guess"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_registry" visibility="public" static="false" line="60">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_Registry" namespace="" name="PEAR_Registry"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_config" visibility="public" static="false" line="65">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_dependencydb" visibility="public" static="false" line="70">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_DependencyDB" namespace="" name="PEAR_DependencyDB"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_currentPackage" visibility="public" static="false" line="76">
+    <docblock>
+      <description compact="Output of PEAR_Registry::parsedPackageName()"/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="84" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+      <param description="installation options" type="array"/>
+      <param description="format of PEAR_Registry::parsedPackageName()" type="array"/>
+      <param description="installation state (one of PEAR_VALIDATE_*)" type="int"/>
+    </docblock>
+    <parameter name="config" byreference="true" type="{unknown}"/>
+    <parameter name="installoptions" byreference="false" type="{unknown}"/>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_INSTALLING"/>
+  </constructor>
+  <method name="_getExtraString" start="113" end="159" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPHP_OS" start="164" end="167" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This makes unit-testing a heck of a lot easier"/>
+    </docblock>
+  </method>
+  <method name="getsysname" start="172" end="175" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This makes unit-testing a heck of a lot easier"/>
+    </docblock>
+  </method>
+  <method name="validateOsDependency" start="183" end="261" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Specify a dependency on an OS.  Use arch for detailed os/processor information">There are two generic OS dependencies that will be the most common, unix and windows.
+Other options are linux, freebsd, darwin (OS X), sunos, irix, hpux, aix</description>
+    </docblock>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="matchSignature" start="266" end="269" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This makes unit-testing a heck of a lot easier"/>
+    </docblock>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="validateArchDependency" start="278" end="310" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Specify a complex dependency on an OS/processor/kernel version, Use OS for simple operating system dependency.">This is the only dependency that accepts an eregable pattern.  The pattern
+will be matched against the php_uname() output parsed by OS_Guess</description>
+    </docblock>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="extension_loaded" start="315" end="318" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This makes unit-testing a heck of a lot easier"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="phpversion" start="323" end="330" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This makes unit-testing a heck of a lot easier"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="validateExtensionDependency" start="332" end="479" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="required" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="validatePhpDependency" start="481" end="536" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPEARVersion" start="541" end="544" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This makes unit-testing a heck of a lot easier"/>
+    </docblock>
+  </method>
+  <method name="validatePearinstallerDependency" start="546" end="597" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="validateSubpackageDependency" start="599" end="602" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="required" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="validatePackageDependency" start="612" end="640" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="dependency information (2.0 format)" type="array"/>
+      <param description="whether this is a required dependency" type="boolean"/>
+      <param description="a list of downloaded packages to be installed, if any" type="array"/>
+      <param description="if true, then deps on pear.php.net that fail will also check" type="boolean">against pecl.php.net packages to accommodate extensions that have
+               moved to pecl.php.net from pear.php.net</param>
+    </docblock>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="required" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="depv1" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_validatePackageDownload" start="642" end="869" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="required" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="depv1" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_validatePackageInstall" start="871" end="874" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="required" byreference="false" type="{unknown}"/>
+    <parameter name="depv1" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="validatePackageUninstall" start="882" end="1091" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Verify that uninstalling packages passed in to command line is OK."/>
+      <param type="object" variable="$dl">
+        <type full="PEAR_Installer" namespace="" name="PEAR_Installer"/>
+      </param>
+      <return type="object">
+        <type full="PEAR_Error|true" namespace="" name="PEAR_Error|true"/>
+      </return>
+    </docblock>
+    <parameter name="dl" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="construct an array of &quot;downloaded&quot; packages to fool the package dependency checker" line="889"/>
+      <comment value="into using these to validate uninstalls of circular dependencies" line="890"/>
+      <comment value="check cache" line="901"/>
+      <comment value="first, list the immediate parents of each package to be uninstalled" line="934"/>
+      <comment value="next, remove any packages from the parents list that are not installed" line="970"/>
+      <comment value="next remove any packages from the parents list that are not passed in for" line="981"/>
+      <comment value="uninstallation" line="982"/>
+      <comment value="remove all packages whose dependencies fail" line="996"/>
+      <comment value="save which ones failed for error reporting" line="997"/>
+      <comment value="next, construct the list of packages that can't be uninstalled" line="1026"/>
+    </inline>
+  </method>
+  <method name="_validatePackageUninstall" start="1093" end="1148" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="required" byreference="false" type="{unknown}"/>
+    <parameter name="dl" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="we re-use this variable, preserve the original value" line="1134"/>
+    </inline>
+  </method>
+  <method name="validatePackage" start="1163" end="1224" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="validate a downloaded package against installed packages">As of PEAR 1.4.3, this will only validate</description>
+      <param type="object">$pkg package identifier (either
+                  array('package' =&gt; blah, 'channel' =&gt; blah) or an array with
+                  index 'info' referencing an object)<type full="array|PEAR_Downloader_Package|PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="array|PEAR_Downloader_Package|PEAR_PackageFile_v1|PEAR_PackageFile_v2"/></param>
+      <param type="object" variable="$dl">
+        <type full="PEAR_Downloader" namespace="" name="PEAR_Downloader"/>
+      </param>
+      <param description="full list of packages to install" type="array" variable="$params"/>
+      <return type="object">
+        <type full="true|PEAR_Error" namespace="" name="true|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="pkg" byreference="false" type="{unknown}"/>
+    <parameter name="dl" byreference="true" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+  </method>
+  <method name="validateDependency1" start="1229" end="1244" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="validate a package.xml 1.0 dependency"/>
+    </docblock>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+  </method>
+  <method name="normalizeDep" start="1249" end="1317" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Convert a 1.0 dep into a 2.0 dep"/>
+    </docblock>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="signOperator" start="1328" end="1340" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Converts text comparing operators to them sign equivalents">Example: 'ge' to '&gt;='</description>
+      <access value="public"/>
+      <param type="string" variable="Operator"/>
+      <return description="Sign equivalent" type="string"/>
+    </docblock>
+    <parameter name="operator" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="raiseError" start="1342" end="1350" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="msg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="warning" start="1352" end="1356" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="msg" byreference="false" type="{unknown}"/>
+  </method>
+</class>

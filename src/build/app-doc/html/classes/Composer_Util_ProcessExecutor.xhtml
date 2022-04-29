@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Util\ProcessExecutor</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Util">Composer\Util</a>
+          </li>
+          <li class="separator">ProcessExecutor</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Util/ProcessExecutor.php.xhtml#line26">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Util\</small>ProcessExecutor</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Robert Schönthal &lt;seroscho@googlemail.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ProcessExecutor
+            {<br/><ul class="none"><li>// constants</li><li>const STATUS_QUEUED = 1;</li><li>const STATUS_STARTED = 2;</li><li>const STATUS_COMPLETED = 3;</li><li>const STATUS_FAILED = 4;</li><li>const STATUS_ABORTED = 5;</li></ul><ul class="none"><li>// members</li><li>protected static integer <a href="#members">$timeout</a> =
+                        300;
+                    </li><li>protected <span title="Composer\Util\bool">bool</span> <a href="#members">$captureOutput</a> =
+                        false;
+                    </li><li>protected string <a href="#members">$errorOutput</a> =
+                        '';
+                    </li><li>protected <span title="Composer\Util\?IOInterface">?IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>private array <a href="#members">$jobs</a> =
+                        ;
+                    </li><li>private integer <a href="#members">$runningJobs</a> =
+                        0;
+                    </li><li>private integer <a href="#members">$maxJobs</a> =
+                        10;
+                    </li><li>private integer <a href="#members">$idGen</a> =
+                        0;
+                    </li><li>private <span title="Composer\Util\bool">bool</span> <a href="#members">$allowAsync</a> =
+                        false;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/__construct.xhtml">__construct</a>()
+                    </li><li>public int <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/execute.xhtml">execute</a>()
+                    </li><li>public int <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/executeTty.xhtml">executeTty</a>()
+                    </li><li>private int <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/doExecute.xhtml">doExecute</a>()
+                    </li><li>public <span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/executeAsync.xhtml">executeAsync</a>()
+                    </li><li>protected void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/outputHandler.xhtml">outputHandler</a>()
+                    </li><li>private void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/startJob.xhtml">startJob</a>()
+                    </li><li>public void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/setMaxJobs.xhtml">setMaxJobs</a>()
+                    </li><li>public void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/resetMaxJobs.xhtml">resetMaxJobs</a>()
+                    </li><li>public void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/wait.xhtml">wait</a>()
+                    </li><li>public void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/enableAsync.xhtml">enableAsync</a>()
+                    </li><li>public int <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/countActiveJobs.xhtml">countActiveJobs</a>()
+                    </li><li>private void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/markJobDone.xhtml">markJobDone</a>()
+                    </li><li>public array <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/splitLines.xhtml">splitLines</a>()
+                    </li><li>public string <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/getErrorOutput.xhtml">getErrorOutput</a>()
+                    </li><li>public static int <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/getTimeout.xhtml">getTimeout</a>()
+                    </li><li>public static void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/setTimeout.xhtml">setTimeout</a>()
+                    </li><li>public static string <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/escape.xhtml">escape</a>()
+                    </li><li>private void <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/outputCommandRun.xhtml">outputCommandRun</a>()
+                    </li><li>private static string <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/escapeArgument.xhtml">escapeArgument</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="STATUS_QUEUED">STATUS_QUEUED</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="STATUS_STARTED">STATUS_STARTED</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="STATUS_COMPLETED">STATUS_COMPLETED</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="STATUS_FAILED">STATUS_FAILED</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td id="STATUS_ABORTED">STATUS_ABORTED</td>
+              <td>5</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="allowAsync"><strong>$allowAsync</strong>
+                —
+                <a title="Composer\Util\bool" href="../classes/Composer_Util_bool.xhtml">Composer\Util\bool</a></li>
+            <li id="idGen"><strong>$idGen</strong>
+                —
+                int</li>
+            <li id="jobs">
+              <strong>$jobs</strong>
+            </li>
+            <li id="maxJobs"><strong>$maxJobs</strong>
+                —
+                int</li>
+            <li id="runningJobs"><strong>$runningJobs</strong>
+                —
+                int</li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="captureOutput"><strong>$captureOutput</strong>
+                —
+                <a title="Composer\Util\bool" href="../classes/Composer_Util_bool.xhtml">Composer\Util\bool</a></li>
+            <li id="errorOutput"><strong>$errorOutput</strong>
+                —
+                string</li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\Util\?IOInterface" href="../classes/Composer_Util_?IOInterface.xhtml">Composer\Util\?IOInterface</a></li>
+            <li id="timeout"><strong>$timeout</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="doExecute">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/doExecute.xhtml">doExecute()</a>
+            </li>
+            <li id="escapeArgument"><a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/escapeArgument.xhtml">escapeArgument()</a>
+                — Escapes a string to be used as a shell argument for Symfony Process.</li>
+            <li id="markJobDone">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/markJobDone.xhtml">markJobDone()</a>
+            </li>
+            <li id="outputCommandRun">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/outputCommandRun.xhtml">outputCommandRun()</a>
+            </li>
+            <li id="startJob">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/startJob.xhtml">startJob()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="outputHandler">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/outputHandler.xhtml">outputHandler()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="countActiveJobs">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/countActiveJobs.xhtml">countActiveJobs()</a>
+            </li>
+            <li id="enableAsync">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/enableAsync.xhtml">enableAsync()</a>
+            </li>
+            <li id="escape"><a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/escape.xhtml">escape()</a>
+                — Escapes a string to be used as a shell argument.</li>
+            <li id="execute"><a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/execute.xhtml">execute()</a>
+                — runs a process on the commandline</li>
+            <li id="executeAsync"><a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/executeAsync.xhtml">executeAsync()</a>
+                — starts a process on the commandline in async mode</li>
+            <li id="executeTty"><a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/executeTty.xhtml">executeTty()</a>
+                — runs a process on the commandline in TTY mode</li>
+            <li id="getErrorOutput"><a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/getErrorOutput.xhtml">getErrorOutput()</a>
+                — Get any error output from the last command</li>
+            <li id="getTimeout">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/getTimeout.xhtml">getTimeout()</a>
+            </li>
+            <li id="resetMaxJobs">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/resetMaxJobs.xhtml">resetMaxJobs()</a>
+            </li>
+            <li id="setMaxJobs">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/setMaxJobs.xhtml">setMaxJobs()</a>
+            </li>
+            <li id="setTimeout">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/setTimeout.xhtml">setTimeout()</a>
+            </li>
+            <li id="splitLines">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/splitLines.xhtml">splitLines()</a>
+            </li>
+            <li id="wait">
+              <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor/wait.xhtml">wait()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

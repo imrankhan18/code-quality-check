@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Promise\Coroutine" namespace="GuzzleHttp\Promise" name="Coroutine" abstract="false" final="true" start="45" end="169">
+  <file path="//var/www/html/vendor/guzzlehttp/promises/src" file="Coroutine.php" realpath="/var/www/html/vendor/guzzlehttp/promises/src/Coroutine.php" size="4346" time="2021-10-22T20:56:57+00:00" unixtime="1634936217" sha1="4b7987d07a8dda82ac869d2ad742060e3da0bdec" relative="ar/www/html/vendor/guzzlehttp/promises/src/Coroutine.php"/>
+  <docblock>
+    <description compact="Creates a promise that is resolved using a generator that yields values or promises (somewhat similar to C#'s async keyword).">When called, the Coroutine::of method will start an instance of the generator
+and returns a promise that is fulfilled with its final yielded value.
+
+Control is returned back to the generator when the yielded promise settles.
+This can lead to less verbose code when doing lots of sequential async calls
+with minimal processing in between.
+
+    use GuzzleHttp\Promise;
+
+    function createPromise($value) {
+        return new Promise\FulfilledPromise($value);
+    }
+
+    $promise = Promise\Coroutine::of(function () {
+        $value = (yield createPromise('a'));
+        try {
+            $value = (yield createPromise($value . 'b'));
+        } catch (\Exception $e) {
+            // The promise was rejected.
+        }
+        yield $value . 'c';
+    });
+
+    // Outputs "abc"
+    $promise-&gt;then(function ($v) { echo $v; });</description>
+    <param description="Generator function to wrap into a promise." type="object" variable="$generatorFn">
+      <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+    </param>
+    <return type="object">
+      <type full="GuzzleHttp\Promise\Promise" namespace="GuzzleHttp\Promise" name="Promise"/>
+    </return>
+    <link value="https://github.com/petkaantonov/bluebird/blob/master/API.md#generators inspiration"/>
+  </docblock>
+  <implements full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+  <member name="currentPromise" visibility="private" static="false" line="50">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface|null" namespace="GuzzleHttp\Promise" name="PromiseInterface|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="generator" visibility="private" static="false" line="55">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Generator" namespace="" name="Generator"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="result" visibility="private" static="false" line="60">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Promise\Promise" namespace="GuzzleHttp\Promise" name="Promise"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="62" end="77" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="generatorFn" byreference="false" type="callable"/>
+  </constructor>
+  <method name="of" start="84" end="87" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create a new coroutine."/>
+      <return resolution="self" type="object">
+        <type full="GuzzleHttp\Promise\Coroutine" namespace="GuzzleHttp\Promise" name="Coroutine"/>
+      </return>
+    </docblock>
+    <parameter name="generatorFn" byreference="false" type="callable"/>
+  </method>
+  <method name="then" start="89" end="94" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="otherwise" start="96" end="99" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="onRejected" byreference="false" type="callable"/>
+  </method>
+  <method name="wait" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="unwrap" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="getState" start="106" end="109" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="resolve" start="111" end="114" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="reject" start="116" end="119" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cancel" start="121" end="125" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="nextCoroutine" start="127" end="131" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="yielded" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_handleSuccess" start="136" end="151" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+    </docblock>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_handleFailure" start="156" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+    </docblock>
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface">
+    <constant type="{unknown}" name="PENDING" value="'pending'"/>
+    <constant type="{unknown}" name="FULFILLED" value="'fulfilled'"/>
+    <constant type="{unknown}" name="REJECTED" value="'rejected'"/>
+    <method name="then" start="29" end="32" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Appends fulfillment and rejection handlers to the promise, and returns a new promise resolving to the return value of the called handler."/>
+        <param description="Invoked when the promise fulfills." type="object" variable="$onFulfilled">
+          <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+        </param>
+        <param description="Invoked when the promise is rejected." type="object" variable="$onRejected">
+          <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+        </param>
+        <return type="object">
+          <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+      <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+    </method>
+    <method name="otherwise" start="44" end="44" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Appends a rejection handler callback to the promise, and returns a new promise resolving to the return value of the callback if it is called, or to its original fulfillment value if the promise is instead fulfilled."/>
+        <param description="Invoked when the promise is rejected." type="object" variable="$onRejected">
+          <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+        </param>
+        <return type="object">
+          <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <parameter name="onRejected" byreference="false" type="callable"/>
+    </method>
+    <method name="getState" start="54" end="54" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the state of the promise (&quot;pending&quot;, &quot;rejected&quot;, or &quot;fulfilled&quot;).">The three states can be checked against the constants defined on
+PromiseInterface: PENDING, FULFILLED, and REJECTED.</description>
+        <return type="string"/>
+      </docblock>
+    </method>
+    <method name="resolve" start="63" end="63" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Resolve the promise with the given value."/>
+        <param type="mixed" variable="$value"/>
+        <throws description="if the promise is already resolved." type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="reject" start="72" end="72" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Reject the promise with the given reason."/>
+        <param type="mixed" variable="$reason"/>
+        <throws description="if the promise is already resolved." type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+      <parameter name="reason" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="cancel" start="79" end="79" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Cancels the promise if possible."/>
+        <link value="https://github.com/promises-aplus/cancellation-spec/issues/7"/>
+      </docblock>
+    </method>
+    <method name="wait" start="96" end="96" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Waits until the promise completes if possible.">Pass $unwrap as true to unwrap the result of the promise, either
+returning the resolved value or throwing the rejected exception.
+
+If the promise cannot be waited on, then the promise will be rejected.</description>
+        <param type="object" variable="$unwrap">
+          <type full="GuzzleHttp\Promise\bool" namespace="GuzzleHttp\Promise" name="bool"/>
+        </param>
+        <return type="mixed"/>
+        <throws description="if the promise has no wait function or if the" type="object">promise does not settle after waiting.<type full="\LogicException" namespace="" name="LogicException"/></throws>
+      </docblock>
+      <parameter name="unwrap" byreference="false" type="boolean" default="true"/>
+    </method>
+  </interface>
+</class>

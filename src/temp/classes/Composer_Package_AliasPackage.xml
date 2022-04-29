@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Package\AliasPackage" namespace="Composer\Package" name="AliasPackage" abstract="false" final="false" start="21" end="397">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Package" file="AliasPackage.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Package/AliasPackage.php" size="9884" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="01489b71feeff0deb607de339cb01cd73eed21f1" relative="ar/www/html/vendor/composer/composer/src/Composer/Package/AliasPackage.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <extends full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+  <member name="version" visibility="protected" static="false" line="24">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="prettyVersion" visibility="protected" static="false" line="26">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="dev" visibility="protected" static="false" line="28">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="rootPackageAlias" default="false" type="boolean" visibility="protected" static="false" line="30">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="stability" visibility="protected" static="false" line="35">
+    <docblock>
+      <description/>
+      <var type="string"/>
+      <phpstan value="-var 'stable'|'RC'|'beta'|'alpha'|'dev'"/>
+    </docblock>
+  </member>
+  <member name="hasSelfVersionRequires" default="false" type="boolean" visibility="protected" static="false" line="37">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="aliasOf" visibility="protected" static="false" line="40">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="requires" visibility="protected" static="false" line="42">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="devRequires" visibility="protected" static="false" line="44">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="conflicts" visibility="protected" static="false" line="46">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="provides" visibility="protected" static="false" line="48">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="replaces" visibility="protected" static="false" line="50">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="59" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="All descendants' constructors should call this parent constructor"/>
+      <param description="The package this package is an alias of" type="object" variable="$aliasOf">
+        <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+      </param>
+      <param description="The version the alias must report" type="string" variable="$version"/>
+      <param description="The alias's non-normalized version" type="string" variable="$prettyVersion"/>
+    </docblock>
+    <parameter name="aliasOf" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="version" byreference="false" type="string"/>
+    <parameter name="prettyVersion" byreference="false" type="string"/>
+  </constructor>
+  <method name="getAliasOf" start="78" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getVersion" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getStability" start="94" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getPrettyVersion" start="102" end="105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="isDev" start="110" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getRequires" start="118" end="121" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getConflicts" start="127" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+      <return description="Link&gt;" type="object">
+        <type full="Composer\Package\array&lt;string|int" namespace="Composer\Package" name="array&lt;string|int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getProvides" start="136" end="139" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+      <return description="Link&gt;" type="object">
+        <type full="Composer\Package\array&lt;string|int" namespace="Composer\Package" name="array&lt;string|int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getReplaces" start="145" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+      <return description="Link&gt;" type="object">
+        <type full="Composer\Package\array&lt;string|int" namespace="Composer\Package" name="array&lt;string|int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getDevRequires" start="153" end="156" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="setRootPackageAlias" start="163" end="166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Stores whether this is an alias created by an aliasing in the requirements of the root package or not">Use by the policy for sorting manually aliased packages first, see #576</description>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="value" byreference="false" type="bool"/>
+  </method>
+  <method name="isRootPackageAlias" start="172" end="175" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <see value="setRootPackageAlias"/>
+      <return type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="replaceSelfVersionDependencies" start="183" end="214" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="array" variable="$links" of="object">
+        <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+      </param>
+      <param type="object" variable="$linkType">
+        <type full="Composer\Package\Link::TYPE_*" namespace="Composer\Package" name="Link::TYPE_*"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="links" byreference="false" type="array"/>
+    <parameter name="linkType" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="for self.version requirements, we use the original package's branch name instead, to avoid leaking the magic dev-master-alias to users" line="185"/>
+    </inline>
+  </method>
+  <method name="hasSelfVersionRequires" start="219" end="222" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="__toString" start="224" end="227" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getType" start="233" end="236" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getTargetDir" start="238" end="241" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="getExtra" start="243" end="246" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="setInstallationSource" start="248" end="251" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="type" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="getInstallationSource" start="253" end="256" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="getSourceType" start="258" end="261" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="getSourceUrl" start="263" end="266" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="getSourceUrls" start="268" end="271" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getSourceReference" start="273" end="276" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="setSourceReference" start="278" end="281" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="reference" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="setSourceMirrors" start="283" end="286" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="mirrors" byreference="false" nullable="true" type="array"/>
+  </method>
+  <method name="getSourceMirrors" start="288" end="291" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="true"/>
+  </method>
+  <method name="getDistType" start="293" end="296" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="getDistUrl" start="298" end="301" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="getDistUrls" start="303" end="306" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getDistReference" start="308" end="311" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="setDistReference" start="313" end="316" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="reference" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="getDistSha1Checksum" start="318" end="321" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="setTransportOptions" start="323" end="326" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="getTransportOptions" start="328" end="331" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="setDistMirrors" start="333" end="336" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="mirrors" byreference="false" nullable="true" type="array"/>
+  </method>
+  <method name="getDistMirrors" start="338" end="341" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="true"/>
+  </method>
+  <method name="getAutoload" start="343" end="346" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getDevAutoload" start="348" end="351" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getIncludePaths" start="353" end="356" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getReleaseDate" start="358" end="361" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="true">
+      <type full="DateTimeInterface" namespace="" name="DateTimeInterface"/>
+    </return>
+  </method>
+  <method name="getBinaries" start="363" end="366" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getSuggests" start="368" end="371" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getNotificationUrl" start="373" end="376" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="isDefaultBranch" start="378" end="381" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="setDistUrl" start="383" end="386" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="url" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="setDistType" start="388" end="391" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="type" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="setSourceDistReferences" start="393" end="396" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="reference" byreference="false" type="string"/>
+  </method>
+  <extenders>
+    <extender full="Composer\Package\CompleteAliasPackage" namespace="Composer\Package" name="CompleteAliasPackage"/>
+    <extender full="Composer\Package\RootAliasPackage" namespace="Composer\Package" name="RootAliasPackage"/>
+  </extenders>
+  <parent full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage">
+    <implements full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    <constant type="{unknown}" name="STABILITY_STABLE" value="0"/>
+    <constant type="{unknown}" name="STABILITY_RC" value="5"/>
+    <constant type="{unknown}" name="STABILITY_BETA" value="10"/>
+    <constant type="{unknown}" name="STABILITY_ALPHA" value="15"/>
+    <constant type="{unknown}" name="STABILITY_DEV" value="20"/>
+    <member name="supportedLinkTypes" default="" type="array" visibility="public" static="true" line="29">
+      <docblock>
+        <description/>
+        <phpstan value="-var array&lt;non-empty-string, array{description: string, method: Link::TYPE_*}&gt;"/>
+        <internal/>
+      </docblock>
+    </member>
+    <member name="stabilities" default="" type="array" visibility="public" static="true" line="44">
+      <docblock>
+        <var description="self::STABILITY_*&gt;" type="object">
+          <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="id" visibility="public" static="false" line="58">
+      <docblock>
+        <description compact="READ-ONLY: The package id, public for fast access in dependency solver"/>
+        <var type="int"/>
+        <internal/>
+        <readonly/>
+      </docblock>
+    </member>
+    <member name="name" visibility="protected" static="false" line="60">
+      <docblock>
+        <var type="string"/>
+      </docblock>
+    </member>
+    <member name="prettyName" visibility="protected" static="false" line="62">
+      <docblock>
+        <var type="string"/>
+      </docblock>
+    </member>
+    <member name="repository" default="NULL" visibility="protected" static="false" line="64">
+      <docblock>
+        <var type="object">
+          <type full="Composer\Package\?RepositoryInterface" namespace="Composer\Package" name="?RepositoryInterface"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="71" end="76" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="All descendants' constructors should call this parent constructor"/>
+        <param description="The package's name" type="string" variable="$name"/>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+    </constructor>
+    <method name="getName" start="81" end="84" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPrettyName" start="89" end="92" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getNames" start="97" end="114" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="array" nullable="false"/>
+      <parameter name="provides" byreference="false" type="boolean" default="true"/>
+    </method>
+    <method name="setId" start="119" end="122" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="id" byreference="false" type="int"/>
+    </method>
+    <method name="getId" start="127" end="130" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="setRepository" start="135" end="141" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="repository" byreference="false" type="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </parameter>
+    </method>
+    <method name="getRepository" start="146" end="149" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="object" nullable="true">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </return>
+    </method>
+    <method name="isPlatform" start="156" end="159" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="checks if this package is a platform package"/>
+        <return type="object">
+          <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="getUniqueName" start="166" end="169" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns package unique name, constructed from name, version and release type."/>
+        <return type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="equals" start="174" end="185" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="__toString" start="192" end="195" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Converts the package into a readable and unique string"/>
+        <return type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPrettyString" start="197" end="200" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getFullPrettyVersion" start="205" end="235" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="truncate" byreference="false" type="boolean" default="true"/>
+      <parameter name="displayMode" byreference="false" type="{unknown}" default="" constant="PackageInterface::DISPLAY_SOURCE_REF_IF_DEV"/>
+      <inline>
+        <comment value="if source reference is a sha1 hash -- truncate" line="229"/>
+      </inline>
+    </method>
+    <method name="getStabilityPriority" start="242" end="245" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="int"/>
+        <phpstan value="-return self::STABILITY_"/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="__clone" start="247" end="251" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="packageNameToRegexp" start="260" end="265" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Build a regexp from a package name, expanding * globs as required"/>
+        <param type="string" variable="$allowPattern"/>
+        <param description="Wrap the cleaned string by the given string" type="object" variable="$wrap">
+          <type full="Composer\Package\non-empty-string" namespace="Composer\Package" name="non-empty-string"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Package\non-empty-string" namespace="Composer\Package" name="non-empty-string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="allowPattern" byreference="false" type="string"/>
+      <parameter name="wrap" byreference="false" type="string" default="'{^%s$}i'"/>
+    </method>
+    <method name="packageNamesToRegexp" start="274" end="284" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Build a regexp from package names, expanding * globs as required"/>
+        <param type="array" variable="$packageNames" of="object">
+          <type full="Composer\Package\string" namespace="Composer\Package" name="string"/>
+        </param>
+        <param type="object" variable="$wrap">
+          <type full="Composer\Package\non-empty-string" namespace="Composer\Package" name="non-empty-string"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Package\non-empty-string" namespace="Composer\Package" name="non-empty-string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="packageNames" byreference="false" type="array"/>
+      <parameter name="wrap" byreference="false" type="string" default="'{^(?:%s)$}iD'"/>
+    </method>
+  </parent>
+  <interface full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface">
+    <constant type="{unknown}" name="DISPLAY_SOURCE_REF_IF_DEV" value="0"/>
+    <constant type="{unknown}" name="DISPLAY_SOURCE_REF" value="1"/>
+    <constant type="{unknown}" name="DISPLAY_DIST_REF" value="2"/>
+    <method name="getName" start="38" end="38" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the package's name without version info, thus not a unique identifier"/>
+        <return description="package name" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPrettyName" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the package's pretty (i.e. with proper case) name"/>
+        <return description="package name" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getNames" start="57" end="57" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a set of names that could refer to this package">No version or release type information should be included in any of the
+names. Provided or replaced package names need to be returned as well.</description>
+        <param description="Whether provided names should be included" type="object" variable="$provides">
+          <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+        </param>
+        <return description="An array of strings referring to this package" type="array" of="object">
+          <type full="Composer\Package\string" namespace="Composer\Package" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+      <parameter name="provides" byreference="false" type="boolean" default="true"/>
+    </method>
+    <method name="setId" start="66" end="66" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Allows the solver to set an id for this package to refer to it."/>
+        <param type="int" variable="$id"/>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="id" byreference="false" type="int"/>
+    </method>
+    <method name="getId" start="73" end="73" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieves the package's id set through setId"/>
+        <return description="The previously set package id" type="int"/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="isDev" start="80" end="80" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns whether the package is a development virtual package or a concrete one"/>
+        <return type="object">
+          <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="getType" start="87" end="87" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the package type, e.g. library"/>
+        <return description="The package type" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getTargetDir" start="94" end="94" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the package targetDir property"/>
+        <return description="The package targetDir" type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getExtra" start="101" end="101" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the package extra data"/>
+        <return description="The package extra data" type="array" of="object">
+          <type full="Composer\Package\mixed" namespace="Composer\Package" name="mixed"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="setInstallationSource" start="111" end="111" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Sets source from which this package was installed (source/dist)."/>
+        <param description="source/dist" type="object" variable="$type">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </param>
+        <phpstan value="-param 'source'|'dist'|null $type"/>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="type" byreference="false" nullable="true" type="string"/>
+    </method>
+    <method name="getInstallationSource" start="119" end="119" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns source from which this package was installed (source/dist)."/>
+        <return description="source/dist" type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+        <phpstan value="-return 'source'|'dist'|null"/>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getSourceType" start="126" end="126" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the repository type of this package, e.g. git, svn"/>
+        <return description="The repository type" type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getSourceUrl" start="133" end="133" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the repository url of this package, e.g. git://github.com/naderman/composer.git"/>
+        <return description="The repository url" type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getSourceUrls" start="140" end="140" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the repository urls of this package including mirrors, e.g. git://github.com/naderman/composer.git"/>
+        <return type="array" of="object">
+          <type full="Composer\Package\string" namespace="Composer\Package" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getSourceReference" start="147" end="147" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the repository reference of this package, e.g. master, 1.0.0 or a commit hash for git"/>
+        <return description="The repository reference" type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getSourceMirrors" start="154" end="154" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the source mirrors of this package"/>
+        <return description="array{url: string, preferred: bool}&gt;" type="object">
+          <type full="Composer\Package\?array&lt;int" namespace="Composer\Package" name="?array&lt;int"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="true"/>
+    </method>
+    <method name="setSourceMirrors" start="160" end="160" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="array{url: string, preferred: bool}&gt; $mirrors" type="object">
+          <type full="Composer\Package\null|array&lt;int" namespace="Composer\Package" name="null|array&lt;int"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="mirrors" byreference="false" nullable="true" type="array"/>
+    </method>
+    <method name="getDistType" start="167" end="167" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the type of the distribution archive of this version, e.g. zip, tarball"/>
+        <return description="The repository type" type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getDistUrl" start="174" end="174" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the url of the distribution archive of this version"/>
+        <return type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getDistUrls" start="181" end="181" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the urls of the distribution archive of this version, including mirrors"/>
+        <return type="array" of="object">
+          <type full="Composer\Package\string" namespace="Composer\Package" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getDistReference" start="188" end="188" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the reference of the distribution archive of this version, e.g. master, 1.0.0 or a commit hash for git"/>
+        <return type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getDistSha1Checksum" start="195" end="195" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the sha1 checksum for the distribution archive of this version"/>
+        <return type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getDistMirrors" start="202" end="202" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the dist mirrors of this package"/>
+        <return description="array{url: string, preferred: bool}&gt;" type="object">
+          <type full="Composer\Package\?array&lt;int" namespace="Composer\Package" name="?array&lt;int"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="true"/>
+    </method>
+    <method name="setDistMirrors" start="208" end="208" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="array{url: string, preferred: bool}&gt; $mirrors" type="object">
+          <type full="Composer\Package\null|array&lt;int" namespace="Composer\Package" name="null|array&lt;int"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="mirrors" byreference="false" nullable="true" type="array"/>
+    </method>
+    <method name="getVersion" start="215" end="215" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the version of this package"/>
+        <return description="version" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPrettyVersion" start="222" end="222" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the pretty (i.e. non-normalized) version string of this package"/>
+        <return description="version" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getFullPrettyVersion" start="235" end="235" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the pretty version string plus a git or hg commit hash of this package"/>
+        <see value="getPrettyVersion"/>
+        <param description="If the source reference is a sha1 hash, truncate it" type="object" variable="$truncate">
+          <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+        </param>
+        <param description="One of the DISPLAY_ constants on this interface determining display of references" type="int" variable="$displayMode"/>
+        <return description="version" type="string"/>
+        <phpstan value="-param self::DISPLAY_SOURCE_REF_IF_DEV|self::DISPLAY_SOURCE_REF|self::DISPLAY_DIST_REF $displayMode"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="truncate" byreference="false" type="boolean" default="true"/>
+      <parameter name="displayMode" byreference="false" type="{unknown}" default="" constant="self::DISPLAY_SOURCE_REF_IF_DEV"/>
+    </method>
+    <method name="getReleaseDate" start="242" end="242" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the release date of the package"/>
+        <return type="object">
+          <type full="Composer\Package\?\DateTimeInterface" namespace="Composer\Package\?" name="DateTimeInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="true">
+        <type full="DateTimeInterface" namespace="" name="DateTimeInterface"/>
+      </return>
+    </method>
+    <method name="getStability" start="251" end="251" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the stability of this package: one of (dev, alpha, beta, RC, stable)"/>
+        <return type="string"/>
+        <phpstan value="-return 'stable'|'RC'|'beta'|'alpha'|'dev'"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getRequires" start="259" end="259" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a set of links to packages which need to be installed before this package can be installed"/>
+        <return description="Link&gt; A map of package links defining required packages, indexed by the require package's name" type="object">
+          <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getConflicts" start="267" end="267" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a set of links to packages which must not be installed at the same time as this package"/>
+        <return description="An array of package links defining conflicting packages" type="array" of="object">
+          <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getProvides" start="275" end="275" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a set of links to virtual packages that are provided through this package"/>
+        <return description="An array of package links defining provided packages" type="array" of="object">
+          <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getReplaces" start="283" end="283" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a set of links to packages which can alternatively be satisfied by installing this package"/>
+        <return description="An array of package links defining replaced packages" type="array" of="object">
+          <type full="Composer\Package\Link" namespace="Composer\Package" name="Link"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getDevRequires" start="291" end="291" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a set of links to packages which are required to develop this package. These are installed if in dev mode."/>
+        <return description="Link&gt; A map of package links defining packages required for development, indexed by the require package's name" type="object">
+          <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getSuggests" start="300" end="300" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a set of package names and reasons why they are useful in combination with this package."/>
+        <return description="An array of package suggestions with descriptions" type="array"/>
+        <phpstan value="-return array&lt;string, string&gt;"/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getAutoload" start="313" end="313" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns an associative array of autoloading rules">{"&lt;type&gt;": {"&lt;namespace": "&lt;directory&gt;"}}
+
+Type is either "psr-4", "psr-0", "classmap" or "files". Namespaces are mapped to
+directories for autoloading using the type specified.</description>
+        <return description="Mapping of autoloading rules" type="array"/>
+        <phpstan value="-return AutoloadRules"/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getDevAutoload" start="326" end="326" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns an associative array of dev autoloading rules">{"&lt;type&gt;": {"&lt;namespace": "&lt;directory&gt;"}}
+
+Type is either "psr-4", "psr-0", "classmap" or "files". Namespaces are mapped to
+directories for autoloading using the type specified.</description>
+        <return description="Mapping of dev autoloading rules" type="array"/>
+        <phpstan value="-return DevAutoloadRules"/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getIncludePaths" start="334" end="334" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a list of directories which should get added to PHP's include path."/>
+        <return type="array" of="object">
+          <type full="Composer\Package\string" namespace="Composer\Package" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="setRepository" start="343" end="343" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Stores a reference to the repository that owns the package"/>
+        <param type="object" variable="$repository">
+          <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="repository" byreference="false" type="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </parameter>
+    </method>
+    <method name="getRepository" start="350" end="350" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a reference to the repository that owns the package"/>
+        <return type="object">
+          <type full="Composer\Package\?RepositoryInterface" namespace="Composer\Package" name="?RepositoryInterface"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="true">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </return>
+    </method>
+    <method name="getBinaries" start="357" end="357" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the package binaries"/>
+        <return type="array" of="object">
+          <type full="Composer\Package\string" namespace="Composer\Package" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getUniqueName" start="364" end="364" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns package unique name, constructed from name and version."/>
+        <return type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getNotificationUrl" start="371" end="371" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the package notification url"/>
+        <return type="object">
+          <type full="Composer\Package\?string" namespace="Composer\Package" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="__toString" start="378" end="378" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Converts the package into a readable and unique string"/>
+        <return type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPrettyString" start="385" end="385" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Converts the package into a pretty readable string"/>
+        <return type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="isDefaultBranch" start="390" end="390" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="getTransportOptions" start="397" end="397" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a list of options to download package dist files"/>
+        <return type="array" of="object">
+          <type full="Composer\Package\mixed" namespace="Composer\Package" name="mixed"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="setTransportOptions" start="406" end="406" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Configures the list of options to download package dist files"/>
+        <param type="array" variable="$options" of="object">
+          <type full="Composer\Package\mixed" namespace="Composer\Package" name="mixed"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="options" byreference="false" type="array"/>
+    </method>
+    <method name="setSourceReference" start="411" end="411" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="reference" byreference="false" nullable="true" type="string"/>
+    </method>
+    <method name="setDistUrl" start="416" end="416" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="url" byreference="false" nullable="true" type="string"/>
+    </method>
+    <method name="setDistType" start="421" end="421" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="type" byreference="false" nullable="true" type="string"/>
+    </method>
+    <method name="setDistReference" start="426" end="426" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="reference" byreference="false" nullable="true" type="string"/>
+    </method>
+    <method name="setSourceDistReferences" start="433" end="433" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set dist and source references and update dist URL for ones that contain a reference"/>
+        <return type="object">
+          <type full="Composer\Package\void" namespace="Composer\Package" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="reference" byreference="false" type="string"/>
+    </method>
+  </interface>
+</class>

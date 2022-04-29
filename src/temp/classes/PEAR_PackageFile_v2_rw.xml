@@ -1,0 +1,1366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_PackageFile_v2_rw" namespace="" name="PEAR_PackageFile_v2_rw" abstract="false" final="false" start="29" end="1603">
+  <file path="//usr/local/lib/php/PEAR/PackageFile/v2" file="rw.php" realpath="/usr/local/lib/php/PEAR/PackageFile/v2/rw.php" size="63071" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="e3dae76a5085c3989350c240bad6cd0dee64e3c5" relative="sr/local/lib/php/PEAR/PackageFile/v2/rw.php"/>
+  <docblock>
+    <description/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a8"/>
+  </docblock>
+  <extends full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+  <method name="setProvidesExtension" start="35" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Extension name" type="string"/>
+      <return description="success of operation" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="extension" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPackage" start="53" end="73" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="package" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_setPackageVersion2_1" start="79" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="set this as a package.xml version 2.1"/>
+      <access value="private"/>
+    </docblock>
+  </method>
+  <method name="setUri" start="98" end="113" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setChannel" start="115" end="130" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setExtends" start="132" end="146" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="extends" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setSummary" start="148" end="162" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="summary" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setDescription" start="164" end="178" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="desc" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addMaintainer" start="184" end="227" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Adds a new maintainer - no checking of duplicates is performed, use updatemaintainer for that purpose."/>
+    </docblock>
+    <parameter name="role" byreference="false" type="{unknown}"/>
+    <parameter name="handle" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="email" byreference="false" type="{unknown}"/>
+    <parameter name="active" byreference="false" type="string" default="'yes'"/>
+  </method>
+  <method name="updateMaintainer" start="229" end="263" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="newrole" byreference="false" type="{unknown}"/>
+    <parameter name="handle" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="email" byreference="false" type="{unknown}"/>
+    <parameter name="active" byreference="false" type="string" default="'yes'"/>
+  </method>
+  <method name="deleteMaintainer" start="265" end="302" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="handle" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setReleaseVersion" start="304" end="317" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setAPIVersion" start="319" end="332" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setReleaseStability" start="337" end="350" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="snapshot|devel|alpha|beta|stable"/>
+    </docblock>
+    <parameter name="state" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setAPIStability" start="355" end="368" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="devel|alpha|beta|stable" namespace="" name="devel|alpha|beta|stable"/>
+      </param>
+    </docblock>
+    <parameter name="state" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setLicense" start="370" end="393" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="license" byreference="false" type="{unknown}"/>
+    <parameter name="uri" byreference="false" type="boolean" default="false"/>
+    <parameter name="filesource" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setNotes" start="395" end="407" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="notes" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setInstalledAs" start="415" end="421" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This is only used at install-time, after all serialization is over."/>
+      <param description="file name" type="string"/>
+      <param description="installed path" type="string"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="installedFile" start="427" end="435" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This is only used at install-time, after all serialization is over."/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="atts" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="clearContents" start="441" end="462" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Reset the listing of package contents"/>
+      <param description="base installation dir for the whole package, if any" type="string"/>
+    </docblock>
+    <parameter name="baseinstall" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addBundledPackage" start="467" end="480" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="relative path of the bundled package." type="string"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addTaskToFile" start="486" end="545" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="file name" type="string"/>
+      <param description="a read/write task" type="object">
+        <type full="PEAR_Task_Common" namespace="" name="PEAR_Task_Common"/>
+      </param>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="task" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="discover the tasks namespace if not done already" line="503"/>
+    </inline>
+  </method>
+  <method name="addFile" start="552" end="583" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="path to the file" type="string"/>
+      <param type="string" variable="filename"/>
+      <param description="extra attributes" type="array"/>
+    </docblock>
+    <parameter name="dir" byreference="false" type="{unknown}"/>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="attrs" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addCompatiblePackage" start="594" end="612" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Dependent package name" type="string"/>
+      <param description="Dependent package's channel name" type="string"/>
+      <param description="minimum version of specified package that this release is guaranteed to be" type="string">compatible with</param>
+      <param description="maximum version of specified package that this release is guaranteed to be" type="string">compatible with</param>
+      <param description="versions of specified package that this release is not compatible with" type="string"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="min" byreference="false" type="{unknown}"/>
+    <parameter name="max" byreference="false" type="{unknown}"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="resetUsesrole" start="617" end="622" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes the &lt;usesrole&gt; tag entirely"/>
+    </docblock>
+  </method>
+  <method name="addUsesrole" start="629" end="643" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <param description="package name or uri" type="string"/>
+      <param description="channel name if non-uri" type="string"/>
+    </docblock>
+    <parameter name="role" byreference="false" type="{unknown}"/>
+    <parameter name="packageOrUri" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="resetUsestask" start="648" end="653" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes the &lt;usestask&gt; tag entirely"/>
+    </docblock>
+  </method>
+  <method name="addUsestask" start="661" end="675" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <param description="package name or uri" type="string"/>
+      <param description="channel name if non-uri" type="string"/>
+    </docblock>
+    <parameter name="task" byreference="false" type="{unknown}"/>
+    <parameter name="packageOrUri" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="clearCompatible" start="680" end="683" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove all compatible tags"/>
+    </docblock>
+  </method>
+  <method name="clearDeps" start="688" end="698" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Reset dependencies prior to adding new ones"/>
+    </docblock>
+  </method>
+  <method name="setPhpDep" start="705" end="736" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="minimum PHP version allowed" type="string"/>
+      <param description="maximum PHP version allowed" type="string"/>
+      <param description="incompatible PHP versions" type="array" variable="$exclude"/>
+    </docblock>
+    <parameter name="min" byreference="false" type="{unknown}"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setPearinstallerDep" start="744" end="777" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="minimum allowed PEAR installer version" type="string"/>
+      <param description="maximum allowed PEAR installer version" type="string"/>
+      <param description="recommended PEAR installer version" type="string"/>
+      <param description="incompatible version of the PEAR installer" type="array"/>
+    </docblock>
+    <parameter name="min" byreference="false" type="{unknown}"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="recommended" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addConflictingPackageDepWithChannel" start="788" end="802" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Mark a package as conflicting with this package"/>
+      <param description="package name" type="string"/>
+      <param description="package channel" type="string"/>
+      <param description="extension this package provides, if any" type="string"/>
+      <param description="minimum version required" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="maximum version allowed" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="versions to exclude from installation" type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </param>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="providesextension" byreference="false" type="boolean" default="false"/>
+    <parameter name="min" byreference="false" type="boolean" default="false"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addConflictingPackageDepWithUri" start="810" end="830" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Mark a package as conflicting with this package"/>
+      <param description="package name" type="string"/>
+      <param description="package channel" type="string"/>
+      <param description="extension this package provides, if any" type="string"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="providesextension" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addDependencyGroup" start="832" end="843" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="hint" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_constructDep" start="860" end="898" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="package name" type="string"/>
+      <param description="channel name, false if this is a uri" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="uri name, false if this is a channel" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="minimum version required" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="maximum version allowed" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="recommended installation version" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="versions to exclude from installation" type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </param>
+      <param description="extension this package provides, if any" type="string"/>
+      <param description="if true, tells the installer to ignore the default optional dependency group" type="object">when installing this package<type full="bool" namespace="" name="bool"/></param>
+      <param description="if true, tells the installer to negate this dependency (conflicts)" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="min" byreference="false" type="{unknown}"/>
+    <parameter name="max" byreference="false" type="{unknown}"/>
+    <parameter name="recommended" byreference="false" type="{unknown}"/>
+    <parameter name="exclude" byreference="false" type="{unknown}"/>
+    <parameter name="providesextension" byreference="false" type="boolean" default="false"/>
+    <parameter name="nodefault" byreference="false" type="boolean" default="false"/>
+    <parameter name="conflicts" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addGroupPackageDepWithChannel" start="916" end="926" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="package|subpackage" namespace="" name="package|subpackage"/>
+      </param>
+      <param description="group name" type="string"/>
+      <param description="package name" type="string"/>
+      <param description="package channel" type="string"/>
+      <param description="minimum version" type="string"/>
+      <param description="maximum version" type="string"/>
+      <param description="recommended version" type="string"/>
+      <param description="optional excluded versions" type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </param>
+      <param description="extension this package provides, if any" type="string"/>
+      <param description="if true, tells the installer to ignore the default optional dependency group" type="object">when installing this package<type full="bool" namespace="" name="bool"/></param>
+      <return description="false if the dependency group has not been initialized with" type="object">{@link addDependencyGroup()}, or a subpackage is added with
+             a providesextension<type full="bool" namespace="" name="bool"/></return>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="groupname" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="min" byreference="false" type="boolean" default="false"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="recommended" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+    <parameter name="providesextension" byreference="false" type="boolean" default="false"/>
+    <parameter name="nodefault" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addGroupPackageDepWithURI" start="939" end="948" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="package|subpackage" namespace="" name="package|subpackage"/>
+      </param>
+      <param description="group name" type="string"/>
+      <param description="package name" type="string"/>
+      <param description="package uri" type="string"/>
+      <param description="extension this package provides, if any" type="string"/>
+      <param description="if true, tells the installer to ignore the default optional dependency group" type="object">when installing this package<type full="bool" namespace="" name="bool"/></param>
+      <return description="false if the dependency group has not been initialized with" type="object">{@link addDependencyGroup()}<type full="bool" namespace="" name="bool"/></return>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="groupname" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="providesextension" byreference="false" type="boolean" default="false"/>
+    <parameter name="nodefault" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addGroupExtensionDep" start="958" end="964" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="group name (must be pre-existing)" type="string"/>
+      <param description="extension name" type="string"/>
+      <param description="minimum version allowed" type="string"/>
+      <param description="maximum version allowed" type="string"/>
+      <param description="recommended version" type="string"/>
+      <param description="incompatible versions" type="array"/>
+    </docblock>
+    <parameter name="groupname" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="min" byreference="false" type="boolean" default="false"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="recommended" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="_addGroupDependency" start="973" end="1012" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="package|subpackage|extension" namespace="" name="package|subpackage|extension"/>
+      </param>
+      <param description="dependency contents" type="array"/>
+      <param description="name of the dependency group to add this to" type="string"/>
+      <return type="boolean"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="groupname" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addPackageDepWithChannel" start="1026" end="1048" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="optional|required" namespace="" name="optional|required"/>
+      </param>
+      <param description="package name" type="string"/>
+      <param description="package channel" type="string"/>
+      <param description="minimum version" type="string"/>
+      <param description="maximum version" type="string"/>
+      <param description="recommended version" type="string"/>
+      <param description="extension this package provides, if any" type="string"/>
+      <param description="if true, tells the installer to ignore the default optional dependency group" type="object">when installing this package<type full="bool" namespace="" name="bool"/></param>
+      <param description="optional excluded versions" type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </param>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="min" byreference="false" type="boolean" default="false"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="recommended" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+    <parameter name="providesextension" byreference="false" type="boolean" default="false"/>
+    <parameter name="nodefault" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addPackageDepWithUri" start="1058" end="1076" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="optional|required" namespace="" name="optional|required"/>
+      </param>
+      <param description="name of the package" type="string"/>
+      <param description="uri of the package" type="string"/>
+      <param description="extension this package provides, if any" type="string"/>
+      <param description="if true, tells the installer to ignore the default optional dependency group" type="object">when installing this package<type full="bool" namespace="" name="bool"/></param>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="providesextension" byreference="false" type="boolean" default="false"/>
+    <parameter name="nodefault" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addSubpackageDepWithChannel" start="1089" end="1108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="optional required" type="object">
+        <type full="optional|required" namespace="" name="optional|required"/>
+      </param>
+      <param description="package name" type="string"/>
+      <param description="package channel" type="string"/>
+      <param description="minimum version" type="string"/>
+      <param description="maximum version" type="string"/>
+      <param description="recommended version" type="string"/>
+      <param description="incompatible versions" type="array"/>
+      <param description="if true, tells the installer to ignore the default optional dependency group" type="object">when installing this package<type full="bool" namespace="" name="bool"/></param>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="min" byreference="false" type="boolean" default="false"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="recommended" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+    <parameter name="nodefault" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addSubpackageDepWithUri" start="1117" end="1133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="optional required" type="object">
+        <type full="optional|required" namespace="" name="optional|required"/>
+      </param>
+      <param description="package name" type="string"/>
+      <param description="package uri for download" type="string"/>
+      <param description="if true, tells the installer to ignore the default optional dependency group" type="object">when installing this package<type full="bool" namespace="" name="bool"/></param>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="nodefault" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addExtensionDep" start="1143" end="1160" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="optional required" type="object">
+        <type full="optional|required" namespace="" name="optional|required"/>
+      </param>
+      <param description="extension name" type="string"/>
+      <param description="minimum version" type="string"/>
+      <param description="maximum version" type="string"/>
+      <param description="recommended version" type="string"/>
+      <param description="incompatible versions" type="array"/>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="min" byreference="false" type="boolean" default="false"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="recommended" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addOsDep" start="1166" end="1181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Operating system name" type="string"/>
+      <param description="true if this package cannot be installed on this OS" type="boolean"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="conflicts" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addArchDep" start="1187" end="1202" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Architecture matching pattern" type="string"/>
+      <param description="true if this package cannot be installed on this architecture" type="boolean"/>
+    </docblock>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+    <parameter name="conflicts" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setPackageType" start="1216" end="1245" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the kind of package, and erase all release tags">- a php package is a PEAR-style package
+- an extbin package is a PECL-style extension binary
+- an extsrc package is a PECL-style source for a binary
+- an zendextbin package is a PECL-style zend extension binary
+- an zendextsrc package is a PECL-style source for a zend extension binary
+- a bundle package is a collection of other pre-packaged packages</description>
+      <param type="object">
+        <type full="php|extbin|extsrc|zendextsrc|zendextbin|bundle" namespace="" name="php|extbin|extsrc|zendextsrc|zendextbin|bundle"/>
+      </param>
+      <return description="success" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addRelease" start="1250" end="1261" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="true if package type is set up" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_getCurrentRelease" start="1268" end="1289" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the current release tag in order to add to it"/>
+      <param description="returns only releases that have installcondition if true" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="array|null" namespace="" name="array|null"/>
+      </return>
+    </docblock>
+    <parameter name="strict" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="addInstallAs" start="1296" end="1308" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a file to the current release that should be installed under a different name"/>
+      <param description="&lt;contents&gt; path to file" type="string"/>
+      <param description="name the file should be installed as" type="string"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+    <parameter name="as" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addIgnore" start="1315" end="1327" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a file to the current release that should be ignored"/>
+      <param description="&lt;contents&gt; path to file" type="string"/>
+      <return description="success of operation" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addBinarypackage" start="1335" end="1349" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add an extension binary package for this extension source code release">Note that the package must be from the same channel as the extension source package</description>
+      <param type="string"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addConfigureOption" start="1357" end="1378" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a configureoption to an extension source package"/>
+      <param type="string"/>
+      <param type="string"/>
+      <param type="string"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="prompt" byreference="false" type="{unknown}"/>
+    <parameter name="default" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="setPhpInstallCondition" start="1386" end="1417" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set an installation condition based on php version for the current release set"/>
+      <param description="minimum version" type="string"/>
+      <param description="maximum version" type="string"/>
+      <param description="incompatible versions of PHP" type="object">
+        <type full="false|array" namespace="" name="false|array"/>
+      </param>
+    </docblock>
+    <parameter name="min" byreference="false" type="{unknown}"/>
+    <parameter name="max" byreference="false" type="{unknown}"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addExtensionInstallCondition" start="1427" end="1450" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="optional required" type="object">
+        <type full="optional|required" namespace="" name="optional|required"/>
+      </param>
+      <param description="extension name" type="string"/>
+      <param description="minimum version" type="string"/>
+      <param description="maximum version" type="string"/>
+      <param description="recommended version" type="string"/>
+      <param description="incompatible versions" type="array"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="min" byreference="false" type="boolean" default="false"/>
+    <parameter name="max" byreference="false" type="boolean" default="false"/>
+    <parameter name="recommended" byreference="false" type="boolean" default="false"/>
+    <parameter name="exclude" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setOsInstallCondition" start="1457" end="1485" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set an installation condition based on operating system for the current release set"/>
+      <param description="OS name" type="string"/>
+      <param description="whether this OS is incompatible with the current release" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="conflicts" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setArchInstallCondition" start="1492" end="1520" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set an installation condition based on architecture for the current release set"/>
+      <param description="architecture pattern" type="string"/>
+      <param description="whether this arch is incompatible with the current release" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+    <parameter name="conflicts" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setSourcePackage" start="1528" end="1541" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="For extension binary releases, this is used to specify either the static URI to a source package, or the package name and channel of the extsrc/zendextsrc package it is based on."/>
+      <param description="Package name, or full URI to source package (extsrc/zendextsrc type)" type="string"/>
+    </docblock>
+    <parameter name="packageOrUri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="generateChangeLogEntry" start="1547" end="1561" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate a valid change log entry from the current package.xml"/>
+      <param type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+    </docblock>
+    <parameter name="notes" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setChangelogEntry" start="1567" end="1594" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="release version to set change log notes for" type="string"/>
+      <param description="output of {@link generateChangeLogEntry()}" type="array"/>
+    </docblock>
+    <parameter name="releaseversion" byreference="false" type="{unknown}"/>
+    <parameter name="contents" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="clearChangeLog" start="1599" end="1602" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove the changelog entirely"/>
+    </docblock>
+  </method>
+  <parent full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2">
+    <member name="_packageInfo" default="" type="array" visibility="public" static="false" line="37">
+      <docblock>
+        <description compact="Parsed package information"/>
+        <var type="array"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_archiveFile" visibility="public" static="false" line="44">
+      <docblock>
+        <description compact="path to package .tgz or false if this is a local/extracted package.xml"/>
+        <var type="object">
+          <type full="string|false" namespace="" name="string|false"/>
+        </var>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_packageFile" visibility="public" static="false" line="51">
+      <docblock>
+        <description compact="path to package .xml or false if this is an abstract parsed-from-string xml"/>
+        <var type="object">
+          <type full="string|false" namespace="" name="string|false"/>
+        </var>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_logger" visibility="public" static="false" line="58">
+      <docblock>
+        <description compact="This is used by file analysis routines to log progress information"/>
+        <var type="object">
+          <type full="PEAR_Common" namespace="" name="PEAR_Common"/>
+        </var>
+        <access value="protected"/>
+      </docblock>
+    </member>
+    <member name="_isValid" default="0" type="integer" visibility="public" static="false" line="72">
+      <docblock>
+        <description compact="This is set to the highest validation level that has been validated">If the package.xml is invalid or unknown, this is set to 0.  If
+normal validation has occurred, this is set to PEAR_VALIDATE_NORMAL.  If
+downloading/installation validation has occurred it is set to PEAR_VALIDATE_DOWNLOADING
+or INSTALLING, and so on up to PEAR_VALIDATE_PACKAGING.  This allows validation
+"caching" to occur, which is particularly important for package validation, so
+that PHP files are not validated twice</description>
+        <var type="int"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_filesValid" default="false" type="boolean" visibility="public" static="false" line="78">
+      <docblock>
+        <description compact="True if the filelist has been validated"/>
+        <param type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </param>
+      </docblock>
+    </member>
+    <member name="_registry" visibility="public" static="false" line="84">
+      <docblock>
+        <description/>
+        <var type="object">
+          <type full="PEAR_Registry" namespace="" name="PEAR_Registry"/>
+        </var>
+        <access value="protected"/>
+      </docblock>
+    </member>
+    <member name="_config" visibility="public" static="false" line="90">
+      <docblock>
+        <description/>
+        <var type="object">
+          <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+        </var>
+        <access value="protected"/>
+      </docblock>
+    </member>
+    <member name="_requestedGroup" default="false" type="boolean" visibility="public" static="false" line="97">
+      <docblock>
+        <description compact="Optional Dependency group requested for installation"/>
+        <var type="string"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_stack" visibility="public" static="false" line="103">
+      <docblock>
+        <description/>
+        <var type="object">
+          <type full="PEAR_ErrorStack" namespace="" name="PEAR_ErrorStack"/>
+        </var>
+        <access value="protected"/>
+      </docblock>
+    </member>
+    <member name="_tasksNs" visibility="public" static="false" line="108">
+      <docblock>
+        <description compact="Namespace prefix used for tasks in this package.xml - use tasks: whenever possible"/>
+      </docblock>
+    </member>
+    <member name="_incomplete" default="true" type="boolean" visibility="public" static="false" line="121">
+      <docblock>
+        <description compact="Determines whether this packagefile was initialized only with partial package info">If this package file was constructed via parsing REST, it will only contain
+
+- package name
+- channel name
+- dependencies</description>
+        <var type="boolean"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_v2Validator" visibility="public" static="false" line="126">
+      <docblock>
+        <description/>
+        <var type="object">
+          <type full="PEAR_PackageFile_v2_Validator" namespace="" name="PEAR_PackageFile_v2_Validator"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="131" end="135" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="The constructor merely sets up the private error stack"/>
+      </docblock>
+    </constructor>
+    <method name="PEAR_PackageFile_v2" start="141" end="144" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="PHP 4 style constructor for backwards compatibility.">Used by PEAR_PackageFileManager2</description>
+      </docblock>
+    </method>
+    <method name="getPEARDownloader" start="154" end="158" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="To make unit-testing easier"/>
+        <param type="object">
+          <type full="PEAR_Frontend_" namespace="" name="PEAR_Frontend_"/>
+        </param>
+        <param type="array" variable="options"/>
+        <param type="object">
+          <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+        </param>
+        <return type="object">
+          <type full="PEAR_Downloader" namespace="" name="PEAR_Downloader"/>
+        </return>
+        <access value="protected"/>
+      </docblock>
+      <parameter name="i" byreference="true" type="{unknown}"/>
+      <parameter name="o" byreference="false" type="{unknown}"/>
+      <parameter name="c" byreference="true" type="{unknown}"/>
+    </method>
+    <method name="getPEARDependency2" start="169" end="176" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="To make unit-testing easier"/>
+        <param type="object">
+          <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+        </param>
+        <param type="array" variable="options"/>
+        <param description="package name as returned from {@link PEAR_Registry::parsePackageName()}" type="array"/>
+        <param description="PEAR_VALIDATE_* constant" type="int"/>
+        <return type="object">
+          <type full="PEAR_Dependency2" namespace="" name="PEAR_Dependency2"/>
+        </return>
+        <access value="protected"/>
+      </docblock>
+      <parameter name="c" byreference="true" type="{unknown}"/>
+      <parameter name="o" byreference="false" type="{unknown}"/>
+      <parameter name="p" byreference="false" type="{unknown}"/>
+      <parameter name="s" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_INSTALLING"/>
+    </method>
+    <method name="getInstalledBinary" start="178" end="182" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="installBinary" start="190" end="263" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Installation of source package has failed, attempt to download and install the binary version of this package."/>
+        <param type="object">
+          <type full="PEAR_Installer" namespace="" name="PEAR_Installer"/>
+        </param>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+      <parameter name="installer" byreference="true" type="{unknown}"/>
+    </method>
+    <method name="getProvidesExtension" start="268" end="277" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return description="Extension name" type="object">
+          <type full="string|false" namespace="" name="string|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="isExtension" start="283" end="290" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="Extension name" type="string"/>
+        <return type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="extension" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="isEquivalent" start="298" end="379" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Tests whether every part of the package.xml 1.0 is represented in this package.xml 2.0"/>
+        <param type="object">
+          <type full="PEAR_PackageFile_v1" namespace="" name="PEAR_PackageFile_v1"/>
+        </param>
+        <return type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="pf1" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentPackage" start="381" end="386" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="package" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentVersion" start="388" end="393" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentState" start="395" end="400" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="state" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentRole" start="402" end="407" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="handle" byreference="false" type="{unknown}"/>
+      <parameter name="role" byreference="false" type="{unknown}"/>
+      <parameter name="selfrole" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentEmail" start="409" end="414" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="handle" byreference="false" type="{unknown}"/>
+      <parameter name="email" byreference="false" type="{unknown}"/>
+      <parameter name="selfemail" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentName" start="416" end="421" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="handle" byreference="false" type="{unknown}"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+      <parameter name="selfname" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_unmatchedMaintainers" start="423" end="435" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="my" byreference="false" type="{unknown}"/>
+      <parameter name="yours" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentNotes" start="437" end="445" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="notes" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentSummary" start="447" end="455" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="summary" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_differentDescription" start="457" end="465" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="description" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_missingFile" start="467" end="471" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="file" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setRawState" start="476" end="482" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="WARNING - do not use this function unless you know what you're doing"/>
+      </docblock>
+      <parameter name="state" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setRawCompatible" start="487" end="490" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="WARNING - do not use this function unless you know what you're doing"/>
+      </docblock>
+      <parameter name="compatible" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setRawPackage" start="495" end="498" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="WARNING - do not use this function unless you know what you're doing"/>
+      </docblock>
+      <parameter name="package" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setRawChannel" start="503" end="506" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="WARNING - do not use this function unless you know what you're doing"/>
+      </docblock>
+      <parameter name="channel" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setRequestedGroup" start="508" end="511" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="group" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getRequestedGroup" start="513" end="519" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="setLastInstalledVersion" start="527" end="530" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="For saving in the registry.">Set the last version that was installed</description>
+        <param type="string"/>
+      </docblock>
+      <parameter name="version" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getLastInstalledVersion" start="535" end="541" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="string|false" namespace="" name="string|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="listPostinstallScripts" start="547" end="585" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Determines whether this package.xml has post-install scripts or not"/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="initPostinstallScripts" start="594" end="642" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Initialize post-install scripts for running">This method can be used to detect post-install scripts, as the return value
+indicates whether any exist</description>
+        <return type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="runPostinstallScripts" start="644" end="652" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="flattenFilelist" start="659" end="691" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Convert a recursive set of &lt;dir&gt; and &lt;file&gt; tags into a single &lt;dir&gt; tag with &lt;file&gt; tags."/>
+      </docblock>
+    </method>
+    <method name="_getFlattenedFilelist" start="701" end="739" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="the final flattened file list" type="array"/>
+        <param description="the current directory being processed" type="array"/>
+        <param description="any recursively inherited baeinstalldir attribute" type="object">
+          <type full="string|false" namespace="" name="string|false"/>
+        </param>
+        <param description="private recursion variable" type="string"/>
+        <return type="array"/>
+        <access value="protected"/>
+      </docblock>
+      <parameter name="files" byreference="true" type="{unknown}"/>
+      <parameter name="dir" byreference="false" type="{unknown}"/>
+      <parameter name="baseinstall" byreference="false" type="boolean" default="false"/>
+      <parameter name="path" byreference="false" type="string" default="''"/>
+    </method>
+    <method name="setConfig" start="741" end="745" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="config" byreference="true" type="{unknown}"/>
+    </method>
+    <method name="setLogger" start="747" end="753" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="logger" byreference="true" type="{unknown}"/>
+    </method>
+    <method name="setDeps" start="758" end="761" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="WARNING - do not use this function directly unless you know what you're doing"/>
+      </docblock>
+      <parameter name="deps" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setCompatible" start="766" end="769" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="WARNING - do not use this function directly unless you know what you're doing"/>
+      </docblock>
+      <parameter name="compat" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setPackagefile" start="771" end="775" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="file" byreference="false" type="{unknown}"/>
+      <parameter name="archive" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getValidationWarnings" start="782" end="785" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Wrapper to {@link PEAR_ErrorStack::getErrors()}"/>
+        <param description="determines whether to purge the error stack after retrieving" type="boolean"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="purge" byreference="false" type="boolean" default="true"/>
+    </method>
+    <method name="getPackageFile" start="787" end="790" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getArchiveFile" start="792" end="795" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fromArray" start="805" end="815" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Directly set the array that defines this packagefile">WARNING: no validation.  This should only be performed by internal methods
+inside PEAR or by inputting an array saved from an existing PEAR_PackageFile_v2</description>
+        <param type="array"/>
+      </docblock>
+      <parameter name="pinfo" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="If the changelog isn't an array then it was passed in as an empty tag" line="809"/>
+      </inline>
+    </method>
+    <method name="isIncomplete" start="817" end="820" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="toArray" start="825" end="831" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="forreg" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getArray" start="833" end="858" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="forReg" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="packageInfo" start="860" end="885" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="field" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getName" start="887" end="890" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getPackage" start="892" end="898" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getChannel" start="900" end="909" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getUri" start="911" end="917" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getExtends" start="919" end="925" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getSummary" start="927" end="933" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getDescription" start="935" end="941" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getMaintainers" start="943" end="1007" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="raw" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getLeads" start="1009" end="1015" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getDevelopers" start="1017" end="1023" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getContributors" start="1025" end="1031" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getHelpers" start="1033" end="1039" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="setDate" start="1041" end="1054" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="date" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="setTime" start="1056" end="1069" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="time" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getDate" start="1071" end="1077" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getTime" start="1079" end="1085" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getVersion" start="1090" end="1096" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="version category to return" type="object">
+          <type full="package|api" namespace="" name="package|api"/>
+        </param>
+      </docblock>
+      <parameter name="key" byreference="false" type="string" default="'release'"/>
+    </method>
+    <method name="getStability" start="1098" end="1104" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getState" start="1106" end="1112" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="key" byreference="false" type="string" default="'release'"/>
+    </method>
+    <method name="getLicense" start="1114" end="1127" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="raw" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getLicenseLocation" start="1129" end="1135" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getNotes" start="1137" end="1143" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getUsesrole" start="1149" end="1155" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return the &lt;usesrole&gt; tag contents, if any"/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getUsestask" start="1161" end="1167" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return the &lt;usestask&gt; tag contents, if any"/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getFilelist" start="1172" end="1202" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This should only be used to retrieve filenames and install attributes"/>
+      </docblock>
+      <parameter name="preserve" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getConfigureOptions" start="1209" end="1233" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return configure options array, if any"/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="resetFilelist" start="1239" end="1242" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This is only used at install-time, after all serialization is over."/>
+      </docblock>
+    </method>
+    <method name="getInstallationFilelist" start="1248" end="1330" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve a list of files that should be installed on this computer"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="forfilecheck" byreference="false" type="boolean" default="false"/>
+      <inline>
+        <comment value="no releases matched" line="1327"/>
+      </inline>
+    </method>
+    <method name="setInstalledAs" start="1338" end="1344" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This is only used at install-time, after all serialization is over."/>
+        <param description="file name" type="string"/>
+        <param description="installed path" type="string"/>
+      </docblock>
+      <parameter name="file" byreference="false" type="{unknown}"/>
+      <parameter name="path" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getInstalledLocation" start="1346" end="1352" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="file" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="installedFile" start="1358" end="1366" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This is only used at install-time, after all serialization is over."/>
+      </docblock>
+      <parameter name="file" byreference="false" type="{unknown}"/>
+      <parameter name="atts" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getContents" start="1371" end="1377" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the contents tag"/>
+      </docblock>
+    </method>
+    <method name="setFileAttribute" start="1387" end="1421" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="full path to file" type="string"/>
+        <param description="attribute name" type="string"/>
+        <param description="attribute value" type="string"/>
+        <param description="risky but fast - use this to choose a file based on its position in the list" type="int">of files.  Index is zero-based like PHP arrays.</param>
+        <return description="success of operation" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="filename" byreference="false" type="{unknown}"/>
+      <parameter name="attr" byreference="false" type="{unknown}"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+      <parameter name="index" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="setDirtree" start="1423" end="1429" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="path" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getDirtree" start="1431" end="1437" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="resetDirtree" start="1439" end="1442" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="isCompatible" start="1450" end="1489" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Determines whether this package claims it is compatible with the version of the package that has a recommended version dependency"/>
+        <param type="object">
+          <type full="PEAR_PackageFile_v2|PEAR_PackageFile_v1|PEAR_Downloader_Package" namespace="" name="PEAR_PackageFile_v2|PEAR_PackageFile_v1|PEAR_Downloader_Package"/>
+        </param>
+        <return type="boolean"/>
+      </docblock>
+      <parameter name="pf" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getCompatible" start="1494" end="1500" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getDependencies" start="1502" end="1508" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="isSubpackageOf" start="1510" end="1513" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="p" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="isSubpackage" start="1522" end="1567" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Determines whether the passed in package is a subpackage of this package.">No version checking is done, only name verification.</description>
+        <param type="object">
+          <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+        </param>
+        <return type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="p" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="dependsOn" start="1569" end="1610" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="package" byreference="false" type="{unknown}"/>
+      <parameter name="channel" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getDependencyGroup" start="1617" end="1633" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the contents of a dependency group"/>
+        <param type="string"/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getDeps" start="1646" end="1752" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve a partial package.xml 1.0 representation of dependencies">a very limited representation of dependencies is returned by this method.
+The &lt;exclude&gt; tag for excluding certain versions of a dependency is
+completely ignored.  In addition, dependency groups are ignored, with the
+assumption that all dependencies in dependency groups are also listed in
+the optional group that work with all dependency groups</description>
+        <param description="return package.xml 2.0 &lt;dependencies&gt; tag" type="boolean"/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+      <parameter name="raw" byreference="false" type="boolean" default="false"/>
+      <parameter name="nopearinstaller" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getPackageType" start="1757" end="1778" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="php|extsrc|extbin|zendextsrc|zendextbin|bundle|false" namespace="" name="php|extsrc|extbin|zendextsrc|zendextbin|bundle|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getReleases" start="1783" end="1793" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getChangelog" start="1798" end="1804" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="hasDeps" start="1806" end="1809" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getPackagexmlVersion" start="1811" end="1820" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getSourcePackage" start="1825" end="1833" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="array|false" namespace="" name="array|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getBundledPackages" start="1835" end="1841" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getLastModified" start="1843" end="1849" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getFileContents" start="1856" end="1879" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the contents of a file listed within the package.xml"/>
+        <param type="string"/>
+        <return type="string"/>
+      </docblock>
+      <parameter name="file" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getRW" start="1881" end="1899" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getDefaultGenerator" start="1901" end="1908" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="analyzeSourceCode" start="1910" end="1920" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="file" byreference="false" type="{unknown}"/>
+      <parameter name="string" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="validate" start="1922" end="1938" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="state" byreference="false" type="{unknown}" default="" constant="PEAR_VALIDATE_NORMAL"/>
+    </method>
+    <method name="getTasksNs" start="1940" end="1953" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getTask" start="1965" end="1982" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Determine whether a task name is a valid task.  Custom tasks may be defined using subdirectories by putting a &quot;-&quot; in the name, as in &lt;tasks:mycustom-task&gt;">Note that this method will auto-load the task class file and test for the existence
+of the name with "-" replaced by "_" as in PEAR/Task/mycustom/task.php makes class
+PEAR_Task_mycustom_task</description>
+        <param type="string"/>
+        <return type="boolean"/>
+      </docblock>
+      <parameter name="task" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="transform all '-' to '/' and 'tasks:' to '' so tasks:replace becomes replace" line="1968"/>
+      </inline>
+    </method>
+    <method name="_ksplice" start="1990" end="1997" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Key-friendly array_splice"/>
+        <param description="to splice a value in before" type="object">
+          <type full="tagname" namespace="" name="tagname"/>
+        </param>
+        <param description="the value to splice in" type="mixed"/>
+        <param description="the new tag name" type="string"/>
+      </docblock>
+      <parameter name="array" byreference="false" type="{unknown}"/>
+      <parameter name="key" byreference="false" type="{unknown}"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+      <parameter name="newkey" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_insertBefore" start="2005" end="2014" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="a list of possible keys, in the order they may occur" type="array"/>
+        <param description="contents of the new package.xml tag" type="mixed"/>
+        <param description="tag name" type="string"/>
+        <access value="private"/>
+      </docblock>
+      <parameter name="array" byreference="false" type="{unknown}"/>
+      <parameter name="keys" byreference="false" type="{unknown}"/>
+      <parameter name="contents" byreference="false" type="{unknown}"/>
+      <parameter name="newkey" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_mergeTag" start="2030" end="2057" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="of {@link $_packageInfo}" type="object">
+          <type full="subsection" namespace="" name="subsection"/>
+        </param>
+        <param description="tag contents" type="object">
+          <type full="array|string" namespace="" name="array|string"/>
+        </param>
+        <param type="array" variable="format:">&lt;pre&gt;
+array(
+  tagname =&gt; array(list of tag names that follow this one),
+  childtagname =&gt; array(list of child tag names that follow this one),
+)
+&lt;/pre&gt;
+
+This allows construction of nested tags</param>
+        <access value="private"/>
+      </docblock>
+      <parameter name="manip" byreference="false" type="{unknown}"/>
+      <parameter name="contents" byreference="false" type="{unknown}"/>
+      <parameter name="order" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

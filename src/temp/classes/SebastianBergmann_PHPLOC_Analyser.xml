@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="SebastianBergmann\PHPLOC\Analyser" namespace="SebastianBergmann\PHPLOC" name="Analyser" abstract="false" final="true" start="66" end="708">
+  <file path="//var/www/html/vendor/phploc/phploc/src" file="Analyser.php" realpath="/var/www/html/vendor/phploc/phploc/src/Analyser.php" size="23159" time="2020-12-07T05:51:20+00:00" unixtime="1607320280" sha1="be043352ad5c5cfa1fefb3f9f0c46fa4f5ce6807" relative="ar/www/html/vendor/phploc/phploc/src/Analyser.php"/>
+  <member name="collector" visibility="private" static="false" line="71">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="SebastianBergmann\PHPLOC\Collector" namespace="SebastianBergmann\PHPLOC" name="Collector"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="classes" default="" type="array" visibility="private" static="false" line="76">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="superGlobals" default="" type="array" visibility="private" static="false" line="81">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="97" end="100" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="countFiles" start="102" end="109" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="files" byreference="false" type="array"/>
+    <parameter name="countTests" byreference="false" type="bool"/>
+  </method>
+  <method name="preProcessFile" start="111" end="147" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="filename" byreference="false" type="string"/>
+  </method>
+  <method name="countFile" start="155" end="506" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Processes a single file."/>
+      <param type="string" variable="$filename"/>
+      <param type="object" variable="$countTests">
+        <type full="SebastianBergmann\PHPLOC\bool" namespace="SebastianBergmann\PHPLOC" name="bool"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="countTests" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getNamespaceName" start="513" end="530" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$i"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="tokens" byreference="false" type="array"/>
+    <parameter name="i" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getClassName" start="538" end="559" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$namespace"/>
+      <param type="int" variable="$i"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="namespace" byreference="false" type="{unknown}"/>
+    <parameter name="tokens" byreference="false" type="array"/>
+    <parameter name="i" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="isTestClass" start="566" end="600" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$className"/>
+      <return type="object">
+        <type full="SebastianBergmann\PHPLOC\bool" namespace="SebastianBergmann\PHPLOC" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="className" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Check ancestry for PHPUnit_Framework_TestCase." line="571"/>
+      <comment value="Fallback: Treat the class as a test case class if the name" line="597"/>
+      <comment value="of the parent class ends with &quot;TestCase&quot;." line="598"/>
+    </inline>
+  </method>
+  <method name="isTestMethod" start="610" end="630" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$functionName"/>
+      <param type="int" variable="$visibility"/>
+      <param type="object" variable="$static">
+        <type full="SebastianBergmann\PHPLOC\bool" namespace="SebastianBergmann\PHPLOC" name="bool"/>
+      </param>
+      <param type="int" variable="$currentToken"/>
+      <return type="object">
+        <type full="SebastianBergmann\PHPLOC\bool" namespace="SebastianBergmann\PHPLOC" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="functionName" byreference="false" type="{unknown}"/>
+    <parameter name="visibility" byreference="false" type="{unknown}"/>
+    <parameter name="static" byreference="false" type="{unknown}"/>
+    <parameter name="tokens" byreference="false" type="array"/>
+    <parameter name="currentToken" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getNextNonWhitespaceTokenPos" start="637" end="650" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$start"/>
+      <return type="object">
+        <type full="SebastianBergmann\PHPLOC\bool" namespace="SebastianBergmann\PHPLOC" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="tokens" byreference="false" type="array"/>
+    <parameter name="start" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPreviousNonWhitespaceTokenPos" start="657" end="670" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$start"/>
+      <return type="object">
+        <type full="SebastianBergmann\PHPLOC\bool" namespace="SebastianBergmann\PHPLOC" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="tokens" byreference="false" type="array"/>
+    <parameter name="start" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPreviousNonWhitespaceNonCommentTokenPos" start="675" end="693" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="SebastianBergmann\PHPLOC\bool" namespace="SebastianBergmann\PHPLOC" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="tokens" byreference="false" type="array"/>
+    <parameter name="start" byreference="false" type="int"/>
+  </method>
+  <method name="isClassDeclaration" start="700" end="707" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$i"/>
+      <return type="object">
+        <type full="SebastianBergmann\PHPLOC\bool" namespace="SebastianBergmann\PHPLOC" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="tokens" byreference="false" type="array"/>
+    <parameter name="i" byreference="false" type="{unknown}"/>
+  </method>
+</class>

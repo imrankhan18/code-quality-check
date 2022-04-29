@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Plugin\PluginManager</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Plugin">Composer\Plugin</a>
+          </li>
+          <li class="separator">PluginManager</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Plugin/PluginManager.php.xhtml#line40">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Plugin\</small>PluginManager</h1>
+        <h4>Plugin manager</h4>
+        <p/>
+        <ul>
+          <li>Author: Nils Adermann &lt;naderman@naderman.de&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PluginManager
+            {<br/><ul class="none"><li>// members</li><li>protected <span title="Composer\Composer">Composer</span> <a href="#members">$composer</a>;
+                    </li><li>protected <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>protected <span title="Composer\Plugin\PartialComposer|null">PartialComposer|null</span> <a href="#members">$globalComposer</a>;
+                    </li><li>protected <span title="Composer\Package\Version\VersionParser">VersionParser</span> <a href="#members">$versionParser</a>;
+                    </li><li>protected <span title="Composer\Plugin\bool">bool</span> <a href="#members">$disablePlugins</a> =
+                        false;
+                    </li><li>protected <span title="Composer\Plugin\array&lt;PluginInterface&gt;">array&lt;PluginInterface&gt;</span> <a href="#members">$plugins</a> =
+                        ;
+                    </li><li>protected <span title="Composer\Plugin\array&lt;string">array&lt;string</span> <a href="#members">$registeredPlugins</a> =
+                        ;
+                    </li><li>private <span title="Composer\Plugin\array&lt;non-empty-string">array&lt;non-empty-string</span> <a href="#members">$allowPluginRules</a>;
+                    </li><li>private <span title="Composer\Plugin\array&lt;non-empty-string">array&lt;non-empty-string</span> <a href="#members">$allowGlobalPluginRules</a>;
+                    </li><li>private static integer <a href="#members">$classCounter</a> =
+                        0;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/loadInstalledPlugins.xhtml">loadInstalledPlugins</a>()
+                    </li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/deactivateInstalledPlugins.xhtml">deactivateInstalledPlugins</a>()
+                    </li><li>public array <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getPlugins.xhtml">getPlugins</a>()
+                    </li><li>public ?<span title="PartialComposer">PartialComposer</span> <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getGlobalComposer.xhtml">getGlobalComposer</a>()
+                    </li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/registerPackage.xhtml">registerPackage</a>()
+                    </li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/deactivatePackage.xhtml">deactivatePackage</a>()
+                    </li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/uninstallPackage.xhtml">uninstallPackage</a>()
+                    </li><li>protected string <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getPluginApiVersion.xhtml">getPluginApiVersion</a>()
+                    </li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/addPlugin.xhtml">addPlugin</a>()
+                    </li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/removePlugin.xhtml">removePlugin</a>()
+                    </li><li>public void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/uninstallPlugin.xhtml">uninstallPlugin</a>()
+                    </li><li>private void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/loadRepository.xhtml">loadRepository</a>()
+                    </li><li>private void <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/deactivateRepository.xhtml">deactivateRepository</a>()
+                    </li><li>private array <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/collectDependencies.xhtml">collectDependencies</a>()
+                    </li><li>private string <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getInstallPath.xhtml">getInstallPath</a>()
+                    </li><li>protected ?string <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getCapabilityImplementationClassName.xhtml">getCapabilityImplementationClassName</a>()
+                    </li><li>public ?<span title="Capability">Capability</span> <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getPluginCapability.xhtml">getPluginCapability</a>()
+                    </li><li>public array <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getPluginCapabilities.xhtml">getPluginCapabilities</a>()
+                    </li><li>private ?array <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/parseAllowedPlugins.xhtml">parseAllowedPlugins</a>()
+                    </li><li>private bool <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/isPluginAllowed.xhtml">isPluginAllowed</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="allowGlobalPluginRules"><strong>$allowGlobalPluginRules</strong>
+                —
+                <a title="Composer\Plugin\array&lt;non-empty-string" href="../classes/Composer_Plugin_array&lt;non-empty-string.xhtml">Composer\Plugin\array&lt;non-empty-string</a></li>
+            <li id="allowPluginRules"><strong>$allowPluginRules</strong>
+                —
+                <a title="Composer\Plugin\array&lt;non-empty-string" href="../classes/Composer_Plugin_array&lt;non-empty-string.xhtml">Composer\Plugin\array&lt;non-empty-string</a></li>
+            <li id="classCounter"><strong>$classCounter</strong>
+                —
+                int</li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="composer"><strong>$composer</strong>
+                —
+                <a title="Composer\Composer" href="../classes/Composer_Composer.xhtml">Composer\Composer</a></li>
+            <li id="disablePlugins"><strong>$disablePlugins</strong>
+                —
+                <a title="Composer\Plugin\bool" href="../classes/Composer_Plugin_bool.xhtml">Composer\Plugin\bool</a></li>
+            <li id="globalComposer"><strong>$globalComposer</strong>
+                —
+                <a title="Composer\Plugin\PartialComposer|null" href="../classes/Composer_Plugin_PartialComposer|null.xhtml">Composer\Plugin\PartialComposer|null</a></li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="plugins"><strong>$plugins</strong>
+                —
+                <a title="Composer\Plugin\array&lt;PluginInterface&gt;" href="../classes/Composer_Plugin_array&lt;PluginInterface&gt;.xhtml">Composer\Plugin\array&lt;PluginInterface&gt;</a></li>
+            <li id="registeredPlugins"><strong>$registeredPlugins</strong>
+                —
+                <a title="Composer\Plugin\array&lt;string" href="../classes/Composer_Plugin_array&lt;string.xhtml">Composer\Plugin\array&lt;string</a></li>
+            <li id="versionParser"><strong>$versionParser</strong>
+                —
+                <a title="Composer\Package\Version\VersionParser" href="../classes/Composer_Package_Version_VersionParser.xhtml">Composer\Package\Version\VersionParser</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="collectDependencies"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/collectDependencies.xhtml">collectDependencies()</a>
+                — Recursively generates a map of package names to packages for all deps</li>
+            <li id="deactivateRepository"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/deactivateRepository.xhtml">deactivateRepository()</a>
+                — Deactivate all plugins and installers from a repository</li>
+            <li id="getInstallPath"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getInstallPath.xhtml">getInstallPath()</a>
+                — Retrieves the path a package is installed to.</li>
+            <li id="isPluginAllowed">
+              <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/isPluginAllowed.xhtml">isPluginAllowed()</a>
+            </li>
+            <li id="loadRepository"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/loadRepository.xhtml">loadRepository()</a>
+                — Load all plugins and installers from a repository</li>
+            <li id="parseAllowedPlugins">
+              <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/parseAllowedPlugins.xhtml">parseAllowedPlugins()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="getCapabilityImplementationClassName">
+              <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getCapabilityImplementationClassName.xhtml">getCapabilityImplementationClassName()</a>
+            </li>
+            <li id="getPluginApiVersion"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getPluginApiVersion.xhtml">getPluginApiVersion()</a>
+                — Returns the version of the internal composer-plugin-api package.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="addPlugin"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/addPlugin.xhtml">addPlugin()</a>
+                — Adds a plugin, activates it and registers it with the event dispatcher</li>
+            <li id="deactivateInstalledPlugins"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/deactivateInstalledPlugins.xhtml">deactivateInstalledPlugins()</a>
+                — Deactivate all plugins from currently installed plugin packages</li>
+            <li id="deactivatePackage"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/deactivatePackage.xhtml">deactivatePackage()</a>
+                — Deactivates a plugin package</li>
+            <li id="getGlobalComposer"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getGlobalComposer.xhtml">getGlobalComposer()</a>
+                — Gets global composer or null when main composer is not fully loaded</li>
+            <li id="getPluginCapabilities">
+              <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getPluginCapabilities.xhtml">getPluginCapabilities()</a>
+            </li>
+            <li id="getPluginCapability">
+              <a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getPluginCapability.xhtml">getPluginCapability()</a>
+            </li>
+            <li id="getPlugins"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/getPlugins.xhtml">getPlugins()</a>
+                — Gets all currently active plugin instances</li>
+            <li id="loadInstalledPlugins"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/loadInstalledPlugins.xhtml">loadInstalledPlugins()</a>
+                — Loads all plugins from currently installed plugin packages</li>
+            <li id="registerPackage"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/registerPackage.xhtml">registerPackage()</a>
+                — Register a plugin package, activate it etc.</li>
+            <li id="removePlugin"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/removePlugin.xhtml">removePlugin()</a>
+                — Removes a plugin, deactivates it and removes any listener the plugin has set on the plugin instance</li>
+            <li id="uninstallPackage"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/uninstallPackage.xhtml">uninstallPackage()</a>
+                — Uninstall a plugin package</li>
+            <li id="uninstallPlugin"><a title="Composer\Plugin\PluginManager" href="../classes/Composer_Plugin_PluginManager/uninstallPlugin.xhtml">uninstallPlugin()</a>
+                — Notifies a plugin it is being uninstalled and should clean up</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

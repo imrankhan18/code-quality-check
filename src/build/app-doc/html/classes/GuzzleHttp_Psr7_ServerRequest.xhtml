@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - GuzzleHttp\Psr7\ServerRequest</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#GuzzleHttp_Psr7">GuzzleHttp\Psr7</a>
+          </li>
+          <li class="separator">ServerRequest</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/guzzlehttp/psr7/src/ServerRequest.php.xhtml#line27">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>GuzzleHttp\Psr7\</small>ServerRequest</h1>
+        <h4>Server-side HTTP request</h4>
+        <p>Extends the Request definition to add methods for accessing incoming data,<br/>specifically server parameters, cookies, matched path parameters, query<br/>string arguments, body parameters, and upload file information.<br/><br/>"Attributes" are discovered via decomposing the request (and usually<br/>specifically the URI path), and typically will be injected by the application.<br/><br/>Requests are considered immutable; all methods that might change state are<br/>implemented such that they retain the internal state of the current<br/>message and return a new instance that contains the changed state.</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ServerRequest
+                extends <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request.xhtml">Request</a>
+                implements
+                <a title="Psr\Http\Message\ServerRequestInterface" href="../interfaces/Psr_Http_Message_ServerRequestInterface.xhtml">ServerRequestInterface</a>
+            {<br/><ul class="none"><li>// members</li><li>private array <a href="#members">$attributes</a> =
+                        ;
+                    </li><li>private array <a href="#members">$cookieParams</a> =
+                        ;
+                    </li><li>private <span title="GuzzleHttp\Psr7\array|object|null">array|object|null</span> <a href="#members">$parsedBody</a>;
+                    </li><li>private array <a href="#members">$queryParams</a> =
+                        ;
+                    </li><li>private  <a href="#members">$serverParams</a>;
+                    </li><li>private array <a href="#members">$uploadedFiles</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/__construct.xhtml">__construct</a>()
+                    </li><li>public static array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/normalizeFiles.xhtml">normalizeFiles</a>()
+                    </li><li>private static array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/createUploadedFileFromSpec.xhtml">createUploadedFileFromSpec</a>()
+                    </li><li>private static array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/normalizeNestedFileSpec.xhtml">normalizeNestedFileSpec</a>()
+                    </li><li>public static <span title="ServerRequestInterface">ServerRequestInterface</span> <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/fromGlobals.xhtml">fromGlobals</a>()
+                    </li><li>private static array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/extractHostAndPortFromAuthority.xhtml">extractHostAndPortFromAuthority</a>()
+                    </li><li>public static <span title="UriInterface">UriInterface</span> <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getUriFromGlobals.xhtml">getUriFromGlobals</a>()
+                    </li><li>public array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getServerParams.xhtml">getServerParams</a>()
+                    </li><li>public array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getUploadedFiles.xhtml">getUploadedFiles</a>()
+                    </li><li>public <span title="ServerRequestInterface">ServerRequestInterface</span> <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withUploadedFiles.xhtml">withUploadedFiles</a>()
+                    </li><li>public array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getCookieParams.xhtml">getCookieParams</a>()
+                    </li><li>public <span title="ServerRequestInterface">ServerRequestInterface</span> <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withCookieParams.xhtml">withCookieParams</a>()
+                    </li><li>public array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getQueryParams.xhtml">getQueryParams</a>()
+                    </li><li>public <span title="ServerRequestInterface">ServerRequestInterface</span> <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withQueryParams.xhtml">withQueryParams</a>()
+                    </li><li>public array|object|null <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getParsedBody.xhtml">getParsedBody</a>()
+                    </li><li>public <span title="ServerRequestInterface">ServerRequestInterface</span> <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withParsedBody.xhtml">withParsedBody</a>()
+                    </li><li>public array <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getAttributes.xhtml">getAttributes</a>()
+                    </li><li>public mixed <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getAttribute.xhtml">getAttribute</a>()
+                    </li><li>public <span title="ServerRequestInterface">ServerRequestInterface</span> <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withAttribute.xhtml">withAttribute</a>()
+                    </li><li>public <span title="ServerRequestInterface">ServerRequestInterface</span> <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withoutAttribute.xhtml">withoutAttribute</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="GuzzleHttp\Psr7\Request">Request</span></li><li>public void <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/getRequestTarget.xhtml">getRequestTarget</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/withRequestTarget.xhtml">withRequestTarget</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/getMethod.xhtml">getMethod</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/withMethod.xhtml">withMethod</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/getUri.xhtml">getUri</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/withUri.xhtml">withUri</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="GuzzleHttp\Psr7\MessageTrait">MessageTrait</span></li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getProtocolVersion.xhtml">getProtocolVersion</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withProtocolVersion.xhtml">withProtocolVersion</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getHeaders.xhtml">getHeaders</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/hasHeader.xhtml">hasHeader</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getHeader.xhtml">getHeader</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getHeaderLine.xhtml">getHeaderLine</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withHeader.xhtml">withHeader</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withAddedHeader.xhtml">withAddedHeader</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withoutHeader.xhtml">withoutHeader</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getBody.xhtml">getBody</a>()
+                        </li><li>public void <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withBody.xhtml">withBody</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request.xhtml">GuzzleHttp\Psr7\Request</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Psr\Http\Message\ServerRequestInterface" href="../interfaces/Psr_Http_Message_ServerRequestInterface.xhtml">Psr\Http\Message\ServerRequestInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="attributes"><strong>$attributes</strong>
+                —
+                array</li>
+            <li id="cookieParams"><strong>$cookieParams</strong>
+                —
+                array</li>
+            <li id="parsedBody"><strong>$parsedBody</strong>
+                —
+                <a title="GuzzleHttp\Psr7\array|object|null" href="../classes/GuzzleHttp_Psr7_array|object|null.xhtml">GuzzleHttp\Psr7\array|object|null</a></li>
+            <li id="queryParams"><strong>$queryParams</strong>
+                —
+                array</li>
+            <li id="serverParams"><strong>$serverParams</strong>
+                —
+                array</li>
+            <li id="uploadedFiles"><strong>$uploadedFiles</strong>
+                —
+                array</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="createUploadedFileFromSpec"><a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/createUploadedFileFromSpec.xhtml">createUploadedFileFromSpec()</a>
+                — Create and return an UploadedFile instance from a $_FILES specification.</li>
+            <li id="extractHostAndPortFromAuthority">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/extractHostAndPortFromAuthority.xhtml">extractHostAndPortFromAuthority()</a>
+            </li>
+            <li id="normalizeNestedFileSpec"><a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/normalizeNestedFileSpec.xhtml">normalizeNestedFileSpec()</a>
+                — Normalize an array of file specifications.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="fromGlobals"><a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/fromGlobals.xhtml">fromGlobals()</a>
+                — Return a ServerRequest populated with superglobals: $_GET $_POST $_COOKIE $_FILES $_SERVER</li>
+            <li id="getAttribute"><a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getAttribute.xhtml">getAttribute()</a>
+                — {@inheritdoc}</li>
+            <li id="getAttributes">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getAttributes.xhtml">getAttributes()</a>
+            </li>
+            <li id="getCookieParams">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getCookieParams.xhtml">getCookieParams()</a>
+            </li>
+            <li id="getParsedBody"><a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getParsedBody.xhtml">getParsedBody()</a>
+                — {@inheritdoc}</li>
+            <li id="getQueryParams">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getQueryParams.xhtml">getQueryParams()</a>
+            </li>
+            <li id="getServerParams">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getServerParams.xhtml">getServerParams()</a>
+            </li>
+            <li id="getUploadedFiles">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getUploadedFiles.xhtml">getUploadedFiles()</a>
+            </li>
+            <li id="getUriFromGlobals"><a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/getUriFromGlobals.xhtml">getUriFromGlobals()</a>
+                — Get a Uri populated with values from $_SERVER.</li>
+            <li id="normalizeFiles"><a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/normalizeFiles.xhtml">normalizeFiles()</a>
+                — Return an UploadedFile instance array.</li>
+            <li id="withAttribute">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withAttribute.xhtml">withAttribute()</a>
+            </li>
+            <li id="withCookieParams">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withCookieParams.xhtml">withCookieParams()</a>
+            </li>
+            <li id="withParsedBody">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withParsedBody.xhtml">withParsedBody()</a>
+            </li>
+            <li id="withQueryParams">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withQueryParams.xhtml">withQueryParams()</a>
+            </li>
+            <li id="withUploadedFiles">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withUploadedFiles.xhtml">withUploadedFiles()</a>
+            </li>
+            <li id="withoutAttribute">
+              <a title="GuzzleHttp\Psr7\ServerRequest" href="../classes/GuzzleHttp_Psr7_ServerRequest/withoutAttribute.xhtml">withoutAttribute()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request.xhtml">GuzzleHttp\Psr7\Request</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="getMethod">
+              <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/getMethod.xhtml">getMethod()</a>
+            </li>
+            <li id="getRequestTarget">
+              <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/getRequestTarget.xhtml">getRequestTarget()</a>
+            </li>
+            <li id="getUri">
+              <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/getUri.xhtml">getUri()</a>
+            </li>
+            <li id="withMethod">
+              <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/withMethod.xhtml">withMethod()</a>
+            </li>
+            <li id="withRequestTarget">
+              <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/withRequestTarget.xhtml">withRequestTarget()</a>
+            </li>
+            <li id="withUri">
+              <a title="GuzzleHttp\Psr7\Request" href="../classes/GuzzleHttp_Psr7_Request/withUri.xhtml">withUri()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait.xhtml">GuzzleHttp\Psr7\MessageTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="getBody">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getBody.xhtml">getBody()</a>
+            </li>
+            <li id="getHeader">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getHeader.xhtml">getHeader()</a>
+            </li>
+            <li id="getHeaderLine">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getHeaderLine.xhtml">getHeaderLine()</a>
+            </li>
+            <li id="getHeaders">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getHeaders.xhtml">getHeaders()</a>
+            </li>
+            <li id="getProtocolVersion">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/getProtocolVersion.xhtml">getProtocolVersion()</a>
+            </li>
+            <li id="hasHeader">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/hasHeader.xhtml">hasHeader()</a>
+            </li>
+            <li id="withAddedHeader">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withAddedHeader.xhtml">withAddedHeader()</a>
+            </li>
+            <li id="withBody">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withBody.xhtml">withBody()</a>
+            </li>
+            <li id="withHeader">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withHeader.xhtml">withHeader()</a>
+            </li>
+            <li id="withProtocolVersion">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withProtocolVersion.xhtml">withProtocolVersion()</a>
+            </li>
+            <li id="withoutHeader">
+              <a title="GuzzleHttp\Psr7\MessageTrait" href="../traits/GuzzleHttp_Psr7_MessageTrait/withoutHeader.xhtml">withoutHeader()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

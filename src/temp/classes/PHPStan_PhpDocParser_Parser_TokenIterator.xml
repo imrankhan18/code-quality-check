@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PHPStan\PhpDocParser\Parser\TokenIterator" namespace="PHPStan\PhpDocParser\Parser" name="TokenIterator" abstract="false" final="false" start="12" end="224">
+  <file path="//var/www/html/vendor/phpstan/phpdoc-parser/src/Parser" file="TokenIterator.php" realpath="/var/www/html/vendor/phpstan/phpdoc-parser/src/Parser/TokenIterator.php" size="4435" time="2022-04-22T11:11:01+00:00" unixtime="1650625861" sha1="416bbc59aea529f9052f60d376f375b1c743b891" relative="ar/www/html/vendor/phpstan/phpdoc-parser/src/Parser/TokenIterator.php"/>
+  <member name="tokens" visibility="private" static="false" line="16">
+    <docblock>
+      <var type="array" of="object">
+        <type full="PHPStan\PhpDocParser\Parser\mixed[]" namespace="PHPStan\PhpDocParser\Parser" name="mixed[]"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="index" visibility="private" static="false" line="19">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="savePoints" default="" type="array" visibility="private" static="false" line="22">
+    <docblock>
+      <var type="array" of="object">
+        <type full="PHPStan\PhpDocParser\Parser\int" namespace="PHPStan\PhpDocParser\Parser" name="int"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="24" end="34" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="tokens" byreference="false" type="array"/>
+    <parameter name="index" byreference="false" type="integer" default="0"/>
+  </constructor>
+  <method name="currentTokenValue" start="37" end="40" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="currentTokenType" start="43" end="46" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="currentTokenOffset" start="49" end="57" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="isCurrentTokenValue" start="60" end="63" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="tokenValue" byreference="false" type="string"/>
+  </method>
+  <method name="isCurrentTokenType" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="tokenType" byreference="false" type="int"/>
+  </method>
+  <method name="isPrecededByHorizontalWhitespace" start="72" end="75" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="consumeTokenType" start="81" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="PHPStan\PhpDocParser\Parser\ParserException" namespace="PHPStan\PhpDocParser\Parser" name="ParserException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="tokenType" byreference="false" type="int"/>
+  </method>
+  <method name="consumeTokenValue" start="100" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="PHPStan\PhpDocParser\Parser\ParserException" namespace="PHPStan\PhpDocParser\Parser" name="ParserException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="tokenType" byreference="false" type="int"/>
+    <parameter name="tokenValue" byreference="false" type="string"/>
+  </method>
+  <method name="tryConsumeTokenValue" start="117" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokenValue" byreference="false" type="string"/>
+  </method>
+  <method name="tryConsumeTokenType" start="134" end="147" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="tokenType" byreference="false" type="int"/>
+  </method>
+  <method name="getSkippedHorizontalWhiteSpaceIfAny" start="150" end="157" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="joinUntil" start="161" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="tokenType" byreference="false" type="int"/>
+  </method>
+  <method name="next" start="171" end="180" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="forwardToTheEnd" start="183" end="187" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <phpstan value="-impure"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="pushSavePoint" start="190" end="193" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="dropSavePoint" start="196" end="199" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="rollback" start="202" end="207" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="throwError" start="213" end="222" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="PHPStan\PhpDocParser\Parser\ParserException" namespace="PHPStan\PhpDocParser\Parser" name="ParserException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="expectedTokenType" byreference="false" type="int"/>
+    <parameter name="expectedTokenValue" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+</class>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="JakubOnderka\PhpParallelLint\TextOutput" namespace="JakubOnderka\PhpParallelLint" name="TextOutput" abstract="false" final="false" start="163" end="379">
+  <file path="//var/www/html/vendor/php-parallel-lint/php-parallel-lint/src" file="Output.php" realpath="/var/www/html/vendor/php-parallel-lint/php-parallel-lint/src/Output.php" size="14401" time="2022-02-21T12:50:22+00:00" unixtime="1645447822" sha1="033dac731a8edf1d4b874c631ffa462c5544c5d4" relative="ar/www/html/vendor/php-parallel-lint/php-parallel-lint/src/Output.php"/>
+  <implements full="JakubOnderka\PhpParallelLint\Output" namespace="JakubOnderka\PhpParallelLint" name="Output"/>
+  <constant type="{unknown}" name="TYPE_DEFAULT" value="'default'"/>
+  <member name="filesPerLine" default="60" type="integer" visibility="public" static="false" line="172">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="showProgress" default="true" type="boolean" visibility="public" static="false" line="175">
+    <docblock>
+      <var type="object">
+        <type full="JakubOnderka\PhpParallelLint\bool" namespace="JakubOnderka\PhpParallelLint" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="checkedFiles" visibility="protected" static="false" line="178">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="totalFileCount" visibility="protected" static="false" line="181">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="writer" visibility="protected" static="false" line="184">
+    <docblock>
+      <var type="object">
+        <type full="JakubOnderka\PhpParallelLint\IWriter" namespace="JakubOnderka\PhpParallelLint" name="IWriter"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="189" end="192" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$writer">
+        <type full="JakubOnderka\PhpParallelLint\IWriter" namespace="JakubOnderka\PhpParallelLint" name="IWriter"/>
+      </param>
+    </docblock>
+    <parameter name="writer" byreference="false" type="object">
+      <type full="JakubOnderka\PhpParallelLint\IWriter" namespace="JakubOnderka\PhpParallelLint" name="IWriter"/>
+    </parameter>
+  </constructor>
+  <method name="ok" start="194" end="197" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="skip" start="199" end="202" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="error" start="204" end="207" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="fail" start="209" end="212" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="write" start="218" end="221" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$type"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="type" byreference="false" type="{unknown}" default="" constant="self::TYPE_DEFAULT"/>
+  </method>
+  <method name="writeLine" start="227" end="231" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$line">
+        <type full="JakubOnderka\PhpParallelLint\string|null" namespace="JakubOnderka\PhpParallelLint" name="string|null"/>
+      </param>
+      <param type="string" variable="$type"/>
+    </docblock>
+    <parameter name="line" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="type" byreference="false" type="{unknown}" default="" constant="self::TYPE_DEFAULT"/>
+  </method>
+  <method name="writeNewLine" start="236" end="239" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$count"/>
+    </docblock>
+    <parameter name="count" byreference="false" type="integer" default="1"/>
+  </method>
+  <method name="setTotalFileCount" start="244" end="247" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$count"/>
+    </docblock>
+    <parameter name="count" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="writeHeader" start="254" end="267" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$phpVersion"/>
+      <param type="int" variable="$parallelJobs"/>
+      <param type="string" variable="$hhvmVersion"/>
+    </docblock>
+    <parameter name="phpVersion" byreference="false" type="{unknown}"/>
+    <parameter name="parallelJobs" byreference="false" type="{unknown}"/>
+    <parameter name="hhvmVersion" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="writeResult" start="274" end="323" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$result">
+        <type full="JakubOnderka\PhpParallelLint\Result" namespace="JakubOnderka\PhpParallelLint" name="Result"/>
+      </param>
+      <param type="object" variable="$errorFormatter">
+        <type full="JakubOnderka\PhpParallelLint\ErrorFormatter" namespace="JakubOnderka\PhpParallelLint" name="ErrorFormatter"/>
+      </param>
+      <param type="object" variable="$ignoreFails">
+        <type full="JakubOnderka\PhpParallelLint\bool" namespace="JakubOnderka\PhpParallelLint" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="result" byreference="false" type="object">
+      <type full="JakubOnderka\PhpParallelLint\Result" namespace="JakubOnderka\PhpParallelLint" name="Result"/>
+    </parameter>
+    <parameter name="errorFormatter" byreference="false" type="object">
+      <type full="JakubOnderka\PhpParallelLint\ErrorFormatter" namespace="JakubOnderka\PhpParallelLint" name="ErrorFormatter"/>
+    </parameter>
+    <parameter name="ignoreFails" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="writeMark" start="325" end="347" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="writePercent" start="349" end="354" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="stringWidth" start="361" end="365" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$input"/>
+      <param type="int" variable="$width"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="input" byreference="false" type="{unknown}"/>
+    <parameter name="width" byreference="false" type="integer" default="3"/>
+  </method>
+  <method name="phpVersionIdToString" start="371" end="378" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="int" variable="$phpVersionId"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="phpVersionId" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="JakubOnderka\PhpParallelLint\Output" namespace="JakubOnderka\PhpParallelLint" name="Output">
+    <constructor name="__construct" start="6" end="6" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="writer" byreference="false" type="object">
+        <type full="JakubOnderka\PhpParallelLint\IWriter" namespace="JakubOnderka\PhpParallelLint" name="IWriter"/>
+      </parameter>
+    </constructor>
+    <method name="ok" start="8" end="8" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="skip" start="10" end="10" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="error" start="12" end="12" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fail" start="14" end="14" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="setTotalFileCount" start="16" end="16" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="count" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="writeHeader" start="18" end="18" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="phpVersion" byreference="false" type="{unknown}"/>
+      <parameter name="parallelJobs" byreference="false" type="{unknown}"/>
+      <parameter name="hhvmVersion" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="writeResult" start="20" end="20" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="result" byreference="false" type="object">
+        <type full="JakubOnderka\PhpParallelLint\Result" namespace="JakubOnderka\PhpParallelLint" name="Result"/>
+      </parameter>
+      <parameter name="errorFormatter" byreference="false" type="object">
+        <type full="JakubOnderka\PhpParallelLint\ErrorFormatter" namespace="JakubOnderka\PhpParallelLint" name="ErrorFormatter"/>
+      </parameter>
+      <parameter name="ignoreFails" byreference="false" type="{unknown}"/>
+    </method>
+  </interface>
+  <extenders>
+    <extender full="JakubOnderka\PhpParallelLint\TextOutputColored" namespace="JakubOnderka\PhpParallelLint" name="TextOutputColored"/>
+  </extenders>
+</class>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\TransferStats" namespace="GuzzleHttp" name="TransferStats" abstract="false" final="true" start="13" end="133">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="TransferStats.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/TransferStats.php" size="3180" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="f2f71c68b0a17cdafb54e48b8b67b2c7400d98ba" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/TransferStats.php"/>
+  <docblock>
+    <description compact="Represents data at the point after it was transferred either successfully or after a network error."/>
+  </docblock>
+  <member name="request" visibility="private" static="false" line="18">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="response" visibility="private" static="false" line="23">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\ResponseInterface|null" namespace="GuzzleHttp" name="ResponseInterface|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="transferTime" visibility="private" static="false" line="28">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\float|null" namespace="GuzzleHttp" name="float|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="handlerStats" visibility="private" static="false" line="33">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="handlerErrorData" visibility="private" static="false" line="38">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\mixed|null" namespace="GuzzleHttp" name="mixed|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="47" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Request that was sent." type="object" variable="$request">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <param description="Response received (if any)" type="object" variable="$response">
+        <type full="GuzzleHttp\ResponseInterface|null" namespace="GuzzleHttp" name="ResponseInterface|null"/>
+      </param>
+      <param description="Total handler transfer time." type="object" variable="$transferTime">
+        <type full="GuzzleHttp\float|null" namespace="GuzzleHttp" name="float|null"/>
+      </param>
+      <param description="Handler error data." type="mixed" variable="$handlerErrorData"/>
+      <param description="Handler specific stats." type="array" variable="$handlerStats"/>
+    </docblock>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="response" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </parameter>
+    <parameter name="transferTime" byreference="false" nullable="true" type="float" default="NULL"/>
+    <parameter name="handlerErrorData" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="handlerStats" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="getRequest" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+  </method>
+  <method name="getResponse" start="69" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the response that was received (if any)."/>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </return>
+  </method>
+  <method name="hasResponse" start="77" end="80" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns true if a response was received."/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getHandlerErrorData" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets handler specific error data.">This might be an exception, a integer representing an error code, or
+anything else. Relying on this value assumes that you know what handler
+you are using.</description>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  <method name="getEffectiveUri" start="99" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the effective URI the request was sent to."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+  </method>
+  <method name="getTransferTime" start="109" end="112" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the estimated time the request was being transferred by the handler."/>
+      <return description="Time in seconds." type="object">
+        <type full="GuzzleHttp\float|null" namespace="GuzzleHttp" name="float|null"/>
+      </return>
+    </docblock>
+    <return type="float" nullable="true"/>
+  </method>
+  <method name="getHandlerStats" start="117" end="120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets an array of all of the handler specific transfer data."/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getHandlerStat" start="129" end="132" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get a specific handler statistic from the handler by name."/>
+      <param description="Handler specific transfer stat to retrieve." type="string" variable="$stat"/>
+      <return type="object">
+        <type full="GuzzleHttp\mixed|null" namespace="GuzzleHttp" name="mixed|null"/>
+      </return>
+    </docblock>
+    <parameter name="stat" byreference="false" type="string"/>
+  </method>
+</class>

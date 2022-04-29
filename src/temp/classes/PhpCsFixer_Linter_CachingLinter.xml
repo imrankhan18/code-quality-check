@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Linter\CachingLinter" namespace="PhpCsFixer\Linter" name="CachingLinter" abstract="false" final="true" start="22" end="71">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Linter" file="CachingLinter.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Linter/CachingLinter.php" size="1511" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="4c5b4d9d019e9619c5b95ca5ab2ba7ae8685f4d8" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Linter/CachingLinter.php"/>
+  <docblock>
+    <description/>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <implements full="PhpCsFixer\Linter\LinterInterface" namespace="PhpCsFixer\Linter" name="LinterInterface"/>
+  <member name="sublinter" visibility="private" static="false" line="24"/>
+  <member name="cache" default="" type="array" visibility="private" static="false" line="29">
+    <docblock>
+      <description/>
+      <var description="LintingResultInterface&gt;" type="object">
+        <type full="PhpCsFixer\Linter\array&lt;int" namespace="PhpCsFixer\Linter" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="31" end="34" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="linter" byreference="false" type="object">
+      <type full="PhpCsFixer\Linter\LinterInterface" namespace="PhpCsFixer\Linter" name="LinterInterface"/>
+    </parameter>
+  </constructor>
+  <method name="isAsync" start="39" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="lintFile" start="47" end="56" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PhpCsFixer\Linter\LintingResultInterface" namespace="PhpCsFixer\Linter" name="LintingResultInterface"/>
+    </return>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="lintSource" start="61" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="PhpCsFixer\Linter\LintingResultInterface" namespace="PhpCsFixer\Linter" name="LintingResultInterface"/>
+    </return>
+    <parameter name="source" byreference="false" type="string"/>
+  </method>
+  <interface full="PhpCsFixer\Linter\LinterInterface" namespace="PhpCsFixer\Linter" name="LinterInterface">
+    <method name="isAsync" start="24" end="24" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="lintFile" start="29" end="29" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Lint PHP file."/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="PhpCsFixer\Linter\LintingResultInterface" namespace="PhpCsFixer\Linter" name="LintingResultInterface"/>
+      </return>
+      <parameter name="path" byreference="false" type="string"/>
+    </method>
+    <method name="lintSource" start="34" end="34" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Lint PHP code."/>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="PhpCsFixer\Linter\LintingResultInterface" namespace="PhpCsFixer\Linter" name="LintingResultInterface"/>
+      </return>
+      <parameter name="source" byreference="false" type="string"/>
+    </method>
+  </interface>
+</class>

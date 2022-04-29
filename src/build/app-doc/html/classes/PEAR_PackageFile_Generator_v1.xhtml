@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_PackageFile_Generator_v1</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_PackageFile_Generator_v1</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/PackageFile/Generator/v1.php.xhtml#line35">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_PackageFile_Generator_v1</h1>
+        <h4>This class converts a PEAR_PackageFile_v1 object into any output format.</h4>
+        <p>Supported output formats include array, XML string, and a PEAR_PackageFile_v2<br/>object, for converting package.xml 1.0 into package.xml 2.0 with no sweat.</p>
+        <ul>
+          <li>Author: Greg Beaver &lt;cellog@php.net&gt;</li>
+          <li>Copyright: 1997-2009 The Authors</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_PackageFile_Generator_v1
+            {<br/><ul class="none"><li>// members</li><li>public <span title="PEAR_PackageFile_v1">PEAR_PackageFile_v1</span> <a href="#members">$_packagefile</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/getPackagerVersion.xhtml">getPackagerVersion</a>()
+                    </li><li>public string|PEAR_Error <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/toTgz.xhtml">toTgz</a>()
+                    </li><li>public string|PEAR_Error <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/toPackageFile.xhtml">toPackageFile</a>()
+                    </li><li>public string <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_fixXmlEncoding.xhtml">_fixXmlEncoding</a>()
+                    </li><li>public string <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/toXml.xhtml">toXml</a>()
+                    </li><li>public string <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_makeReleaseXml.xhtml">_makeReleaseXml</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/recursiveXmlFilelist.xhtml">recursiveXmlFilelist</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_addDir.xhtml">_addDir</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_formatDir.xhtml">_formatDir</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_formatFile.xhtml">_formatFile</a>()
+                    </li><li>public string <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_unIndent.xhtml">_unIndent</a>()
+                    </li><li>public array <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/dependenciesToV2.xhtml">dependenciesToV2</a>()
+                    </li><li>public PEAR_PackageFile_v2|PEAR_Error <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/toV2.xhtml">toV2</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_convertDependencies2_0.xhtml">_convertDependencies2_0</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_convertFilelist2_0.xhtml">_convertFilelist2_0</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_convertRelease2_0.xhtml">_convertRelease2_0</a>()
+                    </li><li>public array <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_processDep.xhtml">_processDep</a>()
+                    </li><li>public array <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_processPhpDeps.xhtml">_processPhpDeps</a>()
+                    </li><li>public array <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_processMultipleDepsName.xhtml">_processMultipleDepsName</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_packagefile"><strong>$_packagefile</strong>
+                —
+                <a title="PEAR_PackageFile_v1" href="../classes/PEAR_PackageFile_v1.xhtml">PEAR_PackageFile_v1</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="_addDir">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_addDir.xhtml">_addDir()</a>
+            </li>
+            <li id="_convertDependencies2_0">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_convertDependencies2_0.xhtml">_convertDependencies2_0()</a>
+            </li>
+            <li id="_convertFilelist2_0">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_convertFilelist2_0.xhtml">_convertFilelist2_0()</a>
+            </li>
+            <li id="_convertRelease2_0"><a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_convertRelease2_0.xhtml">_convertRelease2_0()</a>
+                — Post-process special files with install-as/platform attributes and make the release tag.</li>
+            <li id="_fixXmlEncoding"><a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_fixXmlEncoding.xhtml">_fixXmlEncoding()</a>
+                — fix both XML encoding to be UTF8, and replace standard XML entities &lt; &gt; " &amp; '</li>
+            <li id="_formatDir">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_formatDir.xhtml">_formatDir()</a>
+            </li>
+            <li id="_formatFile">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_formatFile.xhtml">_formatFile()</a>
+            </li>
+            <li id="_makeReleaseXml"><a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_makeReleaseXml.xhtml">_makeReleaseXml()</a>
+                — Generate part of an XML description with release information.</li>
+            <li id="_processDep">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_processDep.xhtml">_processDep()</a>
+            </li>
+            <li id="_processMultipleDepsName"><a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_processMultipleDepsName.xhtml">_processMultipleDepsName()</a>
+                — process multiple dependencies that have a name, like package deps</li>
+            <li id="_processPhpDeps">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_processPhpDeps.xhtml">_processPhpDeps()</a>
+            </li>
+            <li id="_unIndent"><a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/_unIndent.xhtml">_unIndent()</a>
+                — Unindent given string (?)</li>
+            <li id="dependenciesToV2">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/dependenciesToV2.xhtml">dependenciesToV2()</a>
+            </li>
+            <li id="getPackagerVersion">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/getPackagerVersion.xhtml">getPackagerVersion()</a>
+            </li>
+            <li id="recursiveXmlFilelist">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/recursiveXmlFilelist.xhtml">recursiveXmlFilelist()</a>
+            </li>
+            <li id="toPackageFile">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/toPackageFile.xhtml">toPackageFile()</a>
+            </li>
+            <li id="toTgz">
+              <a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/toTgz.xhtml">toTgz()</a>
+            </li>
+            <li id="toV2"><a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/toV2.xhtml">toV2()</a>
+                — Convert a package.xml version 1.0 into version 2.0</li>
+            <li id="toXml"><a title="PEAR_PackageFile_Generator_v1" href="../classes/PEAR_PackageFile_Generator_v1/toXml.xhtml">toXml()</a>
+                — Return an XML document based on the package info (as returned by the PEAR_Common::infoFrom* methods).</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

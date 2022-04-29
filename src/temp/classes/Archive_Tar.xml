@@ -1,0 +1,1051 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Archive_Tar" namespace="" name="Archive_Tar" abstract="false" final="false" start="80" end="2473">
+  <file path="//usr/local/lib/php/Archive" file="Tar.php" realpath="/usr/local/lib/php/Archive/Tar.php" size="85489" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="1c99c0e725ef27b33706d89fee0c9ed01ce35fb2" relative="sr/local/lib/php/Archive/Tar.php"/>
+  <docblock>
+    <description compact="Creates a (compressed) Tar archive"/>
+    <package value="Archive_Tar"/>
+    <author value="Vincent Blavet &lt;vincent@phpconcept.net&gt;"/>
+    <license name="http://www.opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="$Revision$"/>
+  </docblock>
+  <extends full="PEAR" namespace="" name="PEAR"/>
+  <member name="_tarname" default="''" type="string" visibility="public" static="false" line="85">
+    <docblock>
+      <description/>
+      <var description="Name of the Tar" type="string"/>
+    </docblock>
+  </member>
+  <member name="_compress" default="false" type="boolean" visibility="public" static="false" line="90">
+    <docblock>
+      <description/>
+      <var description="if true, the Tar file will be gzipped" type="boolean"/>
+    </docblock>
+  </member>
+  <member name="_compress_type" default="'none'" type="string" visibility="public" static="false" line="95">
+    <docblock>
+      <description/>
+      <var description="Type of compression : 'none', 'gz', 'bz2' or 'lzma2'" type="string"/>
+    </docblock>
+  </member>
+  <member name="_separator" default="' '" type="string" visibility="public" static="false" line="100">
+    <docblock>
+      <description/>
+      <var description="Explode separator" type="string"/>
+    </docblock>
+  </member>
+  <member name="_file" default="0" type="integer" visibility="public" static="false" line="105">
+    <docblock>
+      <description/>
+      <var description="descriptor" type="object">
+        <type full="file" namespace="" name="file"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_temp_tarname" default="''" type="string" visibility="public" static="false" line="110">
+    <docblock>
+      <description/>
+      <var description="Local Tar name of a remote Tar (http:// or ftp://)" type="string"/>
+    </docblock>
+  </member>
+  <member name="_ignore_regexp" default="''" type="string" visibility="public" static="false" line="115">
+    <docblock>
+      <description/>
+      <var description="regular expression for ignoring files or directories" type="string"/>
+    </docblock>
+  </member>
+  <member name="error_object" default="NULL" visibility="public" static="false" line="120">
+    <docblock>
+      <description/>
+      <var description="PEAR_Error object" type="object"/>
+    </docblock>
+  </member>
+  <member name="_fmt" default="''" type="string" visibility="public" static="false" line="127">
+    <docblock>
+      <description compact="Format for data extraction"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="buffer_length" visibility="protected" static="false" line="132">
+    <docblock>
+      <description/>
+      <var description="Length of the read buffer in bytes" type="int"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="150" end="254" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Archive_Tar Class constructor. This flavour of the constructor only declare a new Archive_Tar object, identifying it by the name of the tar file.">If the compress argument is set the tar will be read or created as a
+gzip or bz2 compressed TAR file.</description>
+      <param description="The name of the tar archive to create" type="string" variable="$p_tarname"/>
+      <param description="can be null, 'gz', 'bz2' or 'lzma2'. This" type="string" variable="$p_compress">parameter indicates if gzip, bz2 or lzma2 compression
+              is required.  For compatibility reason the
+              boolean value 'true' means 'gz'.</param>
+      <param description="Length of the read buffer in bytes" type="int" variable="$buffer_length"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_tarname" byreference="false" type="{unknown}"/>
+    <parameter name="p_compress" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="buffer_length" byreference="false" type="integer" default="512"/>
+  </constructor>
+  <destructor name="__destruct" start="256" end="263" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="----- Look for a local copy to delete" line="259"/>
+    </inline>
+  </destructor>
+  <method name="create" start="286" end="289" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method creates the archive file and add the files / directories that are listed in $p_filelist.">If a file with the same name exist and is writable, it is replaced
+by the new tar.
+The method return false and a PEAR error text.
+The $p_filelist parameter can be an array of string, each string
+representing a filename or a directory name with their path if
+needed. It can also be a single string with names separated by a
+single blank.
+For each directory added in the archive, the files and
+sub-directories are also added.
+See also createModify() method for more details.</description>
+      <param description="An array of filenames and directory names, or a" type="array" variable="$p_filelist">single string with names separated by a single
+             blank space.</param>
+      <return description="on success, false on error." type="object">
+        <type full="true" namespace="" name="true"/>
+      </return>
+      <see value="createModify()"/>
+    </docblock>
+    <parameter name="p_filelist" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="add" start="307" end="310" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method add the files / directories that are listed in $p_filelist in the archive. If the archive does not exist it is created.">The method return false and a PEAR error text.
+The files and directories listed are only added at the end of the archive,
+even if a file with the same name is already archived.
+See also createModify() method for more details.</description>
+      <param description="An array of filenames and directory names, or a" type="array" variable="$p_filelist">single string with names separated by a single
+             blank space.</param>
+      <return description="on success, false on error." type="object">
+        <type full="true" namespace="" name="true"/>
+      </return>
+      <see value="createModify()"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="p_filelist" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="extract" start="317" end="320" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_path"/>
+      <param type="object" variable="$p_preserve">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_path" byreference="false" type="string" default="''"/>
+    <parameter name="p_preserve" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="listContent" start="325" end="338" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="array|int" namespace="" name="array|int"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="createModify" start="375" end="405" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method creates the archive file and add the files / directories that are listed in $p_filelist.">If the file already exists and is writable, it is replaced by the
+new tar. It is a create and not an add. If the file exists and is
+read-only or is a directory it is not replaced. The method return
+false and a PEAR error text.
+The $p_filelist parameter can be an array of string, each string
+representing a filename or a directory name with their path if
+needed. It can also be a single string with names separated by a
+single blank.
+The path indicated in $p_remove_dir will be removed from the
+memorized path of each file / directory listed when this path
+exists. By default nothing is removed (empty path '')
+The path indicated in $p_add_dir will be added at the beginning of
+the memorized path of each file / directory listed. However it can
+be set to empty ''. The adding of a path is done after the removing
+of path.
+The path add/remove ability enables the user to prepare an archive
+for extraction in a different path than the origin files are.
+See also addModify() method for file adding properties.</description>
+      <param description="An array of filenames and directory names," type="array" variable="$p_filelist">or a single string with names separated by
+                            a single blank space.</param>
+      <param description="A string which contains a path to be added" type="string" variable="$p_add_dir">to the memorized path of each element in
+                            the list.</param>
+      <param description="A string which contains a path to be" type="string" variable="$p_remove_dir">removed from the memorized path of each
+                            element in the list, when relevant.</param>
+      <return description="true on success, false on error." type="boolean"/>
+      <see value="addModify()"/>
+    </docblock>
+    <parameter name="p_filelist" byreference="false" type="{unknown}"/>
+    <parameter name="p_add_dir" byreference="false" type="{unknown}"/>
+    <parameter name="p_remove_dir" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="addModify" start="447" end="471" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method add the files / directories listed in $p_filelist at the end of the existing archive. If the archive does not yet exists it is created.">The $p_filelist parameter can be an array of string, each string
+representing a filename or a directory name with their path if
+needed. It can also be a single string with names separated by a
+single blank.
+The path indicated in $p_remove_dir will be removed from the
+memorized path of each file / directory listed when this path
+exists. By default nothing is removed (empty path '')
+The path indicated in $p_add_dir will be added at the beginning of
+the memorized path of each file / directory listed. However it can
+be set to empty ''. The adding of a path is done after the removing
+of path.
+The path add/remove ability enables the user to prepare an archive
+for extraction in a different path than the origin files are.
+If a file/dir is already in the archive it will only be added at the
+end of the archive. There is no update of the existing archived
+file/dir. However while extracting the archive, the last file will
+replace the first one. This results in a none optimization of the
+archive size.
+If a file/dir does not exist the file/dir is ignored. However an
+error text is send to PEAR error.
+If a file/dir is not readable the file/dir is ignored. However an
+error text is send to PEAR error.</description>
+      <param description="An array of filenames and directory" type="array" variable="$p_filelist">names, or a single string with names
+                            separated by a single blank space.</param>
+      <param description="A string which contains a path to be" type="string" variable="$p_add_dir">added to the memorized path of each
+                            element in the list.</param>
+      <param description="A string which contains a path to be" type="string" variable="$p_remove_dir">removed from the memorized path of
+                            each element in the list, when
+                            relevant.</param>
+      <return description="on success, false on error." type="object">
+        <type full="true" namespace="" name="true"/>
+      </return>
+    </docblock>
+    <parameter name="p_filelist" byreference="false" type="{unknown}"/>
+    <parameter name="p_add_dir" byreference="false" type="{unknown}"/>
+    <parameter name="p_remove_dir" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="addString" start="500" end="528" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method add a single string as a file at the end of the existing archive. If the archive does not yet exists it is created."/>
+      <param description="A string which contains the full" type="string" variable="$p_filename">filename path that will be associated
+                          with the string.</param>
+      <param description="The content of the file added in" type="string" variable="$p_string">the archive.</param>
+      <param description="A custom date/time (unix timestamp)" type="object" variable="$p_datetime">for the file (optional).<type full="bool|int" namespace="" name="bool|int"/></param>
+      <param description="An array of optional params:" type="array" variable="$p_params">stamp =&gt; the datetime (replaces
+                                  datetime above if it exists)
+                              mode =&gt; the permissions on the
+                                  file (600 by default)
+                              type =&gt; is this a link?  See the
+                                  tar specification for details.
+                                  (default = regular file)
+                              uid =&gt; the user ID of the file
+                                  (default = 0 = root)
+                              gid =&gt; the group ID of the file
+                                  (default = 0 = root)</param>
+      <return description="on success, false on error." type="object">
+        <type full="true" namespace="" name="true"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}"/>
+    <parameter name="p_string" byreference="false" type="{unknown}"/>
+    <parameter name="p_datetime" byreference="false" type="boolean" default="false"/>
+    <parameter name="p_params" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="Need to check the get back to the temporary file ? ...." line="520"/>
+    </inline>
+  </method>
+  <method name="extractModify" start="564" end="582" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method extract all the content of the archive in the directory indicated by $p_path. When relevant the memorized path of the files/dir can be modified by removing the $p_remove_path path at the beginning of the file/dir path.">While extracting a file, if the directory path does not exists it is
+created.
+While extracting a file, if the file already exists it is replaced
+without looking for last modification date.
+While extracting a file, if the file already exists and is write
+protected, the extraction is aborted.
+While extracting a file, if a directory with the same name already
+exists, the extraction is aborted.
+While extracting a directory, if a file with the same name already
+exists, the extraction is aborted.
+While extracting a file/directory if the destination directory exist
+and is write protected, or does not exist but can not be created,
+the extraction is aborted.
+If after extraction an extracted file does not show the correct
+stored file size, the extraction is aborted.
+When the extraction is aborted, a PEAR error text is set and false
+is returned. However the result can be a partial extraction that may
+need to be manually cleaned.</description>
+      <param description="The path of the directory where the" type="string" variable="$p_path">files/dir need to by extracted.</param>
+      <param description="Part of the memorized path that can be" type="string" variable="$p_remove_path">removed if present at the beginning of
+                              the file/dir path.</param>
+      <param description="Preserve user/group ownership of files" type="boolean" variable="$p_preserve"/>
+      <return description="true on success, false on error." type="boolean"/>
+      <see value="extractList()"/>
+    </docblock>
+    <parameter name="p_path" byreference="false" type="{unknown}"/>
+    <parameter name="p_remove_path" byreference="false" type="{unknown}"/>
+    <parameter name="p_preserve" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="extractInString" start="592" end="602" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method extract from the archive one file identified by $p_filename.">The return value is a string with the file content, or NULL on error.</description>
+      <param description="The path of the file to extract in a string." type="string" variable="$p_filename"/>
+      <return description="string with the file content or NULL." type="object">
+        <type full="a" namespace="" name="a"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="extractList" start="624" end="651" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method extract from the archive only the files indicated in the $p_filelist. These files are extracted in the current directory or in the directory indicated by the optional $p_path parameter.">If indicated the $p_remove_path can be used in the same way as it is
+used in extractModify() method.</description>
+      <param description="An array of filenames and directory names," type="array" variable="$p_filelist">or a single string with names separated
+                              by a single blank space.</param>
+      <param description="The path of the directory where the" type="string" variable="$p_path">files/dir need to by extracted.</param>
+      <param description="Part of the memorized path that can be" type="string" variable="$p_remove_path">removed if present at the beginning of
+                              the file/dir path.</param>
+      <param description="Preserve user/group ownership of files" type="boolean" variable="$p_preserve"/>
+      <return description="on success, false on error." type="object">
+        <type full="true" namespace="" name="true"/>
+      </return>
+      <see value="extractModify()"/>
+    </docblock>
+    <parameter name="p_filelist" byreference="false" type="{unknown}"/>
+    <parameter name="p_path" byreference="false" type="string" default="''"/>
+    <parameter name="p_remove_path" byreference="false" type="string" default="''"/>
+    <parameter name="p_preserve" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setAttribute" start="660" end="704" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method set specific attributes of the archive. It uses a variable list of parameters, in the format attribute code + attribute values : $arch-&gt;setAttribute(ARCHIVE_TAR_ATT_SEPARATOR, ',');"/>
+      <return description="on success, false on error." type="object">
+        <type full="true" namespace="" name="true"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="----- Get the number of variable list of arguments" line="664"/>
+      <comment value="----- Get the arguments" line="669"/>
+      <comment value="----- Read the attributes" line="672"/>
+    </inline>
+  </method>
+  <method name="setIgnoreRegexp" start="713" end="716" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method sets the regular expression for ignoring files and directories at import, for example: $arch-&gt;setIgnoreRegexp(&quot;#CVS|\.svn#&quot;);"/>
+      <param description="regular expression defining which files or directories to ignore" type="string" variable="$regexp"/>
+    </docblock>
+    <parameter name="regexp" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setIgnoreList" start="727" end="732" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method sets the regular expression for ignoring all files and directories matching the filenames in the array list at import, for example: $arch-&gt;setIgnoreList(array('CVS', '.svn', 'bin/tool'));"/>
+      <param description="a list of file or directory names to ignore" type="array" variable="$list"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="list" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_error" start="737" end="740" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_message"/>
+    </docblock>
+    <parameter name="p_message" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_warning" start="745" end="748" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_message"/>
+    </docblock>
+    <parameter name="p_message" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_isArchive" start="754" end="761" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_filename"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_openWrite" start="766" end="799" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_openRead" start="804" end="870" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_openReadWrite" start="875" end="916" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_close" start="921" end="957" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="if (isset($this-&gt;_file)) {" line="923"/>
+      <comment value="----- Look if a local copy need to be erase" line="949"/>
+      <comment value="Note that it might be interesting to keep the url for a time : ToDo" line="950"/>
+    </inline>
+  </method>
+  <method name="_cleanFile" start="962" end="978" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="----- Look for a local copy" line="966"/>
+    </inline>
+  </method>
+  <method name="_writeBlock" start="985" end="1033" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$p_binary_data"/>
+      <param type="integer" variable="$p_len"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_binary_data" byreference="false" type="{unknown}"/>
+    <parameter name="p_len" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_readBlock" start="1038" end="1064" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="null|string" namespace="" name="null|string"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_jumpBlock" start="1070" end="1105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="null" variable="$p_len"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_len" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_writeFooter" start="1110" end="1118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_addList" start="1126" end="1202" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$p_list"/>
+      <param type="string" variable="$p_add_dir"/>
+      <param type="string" variable="$p_remove_dir"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_list" byreference="false" type="{unknown}"/>
+    <parameter name="p_add_dir" byreference="false" type="{unknown}"/>
+    <parameter name="p_remove_dir" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="----- Remove potential windows directory separator" line="1131"/>
+    </inline>
+  </method>
+  <method name="_addFile" start="1212" end="1289" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_filename"/>
+      <param type="mixed" variable="$p_header"/>
+      <param type="string" variable="$p_add_dir"/>
+      <param type="string" variable="$p_remove_dir"/>
+      <param type="null" variable="$v_stored_filename"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}"/>
+    <parameter name="p_header" byreference="true" type="{unknown}"/>
+    <parameter name="p_add_dir" byreference="false" type="{unknown}"/>
+    <parameter name="p_remove_dir" byreference="false" type="{unknown}"/>
+    <parameter name="v_stored_filename" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_addString" start="1298" end="1343" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_filename"/>
+      <param type="string" variable="$p_string"/>
+      <param type="object" variable="$p_datetime">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <param type="array" variable="$p_params"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}"/>
+    <parameter name="p_string" byreference="false" type="{unknown}"/>
+    <parameter name="p_datetime" byreference="false" type="boolean" default="false"/>
+    <parameter name="p_params" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="----- Calculate the stored filename" line="1315"/>
+      <comment value="----- If datetime is not specified, set current time" line="1318"/>
+    </inline>
+  </method>
+  <method name="_writeHeader" start="1350" end="1461" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_filename"/>
+      <param type="string" variable="$p_stored_filename"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}"/>
+    <parameter name="p_stored_filename" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="----- Calculate the checksum" line="1434"/>
+      <comment value="..... First part of the header" line="1436"/>
+      <comment value="..... Ignore the checksum value and replace it by ' ' (space)" line="1440"/>
+      <comment value="..... Last part of the header" line="1444"/>
+      <comment value="----- Write the first 148 bytes of the header in the archive" line="1449"/>
+      <comment value="----- Write the calculated checksum" line="1452"/>
+      <comment value="----- Write the last 356 bytes of the header in the archive" line="1457"/>
+    </inline>
+  </method>
+  <method name="_writeHeaderBlock" start="1473" end="1576" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_filename"/>
+      <param type="int" variable="$p_size"/>
+      <param type="int" variable="$p_mtime"/>
+      <param type="int" variable="$p_perms"/>
+      <param type="string" variable="$p_type"/>
+      <param type="int" variable="$p_uid"/>
+      <param type="int" variable="$p_gid"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}"/>
+    <parameter name="p_size" byreference="false" type="{unknown}"/>
+    <parameter name="p_mtime" byreference="false" type="integer" default="0"/>
+    <parameter name="p_perms" byreference="false" type="integer" default="0"/>
+    <parameter name="p_type" byreference="false" type="string" default="''"/>
+    <parameter name="p_uid" byreference="false" type="integer" default="0"/>
+    <parameter name="p_gid" byreference="false" type="integer" default="0"/>
+    <inline>
+      <comment value="----- Calculate the checksum" line="1549"/>
+      <comment value="..... First part of the header" line="1551"/>
+      <comment value="..... Ignore the checksum value and replace it by ' ' (space)" line="1555"/>
+      <comment value="..... Last part of the header" line="1559"/>
+      <comment value="----- Write the first 148 bytes of the header in the archive" line="1564"/>
+      <comment value="----- Write the calculated checksum" line="1567"/>
+      <comment value="----- Write the last 356 bytes of the header in the archive" line="1572"/>
+    </inline>
+  </method>
+  <method name="_writeLongHeader" start="1582" end="1656" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_filename"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}"/>
+    <parameter name="is_link" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="----- Calculate the checksum" line="1622"/>
+      <comment value="..... First part of the header" line="1624"/>
+      <comment value="..... Ignore the checksum value and replace it by ' ' (space)" line="1628"/>
+      <comment value="..... Last part of the header" line="1632"/>
+      <comment value="----- Write the first 148 bytes of the header in the archive" line="1637"/>
+      <comment value="----- Write the calculated checksum" line="1640"/>
+      <comment value="----- Write the last 356 bytes of the header in the archive" line="1645"/>
+      <comment value="----- Write the filename as content of the block" line="1648"/>
+    </inline>
+  </method>
+  <method name="_readHeader" start="1663" end="1750" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$v_binary_data"/>
+      <param type="mixed" variable="$v_header"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="v_binary_data" byreference="false" type="{unknown}"/>
+    <parameter name="v_header" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="----- Calculate the checksum" line="1679"/>
+      <comment value="..... First part of the header" line="1681"/>
+      <comment value="----- Extract the checksum" line="1694"/>
+      <comment value="----- Extract the properties" line="1721"/>
+      <comment value="----- All these fields are removed form the header because" line="1739"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="they do not carry interesting info" line="1740"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="$v_header[magic] = trim($v_data[magic]);" line="1741"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="$v_header[version] = trim($v_data[version]);" line="1742"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="$v_header[uname] = trim($v_data[uname]);" line="1743"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="$v_header[gname] = trim($v_data[gname]);" line="1744"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="$v_header[devmajor] = trim($v_data[devmajor]);" line="1745"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="$v_header[devminor] = trim($v_data[devminor]);" line="1746"/>
+    </inline>
+  </method>
+  <method name="_tarRecToSize" start="1758" end="1784" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Convert Tar record size to actual size"/>
+      <param type="string" variable="$tar_size"/>
+      <return description="of tar record in bytes" type="object">
+        <type full="size" namespace="" name="size"/>
+      </return>
+    </docblock>
+    <parameter name="tar_size" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="First byte of size has a special meaning if bit 7 is set." line="1760"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="Bit 7 indicates base-256 encoding if set." line="1761"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="Bit 6 is the sign bit." line="1762"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="Bits 5:0 are most significant value bits." line="1763"/>
+    </inline>
+  </method>
+  <method name="_maliciousFilename" start="1793" end="1802" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Detect and report a malicious file name"/>
+      <param type="string" variable="$file"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_readLongHeader" start="1808" end="1840" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param variable="$v_header"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="v_header" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="----- Read the next header" line="1822"/>
+    </inline>
+  </method>
+  <method name="_extractInString" start="1850" end="1911" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="This method extract from the archive one file identified by $p_filename.">The return value is a string with the file content, or null on error.</description>
+      <param description="The path of the file to extract in a string." type="string" variable="$p_filename"/>
+      <return description="string with the file content or null." type="object">
+        <type full="a" namespace="" name="a"/>
+      </return>
+    </docblock>
+    <parameter name="p_filename" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_extractList" start="1922" end="2210" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$p_path"/>
+      <param type="string" variable="$p_list_detail"/>
+      <param type="string" variable="$p_mode"/>
+      <param type="string" variable="$p_file_list"/>
+      <param type="string" variable="$p_remove_path"/>
+      <param type="object" variable="$p_preserve">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_path" byreference="false" type="{unknown}"/>
+    <parameter name="p_list_detail" byreference="true" type="{unknown}"/>
+    <parameter name="p_mode" byreference="false" type="{unknown}"/>
+    <parameter name="p_file_list" byreference="false" type="{unknown}"/>
+    <parameter name="p_remove_path" byreference="false" type="{unknown}"/>
+    <parameter name="p_preserve" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="----- Look for path to remove format (should end by /)" line="1944"/>
+    </inline>
+  </method>
+  <method name="_openAppend" start="2215" end="2347" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_append" start="2355" end="2368" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param variable="$p_filelist"/>
+      <param type="string" variable="$p_add_dir"/>
+      <param type="string" variable="$p_remove_dir"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_filelist" byreference="false" type="{unknown}"/>
+    <parameter name="p_add_dir" byreference="false" type="string" default="''"/>
+    <parameter name="p_remove_dir" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="_dirCheck" start="2378" end="2400" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if a directory exists and create it (including parent dirs) if not."/>
+      <param description="directory to check" type="string" variable="$p_dir"/>
+      <return description="true if the directory exists or was created" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="p_dir" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_pathReduction" start="2410" end="2450" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Compress path by changing for example &quot;/dir/foo/../bar&quot; to &quot;/dir/bar&quot;, rand emove double slashes."/>
+      <param description="path to reduce" type="string" variable="$p_dir"/>
+      <return description="reduced path" type="string"/>
+    </docblock>
+    <parameter name="p_dir" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="----- Look for not empty path" line="2414"/>
+    </inline>
+  </method>
+  <method name="_translateWinPath" start="2457" end="2472" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param variable="$p_path"/>
+      <param type="object" variable="$p_remove_disk_letter">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <parameter name="p_path" byreference="false" type="{unknown}"/>
+    <parameter name="p_remove_disk_letter" byreference="false" type="boolean" default="true"/>
+  </method>
+  <parent full="PEAR" namespace="" name="PEAR">
+    <member name="_debug" default="false" type="boolean" visibility="public" static="false" line="92">
+      <docblock>
+        <description compact="Whether to enable internal debug messages."/>
+        <var type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </var>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_mode" default="NULL" visibility="public" static="false" line="100">
+      <docblock>
+        <description compact="Default error mode for this object."/>
+        <var type="int"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_options" default="NULL" visibility="public" static="false" line="109">
+      <docblock>
+        <description compact="Default error options used for this object when error mode is PEAR_ERROR_TRIGGER."/>
+        <var type="int"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_handler" default="''" type="string" visibility="public" static="false" line="118">
+      <docblock>
+        <description compact="Default error handler (callback) for this object, if error mode is PEAR_ERROR_CALLBACK."/>
+        <var type="string"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_error_class" default="'PEAR_Error'" type="string" visibility="public" static="false" line="126">
+      <docblock>
+        <description compact="Which class to use for error objects."/>
+        <var type="string"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_expected_errors" default="" type="array" visibility="public" static="false" line="134">
+      <docblock>
+        <description compact="An array of expected errors."/>
+        <var type="array"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="bivalentMethods" default="" type="array" visibility="protected" static="true" line="140">
+      <docblock>
+        <description compact="List of methods that can be called both statically and non-statically."/>
+        <var type="array"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="158" end="183" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Constructor.  Registers this object in $_PEAR_destructor_object_list for destructor emulation if a destructor object exists."/>
+        <param description="(optional) which class to use for" type="string" variable="$error_class">error objects, defaults to PEAR_Error.</param>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+    </constructor>
+    <method name="PEAR" start="192" end="195" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Only here for backwards compatibility.">E.g. Archive_Tar calls $this-&gt;PEAR() in its constructor.</description>
+        <param description="Which class to use for error objects," type="string" variable="$error_class">defaults to PEAR_Error.</param>
+      </docblock>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_PEAR" start="208" end="212" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Destructor (the emulated type of...).  Does nothing right now, but is included for forward compatibility, so subclass destructors should always call it.">See the note in the class desciption about output from
+destructors.</description>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="__call" start="214" end="225" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="method" byreference="false" type="{unknown}"/>
+      <parameter name="arguments" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__callStatic" start="227" end="238" abstract="false" final="false" static="true" visibility="public">
+      <parameter name="method" byreference="false" type="{unknown}"/>
+      <parameter name="arguments" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getStaticProperty" start="251" end="263" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="If you have a class that's mostly/entirely static, and you need static properties, you can use this method to simulate them. Eg. in your method(s) do this: $myVar = &amp;PEAR::getStaticProperty('myclass', 'myVar'); You MUST use a reference, or they will not persist!"/>
+        <param description="The calling classname, to prevent clashes" type="string" variable="$class"/>
+        <param description="The variable to retrieve." type="string" variable="$var"/>
+        <return description="A reference to the variable. If not set it will be" type="mixed">auto initialised to NULL.</return>
+      </docblock>
+      <parameter name="class" byreference="false" type="{unknown}"/>
+      <parameter name="var" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="registerShutdownFunc" start="274" end="283" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Use this function to register a shutdown method for static classes."/>
+        <param description="The function name (or array of class/method) to call" type="mixed" variable="$func"/>
+        <param description="The arguments to pass to the function" type="mixed" variable="$args"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="func" byreference="false" type="{unknown}"/>
+      <parameter name="args" byreference="false" type="array" default=""/>
+      <inline>
+        <comment value="if we are called statically, there is a potential" line="276"/>
+        <comment value="that no shutdown func is registered.  Bug #6445" line="277"/>
+      </inline>
+    </method>
+    <method name="isError" start="296" end="309" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Tell whether a value is a PEAR error."/>
+        <param description="the value to test" type="mixed" variable="$data"/>
+        <param description="if $data is an error object, return true" type="int" variable="$code">only if $code is a string and
+                       $obj-&gt;getMessage() == $code or
+                       $code is an integer and $obj-&gt;getCode() == $code</param>
+        <return description="true if parameter is an error" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_setErrorHandling" start="352" end="388" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Sets how errors generated by this object should be handled.">Can be invoked both in objects and statically.  If called
+statically, setErrorHandling sets the default behaviour for all
+PEAR objects.  If called in an object, setErrorHandling sets
+the default behaviour for that object.</description>
+        <param type="object" variable="$object">Object the method was called on (non-static mode)</param>
+        <param type="int" variable="$mode">One of PEAR_ERROR_RETURN, PEAR_ERROR_PRINT,
+       PEAR_ERROR_TRIGGER, PEAR_ERROR_DIE,
+       PEAR_ERROR_CALLBACK or PEAR_ERROR_EXCEPTION.</param>
+        <param type="mixed" variable="$options">When $mode is PEAR_ERROR_TRIGGER, this is the error level (one
+       of E_USER_NOTICE, E_USER_WARNING or E_USER_ERROR).
+
+       When $mode is PEAR_ERROR_CALLBACK, this parameter is expected
+       to be the callback function or method.  A callback
+       function is a string with the name of the function, a
+       callback method is an array of two elements: the element
+       at index 0 is the object, and the element at index 1 is
+       the name of the method to call in the object.
+
+       When $mode is PEAR_ERROR_PRINT or PEAR_ERROR_DIE, this is
+       a printf format string used when printing the error
+       message.</param>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+        <see value="PEAR_ERROR_RETURN"/>
+        <see value="PEAR_ERROR_PRINT"/>
+        <see value="PEAR_ERROR_TRIGGER"/>
+        <see value="PEAR_ERROR_DIE"/>
+        <see value="PEAR_ERROR_CALLBACK"/>
+        <see value="PEAR_ERROR_EXCEPTION"/>
+        <since value="PHP 4.0.5"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="expectError" start="405" end="413" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method is used to tell which errors you expect to get.">Expected errors are always returned with error mode
+PEAR_ERROR_RETURN.  Expected error codes are stored in a stack,
+and this method pushes a new element onto it.  The list of
+expected errors are in effect until they are popped off the
+stack with the popExpect() method.
+
+Note that this method can not be called statically</description>
+        <param description="a single error code or an array of error codes to expect" type="mixed" variable="$code"/>
+        <return description="the new depth of the &quot;expected errors&quot; stack" type="int"/>
+        <access value="public"/>
+      </docblock>
+      <parameter name="code" byreference="false" type="string" default="'*'"/>
+    </method>
+    <method name="popExpect" start="421" end="424" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method pops one element off the expected error codes stack."/>
+        <return description="the list of error codes that were popped" type="array"/>
+      </docblock>
+    </method>
+    <method name="_checkDelExpect" start="434" end="450" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method checks unsets an error code if available"/>
+        <param description="error code" type="mixed"/>
+        <return description="true if the error code was unset, false otherwise" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <access value="private"/>
+        <since value="PHP 4.3.0"/>
+      </docblock>
+      <parameter name="error_code" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="delExpect" start="461" end="483" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method deletes all occurrences of the specified element from the expected error codes stack."/>
+        <param description="error code that should be deleted" type="mixed" variable="$error_code"/>
+        <return description="list of error codes that were deleted or error" type="mixed"/>
+        <access value="public"/>
+        <since value="PHP 4.3.0"/>
+      </docblock>
+      <parameter name="error_code" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="$error_code is empty" line="481"/>
+        <comment value="IMPROVE ME" line="482"/>
+      </inline>
+    </method>
+    <method name="_raiseError" start="521" end="581" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="This method is a wrapper that returns an instance of the configured error class with this object's default error handling applied.  If the $mode and $options parameters are not specified, the object's defaults are used."/>
+        <param description="a text error message or a PEAR error object" type="mixed" variable="$message"/>
+        <param description="a numeric error code (it is up to your class" type="int" variable="$code">to define these if you want to use codes)</param>
+        <param description="One of PEAR_ERROR_RETURN, PEAR_ERROR_PRINT," type="int" variable="$mode">PEAR_ERROR_TRIGGER, PEAR_ERROR_DIE,
+                 PEAR_ERROR_CALLBACK, PEAR_ERROR_EXCEPTION.</param>
+        <param description="If $mode is PEAR_ERROR_TRIGGER, this parameter" type="mixed" variable="$options">specifies the PHP-internal error level (one of
+                 E_USER_NOTICE, E_USER_WARNING or E_USER_ERROR).
+                 If $mode is PEAR_ERROR_CALLBACK, this
+                 parameter specifies the callback function or
+                 method.  In other error modes this parameter
+                 is ignored.</param>
+        <param description="If you need to pass along for example debug" type="string" variable="$userinfo">information, this parameter is meant for that.</param>
+        <param description="The returned error object will be" type="string" variable="$error_class">instantiated from this class, if specified.</param>
+        <param description="If true, raiseError will only pass error codes," type="object" variable="$skipmsg">the error message parameter will be dropped.<type full="bool" namespace="" name="bool"/></param>
+        <return description="a PEAR error object" type="object"/>
+        <see value="PEAR::setErrorHandling"/>
+        <since value="PHP 4.0.5"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="skipmsg" byreference="false" type="boolean" default="false"/>
+      <inline>
+        <comment value="The error is yet a PEAR error object" line="530"/>
+        <comment value="No mode given, try global ones" line="553"/>
+      </inline>
+    </method>
+    <method name="_throwError" start="598" end="607" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Simpler form of raiseError with fewer options.  In most cases message, code and userinfo are enough."/>
+        <param description="a text error message or a PEAR error object" type="mixed" variable="$message"/>
+        <param description="a numeric error code (it is up to your class" type="int" variable="$code">to define these if you want to use codes)</param>
+        <param description="If you need to pass along for example debug" type="string" variable="$userinfo">information, this parameter is meant for that.</param>
+        <return description="a PEAR error object" type="object"/>
+        <see value="PEAR::raiseError"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="staticPushErrorHandling" start="609" end="642" abstract="false" final="false" static="true" visibility="public">
+      <parameter name="mode" byreference="false" type="{unknown}"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="staticPopErrorHandling" start="644" end="678" abstract="false" final="false" static="true" visibility="public"/>
+    <method name="_pushErrorHandling" start="692" end="711" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Push a new error handler on top of the error handler options stack. With this you can easily override the actual error handler for some code and restore it later with popErrorHandling."/>
+        <param description="(same as setErrorHandling)" type="mixed" variable="$mode"/>
+        <param description="(same as setErrorHandling)" type="mixed" variable="$options"/>
+        <return description="Always true" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <see value="PEAR::setErrorHandling"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="mode" byreference="false" type="{unknown}"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_popErrorHandling" start="720" end="732" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Pop the last error handler used"/>
+        <return description="Always true" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <see value="PEAR::pushErrorHandling"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="loadExtension" start="741" end="768" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="OS independent PHP extension load. Remember to take care on the correct extension name for case sensitive OSes."/>
+        <param description="The extension name" type="string" variable="$ext"/>
+        <return description="Success or not on the dl() call" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="ext" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="if either returns true dl() will produce a FATAL error, stop that" line="747"/>
+      </inline>
+    </method>
+    <method name="getSourceDateEpoch" start="777" end="790" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get SOURCE_DATE_EPOCH environment variable See https://reproducible-builds.org/specs/source-date-epoch/"/>
+        <return type="int"/>
+        <access value="public"/>
+      </docblock>
+    </method>
+  </parent>
+</class>

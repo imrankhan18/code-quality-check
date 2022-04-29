@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Structures_Graph" namespace="" name="Structures_Graph" abstract="false" final="false" start="53" end="175">
+  <file path="//usr/local/lib/php/Structures" file="Graph.php" realpath="/usr/local/lib/php/Structures/Graph.php" size="6175" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="fa2346af6978db99ef5672203a5e6ba186ab405c" relative="sr/local/lib/php/Structures/Graph.php"/>
+  <member name="_nodes" default="" type="array" visibility="public" static="false" line="59">
+    <docblock>
+      <description compact="List of node objects in this graph"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_directed" default="false" type="boolean" visibility="public" static="false" line="65">
+    <docblock>
+      <description compact="If the graph is directed or not"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="74" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor"/>
+      <param description="Set to true if the graph is directed." type="boolean" variable="$directed">Set to false if it is not directed.</param>
+    </docblock>
+    <parameter name="directed" byreference="false" type="boolean" default="true"/>
+  </constructor>
+  <method name="Structures_Graph" start="87" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Old constructor (PHP4-style; kept for BC with extending classes)"/>
+      <param description="Set to true if the graph is directed." type="boolean" variable="$directed">Set to false if it is not directed.</param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="directed" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="isDirected" start="97" end="100" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return true if a graph is directed"/>
+      <return description="true if the graph is directed" type="boolean"/>
+    </docblock>
+  </method>
+  <method name="addNode" start="109" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a Node to the Graph"/>
+      <param description="The node to be added." type="object" variable="$newNode">
+        <type full="Structures_Graph_Node" namespace="" name="Structures_Graph_Node"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="newNode" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="We only add nodes" line="111"/>
+      <comment value="Graphs are node *sets*, so duplicates are forbidden." line="120"/>
+      <comment value="We allow nodes that are exactly equal, but disallow equal references." line="121"/>
+    </inline>
+  </method>
+  <method name="removeNode" start="160" end="162" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove a Node from the Graph"/>
+      <param description="The node to be removed from the graph" type="object" variable="$node">
+        <type full="Structures_Graph_Node" namespace="" name="Structures_Graph_Node"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+      <todo value="This is unimplemented"/>
+    </docblock>
+    <parameter name="node" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getNodes" start="171" end="174" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return the node set, in no particular order.">For ordered node sets, use a Graph Manipulator insted.</description>
+      <return description="The set of nodes in this graph" type="array"/>
+      <see value="Structures_Graph_Manipulator_TopologicalSorter"/>
+    </docblock>
+  </method>
+</class>

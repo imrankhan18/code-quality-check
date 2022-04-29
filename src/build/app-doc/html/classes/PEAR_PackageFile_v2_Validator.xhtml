@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_PackageFile_v2_Validator</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_PackageFile_v2_Validator</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/PackageFile/v2/Validator.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_PackageFile_v2_Validator</h1>
+        <h4>Private validation class used by PEAR_PackageFile_v2 - do not use directly, its sole purpose is to split up the PEAR/PackageFile/v2.php file to make it smaller</h4>
+        <p/>
+        <ul>
+          <li>Author: Greg Beaver &lt;cellog@php.net&gt;</li>
+          <li>Copyright: 1997-2009 The Authors</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_PackageFile_v2_Validator
+            {<br/><ul class="none"><li>// members</li><li>public  <a href="#members">$_packageInfo</a>;
+                    </li><li>public <span title="PEAR_PackageFile_v2">PEAR_PackageFile_v2</span> <a href="#members">$_pf</a>;
+                    </li><li>public <span title="PEAR_ErrorStack">PEAR_ErrorStack</span> <a href="#members">$_stack</a>;
+                    </li><li>public integer <a href="#members">$_isValid</a> =
+                        0;
+                    </li><li>public integer <a href="#members">$_filesValid</a> =
+                        0;
+                    </li><li>public integer <a href="#members">$_curState</a> =
+                        0;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/validate.xhtml">validate</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_stupidSchemaValidate.xhtml">_stupidSchemaValidate</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_processAttribs.xhtml">_processAttribs</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_processStructure.xhtml">_processStructure</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateStabilityVersion.xhtml">_validateStabilityVersion</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateMaintainers.xhtml">_validateMaintainers</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validatePhpDep.xhtml">_validatePhpDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validatePearinstallerDep.xhtml">_validatePearinstallerDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validatePackageDep.xhtml">_validatePackageDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateSubpackageDep.xhtml">_validateSubpackageDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateExtensionDep.xhtml">_validateExtensionDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateOsDep.xhtml">_validateOsDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateArchDep.xhtml">_validateArchDep</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateInstallConditions.xhtml">_validateInstallConditions</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateDependencies.xhtml">_validateDependencies</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateCompatible.xhtml">_validateCompatible</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateBundle.xhtml">_validateBundle</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateFilelist.xhtml">_validateFilelist</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateRelease.xhtml">_validateRelease</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateRole.xhtml">_validateRole</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_pearVersionTooLow.xhtml">_pearVersionTooLow</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidTagOrder.xhtml">_invalidTagOrder</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_ignoreNotAllowed.xhtml">_ignoreNotAllowed</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_fileNotAllowed.xhtml">_fileNotAllowed</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_oldStyleFileNotAllowed.xhtml">_oldStyleFileNotAllowed</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_tagMissingAttribute.xhtml">_tagMissingAttribute</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_tagHasNoAttribs.xhtml">_tagHasNoAttribs</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidInternalStructure.xhtml">_invalidInternalStructure</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidFileRole.xhtml">_invalidFileRole</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidFileName.xhtml">_invalidFileName</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidFileInstallAs.xhtml">_invalidFileInstallAs</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidDirName.xhtml">_invalidDirName</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_filelistCannotContainFile.xhtml">_filelistCannotContainFile</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_filelistMustContainDir.xhtml">_filelistMustContainDir</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_tagCannotBeEmpty.xhtml">_tagCannotBeEmpty</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_UrlOrChannel.xhtml">_UrlOrChannel</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_NoChannel.xhtml">_NoChannel</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_UrlOrChannelGroup.xhtml">_UrlOrChannelGroup</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_NoChannelGroup.xhtml">_NoChannelGroup</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_unknownChannel.xhtml">_unknownChannel</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_noPackageVersion.xhtml">_noPackageVersion</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_NoBundledPackages.xhtml">_NoBundledPackages</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_AtLeast2BundledPackages.xhtml">_AtLeast2BundledPackages</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_ChannelOrUri.xhtml">_ChannelOrUri</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_noChildTag.xhtml">_noChildTag</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidVersion.xhtml">_invalidVersion</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidState.xhtml">_invalidState</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidTask.xhtml">_invalidTask</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_unknownTask.xhtml">_unknownTask</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_subpackageCannotProvideExtension.xhtml">_subpackageCannotProvideExtension</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_subpackagesCannotConflict.xhtml">_subpackagesCannotConflict</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_cannotProvideExtension.xhtml">_cannotProvideExtension</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_mustProvideExtension.xhtml">_mustProvideExtension</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_cannotHaveSrcpackage.xhtml">_cannotHaveSrcpackage</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_mustSrcPackage.xhtml">_mustSrcPackage</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_mustSrcuri.xhtml">_mustSrcuri</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_uriDepsCannotHaveVersioning.xhtml">_uriDepsCannotHaveVersioning</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_conflictingDepsCannotHaveVersioning.xhtml">_conflictingDepsCannotHaveVersioning</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_DepchannelCannotBeUri.xhtml">_DepchannelCannotBeUri</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_bundledPackagesMustBeFilename.xhtml">_bundledPackagesMustBeFilename</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_binaryPackageMustBePackagename.xhtml">_binaryPackageMustBePackagename</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_fileNotFound.xhtml">_fileNotFound</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_notInContents.xhtml">_notInContents</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_cannotValidateNoPathSet.xhtml">_cannotValidateNoPathSet</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_usesroletaskMustHaveChannelOrUri.xhtml">_usesroletaskMustHaveChannelOrUri</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_usesroletaskMustHavePackage.xhtml">_usesroletaskMustHavePackage</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_usesroletaskMustHaveRoleTask.xhtml">_usesroletaskMustHaveRoleTask</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_cannotConflictWithAllOs.xhtml">_cannotConflictWithAllOs</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidDepGroupName.xhtml">_invalidDepGroupName</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_multipleToplevelDirNotAllowed.xhtml">_multipleToplevelDirNotAllowed</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_multipleInstallAs.xhtml">_multipleInstallAs</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_ignoreAndInstallAs.xhtml">_ignoreAndInstallAs</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_analyzeBundledPackages.xhtml">_analyzeBundledPackages</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_analyzePhpFiles.xhtml">_analyzePhpFiles</a>()
+                    </li><li>public mixed <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/analyzeSourceCode.xhtml">analyzeSourceCode</a>()
+                    </li><li>public void <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_buildProvidesArray.xhtml">_buildProvidesArray</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_curState"><strong>$_curState</strong>
+                —
+                int</li>
+            <li id="_filesValid"><strong>$_filesValid</strong>
+                —
+                int</li>
+            <li id="_isValid"><strong>$_isValid</strong>
+                —
+                int</li>
+            <li id="_packageInfo"><strong>$_packageInfo</strong>
+                —
+                array</li>
+            <li id="_pf"><strong>$_pf</strong>
+                —
+                <a title="PEAR_PackageFile_v2" href="../classes/PEAR_PackageFile_v2.xhtml">PEAR_PackageFile_v2</a></li>
+            <li id="_stack"><strong>$_stack</strong>
+                —
+                <a title="PEAR_ErrorStack" href="../classes/PEAR_ErrorStack.xhtml">PEAR_ErrorStack</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="_AtLeast2BundledPackages">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_AtLeast2BundledPackages.xhtml">_AtLeast2BundledPackages()</a>
+            </li>
+            <li id="_ChannelOrUri">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_ChannelOrUri.xhtml">_ChannelOrUri()</a>
+            </li>
+            <li id="_DepchannelCannotBeUri">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_DepchannelCannotBeUri.xhtml">_DepchannelCannotBeUri()</a>
+            </li>
+            <li id="_NoBundledPackages">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_NoBundledPackages.xhtml">_NoBundledPackages()</a>
+            </li>
+            <li id="_NoChannel">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_NoChannel.xhtml">_NoChannel()</a>
+            </li>
+            <li id="_NoChannelGroup">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_NoChannelGroup.xhtml">_NoChannelGroup()</a>
+            </li>
+            <li id="_UrlOrChannel">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_UrlOrChannel.xhtml">_UrlOrChannel()</a>
+            </li>
+            <li id="_UrlOrChannelGroup">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_UrlOrChannelGroup.xhtml">_UrlOrChannelGroup()</a>
+            </li>
+            <li id="_analyzeBundledPackages">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_analyzeBundledPackages.xhtml">_analyzeBundledPackages()</a>
+            </li>
+            <li id="_analyzePhpFiles">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_analyzePhpFiles.xhtml">_analyzePhpFiles()</a>
+            </li>
+            <li id="_binaryPackageMustBePackagename">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_binaryPackageMustBePackagename.xhtml">_binaryPackageMustBePackagename()</a>
+            </li>
+            <li id="_buildProvidesArray"><a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_buildProvidesArray.xhtml">_buildProvidesArray()</a>
+                — Build a "provides" array from data returned by analyzeSourceCode().  The format of the built array is like this:</li>
+            <li id="_bundledPackagesMustBeFilename">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_bundledPackagesMustBeFilename.xhtml">_bundledPackagesMustBeFilename()</a>
+            </li>
+            <li id="_cannotConflictWithAllOs">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_cannotConflictWithAllOs.xhtml">_cannotConflictWithAllOs()</a>
+            </li>
+            <li id="_cannotHaveSrcpackage">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_cannotHaveSrcpackage.xhtml">_cannotHaveSrcpackage()</a>
+            </li>
+            <li id="_cannotProvideExtension">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_cannotProvideExtension.xhtml">_cannotProvideExtension()</a>
+            </li>
+            <li id="_cannotValidateNoPathSet">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_cannotValidateNoPathSet.xhtml">_cannotValidateNoPathSet()</a>
+            </li>
+            <li id="_conflictingDepsCannotHaveVersioning">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_conflictingDepsCannotHaveVersioning.xhtml">_conflictingDepsCannotHaveVersioning()</a>
+            </li>
+            <li id="_fileNotAllowed">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_fileNotAllowed.xhtml">_fileNotAllowed()</a>
+            </li>
+            <li id="_fileNotFound">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_fileNotFound.xhtml">_fileNotFound()</a>
+            </li>
+            <li id="_filelistCannotContainFile">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_filelistCannotContainFile.xhtml">_filelistCannotContainFile()</a>
+            </li>
+            <li id="_filelistMustContainDir">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_filelistMustContainDir.xhtml">_filelistMustContainDir()</a>
+            </li>
+            <li id="_ignoreAndInstallAs">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_ignoreAndInstallAs.xhtml">_ignoreAndInstallAs()</a>
+            </li>
+            <li id="_ignoreNotAllowed">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_ignoreNotAllowed.xhtml">_ignoreNotAllowed()</a>
+            </li>
+            <li id="_invalidDepGroupName">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidDepGroupName.xhtml">_invalidDepGroupName()</a>
+            </li>
+            <li id="_invalidDirName">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidDirName.xhtml">_invalidDirName()</a>
+            </li>
+            <li id="_invalidFileInstallAs">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidFileInstallAs.xhtml">_invalidFileInstallAs()</a>
+            </li>
+            <li id="_invalidFileName">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidFileName.xhtml">_invalidFileName()</a>
+            </li>
+            <li id="_invalidFileRole">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidFileRole.xhtml">_invalidFileRole()</a>
+            </li>
+            <li id="_invalidInternalStructure">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidInternalStructure.xhtml">_invalidInternalStructure()</a>
+            </li>
+            <li id="_invalidState">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidState.xhtml">_invalidState()</a>
+            </li>
+            <li id="_invalidTagOrder">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidTagOrder.xhtml">_invalidTagOrder()</a>
+            </li>
+            <li id="_invalidTask">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidTask.xhtml">_invalidTask()</a>
+            </li>
+            <li id="_invalidVersion">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_invalidVersion.xhtml">_invalidVersion()</a>
+            </li>
+            <li id="_multipleInstallAs">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_multipleInstallAs.xhtml">_multipleInstallAs()</a>
+            </li>
+            <li id="_multipleToplevelDirNotAllowed">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_multipleToplevelDirNotAllowed.xhtml">_multipleToplevelDirNotAllowed()</a>
+            </li>
+            <li id="_mustProvideExtension">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_mustProvideExtension.xhtml">_mustProvideExtension()</a>
+            </li>
+            <li id="_mustSrcPackage">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_mustSrcPackage.xhtml">_mustSrcPackage()</a>
+            </li>
+            <li id="_mustSrcuri">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_mustSrcuri.xhtml">_mustSrcuri()</a>
+            </li>
+            <li id="_noChildTag">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_noChildTag.xhtml">_noChildTag()</a>
+            </li>
+            <li id="_noPackageVersion">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_noPackageVersion.xhtml">_noPackageVersion()</a>
+            </li>
+            <li id="_notInContents">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_notInContents.xhtml">_notInContents()</a>
+            </li>
+            <li id="_oldStyleFileNotAllowed">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_oldStyleFileNotAllowed.xhtml">_oldStyleFileNotAllowed()</a>
+            </li>
+            <li id="_pearVersionTooLow">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_pearVersionTooLow.xhtml">_pearVersionTooLow()</a>
+            </li>
+            <li id="_processAttribs">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_processAttribs.xhtml">_processAttribs()</a>
+            </li>
+            <li id="_processStructure">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_processStructure.xhtml">_processStructure()</a>
+            </li>
+            <li id="_stupidSchemaValidate">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_stupidSchemaValidate.xhtml">_stupidSchemaValidate()</a>
+            </li>
+            <li id="_subpackageCannotProvideExtension">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_subpackageCannotProvideExtension.xhtml">_subpackageCannotProvideExtension()</a>
+            </li>
+            <li id="_subpackagesCannotConflict">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_subpackagesCannotConflict.xhtml">_subpackagesCannotConflict()</a>
+            </li>
+            <li id="_tagCannotBeEmpty">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_tagCannotBeEmpty.xhtml">_tagCannotBeEmpty()</a>
+            </li>
+            <li id="_tagHasNoAttribs">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_tagHasNoAttribs.xhtml">_tagHasNoAttribs()</a>
+            </li>
+            <li id="_tagMissingAttribute">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_tagMissingAttribute.xhtml">_tagMissingAttribute()</a>
+            </li>
+            <li id="_unknownChannel">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_unknownChannel.xhtml">_unknownChannel()</a>
+            </li>
+            <li id="_unknownTask">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_unknownTask.xhtml">_unknownTask()</a>
+            </li>
+            <li id="_uriDepsCannotHaveVersioning">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_uriDepsCannotHaveVersioning.xhtml">_uriDepsCannotHaveVersioning()</a>
+            </li>
+            <li id="_usesroletaskMustHaveChannelOrUri">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_usesroletaskMustHaveChannelOrUri.xhtml">_usesroletaskMustHaveChannelOrUri()</a>
+            </li>
+            <li id="_usesroletaskMustHavePackage">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_usesroletaskMustHavePackage.xhtml">_usesroletaskMustHavePackage()</a>
+            </li>
+            <li id="_usesroletaskMustHaveRoleTask">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_usesroletaskMustHaveRoleTask.xhtml">_usesroletaskMustHaveRoleTask()</a>
+            </li>
+            <li id="_validateArchDep">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateArchDep.xhtml">_validateArchDep()</a>
+            </li>
+            <li id="_validateBundle">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateBundle.xhtml">_validateBundle()</a>
+            </li>
+            <li id="_validateCompatible">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateCompatible.xhtml">_validateCompatible()</a>
+            </li>
+            <li id="_validateDependencies">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateDependencies.xhtml">_validateDependencies()</a>
+            </li>
+            <li id="_validateExtensionDep">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateExtensionDep.xhtml">_validateExtensionDep()</a>
+            </li>
+            <li id="_validateFilelist">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateFilelist.xhtml">_validateFilelist()</a>
+            </li>
+            <li id="_validateInstallConditions">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateInstallConditions.xhtml">_validateInstallConditions()</a>
+            </li>
+            <li id="_validateMaintainers">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateMaintainers.xhtml">_validateMaintainers()</a>
+            </li>
+            <li id="_validateOsDep">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateOsDep.xhtml">_validateOsDep()</a>
+            </li>
+            <li id="_validatePackageDep">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validatePackageDep.xhtml">_validatePackageDep()</a>
+            </li>
+            <li id="_validatePearinstallerDep">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validatePearinstallerDep.xhtml">_validatePearinstallerDep()</a>
+            </li>
+            <li id="_validatePhpDep">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validatePhpDep.xhtml">_validatePhpDep()</a>
+            </li>
+            <li id="_validateRelease">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateRelease.xhtml">_validateRelease()</a>
+            </li>
+            <li id="_validateRole"><a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateRole.xhtml">_validateRole()</a>
+                — This is here to allow role extension through plugins</li>
+            <li id="_validateStabilityVersion">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateStabilityVersion.xhtml">_validateStabilityVersion()</a>
+            </li>
+            <li id="_validateSubpackageDep">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/_validateSubpackageDep.xhtml">_validateSubpackageDep()</a>
+            </li>
+            <li id="analyzeSourceCode"><a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/analyzeSourceCode.xhtml">analyzeSourceCode()</a>
+                — Analyze the source code of the given PHP file</li>
+            <li id="validate">
+              <a title="PEAR_PackageFile_v2_Validator" href="../classes/PEAR_PackageFile_v2_Validator/validate.xhtml">validate()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request" abstract="false" final="false" start="24" end="263">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="Request.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Request.php" size="8429" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="740a7d980473ee79dd016289c0028c72d13bc126" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/Request.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <constant type="integer" name="UPDATE_ONLY_LISTED" value="0">
+    <docblock>
+      <description compact="Identifies a partial update for listed packages only, all dependencies will remain at locked versions"/>
+    </docblock>
+  </constant>
+  <constant type="integer" name="UPDATE_LISTED_WITH_TRANSITIVE_DEPS_NO_ROOT_REQUIRE" value="1">
+    <docblock>
+      <description compact="Identifies a partial update for listed packages and recursively all their dependencies, however dependencies also directly required by the root composer.json and their dependencies will remain at the locked version."/>
+    </docblock>
+  </constant>
+  <constant type="integer" name="UPDATE_LISTED_WITH_TRANSITIVE_DEPS" value="2">
+    <docblock>
+      <description compact="Identifies a partial update for listed packages and recursively all their dependencies, even dependencies also directly required by the root composer.json will be updated."/>
+    </docblock>
+  </constant>
+  <member name="lockedRepository" visibility="protected" static="false" line="44">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\?LockArrayRepository" namespace="Composer\DependencyResolver" name="?LockArrayRepository"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="requires" default="" type="array" visibility="protected" static="false" line="46">
+    <docblock>
+      <var description="ConstraintInterface&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="fixedPackages" default="" type="array" visibility="protected" static="false" line="48">
+    <docblock>
+      <var description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="lockedPackages" default="" type="array" visibility="protected" static="false" line="50">
+    <docblock>
+      <var description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="fixedLockedPackages" default="" type="array" visibility="protected" static="false" line="52">
+    <docblock>
+      <var description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="updateAllowList" default="" type="array" visibility="protected" static="false" line="54">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="updateAllowTransitiveDependencies" default="false" type="boolean" visibility="protected" static="false" line="56">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\false|self::UPDATE_" namespace="Composer\DependencyResolver" name="false|self::UPDATE_"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="58" end="61" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="lockedRepository" byreference="false" type="object" default="NULL">
+      <type full="Composer\Repository\LockArrayRepository" namespace="Composer\Repository" name="LockArrayRepository"/>
+    </parameter>
+  </constructor>
+  <method name="requireName" start="67" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$packageName"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="packageName" byreference="false" type="string"/>
+    <parameter name="constraint" byreference="false" type="object" default="NULL">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="fixPackage" start="88" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Mark a package as currently present and having to remain installed">This is used for platform packages which cannot be modified by Composer. A rule enforcing their installation is
+generated for dependency resolution. Partial updates with dependencies cannot in any way modify these packages.</description>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="lockPackage" start="105" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Mark a package as locked to a specific version but removable">This is used for lock file packages which need to be treated similar to fixed packages by the pool builder in
+that by default they should really only have the currently present version loaded and no remote alternatives.
+
+However unlike fixed packages there will not be a special rule enforcing their installation for the solver, so
+if nothing requires these packages they will be removed. Additionally in a partial update these packages can be
+unlocked, meaning other versions can be installed if explicitly requested as part of the update.</description>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="fixLockedPackage" start="119" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Marks a locked package fixed. So it's treated irremovable like a platform package.">This is necessary for the composer install step which verifies the lock file integrity and should not allow
+removal of any packages. At the same time lock packages there cannot simply be marked fixed, as error reporting
+would then report them as platform packages, so this still marks them as locked packages at the same time.</description>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="unlockPackage" start="128" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="setUpdateAllowList" start="138" end="142" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$updateAllowList" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </param>
+      <param type="object" variable="$updateAllowTransitiveDependencies">
+        <type full="Composer\DependencyResolver\false|self::UPDATE_*" namespace="Composer\DependencyResolver" name="false|self::UPDATE_*"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="updateAllowList" byreference="false" type="array"/>
+    <parameter name="updateAllowTransitiveDependencies" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getUpdateAllowList" start="147" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getUpdateAllowTransitiveDependencies" start="155" end="158" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getUpdateAllowTransitiveRootDependencies" start="163" end="166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getRequires" start="171" end="174" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="ConstraintInterface&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getFixedPackages" start="179" end="182" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="isFixedPackage" start="187" end="190" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+  </method>
+  <method name="getLockedPackages" start="195" end="198" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="isLockedPackage" start="203" end="206" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="getFixedOrLockedPackages" start="211" end="214" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getPresentMap" start="225" end="240" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$packageIds">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <return description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int|string" namespace="Composer\DependencyResolver" name="array&lt;int|string"/>
+      </return>
+      <todo value="look into removing the packageIds option, the only place true is used is for the installed map in the solver problems. Some locked packages may not be in the pool, so they have a package-&gt;id of -1"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="packageIds" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getFixedPackagesMap" start="245" end="254" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\BasePackage" namespace="Composer\DependencyResolver" name="BasePackage"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getLockedRepository" start="259" end="262" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\?LockArrayRepository" namespace="Composer\DependencyResolver" name="?LockArrayRepository"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="Composer\Repository\LockArrayRepository" namespace="Composer\Repository" name="LockArrayRepository"/>
+    </return>
+  </method>
+</class>

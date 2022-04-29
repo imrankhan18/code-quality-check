@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="System" namespace="" name="System" abstract="false" final="false" start="58" end="628">
+  <file path="//usr/local/lib/php" file="System.php" realpath="/usr/local/lib/php/System.php" size="20622" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="eb7d978ff5d972481b4b2885e08713f53946ee38" relative="sr/local/lib/php/System.php"/>
+  <docblock>
+    <description compact="System offers cross platform compatible system functions">Static functions for different operations. Should work under
+Unix and Windows. The names and usage has been taken from its respectively
+GNU commands. The functions will return (bool) false on error and will
+trigger the error with the PHP trigger_error() function (you can silence
+the error by prefixing a '@' sign after the function call, but this
+is not recommended practice.  Instead use an error handler with
+{@link set_error_handler()}).
+
+Documentation on this class you can find in:
+http://pear.php.net/manual/
+
+Example usage:
+if (!@System::rm('-r file1 dir1')) {
+   print "could not delete file1 or dir1";
+}
+
+In case you need to to pass file names with spaces,
+pass the params as an array:
+
+System::rm(array('-r', $file1, $dir1));</description>
+    <category value="pear"/>
+    <package value="System"/>
+    <author value="Tomas V.V. Cox &lt;cox@idecnet.com&gt;"/>
+    <copyright value="1997-2006 The PHP Group"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 0.1"/>
+    <static/>
+  </docblock>
+  <method name="_parseArgs" start="68" end="100" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="returns the commandline arguments of a function"/>
+      <param description="the commandline" type="string" variable="$argv"/>
+      <param description="the allowed option short-tags" type="string" variable="$short_options"/>
+      <param description="the allowed option long-tags" type="string" variable="$long_options"/>
+      <return description="the given options and there values" type="array"/>
+    </docblock>
+    <parameter name="argv" byreference="false" type="{unknown}"/>
+    <parameter name="short_options" byreference="false" type="{unknown}"/>
+    <parameter name="long_options" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="raiseError" start="109" end="116" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Output errors with PHP trigger_error(). You can silence the errors with prefixing a &quot;@&quot; sign to the function call: @System::mkdir(..);"/>
+      <param description="a PEAR error or a string with the error message" type="mixed" variable="$error"/>
+      <return description="false" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="error" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_dirToStruct" start="141" end="174" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Creates a nested array representing the structure of a directory">System::_dirToStruct('dir1', 0) =&gt;
+  Array
+   (
+   [dirs] =&gt; Array
+       (
+           [0] =&gt; dir1
+       )
+
+   [files] =&gt; Array
+       (
+           [0] =&gt; dir1/file2
+           [1] =&gt; dir1/file3
+       )
+   )</description>
+      <param description="Name of the directory" type="string" variable="$sPath"/>
+      <param description="max. deep of the lookup" type="integer" variable="$maxinst"/>
+      <param description="starting deep of the lookup" type="integer" variable="$aktinst"/>
+      <param description="if true, do not emit errors." type="object" variable="$silent">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="the structure of the dir" type="array"/>
+    </docblock>
+    <parameter name="sPath" byreference="false" type="{unknown}"/>
+    <parameter name="maxinst" byreference="false" type="{unknown}"/>
+    <parameter name="aktinst" byreference="false" type="integer" default="0"/>
+    <parameter name="silent" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="XXX don't add if '.' or '..' ?" line="151"/>
+    </inline>
+  </method>
+  <method name="_multipleToStruct" start="184" end="199" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Creates a nested array representing the structure of a directory and files"/>
+      <param description="Array listing files and dirs" type="array" variable="$files"/>
+      <return type="array"/>
+      <static/>
+      <see value="System::_dirToStruct()"/>
+    </docblock>
+    <parameter name="files" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="rm" start="210" end="245" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="The rm command for removing files.">Supports multiple files and dirs and also recursive deletes</description>
+      <param description="the arguments for rm" type="string" variable="$args"/>
+      <return description="PEAR_Error or true for success" type="mixed"/>
+      <static/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="&quot;f&quot; does nothing but I like it :-)" line="212"/>
+    </inline>
+  </method>
+  <method name="mkDir" start="254" end="308" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Make directories.">The -p option will create parent directories</description>
+      <param description="the name of the director(y|ies) to create" type="string" variable="$args"/>
+      <return description="True for success" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="default mode" line="261"/>
+    </inline>
+  </method>
+  <method name="cat" start="323" end="371" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Concatenate files">Usage:
+1) $var = System::cat('sample.txt test.txt');
+2) System::cat('sample.txt test.txt &gt; final.txt');
+3) System::cat('sample.txt test.txt &gt;&gt; final.txt');
+
+Note: as the class use fopen, urls should work also</description>
+      <param description="the arguments" type="string" variable="$args"/>
+      <return description="true on success" type="boolean"/>
+    </docblock>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="mktemp" start="395" end="439" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates temporary files or directories. This function will remove the created files when the scripts finish its execution.">Usage:
+  1) $tempfile = System::mktemp("prefix");
+  2) $tempdir  = System::mktemp("-d prefix");
+  3) $tempfile = System::mktemp();
+  4) $tempfile = System::mktemp("-t /var/tmp prefix");
+
+prefix -&gt; The string that will be prepended to the temp name
+          (defaults to "tmp").
+-d     -&gt; A temporary dir will be created instead of a file.
+-t     -&gt; The target dir where the temporary (file|dir) will be created. If
+          this param is missing by default the env vars TMP on Windows or
+          TMPDIR in Unix will be used. If these vars are also missing
+          c:\windows\temp or /tmp will be used.</description>
+      <param description="The arguments" type="string" variable="$args"/>
+      <return description="the full path of the created (file|dir) or false" type="mixed"/>
+      <see value="System::tmpdir()"/>
+    </docblock>
+    <parameter name="args" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_removeTmpFiles" start="445" end="453" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Remove temporary files created my mkTemp. This function is executed at script shutdown time"/>
+    </docblock>
+  </method>
+  <method name="tmpdir" start="463" end="484" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get the path of the temporal directory set in the system by looking in its environments variables.">Note: php.ini-recommended removes the "E" from the variables_order setting,
+making unavaible the $_ENV array, that s why we do tests with _ENV</description>
+      <return description="The temporary directory on the system" type="string"/>
+    </docblock>
+  </method>
+  <method name="which" start="495" end="542" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="The &quot;which&quot; command (show the full path of a command)"/>
+      <param description="The command to search for" type="string" variable="$program"/>
+      <param description="Value to return if $program is not found" type="mixed" variable="$fallback"/>
+      <return description="A string with the full path or false if not found" type="mixed"/>
+      <author value="Stig Bakken &lt;ssb@php.net&gt;"/>
+    </docblock>
+    <parameter name="program" byreference="false" type="{unknown}"/>
+    <parameter name="fallback" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="enforce API" line="497"/>
+      <comment value="full path given" line="502"/>
+    </inline>
+  </method>
+  <method name="find" start="566" end="627" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="The &quot;find&quot; command">Usage:
+
+System::find($dir);
+System::find("$dir -type d");
+System::find("$dir -type f");
+System::find("$dir -name *.php");
+System::find("$dir -name *.php -name *.htm*");
+System::find("$dir -maxdepth 1");
+
+Params implemented:
+$dir            -&gt; Start the search at this directory
+-type d         -&gt; return only directories
+-type f         -&gt; return only files
+-maxdepth &lt;n&gt;   -&gt; max depth of recursion
+-name &lt;pattern&gt; -&gt; search pattern (bash style). Multiple -name param allowed</description>
+      <param description="Either array or string with the command line" type="mixed"/>
+      <return description="Array of found files" type="array"/>
+    </docblock>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+  </method>
+</class>

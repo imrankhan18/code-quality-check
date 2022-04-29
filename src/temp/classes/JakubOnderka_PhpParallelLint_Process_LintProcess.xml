@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="JakubOnderka\PhpParallelLint\Process\LintProcess" namespace="JakubOnderka\PhpParallelLint\Process" name="LintProcess" abstract="false" final="false" start="6" end="137">
+  <file path="//var/www/html/vendor/php-parallel-lint/php-parallel-lint/src/Process" file="LintProcess.php" realpath="/var/www/html/vendor/php-parallel-lint/php-parallel-lint/src/Process/LintProcess.php" size="3563" time="2022-02-21T12:50:22+00:00" unixtime="1645447822" sha1="d739a2db27350f1e3ad14ca0b5a57d245d7bf6b1" relative="ar/www/html/vendor/php-parallel-lint/php-parallel-lint/src/Process/LintProcess.php"/>
+  <extends full="JakubOnderka\PhpParallelLint\Process\PhpProcess" namespace="JakubOnderka\PhpParallelLint\Process" name="PhpProcess"/>
+  <constant type="string" name="FATAL_ERROR" value="'Fatal error'"/>
+  <constant type="string" name="PARSE_ERROR" value="'Parse error'"/>
+  <constant type="string" name="DEPRECATED_ERROR" value="'Deprecated:'"/>
+  <member name="showDeprecatedErrors" visibility="private" static="false" line="15">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="25" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$phpExecutable">
+        <type full="JakubOnderka\PhpParallelLint\Process\PhpExecutable" namespace="JakubOnderka\PhpParallelLint\Process" name="PhpExecutable"/>
+      </param>
+      <param description="Path to file to check" type="string" variable="$fileToCheck"/>
+      <param type="object" variable="$aspTags">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </param>
+      <param type="object" variable="$shortTag">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </param>
+      <param type="object" variable="$deprecated">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </param>
+      <throws type="object">
+        <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+      </throws>
+    </docblock>
+    <parameter name="phpExecutable" byreference="false" type="object">
+      <type full="JakubOnderka\PhpParallelLint\Process\PhpExecutable" namespace="JakubOnderka\PhpParallelLint\Process" name="PhpExecutable"/>
+    </parameter>
+    <parameter name="fileToCheck" byreference="false" type="{unknown}"/>
+    <parameter name="aspTags" byreference="false" type="boolean" default="false"/>
+    <parameter name="shortTag" byreference="false" type="boolean" default="false"/>
+    <parameter name="deprecated" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="containsError" start="48" end="53" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </return>
+      <throws/>
+    </docblock>
+  </method>
+  <method name="getSyntaxError" start="59" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+      <throws type="object">
+        <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="isFail" start="93" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </return>
+      <throws type="object">
+        <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="isSuccess" start="102" end="105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </return>
+      <throws type="object">
+        <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="containsParserError" start="111" end="114" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$string"/>
+      <return type="object">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="containsFatalError" start="120" end="123" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$string"/>
+      <return type="object">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="containsDeprecatedError" start="129" end="136" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$string"/>
+      <return type="object">
+        <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="JakubOnderka\PhpParallelLint\Process\PhpProcess" namespace="JakubOnderka\PhpParallelLint\Process" name="PhpProcess">
+    <extends full="JakubOnderka\PhpParallelLint\Process\Process" namespace="JakubOnderka\PhpParallelLint\Process" name="Process"/>
+    <constructor name="__construct" start="13" end="17" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object" variable="$phpExecutable">
+          <type full="JakubOnderka\PhpParallelLint\Process\PhpExecutable" namespace="JakubOnderka\PhpParallelLint\Process" name="PhpExecutable"/>
+        </param>
+        <param type="array" variable="$parameters"/>
+        <param type="object" variable="$stdIn">
+          <type full="JakubOnderka\PhpParallelLint\Process\string|null" namespace="JakubOnderka\PhpParallelLint\Process" name="string|null"/>
+        </param>
+        <throws type="object">
+          <type full="\JakubOnderka\PhpParallelLint\RunTimeException" namespace="\JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+        </throws>
+      </docblock>
+      <parameter name="phpExecutable" byreference="false" type="object">
+        <type full="JakubOnderka\PhpParallelLint\Process\PhpExecutable" namespace="JakubOnderka\PhpParallelLint\Process" name="PhpExecutable"/>
+      </parameter>
+      <parameter name="parameters" byreference="false" type="array" default=""/>
+      <parameter name="stdIn" byreference="false" type="{unknown}" default="NULL"/>
+    </constructor>
+  </parent>
+  <parent full="JakubOnderka\PhpParallelLint\Process\Process" namespace="JakubOnderka\PhpParallelLint\Process" name="Process">
+    <constant type="{unknown}" name="STDIN" value="0"/>
+    <constant type="{unknown}" name="READ" value="'r'"/>
+    <member name="process" visibility="protected" static="false" line="17">
+      <docblock>
+        <var type="resource"/>
+      </docblock>
+    </member>
+    <member name="stdout" visibility="protected" static="false" line="20">
+      <docblock>
+        <var type="resource"/>
+      </docblock>
+    </member>
+    <member name="stderr" visibility="protected" static="false" line="23">
+      <docblock>
+        <var type="resource"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="40" end="62" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$executable"/>
+        <param type="array" variable="$arguments" of="object">
+          <type full="JakubOnderka\PhpParallelLint\Process\string" namespace="JakubOnderka\PhpParallelLint\Process" name="string"/>
+        </param>
+        <param type="string" variable="$stdInInput"/>
+        <throws type="object">
+          <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+        </throws>
+      </docblock>
+      <parameter name="executable" byreference="false" type="{unknown}"/>
+      <parameter name="arguments" byreference="false" type="array" default=""/>
+      <parameter name="stdInInput" byreference="false" type="{unknown}" default="NULL"/>
+    </constructor>
+    <method name="isFinished" start="67" end="97" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+        </return>
+      </docblock>
+      <inline>
+        <comment value="Process outputs" line="81"/>
+      </inline>
+    </method>
+    <method name="waitForFinish" start="99" end="104" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getOutput" start="110" end="117" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="string"/>
+        <throws type="object">
+          <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+        </throws>
+      </docblock>
+    </method>
+    <method name="getErrorOutput" start="123" end="130" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="string"/>
+        <throws type="object">
+          <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+        </throws>
+      </docblock>
+    </method>
+    <method name="getStatusCode" start="136" end="143" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="int"/>
+        <throws type="object">
+          <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+        </throws>
+      </docblock>
+    </method>
+    <method name="isFail" start="149" end="152" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="JakubOnderka\PhpParallelLint\Process\bool" namespace="JakubOnderka\PhpParallelLint\Process" name="bool"/>
+        </return>
+        <throws type="object">
+          <type full="JakubOnderka\PhpParallelLint\RunTimeException" namespace="JakubOnderka\PhpParallelLint" name="RunTimeException"/>
+        </throws>
+      </docblock>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MongoDB\Operation\Aggregate::__construct</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#MongoDB_Operation">MongoDB\Operation</a>
+          </li>
+          <li class="separator">
+            <a title="MongoDB\Operation\Aggregate" href="../../classes/MongoDB_Operation_Aggregate.xhtml">Aggregate</a>
+          </li>
+          <li class="separator">__construct</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
+            <a href="../../source/ar/www/html/vendor/mongodb/mongodb/src/Operation/Aggregate.php.xhtml#line139">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>MongoDB\Operation\Aggregate::</small>__construct</h1>
+        <h4>Constructs an aggregate command.</h4>
+        <p>Supported options:
+
+ * allowDiskUse (boolean): Enables writing to temporary files. When set
+   to true, aggregation stages can write data to the _tmp sub-directory
+   in the dbPath directory.
+
+ * batchSize (integer): The number of documents to return per batch.
+
+ * bypassDocumentValidation (boolean): If true, allows the write to
+   circumvent document level validation. This only applies when an $out
+   or $merge stage is specified.
+
+ * collation (document): Collation specification.
+
+ * comment (string): An arbitrary string to help trace the operation
+   through the database profiler, currentOp, and logs.
+
+ * explain (boolean): Specifies whether or not to return the information
+   on the processing of the pipeline.
+
+ * hint (string|document): The index to use. Specify either the index
+   name as a string or the index key pattern as a document. If specified,
+   then the query system will only consider plans using the hinted index.
+
+ * let (document): Map of parameter names and values. Values must be
+   constant or closed expressions that do not reference document fields.
+   Parameters can then be accessed as variables in an aggregate
+   expression context (e.g. "$$var").
+
+   This is not supported for server versions &lt; 5.0 and will result in an
+   exception at execution time if used.
+
+ * maxTimeMS (integer): The maximum amount of time to allow the query to
+   run.
+
+ * readConcern (MongoDB\Driver\ReadConcern): Read concern.
+
+ * readPreference (MongoDB\Driver\ReadPreference): Read preference.
+
+   This option is ignored if an $out or $merge stage is specified.
+
+ * session (MongoDB\Driver\Session): Client session.
+
+ * typeMap (array): Type map for BSON deserialization. This will be
+   applied to the returned Cursor (it is not sent to the server).
+
+ * useCursor (boolean): Indicates whether the command will request that
+   the server provide results using a cursor. The default is true.
+
+   This option allows users to turn off cursors if necessary to aid in
+   mongod/mongos upgrades.
+
+ * writeConcern (MongoDB\Driver\WriteConcern): Write concern. This only
+   applies when an $out or $merge stage is specified.
+
+Note: Collection-agnostic commands (e.g. $currentOp) may be executed by
+specifying null for the collection name.</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function __construct(string
+        $databaseName,
+            <a title="MongoDB\Operation\string|null" href="../../classes/MongoDB_Operation_string|null.xhtml">string|null</a>
+        $collectionName,
+            array
+        $pipeline,
+            [array
+        $options = ] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$databaseName</code>
+                —
+                string</dt>
+          <dd>Database name</dd>
+          <dt><code>$collectionName</code>
+                —
+                object</dt>
+          <dd>Collection name<br/><br/><br/>      </dd>
+          <dt><code>$pipeline</code>
+                —
+                array</dt>
+          <dd>List of pipeline operations</dd>
+          <dt><code>$options</code>
+                —
+                array</dt>
+          <dd>Command options</dd>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="MongoDB\Exception\InvalidArgumentException" href="../../classes/MongoDB_Exception_InvalidArgumentException.xhtml">InvalidArgumentException</a>
+            </code>
+          </dt>
+          <dd>for parameter/option parsing errors</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

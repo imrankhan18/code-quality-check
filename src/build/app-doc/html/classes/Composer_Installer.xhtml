@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Installer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer">Composer</a>
+          </li>
+          <li class="separator">Installer</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#tasks">Tasks</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Installer.php.xhtml#line71">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\</small>Installer</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Jordi Boggiano &lt;j.boggiano@seld.be&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Installer
+            {<br/><ul class="none"><li>// constants</li><li>const ERROR_NONE = 0;</li><li>const ERROR_GENERIC_FAILURE = 1;</li><li>const ERROR_NO_LOCK_FILE_FOR_PARTIAL_UPDATE = 3;</li><li>const ERROR_LOCK_FILE_INVALID = 4;</li><li>const ERROR_DEPENDENCY_RESOLUTION_FAILED = 2;</li></ul><ul class="none"><li>// members</li><li>protected <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>protected <span title="Composer\Config">Config</span> <a href="#members">$config</a>;
+                    </li><li>protected <span title="Composer\RootPackageInterface&amp;BasePackage">RootPackageInterface&amp;BasePackage</span> <a href="#members">$package</a>;
+                    </li><li>protected <span title="Composer\RootPackageInterface&amp;BasePackage">RootPackageInterface&amp;BasePackage</span> <a href="#members">$fixedRootPackage</a>;
+                    </li><li>protected <span title="Composer\Downloader\DownloadManager">DownloadManager</span> <a href="#members">$downloadManager</a>;
+                    </li><li>protected <span title="Composer\Repository\RepositoryManager">RepositoryManager</span> <a href="#members">$repositoryManager</a>;
+                    </li><li>protected <span title="Composer\Package\Locker">Locker</span> <a href="#members">$locker</a>;
+                    </li><li>protected <span title="Composer\Installer\InstallationManager">InstallationManager</span> <a href="#members">$installationManager</a>;
+                    </li><li>protected <span title="Composer\EventDispatcher\EventDispatcher">EventDispatcher</span> <a href="#members">$eventDispatcher</a>;
+                    </li><li>protected <span title="Composer\Autoload\AutoloadGenerator">AutoloadGenerator</span> <a href="#members">$autoloadGenerator</a>;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$preferSource</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$preferDist</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$optimizeAutoloader</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$classMapAuthoritative</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$apcuAutoloader</a> =
+                        false;
+                    </li><li>protected <span title="Composer\string|null">string|null</span> <a href="#members">$apcuAutoloaderPrefix</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$devMode</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$dryRun</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$verbose</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$update</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$install</a> =
+                        true;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$dumpAutoloader</a> =
+                        true;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$runScripts</a> =
+                        true;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$preferStable</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$preferLowest</a> =
+                        false;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$writeLock</a>;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$executeOperations</a> =
+                        true;
+                    </li><li>protected <span title="Composer\bool">bool</span> <a href="#members">$updateMirrors</a> =
+                        false;
+                    </li><li>protected  <a href="#members">$updateAllowList</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Request::UPDATE_">Request::UPDATE_</span> <a href="#members">$updateAllowTransitiveDependencies</a> =
+                        Request::UPDATE_ONLY_LISTED;
+                    </li><li>protected <span title="Composer\Installer\SuggestedPackagesReporter">SuggestedPackagesReporter</span> <a href="#members">$suggestedPackagesReporter</a>;
+                    </li><li>protected <span title="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface">PlatformRequirementFilterInterface</span> <a href="#members">$platformRequirementFilter</a>;
+                    </li><li>protected <span title="Composer\?RepositoryInterface">?RepositoryInterface</span> <a href="#members">$additionalFixedRepository</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Installer" href="../classes/Composer_Installer/__construct.xhtml">__construct</a>()
+                    </li><li>public int <a title="Composer\Installer" href="../classes/Composer_Installer/run.xhtml">run</a>()
+                    </li><li>protected int <a title="Composer\Installer" href="../classes/Composer_Installer/doUpdate.xhtml">doUpdate</a>()
+                    </li><li>protected int <a title="Composer\Installer" href="../classes/Composer_Installer/extractDevPackages.xhtml">extractDevPackages</a>()
+                    </li><li>protected int <a title="Composer\Installer" href="../classes/Composer_Installer/doInstall.xhtml">doInstall</a>()
+                    </li><li>protected <span title="PlatformRepository">PlatformRepository</span> <a title="Composer\Installer" href="../classes/Composer_Installer/createPlatformRepo.xhtml">createPlatformRepo</a>()
+                    </li><li>private <span title="RepositorySet">RepositorySet</span> <a title="Composer\Installer" href="../classes/Composer_Installer/createRepositorySet.xhtml">createRepositorySet</a>()
+                    </li><li>private <span title="DefaultPolicy">DefaultPolicy</span> <a title="Composer\Installer" href="../classes/Composer_Installer/createPolicy.xhtml">createPolicy</a>()
+                    </li><li>private <span title="Request">Request</span> <a title="Composer\Installer" href="../classes/Composer_Installer/createRequest.xhtml">createRequest</a>()
+                    </li><li>private void <a title="Composer\Installer" href="../classes/Composer_Installer/requirePackagesForUpdate.xhtml">requirePackagesForUpdate</a>()
+                    </li><li>private array <a title="Composer\Installer" href="../classes/Composer_Installer/getRootAliases.xhtml">getRootAliases</a>()
+                    </li><li>private array <a title="Composer\Installer" href="../classes/Composer_Installer/extractPlatformRequirements.xhtml">extractPlatformRequirements</a>()
+                    </li><li>private void <a title="Composer\Installer" href="../classes/Composer_Installer/mockLocalRepositories.xhtml">mockLocalRepositories</a>()
+                    </li><li>private ?<span title="PoolOptimizer">PoolOptimizer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/createPoolOptimizer.xhtml">createPoolOptimizer</a>()
+                    </li><li>public static <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/create.xhtml">create</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setAdditionalFixedRepository.xhtml">setAdditionalFixedRepository</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setDryRun.xhtml">setDryRun</a>()
+                    </li><li>public bool <a title="Composer\Installer" href="../classes/Composer_Installer/isDryRun.xhtml">isDryRun</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setPreferSource.xhtml">setPreferSource</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setPreferDist.xhtml">setPreferDist</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setOptimizeAutoloader.xhtml">setOptimizeAutoloader</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setClassMapAuthoritative.xhtml">setClassMapAuthoritative</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setApcuAutoloader.xhtml">setApcuAutoloader</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setUpdate.xhtml">setUpdate</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setInstall.xhtml">setInstall</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setDevMode.xhtml">setDevMode</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setDumpAutoloader.xhtml">setDumpAutoloader</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setRunScripts.xhtml">setRunScripts</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setConfig.xhtml">setConfig</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setVerbose.xhtml">setVerbose</a>()
+                    </li><li>public bool <a title="Composer\Installer" href="../classes/Composer_Installer/isVerbose.xhtml">isVerbose</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setIgnorePlatformRequirements.xhtml">setIgnorePlatformRequirements</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setPlatformRequirementFilter.xhtml">setPlatformRequirementFilter</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setUpdateMirrors.xhtml">setUpdateMirrors</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setUpdateAllowList.xhtml">setUpdateAllowList</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setUpdateAllowTransitiveDependencies.xhtml">setUpdateAllowTransitiveDependencies</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setPreferStable.xhtml">setPreferStable</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setPreferLowest.xhtml">setPreferLowest</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setWriteLock.xhtml">setWriteLock</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setExecuteOperations.xhtml">setExecuteOperations</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/disablePlugins.xhtml">disablePlugins</a>()
+                    </li><li>public <span title="Installer">Installer</span> <a title="Composer\Installer" href="../classes/Composer_Installer/setSuggestedPackagesReporter.xhtml">setSuggestedPackagesReporter</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="tasks">Tasks</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th style="width:3em;">Line</th>
+              <th>Task</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="nummeric">717</td>
+            <td>in how far do we need to do anything here to ensure dev packages being updated to latest in lock without version change are treated correctly?</td>
+          </tr>
+          <tr>
+            <td class="nummeric">906</td>
+            <td>why not replaces?</td>
+          </tr>
+        </table>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="ERROR_NONE">ERROR_NONE</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="ERROR_GENERIC_FAILURE">ERROR_GENERIC_FAILURE</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="ERROR_NO_LOCK_FILE_FOR_PARTIAL_UPDATE">ERROR_NO_LOCK_FILE_FOR_PARTIAL_UPDATE</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="ERROR_LOCK_FILE_INVALID">ERROR_LOCK_FILE_INVALID</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td id="ERROR_DEPENDENCY_RESOLUTION_FAILED">ERROR_DEPENDENCY_RESOLUTION_FAILED</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="additionalFixedRepository"><strong>$additionalFixedRepository</strong>
+                —
+                <a title="Composer\?RepositoryInterface" href="../classes/Composer_?RepositoryInterface.xhtml">Composer\?RepositoryInterface</a></li>
+            <li id="apcuAutoloader"><strong>$apcuAutoloader</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="apcuAutoloaderPrefix"><strong>$apcuAutoloaderPrefix</strong>
+                —
+                <a title="Composer\string|null" href="../classes/Composer_string|null.xhtml">Composer\string|null</a></li>
+            <li id="autoloadGenerator"><strong>$autoloadGenerator</strong>
+                —
+                <a title="Composer\Autoload\AutoloadGenerator" href="../classes/Composer_Autoload_AutoloadGenerator.xhtml">Composer\Autoload\AutoloadGenerator</a></li>
+            <li id="classMapAuthoritative"><strong>$classMapAuthoritative</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="config"><strong>$config</strong>
+                —
+                <a title="Composer\Config" href="../classes/Composer_Config.xhtml">Composer\Config</a></li>
+            <li id="devMode"><strong>$devMode</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="downloadManager"><strong>$downloadManager</strong>
+                —
+                <a title="Composer\Downloader\DownloadManager" href="../classes/Composer_Downloader_DownloadManager.xhtml">Composer\Downloader\DownloadManager</a></li>
+            <li id="dryRun"><strong>$dryRun</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="dumpAutoloader"><strong>$dumpAutoloader</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="eventDispatcher"><strong>$eventDispatcher</strong>
+                —
+                <a title="Composer\EventDispatcher\EventDispatcher" href="../classes/Composer_EventDispatcher_EventDispatcher.xhtml">Composer\EventDispatcher\EventDispatcher</a></li>
+            <li id="executeOperations"><strong>$executeOperations</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="fixedRootPackage"><strong>$fixedRootPackage</strong>
+                —
+                <a title="Composer\RootPackageInterface&amp;BasePackage" href="../classes/Composer_RootPackageInterface&amp;BasePackage.xhtml">Composer\RootPackageInterface&amp;BasePackage</a></li>
+            <li id="install"><strong>$install</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="installationManager"><strong>$installationManager</strong>
+                —
+                <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager.xhtml">Composer\Installer\InstallationManager</a></li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="locker"><strong>$locker</strong>
+                —
+                <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker.xhtml">Composer\Package\Locker</a></li>
+            <li id="optimizeAutoloader"><strong>$optimizeAutoloader</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="package"><strong>$package</strong>
+                —
+                <a title="Composer\RootPackageInterface&amp;BasePackage" href="../classes/Composer_RootPackageInterface&amp;BasePackage.xhtml">Composer\RootPackageInterface&amp;BasePackage</a></li>
+            <li id="platformRequirementFilter"><strong>$platformRequirementFilter</strong>
+                —
+                <a title="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" href="../classes/Composer_Filter_PlatformRequirementFilter_PlatformRequirementFilterInterface.xhtml">Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface</a></li>
+            <li id="preferDist"><strong>$preferDist</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="preferLowest"><strong>$preferLowest</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="preferSource"><strong>$preferSource</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="preferStable"><strong>$preferStable</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="repositoryManager"><strong>$repositoryManager</strong>
+                —
+                <a title="Composer\Repository\RepositoryManager" href="../classes/Composer_Repository_RepositoryManager.xhtml">Composer\Repository\RepositoryManager</a></li>
+            <li id="runScripts"><strong>$runScripts</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="suggestedPackagesReporter"><strong>$suggestedPackagesReporter</strong>
+                —
+                <a title="Composer\Installer\SuggestedPackagesReporter" href="../classes/Composer_Installer_SuggestedPackagesReporter.xhtml">Composer\Installer\SuggestedPackagesReporter</a></li>
+            <li id="update"><strong>$update</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="updateAllowList"><strong>$updateAllowList</strong>
+                —
+                array<br/><span class="indent">Array of package names/globs flagged for update</span></li>
+            <li id="updateAllowTransitiveDependencies"><strong>$updateAllowTransitiveDependencies</strong>
+                —
+                <a title="Composer\Request::UPDATE_" href="../classes/Composer_Request::UPDATE_.xhtml">Composer\Request::UPDATE_</a></li>
+            <li id="updateMirrors"><strong>$updateMirrors</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="verbose"><strong>$verbose</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+            <li id="writeLock"><strong>$writeLock</strong>
+                —
+                <a title="Composer\bool" href="../classes/Composer_bool.xhtml">Composer\bool</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="createPolicy">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/createPolicy.xhtml">createPolicy()</a>
+            </li>
+            <li id="createPoolOptimizer">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/createPoolOptimizer.xhtml">createPoolOptimizer()</a>
+            </li>
+            <li id="createRepositorySet">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/createRepositorySet.xhtml">createRepositorySet()</a>
+            </li>
+            <li id="createRequest">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/createRequest.xhtml">createRequest()</a>
+            </li>
+            <li id="extractPlatformRequirements">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/extractPlatformRequirements.xhtml">extractPlatformRequirements()</a>
+            </li>
+            <li id="getRootAliases">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/getRootAliases.xhtml">getRootAliases()</a>
+            </li>
+            <li id="mockLocalRepositories"><a title="Composer\Installer" href="../classes/Composer_Installer/mockLocalRepositories.xhtml">mockLocalRepositories()</a>
+                — Replace local repositories with InstalledArrayRepository instances</li>
+            <li id="requirePackagesForUpdate">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/requirePackagesForUpdate.xhtml">requirePackagesForUpdate()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="createPlatformRepo">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/createPlatformRepo.xhtml">createPlatformRepo()</a>
+            </li>
+            <li id="doInstall">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/doInstall.xhtml">doInstall()</a>
+            </li>
+            <li id="doUpdate">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/doUpdate.xhtml">doUpdate()</a>
+            </li>
+            <li id="extractDevPackages"><a title="Composer\Installer" href="../classes/Composer_Installer/extractDevPackages.xhtml">extractDevPackages()</a>
+                — Run the solver a second time on top of the existing update result with only the current result set in the pool and see what packages would get removed if we only had the non-dev packages in the solver request</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="Composer\Installer" href="../classes/Composer_Installer/__construct.xhtml">__construct()</a>
+                — Constructor</li>
+            <li id="create"><a title="Composer\Installer" href="../classes/Composer_Installer/create.xhtml">create()</a>
+                — Create Installer</li>
+            <li id="disablePlugins"><a title="Composer\Installer" href="../classes/Composer_Installer/disablePlugins.xhtml">disablePlugins()</a>
+                — Disables plugins.</li>
+            <li id="isDryRun"><a title="Composer\Installer" href="../classes/Composer_Installer/isDryRun.xhtml">isDryRun()</a>
+                — Checks, if this is a dry run (simulation mode).</li>
+            <li id="isVerbose"><a title="Composer\Installer" href="../classes/Composer_Installer/isVerbose.xhtml">isVerbose()</a>
+                — Checks, if running in verbose mode.</li>
+            <li id="run"><a title="Composer\Installer" href="../classes/Composer_Installer/run.xhtml">run()</a>
+                — Run installation (or update)</li>
+            <li id="setAdditionalFixedRepository">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/setAdditionalFixedRepository.xhtml">setAdditionalFixedRepository()</a>
+            </li>
+            <li id="setApcuAutoloader"><a title="Composer\Installer" href="../classes/Composer_Installer/setApcuAutoloader.xhtml">setApcuAutoloader()</a>
+                — Whether or not generated autoloader considers APCu caching.</li>
+            <li id="setClassMapAuthoritative"><a title="Composer\Installer" href="../classes/Composer_Installer/setClassMapAuthoritative.xhtml">setClassMapAuthoritative()</a>
+                — Whether or not generated autoloader considers the class map authoritative.</li>
+            <li id="setConfig"><a title="Composer\Installer" href="../classes/Composer_Installer/setConfig.xhtml">setConfig()</a>
+                — set the config instance</li>
+            <li id="setDevMode"><a title="Composer\Installer" href="../classes/Composer_Installer/setDevMode.xhtml">setDevMode()</a>
+                — enables dev packages</li>
+            <li id="setDryRun"><a title="Composer\Installer" href="../classes/Composer_Installer/setDryRun.xhtml">setDryRun()</a>
+                — Whether to run in drymode or not</li>
+            <li id="setDumpAutoloader"><a title="Composer\Installer" href="../classes/Composer_Installer/setDumpAutoloader.xhtml">setDumpAutoloader()</a>
+                — set whether to run autoloader or not</li>
+            <li id="setExecuteOperations"><a title="Composer\Installer" href="../classes/Composer_Installer/setExecuteOperations.xhtml">setExecuteOperations()</a>
+                — Should the operations (package install, update and removal) be executed on disk?</li>
+            <li id="setIgnorePlatformRequirements"><a title="Composer\Installer" href="../classes/Composer_Installer/setIgnorePlatformRequirements.xhtml">setIgnorePlatformRequirements()</a>
+                — set ignore Platform Package requirements</li>
+            <li id="setInstall"><a title="Composer\Installer" href="../classes/Composer_Installer/setInstall.xhtml">setInstall()</a>
+                — Allows disabling the install step after an update</li>
+            <li id="setOptimizeAutoloader"><a title="Composer\Installer" href="../classes/Composer_Installer/setOptimizeAutoloader.xhtml">setOptimizeAutoloader()</a>
+                — Whether or not generated autoloader are optimized</li>
+            <li id="setPlatformRequirementFilter">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/setPlatformRequirementFilter.xhtml">setPlatformRequirementFilter()</a>
+            </li>
+            <li id="setPreferDist"><a title="Composer\Installer" href="../classes/Composer_Installer/setPreferDist.xhtml">setPreferDist()</a>
+                — prefer dist installation</li>
+            <li id="setPreferLowest"><a title="Composer\Installer" href="../classes/Composer_Installer/setPreferLowest.xhtml">setPreferLowest()</a>
+                — Should packages be preferred in a lowest version when updating?</li>
+            <li id="setPreferSource"><a title="Composer\Installer" href="../classes/Composer_Installer/setPreferSource.xhtml">setPreferSource()</a>
+                — prefer source installation</li>
+            <li id="setPreferStable"><a title="Composer\Installer" href="../classes/Composer_Installer/setPreferStable.xhtml">setPreferStable()</a>
+                — Should packages be preferred in a stable version when updating?</li>
+            <li id="setRunScripts"><a title="Composer\Installer" href="../classes/Composer_Installer/setRunScripts.xhtml">setRunScripts()</a>
+                — set whether to run scripts or not</li>
+            <li id="setSuggestedPackagesReporter">
+              <a title="Composer\Installer" href="../classes/Composer_Installer/setSuggestedPackagesReporter.xhtml">setSuggestedPackagesReporter()</a>
+            </li>
+            <li id="setUpdate"><a title="Composer\Installer" href="../classes/Composer_Installer/setUpdate.xhtml">setUpdate()</a>
+                — update packages</li>
+            <li id="setUpdateAllowList"><a title="Composer\Installer" href="../classes/Composer_Installer/setUpdateAllowList.xhtml">setUpdateAllowList()</a>
+                — restrict the update operation to a few packages, all other packages that are already installed will be kept at their current version</li>
+            <li id="setUpdateAllowTransitiveDependencies"><a title="Composer\Installer" href="../classes/Composer_Installer/setUpdateAllowTransitiveDependencies.xhtml">setUpdateAllowTransitiveDependencies()</a>
+                — Should dependencies of packages marked for update be updated?</li>
+            <li id="setUpdateMirrors"><a title="Composer\Installer" href="../classes/Composer_Installer/setUpdateMirrors.xhtml">setUpdateMirrors()</a>
+                — Update the lock file to the exact same versions and references but use current remote metadata like URLs and mirror info</li>
+            <li id="setVerbose"><a title="Composer\Installer" href="../classes/Composer_Installer/setVerbose.xhtml">setVerbose()</a>
+                — run in verbose mode</li>
+            <li id="setWriteLock"><a title="Composer\Installer" href="../classes/Composer_Installer/setWriteLock.xhtml">setWriteLock()</a>
+                — Should the lock file be updated when updating?</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Seld\JsonLint\JsonParser</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Seld_JsonLint">Seld\JsonLint</a>
+          </li>
+          <li class="separator">JsonParser</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/seld/jsonlint/src/Seld/JsonLint/JsonParser.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Seld\JsonLint\</small>JsonParser</h1>
+        <h4>Parser class</h4>
+        <p>Example:<br/><br/>$parser = new JsonParser();<br/>// returns null if it's valid json, or an error object<br/>$parser-&gt;lint($json);<br/>// returns parsed json, like json_decode does, but slower, throws exceptions on failure.<br/>$parser-&gt;parse($json);<br/><br/>Ported from https://github.com/zaach/jsonlint</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class JsonParser
+            {<br/><ul class="none"><li>// constants</li><li>const DETECT_KEY_CONFLICTS = 1;</li><li>const ALLOW_DUPLICATE_KEYS = 2;</li><li>const PARSE_TO_ASSOC = 4;</li></ul><ul class="none"><li>// members</li><li>private <span title="Seld\JsonLint\Lexer">Lexer</span> <a href="#members">$lexer</a>;
+                    </li><li>private  <a href="#members">$flags</a>;
+                    </li><li>private <span title="Seld\JsonLint\list&lt;int&gt;">list&lt;int&gt;</span> <a href="#members">$stack</a>;
+                    </li><li>private <span title="Seld\JsonLint\list&lt;stdClass|array&lt;mixed&gt;|int|bool|float|string|null&gt;">list&lt;stdClass|array&lt;mixed&gt;|int|bool|float|string|null&gt;</span> <a href="#members">$vstack</a>;
+                    </li><li>private <span title="Seld\JsonLint\list&lt;array{first_line:">list&lt;array{first_line:</span> <a href="#members">$lstack</a>;
+                    </li><li>private array <a href="#members">$symbols</a> =
+                        ;
+                    </li><li>private array <a href="#members">$terminals_</a> =
+                        ;
+                    </li><li>private array <a href="#members">$productions_</a> =
+                        ;
+                    </li><li>private <span title="Seld\JsonLint\array&lt;int&lt;0">array&lt;int&lt;0</span> <a href="#members">$table</a> =
+                        ;
+                    </li><li>private <span title="Seld\JsonLint\array{16:">array{16:</span> <a href="#members">$defaultActions</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public null|ParsingException <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/lint.xhtml">lint</a>()
+                    </li><li>public mixed <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/parse.xhtml">parse</a>()
+                    </li><li>protected never <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/parseError.xhtml">parseError</a>()
+                    </li><li>private array{stdClass|array&lt;mixed&gt;|int|bool|float|string|null <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/performAction.xhtml">performAction</a>()
+                    </li><li>private string <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/stringInterpolation.xhtml">stringInterpolation</a>()
+                    </li><li>private void <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/popStack.xhtml">popStack</a>()
+                    </li><li>private void <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/failOnBOM.xhtml">failOnBOM</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="DETECT_KEY_CONFLICTS">DETECT_KEY_CONFLICTS</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="ALLOW_DUPLICATE_KEYS">ALLOW_DUPLICATE_KEYS</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="PARSE_TO_ASSOC">PARSE_TO_ASSOC</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="defaultActions"><strong>$defaultActions</strong>
+                —
+                <a title="Seld\JsonLint\array{16:" href="../classes/Seld_JsonLint_array{16:.xhtml">Seld\JsonLint\array{16:</a></li>
+            <li id="flags"><strong>$flags</strong>
+                —
+                int</li>
+            <li id="lexer"><strong>$lexer</strong>
+                —
+                <a title="Seld\JsonLint\Lexer" href="../classes/Seld_JsonLint_Lexer.xhtml">Seld\JsonLint\Lexer</a></li>
+            <li id="lstack"><strong>$lstack</strong>
+                —
+                <a title="Seld\JsonLint\list&lt;array{first_line:" href="../classes/Seld_JsonLint_list&lt;array{first_line:.xhtml">Seld\JsonLint\list&lt;array{first_line:</a></li>
+            <li id="productions_">
+              <strong>$productions_</strong>
+            </li>
+            <li id="stack"><strong>$stack</strong>
+                —
+                <a title="Seld\JsonLint\list&lt;int&gt;" href="../classes/Seld_JsonLint_list&lt;int&gt;.xhtml">Seld\JsonLint\list&lt;int&gt;</a></li>
+            <li id="symbols">
+              <strong>$symbols</strong>
+            </li>
+            <li id="table"><strong>$table</strong>
+                —
+                <a title="Seld\JsonLint\array&lt;int&lt;0" href="../classes/Seld_JsonLint_array&lt;int&lt;0.xhtml">Seld\JsonLint\array&lt;int&lt;0</a></li>
+            <li id="terminals_">
+              <strong>$terminals_</strong>
+            </li>
+            <li id="vstack"><strong>$vstack</strong>
+                —
+                <a title="Seld\JsonLint\list&lt;stdClass|array&lt;mixed&gt;|int|bool|float|string|null&gt;" href="../classes/Seld_JsonLint_list&lt;stdClass|array&lt;mixed&gt;|int|bool|float|string|null&gt;.xhtml">Seld\JsonLint\list&lt;stdClass|array&lt;mixed&gt;|int|bool|float|string|null&gt;</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="failOnBOM">
+              <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/failOnBOM.xhtml">failOnBOM()</a>
+            </li>
+            <li id="performAction">
+              <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/performAction.xhtml">performAction()</a>
+            </li>
+            <li id="popStack">
+              <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/popStack.xhtml">popStack()</a>
+            </li>
+            <li id="stringInterpolation">
+              <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/stringInterpolation.xhtml">stringInterpolation()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="parseError">
+              <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/parseError.xhtml">parseError()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="lint">
+              <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/lint.xhtml">lint()</a>
+            </li>
+            <li id="parse">
+              <a title="Seld\JsonLint\JsonParser" href="../classes/Seld_JsonLint_JsonParser/parse.xhtml">parse()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

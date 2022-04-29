@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader" abstract="false" final="false" start="33" end="541">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="HttpDownloader.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/HttpDownloader.php" size="17818" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="1cc5aee9f8deba9e241a0e0c52e1779cbbb4f5cf" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/HttpDownloader.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+    <phpstan value="-type Request array{url: string, options?: mixed[], copyTo?: ?string}"/>
+    <phpstan value="-type Job array{id: int, status: int, request: Request, sync: bool, origin: string, resolve?: callable, reject?: callable, curl_id?: int, response?: Response, exception?: TransportException}"/>
+  </docblock>
+  <constant type="integer" name="STATUS_QUEUED" value="1"/>
+  <constant type="integer" name="STATUS_STARTED" value="2"/>
+  <constant type="integer" name="STATUS_COMPLETED" value="3"/>
+  <constant type="integer" name="STATUS_FAILED" value="4"/>
+  <constant type="integer" name="STATUS_ABORTED" value="5"/>
+  <member name="io" visibility="private" static="false" line="42">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="private" static="false" line="44">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="jobs" default="" type="array" visibility="private" static="false" line="46">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\array&lt;Job&gt;" namespace="Composer\Util" name="array&lt;Job&gt;"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="options" default="" type="array" visibility="private" static="false" line="48">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="runningJobs" default="0" type="integer" visibility="private" static="false" line="50">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="maxJobs" default="12" type="integer" visibility="private" static="false" line="52">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="curl" visibility="private" static="false" line="54">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?CurlDownloader" namespace="Composer\Util" name="?CurlDownloader"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="rfs" visibility="private" static="false" line="56">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?RemoteFilesystem" namespace="Composer\Util" name="?RemoteFilesystem"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="idGen" default="0" type="integer" visibility="private" static="false" line="58">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="disabled" visibility="private" static="false" line="60">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="allowAsync" default="false" type="boolean" visibility="private" static="false" line="62">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="70" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The IO instance" type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param description="The config" type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param description="The options" type="array" variable="$options" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <param type="object" variable="$disableTls">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="disableTls" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="Setup TLS options" line="76"/>
+      <comment value="The cafile option can be set via config.json" line="77"/>
+      <comment value="handle the other externally set options normally." line="82"/>
+    </inline>
+  </constructor>
+  <method name="get" start="106" end="114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Download a file synchronously"/>
+      <param description="URL to download" type="string" variable="$url"/>
+      <param description="Stream context options e.g. https://www.php.net/manual/en/context.http.php" type="array" variable="$options" of="object">although not all options are supported when using the default curl downloader<type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/></param>
+      <throws type="object">
+        <type full="Composer\Downloader\TransportException" namespace="Composer\Downloader" name="TransportException"/>
+      </throws>
+      <return type="object">
+        <type full="Composer\Util\Http\Response" namespace="Composer\Util\Http" name="Response"/>
+      </return>
+    </docblock>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="add" start="125" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create an async download operation"/>
+      <param description="URL to download" type="string" variable="$url"/>
+      <param description="Stream context options e.g. https://www.php.net/manual/en/context.http.php" type="array" variable="$options" of="object">although not all options are supported when using the default curl downloader<type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/></param>
+      <throws type="object">
+        <type full="Composer\Downloader\TransportException" namespace="Composer\Downloader" name="TransportException"/>
+      </throws>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="copy" start="142" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Copy a file synchronously"/>
+      <param description="URL to download" type="string" variable="$url"/>
+      <param description="Path to copy to" type="string" variable="$to"/>
+      <param description="Stream context options e.g. https://www.php.net/manual/en/context.http.php" type="array" variable="$options" of="object">although not all options are supported when using the default curl downloader<type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/></param>
+      <throws type="object">
+        <type full="Composer\Downloader\TransportException" namespace="Composer\Downloader" name="TransportException"/>
+      </throws>
+      <return type="object">
+        <type full="Composer\Util\Http\Response" namespace="Composer\Util\Http" name="Response"/>
+      </return>
+    </docblock>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="to" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="addCopy" start="160" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create an async copy operation"/>
+      <param description="URL to download" type="string" variable="$url"/>
+      <param description="Path to copy to" type="string" variable="$to"/>
+      <param description="Stream context options e.g. https://www.php.net/manual/en/context.http.php" type="array" variable="$options" of="object">although not all options are supported when using the default curl downloader<type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/></param>
+      <throws type="object">
+        <type full="Composer\Downloader\TransportException" namespace="Composer\Downloader" name="TransportException"/>
+      </throws>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="to" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getOptions" start="172" end="175" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the options set in the constructor"/>
+      <return description="Options" type="array" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setOptions" start="183" end="186" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Merges new options"/>
+      <param type="array" variable="$options" of="object">
+        <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="options" byreference="false" type="array"/>
+  </method>
+  <method name="addJob" start="192" end="286" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <phpstan value="-param Request $request"/>
+      <return description="PromiseInterface}" type="object">
+        <type full="Composer\Util\array{Job" namespace="Composer\Util" name="array{Job"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="request" byreference="false" type="array"/>
+    <parameter name="sync" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="capture username/password from URL if there is one" line="209"/>
+    </inline>
+  </method>
+  <method name="startJob" start="292" end="330" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$id"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="id" byreference="false" type="int"/>
+    <inline>
+      <comment value="start job" line="299"/>
+    </inline>
+  </method>
+  <method name="markJobDone" start="332" end="335" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="wait" start="344" end="349" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Wait for current async download jobs to complete"/>
+      <param description="For internal use only, the job id" type="object" variable="$index">
+        <type full="Composer\Util\int|null" namespace="Composer\Util" name="int|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="index" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="enableAsync" start="356" end="359" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="countActiveJobs" start="367" end="395" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <param description="For internal use only, the job id" type="object" variable="$index">
+        <type full="Composer\Util\int|null" namespace="Composer\Util" name="int|null"/>
+      </param>
+      <return description="number of active (queued or started) jobs" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="index" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="getResponse" start="401" end="420" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param description="Job id" type="int" variable="$index"/>
+      <return type="object">
+        <type full="Composer\Util\Http\Response" namespace="Composer\Util\Http" name="Response"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\Http\Response" namespace="Composer\Util\Http" name="Response"/>
+    </return>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="outputWarnings" start="429" end="475" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <param type="string" variable="$url"/>
+      <param description="string info?: string, warning-versions?: string, info-versions?: string, warnings?: array&lt;array{versions: string, message: string}&gt;, infos?: array&lt;array{versions: string, message: string}&gt;} $data" type="object">
+        <type full="Composer\Util\array{warning?:" namespace="Composer\Util" name="array{warning?:"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="legacy warning/info keys" line="439"/>
+      <comment value="modern Composer 2.2+ format with support for multiple warning/info messages" line="457"/>
+    </inline>
+  </method>
+  <method name="getExceptionHints" start="482" end="510" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <return type="array" of="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="true"/>
+    <parameter name="e" byreference="false" type="object">
+      <type full="Throwable" namespace="" name="Throwable"/>
+    </parameter>
+  </method>
+  <method name="canUseCurl" start="516" end="531" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$job">
+        <type full="Composer\Util\Job" namespace="Composer\Util" name="Job"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="job" byreference="false" type="array"/>
+  </method>
+  <method name="isCurlEnabled" start="537" end="540" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+</class>

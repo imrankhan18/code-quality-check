@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Pcre\Preg" namespace="Composer\Pcre" name="Preg" abstract="false" final="false" start="14" end="275">
+  <file path="//var/www/html/vendor/composer/pcre/src" file="Preg.php" realpath="/var/www/html/vendor/composer/pcre/src/Preg.php" size="10796" time="2022-02-25T20:21:48+00:00" unixtime="1645820508" sha1="8d39a741c60cd9a3fc027471187999c41056a0c9" relative="ar/www/html/vendor/composer/pcre/src/Preg.php"/>
+  <constant type="string" name="ARRAY_MSG" value="'$subject as an array is not supported. You can use \'foreach\' instead.'">
+    <docblock>
+      <internal/>
+    </docblock>
+  </constant>
+  <constant type="string" name="INVALID_TYPE_MSG" value="'$subject must be a string, %s given.'">
+    <docblock>
+      <internal/>
+    </docblock>
+  </constant>
+  <method name="match" start="27" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$pattern">
+        <type full="Composer\Pcre\non-empty-string" namespace="Composer\Pcre" name="non-empty-string"/>
+      </param>
+      <param description="Set by method" type="object" variable="$matches">
+        <type full="Composer\Pcre\array&lt;string|null&gt;" namespace="Composer\Pcre" name="array&lt;string|null&gt;"/>
+      </param>
+      <param description="PREG_UNMATCHED_AS_NULL is always set, no other flags are supported" type="int" variable="$flags"/>
+      <return type="object">
+        <type full="Composer\Pcre\0|1" namespace="Composer\Pcre" name="0|1"/>
+      </return>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array" default="NULL"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="matchWithOffsets" start="51" end="59" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Runs preg_match with PREG_OFFSET_CAPTURE"/>
+      <param type="object" variable="$pattern">
+        <type full="Composer\Pcre\non-empty-string" namespace="Composer\Pcre" name="non-empty-string"/>
+      </param>
+      <param description="array{string|null int}&gt; $matches Set by method" type="object">
+        <type full="Composer\Pcre\array&lt;int|string" namespace="Composer\Pcre" name="array&lt;int|string"/>
+      </param>
+      <param description="PREG_UNMATCHED_AS_NULL and PREG_MATCH_OFFSET are always set, no other flags are supported" type="int" variable="$flags"/>
+      <return type="object">
+        <type full="Composer\Pcre\0|1" namespace="Composer\Pcre" name="0|1"/>
+      </return>
+      <phpstan value="-param array&lt;int|string, array{string|null, int&lt;-1, max&gt;}&gt; $matches"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="matchAll" start="67" end="83" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$pattern">
+        <type full="Composer\Pcre\non-empty-string" namespace="Composer\Pcre" name="non-empty-string"/>
+      </param>
+      <param description="list&lt;string|null&gt;&gt; $matches Set by method" type="object">
+        <type full="Composer\Pcre\array&lt;int|string" namespace="Composer\Pcre" name="array&lt;int|string"/>
+      </param>
+      <param description="PREG_UNMATCHED_AS_NULL is always set, no other flags are supported" type="int" variable="$flags"/>
+      <return type="object">
+        <type full="Composer\Pcre\0|positive-int" namespace="Composer\Pcre" name="0|positive-int"/>
+      </return>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array" default="NULL"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="matchAllWithOffsets" start="95" end="103" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Runs preg_match_all with PREG_OFFSET_CAPTURE"/>
+      <param type="object" variable="$pattern">
+        <type full="Composer\Pcre\non-empty-string" namespace="Composer\Pcre" name="non-empty-string"/>
+      </param>
+      <param description="list&lt;array{string|null int}&gt;&gt; $matches Set by method" type="object">
+        <type full="Composer\Pcre\array&lt;int|string" namespace="Composer\Pcre" name="array&lt;int|string"/>
+      </param>
+      <param description="PREG_UNMATCHED_AS_NULL and PREG_MATCH_OFFSET are always set, no other flags are supported" type="int" variable="$flags"/>
+      <return type="object">
+        <type full="Composer\Pcre\0|positive-int" namespace="Composer\Pcre" name="0|positive-int"/>
+      </return>
+      <phpstan value="-param array&lt;int|string, list&lt;array{string|null, int&lt;-1, max&gt;}&gt;&gt; $matches"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="replace" start="111" end="127" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$pattern" of="object">
+        <type full="Composer\Pcre\string|string" namespace="Composer\Pcre" name="string|string"/>
+      </param>
+      <param type="array" variable="$replacement" of="object">
+        <type full="Composer\Pcre\string|string" namespace="Composer\Pcre" name="string|string"/>
+      </param>
+      <param type="string" variable="$subject"/>
+      <param description="Set by method" type="int" variable="$count"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+    <parameter name="replacement" byreference="false" type="{unknown}"/>
+    <parameter name="subject" byreference="false" type="{unknown}"/>
+    <parameter name="limit" byreference="false" type="integer" default="1"/>
+    <parameter name="count" byreference="true" type="int" default="NULL"/>
+  </method>
+  <method name="replaceCallback" start="135" end="151" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$pattern" of="object">
+        <type full="Composer\Pcre\string|string" namespace="Composer\Pcre" name="string|string"/>
+      </param>
+      <param type="string" variable="$subject"/>
+      <param description="Set by method" type="int" variable="$count"/>
+      <param description="PREG_OFFSET_CAPTURE is supported, PREG_UNMATCHED_AS_NULL is always set" type="int" variable="$flags"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+    <parameter name="replacement" byreference="false" type="callable"/>
+    <parameter name="subject" byreference="false" type="{unknown}"/>
+    <parameter name="limit" byreference="false" type="integer" default="1"/>
+    <parameter name="count" byreference="true" type="int" default="NULL"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="replaceCallbackArray" start="159" end="176" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="callable&gt; $pattern" type="object">
+        <type full="Composer\Pcre\array&lt;string" namespace="Composer\Pcre" name="array&lt;string"/>
+      </param>
+      <param type="string" variable="$subject"/>
+      <param description="Set by method" type="int" variable="$count"/>
+      <param description="PREG_OFFSET_CAPTURE is supported, PREG_UNMATCHED_AS_NULL is always set" type="int" variable="$flags"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="array"/>
+    <parameter name="subject" byreference="false" type="{unknown}"/>
+    <parameter name="limit" byreference="false" type="integer" default="1"/>
+    <parameter name="count" byreference="true" type="int" default="NULL"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="split" start="182" end="194" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="PREG_SPLIT_NO_EMPTY or PREG_SPLIT_DELIM_CAPTURE" type="int" variable="$flags"/>
+      <return type="object">
+        <type full="Composer\Pcre\list&lt;string&gt;" namespace="Composer\Pcre" name="list&lt;string&gt;"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="limit" byreference="false" type="integer" default="1"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="splitWithOffsets" start="201" end="209" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="PREG_SPLIT_NO_EMPTY or PREG_SPLIT_DELIM_CAPTURE, PREG_SPLIT_OFFSET_CAPTURE is always set" type="int" variable="$flags"/>
+      <return description="int}&gt;" type="object">
+        <type full="Composer\Pcre\list&lt;array{string" namespace="Composer\Pcre" name="list&lt;array{string"/>
+      </return>
+      <phpstan value="-return list&lt;array{string, int&lt;0, max&gt;}&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="limit" byreference="false" type="integer" default="1"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="grep" start="218" end="226" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <template value="T of string|\Stringable"/>
+      <param type="string" variable="$pattern"/>
+      <param type="object" variable="$array">
+        <type full="Composer\Pcre\array&lt;T&gt;" namespace="Composer\Pcre" name="array&lt;T&gt;"/>
+      </param>
+      <param description="PREG_GREP_INVERT" type="int" variable="$flags"/>
+      <return type="object">
+        <type full="Composer\Pcre\array&lt;T&gt;" namespace="Composer\Pcre" name="array&lt;T&gt;"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="array" byreference="false" type="array"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="isMatch" start="233" end="236" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$pattern">
+        <type full="Composer\Pcre\non-empty-string" namespace="Composer\Pcre" name="non-empty-string"/>
+      </param>
+      <param description="Set by method" type="object" variable="$matches">
+        <type full="Composer\Pcre\array&lt;string|null&gt;" namespace="Composer\Pcre" name="array&lt;string|null&gt;"/>
+      </param>
+      <param description="PREG_UNMATCHED_AS_NULL is always set, no other flags are supported" type="int" variable="$flags"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array" default="NULL"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="isMatchAll" start="243" end="246" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$pattern">
+        <type full="Composer\Pcre\non-empty-string" namespace="Composer\Pcre" name="non-empty-string"/>
+      </param>
+      <param description="list&lt;string|null&gt;&gt; $matches Set by method" type="object">
+        <type full="Composer\Pcre\array&lt;int|string" namespace="Composer\Pcre" name="array&lt;int|string"/>
+      </param>
+      <param description="PREG_UNMATCHED_AS_NULL is always set, no other flags are supported" type="int" variable="$flags"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array" default="NULL"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="isMatchWithOffsets" start="257" end="260" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Runs preg_match with PREG_OFFSET_CAPTURE"/>
+      <param type="object" variable="$pattern">
+        <type full="Composer\Pcre\non-empty-string" namespace="Composer\Pcre" name="non-empty-string"/>
+      </param>
+      <param description="array{string|null int}&gt; $matches Set by method" type="object">
+        <type full="Composer\Pcre\array&lt;int|string" namespace="Composer\Pcre" name="array&lt;int|string"/>
+      </param>
+      <param description="PREG_UNMATCHED_AS_NULL is always set, no other flags are supported" type="int" variable="$flags"/>
+      <phpstan value="-param array&lt;int|string, array{string|null, int&lt;-1, max&gt;}&gt; $matches"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="isMatchAllWithOffsets" start="271" end="274" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Runs preg_match_all with PREG_OFFSET_CAPTURE"/>
+      <param type="object" variable="$pattern">
+        <type full="Composer\Pcre\non-empty-string" namespace="Composer\Pcre" name="non-empty-string"/>
+      </param>
+      <param description="list&lt;array{string|null int}&gt;&gt; $matches Set by method" type="object">
+        <type full="Composer\Pcre\array&lt;int|string" namespace="Composer\Pcre" name="array&lt;int|string"/>
+      </param>
+      <param description="PREG_UNMATCHED_AS_NULL is always set, no other flags are supported" type="int" variable="$flags"/>
+      <phpstan value="-param array&lt;int|string, list&lt;array{string|null, int&lt;-1, max&gt;}&gt;&gt; $matches"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="pattern" byreference="false" type="string"/>
+    <parameter name="subject" byreference="false" type="string"/>
+    <parameter name="matches" byreference="true" nullable="true" type="array"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+    <parameter name="offset" byreference="false" type="integer" default="0"/>
+  </method>
+</class>

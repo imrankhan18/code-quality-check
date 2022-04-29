@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_Downloader::_downloadHttp</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#"/>
+          </li>
+          <li class="separator">
+            <a title="PEAR_Downloader" href="../../classes/PEAR_Downloader.xhtml">PEAR_Downloader</a>
+          </li>
+          <li class="separator">_downloadHttp</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="../../source/sr/local/lib/php/PEAR/Downloader.php.xhtml#line1558">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>PEAR_Downloader::</small>_downloadHttp</h1>
+        <h4>Download a file through HTTP.  Considers suggested file name in Content-disposition: header and can run a callback function for different events.  The callback will be called with two parameters: the callback type, and parameters.  The implemented callback types are:</h4>
+        <p>'setup'       called at the very beginning, parameter is a UI object
+               that should be used for all output
+ 'message'     the parameter is a string with an informational message
+ 'saveas'      may be used to save with a different file name, the
+               parameter is the filename that is about to be used.
+               If a 'saveas' callback returns a non-empty string,
+               that file name will be used as the filename instead.
+               Note that $save_dir will not be affected by this, only
+               the basename of the file.
+ 'start'       download is starting, parameter is number of bytes
+               that are expected, or -1 if unknown
+ 'bytesread'   parameter is the number of bytes read so far
+ 'done'        download is complete, parameter is the total number
+               of bytes read
+ 'connfailed'  if the TCP/SSL connection fails, this callback is called
+               with array(host,port,errno,errmsg)
+ 'writefailed' if writing to disk fails, this callback is called
+               with array(destfile,errmsg)
+
+If an HTTP proxy has been configured (http_proxy PEAR_Config
+setting), the proxy will be used.</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function _downloadHttp(
+        $object,
+            string
+        $url,
+            <a title="" href="../../classes/.xhtml"/>&amp;
+        $ui,
+            [string
+        $save_dir = '.',
+            [mixed
+        $callback = NULL,
+            [<a title="false|string|array" href="../../classes/false|string|array.xhtml">false|string|array</a>
+        $lastmodified = NULL,
+            [boolean
+        $accept = false,
+            [boolean
+        $channel = false]]]]] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$object</code>
+                —
+                </dt>
+          <dd/>
+          <dt><code>$url</code>
+                —
+                string</dt>
+          <dd>the URL to download</dd>
+          <dt><code>$ui</code>
+                —
+                object</dt>
+          <dd>PEAR_Frontend_* instance</dd>
+          <dt><code>$save_dir</code>
+                —
+                string</dt>
+          <dd>directory to save file in</dd>
+          <dt><code>$callback</code>
+                —
+                mixed</dt>
+          <dd>function/method to call for status<br/>updates</dd>
+          <dt><code>$lastmodified</code>
+                —
+                object</dt>
+          <dd>header values to check against for caching<br/>use false to return the header values from this download</dd>
+          <dt><code>$accept</code>
+                —
+                boolean</dt>
+          <dd>Accept headers to send<br/><br/><br/>      </dd>
+          <dt><code>$channel</code>
+                —
+                boolean</dt>
+          <dd>Channel to use for retrieving authentication<br/><br/><br/>      </dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>mixed</dt>
+          <dd>Returns the full path of the downloaded file or a PEAR<br/>error on failure.  If the error is caused by
+               socket-related errors, the error object will
+               have the fsockopen error code available through
+               getCode().  If caching is requested, then return the header
+               values.
+               If $lastmodified was given and the there are no changes,
+               boolean false is returned.</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

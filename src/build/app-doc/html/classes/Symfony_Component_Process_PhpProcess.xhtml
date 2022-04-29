@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\Process\PhpProcess</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Symfony_Component_Process">Symfony\Component\Process</a>
+          </li>
+          <li class="separator">PhpProcess</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/symfony/process/PhpProcess.php.xhtml#line26">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Symfony\Component\Process\</small>PhpProcess</h1>
+        <h4>PhpProcess runs a PHP script in an independent process.</h4>
+        <p>$p = new PhpProcess('&lt;?php echo "foo"; ?&gt;');<br/>$p-&gt;run();<br/>    print $p-&gt;getOutput()."\n";</p>
+        <ul>
+          <li>Author: Fabien Potencier &lt;fabien@symfony.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PhpProcess
+                extends <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process.xhtml">Process</a>
+            {<br/><ul class="none"><li>// Inherited constants from <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process.xhtml">Process</a></li><li>const <a href="#ERR">ERR</a> = 'err';</li><li>const <a href="#OUT">OUT</a> = 'out';</li><li>const <a href="#STATUS_READY">STATUS_READY</a> = 'ready';</li><li>const <a href="#STATUS_STARTED">STATUS_STARTED</a> = 'started';</li><li>const <a href="#STATUS_TERMINATED">STATUS_TERMINATED</a> = 'terminated';</li><li>const <a href="#STDIN">STDIN</a> = 0;</li><li>const <a href="#STDOUT">STDOUT</a> = 1;</li><li>const <a href="#STDERR">STDERR</a> = 2;</li><li>const <a href="#TIMEOUT_PRECISION">TIMEOUT_PRECISION</a> = 0.2;</li><li>const <a href="#ITER_NON_BLOCKING">ITER_NON_BLOCKING</a> = 1;</li><li>const <a href="#ITER_KEEP_OUTPUT">ITER_KEEP_OUTPUT</a> = 2;</li><li>const <a href="#ITER_SKIP_OUT">ITER_SKIP_OUT</a> = 4;</li><li>const <a href="#ITER_SKIP_ERR">ITER_SKIP_ERR</a> = 8;</li></ul><ul class="none"><li>// Inherited members from <span title="Symfony\Component\Process\Process">Process</span></li><li>public static array <a href="#members">$exitCodes</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Symfony\Component\Process\PhpProcess" href="../classes/Symfony_Component_Process_PhpProcess/__construct.xhtml">__construct</a>()
+                    </li><li>public static void <a title="Symfony\Component\Process\PhpProcess" href="../classes/Symfony_Component_Process_PhpProcess/fromShellCommandline.xhtml">fromShellCommandline</a>()
+                    </li><li>public void <a title="Symfony\Component\Process\PhpProcess" href="../classes/Symfony_Component_Process_PhpProcess/start.xhtml">start</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Symfony\Component\Process\Process">Process</span></li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/__construct.xhtml">__construct</a>()
+                        </li><li>public static PhpProcess <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/fromShellCommandline.xhtml">fromShellCommandline</a>()
+                        </li><li>public array <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/__sleep.xhtml">__sleep</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/__wakeup.xhtml">__wakeup</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/__destruct.xhtml">__destruct</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/__clone.xhtml">__clone</a>()
+                        </li><li>public int <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/run.xhtml">run</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/mustRun.xhtml">mustRun</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/start.xhtml">start</a>()
+                        </li><li>public PhpProcess <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/restart.xhtml">restart</a>()
+                        </li><li>public int <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/wait.xhtml">wait</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/waitUntil.xhtml">waitUntil</a>()
+                        </li><li>public int|null <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getPid.xhtml">getPid</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/signal.xhtml">signal</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/disableOutput.xhtml">disableOutput</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/enableOutput.xhtml">enableOutput</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isOutputDisabled.xhtml">isOutputDisabled</a>()
+                        </li><li>public string <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getOutput.xhtml">getOutput</a>()
+                        </li><li>public string <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getIncrementalOutput.xhtml">getIncrementalOutput</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getIterator.xhtml">getIterator</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/clearOutput.xhtml">clearOutput</a>()
+                        </li><li>public string <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getErrorOutput.xhtml">getErrorOutput</a>()
+                        </li><li>public string <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getIncrementalErrorOutput.xhtml">getIncrementalErrorOutput</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/clearErrorOutput.xhtml">clearErrorOutput</a>()
+                        </li><li>public int|null <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getExitCode.xhtml">getExitCode</a>()
+                        </li><li>public string|null <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getExitCodeText.xhtml">getExitCodeText</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isSuccessful.xhtml">isSuccessful</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/hasBeenSignaled.xhtml">hasBeenSignaled</a>()
+                        </li><li>public int <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getTermSignal.xhtml">getTermSignal</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/hasBeenStopped.xhtml">hasBeenStopped</a>()
+                        </li><li>public int <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getStopSignal.xhtml">getStopSignal</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isRunning.xhtml">isRunning</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isStarted.xhtml">isStarted</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isTerminated.xhtml">isTerminated</a>()
+                        </li><li>public string <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getStatus.xhtml">getStatus</a>()
+                        </li><li>public int|null <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/stop.xhtml">stop</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/addOutput.xhtml">addOutput</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/addErrorOutput.xhtml">addErrorOutput</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getLastOutputTime.xhtml">getLastOutputTime</a>()
+                        </li><li>public string <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getCommandLine.xhtml">getCommandLine</a>()
+                        </li><li>public float|null <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getTimeout.xhtml">getTimeout</a>()
+                        </li><li>public float|null <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getIdleTimeout.xhtml">getIdleTimeout</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setTimeout.xhtml">setTimeout</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setIdleTimeout.xhtml">setIdleTimeout</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setTty.xhtml">setTty</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isTty.xhtml">isTty</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setPty.xhtml">setPty</a>()
+                        </li><li>public bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isPty.xhtml">isPty</a>()
+                        </li><li>public string|null <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getWorkingDirectory.xhtml">getWorkingDirectory</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setWorkingDirectory.xhtml">setWorkingDirectory</a>()
+                        </li><li>public array <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getEnv.xhtml">getEnv</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setEnv.xhtml">setEnv</a>()
+                        </li><li>public Iterator|null <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getInput.xhtml">getInput</a>()
+                        </li><li>public $this <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setInput.xhtml">setInput</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/checkTimeout.xhtml">checkTimeout</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getStartTime.xhtml">getStartTime</a>()
+                        </li><li>public void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setOptions.xhtml">setOptions</a>()
+                        </li><li>public static void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isTtySupported.xhtml">isTtySupported</a>()
+                        </li><li>public static bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isPtySupported.xhtml">isPtySupported</a>()
+                        </li><li>protected Closure <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/buildCallback.xhtml">buildCallback</a>()
+                        </li><li>protected void <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/updateStatus.xhtml">updateStatus</a>()
+                        </li><li>protected bool <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isSigchildEnabled.xhtml">isSigchildEnabled</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process.xhtml">Symfony\Component\Process\Process</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="ERR">ERR</td>
+              <td>'err'</td>
+            </tr>
+            <tr>
+              <td id="OUT">OUT</td>
+              <td>'out'</td>
+            </tr>
+            <tr>
+              <td id="STATUS_READY">STATUS_READY</td>
+              <td>'ready'</td>
+            </tr>
+            <tr>
+              <td id="STATUS_STARTED">STATUS_STARTED</td>
+              <td>'started'</td>
+            </tr>
+            <tr>
+              <td id="STATUS_TERMINATED">STATUS_TERMINATED</td>
+              <td>'terminated'</td>
+            </tr>
+            <tr>
+              <td id="STDIN">STDIN</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="STDOUT">STDOUT</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="STDERR">STDERR</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="TIMEOUT_PRECISION">TIMEOUT_PRECISION</td>
+              <td>0.2</td>
+            </tr>
+            <tr>
+              <td id="ITER_NON_BLOCKING">ITER_NON_BLOCKING</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="ITER_KEEP_OUTPUT">ITER_KEEP_OUTPUT</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="ITER_SKIP_OUT">ITER_SKIP_OUT</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td id="ITER_SKIP_ERR">ITER_SKIP_ERR</td>
+              <td>8</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="exitCodes">
+              <strong>$exitCodes</strong>
+              <br/>
+              <span class="indent">Exit codes translation table.</span>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Symfony\Component\Process\PhpProcess" href="../classes/Symfony_Component_Process_PhpProcess/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="fromShellCommandline"><a title="Symfony\Component\Process\PhpProcess" href="../classes/Symfony_Component_Process_PhpProcess/fromShellCommandline.xhtml">fromShellCommandline()</a>
+                — {@inheritdoc}</li>
+            <li id="start"><a title="Symfony\Component\Process\PhpProcess" href="../classes/Symfony_Component_Process_PhpProcess/start.xhtml">start()</a>
+                — {@inheritdoc}</li>
+          </ul>
+          <h3>Inherited from <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process.xhtml">Symfony\Component\Process\Process</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="buildCallback"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/buildCallback.xhtml">buildCallback()</a>
+                — Builds up the callback used by wait().</li>
+            <li id="isSigchildEnabled"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isSigchildEnabled.xhtml">isSigchildEnabled()</a>
+                — Returns whether PHP has been compiled with the '--enable-sigchild' option or not.</li>
+            <li id="updateStatus"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/updateStatus.xhtml">updateStatus()</a>
+                — Updates the status of the process, reads pipes.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__clone">
+              <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/__clone.xhtml">__clone()</a>
+            </li>
+            <li id="__sleep">
+              <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/__sleep.xhtml">__sleep()</a>
+            </li>
+            <li id="__wakeup">
+              <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/__wakeup.xhtml">__wakeup()</a>
+            </li>
+            <li id="addErrorOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/addErrorOutput.xhtml">addErrorOutput()</a>
+                — Adds a line to the STDERR stream.</li>
+            <li id="addOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/addOutput.xhtml">addOutput()</a>
+                — Adds a line to the STDOUT stream.</li>
+            <li id="checkTimeout"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/checkTimeout.xhtml">checkTimeout()</a>
+                — Performs a check between the timeout definition and the time the process started.</li>
+            <li id="clearErrorOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/clearErrorOutput.xhtml">clearErrorOutput()</a>
+                — Clears the process output.</li>
+            <li id="clearOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/clearOutput.xhtml">clearOutput()</a>
+                — Clears the process output.</li>
+            <li id="disableOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/disableOutput.xhtml">disableOutput()</a>
+                — Disables fetching output and error output from the underlying process.</li>
+            <li id="enableOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/enableOutput.xhtml">enableOutput()</a>
+                — Enables fetching output and error output from the underlying process.</li>
+            <li id="fromShellCommandline"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/fromShellCommandline.xhtml">fromShellCommandline()</a>
+                — Creates a Process instance as a command-line to be run in a shell wrapper.</li>
+            <li id="getCommandLine"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getCommandLine.xhtml">getCommandLine()</a>
+                — Gets the command line to be executed.</li>
+            <li id="getEnv"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getEnv.xhtml">getEnv()</a>
+                — Gets the environment variables.</li>
+            <li id="getErrorOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getErrorOutput.xhtml">getErrorOutput()</a>
+                — Returns the current error output of the process (STDERR).</li>
+            <li id="getExitCode"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getExitCode.xhtml">getExitCode()</a>
+                — Returns the exit code returned by the process.</li>
+            <li id="getExitCodeText"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getExitCodeText.xhtml">getExitCodeText()</a>
+                — Returns a string representation for the exit code returned by the process.</li>
+            <li id="getIdleTimeout"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getIdleTimeout.xhtml">getIdleTimeout()</a>
+                — Gets the process idle timeout in seconds (max. time since last output).</li>
+            <li id="getIncrementalErrorOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getIncrementalErrorOutput.xhtml">getIncrementalErrorOutput()</a>
+                — Returns the errorOutput incrementally.</li>
+            <li id="getIncrementalOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getIncrementalOutput.xhtml">getIncrementalOutput()</a>
+                — Returns the output incrementally.</li>
+            <li id="getInput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getInput.xhtml">getInput()</a>
+                — Gets the Process input.</li>
+            <li id="getIterator">
+              <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getIterator.xhtml">getIterator()</a>
+            </li>
+            <li id="getLastOutputTime"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getLastOutputTime.xhtml">getLastOutputTime()</a>
+                — Gets the last output time in seconds.</li>
+            <li id="getOutput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getOutput.xhtml">getOutput()</a>
+                — Returns the current output of the process (STDOUT).</li>
+            <li id="getPid"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getPid.xhtml">getPid()</a>
+                — Returns the Pid (process identifier), if applicable.</li>
+            <li id="getStartTime">
+              <a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getStartTime.xhtml">getStartTime()</a>
+            </li>
+            <li id="getStatus"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getStatus.xhtml">getStatus()</a>
+                — Gets the process status.</li>
+            <li id="getStopSignal"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getStopSignal.xhtml">getStopSignal()</a>
+                — Returns the number of the signal that caused the child process to stop its execution.</li>
+            <li id="getTermSignal"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getTermSignal.xhtml">getTermSignal()</a>
+                — Returns the number of the signal that caused the child process to terminate its execution.</li>
+            <li id="getTimeout"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getTimeout.xhtml">getTimeout()</a>
+                — Gets the process timeout in seconds (max. runtime).</li>
+            <li id="getWorkingDirectory"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/getWorkingDirectory.xhtml">getWorkingDirectory()</a>
+                — Gets the working directory.</li>
+            <li id="hasBeenSignaled"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/hasBeenSignaled.xhtml">hasBeenSignaled()</a>
+                — Returns true if the child process has been terminated by an uncaught signal.</li>
+            <li id="hasBeenStopped"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/hasBeenStopped.xhtml">hasBeenStopped()</a>
+                — Returns true if the child process has been stopped by a signal.</li>
+            <li id="isOutputDisabled"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isOutputDisabled.xhtml">isOutputDisabled()</a>
+                — Returns true in case the output is disabled, false otherwise.</li>
+            <li id="isPty"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isPty.xhtml">isPty()</a>
+                — Returns PTY state.</li>
+            <li id="isPtySupported"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isPtySupported.xhtml">isPtySupported()</a>
+                — Returns whether PTY is supported on the current operating system.</li>
+            <li id="isRunning"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isRunning.xhtml">isRunning()</a>
+                — Checks if the process is currently running.</li>
+            <li id="isStarted"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isStarted.xhtml">isStarted()</a>
+                — Checks if the process has been started with no regard to the current state.</li>
+            <li id="isSuccessful"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isSuccessful.xhtml">isSuccessful()</a>
+                — Checks if the process ended successfully.</li>
+            <li id="isTerminated"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isTerminated.xhtml">isTerminated()</a>
+                — Checks if the process is terminated.</li>
+            <li id="isTty"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isTty.xhtml">isTty()</a>
+                — Checks if the TTY mode is enabled.</li>
+            <li id="isTtySupported"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/isTtySupported.xhtml">isTtySupported()</a>
+                — Returns whether TTY is supported on the current operating system.</li>
+            <li id="mustRun"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/mustRun.xhtml">mustRun()</a>
+                — Runs the process.</li>
+            <li id="restart"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/restart.xhtml">restart()</a>
+                — Restarts the process.</li>
+            <li id="run"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/run.xhtml">run()</a>
+                — Runs the process.</li>
+            <li id="setEnv"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setEnv.xhtml">setEnv()</a>
+                — Sets the environment variables.</li>
+            <li id="setIdleTimeout"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setIdleTimeout.xhtml">setIdleTimeout()</a>
+                — Sets the process idle timeout (max. time since last output) in seconds.</li>
+            <li id="setInput"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setInput.xhtml">setInput()</a>
+                — Sets the input.</li>
+            <li id="setOptions"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setOptions.xhtml">setOptions()</a>
+                — Defines options to pass to the underlying proc_open().</li>
+            <li id="setPty"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setPty.xhtml">setPty()</a>
+                — Sets PTY mode.</li>
+            <li id="setTimeout"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setTimeout.xhtml">setTimeout()</a>
+                — Sets the process timeout (max. runtime) in seconds.</li>
+            <li id="setTty"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setTty.xhtml">setTty()</a>
+                — Enables or disables the TTY mode.</li>
+            <li id="setWorkingDirectory"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/setWorkingDirectory.xhtml">setWorkingDirectory()</a>
+                — Sets the current working directory.</li>
+            <li id="signal"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/signal.xhtml">signal()</a>
+                — Sends a POSIX signal to the process.</li>
+            <li id="start"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/start.xhtml">start()</a>
+                — Starts the process and returns after writing the input to STDIN.</li>
+            <li id="stop"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/stop.xhtml">stop()</a>
+                — Stops the process.</li>
+            <li id="wait"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/wait.xhtml">wait()</a>
+                — Waits for the process to terminate.</li>
+            <li id="waitUntil"><a title="Symfony\Component\Process\Process" href="../classes/Symfony_Component_Process_Process/waitUntil.xhtml">waitUntil()</a>
+                — Waits until the callback returns true.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

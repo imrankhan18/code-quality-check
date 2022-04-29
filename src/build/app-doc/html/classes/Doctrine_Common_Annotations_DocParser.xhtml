@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Doctrine\Common\Annotations\DocParser</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Doctrine_Common_Annotations">Doctrine\Common\Annotations</a>
+          </li>
+          <li class="separator">DocParser</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php.xhtml#line52">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Doctrine\Common\Annotations\</small>DocParser</h1>
+        <h4>A parser for docblock annotations.</h4>
+        <p>It is strongly discouraged to change the default annotation parsing process.</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class DocParser
+            {<br/><ul class="none"><li>// members</li><li>private static array <a href="#members">$classIdentifiers</a> =
+                        ;
+                    </li><li>private <span title="Doctrine\Common\Annotations\DocLexer">DocLexer</span> <a href="#members">$lexer</a>;
+                    </li><li>private  <a href="#members">$target</a>;
+                    </li><li>private static <span title="Doctrine\Common\Annotations\DocParser">DocParser</span> <a href="#members">$metadataParser</a>;
+                    </li><li>private <span title="Doctrine\Common\Annotations\bool">bool</span> <a href="#members">$isNestedAnnotation</a> =
+                        false;
+                    </li><li>private <span title="Doctrine\Common\Annotations\array&lt;string">array&lt;string</span> <a href="#members">$imports</a> =
+                        ;
+                    </li><li>private <span title="Doctrine\Common\Annotations\array&lt;class-string">array&lt;class-string</span> <a href="#members">$classExists</a> =
+                        ;
+                    </li><li>private <span title="Doctrine\Common\Annotations\bool">bool</span> <a href="#members">$ignoreNotImportedAnnotations</a> =
+                        false;
+                    </li><li>private array <a href="#members">$namespaces</a> =
+                        ;
+                    </li><li>private array <a href="#members">$ignoredAnnotationNames</a> =
+                        ;
+                    </li><li>private array <a href="#members">$ignoredAnnotationNamespaces</a> =
+                        ;
+                    </li><li>private string <a href="#members">$context</a> =
+                        '';
+                    </li><li>private static <span title="Doctrine\Common\Annotations\array&lt;class-string">array&lt;class-string</span> <a href="#members">$annotationMetadata</a> =
+                        ;
+                    </li><li>private static <span title="Doctrine\Common\Annotations\array&lt;string">array&lt;string</span> <a href="#members">$typeMap</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setIgnoredAnnotationNames.xhtml">setIgnoredAnnotationNames</a>()
+                    </li><li>public void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setIgnoredAnnotationNamespaces.xhtml">setIgnoredAnnotationNamespaces</a>()
+                    </li><li>public void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setIgnoreNotImportedAnnotations.xhtml">setIgnoreNotImportedAnnotations</a>()
+                    </li><li>public void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/addNamespace.xhtml">addNamespace</a>()
+                    </li><li>public void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setImports.xhtml">setImports</a>()
+                    </li><li>public void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setTarget.xhtml">setTarget</a>()
+                    </li><li>public void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/parse.xhtml">parse</a>()
+                    </li><li>private ?int <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/findInitialTokenPosition.xhtml">findInitialTokenPosition</a>()
+                    </li><li>private bool <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/match.xhtml">match</a>()
+                    </li><li>private bool <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/matchAny.xhtml">matchAny</a>()
+                    </li><li>private <span title="AnnotationException">AnnotationException</span> <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/syntaxError.xhtml">syntaxError</a>()
+                    </li><li>private bool <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/classExists.xhtml">classExists</a>()
+                    </li><li>private void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/collectAnnotationMetadata.xhtml">collectAnnotationMetadata</a>()
+                    </li><li>private void <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/collectAttributeTypeMetadata.xhtml">collectAttributeTypeMetadata</a>()
+                    </li><li>private array <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Annotations.xhtml">Annotations</a>()
+                    </li><li>private object|false <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Annotation.xhtml">Annotation</a>()
+                    </li><li>private array <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/MethodCall.xhtml">MethodCall</a>()
+                    </li><li>private array <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Values.xhtml">Values</a>()
+                    </li><li>private mixed <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Constant.xhtml">Constant</a>()
+                    </li><li>private bool <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/identifierStartsWithBackslash.xhtml">identifierStartsWithBackslash</a>()
+                    </li><li>private bool <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/identifierEndsWithClassConstant.xhtml">identifierEndsWithClassConstant</a>()
+                    </li><li>private int|false <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/getClassConstantPositionInIdentifier.xhtml">getClassConstantPositionInIdentifier</a>()
+                    </li><li>private string <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Identifier.xhtml">Identifier</a>()
+                    </li><li>private mixed <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Value.xhtml">Value</a>()
+                    </li><li>private mixed <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/PlainValue.xhtml">PlainValue</a>()
+                    </li><li>private <span title="stdClass">stdClass</span> <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/FieldAssignment.xhtml">FieldAssignment</a>()
+                    </li><li>private array <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Arrayx.xhtml">Arrayx</a>()
+                    </li><li>private array <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/ArrayEntry.xhtml">ArrayEntry</a>()
+                    </li><li>private bool <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/isIgnoredAnnotation.xhtml">isIgnoredAnnotation</a>()
+                    </li><li>private array <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/resolvePositionalValues.xhtml">resolvePositionalValues</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="annotationMetadata"><strong>$annotationMetadata</strong>
+                —
+                <a title="Doctrine\Common\Annotations\array&lt;class-string" href="../classes/Doctrine_Common_Annotations_array&lt;class-string.xhtml">Doctrine\Common\Annotations\array&lt;class-string</a><br/><span class="indent">Hash-map for caching annotation metadata.</span></li>
+            <li id="classExists"><strong>$classExists</strong>
+                —
+                <a title="Doctrine\Common\Annotations\array&lt;class-string" href="../classes/Doctrine_Common_Annotations_array&lt;class-string.xhtml">Doctrine\Common\Annotations\array&lt;class-string</a><br/><span class="indent">This hashmap is used internally to cache results of class_exists() look-ups.</span></li>
+            <li id="classIdentifiers">
+              <strong>$classIdentifiers</strong>
+              <br/>
+              <span class="indent">An array of all valid tokens for a class name.</span>
+            </li>
+            <li id="context"><strong>$context</strong>
+                —
+                string</li>
+            <li id="ignoreNotImportedAnnotations"><strong>$ignoreNotImportedAnnotations</strong>
+                —
+                <a title="Doctrine\Common\Annotations\bool" href="../classes/Doctrine_Common_Annotations_bool.xhtml">Doctrine\Common\Annotations\bool</a><br/><span class="indent">Whether annotations that have not been imported should be ignored.</span></li>
+            <li id="ignoredAnnotationNames"><strong>$ignoredAnnotationNames</strong>
+                —
+                array<br/><span class="indent">A list with annotations that are not causing exceptions when not resolved to an annotation class.</span></li>
+            <li id="ignoredAnnotationNamespaces"><strong>$ignoredAnnotationNamespaces</strong>
+                —
+                array<br/><span class="indent">A list with annotations in namespaced format that are not causing exceptions when not resolved to an annotation class.</span></li>
+            <li id="imports"><strong>$imports</strong>
+                —
+                <a title="Doctrine\Common\Annotations\array&lt;string" href="../classes/Doctrine_Common_Annotations_array&lt;string.xhtml">Doctrine\Common\Annotations\array&lt;string</a><br/><span class="indent">Hashmap containing all use-statements that are to be used when parsing the given doc block.</span></li>
+            <li id="isNestedAnnotation"><strong>$isNestedAnnotation</strong>
+                —
+                <a title="Doctrine\Common\Annotations\bool" href="../classes/Doctrine_Common_Annotations_bool.xhtml">Doctrine\Common\Annotations\bool</a><br/><span class="indent">Flag to control if the current annotation is nested or not.</span></li>
+            <li id="lexer"><strong>$lexer</strong>
+                —
+                <a title="Doctrine\Common\Annotations\DocLexer" href="../classes/Doctrine_Common_Annotations_DocLexer.xhtml">Doctrine\Common\Annotations\DocLexer</a><br/><span class="indent">The lexer.</span></li>
+            <li id="metadataParser"><strong>$metadataParser</strong>
+                —
+                <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser.xhtml">Doctrine\Common\Annotations\DocParser</a><br/><span class="indent">Doc parser used to collect annotation target.</span></li>
+            <li id="namespaces"><strong>$namespaces</strong>
+                —
+                array<br/><span class="indent">An array of default namespaces if operating in simple mode.</span></li>
+            <li id="target"><strong>$target</strong>
+                —
+                int<br/><span class="indent">Current target context.</span></li>
+            <li id="typeMap"><strong>$typeMap</strong>
+                —
+                <a title="Doctrine\Common\Annotations\array&lt;string" href="../classes/Doctrine_Common_Annotations_array&lt;string.xhtml">Doctrine\Common\Annotations\array&lt;string</a><br/><span class="indent">Hash-map for handle types declaration.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="Annotation"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Annotation.xhtml">Annotation()</a>
+                — Annotation     ::= "@" AnnotationName MethodCall AnnotationName ::= QualifiedName | SimpleName QualifiedName  ::= NameSpacePart "\" {NameSpacePart "\"}* SimpleName NameSpacePart  ::= identifier | null | false | true SimpleName     ::= identifier | null | false | true</li>
+            <li id="Annotations"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Annotations.xhtml">Annotations()</a>
+                — Annotations ::= Annotation {[ "*" ]* [Annotation]}</li>
+            <li id="ArrayEntry"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/ArrayEntry.xhtml">ArrayEntry()</a>
+                — ArrayEntry ::= Value | KeyValuePair KeyValuePair ::= Key ("=" | ":") PlainValue | Constant Key ::= string | integer | Constant</li>
+            <li id="Arrayx"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Arrayx.xhtml">Arrayx()</a>
+                — Array ::= "{" ArrayEntry {"," ArrayEntry}* [","] "}"</li>
+            <li id="Constant"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Constant.xhtml">Constant()</a>
+                — Constant ::= integer | string | float | boolean</li>
+            <li id="FieldAssignment"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/FieldAssignment.xhtml">FieldAssignment()</a>
+                — FieldAssignment ::= FieldName "=" PlainValue FieldName ::= identifier</li>
+            <li id="Identifier"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Identifier.xhtml">Identifier()</a>
+                — Identifier ::= string</li>
+            <li id="MethodCall"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/MethodCall.xhtml">MethodCall()</a>
+                — MethodCall ::= ["(" [Values] ")"]</li>
+            <li id="PlainValue"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/PlainValue.xhtml">PlainValue()</a>
+                — PlainValue ::= integer | string | float | boolean | Array | Annotation</li>
+            <li id="Value"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Value.xhtml">Value()</a>
+                — Value ::= PlainValue | FieldAssignment</li>
+            <li id="Values"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/Values.xhtml">Values()</a>
+                — Values ::= Array | Value {"," Value}* [","]</li>
+            <li id="classExists"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/classExists.xhtml">classExists()</a>
+                — Attempts to check if a class exists or not. This never goes through the PHP autoloading mechanism but uses the {@link AnnotationRegistry} to load classes.</li>
+            <li id="collectAnnotationMetadata"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/collectAnnotationMetadata.xhtml">collectAnnotationMetadata()</a>
+                — Collects parsing metadata for a given annotation class</li>
+            <li id="collectAttributeTypeMetadata"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/collectAttributeTypeMetadata.xhtml">collectAttributeTypeMetadata()</a>
+                — Collects parsing metadata for a given attribute.</li>
+            <li id="findInitialTokenPosition"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/findInitialTokenPosition.xhtml">findInitialTokenPosition()</a>
+                — Finds the first valid annotation</li>
+            <li id="getClassConstantPositionInIdentifier">
+              <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/getClassConstantPositionInIdentifier.xhtml">getClassConstantPositionInIdentifier()</a>
+            </li>
+            <li id="identifierEndsWithClassConstant">
+              <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/identifierEndsWithClassConstant.xhtml">identifierEndsWithClassConstant()</a>
+            </li>
+            <li id="identifierStartsWithBackslash">
+              <a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/identifierStartsWithBackslash.xhtml">identifierStartsWithBackslash()</a>
+            </li>
+            <li id="isIgnoredAnnotation"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/isIgnoredAnnotation.xhtml">isIgnoredAnnotation()</a>
+                — Checks whether the given $name matches any ignored annotation name or namespace</li>
+            <li id="match"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/match.xhtml">match()</a>
+                — Attempts to match the given token with the current lookahead token.</li>
+            <li id="matchAny"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/matchAny.xhtml">matchAny()</a>
+                — Attempts to match the current lookahead token with any of the given tokens.</li>
+            <li id="resolvePositionalValues"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/resolvePositionalValues.xhtml">resolvePositionalValues()</a>
+                — Resolve positional arguments (without name) to named ones</li>
+            <li id="syntaxError"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/syntaxError.xhtml">syntaxError()</a>
+                — Generates a new syntax error.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/__construct.xhtml">__construct()</a>
+                — Constructs a new DocParser.</li>
+            <li id="addNamespace"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/addNamespace.xhtml">addNamespace()</a>
+                — Sets the default namespaces.</li>
+            <li id="parse"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/parse.xhtml">parse()</a>
+                — Parses the given docblock string for annotations.</li>
+            <li id="setIgnoreNotImportedAnnotations"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setIgnoreNotImportedAnnotations.xhtml">setIgnoreNotImportedAnnotations()</a>
+                — Sets ignore on not-imported annotations.</li>
+            <li id="setIgnoredAnnotationNames"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setIgnoredAnnotationNames.xhtml">setIgnoredAnnotationNames()</a>
+                — Sets the annotation names that are ignored during the parsing process.</li>
+            <li id="setIgnoredAnnotationNamespaces"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setIgnoredAnnotationNamespaces.xhtml">setIgnoredAnnotationNamespaces()</a>
+                — Sets the annotation namespaces that are ignored during the parsing process.</li>
+            <li id="setImports"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setImports.xhtml">setImports()</a>
+                — Sets the imports.</li>
+            <li id="setTarget"><a title="Doctrine\Common\Annotations\DocParser" href="../classes/Doctrine_Common_Annotations_DocParser/setTarget.xhtml">setTarget()</a>
+                — Sets current target context as bitmask.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

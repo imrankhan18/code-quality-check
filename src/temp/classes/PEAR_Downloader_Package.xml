@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Downloader_Package" namespace="" name="PEAR_Downloader_Package" abstract="false" final="false" start="56" end="1981">
+  <file path="//usr/local/lib/php/PEAR/Downloader" file="Package.php" realpath="/usr/local/lib/php/PEAR/Downloader/Package.php" size="76207" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="69e52fe8d3b81049b820ec3cc937abafc9936642" relative="sr/local/lib/php/PEAR/Downloader/Package.php"/>
+  <docblock>
+    <description compact="Coordinates download parameters and manages their dependencies prior to downloading them.">Input can come from three sources:
+
+- local files (archives or package.xml)
+- remote files (downloadable urls)
+- abstract package names
+
+The first two elements are handled cleanly by PEAR_PackageFile, but the third requires
+accessing pearweb's xml-rpc interface to determine necessary dependencies, and the
+format returned of dependencies is slightly different from that used in package.xml.
+
+This class hides the differences between these elements, and makes automatic
+dependency resolution a piece of cake.  It also manages conflicts when
+two classes depend on incompatible dependencies, or differing versions of the same
+package dependency.  In addition, download will not be attempted if the php version is
+not supported, PEAR installer version is not supported, or non-PECL extensions are not
+installed.</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <member name="_downloader" visibility="public" static="false" line="61">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_Downloader" namespace="" name="PEAR_Downloader"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_config" visibility="public" static="false" line="65">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_registry" visibility="public" static="false" line="69">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_Registry" namespace="" name="PEAR_Registry"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_installRegistry" visibility="public" static="false" line="74">
+    <docblock>
+      <description compact="Used to implement packagingroot properly"/>
+      <var type="object">
+        <type full="PEAR_Registry" namespace="" name="PEAR_Registry"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_packagefile" visibility="public" static="false" line="78">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile|v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile|v2"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_parsedname" visibility="public" static="false" line="82">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_downloadURL" visibility="public" static="false" line="86">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_downloadDeps" default="" type="array" visibility="public" static="false" line="90">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_valid" default="false" type="boolean" visibility="public" static="false" line="94">
+    <docblock>
+      <description/>
+      <var type="boolean"/>
+    </docblock>
+  </member>
+  <member name="_analyzed" default="false" type="boolean" visibility="public" static="false" line="98">
+    <docblock>
+      <description/>
+      <var type="boolean"/>
+    </docblock>
+  </member>
+  <member name="_explicitState" default="false" type="boolean" visibility="public" static="false" line="107">
+    <docblock>
+      <description compact="if this or a parent package was invoked with Package-state, this is set to the state variable.">This allows temporary reassignment of preferred_state for a parent package and all of
+its dependencies.</description>
+      <var type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_explicitGroup" default="false" type="boolean" visibility="public" static="false" line="111">
+    <docblock>
+      <description compact="If this package is invoked with Package#group, this variable will be true"/>
+    </docblock>
+  </member>
+  <member name="_type" visibility="public" static="false" line="116">
+    <docblock>
+      <description compact="Package type local|url"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="_rawpackagefile" visibility="public" static="false" line="122">
+    <docblock>
+      <description compact="Contents of package.xml, if downloaded from a remote channel"/>
+      <var type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_validated" default="false" type="boolean" visibility="public" static="false" line="127">
+    <docblock>
+      <description/>
+      <var type="boolean"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="132" end="146" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_Downloader" namespace="" name="PEAR_Downloader"/>
+      </param>
+    </docblock>
+    <parameter name="downloader" byreference="true" type="{unknown}"/>
+  </constructor>
+  <method name="initialize" start="157" end="242" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Parse the input and determine whether this is a local file, a remote uri, or an abstract package name.">This is the heart of the PEAR_Downloader_Package(), and is used in
+{@link PEAR_Downloader::download()}</description>
+      <param type="string"/>
+      <return type="object">
+        <type full="bool|PEAR_Error" namespace="" name="bool|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="param" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="download" start="248" end="299" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve any non-local packages"/>
+      <return type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2|PEAR_Error" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2|PEAR_Error"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getPackageFile" start="301" end="304" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDownloader" start="306" end="309" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getType" start="311" end="314" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="fromDepURL" start="319" end="355" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Like {@link initialize()}, but operates on a dependency"/>
+    </docblock>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="detectDependencies" start="357" end="384" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setValidated" start="386" end="389" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="alreadyValidated" start="391" end="394" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="removeInstalled" start="400" end="440" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Remove packages to be downloaded that are already installed"/>
+      <param description="of PEAR_Downloader_Package objects" type="array"/>
+    </docblock>
+    <parameter name="params" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_detect2" start="442" end="605" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="deps" byreference="false" type="{unknown}"/>
+    <parameter name="pname" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_detect2Dep" start="607" end="684" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="pname" byreference="false" type="{unknown}"/>
+    <parameter name="group" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="check to see if a dep is already installed and is the same or newer" line="655"/>
+      <comment value="do not try to move this before getDepPackageDownloadURL" line="662"/>
+      <comment value="we can't determine whether upgrade is necessary until we know what" line="663"/>
+      <comment value="version would be downloaded" line="664"/>
+    </inline>
+  </method>
+  <method name="_detect1" start="686" end="882" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="deps" byreference="false" type="{unknown}"/>
+    <parameter name="pname" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setDownloadURL" start="884" end="887" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="pkg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPackageFile" start="894" end="897" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the package.xml object for this downloaded package"/>
+      <param type="object" variable="$pkg">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </param>
+    </docblock>
+    <parameter name="pkg" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getShortName" start="899" end="903" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getParsedPackage" start="905" end="914" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDownloadURL" start="916" end="919" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="canDefault" start="921" end="928" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPackage" start="930" end="939" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isSubpackage" start="944" end="953" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </param>
+    </docblock>
+    <parameter name="pf" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getPackageType" start="955" end="964" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isBundle" start="966" end="973" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPackageXmlVersion" start="975" end="984" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getChannel" start="986" end="995" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getURI" start="997" end="1006" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getVersion" start="1008" end="1017" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isCompatible" start="1019" end="1028" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="pf" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setGroup" start="1030" end="1033" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="group" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getGroup" start="1035" end="1042" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isExtension" start="1044" end="1057" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getDeps" start="1059" end="1078" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isEqual" start="1084" end="1168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Parsed array from {@link PEAR_Registry::parsePackageName()} or a dependency" type="array">returned from getDepDownloadURL()</param>
+    </docblock>
+    <parameter name="param" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="use magic to support pecl packages suddenly jumping to the pecl channel" line="1153"/>
+    </inline>
+  </method>
+  <method name="isInstalled" start="1170" end="1231" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="oper" byreference="false" type="string" default="'=='"/>
+  </method>
+  <method name="detectStupidDuplicates" start="1244" end="1277" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Detect duplicate package names with differing versions">If a user requests to install Date 1.4.6 and Date 1.4.7,
+for instance, this is a logic error.  This method
+detects this situation.</description>
+      <param description="array of PEAR_Downloader_Package objects" type="array" variable="$params"/>
+      <param description="empty array" type="array" variable="$errorparams"/>
+      <return description="array of stupid duplicated packages in PEAR_Downloader_Package obejcts" type="array"/>
+    </docblock>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="errorparams" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="removeDuplicates" start="1283" end="1332" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array"/>
+      <param description="ignore install groups - for final removal of dupe packages" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="params" byreference="true" type="{unknown}"/>
+    <parameter name="ignoreGroups" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="explicitState" start="1334" end="1337" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setExplicitState" start="1339" end="1342" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="s" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="mergeDependencies" start="1346" end="1469" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+    </docblock>
+    <parameter name="params" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="strip any unset indices" line="1410"/>
+    </inline>
+  </method>
+  <method name="willDownload" start="1474" end="1487" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+    </docblock>
+    <parameter name="param" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPackagefileObject" start="1495" end="1499" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="For simpler unit-testing"/>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+      <param type="int"/>
+      <param type="string"/>
+    </docblock>
+    <parameter name="c" byreference="true" type="{unknown}"/>
+    <parameter name="d" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_fromFile" start="1507" end="1542" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This will retrieve from a local file if possible, and parse out a group name as well.  The original parameter will be modified to reflect this."/>
+      <param description="can be a parsed package name as well" type="object">
+        <type full="string|array" namespace="" name="string|array"/>
+      </param>
+      <access value="private"/>
+    </docblock>
+    <parameter name="param" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_fromUrl" start="1544" end="1632" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="param" byreference="false" type="{unknown}"/>
+    <parameter name="saveparam" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="_fromString" start="1644" end="1738" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="pass in an array of format" type="object">array(
+                     'package' =&gt; 'pname',
+                    ['channel' =&gt; 'channame',]
+                    ['version' =&gt; 'version',]
+                    ['state' =&gt; 'state',])
+                    or a string of format [channame/]pname[-version|-state]<type full="string|array" namespace="" name="string|array"/></param>
+    </docblock>
+    <parameter name="param" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_analyzeDownloadURL" start="1750" end="1980" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="output of package.getDownloadURL" type="array"/>
+      <param description="information for detecting packages to be downloaded, and" type="object">for errors<type full="string|array|object" namespace="" name="string|array|object"/></param>
+      <param description="name information of the package" type="array"/>
+      <param description="packages to be downloaded" type="object">
+        <type full="array|null" namespace="" name="array|null"/>
+      </param>
+      <param description="is this an optional dependency?" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <param description="is this any kind of dependency?" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <access value="private"/>
+    </docblock>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+    <parameter name="param" byreference="false" type="{unknown}"/>
+    <parameter name="pname" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="optional" byreference="false" type="boolean" default="false"/>
+    <parameter name="isdependency" byreference="false" type="boolean" default="false"/>
+  </method>
+</class>

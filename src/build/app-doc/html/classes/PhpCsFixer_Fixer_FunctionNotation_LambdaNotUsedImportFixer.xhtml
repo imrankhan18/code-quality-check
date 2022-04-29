@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#PhpCsFixer_Fixer_FunctionNotation">PhpCsFixer\Fixer\FunctionNotation</a>
+          </li>
+          <li class="separator">LambdaNotUsedImportFixer</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Fixer/FunctionNotation/LambdaNotUsedImportFixer.php.xhtml#line27">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>PhpCsFixer\Fixer\FunctionNotation\</small>LambdaNotUsedImportFixer</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class LambdaNotUsedImportFixer
+                extends <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer.xhtml">AbstractFixer</a>
+            {<br/><ul class="none"><li>// members</li><li>private <span title="PhpCsFixer\Tokenizer\Analyzer\ArgumentsAnalyzer">ArgumentsAnalyzer</span> <a href="#members">$argumentsAnalyzer</a>;
+                    </li><li>private <span title="PhpCsFixer\Tokenizer\Analyzer\FunctionsAnalyzer">FunctionsAnalyzer</span> <a href="#members">$functionAnalyzer</a>;
+                    </li><li>private <span title="PhpCsFixer\Tokenizer\TokensAnalyzer">TokensAnalyzer</span> <a href="#members">$tokensAnalyzer</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="PhpCsFixer\AbstractFixer">AbstractFixer</span></li><li>protected <span title="PhpCsFixer\null|array&lt;string">null|array&lt;string</span> <a href="#members">$configuration</a>;
+                        </li><li>protected <span title="PhpCsFixer\WhitespacesFixerConfig">WhitespacesFixerConfig</span> <a href="#members">$whitespacesConfig</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public <span title="FixerDefinitionInterface">FixerDefinitionInterface</span> <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/getDefinition.xhtml">getDefinition</a>()
+                    </li><li>public int <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/getPriority.xhtml">getPriority</a>()
+                    </li><li>public bool <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/isCandidate.xhtml">isCandidate</a>()
+                    </li><li>protected void <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/applyFix.xhtml">applyFix</a>()
+                    </li><li>private void <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/fixLambda.xhtml">fixLambda</a>()
+                    </li><li>private array <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/findNotUsedLambdaImports.xhtml">findNotUsedLambdaImports</a>()
+                    </li><li>private array <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/countImportsUsedAsArgument.xhtml">countImportsUsedAsArgument</a>()
+                    </li><li>private false|int <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/getLambdaUseIndex.xhtml">getLambdaUseIndex</a>()
+                    </li><li>private array <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/filterArguments.xhtml">filterArguments</a>()
+                    </li><li>private void <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/clearImports.xhtml">clearImports</a>()
+                    </li><li>private void <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/clearImportsAndUse.xhtml">clearImportsAndUse</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="PhpCsFixer\AbstractFixer">AbstractFixer</span></li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/__construct.xhtml">__construct</a>()
+                        </li><li>public final void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/fix.xhtml">fix</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/isRisky.xhtml">isRisky</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getName.xhtml">getName</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getPriority.xhtml">getPriority</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/supports.xhtml">supports</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/configure.xhtml">configure</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getConfigurationDefinition.xhtml">getConfigurationDefinition</a>()
+                        </li><li>public void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/setWhitespacesConfig.xhtml">setWhitespacesConfig</a>()
+                        </li><li>protected abstract void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/applyFix.xhtml">applyFix</a>()
+                        </li><li>protected void <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/createConfigurationDefinition.xhtml">createConfigurationDefinition</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer.xhtml">PhpCsFixer\AbstractFixer</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="argumentsAnalyzer"><strong>$argumentsAnalyzer</strong>
+                —
+                <a title="PhpCsFixer\Tokenizer\Analyzer\ArgumentsAnalyzer" href="../classes/PhpCsFixer_Tokenizer_Analyzer_ArgumentsAnalyzer.xhtml">PhpCsFixer\Tokenizer\Analyzer\ArgumentsAnalyzer</a></li>
+            <li id="functionAnalyzer"><strong>$functionAnalyzer</strong>
+                —
+                <a title="PhpCsFixer\Tokenizer\Analyzer\FunctionsAnalyzer" href="../classes/PhpCsFixer_Tokenizer_Analyzer_FunctionsAnalyzer.xhtml">PhpCsFixer\Tokenizer\Analyzer\FunctionsAnalyzer</a></li>
+            <li id="tokensAnalyzer"><strong>$tokensAnalyzer</strong>
+                —
+                <a title="PhpCsFixer\Tokenizer\TokensAnalyzer" href="../classes/PhpCsFixer_Tokenizer_TokensAnalyzer.xhtml">PhpCsFixer\Tokenizer\TokensAnalyzer</a></li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="configuration"><strong>$configuration</strong>
+                —
+                <a title="PhpCsFixer\null|array&lt;string" href="../classes/PhpCsFixer_null|array&lt;string.xhtml">PhpCsFixer\null|array&lt;string</a></li>
+            <li id="whitespacesConfig"><strong>$whitespacesConfig</strong>
+                —
+                <a title="PhpCsFixer\WhitespacesFixerConfig" href="../classes/PhpCsFixer_WhitespacesFixerConfig.xhtml">PhpCsFixer\WhitespacesFixerConfig</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="clearImports">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/clearImports.xhtml">clearImports()</a>
+            </li>
+            <li id="clearImportsAndUse"><a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/clearImportsAndUse.xhtml">clearImportsAndUse()</a>
+                — Remove `use` and all imported variables.</li>
+            <li id="countImportsUsedAsArgument">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/countImportsUsedAsArgument.xhtml">countImportsUsedAsArgument()</a>
+            </li>
+            <li id="filterArguments">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/filterArguments.xhtml">filterArguments()</a>
+            </li>
+            <li id="findNotUsedLambdaImports">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/findNotUsedLambdaImports.xhtml">findNotUsedLambdaImports()</a>
+            </li>
+            <li id="fixLambda">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/fixLambda.xhtml">fixLambda()</a>
+            </li>
+            <li id="getLambdaUseIndex">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/getLambdaUseIndex.xhtml">getLambdaUseIndex()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="applyFix">
+              <a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/applyFix.xhtml">applyFix()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="getDefinition"><a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/getDefinition.xhtml">getDefinition()</a>
+                — {@inheritdoc}</li>
+            <li id="getPriority"><a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/getPriority.xhtml">getPriority()</a>
+                — {@inheritdoc}</li>
+            <li id="isCandidate"><a title="PhpCsFixer\Fixer\FunctionNotation\LambdaNotUsedImportFixer" href="../classes/PhpCsFixer_Fixer_FunctionNotation_LambdaNotUsedImportFixer/isCandidate.xhtml">isCandidate()</a>
+                — {@inheritdoc}</li>
+          </ul>
+          <h3>Inherited from <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer.xhtml">PhpCsFixer\AbstractFixer</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="applyFix">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/applyFix.xhtml">applyFix()</a>
+            </li>
+            <li id="createConfigurationDefinition">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/createConfigurationDefinition.xhtml">createConfigurationDefinition()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="configure">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/configure.xhtml">configure()</a>
+            </li>
+            <li id="fix">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/fix.xhtml">fix()</a>
+            </li>
+            <li id="getConfigurationDefinition">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getConfigurationDefinition.xhtml">getConfigurationDefinition()</a>
+            </li>
+            <li id="getName"><a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getName.xhtml">getName()</a>
+                — {@inheritdoc}</li>
+            <li id="getPriority"><a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/getPriority.xhtml">getPriority()</a>
+                — {@inheritdoc}</li>
+            <li id="isRisky"><a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/isRisky.xhtml">isRisky()</a>
+                — {@inheritdoc}</li>
+            <li id="setWhitespacesConfig">
+              <a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/setWhitespacesConfig.xhtml">setWhitespacesConfig()</a>
+            </li>
+            <li id="supports"><a title="PhpCsFixer\AbstractFixer" href="../classes/PhpCsFixer_AbstractFixer/supports.xhtml">supports()</a>
+                — {@inheritdoc}</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

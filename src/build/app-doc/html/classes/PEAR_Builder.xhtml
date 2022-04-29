@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_Builder</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PEAR_Builder</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/sr/local/lib/php/PEAR/Builder.php.xhtml#line41">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PEAR_Builder</h1>
+        <h4>Class to handle building (compiling) extensions.</h4>
+        <p/>
+        <ul>
+          <li>Author: Stig Bakken &lt;ssb@php.net&gt;</li>
+          <li>Copyright: 1997-2009 The Authors</li>
+          <li>License: http://opensource.org/licenses/bsd-license.php New BSD License</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PEAR_Builder
+                extends <a title="PEAR_Common" href="../classes/PEAR_Common.xhtml">PEAR_Common</a>
+            {<br/><ul class="none"><li>// members</li><li>public integer <a href="#members">$php_api_version</a> =
+                        0;
+                    </li><li>public integer <a href="#members">$zend_module_api_no</a> =
+                        0;
+                    </li><li>public integer <a href="#members">$zend_extension_api_no</a> =
+                        0;
+                    </li><li>public array <a href="#members">$extensions_built</a> =
+                        ;
+                    </li><li>public  <a href="#members">$current_callback</a> =
+                        NULL;
+                    </li><li>public  <a href="#members">$_lastline</a> =
+                        NULL;
+                    </li><li>public  <a href="#members">$_firstline</a> =
+                        NULL;
+                    </li><li>public  <a href="#members">$_parsed_configure_options</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="PEAR_Common">PEAR_Common</span></li><li>public <span title=""/> <a href="#members">$ui</a>;
+                        </li><li>public <span title="PEAR_Config">PEAR_Config</span> <a href="#members">$config</a>;
+                        </li><li>public array <a href="#members">$element_stack</a>;
+                        </li><li>public  <a href="#members">$current_element</a>;
+                        </li><li>public array <a href="#members">$current_attributes</a>;
+                        </li><li>public array <a href="#members">$pkginfo</a>;
+                        </li><li>public  <a href="#members">$current_path</a>;
+                        </li><li>public  <a href="#members">$_validPackageFile</a>;
+                        </li></ul><ul class="none"><li>// Inherited members from <span title="PEAR">PEAR</span></li><li>public <span title="bool">bool</span> <a href="#members">$_debug</a>;
+                        </li><li>public  <a href="#members">$_default_error_mode</a>;
+                        </li><li>public  <a href="#members">$_default_error_options</a>;
+                        </li><li>public string <a href="#members">$_default_error_handler</a>;
+                        </li><li>public string <a href="#members">$_error_class</a>;
+                        </li><li>public array <a href="#members">$_expected_errors</a>;
+                        </li><li>protected static array <a href="#members">$bivalentMethods</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/_parseConfigureOptions.xhtml">_parseConfigureOptions</a>()
+                    </li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/_parseConfigureOptionsStartElement.xhtml">_parseConfigureOptionsStartElement</a>()
+                    </li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/_parseConfigureOptionsEndElement.xhtml">_parseConfigureOptionsEndElement</a>()
+                    </li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/_build_win32.xhtml">_build_win32</a>()
+                    </li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/msdevCallback.xhtml">msdevCallback</a>()
+                    </li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/_harvestInstDir.xhtml">_harvestInstDir</a>()
+                    </li><li>public array <a title="PEAR_Builder" href="../classes/PEAR_Builder/build.xhtml">build</a>()
+                    </li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/phpizeCallback.xhtml">phpizeCallback</a>()
+                    </li><li>public bool <a title="PEAR_Builder" href="../classes/PEAR_Builder/_runCommand.xhtml">_runCommand</a>()
+                    </li><li>public void <a title="PEAR_Builder" href="../classes/PEAR_Builder/log.xhtml">log</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="PEAR_Common">PEAR_Common</span></li><li>public void <a title="PEAR_Common" href="../classes/PEAR_Common/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="PEAR_Common" href="../classes/PEAR_Common/_PEAR_Common.xhtml">_PEAR_Common</a>()
+                        </li><li>public static void <a title="PEAR_Common" href="../classes/PEAR_Common/addTempFile.xhtml">addTempFile</a>()
+                        </li><li>public bool <a title="PEAR_Common" href="../classes/PEAR_Common/mkDirHier.xhtml">mkDirHier</a>()
+                        </li><li>public void <a title="PEAR_Common" href="../classes/PEAR_Common/log.xhtml">log</a>()
+                        </li><li>public string <a title="PEAR_Common" href="../classes/PEAR_Common/mkTempDir.xhtml">mkTempDir</a>()
+                        </li><li>public void <a title="PEAR_Common" href="../classes/PEAR_Common/setFrontendObject.xhtml">setFrontendObject</a>()
+                        </li><li>public static false|array <a title="PEAR_Common" href="../classes/PEAR_Common/betterStates.xhtml">betterStates</a>()
+                        </li><li>public static array <a title="PEAR_Common" href="../classes/PEAR_Common/getUserRoles.xhtml">getUserRoles</a>()
+                        </li><li>public static array <a title="PEAR_Common" href="../classes/PEAR_Common/getReleaseStates.xhtml">getReleaseStates</a>()
+                        </li><li>public static array <a title="PEAR_Common" href="../classes/PEAR_Common/getDependencyTypes.xhtml">getDependencyTypes</a>()
+                        </li><li>public static array <a title="PEAR_Common" href="../classes/PEAR_Common/getDependencyRelations.xhtml">getDependencyRelations</a>()
+                        </li><li>public static array <a title="PEAR_Common" href="../classes/PEAR_Common/getFileRoles.xhtml">getFileRoles</a>()
+                        </li><li>public static array <a title="PEAR_Common" href="../classes/PEAR_Common/getReplacementTypes.xhtml">getReplacementTypes</a>()
+                        </li><li>public static array <a title="PEAR_Common" href="../classes/PEAR_Common/getProvideTypes.xhtml">getProvideTypes</a>()
+                        </li><li>public static array <a title="PEAR_Common" href="../classes/PEAR_Common/getScriptPhases.xhtml">getScriptPhases</a>()
+                        </li><li>public bool <a title="PEAR_Common" href="../classes/PEAR_Common/validPackageName.xhtml">validPackageName</a>()
+                        </li><li>public bool <a title="PEAR_Common" href="../classes/PEAR_Common/validPackageVersion.xhtml">validPackageVersion</a>()
+                        </li><li>public static boolean <a title="PEAR_Common" href="../classes/PEAR_Common/isIncludeable.xhtml">isIncludeable</a>()
+                        </li><li>public void <a title="PEAR_Common" href="../classes/PEAR_Common/_postProcessChecks.xhtml">_postProcessChecks</a>()
+                        </li><li>public array <a title="PEAR_Common" href="../classes/PEAR_Common/infoFromTgzFile.xhtml">infoFromTgzFile</a>()
+                        </li><li>public array <a title="PEAR_Common" href="../classes/PEAR_Common/infoFromDescriptionFile.xhtml">infoFromDescriptionFile</a>()
+                        </li><li>public array <a title="PEAR_Common" href="../classes/PEAR_Common/infoFromString.xhtml">infoFromString</a>()
+                        </li><li>public array <a title="PEAR_Common" href="../classes/PEAR_Common/_postProcessValidPackagexml.xhtml">_postProcessValidPackagexml</a>()
+                        </li><li>public string <a title="PEAR_Common" href="../classes/PEAR_Common/infoFromAny.xhtml">infoFromAny</a>()
+                        </li><li>public string <a title="PEAR_Common" href="../classes/PEAR_Common/xmlFromInfo.xhtml">xmlFromInfo</a>()
+                        </li><li>public boolean <a title="PEAR_Common" href="../classes/PEAR_Common/validatePackageInfo.xhtml">validatePackageInfo</a>()
+                        </li><li>public void <a title="PEAR_Common" href="../classes/PEAR_Common/buildProvidesArray.xhtml">buildProvidesArray</a>()
+                        </li><li>public static mixed <a title="PEAR_Common" href="../classes/PEAR_Common/analyzeSourceCode.xhtml">analyzeSourceCode</a>()
+                        </li><li>public void <a title="PEAR_Common" href="../classes/PEAR_Common/detectDependencies.xhtml">detectDependencies</a>()
+                        </li><li>public mixed <a title="PEAR_Common" href="../classes/PEAR_Common/downloadHttp.xhtml">downloadHttp</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="PEAR">PEAR</span></li><li>public void <a title="PEAR" href="../classes/PEAR/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/PEAR.xhtml">PEAR</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/_PEAR.xhtml">_PEAR</a>()
+                        </li><li>public void <a title="PEAR" href="../classes/PEAR/__call.xhtml">__call</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/__callStatic.xhtml">__callStatic</a>()
+                        </li><li>public static mixed <a title="PEAR" href="../classes/PEAR/getStaticProperty.xhtml">getStaticProperty</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/registerShutdownFunc.xhtml">registerShutdownFunc</a>()
+                        </li><li>public static bool <a title="PEAR" href="../classes/PEAR/isError.xhtml">isError</a>()
+                        </li><li>protected static void <a title="PEAR" href="../classes/PEAR/_setErrorHandling.xhtml">_setErrorHandling</a>()
+                        </li><li>public int <a title="PEAR" href="../classes/PEAR/expectError.xhtml">expectError</a>()
+                        </li><li>public array <a title="PEAR" href="../classes/PEAR/popExpect.xhtml">popExpect</a>()
+                        </li><li>public bool <a title="PEAR" href="../classes/PEAR/_checkDelExpect.xhtml">_checkDelExpect</a>()
+                        </li><li>public mixed <a title="PEAR" href="../classes/PEAR/delExpect.xhtml">delExpect</a>()
+                        </li><li>protected static  <a title="PEAR" href="../classes/PEAR/_raiseError.xhtml">_raiseError</a>()
+                        </li><li>protected static  <a title="PEAR" href="../classes/PEAR/_throwError.xhtml">_throwError</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/staticPushErrorHandling.xhtml">staticPushErrorHandling</a>()
+                        </li><li>public static void <a title="PEAR" href="../classes/PEAR/staticPopErrorHandling.xhtml">staticPopErrorHandling</a>()
+                        </li><li>protected static bool <a title="PEAR" href="../classes/PEAR/_pushErrorHandling.xhtml">_pushErrorHandling</a>()
+                        </li><li>protected static bool <a title="PEAR" href="../classes/PEAR/_popErrorHandling.xhtml">_popErrorHandling</a>()
+                        </li><li>public static bool <a title="PEAR" href="../classes/PEAR/loadExtension.xhtml">loadExtension</a>()
+                        </li><li>public static int <a title="PEAR" href="../classes/PEAR/getSourceDateEpoch.xhtml">getSourceDateEpoch</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="PEAR_Common" href="../classes/PEAR_Common.xhtml">PEAR_Common</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="bivalentMethods"><strong>$bivalentMethods</strong>
+                —
+                array<br/><span class="indent">List of methods that can be called both statically and non-statically.</span></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="_debug"><strong>$_debug</strong>
+                —
+                <a title="bool" href="../classes/bool.xhtml">bool</a><br/><span class="indent">Whether to enable internal debug messages.</span></li>
+            <li id="_default_error_handler"><strong>$_default_error_handler</strong>
+                —
+                string<br/><span class="indent">Default error handler (callback) for this object, if error mode is PEAR_ERROR_CALLBACK.</span></li>
+            <li id="_default_error_mode"><strong>$_default_error_mode</strong>
+                —
+                int<br/><span class="indent">Default error mode for this object.</span></li>
+            <li id="_default_error_options"><strong>$_default_error_options</strong>
+                —
+                int<br/><span class="indent">Default error options used for this object when error mode is PEAR_ERROR_TRIGGER.</span></li>
+            <li id="_error_class"><strong>$_error_class</strong>
+                —
+                string<br/><span class="indent">Which class to use for error objects.</span></li>
+            <li id="_expected_errors"><strong>$_expected_errors</strong>
+                —
+                array<br/><span class="indent">An array of expected errors.</span></li>
+            <li id="_firstline">
+              <strong>$_firstline</strong>
+            </li>
+            <li id="_lastline">
+              <strong>$_lastline</strong>
+            </li>
+            <li id="_parsed_configure_options"><strong>$_parsed_configure_options</strong>
+                —
+                array<br/><span class="indent">Parsed --configureoptions.</span></li>
+            <li id="_validPackageFile"><strong>$_validPackageFile</strong>
+                —
+                boolean<br/><span class="indent">Flag variable used to mark a valid package file</span></li>
+            <li id="config"><strong>$config</strong>
+                —
+                <a title="PEAR_Config" href="../classes/PEAR_Config.xhtml">PEAR_Config</a><br/><span class="indent">Configuration object (PEAR_Config).</span></li>
+            <li id="current_attributes">
+              <strong>$current_attributes</strong>
+              <br/>
+              <span class="indent">array of attributes of the currently parsed XML element</span>
+            </li>
+            <li id="current_callback"><strong>$current_callback</strong>
+                —
+                string</li>
+            <li id="current_element">
+              <strong>$current_element</strong>
+              <br/>
+              <span class="indent">name of currently parsed XML element</span>
+            </li>
+            <li id="current_path">
+              <strong>$current_path</strong>
+            </li>
+            <li id="element_stack">
+              <strong>$element_stack</strong>
+              <br/>
+              <span class="indent">stack of elements, gives some sort of XML context</span>
+            </li>
+            <li id="extensions_built">
+              <strong>$extensions_built</strong>
+            </li>
+            <li id="php_api_version">
+              <strong>$php_api_version</strong>
+            </li>
+            <li id="pkginfo">
+              <strong>$pkginfo</strong>
+              <br/>
+              <span class="indent">assoc with information about a package</span>
+            </li>
+            <li id="ui"><strong>$ui</strong>
+                —
+                <a title="" href="../classes/.xhtml"/><br/><span class="indent">User Interface object (PEAR_Frontend_* class).  If null, the log() method uses print.</span></li>
+            <li id="zend_extension_api_no">
+              <strong>$zend_extension_api_no</strong>
+            </li>
+            <li id="zend_module_api_no">
+              <strong>$zend_module_api_no</strong>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="PEAR_Builder" href="../classes/PEAR_Builder/__construct.xhtml">__construct()</a>
+                — PEAR_Builder constructor.</li>
+            <li id="_build_win32"><a title="PEAR_Builder" href="../classes/PEAR_Builder/_build_win32.xhtml">_build_win32()</a>
+                — Build an extension from source on windows.</li>
+            <li id="_harvestInstDir">
+              <a title="PEAR_Builder" href="../classes/PEAR_Builder/_harvestInstDir.xhtml">_harvestInstDir()</a>
+            </li>
+            <li id="_parseConfigureOptions"><a title="PEAR_Builder" href="../classes/PEAR_Builder/_parseConfigureOptions.xhtml">_parseConfigureOptions()</a>
+                — Parse --configureoptions string.</li>
+            <li id="_parseConfigureOptionsEndElement"><a title="PEAR_Builder" href="../classes/PEAR_Builder/_parseConfigureOptionsEndElement.xhtml">_parseConfigureOptionsEndElement()</a>
+                — Handle element end.</li>
+            <li id="_parseConfigureOptionsStartElement"><a title="PEAR_Builder" href="../classes/PEAR_Builder/_parseConfigureOptionsStartElement.xhtml">_parseConfigureOptionsStartElement()</a>
+                — Handle element start.</li>
+            <li id="_runCommand"><a title="PEAR_Builder" href="../classes/PEAR_Builder/_runCommand.xhtml">_runCommand()</a>
+                — Run an external command, using a message callback to report output.  The command will be run through popen and output is reported for every line with a "cmdoutput" message with the line string, including newlines, as payload.</li>
+            <li id="build"><a title="PEAR_Builder" href="../classes/PEAR_Builder/build.xhtml">build()</a>
+                — Build an extension from source.  Runs "phpize" in the source directory, but compiles in a temporary directory (TMPDIR/pear-build-USER/PACKAGE-VERSION).</li>
+            <li id="log">
+              <a title="PEAR_Builder" href="../classes/PEAR_Builder/log.xhtml">log()</a>
+            </li>
+            <li id="msdevCallback">
+              <a title="PEAR_Builder" href="../classes/PEAR_Builder/msdevCallback.xhtml">msdevCallback()</a>
+            </li>
+            <li id="phpizeCallback"><a title="PEAR_Builder" href="../classes/PEAR_Builder/phpizeCallback.xhtml">phpizeCallback()</a>
+                — Message callback function used when running the "phpize" program.  Extracts the API numbers used.  Ignores other message types than "cmdoutput".</li>
+          </ul>
+          <h3>Inherited from <a title="PEAR_Common" href="../classes/PEAR_Common.xhtml">PEAR_Common</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="_PEAR_Common"><a title="PEAR_Common" href="../classes/PEAR_Common/_PEAR_Common.xhtml">_PEAR_Common()</a>
+                — PEAR_Common destructor</li>
+            <li id="_postProcessChecks">
+              <a title="PEAR_Common" href="../classes/PEAR_Common/_postProcessChecks.xhtml">_postProcessChecks()</a>
+            </li>
+            <li id="_postProcessValidPackagexml">
+              <a title="PEAR_Common" href="../classes/PEAR_Common/_postProcessValidPackagexml.xhtml">_postProcessValidPackagexml()</a>
+            </li>
+            <li id="addTempFile"><a title="PEAR_Common" href="../classes/PEAR_Common/addTempFile.xhtml">addTempFile()</a>
+                — Register a temporary file or directory.  When the destructor is executed, all registered temporary files and directories are removed.</li>
+            <li id="analyzeSourceCode"><a title="PEAR_Common" href="../classes/PEAR_Common/analyzeSourceCode.xhtml">analyzeSourceCode()</a>
+                — Analyze the source code of the given PHP file</li>
+            <li id="betterStates"><a title="PEAR_Common" href="../classes/PEAR_Common/betterStates.xhtml">betterStates()</a>
+                — Return an array containing all of the states that are more stable than or equal to the passed in state</li>
+            <li id="buildProvidesArray"><a title="PEAR_Common" href="../classes/PEAR_Common/buildProvidesArray.xhtml">buildProvidesArray()</a>
+                — Build a "provides" array from data returned by analyzeSourceCode().  The format of the built array is like this:</li>
+            <li id="detectDependencies">
+              <a title="PEAR_Common" href="../classes/PEAR_Common/detectDependencies.xhtml">detectDependencies()</a>
+            </li>
+            <li id="downloadHttp"><a title="PEAR_Common" href="../classes/PEAR_Common/downloadHttp.xhtml">downloadHttp()</a>
+                — Download a file through HTTP.  Considers suggested file name in Content-disposition: header and can run a callback function for different events.  The callback will be called with two parameters: the callback type, and parameters.  The implemented callback types are:</li>
+            <li id="getDependencyRelations"><a title="PEAR_Common" href="../classes/PEAR_Common/getDependencyRelations.xhtml">getDependencyRelations()</a>
+                — Get the implemented dependency relations (has, lt, ge etc.)</li>
+            <li id="getDependencyTypes"><a title="PEAR_Common" href="../classes/PEAR_Common/getDependencyTypes.xhtml">getDependencyTypes()</a>
+                — Get the implemented dependency types (php, ext, pkg etc.)</li>
+            <li id="getFileRoles"><a title="PEAR_Common" href="../classes/PEAR_Common/getFileRoles.xhtml">getFileRoles()</a>
+                — Get the implemented file roles</li>
+            <li id="getProvideTypes"><a title="PEAR_Common" href="../classes/PEAR_Common/getProvideTypes.xhtml">getProvideTypes()</a>
+                — Get the implemented file replacement types in</li>
+            <li id="getReleaseStates"><a title="PEAR_Common" href="../classes/PEAR_Common/getReleaseStates.xhtml">getReleaseStates()</a>
+                — Get the valid package release states of packages</li>
+            <li id="getReplacementTypes"><a title="PEAR_Common" href="../classes/PEAR_Common/getReplacementTypes.xhtml">getReplacementTypes()</a>
+                — Get the implemented file replacement types in</li>
+            <li id="getScriptPhases"><a title="PEAR_Common" href="../classes/PEAR_Common/getScriptPhases.xhtml">getScriptPhases()</a>
+                — Get the implemented file replacement types in</li>
+            <li id="getUserRoles"><a title="PEAR_Common" href="../classes/PEAR_Common/getUserRoles.xhtml">getUserRoles()</a>
+                — Get the valid roles for a PEAR package maintainer</li>
+            <li id="infoFromAny"><a title="PEAR_Common" href="../classes/PEAR_Common/infoFromAny.xhtml">infoFromAny()</a>
+                — Returns package information from different sources</li>
+            <li id="infoFromDescriptionFile"><a title="PEAR_Common" href="../classes/PEAR_Common/infoFromDescriptionFile.xhtml">infoFromDescriptionFile()</a>
+                — Returns information about a package file.  Expects the name of a package xml file as input.</li>
+            <li id="infoFromString"><a title="PEAR_Common" href="../classes/PEAR_Common/infoFromString.xhtml">infoFromString()</a>
+                — Returns information about a package file.  Expects the contents of a package xml file as input.</li>
+            <li id="infoFromTgzFile"><a title="PEAR_Common" href="../classes/PEAR_Common/infoFromTgzFile.xhtml">infoFromTgzFile()</a>
+                — Returns information about a package file.  Expects the name of a gzipped tar file as input.</li>
+            <li id="isIncludeable">
+              <a title="PEAR_Common" href="../classes/PEAR_Common/isIncludeable.xhtml">isIncludeable()</a>
+            </li>
+            <li id="log"><a title="PEAR_Common" href="../classes/PEAR_Common/log.xhtml">log()</a>
+                — Logging method.</li>
+            <li id="mkDirHier"><a title="PEAR_Common" href="../classes/PEAR_Common/mkDirHier.xhtml">mkDirHier()</a>
+                — Wrapper to System::mkDir(), creates a directory as well as any necessary parent directories.</li>
+            <li id="mkTempDir"><a title="PEAR_Common" href="../classes/PEAR_Common/mkTempDir.xhtml">mkTempDir()</a>
+                — Create and register a temporary directory.</li>
+            <li id="setFrontendObject"><a title="PEAR_Common" href="../classes/PEAR_Common/setFrontendObject.xhtml">setFrontendObject()</a>
+                — Set object that represents the frontend to be used.</li>
+            <li id="validPackageName"><a title="PEAR_Common" href="../classes/PEAR_Common/validPackageName.xhtml">validPackageName()</a>
+                — Test whether a string contains a valid package name.</li>
+            <li id="validPackageVersion"><a title="PEAR_Common" href="../classes/PEAR_Common/validPackageVersion.xhtml">validPackageVersion()</a>
+                — Test whether a string contains a valid package version.</li>
+            <li id="validatePackageInfo"><a title="PEAR_Common" href="../classes/PEAR_Common/validatePackageInfo.xhtml">validatePackageInfo()</a>
+                — Validate XML package definition file.</li>
+            <li id="xmlFromInfo"><a title="PEAR_Common" href="../classes/PEAR_Common/xmlFromInfo.xhtml">xmlFromInfo()</a>
+                — Return an XML document based on the package info (as returned by the PEAR_Common::infoFrom* methods).</li>
+          </ul>
+          <h3>Inherited from <a title="PEAR" href="../classes/PEAR.xhtml">PEAR</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="_popErrorHandling"><a title="PEAR" href="../classes/PEAR/_popErrorHandling.xhtml">_popErrorHandling()</a>
+                — Pop the last error handler used</li>
+            <li id="_pushErrorHandling"><a title="PEAR" href="../classes/PEAR/_pushErrorHandling.xhtml">_pushErrorHandling()</a>
+                — Push a new error handler on top of the error handler options stack. With this you can easily override the actual error handler for some code and restore it later with popErrorHandling.</li>
+            <li id="_raiseError"><a title="PEAR" href="../classes/PEAR/_raiseError.xhtml">_raiseError()</a>
+                — This method is a wrapper that returns an instance of the configured error class with this object's default error handling applied.  If the $mode and $options parameters are not specified, the object's defaults are used.</li>
+            <li id="_setErrorHandling"><a title="PEAR" href="../classes/PEAR/_setErrorHandling.xhtml">_setErrorHandling()</a>
+                — Sets how errors generated by this object should be handled.</li>
+            <li id="_throwError"><a title="PEAR" href="../classes/PEAR/_throwError.xhtml">_throwError()</a>
+                — Simpler form of raiseError with fewer options.  In most cases message, code and userinfo are enough.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="PEAR"><a title="PEAR" href="../classes/PEAR/PEAR.xhtml">PEAR()</a>
+                — Only here for backwards compatibility.</li>
+            <li id="_PEAR"><a title="PEAR" href="../classes/PEAR/_PEAR.xhtml">_PEAR()</a>
+                — Destructor (the emulated type of...).  Does nothing right now, but is included for forward compatibility, so subclass destructors should always call it.</li>
+            <li id="__call">
+              <a title="PEAR" href="../classes/PEAR/__call.xhtml">__call()</a>
+            </li>
+            <li id="__callStatic">
+              <a title="PEAR" href="../classes/PEAR/__callStatic.xhtml">__callStatic()</a>
+            </li>
+            <li id="_checkDelExpect"><a title="PEAR" href="../classes/PEAR/_checkDelExpect.xhtml">_checkDelExpect()</a>
+                — This method checks unsets an error code if available</li>
+            <li id="delExpect"><a title="PEAR" href="../classes/PEAR/delExpect.xhtml">delExpect()</a>
+                — This method deletes all occurrences of the specified element from the expected error codes stack.</li>
+            <li id="expectError"><a title="PEAR" href="../classes/PEAR/expectError.xhtml">expectError()</a>
+                — This method is used to tell which errors you expect to get.</li>
+            <li id="getSourceDateEpoch"><a title="PEAR" href="../classes/PEAR/getSourceDateEpoch.xhtml">getSourceDateEpoch()</a>
+                — Get SOURCE_DATE_EPOCH environment variable See https://reproducible-builds.org/specs/source-date-epoch/</li>
+            <li id="getStaticProperty"><a title="PEAR" href="../classes/PEAR/getStaticProperty.xhtml">getStaticProperty()</a>
+                — If you have a class that's mostly/entirely static, and you need static properties, you can use this method to simulate them. Eg. in your method(s) do this: $myVar = &amp;PEAR::getStaticProperty('myclass', 'myVar'); You MUST use a reference, or they will not persist!</li>
+            <li id="isError"><a title="PEAR" href="../classes/PEAR/isError.xhtml">isError()</a>
+                — Tell whether a value is a PEAR error.</li>
+            <li id="loadExtension"><a title="PEAR" href="../classes/PEAR/loadExtension.xhtml">loadExtension()</a>
+                — OS independent PHP extension load. Remember to take care on the correct extension name for case sensitive OSes.</li>
+            <li id="popExpect"><a title="PEAR" href="../classes/PEAR/popExpect.xhtml">popExpect()</a>
+                — This method pops one element off the expected error codes stack.</li>
+            <li id="registerShutdownFunc"><a title="PEAR" href="../classes/PEAR/registerShutdownFunc.xhtml">registerShutdownFunc()</a>
+                — Use this function to register a shutdown method for static classes.</li>
+            <li id="staticPopErrorHandling">
+              <a title="PEAR" href="../classes/PEAR/staticPopErrorHandling.xhtml">staticPopErrorHandling()</a>
+            </li>
+            <li id="staticPushErrorHandling">
+              <a title="PEAR" href="../classes/PEAR/staticPushErrorHandling.xhtml">staticPushErrorHandling()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Proxy" namespace="" name="PEAR_Proxy" abstract="false" final="false" start="15" end="191">
+  <file path="//usr/local/lib/php/PEAR" file="Proxy.php" realpath="/usr/local/lib/php/PEAR/Proxy.php" size="5650" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="b7a454e5749b4753e4778ae1fc875ca16b7f6698" relative="sr/local/lib/php/PEAR/Proxy.php"/>
+  <docblock>
+    <description compact="PEAR_Proxy">HTTP Proxy handling</description>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Nico Boehr"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+  </docblock>
+  <member name="config" default="NULL" visibility="public" static="false" line="17"/>
+  <member name="proxy_host" visibility="public" static="false" line="22">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="proxy_port" visibility="public" static="false" line="26">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="proxy_user" visibility="public" static="false" line="30">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="proxy_pass" visibility="public" static="false" line="34">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="proxy_schema" visibility="public" static="false" line="38">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="40" end="44" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="config" byreference="false" type="{unknown}" default="NULL"/>
+  </constructor>
+  <method name="_parseProxyInfo" start="49" end="62" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+  </method>
+  <method name="_httpConnect" start="67" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="fp" byreference="false" type="{unknown}"/>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="connection was successful -- establish SSL through" line="87"/>
+      <comment value="the tunnel" line="88"/>
+      <comment value="set the correct hostname for working hostname" line="96"/>
+      <comment value="verification" line="97"/>
+      <comment value="blocking socket needed for" line="100"/>
+      <comment value="stream_socket_enable_crypto()" line="101"/>
+      <comment value="see" line="102"/>
+      <comment value="&lt;http://php.net/manual/en/function.stream-socket-enable-crypto.php&gt;" line="103"/>
+    </inline>
+  </method>
+  <method name="getProxyAuth" start="120" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="get the authorization information for the proxy, encoded to be passed in the Proxy-Authentication HTTP header."/>
+      <return description="the encoded authentication information if a" type="object">proxy and authentication is configured, null
+                    otherwise.<type full="null|string" namespace="" name="null|string"/></return>
+    </docblock>
+  </method>
+  <method name="getProxyUser" start="128" end="131" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isProxyConfigured" start="140" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if we are configured to use a proxy."/>
+      <return description="true if we are configured to use a proxy, false" type="boolean">otherwise.</return>
+      <access value="public"/>
+    </docblock>
+  </method>
+  <method name="openSocket" start="158" end="190" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Open a socket to a remote server, possibly involving a HTTP proxy.">If an HTTP proxy has been configured (http_proxy PEAR_Config
+setting), the proxy will be used.</description>
+      <param description="the host to connect to" type="string" variable="$host"/>
+      <param description="the port to connect to" type="string" variable="$port"/>
+      <param description="if true, establish a secure connection" type="boolean" variable="$secure">using TLS.</param>
+      <access value="public"/>
+    </docblock>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="{unknown}"/>
+    <parameter name="secure" byreference="false" type="boolean" default="false"/>
+  </method>
+</class>

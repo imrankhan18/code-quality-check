@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Svn" namespace="Composer\Util" name="Svn" abstract="false" final="false" start="23" end="389">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Svn.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Svn.php" size="10435" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="e439cded3d3f91a94c43f77c4441ebff67abe604" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Svn.php"/>
+  <docblock>
+    <description/>
+    <author value="Till Klampaeckel &lt;till@php.net&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <constant type="integer" name="MAX_QTY_AUTH_TRIES" value="5"/>
+  <member name="credentials" visibility="protected" static="false" line="30">
+    <docblock>
+      <description/>
+      <var description="string, password: string}" type="object">
+        <type full="Composer\Util\?array{username:" namespace="Composer\Util" name="?array{username:"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="hasAuth" visibility="protected" static="false" line="35">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="io" visibility="protected" static="false" line="40">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="\Composer\IO\IOInterface" namespace="\Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="url" visibility="protected" static="false" line="45">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="cacheCredentials" default="true" type="boolean" visibility="protected" static="false" line="50">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="process" visibility="protected" static="false" line="55">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="qtyAuthTries" default="0" type="integer" visibility="protected" static="false" line="60">
+    <docblock>
+      <description/>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="config" visibility="protected" static="false" line="65">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="\Composer\Config" namespace="\Composer" name="Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="version" visibility="private" static="true" line="70">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="78" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$url"/>
+      <param type="object" variable="$io">
+        <type full="\Composer\IO\IOInterface" namespace="\Composer\IO" name="IOInterface"/>
+      </param>
+      <param type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param type="object" variable="$process">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </param>
+    </docblock>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="process" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+  </constructor>
+  <method name="cleanEnv" start="89" end="93" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="clean up env for OSX, see https://github.com/composer/composer/issues/2146#issuecomment-35478940" line="91"/>
+    </inline>
+  </method>
+  <method name="execute" start="108" end="114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Execute an SVN remote command and try to fix up the process with credentials if necessary."/>
+      <param description="SVN command to run" type="string" variable="$command"/>
+      <param description="SVN url" type="string" variable="$url"/>
+      <param description="Working directory" type="object" variable="$cwd">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </param>
+      <param description="Target for a checkout" type="object" variable="$path">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </param>
+      <param description="Output all output to the user" type="object" variable="$verbose">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="command" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="cwd" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="path" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="verbose" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="Ensure we are allowed to use this URL by config" line="110"/>
+    </inline>
+  </method>
+  <method name="executeLocal" start="128" end="132" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Execute an SVN local command and try to fix up the process with credentials if necessary."/>
+      <param description="SVN command to run" type="string" variable="$command"/>
+      <param description="Path argument passed thru to the command" type="string" variable="$path"/>
+      <param description="Working directory" type="string" variable="$cwd"/>
+      <param description="Output all output to the user" type="object" variable="$verbose">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="command" byreference="false" type="string"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="cwd" byreference="false" type="string" default="NULL"/>
+    <parameter name="verbose" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="A local command has no remote url" line="130"/>
+    </inline>
+  </method>
+  <method name="executeWithAuthRetry" start="134" end="182" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="true"/>
+    <parameter name="svnCommand" byreference="false" type="string"/>
+    <parameter name="cwd" byreference="false" nullable="true" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="path" byreference="false" nullable="true" type="string"/>
+    <parameter name="verbose" byreference="false" type="bool"/>
+    <inline>
+      <comment value="Regenerate the command at each try, to use the newly user-provided credentials" line="136"/>
+      <comment value="the error is not auth-related" line="161"/>
+      <comment value="try to authenticate if maximum quantity of tries not reached" line="173"/>
+    </inline>
+  </method>
+  <method name="setCacheCredentials" start="188" end="191" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$cacheCredentials">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="cacheCredentials" byreference="false" type="bool"/>
+  </method>
+  <method name="doAuthDance" start="199" end="219" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Repositories requests credentials, let's put them in."/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="object">
+        <type full="\Composer\Util\Svn" namespace="\Composer\Util" name="Svn"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\Svn" namespace="Composer\Util" name="Svn"/>
+    </return>
+    <inline>
+      <comment value="cannot ask for credentials in non interactive mode" line="201"/>
+    </inline>
+  </method>
+  <method name="getCommand" start="230" end="245" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="A method to create the svn commands run."/>
+      <param description="Usually 'svn ls' or something like that." type="string" variable="$cmd"/>
+      <param description="Repo URL." type="string" variable="$url"/>
+      <param description="Target for a checkout" type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="cmd" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="path" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="getCredentialString" start="254" end="266" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Return the credential string for the svn command.">Adds --no-auth-cache when credentials are present.</description>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getPassword" start="274" end="281" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Get the password for the svn command. Can be empty."/>
+      <throws type="object">
+        <type full="\LogicException" namespace="" name="LogicException"/>
+      </throws>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getUsername" start="289" end="296" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Get the username for the svn command."/>
+      <throws type="object">
+        <type full="\LogicException" namespace="" name="LogicException"/>
+      </throws>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="hasAuth" start="303" end="314" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Detect Svn Auth."/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getAuthCache" start="321" end="324" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Return the no-auth-cache switch."/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="createAuthFromConfig" start="331" end="350" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Create the auth params from the configuration file."/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="createAuthFromUrl" start="357" end="370" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Create the auth params from the url"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="binaryVersion" start="377" end="388" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the version of the svn binary contained in PATH"/>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+  </method>
+</class>

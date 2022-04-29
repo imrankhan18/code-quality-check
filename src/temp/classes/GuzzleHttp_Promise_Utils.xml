@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Promise\Utils" namespace="GuzzleHttp\Promise" name="Utils" abstract="false" final="true" start="5" end="276">
+  <file path="//var/www/html/vendor/guzzlehttp/promises/src" file="Utils.php" realpath="/var/www/html/vendor/guzzlehttp/promises/src/Utils.php" size="8704" time="2021-10-22T20:56:57+00:00" unixtime="1634936217" sha1="62451509598e2f760b8f1a1499babfb8a6a56091" relative="ar/www/html/vendor/guzzlehttp/promises/src/Utils.php"/>
+  <method name="queue" start="24" end="35" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get the global task queue used for promise resolution.">This task queue MUST be run in an event loop in order for promises to be
+settled asynchronously. It will be automatically run when synchronously
+waiting on a promise.
+
+&lt;code&gt;
+while ($eventLoop-&gt;isRunning()) {
+    GuzzleHttp\Promise\Utils::queue()-&gt;run();
+}
+&lt;/code&gt;</description>
+      <param description="Optionally specify a new queue instance." type="object" variable="$assign">
+        <type full="GuzzleHttp\Promise\TaskQueueInterface" namespace="GuzzleHttp\Promise" name="TaskQueueInterface"/>
+      </param>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\TaskQueueInterface" namespace="GuzzleHttp\Promise" name="TaskQueueInterface"/>
+      </return>
+    </docblock>
+    <parameter name="assign" byreference="false" type="object" default="NULL">
+      <type full="GuzzleHttp\Promise\TaskQueueInterface" namespace="GuzzleHttp\Promise" name="TaskQueueInterface"/>
+    </parameter>
+  </method>
+  <method name="task" start="45" end="62" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Adds a function to run in the task queue when it is next `run()` and returns a promise that is fulfilled or rejected with the result."/>
+      <param description="Task function to run." type="object" variable="$task">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="task" byreference="false" type="callable"/>
+  </method>
+  <method name="inspect" start="78" end="92" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Synchronously waits on a promise to resolve and returns an inspection state array.">Returns a state associative array containing a "state" key mapping to a
+valid promise state. If the state of the promise is "fulfilled", the
+array will contain a "value" key mapping to the fulfilled value of the
+promise. If the promise is rejected, the array will contain a "reason"
+key mapping to the rejection reason of the promise.</description>
+      <param description="Promise or value." type="object" variable="$promise">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="promise" byreference="false" type="object">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </parameter>
+  </method>
+  <method name="inspectAll" start="106" end="114" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Waits on all of the provided promises, but does not unwrap rejected promises as thrown exception.">Returns an array of inspection state arrays.</description>
+      <see value="inspect for the inspection state array format."/>
+      <param description="Traversable of promises to wait upon." type="array" variable="$promises" of="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="promises" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="unwrap" start="130" end="138" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Waits on all of the provided promises and returns the fulfilled values.">Returns an array that contains the value of each promise (in the same
+order the promises were provided). An exception is thrown if any of the
+promises are rejected.</description>
+      <param description="Iterable of PromiseInterface objects to wait on." type="object" variable="$promises">
+        <type full="GuzzleHttp\Promise\iterable&lt;PromiseInterface&gt;" namespace="GuzzleHttp\Promise" name="iterable&lt;PromiseInterface&gt;"/>
+      </param>
+      <return type="array"/>
+      <throws description="on error" type="object">
+        <type full="\Exception" namespace="" name="Exception"/>
+      </throws>
+      <throws description="on error in PHP &gt;=7" type="object">
+        <type full="\Throwable" namespace="" name="Throwable"/>
+      </throws>
+    </docblock>
+    <parameter name="promises" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="all" start="153" end="181" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Given an array of promises, return a promise that is fulfilled when all the items in the array are fulfilled.">The promise's fulfillment value is an array with fulfillment values at
+respective positions to the original array. If any promise in the array
+rejects, the returned promise is rejected with the rejection reason.</description>
+      <param description="Promises or values." type="mixed" variable="$promises"/>
+      <param description="If true, resolves new promises that might have been added to the stack during its own resolution." type="object" variable="$recursive">
+        <type full="GuzzleHttp\Promise\bool" namespace="GuzzleHttp\Promise" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="promises" byreference="false" type="{unknown}"/>
+    <parameter name="recursive" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="some" start="199" end="230" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Initiate a competitive race between multiple promises or values (values will become immediately fulfilled promises).">When count amount of promises have been fulfilled, the returned promise
+is fulfilled with an array that contains the fulfillment values of the
+winners in order of resolution.
+This promise is rejected with a <see xmlns="http://xml.phpdox.net/src" value="AggregateException"/> if the number
+of fulfilled promises is less than the desired $count.
+</description>
+      <param description="Total number of promises." type="int" variable="$count"/>
+      <param description="Promises or values." type="mixed" variable="$promises"/>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="count" byreference="false" type="{unknown}"/>
+    <parameter name="promises" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="any" start="240" end="245" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Like some(), with 1 as count. However, if the promise fulfills, the fulfillment value is not an array of 1 but the value directly."/>
+      <param description="Promises or values." type="mixed" variable="$promises"/>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="promises" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="settle" start="259" end="275" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns a promise that is fulfilled when all of the provided promises have been fulfilled or rejected.">The returned promise is fulfilled with an array of inspection state arrays.</description>
+      <see value="inspect for the inspection state array format."/>
+      <param description="Promises or values." type="mixed" variable="$promises"/>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="promises" byreference="false" type="{unknown}"/>
+  </method>
+</class>

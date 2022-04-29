@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Perforce" namespace="Composer\Util" name="Perforce" abstract="false" final="false" start="24" end="753">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Perforce.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Perforce.php" size="21101" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="ea2c6f09bb6b14b09c71a98718f4f7f2a4873d9a" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Perforce.php"/>
+  <docblock>
+    <description/>
+    <author value="Matt Whittom &lt;Matt.Whittom@veteransunited.com&gt;"/>
+    <phpstan value="-type RepoConfig array{unique_perforce_client_name?: string, depot?: string, branch?: string, p4user?: string, p4password?: string}"/>
+  </docblock>
+  <member name="path" visibility="protected" static="false" line="27">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="p4Depot" visibility="protected" static="false" line="29">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="p4Client" visibility="protected" static="false" line="31">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="p4User" visibility="protected" static="false" line="33">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="p4Password" visibility="protected" static="false" line="35">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="p4Port" visibility="protected" static="false" line="37">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="p4Stream" visibility="protected" static="false" line="39">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="p4ClientSpec" visibility="protected" static="false" line="41">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="p4DepotType" visibility="protected" static="false" line="43">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="p4Branch" visibility="protected" static="false" line="45">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="process" visibility="protected" static="false" line="47">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="uniquePerforceClientName" visibility="protected" static="false" line="49">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="windowsFlag" visibility="protected" static="false" line="51">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="commandResult" visibility="protected" static="false" line="53">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="io" visibility="protected" static="false" line="56">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="filesystem" visibility="protected" static="false" line="59">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?Filesystem" namespace="Composer\Util" name="?Filesystem"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="69" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <phpstan value="-param RepoConfig $repoConfig"/>
+      <param type="string" variable="$port"/>
+      <param type="string" variable="$path"/>
+      <param type="object" variable="$process">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </param>
+      <param type="object" variable="$isWindows">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+    </docblock>
+    <parameter name="repoConfig" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="string"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="process" byreference="false" type="object">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+    <parameter name="isWindows" byreference="false" type="bool"/>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </constructor>
+  <method name="create" start="88" end="91" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <phpstan value="-param RepoConfig $repoConfig"/>
+      <param type="string" variable="$port"/>
+      <param type="string" variable="$path"/>
+      <param type="object" variable="$process">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </param>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <return resolution="self" type="object">
+        <type full="Composer\Util\Perforce" namespace="Composer\Util" name="Perforce"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\Perforce" namespace="Composer\Util" name="Perforce"/>
+    </return>
+    <parameter name="repoConfig" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="string"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="process" byreference="false" type="object">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </method>
+  <method name="checkServerExists" start="99" end="102" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$url"/>
+      <param type="object" variable="$processExecutor">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="processExecutor" byreference="false" type="object">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+  </method>
+  <method name="initialize" start="109" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <phpstan value="-param RepoConfig $repoConfig"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="repoConfig" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="initializeDepotAndBranch" start="141" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$depot">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </param>
+      <param type="object" variable="$branch">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="depot" byreference="false" nullable="true" type="string"/>
+    <parameter name="branch" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="generateUniquePerforceClientName" start="154" end="157" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\non-empty-string" namespace="Composer\Util" name="non-empty-string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="cleanupClientSpec" start="162" end="172" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="executeCommand" start="179" end="184" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="object" variable="$command">
+        <type full="Composer\Util\non-empty-string" namespace="Composer\Util" name="non-empty-string"/>
+      </param>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getClient" start="189" end="197" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getPath" start="202" end="205" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="initializePath" start="212" end="217" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="getPort" start="222" end="225" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="setStream" start="232" end="240" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$stream"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="stream" byreference="false" type="string"/>
+    <inline>
+      <comment value="Stream format is //depot/stream, while non-streaming depot is //depot" line="236"/>
+    </inline>
+  </method>
+  <method name="isStream" start="245" end="248" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getStream" start="253" end="264" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getStreamWithoutLabel" start="271" end="279" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$stream"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="stream" byreference="false" type="string"/>
+  </method>
+  <method name="getP4ClientSpec" start="284" end="287" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\non-empty-string" namespace="Composer\Util" name="non-empty-string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getUser" start="292" end="295" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="setUser" start="302" end="305" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$user">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="user" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="queryP4User" start="310" end="327" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="getP4variable" start="333" end="363" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Util\?string" namespace="Composer\Util" name="?string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="queryP4Password" start="368" end="380" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="generateP4Command" start="388" end="398" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$command"/>
+      <param type="object" variable="$useClient">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\non-empty-string" namespace="Composer\Util" name="non-empty-string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="command" byreference="false" type="string"/>
+    <parameter name="useClient" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="isLoggedIn" start="403" end="421" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="connectClient" start="426" end="432" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="syncCodeBase" start="439" end="449" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$sourceReference">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="sourceReference" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="writeClientSpecToFile" start="456" end="477" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$spec">
+        <type full="Composer\Util\resource|false" namespace="Composer\Util" name="resource|false"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="spec" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="writeP4ClientSpec" start="482" end="493" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="read" start="501" end="510" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="resource" variable="$pipe"/>
+      <param type="mixed" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="pipe" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="windowsLogin" start="517" end="524" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$password">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </param>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="password" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="p4Login" start="529" end="544" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="getComposerInformation" start="551" end="560" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$identifier"/>
+      <return type="array" of="object">
+        <type full="Composer\Util\mixed[]|nu" namespace="Composer\Util" name="mixed[]|nu"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="true"/>
+    <parameter name="identifier" byreference="false" type="string"/>
+  </method>
+  <method name="getFileContent" start="568" end="581" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$identifier"/>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="identifier" byreference="false" type="string"/>
+  </method>
+  <method name="getFilePath" start="589" end="612" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$identifier"/>
+      <return type="object">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="identifier" byreference="false" type="string"/>
+  </method>
+  <method name="getBranches" start="617" end="644" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="string}" type="object">
+        <type full="Composer\Util\array{master:" namespace="Composer\Util" name="array{master:"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getTags" start="649" end="664" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="string&gt;" type="object">
+        <type full="Composer\Util\array&lt;string" namespace="Composer\Util" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="checkStream" start="669" end="687" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getChangeList" start="693" end="709" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$reference"/>
+      <return type="object">
+        <type full="Composer\Util\mixed|null" namespace="Composer\Util" name="mixed|null"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+    </return>
+    <parameter name="reference" byreference="false" type="string"/>
+  </method>
+  <method name="getCommitLogs" start="716" end="732" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$fromReference"/>
+      <param type="string" variable="$toReference"/>
+      <return type="object">
+        <type full="Composer\Util\mixed|null" namespace="Composer\Util" name="mixed|null"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\mixed" namespace="Composer\Util" name="mixed"/>
+    </return>
+    <parameter name="fromReference" byreference="false" type="string"/>
+    <parameter name="toReference" byreference="false" type="string"/>
+  </method>
+  <method name="getFilesystem" start="737" end="744" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </return>
+  </method>
+  <method name="setFilesystem" start="749" end="752" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="fs" byreference="false" type="object">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+  </method>
+</class>

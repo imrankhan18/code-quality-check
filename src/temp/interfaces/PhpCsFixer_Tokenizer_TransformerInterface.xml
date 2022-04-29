@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Tokenizer\TransformerInterface" namespace="PhpCsFixer\Tokenizer" name="TransformerInterface" abstract="false" final="false" start="29" end="68">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer" file="TransformerInterface.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/TransformerInterface.php" size="1938" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="f6d3ded08b613d8251c6ee20bdf085bbd4e95b42" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/TransformerInterface.php"/>
+  <docblock>
+    <description compact="Interface for Transformer class.">Transformer role is to register custom tokens and transform Tokens collection to use them.
+
+Custom token is a user defined token type and is used to separate different meaning of original token type.
+For example T_ARRAY is a token for both creating new array and typehinting a parameter. This two meaning should have two token types.</description>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <method name="getCustomTokens" start="36" end="36" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get tokens created by Transformer."/>
+      <return type="array" of="object">
+        <type full="PhpCsFixer\Tokenizer\int" namespace="PhpCsFixer\Tokenizer" name="int"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getName" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return the name of the transformer.">The name must be all lowercase and without any spaces.</description>
+      <return description="The name of the fixer" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getPriority" start="52" end="52" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the priority of the transformer.">The default priority is 0 and higher priorities are executed first.</description>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getRequiredPhpVersionId" start="62" end="62" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return minimal required PHP version id to transform the code.">Custom Token kinds from Transformers are always registered, but sometimes
+there is no need to analyse the Tokens if for sure we cannot find examined
+token kind, e.g. transforming `T_FUNCTION` in `&lt;?php use function Foo\\bar;`
+code.</description>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="process" start="67" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Process Token to transform it into custom token when needed."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <implementors>
+    <class full="PhpCsFixer\Tokenizer\Transformer\NullableTypeTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="NullableTypeTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\ArrayTypehintTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="ArrayTypehintTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\NamespaceOperatorTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="NamespaceOperatorTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\TypeIntersectionTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="TypeIntersectionTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\WhitespacyCommentTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="WhitespacyCommentTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\ConstructorPromotionTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="ConstructorPromotionTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\TypeAlternationTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="TypeAlternationTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\SquareBraceTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="SquareBraceTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\UseTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="UseTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\TypeColonTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="TypeColonTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\CurlyBraceTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="CurlyBraceTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\FirstClassCallableTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="FirstClassCallableTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\ImportTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="ImportTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\NameQualifiedTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="NameQualifiedTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\ReturnRefTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="ReturnRefTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\NamedArgumentTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="NamedArgumentTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\AttributeTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="AttributeTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\BraceClassInstantiationTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="BraceClassInstantiationTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\Transformer\ClassConstantTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="ClassConstantTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\AbstractTransformer" namespace="PhpCsFixer\Tokenizer" name="AbstractTransformer"/>
+    <class full="PhpCsFixer\Tokenizer\AbstractTypeTransformer" namespace="PhpCsFixer\Tokenizer" name="AbstractTypeTransformer"/>
+  </implementors>
+</interface>

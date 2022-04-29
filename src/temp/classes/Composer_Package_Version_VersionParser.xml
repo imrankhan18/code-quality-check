@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Package\Version\VersionParser" namespace="Composer\Package\Version" name="VersionParser" abstract="false" final="false" start="21" end="100">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Package/Version" file="VersionParser.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Package/Version/VersionParser.php" size="3309" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="bff0f6498ee200cb49e01c424ab0ed956dee5fa5" relative="ar/www/html/vendor/composer/composer/src/Composer/Package/Version/VersionParser.php"/>
+  <extends full="Composer\Semver\VersionParser" namespace="Composer\Semver" name="VersionParser"/>
+  <constant type="string" name="DEFAULT_BRANCH_ALIAS" value="'9999999-dev'"/>
+  <member name="constraints" default="" type="array" visibility="private" static="true" line="26">
+    <docblock>
+      <var description="ConstraintInterface&gt; Constraint parsing cache" type="object">
+        <type full="Composer\Package\Version\array&lt;string" namespace="Composer\Package\Version" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="parseConstraints" start="31" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </return>
+    <parameter name="constraints" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="parseNameVersionPairs" start="50" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Parses an array of strings representing package/version pairs.">The parsing results in an array of arrays, each of which
+contain a 'name' key with value and optionally a 'version' key with value.</description>
+      <param description="a set of package/version pairs separated by &quot;:&quot;, &quot;=&quot; or &quot; &quot;" type="array" variable="$pairs" of="object">
+        <type full="Composer\Package\Version\string" namespace="Composer\Package\Version" name="string"/>
+      </param>
+      <return description="string, version?: string}&gt;" type="object">
+        <type full="Composer\Package\Version\list&lt;array{name:" namespace="Composer\Package\Version" name="list&lt;array{name:"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="pairs" byreference="false" type="array"/>
+  </method>
+  <method name="isUpgrade" start="79" end="99" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$normalizedFrom"/>
+      <param type="string" variable="$normalizedTo"/>
+      <return type="object">
+        <type full="Composer\Package\Version\bool" namespace="Composer\Package\Version" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="normalizedFrom" byreference="false" type="string"/>
+    <parameter name="normalizedTo" byreference="false" type="string"/>
+  </method>
+  <parent full="Composer\Semver\VersionParser" namespace="Composer\Semver" name="VersionParser">
+    <method name="parseStability" start="52" end="79" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Returns the stability of a version."/>
+        <param type="string" variable="$version"/>
+        <return type="string"/>
+        <phpstan value="-return 'stable'|'RC'|'beta'|'alpha'|'dev'"/>
+      </docblock>
+      <parameter name="version" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="normalizeStability" start="86" end="91" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <param type="string" variable="$stability"/>
+        <return type="string"/>
+      </docblock>
+      <parameter name="stability" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="normalize" start="103" end="187" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Normalizes a version string to be able to perform comparisons on it."/>
+        <param type="string" variable="$version"/>
+        <param description="optional complete version string to give more context" type="object" variable="$fullVersion">
+          <type full="Composer\Semver\?string" namespace="Composer\Semver" name="?string"/>
+        </param>
+        <throws type="object">
+          <type full="\UnexpectedValueException" namespace="" name="UnexpectedValueException"/>
+        </throws>
+        <return type="string"/>
+      </docblock>
+      <parameter name="version" byreference="false" type="{unknown}"/>
+      <parameter name="fullVersion" byreference="false" type="{unknown}" default="NULL"/>
+      <inline>
+        <comment value="strip off aliasing" line="111"/>
+        <comment value="strip off stability flag" line="116"/>
+        <comment value="normalize master/trunk/default branches to dev-name for BC with 1.x as these used to be valid constraints" line="121"/>
+        <comment value="if requirement is branch-like, use full name" line="126"/>
+        <comment value="strip off build metadata" line="131"/>
+        <comment value="match classical versioning" line="136"/>
+        <comment value="add version modifiers if a version was matched" line="149"/>
+        <comment value="match dev branches" line="165"/>
+      </inline>
+    </method>
+    <method name="parseNumericAliasPrefix" start="196" end="203" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Extract numeric prefix from alias, if it is in numeric format, suitable for version comparison."/>
+        <param description="Branch name (e.g. 2.1.x-dev)" type="string" variable="$branch"/>
+        <return description="Numeric prefix if present (e.g. 2.1.) or false" type="object">
+          <type full="Composer\Semver\string|false" namespace="Composer\Semver" name="string|false"/>
+        </return>
+      </docblock>
+      <parameter name="branch" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="normalizeBranch" start="212" end="226" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Normalizes a branch name to be able to perform comparisons on it."/>
+        <param type="string" variable="$name"/>
+        <return type="string"/>
+      </docblock>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="normalizeDefaultBranch" start="237" end="244" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Normalizes a default branch name (i.e. master on git) to 9999999-dev."/>
+        <param type="string" variable="$name"/>
+        <return type="string"/>
+        <deprecated value="No need to use this anymore in theory, Composer 2 does not normalize any branch names to 9999999-dev anymore"/>
+      </docblock>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="parseConstraints" start="253" end="293" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Parses a constraint string into MultiConstraint and/or Constraint objects."/>
+        <param type="string" variable="$constraints"/>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+        </return>
+      </docblock>
+      <parameter name="constraints" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

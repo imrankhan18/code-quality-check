@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MongoDB\Operation\Watch::__construct</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#MongoDB_Operation">MongoDB\Operation</a>
+          </li>
+          <li class="separator">
+            <a title="MongoDB\Operation\Watch" href="../../classes/MongoDB_Operation_Watch.xhtml">Watch</a>
+          </li>
+          <li class="separator">__construct</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
+            <a href="../../source/ar/www/html/vendor/mongodb/mongodb/src/Operation/Watch.php.xhtml#line169">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>MongoDB\Operation\Watch::</small>__construct</h1>
+        <h4>Constructs an aggregate command for creating a change stream.</h4>
+        <p>Supported options:
+
+ * batchSize (integer): The number of documents to return per batch.
+
+ * collation (document): Specifies a collation.
+
+ * fullDocument (string): Determines whether the "fullDocument" field
+   will be populated for update operations. By default, change streams
+   only return the delta of fields during the update operation (via the
+   "updateDescription" field). To additionally return the most current
+   majority-committed version of the updated document, specify
+   "updateLookup" for this option. Defaults to "default".
+
+   Insert and replace operations always include the "fullDocument" field
+   and delete operations omit the field as the document no longer exists.
+
+ * maxAwaitTimeMS (integer): The maximum amount of time for the server to
+   wait on new documents to satisfy a change stream query.
+
+ * readConcern (MongoDB\Driver\ReadConcern): Read concern.
+
+ * readPreference (MongoDB\Driver\ReadPreference): Read preference. This
+   will be used to select a new server when resuming. Defaults to a
+   "primary" read preference.
+
+ * resumeAfter (document): Specifies the logical starting point for the
+   new change stream.
+
+   Using this option in conjunction with "startAfter" and/or
+   "startAtOperationTime" will result in a server error. The options are
+   mutually exclusive.
+
+ * session (MongoDB\Driver\Session): Client session.
+
+ * startAfter (document): Specifies the logical starting point for the
+   new change stream. Unlike "resumeAfter", this option can be used with
+   a resume token from an "invalidate" event.
+
+   Using this option in conjunction with "resumeAfter" and/or
+   "startAtOperationTime" will result in a server error. The options are
+   mutually exclusive.
+
+ * startAtOperationTime (MongoDB\BSON\TimestampInterface): If specified,
+   the change stream will only provide changes that occurred at or after
+   the specified timestamp. Any command run against the server will
+   return an operation time that can be used here. Alternatively, an
+   operation time may be obtained from MongoDB\Driver\Server::getInfo().
+
+   Using this option in conjunction with "resumeAfter" and/or
+   "startAfter" will result in a server error. The options are mutually
+   exclusive.
+
+   This option is not supported for server versions &lt; 4.0.
+
+ * typeMap (array): Type map for BSON deserialization. This will be
+   applied to the returned Cursor (it is not sent to the server).
+
+Note: A database-level change stream may be created by specifying null
+for the collection name. A cluster-level change stream may be created by
+specifying null for both the database and collection name.</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function __construct(<a title="MongoDB\Driver\Manager" href="../../classes/MongoDB_Driver_Manager.xhtml">Manager</a>
+        $manager,
+            <a title="MongoDB\Operation\string|null" href="../../classes/MongoDB_Operation_string|null.xhtml">string|null</a>
+        $databaseName,
+            <a title="MongoDB\Operation\string|null" href="../../classes/MongoDB_Operation_string|null.xhtml">string|null</a>
+        $collectionName,
+            array
+        $pipeline,
+            [array
+        $options = ] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$manager</code>
+                —
+                <a title="MongoDB\Driver\Manager" href="../../classes/MongoDB_Driver_Manager.xhtml">MongoDB\Driver\Manager</a></dt>
+          <dd>Manager instance from the driver<br/><br/><br/>      </dd>
+          <dt><code>$databaseName</code>
+                —
+                object</dt>
+          <dd>Database name<br/><br/><br/>      </dd>
+          <dt><code>$collectionName</code>
+                —
+                object</dt>
+          <dd>Collection name<br/><br/><br/>      </dd>
+          <dt><code>$pipeline</code>
+                —
+                array</dt>
+          <dd>List of pipeline operations</dd>
+          <dt><code>$options</code>
+                —
+                array</dt>
+          <dd>Command options</dd>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="MongoDB\Exception\InvalidArgumentException" href="../../classes/MongoDB_Exception_InvalidArgumentException.xhtml">InvalidArgumentException</a>
+            </code>
+          </dt>
+          <dd>for parameter/option parsing errors</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

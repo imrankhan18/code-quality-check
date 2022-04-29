@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Config" namespace="Composer" name="Config" abstract="false" final="false" start="25" end="657">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer" file="Config.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Config.php" size="23986" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="8d2d33ee8b973b32ce24e7867c610544d7987cea" relative="ar/www/html/vendor/composer/composer/src/Composer/Config.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <constant type="string" name="SOURCE_DEFAULT" value="'default'"/>
+  <constant type="string" name="SOURCE_COMMAND" value="'command'"/>
+  <constant type="string" name="SOURCE_UNKNOWN" value="'unknown'"/>
+  <constant type="integer" name="RELATIVE_PATHS" value="1"/>
+  <member name="defaultConfig" default="" type="array" visibility="public" static="true" line="34">
+    <docblock>
+      <var description="mixed&gt;" type="object">
+        <type full="Composer\array&lt;string" namespace="Composer" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="defaultRepositories" default="" type="array" visibility="public" static="true" line="89">
+    <docblock>
+      <var description="mixed&gt;" type="object">
+        <type full="Composer\array&lt;string" namespace="Composer" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="private" static="false" line="97">
+    <docblock>
+      <var description="mixed&gt;" type="object">
+        <type full="Composer\array&lt;string" namespace="Composer" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="baseDir" visibility="private" static="false" line="99">
+    <docblock>
+      <var type="object">
+        <type full="Composer\?string" namespace="Composer" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="repositories" visibility="private" static="false" line="101">
+    <docblock>
+      <var description="mixed&gt;" type="object">
+        <type full="Composer\array&lt;int|string" namespace="Composer" name="array&lt;int|string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="configSource" visibility="private" static="false" line="103">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="authConfigSource" visibility="private" static="false" line="105">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="useEnvironment" visibility="private" static="false" line="107">
+    <docblock>
+      <var type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="warnedHosts" default="" type="array" visibility="private" static="false" line="109">
+    <docblock>
+      <var description="true&gt;" type="object">
+        <type full="Composer\array&lt;string" namespace="Composer" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="sslVerifyWarnedHosts" default="" type="array" visibility="private" static="false" line="111">
+    <docblock>
+      <var description="true&gt;" type="object">
+        <type full="Composer\array&lt;string" namespace="Composer" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="sourceOfConfigValue" default="" type="array" visibility="private" static="false" line="113">
+    <docblock>
+      <var description="string&gt;" type="object">
+        <type full="Composer\array&lt;string" namespace="Composer" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="119" end="140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Use COMPOSER_ environment variables to replace config settings" type="object" variable="$useEnvironment">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </param>
+      <param description="Optional base directory of the config" type="object" variable="$baseDir">
+        <type full="Composer\?string" namespace="Composer" name="?string"/>
+      </param>
+    </docblock>
+    <parameter name="useEnvironment" byreference="false" type="boolean" default="true"/>
+    <parameter name="baseDir" byreference="false" nullable="true" type="string" default="NULL"/>
+    <inline>
+      <comment value="load defaults" line="121"/>
+      <todo value="after July 2022 remove this and update the default value above in self::$defaultConfig + remove note from 06-config.md" line="124"/>
+    </inline>
+  </constructor>
+  <method name="setConfigSource" start="145" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="source" byreference="false" type="object">
+      <type full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface"/>
+    </parameter>
+  </method>
+  <method name="getConfigSource" start="153" end="156" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface"/>
+    </return>
+  </method>
+  <method name="setAuthConfigSource" start="161" end="164" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="source" byreference="false" type="object">
+      <type full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface"/>
+    </parameter>
+  </method>
+  <method name="getAuthConfigSource" start="169" end="172" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Config\ConfigSourceInterface" namespace="Composer\Config" name="ConfigSourceInterface"/>
+    </return>
+  </method>
+  <method name="merge" start="182" end="263" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Merges new config values with the existing ones (overriding)"/>
+      <param description="array&lt;string mixed&gt;, repositories?: array&lt;mixed&gt;} $config" type="object">
+        <type full="Composer\array{config?:" namespace="Composer" name="array{config?:"/>
+      </param>
+      <param type="string" variable="$source"/>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="config" byreference="false" type="array"/>
+    <parameter name="source" byreference="false" type="{unknown}" default="" constant="self::SOURCE_UNKNOWN"/>
+    <inline>
+      <comment value="override defaults with given config" line="184"/>
+    </inline>
+  </method>
+  <method name="getRepositories" start="268" end="271" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="mixed&gt;" type="object">
+        <type full="Composer\array&lt;int|string" namespace="Composer" name="array&lt;int|string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="get" start="282" end="444" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns a setting"/>
+      <param type="string" variable="$key"/>
+      <param description="Options (see class constants)" type="int" variable="$flags"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="key" byreference="false" type="string"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="all" start="451" end="461" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$flags"/>
+      <return description="mixed[]&gt;" type="object">
+        <type full="Composer\array&lt;string" namespace="Composer" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="flags" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="getSourceOfValue" start="467" end="472" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$key"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="key" byreference="false" type="string"/>
+  </method>
+  <method name="setSourceOfConfigValue" start="481" end="490" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$configValue"/>
+      <param type="string" variable="$path"/>
+      <param type="string" variable="$source"/>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="configValue" byreference="false" type="{unknown}"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="source" byreference="false" type="string"/>
+  </method>
+  <method name="raw" start="495" end="501" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="mixed[]&gt;" type="object">
+        <type full="Composer\array&lt;string" namespace="Composer" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="has" start="509" end="512" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Checks whether a setting exists"/>
+      <param type="string" variable="$key"/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="key" byreference="false" type="string"/>
+  </method>
+  <method name="process" start="522" end="531" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Replaces {$refs} inside a config string"/>
+      <param description="a config string that can contain {$refs-to-other-config}" type="object" variable="$value">
+        <type full="Composer\string|mixed" namespace="Composer" name="string|mixed"/>
+      </param>
+      <param description="Options (see class constants)" type="int" variable="$flags"/>
+      <return type="object">
+        <type full="Composer\string|mixed" namespace="Composer" name="string|mixed"/>
+      </return>
+    </docblock>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="flags" byreference="false" type="int"/>
+  </method>
+  <method name="realpath" start="541" end="548" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Turns relative paths in absolute paths without realpath()">Since the dirs might not exist yet we can not call realpath or it will fail.</description>
+      <param type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="getComposerEnv" start="559" end="566" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Reads the value of a Composer environment variable">This should be used to read COMPOSER_ environment variables
+that overload config values.</description>
+      <param type="string" variable="$var"/>
+      <return type="object">
+        <type full="Composer\string|bool" namespace="Composer" name="string|bool"/>
+      </return>
+    </docblock>
+    <parameter name="var" byreference="false" type="string"/>
+  </method>
+  <method name="disableRepoByName" start="573" end="580" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="prohibitUrlByConfig" start="591" end="638" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Validates that the passed URL is allowed to be used by current config, or throws an exception."/>
+      <param type="string" variable="$url"/>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param type="array" variable="$repoOptions" of="object">
+        <type full="Composer\mixed" namespace="Composer" name="mixed"/>
+      </param>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="io" byreference="false" type="object" default="NULL">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="repoOptions" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="Return right away if the URL is malformed or custom (see issue #5173)" line="593"/>
+      <comment value="Extract scheme and throw exception on known insecure protocols" line="598"/>
+    </inline>
+  </method>
+  <method name="disableProcessTimeout" start="652" end="656" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Used by long-running custom scripts in composer.json">"scripts": {
+  "watch": [
+    "Composer\\Config::disableProcessTimeout",
+    "vendor/bin/long-running-script --watch"
+  ]
+}</description>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <inline>
+      <comment value="Override global timeout set earlier by environment or config" line="654"/>
+    </inline>
+  </method>
+</class>

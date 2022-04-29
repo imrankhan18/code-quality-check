@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Semver\Intervals" namespace="Composer\Semver" name="Intervals" abstract="false" final="false" start="32" end="478">
+  <file path="//var/www/html/vendor/composer/semver/src" file="Intervals.php" realpath="/var/www/html/vendor/composer/semver/src/Intervals.php" size="20380" time="2022-04-01T19:23:25+00:00" unixtime="1648841005" sha1="7422d5459c9d2940adb1d5e3ebe84e0c9ade080c" relative="ar/www/html/vendor/composer/semver/src/Intervals.php"/>
+  <docblock>
+    <description compact="Helper class generating intervals from constraints">This contains utilities for:
+
+ - compacting an existing constraint which can be used to combine several into one
+by creating a MultiConstraint out of the many constraints you have.
+
+ - checking whether one subset is a subset of another.
+
+Note: You should call clear to free memoization memory  usage when you are done using this class</description>
+  </docblock>
+  <member name="intervalsCache" default="" type="array" visibility="private" static="true" line="37">
+    <docblock>
+      <description/>
+      <phpstan value="-var array&lt;string, array{'numeric': Interval[], 'branches': array{'names': string[], 'exclude': bool}}&gt;"/>
+    </docblock>
+  </member>
+  <member name="opSortOrder" default="" type="array" visibility="private" static="true" line="42">
+    <docblock>
+      <description/>
+      <phpstan value="-var array&lt;string, int&gt;"/>
+    </docblock>
+  </member>
+  <method name="clear" start="54" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Clears the memoization cache once you are done"/>
+      <return type="object">
+        <type full="Composer\Semver\void" namespace="Composer\Semver" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="isSubsetOf" start="64" end="107" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Checks whether $candidate is a subset of $constraint"/>
+      <return type="object">
+        <type full="Composer\Semver\bool" namespace="Composer\Semver" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="candidate" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="haveIntersections" start="114" end="127" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Checks whether $a and $b have any intersection, equivalent to $a-&gt;matches($b)"/>
+      <return type="object">
+        <type full="Composer\Semver\bool" namespace="Composer\Semver" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="a" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <parameter name="b" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="compactConstraint" start="139" end="260" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Attempts to optimize a MultiConstraint">When merging MultiConstraints together they can get very large, this will
+compact it by looking at the real intervals covered by all the constraints
+and then creates a new constraint containing only the smallest amount of rules
+to match the same intervals.</description>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </return>
+    </docblock>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="get" start="272" end="281" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates an array of numeric intervals and branch constraints representing a given constraint">if the returned numeric array is empty it means the constraint matches nothing in the numeric range (0 - +inf)
+if the returned branches array is empty it means no dev-* versions are matched
+if a constraint matches all possible dev-* versions, branches will contain Interval::anyDev()</description>
+      <return type="array"/>
+      <phpstan value="-return array{'numeric': Interval[], 'branches': array{'names': string[], 'exclude': bool}}"/>
+    </docblock>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="generateIntervals" start="288" end="431" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$stopOnFirstValidInterval">
+        <type full="Composer\Semver\bool" namespace="Composer\Semver" name="bool"/>
+      </param>
+      <phpstan value="-return array{'numeric': Interval[], 'branches': array{'names': string[], 'exclude': bool}}"/>
+    </docblock>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <parameter name="stopOnFirstValidInterval" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="generateSingleConstraintIntervals" start="436" end="477" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <phpstan value="-return array{'numeric': Interval[], 'branches': array{'names': string[], 'exclude': bool}}"/>
+    </docblock>
+    <parameter name="constraint" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\Constraint" namespace="Composer\Semver\Constraint" name="Constraint"/>
+    </parameter>
+    <inline>
+      <comment value="handle branch constraints first" line="440"/>
+      <comment value="convert ==x to an interval of &gt;=x - &lt;=x" line="473"/>
+    </inline>
+  </method>
+</class>

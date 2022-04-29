@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="NunoMaduro\PhpInsights\Domain\Insights\InsightFactory" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="InsightFactory" abstract="false" final="true" start="23" end="130">
+  <file path="//var/www/html/vendor/nunomaduro/phpinsights/src/Domain/Insights" file="InsightFactory.php" realpath="/var/www/html/vendor/nunomaduro/phpinsights/src/Domain/Insights/InsightFactory.php" size="3500" time="2022-03-21T20:51:37+00:00" unixtime="1647895897" sha1="72c2bcbb01c8506df6299b75eda421ed6cabacda" relative="ar/www/html/vendor/nunomaduro/phpinsights/src/Domain/Insights/InsightFactory.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+    <see value="\Tests\Domain\Insights\InsightFactoryTest"/>
+  </docblock>
+  <member name="filesRepository" visibility="private" static="false" line="25"/>
+  <member name="insightsClasses" visibility="private" static="false" line="30">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Insights\array&lt;string&gt;" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="array&lt;string&gt;"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="insights" default="" type="array" visibility="private" static="false" line="35">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Insights\array&lt;InsightContract&gt;" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="array&lt;InsightContract&gt;"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="insightLoaders" visibility="private" static="false" line="40">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Insights\array&lt;InsightLoader&gt;" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="array&lt;InsightLoader&gt;"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="private" static="false" line="42"/>
+  <member name="ran" default="false" type="boolean" visibility="private" static="false" line="44"/>
+  <member name="collector" visibility="private" static="false" line="46"/>
+  <constructor name="__construct" start="53" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a new instance of Insight Factory."/>
+      <param type="object" variable="$insightsClasses">
+        <type full="NunoMaduro\PhpInsights\Domain\Insights\array&lt;string&gt;" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="array&lt;string&gt;"/>
+      </param>
+    </docblock>
+    <parameter name="filesRepository" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Contracts\Repositories\FilesRepository" namespace="NunoMaduro\PhpInsights\Domain\Contracts\Repositories" name="FilesRepository"/>
+    </parameter>
+    <parameter name="insightsClasses" byreference="false" type="array"/>
+    <parameter name="config" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Configuration" namespace="NunoMaduro\PhpInsights\Domain" name="Configuration"/>
+    </parameter>
+    <parameter name="collector" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Collector" namespace="NunoMaduro\PhpInsights\Domain" name="Collector"/>
+    </parameter>
+  </constructor>
+  <method name="makeFrom" start="67" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a Insight from the given error class."/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+    </return>
+    <parameter name="errorClass" byreference="false" type="string"/>
+    <parameter name="consoleOutput" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+    </parameter>
+  </method>
+  <method name="runInsightCollector" start="81" end="100" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="consoleOutput" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Add insights" line="92"/>
+      <comment value="Run it." line="97"/>
+    </inline>
+  </method>
+  <method name="loadInsights" start="109" end="129" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Return instantiated insights."/>
+      <param type="object" variable="$insights">
+        <type full="NunoMaduro\PhpInsights\Domain\Insights\array&lt;string&gt;" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="array&lt;string&gt;"/>
+      </param>
+      <return type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Insights\array&lt;InsightContract&gt;" namespace="NunoMaduro\PhpInsights\Domain\Insights" name="array&lt;InsightContract&gt;"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="insights" byreference="false" type="array"/>
+  </method>
+</class>

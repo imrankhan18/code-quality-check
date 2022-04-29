@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_PackageFile_Parser_v2" namespace="" name="PEAR_PackageFile_Parser_v2" abstract="false" final="false" start="31" end="112">
+  <file path="//usr/local/lib/php/PEAR/PackageFile/Parser" file="v2.php" realpath="/usr/local/lib/php/PEAR/PackageFile/Parser/v2.php" size="3144" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="0639d2d5b937140f3d15c9dbc9fae79ea63fd88b" relative="sr/local/lib/php/PEAR/PackageFile/Parser/v2.php"/>
+  <docblock>
+    <description compact="Parser for package.xml version 2.0"/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: @PEAR-VER@"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <extends full="PEAR_XMLParser" namespace="" name="PEAR_XMLParser"/>
+  <member name="_config" visibility="public" static="false" line="33"/>
+  <member name="_logger" visibility="public" static="false" line="34"/>
+  <member name="_registry" visibility="public" static="false" line="35"/>
+  <method name="setConfig" start="37" end="41" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="c" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="setLogger" start="43" end="46" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="l" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_unIndent" start="54" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Unindent given string"/>
+      <param description="The string that has to be unindented." type="string" variable="$str"/>
+      <return type="string"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="remove leading newlines" line="56"/>
+      <comment value="find whitespace at the beginning of the first line" line="58"/>
+      <comment value="remove the same amount of whitespace from following lines" line="62"/>
+    </inline>
+  </method>
+  <method name="postProcess" start="79" end="85" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="post-process data"/>
+      <param type="string" variable="$data"/>
+      <param description="element name" type="string" variable="$element"/>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="element" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="parse" start="95" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <param description="file name of the package.xml" type="string"/>
+      <param description="name of the archive this package.xml came from, if any" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <param description="class name to instantiate and return.  This must be PEAR_PackageFile_v2 or" type="string">a subclass</param>
+      <return type="object">
+        <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="file" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="archive" byreference="false" type="boolean" default="false"/>
+    <parameter name="class" byreference="false" type="string" default="'PEAR_PackageFile_v2'"/>
+  </method>
+  <parent full="PEAR_XMLParser" namespace="" name="PEAR_XMLParser">
+    <member name="_unserializedData" default="NULL" visibility="public" static="false" line="35">
+      <docblock>
+        <description compact="unserilialized data"/>
+        <var description="$_serializedData" type="string"/>
+      </docblock>
+    </member>
+    <member name="_root" default="NULL" visibility="public" static="false" line="41">
+      <docblock>
+        <description compact="name of the root tag"/>
+        <var description="$_root" type="string"/>
+      </docblock>
+    </member>
+    <member name="_dataStack" default="" type="array" visibility="public" static="false" line="47">
+      <docblock>
+        <description compact="stack for all data that is found"/>
+        <var description="$_dataStack" type="array"/>
+      </docblock>
+    </member>
+    <member name="_valStack" default="" type="array" visibility="public" static="false" line="53">
+      <docblock>
+        <description compact="stack for all values that are generated"/>
+        <var description="$_valStack" type="array"/>
+      </docblock>
+    </member>
+    <member name="_depth" default="0" type="integer" visibility="public" static="false" line="59">
+      <docblock>
+        <description compact="current tag depth"/>
+        <var description="$_depth" type="int"/>
+      </docblock>
+    </member>
+    <member name="encoding" default="'ISO-8859-1'" type="string" visibility="public" static="false" line="65">
+      <docblock>
+        <description compact="The XML encoding to use"/>
+        <var description="$encoding" type="string"/>
+      </docblock>
+    </member>
+    <method name="getData" start="70" end="73" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="parse" start="79" end="111" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="xml content" type="string"/>
+        <return type="object">
+          <type full="true|PEAR_Error" namespace="" name="true|PEAR_Error"/>
+        </return>
+      </docblock>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="startHandler" start="122" end="142" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Start element handler for XML parser"/>
+        <access value="private"/>
+        <param description="XML parser object" type="object" variable="$parser"/>
+        <param description="XML element" type="string" variable="$element"/>
+        <param description="attributes of XML tag" type="array" variable="$attribs"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="parser" byreference="false" type="{unknown}"/>
+      <parameter name="element" byreference="false" type="{unknown}"/>
+      <parameter name="attribs" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="postProcess" start="150" end="153" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="post-process data"/>
+        <param type="string" variable="$data"/>
+        <param description="element name" type="string" variable="$element"/>
+      </docblock>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+      <parameter name="element" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="endHandler" start="163" end="233" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="End element handler for XML parser"/>
+        <access value="private"/>
+        <param description="XML parser object" type="object"/>
+        <param type="string"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="parser" byreference="false" type="{unknown}"/>
+      <parameter name="element" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="adjust type of the value" line="168"/>
+        <comment value="parent has to be an array" line="202"/>
+      </inline>
+    </method>
+    <method name="cdataHandler" start="243" end="246" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Handler for character data"/>
+        <access value="private"/>
+        <param description="XML parser object" type="object"/>
+        <param type="string" variable="CDATA"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="parser" byreference="false" type="{unknown}"/>
+      <parameter name="cdata" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Psr\Http\Client\RequestExceptionInterface" namespace="Psr\Http\Client" name="RequestExceptionInterface" abstract="false" final="false" start="14" end="24">
+  <file path="//var/www/html/vendor/psr/http-client/src" file="RequestExceptionInterface.php" realpath="/var/www/html/vendor/psr/http-client/src/RequestExceptionInterface.php" size="586" time="2020-06-29T06:28:15+00:00" unixtime="1593412095" sha1="05a6bee2e5dd714fbcbf41d5629898d3221425c3" relative="ar/www/html/vendor/psr/http-client/src/RequestExceptionInterface.php"/>
+  <docblock>
+    <description compact="Exception for when a request failed.">Examples:
+     - Request is invalid (e.g. method is missing)
+     - Runtime request errors (e.g. the body stream is not seekable)</description>
+  </docblock>
+  <extends full="Psr\Http\Client\ClientExceptionInterface" namespace="Psr\Http\Client" name="ClientExceptionInterface"/>
+  <method name="getRequest" start="23" end="23" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the request.">The request object MAY be a different object from the one passed to ClientInterface::sendRequest()</description>
+      <return type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </return>
+  </method>
+  <parent full="Psr\Http\Client\ClientExceptionInterface" namespace="Psr\Http\Client" name="ClientExceptionInterface">
+    <extends full="Throwable" namespace="" name="Throwable"/>
+  </parent>
+  <parent full="Throwable" namespace="" name="Throwable">
+    <method name="getMessage" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the message"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getCode" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the exception code"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getFile" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the file in which the exception was created"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getLine" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the line on which the object was instantiated"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getTrace" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the stack trace"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+    <method name="getTraceAsString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets the stack trace as a string"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getPrevious" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Returns the previous Throwable"/>
+      <return type="Throwable"/>
+    </docblock>
+  </method>
+    <method name="__toString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Gets a string representation of the thrown object"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  </parent>
+  <implementors>
+    <class full="GuzzleHttp\Exception\ClientException" namespace="GuzzleHttp\Exception" name="ClientException"/>
+    <class full="GuzzleHttp\Exception\RequestException" namespace="GuzzleHttp\Exception" name="RequestException"/>
+    <class full="GuzzleHttp\Exception\BadResponseException" namespace="GuzzleHttp\Exception" name="BadResponseException"/>
+    <class full="GuzzleHttp\Exception\TooManyRedirectsException" namespace="GuzzleHttp\Exception" name="TooManyRedirectsException"/>
+    <class full="GuzzleHttp\Exception\ServerException" namespace="GuzzleHttp\Exception" name="ServerException"/>
+    <class full="Symfony\Component\HttpClient\Psr18RequestException" namespace="Symfony\Component\HttpClient" name="Psr18RequestException"/>
+  </implementors>
+</interface>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\FileRemoval" namespace="PhpCsFixer" name="FileRemoval" abstract="false" final="true" start="25" end="98">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src" file="FileRemoval.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/FileRemoval.php" size="2103" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="3d54d714bd515686abf98b4cf9781a96658349a7" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/FileRemoval.php"/>
+  <docblock>
+    <description compact="Handles files removal with possibility to remove them on shutdown."/>
+    <author value="Adam Klvač &lt;adam@klva.cz&gt;"/>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <member name="files" default="" type="array" visibility="private" static="false" line="30">
+    <docblock>
+      <description compact="List of observed files to be removed."/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="32" end="35" abstract="false" final="false" static="false" visibility="public"/>
+  <destructor name="__destruct" start="37" end="40" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="__sleep" start="46" end="49" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This class is not intended to be serialized, and cannot be deserialized (see __wakeup method)."/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="__wakeup" start="57" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Disable the deserialization of the class to prevent attacker executing code by leveraging the __destruct method."/>
+      <see value="https://owasp.org/www-community/vulnerabilities/PHP_Object_Injection"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="observe" start="65" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Adds a file to be removed."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="delete" start="73" end="80" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes a file from shutdown removal."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="clean" start="85" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes attached files."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="unlink" start="94" end="97" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+</class>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_PackageFile" namespace="" name="PEAR_PackageFile" abstract="false" final="false" start="41" end="491">
+  <file path="//usr/local/lib/php/PEAR" file="PackageFile.php" realpath="/usr/local/lib/php/PEAR/PackageFile.php" size="15846" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="48fba43510a1224923440f373adfaff1e9b1b7e8" relative="sr/local/lib/php/PEAR/PackageFile.php"/>
+  <docblock>
+    <description compact="Abstraction for the package.xml package description file"/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <member name="_config" visibility="public" static="false" line="46">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_debug" visibility="public" static="false" line="47"/>
+  <member name="_logger" default="false" type="boolean" visibility="public" static="false" line="49"/>
+  <member name="_rawReturn" default="false" type="boolean" visibility="public" static="false" line="53">
+    <docblock>
+      <description/>
+      <var type="boolean"/>
+    </docblock>
+  </member>
+  <member name="_extractErrors" default="" type="array" visibility="public" static="false" line="60">
+    <docblock>
+      <description compact="helper for extracting Archive_Tar errors"/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="69" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$config">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+      <param type="object" variable="$debug">
+        <type full="?" namespace="" name="?"/>
+      </param>
+      <param description="@tmpdir Optional temporary directory for uncompressing" type="string">files</param>
+    </docblock>
+    <parameter name="config" byreference="true" type="{unknown}"/>
+    <parameter name="debug" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="rawReturn" start="80" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Turn off validation - return a parsed package.xml without checking it">This is used by the package-validate command</description>
+    </docblock>
+  </method>
+  <method name="setLogger" start="85" end="88" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="l" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="parserFactory" start="95" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a PEAR_PackageFile_Parser_v* of a given version."/>
+      <param type="int" variable="$version"/>
+      <return type="object">
+        <type full="PEAR_PackageFile_Parser_v1|PEAR_PackageFile_Parser_v1" namespace="" name="PEAR_PackageFile_Parser_v1|PEAR_PackageFile_Parser_v1"/>
+      </return>
+    </docblock>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getClassPrefix" start="113" end="116" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="For simpler unit-testing"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="factory" start="123" end="135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a PEAR_PackageFile_v* of a given version."/>
+      <param type="int" variable="$version"/>
+      <return type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v1" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v1"/>
+      </return>
+    </docblock>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="fromArray" start="146" end="172" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a PEAR_PackageFile_v* from its toArray() method">WARNING: no validation is performed, the array is assumed to be valid,
+always parse from xml if you want validation.</description>
+      <param type="array" variable="$arr"/>
+      <return type="object">
+        <type full="PEAR_PackageFileManager_v1|PEAR_PackageFileManager_v2" namespace="" name="PEAR_PackageFileManager_v1|PEAR_PackageFileManager_v2"/>
+      </return>
+      <uses value="factory() to construct the returned object."/>
+    </docblock>
+    <parameter name="arr" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="fromXmlString" start="186" end="276" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a PEAR_PackageFile_v* from an XML string."/>
+      <access value="public"/>
+      <param description="contents of package.xml file" type="string" variable="$data"/>
+      <param description="package state (one of PEAR_VALIDATE_* constants)" type="int" variable="$state"/>
+      <param description="full path to the package.xml file (and the files" type="string" variable="$file">it references)</param>
+      <param description="optional name of the archive that the XML was" type="string" variable="$archive">extracted from, if any</param>
+      <return type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </return>
+      <uses value="parserFactory() to construct a parser to load the package."/>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="state" byreference="false" type="{unknown}"/>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="archive" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="addTempFile" start="286" end="289" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Register a temporary file or directory.  When the destructor is executed, all registered temporary files and directories are removed."/>
+      <param description="name of file or directory" type="string" variable="$file"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="fromTgzFile" start="301" end="379" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a PEAR_PackageFile_v* from a compressed Tar or Tgz file."/>
+      <access value="public"/>
+      <param description="contents of package.xml file" type="string"/>
+      <param description="package state (one of PEAR_VALIDATE_* constants)" type="int"/>
+      <return type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </return>
+      <using value="Archive_Tar to extract the files"/>
+      <using value="fromPackageFile() to load the package after the package.xml file is extracted."/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="state" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_extractErrors" start="388" end="397" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="helper callback for extracting Archive_Tar errors"/>
+      <param type="object" variable="$err">
+        <type full="PEAR_Error|null" namespace="" name="PEAR_Error|null"/>
+      </param>
+      <return type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="err" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="fromPackageFile" start="411" end="430" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a PEAR_PackageFile_v* from a package.xml file."/>
+      <access value="public"/>
+      <param description="name of package xml file" type="string" variable="$descfile"/>
+      <param description="package state (one of PEAR_VALIDATE_* constants)" type="int" variable="$state"/>
+      <param description="name of the archive this package.xml came" type="object" variable="$archive">from, if any<type full="string|false" namespace="" name="string|false"/></param>
+      <return type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </return>
+      <uses value="PEAR_PackageFile::fromXmlString to create the oject after the XML is loaded from the package.xml file."/>
+    </docblock>
+    <parameter name="descfile" byreference="false" type="{unknown}"/>
+    <parameter name="state" byreference="false" type="{unknown}"/>
+    <parameter name="archive" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="read the whole thing so we only get one cdata callback" line="424"/>
+      <comment value="for each block of cdata" line="425"/>
+    </inline>
+  </method>
+  <method name="fromAnyFile" start="445" end="490" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a PEAR_PackageFile_v* from a .tgz archive or package.xml file.">This method is able to extract information about a package from a .tgz
+archive or from a XML package definition file.</description>
+      <access value="public"/>
+      <param description="file name" type="string" variable="$info"/>
+      <param description="package state (one of PEAR_VALIDATE_* constants)" type="int" variable="$state"/>
+      <return type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </return>
+      <uses value="fromPackageFile() if the file appears to be XML"/>
+      <uses value="fromTgzFile() to load all non-XML files"/>
+    </docblock>
+    <parameter name="info" byreference="false" type="{unknown}"/>
+    <parameter name="state" byreference="false" type="{unknown}"/>
+  </method>
+</class>

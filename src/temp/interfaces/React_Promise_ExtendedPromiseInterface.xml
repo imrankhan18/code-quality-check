@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface" abstract="false" final="false" start="5" end="98">
+  <file path="//var/www/html/vendor/react/promise/src" file="ExtendedPromiseInterface.php" realpath="/var/www/html/vendor/react/promise/src/ExtendedPromiseInterface.php" size="3446" time="2022-02-11T10:27:51+00:00" unixtime="1644575271" sha1="a2636d3a31c35d8ae997f0c5aa2162324d5366a0" relative="ar/www/html/vendor/react/promise/src/ExtendedPromiseInterface.php"/>
+  <extends full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+  <method name="done" start="22" end="22" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Consumes the promise's ultimate value if the promise fulfills, or handles the ultimate error.">It will cause a fatal error if either `$onFulfilled` or
+`$onRejected` throw or return a rejected promise.
+
+Since the purpose of `done()` is consumption rather than transformation,
+`done()` always returns `null`.</description>
+      <param type="object" variable="$onFulfilled">
+        <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+      </param>
+      <param type="object" variable="$onRejected">
+        <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+      </param>
+      <param description="This argument is deprecated and should not be used anymore." type="object" variable="$onProgress">
+        <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+      </param>
+      <return type="object">
+        <type full="React\Promise\void" namespace="React\Promise" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onProgress" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="otherwise" start="37" end="37" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Registers a rejection handler for promise. It is a shortcut for:">```php
+$promise-&gt;then(null, $onRejected);
+```
+
+Additionally, you can type hint the `$reason` argument of `$onRejected` to catch
+only specific errors.</description>
+      <param type="object" variable="$onRejected">
+        <type full="React\Promise\callable" namespace="React\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="onRejected" byreference="false" type="callable"/>
+  </method>
+  <method name="always" start="84" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Allows you to execute &quot;cleanup&quot; type tasks in a promise chain.">It arranges for `$onFulfilledOrRejected` to be called, with no arguments,
+when the promise is either fulfilled or rejected.
+
+* If `$promise` fulfills, and `$onFulfilledOrRejected` returns successfully,
+   `$newPromise` will fulfill with the same value as `$promise`.
+* If `$promise` fulfills, and `$onFulfilledOrRejected` throws or returns a
+   rejected promise, `$newPromise` will reject with the thrown exception or
+   rejected promise's reason.
+* If `$promise` rejects, and `$onFulfilledOrRejected` returns successfully,
+   `$newPromise` will reject with the same reason as `$promise`.
+* If `$promise` rejects, and `$onFulfilledOrRejected` throws or returns a
+   rejected promise, `$newPromise` will reject with the thrown exception or
+   rejected promise's reason.
+
+`always()` behaves similarly to the synchronous finally statement. When combined
+with `otherwise()`, `always()` allows you to write code that is similar to the familiar
+synchronous catch/finally pair.
+
+Consider the following synchronous code:
+
+```php
+try {
+    return doSomething();
+} catch(\Exception $e) {
+    return handleError($e);
+} finally {
+    cleanup();
+}
+```
+
+Similar asynchronous code (with `doSomething()` that returns a promise) can be
+written:
+
+```php
+return doSomething()
+    -&gt;otherwise('handleError')
+    -&gt;always('cleanup');
+```</description>
+      <param type="object" variable="$onFulfilledOrRejected">
+        <type full="React\Promise\callable" namespace="React\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="onFulfilledOrRejected" byreference="false" type="callable"/>
+  </method>
+  <method name="progress" start="97" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Registers a handler for progress updates from promise. It is a shortcut for:">```php
+$promise-&gt;then(null, null, $onProgress);
+```</description>
+      <param type="object" variable="$onProgress">
+        <type full="React\Promise\callable" namespace="React\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="React\Promise\ExtendedPromiseInterface" namespace="React\Promise" name="ExtendedPromiseInterface"/>
+      </return>
+      <deprecated value="2.6.0 Progress support is deprecated and should not be used anymore."/>
+    </docblock>
+    <parameter name="onProgress" byreference="false" type="callable"/>
+  </method>
+  <implementors>
+    <class full="React\Promise\Promise" namespace="React\Promise" name="Promise"/>
+    <class full="React\Promise\FulfilledPromise" namespace="React\Promise" name="FulfilledPromise"/>
+    <class full="React\Promise\RejectedPromise" namespace="React\Promise" name="RejectedPromise"/>
+    <class full="React\Promise\LazyPromise" namespace="React\Promise" name="LazyPromise"/>
+  </implementors>
+  <parent full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface">
+    <method name="then" start="40" end="40" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Transforms a promise's value by applying a function to the promise's fulfillment or rejection value. Returns a new promise for the transformed result.">The `then()` method registers new fulfilled and rejection handlers with a promise
+(all parameters are optional):
+
+ * `$onFulfilled` will be invoked once the promise is fulfilled and passed
+    the result as the first argument.
+ * `$onRejected` will be invoked once the promise is rejected and passed the
+    reason as the first argument.
+ * `$onProgress` (deprecated) will be invoked whenever the producer of the promise
+    triggers progress notifications and passed a single argument (whatever it
+    wants) to indicate progress.
+
+It returns a new promise that will fulfill with the return value of either
+`$onFulfilled` or `$onRejected`, whichever is called, or will reject with
+the thrown exception if either throws.
+
+A promise makes the following guarantees about handlers registered in
+the same call to `then()`:
+
+ 1. Only one of `$onFulfilled` or `$onRejected` will be called,
+     never both.
+ 2. `$onFulfilled` and `$onRejected` will never be called more
+     than once.
+ 3. `$onProgress` (deprecated) may be called multiple times.</description>
+        <param type="object" variable="$onFulfilled">
+          <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+        </param>
+        <param type="object" variable="$onRejected">
+          <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+        </param>
+        <param description="This argument is deprecated and should not be used anymore." type="object" variable="$onProgress">
+          <type full="React\Promise\callable|null" namespace="React\Promise" name="callable|null"/>
+        </param>
+        <return type="object">
+          <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+      <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+      <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+      <parameter name="onProgress" byreference="false" type="callable" default="NULL"/>
+    </method>
+  </parent>
+</interface>

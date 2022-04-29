@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\ClientInterface" namespace="GuzzleHttp" name="ClientInterface" abstract="false" final="false" start="14" end="84">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="ClientInterface.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/ClientInterface.php" size="2901" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="5b97e5090b408373b7570b9edab6a3431ae11f82" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/ClientInterface.php"/>
+  <docblock>
+    <description compact="Client interface for sending HTTP requests."/>
+  </docblock>
+  <constant type="{unknown}" name="MAJOR_VERSION" value="7">
+    <docblock>
+      <description compact="The Guzzle major version."/>
+    </docblock>
+  </constant>
+  <method name="send" start="30" end="30" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an HTTP request."/>
+      <param description="Request to send" type="object" variable="$request">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <param description="Request options to apply to the given" type="array" variable="$options">request and to the transfer.</param>
+      <throws type="object">
+        <type full="GuzzleHttp\Exception\GuzzleException" namespace="GuzzleHttp\Exception" name="GuzzleException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="sendAsync" start="39" end="39" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Asynchronously send an HTTP request."/>
+      <param description="Request to send" type="object" variable="$request">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </param>
+      <param description="Request options to apply to the given" type="array" variable="$options">request and to the transfer.</param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="request" start="54" end="54" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create and send an HTTP request.">Use an absolute path to override the base path of the client, or a
+relative path to append to the base path of the client. The URL can
+contain the query string as well.</description>
+      <param description="HTTP method." type="string" variable="$method"/>
+      <param description="URI object or string." type="object" variable="$uri">
+        <type full="GuzzleHttp\string|UriInterface" namespace="GuzzleHttp" name="string|UriInterface"/>
+      </param>
+      <param description="Request options to apply." type="array" variable="$options"/>
+      <throws type="object">
+        <type full="GuzzleHttp\Exception\GuzzleException" namespace="GuzzleHttp\Exception" name="GuzzleException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="requestAsync" start="68" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create and send an asynchronous HTTP request.">Use an absolute path to override the base path of the client, or a
+relative path to append to the base path of the client. The URL can
+contain the query string as well. Use an array to provide a URL
+template and additional variables to use in the URL template expansion.</description>
+      <param description="HTTP method" type="string" variable="$method"/>
+      <param description="URI object or string." type="object" variable="$uri">
+        <type full="GuzzleHttp\string|UriInterface" namespace="GuzzleHttp" name="string|UriInterface"/>
+      </param>
+      <param description="Request options to apply." type="array" variable="$options"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getConfig" start="83" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get a client configuration option.">These options include default request options of the client, a "handler"
+(if utilized by the concrete client), and a "base_uri" if utilized by
+the concrete client.</description>
+      <param description="The config option to retrieve." type="object" variable="$option">
+        <type full="GuzzleHttp\string|null" namespace="GuzzleHttp" name="string|null"/>
+      </param>
+      <return type="mixed"/>
+      <deprecated value="ClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0."/>
+    </docblock>
+    <parameter name="option" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <implementors>
+    <class full="GuzzleHttp\Client" namespace="GuzzleHttp" name="Client"/>
+  </implementors>
+</interface>

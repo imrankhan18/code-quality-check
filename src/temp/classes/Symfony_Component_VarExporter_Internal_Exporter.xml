@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\VarExporter\Internal\Exporter" namespace="Symfony\Component\VarExporter\Internal" name="Exporter" abstract="false" final="false" start="21" end="411">
+  <file path="//var/www/html/vendor/symfony/var-exporter/Internal" file="Exporter.php" realpath="/var/www/html/vendor/symfony/var-exporter/Internal/Exporter.php" size="16324" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="e6c818effbe2b4e0370c88bea037bf186b039914" relative="ar/www/html/vendor/symfony/var-exporter/Internal/Exporter.php"/>
+  <docblock>
+    <description/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+    <internal/>
+  </docblock>
+  <method name="prepare" start="36" end="191" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Prepares an array of values for VarExporter.">For performance this method is public and has no type-hints.</description>
+      <param type="array" variable="&amp;$values"/>
+      <param type="object" variable="$objectsPool">
+        <type full="\SplObjectStorage" namespace="" name="SplObjectStorage"/>
+      </param>
+      <param type="array" variable="&amp;$refsPool"/>
+      <param type="int" variable="&amp;$objectsCount"/>
+      <param type="object" variable="&amp;$valuesAreStatic">
+        <type full="Symfony\Component\VarExporter\Internal\bool" namespace="Symfony\Component\VarExporter\Internal" name="bool"/>
+      </param>
+      <throws description="When a value cannot be serialized" type="object">
+        <type full="Symfony\Component\VarExporter\Exception\NotInstantiableTypeException" namespace="Symfony\Component\VarExporter\Exception" name="NotInstantiableTypeException"/>
+      </throws>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="values" byreference="false" type="{unknown}"/>
+    <parameter name="objectsPool" byreference="false" type="{unknown}"/>
+    <parameter name="refsPool" byreference="true" type="{unknown}"/>
+    <parameter name="objectsCount" byreference="true" type="{unknown}"/>
+    <parameter name="valuesAreStatic" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="export" start="193" end="281" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="indent" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="exportRegistry" start="283" end="353" abstract="false" final="false" static="true" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="value" byreference="false" type="object">
+      <type full="Symfony\Component\VarExporter\Internal\Registry" namespace="Symfony\Component\VarExporter\Internal" name="Registry"/>
+    </parameter>
+    <parameter name="indent" byreference="false" type="string"/>
+    <parameter name="subIndent" byreference="false" type="string"/>
+  </method>
+  <method name="exportHydrator" start="355" end="371" abstract="false" final="false" static="true" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="value" byreference="false" type="object">
+      <type full="Symfony\Component\VarExporter\Internal\Hydrator" namespace="Symfony\Component\VarExporter\Internal" name="Hydrator"/>
+    </parameter>
+    <parameter name="indent" byreference="false" type="string"/>
+    <parameter name="subIndent" byreference="false" type="string"/>
+  </method>
+  <method name="getArrayObjectProperties" start="377" end="410" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$value">
+        <type full="\ArrayIterator|\ArrayObject" namespace="\ArrayIterator|" name="ArrayObject"/>
+      </param>
+      <param type="object" variable="$proto">
+        <type full="\ArrayIterator|\ArrayObject" namespace="\ArrayIterator|" name="ArrayObject"/>
+      </param>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="proto" byreference="false" type="{unknown}"/>
+  </method>
+</class>

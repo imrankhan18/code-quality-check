@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Semver\Constraint\MultiConstraint" namespace="Composer\Semver\Constraint" name="MultiConstraint" abstract="false" final="false" start="17" end="325">
+  <file path="//var/www/html/vendor/composer/semver/src/Constraint" file="MultiConstraint.php" realpath="/var/www/html/vendor/composer/semver/src/Constraint/MultiConstraint.php" size="9537" time="2022-04-01T19:23:25+00:00" unixtime="1648841005" sha1="a4a8656b4a2edf9d780ca1aff5d1678bd98d6615" relative="ar/www/html/vendor/composer/semver/src/Constraint/MultiConstraint.php"/>
+  <docblock>
+    <description compact="Defines a conjunctive or disjunctive set of constraints."/>
+  </docblock>
+  <implements full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+  <member name="constraints" visibility="protected" static="false" line="23">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </var>
+      <phpstan value="-var non-empty-array&lt;ConstraintInterface&gt;"/>
+    </docblock>
+  </member>
+  <member name="prettyString" visibility="protected" static="false" line="26">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Semver\Constraint\string|null" namespace="Composer\Semver\Constraint" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="string" visibility="protected" static="false" line="29">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Semver\Constraint\string|null" namespace="Composer\Semver\Constraint" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="conjunctive" visibility="protected" static="false" line="32">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="lowerBound" visibility="protected" static="false" line="35">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Semver\Constraint\Bound|null" namespace="Composer\Semver\Constraint" name="Bound|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="upperBound" visibility="protected" static="false" line="38">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Semver\Constraint\Bound|null" namespace="Composer\Semver\Constraint" name="Bound|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="46" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A set of constraints" type="array" variable="$constraints" of="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <param description="Whether the constraints should be treated as conjunctive or disjunctive" type="object" variable="$conjunctive">
+        <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+      </param>
+      <throws description="If less than 2 constraints are passed" type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <parameter name="constraints" byreference="false" type="array"/>
+    <parameter name="conjunctive" byreference="false" type="boolean" default="true"/>
+  </constructor>
+  <method name="getConstraints" start="63" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="isConjunctive" start="71" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="isDisjunctive" start="79" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="compile" start="87" end="110" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+    <parameter name="otherOperator" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="matches" start="117" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$provider">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="provider" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+    <inline>
+      <comment value="when matching a conjunctive and a disjunctive multi constraint we have to iterate over the disjunctive one" line="129"/>
+      <comment value="otherwise we'd return true if different parts of the disjunctive constraint match the conjunctive one" line="130"/>
+      <comment value="which would lead to incorrect results, e.g. [&gt;1 and &lt;2] would match [&lt;1 or &gt;2] although they do not intersect" line="131"/>
+    </inline>
+  </method>
+  <method name="setPrettyString" start="148" end="151" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+    <parameter name="prettyString" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPrettyString" start="156" end="163" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+  </method>
+  <method name="__toString" start="168" end="180" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+  </method>
+  <method name="getLowerBound" start="185" end="194" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+  </method>
+  <method name="getUpperBound" start="199" end="208" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+  </method>
+  <method name="create" start="221" end="240" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Tries to optimize the constraints as much as possible, meaning reducing/collapsing congruent constraints etc.">Does not necessarily return a MultiConstraint instance if
+things can be reduced to a simple constraint</description>
+      <param description="A set of constraints" type="array" variable="$constraints" of="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <param description="Whether the constraints should be treated as conjunctive or disjunctive" type="object" variable="$conjunctive">
+        <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </return>
+    </docblock>
+    <parameter name="constraints" byreference="false" type="array"/>
+    <parameter name="conjunctive" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="optimizeConstraints" start="249" end="298" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$constraints" of="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <param type="object" variable="$conjunctive">
+        <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\?array" namespace="Composer\Semver\Constraint" name="?array"/>
+      </return>
+      <phpstan value="-return array{0: list&lt;ConstraintInterface&gt;, 1: bool}|null"/>
+    </docblock>
+    <parameter name="constraints" byreference="false" type="array"/>
+    <parameter name="conjunctive" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="parse the two OR groups and if they are contiguous we collapse" line="251"/>
+      <comment value="them into one constraint" line="252"/>
+      <comment value="[&gt;= 1 &lt; 2] || [&gt;= 2 &lt; 3] || [&gt;= 3 &lt; 4] =&gt; [&gt;= 1 &lt; 4]" line="253"/>
+      <todo value="Here's the place to put more optimizations" line="295"/>
+    </inline>
+  </method>
+  <method name="extractBounds" start="303" end="324" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\void" namespace="Composer\Semver\Constraint" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <interface full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface">
+    <method name="matches" start="29" end="29" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks whether the given constraint intersects in any way with this constraint"/>
+        <param type="object" variable="$provider">
+          <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="provider" byreference="false" type="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </parameter>
+    </method>
+    <method name="compile" start="47" end="47" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Provides a compiled version of the constraint for the given operator The compiled version must be a PHP expression.">Executor of compile version must provide 2 variables:
+- $v = the string version to compare with
+- $b = whether or not the version is a non-comparable branch (starts with "dev-")</description>
+        <see value="Constraint::OP_* for the list of available operators."/>
+        <example value="return '!$b &amp;&amp; version_compare($v, '1.0', '&gt;')';"/>
+        <param description="one Constraint::OP_" type="int" variable="$otherOperator"/>
+        <return type="string"/>
+        <phpstan value="-param Constraint::OP_* $otherOperator"/>
+      </docblock>
+      <parameter name="otherOperator" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getUpperBound" start="52" end="52" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\Bound" namespace="Composer\Semver\Constraint" name="Bound"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getLowerBound" start="57" end="57" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\Bound" namespace="Composer\Semver\Constraint" name="Bound"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getPrettyString" start="62" end="62" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="string"/>
+      </docblock>
+    </method>
+    <method name="setPrettyString" start="69" end="69" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object" variable="$prettyString">
+          <type full="Composer\Semver\Constraint\string|null" namespace="Composer\Semver\Constraint" name="string|null"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\void" namespace="Composer\Semver\Constraint" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="prettyString" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__toString" start="74" end="74" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="string"/>
+      </docblock>
+    </method>
+  </interface>
+</class>

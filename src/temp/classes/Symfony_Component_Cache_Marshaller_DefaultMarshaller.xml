@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\Marshaller\DefaultMarshaller" namespace="Symfony\Component\Cache\Marshaller" name="DefaultMarshaller" abstract="false" final="false" start="21" end="104">
+  <file path="//var/www/html/vendor/symfony/cache/Marshaller" file="DefaultMarshaller.php" realpath="/var/www/html/vendor/symfony/cache/Marshaller/DefaultMarshaller.php" size="3750" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="dd0eccf29ab416f7690de5faf4da5906dc95b939" relative="ar/www/html/vendor/symfony/cache/Marshaller/DefaultMarshaller.php"/>
+  <docblock>
+    <description compact="Serializes/unserializes values using igbinary_serialize() if available, serialize() otherwise."/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+  </docblock>
+  <implements full="Symfony\Component\Cache\Marshaller\MarshallerInterface" namespace="Symfony\Component\Cache\Marshaller" name="MarshallerInterface"/>
+  <member name="useIgbinarySerialize" default="true" type="boolean" visibility="private" static="false" line="23"/>
+  <member name="throwOnSerializationFailure" visibility="private" static="false" line="24"/>
+  <constructor name="__construct" start="26" end="35" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="useIgbinarySerialize" byreference="false" type="bool" default="NULL"/>
+    <parameter name="throwOnSerializationFailure" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="marshall" start="40" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="values" byreference="false" type="array"/>
+    <parameter name="failed" byreference="true" nullable="true" type="array"/>
+  </method>
+  <method name="unmarshall" start="65" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <parameter name="value" byreference="false" type="string"/>
+  </method>
+  <method name="handleUnserializeCallback" start="100" end="103" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+    </docblock>
+    <parameter name="class" byreference="false" type="string"/>
+  </method>
+  <interface full="Symfony\Component\Cache\Marshaller\MarshallerInterface" namespace="Symfony\Component\Cache\Marshaller" name="MarshallerInterface">
+    <method name="marshall" start="30" end="30" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Serializes a list of values.">When serialization fails for a specific value, no exception should be
+thrown. Instead, its key should be listed in $failed.</description>
+      </docblock>
+      <return type="array" nullable="false"/>
+      <parameter name="values" byreference="false" type="array"/>
+      <parameter name="failed" byreference="true" nullable="true" type="array"/>
+    </method>
+    <method name="unmarshall" start="39" end="39" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Unserializes a single value and throws an exception if anything goes wrong."/>
+        <return type="mixed"/>
+        <throws description="Whenever unserialization fails" type="object">
+          <type full="\Exception" namespace="" name="Exception"/>
+        </throws>
+      </docblock>
+      <parameter name="value" byreference="false" type="string"/>
+    </method>
+  </interface>
+</class>

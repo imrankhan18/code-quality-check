@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Repository\Vcs\GitLabDriver</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Repository_Vcs">Composer\Repository\Vcs</a>
+          </li>
+          <li class="separator">GitLabDriver</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Repository/Vcs/GitLabDriver.php.xhtml#line31">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Repository\Vcs\</small>GitLabDriver</h1>
+        <h4>Driver for GitLab API, use the Git driver for local checkouts.</h4>
+        <p/>
+        <ul>
+          <li>Author: Henrik Bjørnskov &lt;henrik@bjrnskov.dk&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class GitLabDriver
+                extends <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver.xhtml">VcsDriver</a>
+            {<br/><ul class="none"><li>// constants</li><li>const URL_REGEX = '#^(?:(?P&lt;scheme&gt;https?)://(?P&lt;domain&gt;.+?)(?::(?P&lt;port&gt;[0-9]+))?/|git@(?P&lt;domain2&gt;[^:]+):)(?P&lt;parts&gt;.+)/(?P&lt;repo&gt;[^/]+?)(?:\.git|/)?$#';</li></ul><ul class="none"><li>// members</li><li>private  <a href="#members">$scheme</a>;
+                    </li><li>private  <a href="#members">$namespace</a>;
+                    </li><li>private  <a href="#members">$repository</a>;
+                    </li><li>private  <a href="#members">$project</a>;
+                    </li><li>private <span title="Composer\Repository\Vcs\array&lt;string|int">array&lt;string|int</span> <a href="#members">$commits</a> =
+                        ;
+                    </li><li>private <span title="Composer\Repository\Vcs\array&lt;int|string">array&lt;int|string</span> <a href="#members">$tags</a>;
+                    </li><li>private <span title="Composer\Repository\Vcs\array&lt;int|string">array&lt;int|string</span> <a href="#members">$branches</a>;
+                    </li><li>protected <span title="Composer\Repository\Vcs\?GitDriver">?GitDriver</span> <a href="#members">$gitDriver</a> =
+                        NULL;
+                    </li><li>protected  <a href="#members">$protocol</a>;
+                    </li><li>private <span title="Composer\Repository\Vcs\bool">bool</span> <a href="#members">$isPrivate</a> =
+                        true;
+                    </li><li>private <span title="Composer\Repository\Vcs\bool">bool</span> <a href="#members">$hasNonstandardOrigin</a> =
+                        false;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="Composer\Repository\Vcs\VcsDriver">VcsDriver</span></li><li>protected  <a href="#members">$url</a>;
+                        </li><li>protected  <a href="#members">$originUrl</a>;
+                        </li><li>protected <span title="Composer\Repository\Vcs\array&lt;string">array&lt;string</span> <a href="#members">$repoConfig</a>;
+                        </li><li>protected <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                        </li><li>protected <span title="Composer\Config">Config</span> <a href="#members">$config</a>;
+                        </li><li>protected <span title="Composer\Util\ProcessExecutor">ProcessExecutor</span> <a href="#members">$process</a>;
+                        </li><li>protected <span title="Composer\Util\HttpDownloader">HttpDownloader</span> <a href="#members">$httpDownloader</a>;
+                        </li><li>protected <span title="Composer\Repository\Vcs\array&lt;int|string">array&lt;int|string</span> <a href="#members">$infoCache</a>;
+                        </li><li>protected <span title="Composer\Repository\Vcs\?Cache">?Cache</span> <a href="#members">$cache</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/initialize.xhtml">initialize</a>()
+                    </li><li>public void <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/setHttpDownloader.xhtml">setHttpDownloader</a>()
+                    </li><li>public ?array <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getComposerInformation.xhtml">getComposerInformation</a>()
+                    </li><li>public ?string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getFileContent.xhtml">getFileContent</a>()
+                    </li><li>public ?<span title="DateTimeImmutable">DateTimeImmutable</span> <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getChangeDate.xhtml">getChangeDate</a>()
+                    </li><li>public string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getRepositoryUrl.xhtml">getRepositoryUrl</a>()
+                    </li><li>public string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getUrl.xhtml">getUrl</a>()
+                    </li><li>public ?array <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getDist.xhtml">getDist</a>()
+                    </li><li>public array <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getSource.xhtml">getSource</a>()
+                    </li><li>public string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getRootIdentifier.xhtml">getRootIdentifier</a>()
+                    </li><li>public array <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getBranches.xhtml">getBranches</a>()
+                    </li><li>public array <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getTags.xhtml">getTags</a>()
+                    </li><li>public string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getApiUrl.xhtml">getApiUrl</a>()
+                    </li><li>private string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/urlEncodeAll.xhtml">urlEncodeAll</a>()
+                    </li><li>protected array <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getReferences.xhtml">getReferences</a>()
+                    </li><li>protected void <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/fetchProject.xhtml">fetchProject</a>()
+                    </li><li>protected bool <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/attemptCloneFallback.xhtml">attemptCloneFallback</a>()
+                    </li><li>protected string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/generateSshUrl.xhtml">generateSshUrl</a>()
+                    </li><li>protected string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/generatePublicUrl.xhtml">generatePublicUrl</a>()
+                    </li><li>protected void <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/setupGitDriver.xhtml">setupGitDriver</a>()
+                    </li><li>protected <span title="Response">Response</span> <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getContents.xhtml">getContents</a>()
+                    </li><li>public static bool <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/supports.xhtml">supports</a>()
+                    </li><li>protected ?string <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getNextPage.xhtml">getNextPage</a>()
+                    </li><li>private static string|false <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/determineOrigin.xhtml">determineOrigin</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Composer\Repository\Vcs\VcsDriver">VcsDriver</span></li><li>public final void <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/__construct.xhtml">__construct</a>()
+                        </li><li>protected bool <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/shouldCache.xhtml">shouldCache</a>()
+                        </li><li>public void <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/getComposerInformation.xhtml">getComposerInformation</a>()
+                        </li><li>protected array&lt;mixed&gt;|null <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/getBaseComposerInformation.xhtml">getBaseComposerInformation</a>()
+                        </li><li>public void <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/hasComposerFile.xhtml">hasComposerFile</a>()
+                        </li><li>protected string <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/getScheme.xhtml">getScheme</a>()
+                        </li><li>protected Response <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/getContents.xhtml">getContents</a>()
+                        </li><li>public void <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/cleanup.xhtml">cleanup</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver.xhtml">Composer\Repository\Vcs\VcsDriver</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="URL_REGEX">URL_REGEX</td>
+              <td>'#^(?:(?P&lt;scheme&gt;https?)://(?P&lt;domain&gt;.+?)(?::(?P&lt;port&gt;[0-9]+))?/|git@(?P&lt;domain2&gt;[^:]+):)(?P&lt;parts&gt;.+)/(?P&lt;repo&gt;[^/]+?)(?:\.git|/)?$#'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="branches"><strong>$branches</strong>
+                —
+                <a title="Composer\Repository\Vcs\array&lt;int|string" href="../classes/Composer_Repository_Vcs_array&lt;int|string.xhtml">Composer\Repository\Vcs\array&lt;int|string</a></li>
+            <li id="commits"><strong>$commits</strong>
+                —
+                <a title="Composer\Repository\Vcs\array&lt;string|int" href="../classes/Composer_Repository_Vcs_array&lt;string|int.xhtml">Composer\Repository\Vcs\array&lt;string|int</a></li>
+            <li id="hasNonstandardOrigin"><strong>$hasNonstandardOrigin</strong>
+                —
+                <a title="Composer\Repository\Vcs\bool" href="../classes/Composer_Repository_Vcs_bool.xhtml">Composer\Repository\Vcs\bool</a></li>
+            <li id="isPrivate"><strong>$isPrivate</strong>
+                —
+                <a title="Composer\Repository\Vcs\bool" href="../classes/Composer_Repository_Vcs_bool.xhtml">Composer\Repository\Vcs\bool</a><br/><span class="indent">Defaults to true unless we can make sure it is public</span></li>
+            <li id="namespace"><strong>$namespace</strong>
+                —
+                string</li>
+            <li id="project"><strong>$project</strong>
+                —
+                array</li>
+            <li id="repository"><strong>$repository</strong>
+                —
+                string</li>
+            <li id="scheme"><strong>$scheme</strong>
+                —
+                string</li>
+            <li id="tags"><strong>$tags</strong>
+                —
+                <a title="Composer\Repository\Vcs\array&lt;int|string" href="../classes/Composer_Repository_Vcs_array&lt;int|string.xhtml">Composer\Repository\Vcs\array&lt;int|string</a></li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="cache"><strong>$cache</strong>
+                —
+                <a title="Composer\Repository\Vcs\?Cache" href="../classes/Composer_Repository_Vcs_?Cache.xhtml">Composer\Repository\Vcs\?Cache</a></li>
+            <li id="config"><strong>$config</strong>
+                —
+                <a title="Composer\Config" href="../classes/Composer_Config.xhtml">Composer\Config</a></li>
+            <li id="gitDriver"><strong>$gitDriver</strong>
+                —
+                <a title="Composer\Repository\Vcs\?GitDriver" href="../classes/Composer_Repository_Vcs_?GitDriver.xhtml">Composer\Repository\Vcs\?GitDriver</a><br/><span class="indent">Git Driver</span></li>
+            <li id="httpDownloader"><strong>$httpDownloader</strong>
+                —
+                <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader.xhtml">Composer\Util\HttpDownloader</a></li>
+            <li id="infoCache"><strong>$infoCache</strong>
+                —
+                <a title="Composer\Repository\Vcs\array&lt;int|string" href="../classes/Composer_Repository_Vcs_array&lt;int|string.xhtml">Composer\Repository\Vcs\array&lt;int|string</a></li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="originUrl"><strong>$originUrl</strong>
+                —
+                string</li>
+            <li id="process"><strong>$process</strong>
+                —
+                <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor.xhtml">Composer\Util\ProcessExecutor</a></li>
+            <li id="protocol"><strong>$protocol</strong>
+                —
+                string<br/><span class="indent">Protocol to force use of for repository URLs.</span></li>
+            <li id="repoConfig"><strong>$repoConfig</strong>
+                —
+                <a title="Composer\Repository\Vcs\array&lt;string" href="../classes/Composer_Repository_Vcs_array&lt;string.xhtml">Composer\Repository\Vcs\array&lt;string</a></li>
+            <li id="url"><strong>$url</strong>
+                —
+                string</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="determineOrigin">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/determineOrigin.xhtml">determineOrigin()</a>
+            </li>
+            <li id="urlEncodeAll"><a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/urlEncodeAll.xhtml">urlEncodeAll()</a>
+                — Urlencode all non alphanumeric characters. rawurlencode() can not be used as it does not encode `.`</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="attemptCloneFallback">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/attemptCloneFallback.xhtml">attemptCloneFallback()</a>
+            </li>
+            <li id="fetchProject">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/fetchProject.xhtml">fetchProject()</a>
+            </li>
+            <li id="generatePublicUrl">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/generatePublicUrl.xhtml">generatePublicUrl()</a>
+            </li>
+            <li id="generateSshUrl"><a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/generateSshUrl.xhtml">generateSshUrl()</a>
+                — Generate an SSH URL</li>
+            <li id="getContents">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getContents.xhtml">getContents()</a>
+            </li>
+            <li id="getNextPage">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getNextPage.xhtml">getNextPage()</a>
+            </li>
+            <li id="getReferences">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getReferences.xhtml">getReferences()</a>
+            </li>
+            <li id="setupGitDriver">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/setupGitDriver.xhtml">setupGitDriver()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="getApiUrl">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getApiUrl.xhtml">getApiUrl()</a>
+            </li>
+            <li id="getBranches">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getBranches.xhtml">getBranches()</a>
+            </li>
+            <li id="getChangeDate">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getChangeDate.xhtml">getChangeDate()</a>
+            </li>
+            <li id="getComposerInformation">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getComposerInformation.xhtml">getComposerInformation()</a>
+            </li>
+            <li id="getDist">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getDist.xhtml">getDist()</a>
+            </li>
+            <li id="getFileContent">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getFileContent.xhtml">getFileContent()</a>
+            </li>
+            <li id="getRepositoryUrl">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getRepositoryUrl.xhtml">getRepositoryUrl()</a>
+            </li>
+            <li id="getRootIdentifier">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getRootIdentifier.xhtml">getRootIdentifier()</a>
+            </li>
+            <li id="getSource">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getSource.xhtml">getSource()</a>
+            </li>
+            <li id="getTags">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getTags.xhtml">getTags()</a>
+            </li>
+            <li id="getUrl">
+              <a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/getUrl.xhtml">getUrl()</a>
+            </li>
+            <li id="initialize"><a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/initialize.xhtml">initialize()</a>
+                — Extracts information from the repository url.</li>
+            <li id="setHttpDownloader"><a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/setHttpDownloader.xhtml">setHttpDownloader()</a>
+                — Updates the HttpDownloader instance.</li>
+            <li id="supports"><a title="Composer\Repository\Vcs\GitLabDriver" href="../classes/Composer_Repository_Vcs_GitLabDriver/supports.xhtml">supports()</a>
+                — Uses the config `gitlab-domains` to see if the driver supports the url for the repository given.</li>
+          </ul>
+          <h3>Inherited from <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver.xhtml">Composer\Repository\Vcs\VcsDriver</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="getBaseComposerInformation">
+              <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/getBaseComposerInformation.xhtml">getBaseComposerInformation()</a>
+            </li>
+            <li id="getContents"><a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/getContents.xhtml">getContents()</a>
+                — Get the remote content.</li>
+            <li id="getScheme"><a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/getScheme.xhtml">getScheme()</a>
+                — Get the https or http protocol depending on SSL support.</li>
+            <li id="shouldCache"><a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/shouldCache.xhtml">shouldCache()</a>
+                — Returns whether or not the given $identifier should be cached or not.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="cleanup">
+              <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/cleanup.xhtml">cleanup()</a>
+            </li>
+            <li id="getComposerInformation">
+              <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/getComposerInformation.xhtml">getComposerInformation()</a>
+            </li>
+            <li id="hasComposerFile">
+              <a title="Composer\Repository\Vcs\VcsDriver" href="../classes/Composer_Repository_Vcs_VcsDriver/hasComposerFile.xhtml">hasComposerFile()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

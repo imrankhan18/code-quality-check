@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Package\Locker</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Package">Composer\Package</a>
+          </li>
+          <li class="separator">Locker</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Package/Locker.php.xhtml#line34">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Package\</small>Locker</h1>
+        <h4>Reads/writes project lockfile (composer.lock).</h4>
+        <p/>
+        <ul>
+          <li>Author: Konstantin Kudryashiv &lt;ever.zet@gmail.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Locker
+            {<br/><ul class="none"><li>// members</li><li>private <span title="Composer\Json\JsonFile">JsonFile</span> <a href="#members">$lockFile</a>;
+                    </li><li>private <span title="Composer\Installer\InstallationManager">InstallationManager</span> <a href="#members">$installationManager</a>;
+                    </li><li>private  <a href="#members">$hash</a>;
+                    </li><li>private  <a href="#members">$contentHash</a>;
+                    </li><li>private <span title="Composer\Package\Loader\ArrayLoader">ArrayLoader</span> <a href="#members">$loader</a>;
+                    </li><li>private <span title="Composer\Package\Dumper\ArrayDumper">ArrayDumper</span> <a href="#members">$dumper</a>;
+                    </li><li>private <span title="Composer\Util\ProcessExecutor">ProcessExecutor</span> <a href="#members">$process</a>;
+                    </li><li>private  <a href="#members">$lockDataCache</a> =
+                        NULL;
+                    </li><li>private <span title="Composer\Package\bool">bool</span> <a href="#members">$virtualFileWritten</a> =
+                        false;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/__construct.xhtml">__construct</a>()
+                    </li><li>public static string <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getContentHash.xhtml">getContentHash</a>()
+                    </li><li>public bool <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/isLocked.xhtml">isLocked</a>()
+                    </li><li>public bool <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/isFresh.xhtml">isFresh</a>()
+                    </li><li>public <span title="LockArrayRepository">LockArrayRepository</span> <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getLockedRepository.xhtml">getLockedRepository</a>()
+                    </li><li>public array <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getDevPackageNames.xhtml">getDevPackageNames</a>()
+                    </li><li>public array <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPlatformRequirements.xhtml">getPlatformRequirements</a>()
+                    </li><li>public string <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getMinimumStability.xhtml">getMinimumStability</a>()
+                    </li><li>public array <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getStabilityFlags.xhtml">getStabilityFlags</a>()
+                    </li><li>public ?bool <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPreferStable.xhtml">getPreferStable</a>()
+                    </li><li>public ?bool <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPreferLowest.xhtml">getPreferLowest</a>()
+                    </li><li>public array <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPlatformOverrides.xhtml">getPlatformOverrides</a>()
+                    </li><li>public array <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getAliases.xhtml">getAliases</a>()
+                    </li><li>public array <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getLockData.xhtml">getLockData</a>()
+                    </li><li>public bool <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/setLockData.xhtml">setLockData</a>()
+                    </li><li>private array <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/lockPackages.xhtml">lockPackages</a>()
+                    </li><li>private ?string <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPackageTime.xhtml">getPackageTime</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="contentHash"><strong>$contentHash</strong>
+                —
+                string</li>
+            <li id="dumper"><strong>$dumper</strong>
+                —
+                <a title="Composer\Package\Dumper\ArrayDumper" href="../classes/Composer_Package_Dumper_ArrayDumper.xhtml">Composer\Package\Dumper\ArrayDumper</a></li>
+            <li id="hash"><strong>$hash</strong>
+                —
+                string</li>
+            <li id="installationManager"><strong>$installationManager</strong>
+                —
+                <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager.xhtml">Composer\Installer\InstallationManager</a></li>
+            <li id="loader"><strong>$loader</strong>
+                —
+                <a title="Composer\Package\Loader\ArrayLoader" href="../classes/Composer_Package_Loader_ArrayLoader.xhtml">Composer\Package\Loader\ArrayLoader</a></li>
+            <li id="lockDataCache"><strong>$lockDataCache</strong>
+                —
+                array</li>
+            <li id="lockFile"><strong>$lockFile</strong>
+                —
+                <a title="Composer\Json\JsonFile" href="../classes/Composer_Json_JsonFile.xhtml">Composer\Json\JsonFile</a></li>
+            <li id="process"><strong>$process</strong>
+                —
+                <a title="Composer\Util\ProcessExecutor" href="../classes/Composer_Util_ProcessExecutor.xhtml">Composer\Util\ProcessExecutor</a></li>
+            <li id="virtualFileWritten"><strong>$virtualFileWritten</strong>
+                —
+                <a title="Composer\Package\bool" href="../classes/Composer_Package_bool.xhtml">Composer\Package\bool</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="getPackageTime"><a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPackageTime.xhtml">getPackageTime()</a>
+                — Returns the packages's datetime for its source reference.</li>
+            <li id="lockPackages">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/lockPackages.xhtml">lockPackages()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/__construct.xhtml">__construct()</a>
+                — Initializes packages locker.</li>
+            <li id="getAliases">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getAliases.xhtml">getAliases()</a>
+            </li>
+            <li id="getContentHash"><a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getContentHash.xhtml">getContentHash()</a>
+                — Returns the md5 hash of the sorted content of the composer file.</li>
+            <li id="getDevPackageNames">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getDevPackageNames.xhtml">getDevPackageNames()</a>
+            </li>
+            <li id="getLockData">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getLockData.xhtml">getLockData()</a>
+            </li>
+            <li id="getLockedRepository"><a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getLockedRepository.xhtml">getLockedRepository()</a>
+                — Searches and returns an array of locked packages, retrieved from registered repositories.</li>
+            <li id="getMinimumStability">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getMinimumStability.xhtml">getMinimumStability()</a>
+            </li>
+            <li id="getPlatformOverrides">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPlatformOverrides.xhtml">getPlatformOverrides()</a>
+            </li>
+            <li id="getPlatformRequirements"><a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPlatformRequirements.xhtml">getPlatformRequirements()</a>
+                — Returns the platform requirements stored in the lock file</li>
+            <li id="getPreferLowest">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPreferLowest.xhtml">getPreferLowest()</a>
+            </li>
+            <li id="getPreferStable">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getPreferStable.xhtml">getPreferStable()</a>
+            </li>
+            <li id="getStabilityFlags">
+              <a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/getStabilityFlags.xhtml">getStabilityFlags()</a>
+            </li>
+            <li id="isFresh"><a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/isFresh.xhtml">isFresh()</a>
+                — Checks whether the lock file is still up to date with the current hash</li>
+            <li id="isLocked"><a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/isLocked.xhtml">isLocked()</a>
+                — Checks whether locker has been locked (lockfile found).</li>
+            <li id="setLockData"><a title="Composer\Package\Locker" href="../classes/Composer_Package_Locker/setLockData.xhtml">setLockData()</a>
+                — Locks provided data into lockfile.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

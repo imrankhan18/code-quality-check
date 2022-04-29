@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Platform" namespace="Composer\Util" name="Platform" abstract="false" final="false" start="22" end="290">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Platform.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Platform.php" size="8759" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="a021d0b20d8088fb4904aa3f55827aa08424ad5d" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Platform.php"/>
+  <docblock>
+    <description compact="Platform helper for uniform platform-specific tests."/>
+    <author value="Niels Keurentjes &lt;niels.keurentjes@omines.com&gt;"/>
+  </docblock>
+  <member name="isVirtualBoxGuest" default="NULL" visibility="private" static="true" line="25">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?bool" namespace="Composer\Util" name="?bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="isWindowsSubsystemForLinux" default="NULL" visibility="private" static="true" line="27">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?bool" namespace="Composer\Util" name="?bool"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="getCwd" start="34" end="53" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="getcwd() equivalent which always returns a string"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="allowEmpty" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="fallback to realpath('') just in case this works but odds are it would break as well if we are in a case where getcwd fails" line="38"/>
+      <comment value="crappy state, assume '' and hopefully relative paths allow things to continue" line="43"/>
+    </inline>
+  </method>
+  <method name="getEnv" start="61" end="71" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="getenv() equivalent but reads from the runtime global variables first"/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Util\string|false" namespace="Composer\Util" name="string|false"/>
+      </return>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="putEnv" start="80" end="85" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="putenv() equivalent but updates the runtime global variables too"/>
+      <param type="string" variable="$name"/>
+      <param type="string" variable="$value"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" type="string"/>
+  </method>
+  <method name="clearEnv" start="93" end="97" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="putenv('X') equivalent but updates the runtime global variables too"/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="expandPath" start="105" end="119" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Parses tildes and environment variables in paths."/>
+      <param type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="getUserDirectory" start="125" end="142" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <throws description="If the user home could not reliably be determined" type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return description="The formal user home as detected from environment parameters" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="isWindowsSubsystemForLinux" start="147" end="168" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return description="Whether the host machine is running on the Windows Subsystem for Linux (WSL)" type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isWindows" start="173" end="176" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return description="Whether the host machine is running a Windows OS" type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="strlen" start="182" end="194" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$str"/>
+      <return description="return a guaranteed binary length of the string, regardless of silly mbstring configs" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="str" byreference="false" type="string"/>
+  </method>
+  <method name="isTty" start="200" end="226" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Open file descriptor or null to default to STDOUT" type="object" variable="$fd">
+        <type full="Composer\Util\?resource" namespace="Composer\Util" name="?resource"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="fd" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="detect msysgit/mingw and assume this is a tty because detection" line="206"/>
+      <comment value="does not work correctly, see https://github.com/composer/composer/issues/9690" line="207"/>
+      <comment value="modern cross-platform function, includes the fstat" line="212"/>
+      <comment value="fallback so if it is present we trust it" line="213"/>
+      <comment value="only trusting this if it is positive, otherwise prefer fstat fallback" line="218"/>
+      <comment value="Check if formatted mode is S_IFCHR" line="224"/>
+    </inline>
+  </method>
+  <method name="workaroundFilesystemIssues" start="231" end="236" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="isVirtualBoxGuest" start="245" end="277" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="Attempts detection of VirtualBox guest VMs">This works based on the process' user being "vagrant", the COMPOSER_RUNTIME_ENV env var being set to "virtualbox", or lsmod showing the virtualbox guest additions are loaded</description>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getDevNull" start="282" end="289" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\'NUL'|'/dev/null'" namespace="Composer\Util" name="'NUL'|'/dev/null'"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+</class>

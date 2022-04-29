@@ -1,0 +1,1072 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Downloader" namespace="" name="PEAR_Downloader" abstract="false" final="false" start="46" end="1767">
+  <file path="//usr/local/lib/php/PEAR" file="Downloader.php" realpath="/usr/local/lib/php/PEAR/Downloader.php" size="65984" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="c706d3d0b5dad03c1ac3ea0843f1df93540e1c5e" relative="sr/local/lib/php/PEAR/Downloader.php"/>
+  <docblock>
+    <description compact="Administration class used to download anything from the internet (PEAR Packages, static URLs, xml files)"/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <author value="Stig Bakken &lt;ssb@php.net&gt;"/>
+    <author value="Tomas V. V. Cox &lt;cox@idecnet.com&gt;"/>
+    <author value="Martin Jansen &lt;mj@php.net&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.3.0"/>
+  </docblock>
+  <extends full="PEAR_Common" namespace="" name="PEAR_Common"/>
+  <member name="_registry" visibility="public" static="false" line="52">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PEAR_Registry" namespace="" name="PEAR_Registry"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_preferredState" visibility="public" static="false" line="59">
+    <docblock>
+      <description compact="Preferred Installation State (snapshot, devel, alpha, beta, stable)"/>
+      <var type="object">
+        <type full="string|null" namespace="" name="string|null"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_options" visibility="public" static="false" line="75">
+    <docblock>
+      <description compact="Options from command-line passed to Install.">Recognized options:&lt;br /&gt;
+ - onlyreqdeps      : install all required dependencies as well
+ - alldeps          : install all dependencies, including optional
+ - installroot      : base relative path to install files in
+ - force            : force a download even if warnings would prevent it
+ - nocompress       : download uncompressed tarballs
+ - configureoptions : additional configure options</description>
+      <see value="PEAR_Command_Install"/>
+      <access value="private"/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_downloadedPackages" default="" type="array" visibility="public" static="false" line="90">
+    <docblock>
+      <description compact="Downloaded Packages after a call to download().">Format of each entry:
+
+&lt;code&gt;
+array('pkg' =&gt; 'package_name', 'file' =&gt; '/path/to/local/file',
+   'info' =&gt; array() // parsed package.xml
+);
+&lt;/code&gt;</description>
+      <access value="private"/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_toDownload" default="" type="array" visibility="public" static="false" line="106">
+    <docblock>
+      <description compact="Packages slated for download.">This is used to prevent downloading a package more than once should it be a dependency
+for two packages to be installed.
+Format of each entry:
+
+&lt;pre&gt;
+array('package_name1' =&gt; parsed package.xml, 'package_name2' =&gt; parsed package.xml,
+);
+&lt;/pre&gt;</description>
+      <access value="private"/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_installed" default="" type="array" visibility="public" static="false" line="117">
+    <docblock>
+      <description compact="Array of every package installed, with names lower-cased.">Format:
+&lt;code&gt;
+array('package1' =&gt; 0, 'package2' =&gt; 1, );
+&lt;/code&gt;</description>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="_errorStack" default="" type="array" visibility="public" static="false" line="123">
+    <docblock>
+      <description/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_internalDownload" default="false" type="boolean" visibility="public" static="false" line="129">
+    <docblock>
+      <description/>
+      <var type="boolean"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_packageSortTree" visibility="public" static="false" line="136">
+    <docblock>
+      <description compact="Temporary variable used in sorting packages by dependency in {@link sortPkgDeps()}"/>
+      <var type="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_downloadDir" visibility="public" static="false" line="142">
+    <docblock>
+      <description compact="Temporary directory, or configuration value where downloads will occur"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="bivalentMethods" default="" type="array" visibility="protected" static="true" line="148">
+    <docblock>
+      <description compact="List of methods that can be called both statically and non-statically."/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="162" end="193" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object">
+        <type full="PEAR_Frontend_" namespace="" name="PEAR_Frontend_"/>
+      </param>
+      <param type="array"/>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+    </docblock>
+    <parameter name="ui" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="config" byreference="false" type="{unknown}" default="NULL"/>
+  </constructor>
+  <method name="discover" start="201" end="249" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Attempt to discover a channel's remote capabilities from its server name"/>
+      <param type="string"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="newDownloaderPackage" start="256" end="263" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="For simpler unit-testing"/>
+      <param type="object">
+        <type full="PEAR_Downloader" namespace="" name="PEAR_Downloader"/>
+      </param>
+      <return type="object">
+        <type full="PEAR_Downloader_Package" namespace="" name="PEAR_Downloader_Package"/>
+      </return>
+    </docblock>
+    <parameter name="t" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getDependency2Object" start="272" end="279" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="For simpler unit-testing"/>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+      <param type="array"/>
+      <param type="array"/>
+      <param type="int"/>
+    </docblock>
+    <parameter name="c" byreference="true" type="{unknown}"/>
+    <parameter name="i" byreference="false" type="{unknown}"/>
+    <parameter name="p" byreference="false" type="{unknown}"/>
+    <parameter name="s" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="download" start="281" end="511" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="convert all parameters into PEAR_Downloader_Package objects" line="293"/>
+    </inline>
+  </method>
+  <method name="analyzeDependencies" start="516" end="731" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="all packages to be installed" type="array"/>
+    </docblock>
+    <parameter name="params" byreference="true" type="{unknown}"/>
+    <parameter name="force" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getDownloadDir" start="738" end="772" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the directory that downloads will happen in"/>
+      <access value="private"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setDownloadDir" start="774" end="784" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="dir" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="configSet" start="786" end="794" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="key" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="layer" byreference="false" type="string" default="'user'"/>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setOptions" start="796" end="799" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="options" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getOptions" start="801" end="804" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="_getPackageDownloadUrl" start="811" end="941" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="output of {@link parsePackageName()}" type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="parr" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="getDownloadURL returns an array.  On error, it only contains information" line="815"/>
+      <comment value="on the latest release as array(version, info).  On success it contains" line="816"/>
+      <comment value="array(version, info, download url string)" line="817"/>
+      <comment value="package is installed - use the installed release stability level" line="838"/>
+      <comment value="no checking is necessary for REST" line="885"/>
+    </inline>
+  </method>
+  <method name="_getDepPackageDownloadUrl" start="947" end="1083" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="dependency array" type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="parr" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPackageDownloadUrl" start="1088" end="1106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <deprecated value="in favor of _getPackageDownloadUrl"/>
+    </docblock>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="version" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getDownloadedPackages" start="1114" end="1120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a list of downloaded packages after a call to {@link download()}.">Also resets the list of downloaded packages.</description>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="_downloadCallback" start="1122" end="1152" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="msg" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="_prependPath" start="1154" end="1169" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="path" byreference="false" type="{unknown}"/>
+    <parameter name="prepend" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="pushError" start="1175" end="1178" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string"/>
+      <param type="integer"/>
+    </docblock>
+    <parameter name="errmsg" byreference="false" type="{unknown}"/>
+    <parameter name="code" byreference="false" type="integer" default="1"/>
+  </method>
+  <method name="getErrorMsgs" start="1180" end="1189" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="sortPkgDeps" start="1196" end="1201" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="for BC"/>
+      <deprecated/>
+    </docblock>
+    <parameter name="packages" byreference="true" type="{unknown}"/>
+    <parameter name="uninstall" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="sortPackagesForInstall" start="1211" end="1366" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sort a list of arrays of array(downloaded packagefilename) by dependency.">This uses the topological sort method from graph theory, and the
+Structures_Graph package to properly sort dependencies for installation.</description>
+      <param description="an array of downloaded PEAR_Downloader_Packages" type="array"/>
+      <return description="array of array(packagefilename, package.xml contents)" type="array"/>
+    </docblock>
+    <parameter name="packages" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_detectDepCycle" start="1374" end="1394" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Detect recursive links between dependencies and break the cycles"/>
+      <param type="array"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="deplinks" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_testCycle" start="1396" end="1428" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="test" byreference="false" type="{unknown}"/>
+    <parameter name="deplinks" byreference="false" type="{unknown}"/>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="this happens when a parent has a dep cycle on another dependency" line="1404"/>
+      <comment value="but the child is not part of the cycle" line="1405"/>
+    </inline>
+  </method>
+  <method name="_setupGraph" start="1440" end="1457" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set up the dependency for installation parsing"/>
+      <param description="dependency information" type="array" variable="$t"/>
+      <param type="object" variable="$reg">
+        <type full="PEAR_Registry" namespace="" name="PEAR_Registry"/>
+      </param>
+      <param description="list of dependency links already established" type="array" variable="$deplinks"/>
+      <param description="all existing package nodes" type="array" variable="$nodes"/>
+      <param description="parent package name" type="string" variable="$package"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="t" byreference="false" type="{unknown}"/>
+    <parameter name="reg" byreference="false" type="{unknown}"/>
+    <parameter name="deplinks" byreference="true" type="{unknown}"/>
+    <parameter name="nodes" byreference="true" type="{unknown}"/>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_dependsOn" start="1459" end="1462" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="a" byreference="false" type="{unknown}"/>
+    <parameter name="b" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_checkDepTree" start="1464" end="1485" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="channel" byreference="false" type="{unknown}"/>
+    <parameter name="package" byreference="false" type="{unknown}"/>
+    <parameter name="b" byreference="false" type="{unknown}"/>
+    <parameter name="checked" byreference="false" type="array" default=""/>
+  </method>
+  <method name="_sortInstall" start="1487" end="1506" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="a" byreference="false" type="{unknown}"/>
+    <parameter name="b" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="both packages have dependencies" line="1498"/>
+    </inline>
+  </method>
+  <method name="_downloadHttp" start="1558" end="1766" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Download a file through HTTP.  Considers suggested file name in Content-disposition: header and can run a callback function for different events.  The callback will be called with two parameters: the callback type, and parameters.  The implemented callback types are:">'setup'       called at the very beginning, parameter is a UI object
+               that should be used for all output
+ 'message'     the parameter is a string with an informational message
+ 'saveas'      may be used to save with a different file name, the
+               parameter is the filename that is about to be used.
+               If a 'saveas' callback returns a non-empty string,
+               that file name will be used as the filename instead.
+               Note that $save_dir will not be affected by this, only
+               the basename of the file.
+ 'start'       download is starting, parameter is number of bytes
+               that are expected, or -1 if unknown
+ 'bytesread'   parameter is the number of bytes read so far
+ 'done'        download is complete, parameter is the total number
+               of bytes read
+ 'connfailed'  if the TCP/SSL connection fails, this callback is called
+               with array(host,port,errno,errmsg)
+ 'writefailed' if writing to disk fails, this callback is called
+               with array(destfile,errmsg)
+
+If an HTTP proxy has been configured (http_proxy PEAR_Config
+setting), the proxy will be used.</description>
+      <param description="the URL to download" type="string" variable="$url"/>
+      <param description="PEAR_Frontend_* instance" type="object" variable="$ui"/>
+      <param description="PEAR_Config instance" type="object" variable="$config"/>
+      <param description="directory to save file in" type="string" variable="$save_dir"/>
+      <param description="function/method to call for status" type="mixed" variable="$callback">updates</param>
+      <param description="header values to check against for caching" type="object" variable="$lastmodified">use false to return the header values from this download<type full="false|string|array" namespace="" name="false|string|array"/></param>
+      <param description="Accept headers to send" type="object" variable="$accept">
+        <type full="false|array" namespace="" name="false|array"/>
+      </param>
+      <param description="Channel to use for retrieving authentication" type="object" variable="$channel">
+        <type full="false|string" namespace="" name="false|string"/>
+      </param>
+      <return description="Returns the full path of the downloaded file or a PEAR" type="mixed">error on failure.  If the error is caused by
+               socket-related errors, the error object will
+               have the fsockopen error code available through
+               getCode().  If caching is requested, then return the header
+               values.
+               If $lastmodified was given and the there are no changes,
+               boolean false is returned.</return>
+      <access value="public"/>
+    </docblock>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="ui" byreference="true" type="{unknown}"/>
+    <parameter name="save_dir" byreference="false" type="string" default="'.'"/>
+    <parameter name="callback" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="lastmodified" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="accept" byreference="false" type="boolean" default="false"/>
+    <parameter name="channel" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="always reset , so we are clean case of error" line="1563"/>
+    </inline>
+  </method>
+  <parent full="PEAR_Common" namespace="" name="PEAR_Common">
+    <extends full="PEAR" namespace="" name="PEAR"/>
+    <member name="ui" default="NULL" visibility="public" static="false" line="133">
+      <docblock>
+        <description compact="User Interface object (PEAR_Frontend_* class).  If null, the log() method uses print."/>
+        <var type="object"/>
+      </docblock>
+    </member>
+    <member name="config" default="NULL" visibility="public" static="false" line="139">
+      <docblock>
+        <description compact="Configuration object (PEAR_Config)."/>
+        <var type="object">
+          <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="element_stack" default="" type="array" visibility="public" static="false" line="142">
+      <docblock>
+        <description compact="stack of elements, gives some sort of XML context"/>
+      </docblock>
+    </member>
+    <member name="current_element" visibility="public" static="false" line="145">
+      <docblock>
+        <description compact="name of currently parsed XML element"/>
+      </docblock>
+    </member>
+    <member name="current_attributes" default="" type="array" visibility="public" static="false" line="148">
+      <docblock>
+        <description compact="array of attributes of the currently parsed XML element"/>
+      </docblock>
+    </member>
+    <member name="pkginfo" default="" type="array" visibility="public" static="false" line="151">
+      <docblock>
+        <description compact="assoc with information about a package"/>
+      </docblock>
+    </member>
+    <member name="current_path" default="NULL" visibility="public" static="false" line="153"/>
+    <member name="_validPackageFile" visibility="public" static="false" line="160">
+      <docblock>
+        <description compact="Flag variable used to mark a valid package file"/>
+        <var type="boolean"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="167" end="172" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="PEAR_Common constructor"/>
+        <access value="public"/>
+      </docblock>
+    </constructor>
+    <method name="_PEAR_Common" start="179" end="195" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="PEAR_Common destructor"/>
+        <access value="private"/>
+      </docblock>
+      <inline>
+        <comment value="doesn't work due to bug #14744" line="181"/>
+        <comment value="$tempfiles = $this-&gt;_tempfiles;" line="182"/>
+      </inline>
+    </method>
+    <method name="addTempFile" start="208" end="214" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Register a temporary file or directory.  When the destructor is executed, all registered temporary files and directories are removed."/>
+        <param description="name of file or directory" type="string" variable="$file"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+        <access value="public"/>
+      </docblock>
+      <parameter name="file" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="mkDirHier" start="226" end="234" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Wrapper to System::mkDir(), creates a directory as well as any necessary parent directories."/>
+        <param description="directory name" type="string" variable="$dir"/>
+        <return description="TRUE on success, or a PEAR error" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <access value="public"/>
+      </docblock>
+      <parameter name="dir" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="Only used in Installer - move it there ?" line="228"/>
+      </inline>
+    </method>
+    <method name="log" start="244" end="258" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Logging method."/>
+        <param description="log level (0 is quiet, higher is noisier)" type="int" variable="$level"/>
+        <param description="message to write to the log" type="string" variable="$msg"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="level" byreference="false" type="{unknown}"/>
+      <parameter name="msg" byreference="false" type="{unknown}"/>
+      <parameter name="append_crlf" byreference="false" type="boolean" default="true"/>
+    </method>
+    <method name="mkTempDir" start="271" end="285" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Create and register a temporary directory."/>
+        <param description="(optional) Directory to use as tmpdir." type="string" variable="$tmpdir">Will use system defaults (for example
+                      /tmp or c:\windows\temp) if not specified</param>
+        <return description="name of created directory" type="string"/>
+        <access value="public"/>
+      </docblock>
+      <parameter name="tmpdir" byreference="false" type="string" default="''"/>
+    </method>
+    <method name="setFrontendObject" start="294" end="297" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set object that represents the frontend to be used."/>
+        <param description="Reference of the frontend object" type="object"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+        <access value="public"/>
+      </docblock>
+      <parameter name="ui" byreference="true" type="{unknown}"/>
+    </method>
+    <method name="betterStates" start="307" end="318" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Return an array containing all of the states that are more stable than or equal to the passed in state"/>
+        <param description="Release state" type="string"/>
+        <param description="Determines whether to include $state in the list" type="boolean"/>
+        <return description="False if $state is not a valid release state" type="object">
+          <type full="false|array" namespace="" name="false|array"/>
+        </return>
+      </docblock>
+      <parameter name="state" byreference="false" type="{unknown}"/>
+      <parameter name="include" byreference="false" type="boolean" default="false"/>
+    </method>
+    <method name="getUserRoles" start="325" end="328" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get the valid roles for a PEAR package maintainer"/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="getReleaseStates" start="335" end="338" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get the valid package release states of packages"/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="getDependencyTypes" start="345" end="348" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get the implemented dependency types (php, ext, pkg etc.)"/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="getDependencyRelations" start="355" end="358" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get the implemented dependency relations (has, lt, ge etc.)"/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="getFileRoles" start="365" end="368" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get the implemented file roles"/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="getReplacementTypes" start="375" end="378" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get the implemented file replacement types in"/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="getProvideTypes" start="385" end="388" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get the implemented file replacement types in"/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="getScriptPhases" start="395" end="398" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get the implemented file replacement types in"/>
+        <return type="array"/>
+      </docblock>
+    </method>
+    <method name="validPackageName" start="409" end="412" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Test whether a string contains a valid package name."/>
+        <param description="the package name to test" type="string" variable="$name"/>
+        <return type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <access value="public"/>
+      </docblock>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="validPackageVersion" start="423" end="426" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Test whether a string contains a valid package version."/>
+        <param description="the package version to test" type="string" variable="$ver"/>
+        <return type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <access value="public"/>
+      </docblock>
+      <parameter name="ver" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="isIncludeable" start="432" end="447" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description/>
+        <param description="relative or absolute include path" type="string" variable="$path"/>
+        <return type="boolean"/>
+      </docblock>
+      <parameter name="path" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_postProcessChecks" start="449" end="463" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="pf" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="infoFromTgzFile" start="477" end="482" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns information about a package file.  Expects the name of a gzipped tar file as input."/>
+        <param description="name of .tgz file" type="string" variable="$file"/>
+        <return description="array with package information" type="array"/>
+        <access value="public"/>
+        <deprecated value="use PEAR_PackageFile-&gt;fromTgzFile() instead"/>
+      </docblock>
+      <parameter name="file" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="infoFromDescriptionFile" start="496" end="501" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns information about a package file.  Expects the name of a package xml file as input."/>
+        <param description="name of package xml file" type="string" variable="$descfile"/>
+        <return description="array with package information" type="array"/>
+        <access value="public"/>
+        <deprecated value="use PEAR_PackageFile-&gt;fromPackageFile() instead"/>
+      </docblock>
+      <parameter name="descfile" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="infoFromString" start="515" end="520" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns information about a package file.  Expects the contents of a package xml file as input."/>
+        <param description="contents of package.xml file" type="string" variable="$data"/>
+        <return description="array with package information" type="array"/>
+        <access value="public"/>
+        <deprecated value="use PEAR_PackageFile-&gt;fromXmlstring() instead"/>
+      </docblock>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="_postProcessValidPackagexml" start="526" end="545" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object">
+          <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+        </param>
+        <return type="array"/>
+      </docblock>
+      <parameter name="pf" byreference="true" type="{unknown}"/>
+      <inline>
+        <comment value="sort of make this into a package.xml 1.0-style array" line="533"/>
+        <comment value="changelog is not converted to old format." line="534"/>
+      </inline>
+    </method>
+    <method name="infoFromAny" start="558" end="578" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns package information from different sources">This method is able to extract information about a package
+from a .tgz archive or from a XML package definition file.</description>
+        <access value="public"/>
+        <param description="Filename of the source ('package.xml', '&lt;package&gt;.tgz')" type="string"/>
+        <return type="string"/>
+        <deprecated value="use PEAR_PackageFile-&gt;fromAnyFile() instead"/>
+      </docblock>
+      <parameter name="info" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="xmlFromInfo" start="591" end="598" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an XML document based on the package info (as returned by the PEAR_Common::infoFrom* methods)."/>
+        <param description="package info" type="array" variable="$pkginfo"/>
+        <return description="XML data" type="string"/>
+        <access value="public"/>
+        <deprecated value="use a PEAR_PackageFile_v* object's generator instead"/>
+      </docblock>
+      <parameter name="pkginfo" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="validatePackageInfo" start="613" end="641" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Validate XML package definition file."/>
+        <param description="Filename of the package archive or of the" type="string" variable="$info">package definition file</param>
+        <param description="Array that will contain the errors" type="array" variable="$errors"/>
+        <param description="Array that will contain the warnings" type="array" variable="$warnings"/>
+        <param description="(optional) directory where source files" type="string" variable="$dir_prefix">may be found, or empty if they are not available</param>
+        <access value="public"/>
+        <return type="boolean"/>
+        <deprecated value="use the validation of PEAR_PackageFile objects"/>
+      </docblock>
+      <parameter name="info" byreference="false" type="{unknown}"/>
+      <parameter name="errors" byreference="true" type="{unknown}"/>
+      <parameter name="warnings" byreference="true" type="{unknown}"/>
+      <parameter name="dir_prefix" byreference="false" type="string" default="''"/>
+    </method>
+    <method name="buildProvidesArray" start="662" end="712" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Build a &quot;provides&quot; array from data returned by analyzeSourceCode().  The format of the built array is like this:">array(
+   'class;MyClass' =&gt; 'array('type' =&gt; 'class', 'name' =&gt; 'MyClass'),
+   ...
+ )</description>
+        <param description="array with information about a source file" type="array" variable="$srcinfo">as returned by the analyzeSourceCode() method.</param>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+        <access value="public"/>
+      </docblock>
+      <parameter name="srcinfo" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="analyzeSourceCode" start="721" end="729" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Analyze the source code of the given PHP file"/>
+        <param description="Filename of the PHP file" type="string"/>
+        <return type="mixed"/>
+        <access value="public"/>
+      </docblock>
+      <parameter name="file" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="detectDependencies" start="731" end="767" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="any" byreference="false" type="{unknown}"/>
+      <parameter name="status_callback" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="downloadHttp" start="823" end="834" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Download a file through HTTP.  Considers suggested file name in Content-disposition: header and can run a callback function for different events.  The callback will be called with two parameters: the callback type, and parameters.  The implemented callback types are:">'setup'       called at the very beginning, parameter is a UI object
+               that should be used for all output
+ 'message'     the parameter is a string with an informational message
+ 'saveas'      may be used to save with a different file name, the
+               parameter is the filename that is about to be used.
+               If a 'saveas' callback returns a non-empty string,
+               that file name will be used as the filename instead.
+               Note that $save_dir will not be affected by this, only
+               the basename of the file.
+ 'start'       download is starting, parameter is number of bytes
+               that are expected, or -1 if unknown
+ 'bytesread'   parameter is the number of bytes read so far
+ 'done'        download is complete, parameter is the total number
+               of bytes read
+ 'connfailed'  if the TCP connection fails, this callback is called
+               with array(host,port,errno,errmsg)
+ 'writefailed' if writing to disk fails, this callback is called
+               with array(destfile,errmsg)
+
+If an HTTP proxy has been configured (http_proxy PEAR_Config
+setting), the proxy will be used.</description>
+        <param description="the URL to download" type="string" variable="$url"/>
+        <param description="PEAR_Frontend_* instance" type="object" variable="$ui"/>
+        <param description="PEAR_Config instance" type="object" variable="$config"/>
+        <param description="(optional) directory to save file in" type="string" variable="$save_dir"/>
+        <param description="(optional) function/method to call for status" type="mixed" variable="$callback">updates</param>
+        <param description="header values to check against" type="object" variable="$lastmodified">for caching
+                                        use false to return the header
+                                        values from this download<type full="false|string|array" namespace="" name="false|string|array"/></param>
+        <param description="Accept headers to send" type="object" variable="$accept">
+          <type full="false|array" namespace="" name="false|array"/>
+        </param>
+        <param description="Channel to use for retrieving" type="object" variable="$channel">authentication<type full="false|string" namespace="" name="false|string"/></param>
+        <return description="Returns the full path of the downloaded file or a PEAR" type="mixed">error on failure.  If the error is caused by
+               socket-related errors, the error object will
+               have the fsockopen error code available through
+               getCode().  If caching is requested, then return the header
+               values.
+               If $lastmodified was given and the there are no changes,
+               boolean false is returned.</return>
+        <access value="public"/>
+      </docblock>
+      <parameter name="url" byreference="false" type="{unknown}"/>
+      <parameter name="ui" byreference="true" type="{unknown}"/>
+      <parameter name="save_dir" byreference="false" type="string" default="'.'"/>
+      <parameter name="callback" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="lastmodified" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="accept" byreference="false" type="boolean" default="false"/>
+      <parameter name="channel" byreference="false" type="boolean" default="false"/>
+    </method>
+  </parent>
+  <parent full="PEAR" namespace="" name="PEAR">
+    <member name="_debug" default="false" type="boolean" visibility="public" static="false" line="92">
+      <docblock>
+        <description compact="Whether to enable internal debug messages."/>
+        <var type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </var>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_mode" default="NULL" visibility="public" static="false" line="100">
+      <docblock>
+        <description compact="Default error mode for this object."/>
+        <var type="int"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_options" default="NULL" visibility="public" static="false" line="109">
+      <docblock>
+        <description compact="Default error options used for this object when error mode is PEAR_ERROR_TRIGGER."/>
+        <var type="int"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_default_error_handler" default="''" type="string" visibility="public" static="false" line="118">
+      <docblock>
+        <description compact="Default error handler (callback) for this object, if error mode is PEAR_ERROR_CALLBACK."/>
+        <var type="string"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_error_class" default="'PEAR_Error'" type="string" visibility="public" static="false" line="126">
+      <docblock>
+        <description compact="Which class to use for error objects."/>
+        <var type="string"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="_expected_errors" default="" type="array" visibility="public" static="false" line="134">
+      <docblock>
+        <description compact="An array of expected errors."/>
+        <var type="array"/>
+        <access value="private"/>
+      </docblock>
+    </member>
+    <member name="bivalentMethods" default="" type="array" visibility="protected" static="true" line="140">
+      <docblock>
+        <description compact="List of methods that can be called both statically and non-statically."/>
+        <var type="array"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="158" end="183" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Constructor.  Registers this object in $_PEAR_destructor_object_list for destructor emulation if a destructor object exists."/>
+        <param description="(optional) which class to use for" type="string" variable="$error_class">error objects, defaults to PEAR_Error.</param>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+    </constructor>
+    <method name="PEAR" start="192" end="195" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Only here for backwards compatibility.">E.g. Archive_Tar calls $this-&gt;PEAR() in its constructor.</description>
+        <param description="Which class to use for error objects," type="string" variable="$error_class">defaults to PEAR_Error.</param>
+      </docblock>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_PEAR" start="208" end="212" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Destructor (the emulated type of...).  Does nothing right now, but is included for forward compatibility, so subclass destructors should always call it.">See the note in the class desciption about output from
+destructors.</description>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="__call" start="214" end="225" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="method" byreference="false" type="{unknown}"/>
+      <parameter name="arguments" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__callStatic" start="227" end="238" abstract="false" final="false" static="true" visibility="public">
+      <parameter name="method" byreference="false" type="{unknown}"/>
+      <parameter name="arguments" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getStaticProperty" start="251" end="263" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="If you have a class that's mostly/entirely static, and you need static properties, you can use this method to simulate them. Eg. in your method(s) do this: $myVar = &amp;PEAR::getStaticProperty('myclass', 'myVar'); You MUST use a reference, or they will not persist!"/>
+        <param description="The calling classname, to prevent clashes" type="string" variable="$class"/>
+        <param description="The variable to retrieve." type="string" variable="$var"/>
+        <return description="A reference to the variable. If not set it will be" type="mixed">auto initialised to NULL.</return>
+      </docblock>
+      <parameter name="class" byreference="false" type="{unknown}"/>
+      <parameter name="var" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="registerShutdownFunc" start="274" end="283" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Use this function to register a shutdown method for static classes."/>
+        <param description="The function name (or array of class/method) to call" type="mixed" variable="$func"/>
+        <param description="The arguments to pass to the function" type="mixed" variable="$args"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="func" byreference="false" type="{unknown}"/>
+      <parameter name="args" byreference="false" type="array" default=""/>
+      <inline>
+        <comment value="if we are called statically, there is a potential" line="276"/>
+        <comment value="that no shutdown func is registered.  Bug #6445" line="277"/>
+      </inline>
+    </method>
+    <method name="isError" start="296" end="309" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Tell whether a value is a PEAR error."/>
+        <param description="the value to test" type="mixed" variable="$data"/>
+        <param description="if $data is an error object, return true" type="int" variable="$code">only if $code is a string and
+                       $obj-&gt;getMessage() == $code or
+                       $code is an integer and $obj-&gt;getCode() == $code</param>
+        <return description="true if parameter is an error" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="data" byreference="false" type="{unknown}"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_setErrorHandling" start="352" end="388" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Sets how errors generated by this object should be handled.">Can be invoked both in objects and statically.  If called
+statically, setErrorHandling sets the default behaviour for all
+PEAR objects.  If called in an object, setErrorHandling sets
+the default behaviour for that object.</description>
+        <param type="object" variable="$object">Object the method was called on (non-static mode)</param>
+        <param type="int" variable="$mode">One of PEAR_ERROR_RETURN, PEAR_ERROR_PRINT,
+       PEAR_ERROR_TRIGGER, PEAR_ERROR_DIE,
+       PEAR_ERROR_CALLBACK or PEAR_ERROR_EXCEPTION.</param>
+        <param type="mixed" variable="$options">When $mode is PEAR_ERROR_TRIGGER, this is the error level (one
+       of E_USER_NOTICE, E_USER_WARNING or E_USER_ERROR).
+
+       When $mode is PEAR_ERROR_CALLBACK, this parameter is expected
+       to be the callback function or method.  A callback
+       function is a string with the name of the function, a
+       callback method is an array of two elements: the element
+       at index 0 is the object, and the element at index 1 is
+       the name of the method to call in the object.
+
+       When $mode is PEAR_ERROR_PRINT or PEAR_ERROR_DIE, this is
+       a printf format string used when printing the error
+       message.</param>
+        <access value="public"/>
+        <return type="object">
+          <type full="void" namespace="" name="void"/>
+        </return>
+        <see value="PEAR_ERROR_RETURN"/>
+        <see value="PEAR_ERROR_PRINT"/>
+        <see value="PEAR_ERROR_TRIGGER"/>
+        <see value="PEAR_ERROR_DIE"/>
+        <see value="PEAR_ERROR_CALLBACK"/>
+        <see value="PEAR_ERROR_EXCEPTION"/>
+        <since value="PHP 4.0.5"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="expectError" start="405" end="413" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method is used to tell which errors you expect to get.">Expected errors are always returned with error mode
+PEAR_ERROR_RETURN.  Expected error codes are stored in a stack,
+and this method pushes a new element onto it.  The list of
+expected errors are in effect until they are popped off the
+stack with the popExpect() method.
+
+Note that this method can not be called statically</description>
+        <param description="a single error code or an array of error codes to expect" type="mixed" variable="$code"/>
+        <return description="the new depth of the &quot;expected errors&quot; stack" type="int"/>
+        <access value="public"/>
+      </docblock>
+      <parameter name="code" byreference="false" type="string" default="'*'"/>
+    </method>
+    <method name="popExpect" start="421" end="424" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method pops one element off the expected error codes stack."/>
+        <return description="the list of error codes that were popped" type="array"/>
+      </docblock>
+    </method>
+    <method name="_checkDelExpect" start="434" end="450" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method checks unsets an error code if available"/>
+        <param description="error code" type="mixed"/>
+        <return description="true if the error code was unset, false otherwise" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <access value="private"/>
+        <since value="PHP 4.3.0"/>
+      </docblock>
+      <parameter name="error_code" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="delExpect" start="461" end="483" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This method deletes all occurrences of the specified element from the expected error codes stack."/>
+        <param description="error code that should be deleted" type="mixed" variable="$error_code"/>
+        <return description="list of error codes that were deleted or error" type="mixed"/>
+        <access value="public"/>
+        <since value="PHP 4.3.0"/>
+      </docblock>
+      <parameter name="error_code" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="$error_code is empty" line="481"/>
+        <comment value="IMPROVE ME" line="482"/>
+      </inline>
+    </method>
+    <method name="_raiseError" start="521" end="581" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="This method is a wrapper that returns an instance of the configured error class with this object's default error handling applied.  If the $mode and $options parameters are not specified, the object's defaults are used."/>
+        <param description="a text error message or a PEAR error object" type="mixed" variable="$message"/>
+        <param description="a numeric error code (it is up to your class" type="int" variable="$code">to define these if you want to use codes)</param>
+        <param description="One of PEAR_ERROR_RETURN, PEAR_ERROR_PRINT," type="int" variable="$mode">PEAR_ERROR_TRIGGER, PEAR_ERROR_DIE,
+                 PEAR_ERROR_CALLBACK, PEAR_ERROR_EXCEPTION.</param>
+        <param description="If $mode is PEAR_ERROR_TRIGGER, this parameter" type="mixed" variable="$options">specifies the PHP-internal error level (one of
+                 E_USER_NOTICE, E_USER_WARNING or E_USER_ERROR).
+                 If $mode is PEAR_ERROR_CALLBACK, this
+                 parameter specifies the callback function or
+                 method.  In other error modes this parameter
+                 is ignored.</param>
+        <param description="If you need to pass along for example debug" type="string" variable="$userinfo">information, this parameter is meant for that.</param>
+        <param description="The returned error object will be" type="string" variable="$error_class">instantiated from this class, if specified.</param>
+        <param description="If true, raiseError will only pass error codes," type="object" variable="$skipmsg">the error message parameter will be dropped.<type full="bool" namespace="" name="bool"/></param>
+        <return description="a PEAR error object" type="object"/>
+        <see value="PEAR::setErrorHandling"/>
+        <since value="PHP 4.0.5"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="mode" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="error_class" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="skipmsg" byreference="false" type="boolean" default="false"/>
+      <inline>
+        <comment value="The error is yet a PEAR error object" line="530"/>
+        <comment value="No mode given, try global ones" line="553"/>
+      </inline>
+    </method>
+    <method name="_throwError" start="598" end="607" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Simpler form of raiseError with fewer options.  In most cases message, code and userinfo are enough."/>
+        <param description="a text error message or a PEAR error object" type="mixed" variable="$message"/>
+        <param description="a numeric error code (it is up to your class" type="int" variable="$code">to define these if you want to use codes)</param>
+        <param description="If you need to pass along for example debug" type="string" variable="$userinfo">information, this parameter is meant for that.</param>
+        <return description="a PEAR error object" type="object"/>
+        <see value="PEAR::raiseError"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="code" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="userinfo" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="staticPushErrorHandling" start="609" end="642" abstract="false" final="false" static="true" visibility="public">
+      <parameter name="mode" byreference="false" type="{unknown}"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="staticPopErrorHandling" start="644" end="678" abstract="false" final="false" static="true" visibility="public"/>
+    <method name="_pushErrorHandling" start="692" end="711" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Push a new error handler on top of the error handler options stack. With this you can easily override the actual error handler for some code and restore it later with popErrorHandling."/>
+        <param description="(same as setErrorHandling)" type="mixed" variable="$mode"/>
+        <param description="(same as setErrorHandling)" type="mixed" variable="$options"/>
+        <return description="Always true" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <see value="PEAR::setErrorHandling"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+      <parameter name="mode" byreference="false" type="{unknown}"/>
+      <parameter name="options" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="_popErrorHandling" start="720" end="732" abstract="false" final="false" static="true" visibility="protected">
+      <docblock>
+        <description compact="Pop the last error handler used"/>
+        <return description="Always true" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+        <see value="PEAR::pushErrorHandling"/>
+      </docblock>
+      <parameter name="object" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="loadExtension" start="741" end="768" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="OS independent PHP extension load. Remember to take care on the correct extension name for case sensitive OSes."/>
+        <param description="The extension name" type="string" variable="$ext"/>
+        <return description="Success or not on the dl() call" type="object">
+          <type full="bool" namespace="" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="ext" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="if either returns true dl() will produce a FATAL error, stop that" line="747"/>
+      </inline>
+    </method>
+    <method name="getSourceDateEpoch" start="777" end="790" abstract="false" final="false" static="true" visibility="public">
+      <docblock>
+        <description compact="Get SOURCE_DATE_EPOCH environment variable See https://reproducible-builds.org/specs/source-date-epoch/"/>
+        <return type="int"/>
+        <access value="public"/>
+      </docblock>
+    </method>
+  </parent>
+  <extenders>
+    <extender full="PEAR_Installer" namespace="" name="PEAR_Installer"/>
+  </extenders>
+</class>

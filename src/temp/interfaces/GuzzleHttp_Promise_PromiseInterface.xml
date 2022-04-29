@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface" abstract="false" final="false" start="14" end="97">
+  <file path="//var/www/html/vendor/guzzlehttp/promises/src" file="PromiseInterface.php" realpath="/var/www/html/vendor/guzzlehttp/promises/src/PromiseInterface.php" size="2852" time="2021-10-22T20:56:57+00:00" unixtime="1634936217" sha1="8c7d96069ef579dd4df26e51810fdeb10da29794" relative="ar/www/html/vendor/guzzlehttp/promises/src/PromiseInterface.php"/>
+  <docblock>
+    <description compact="A promise represents the eventual result of an asynchronous operation.">The primary way of interacting with a promise is through its then method,
+which registers callbacks to receive either a promise’s eventual value or
+the reason why the promise cannot be fulfilled.</description>
+    <link value="https://promisesaplus.com/"/>
+  </docblock>
+  <constant type="{unknown}" name="PENDING" value="'pending'"/>
+  <constant type="{unknown}" name="FULFILLED" value="'fulfilled'"/>
+  <constant type="{unknown}" name="REJECTED" value="'rejected'"/>
+  <method name="then" start="29" end="32" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Appends fulfillment and rejection handlers to the promise, and returns a new promise resolving to the return value of the called handler."/>
+      <param description="Invoked when the promise fulfills." type="object" variable="$onFulfilled">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <param description="Invoked when the promise is rejected." type="object" variable="$onRejected">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="onFulfilled" byreference="false" type="callable" default="NULL"/>
+    <parameter name="onRejected" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="otherwise" start="44" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Appends a rejection handler callback to the promise, and returns a new promise resolving to the return value of the callback if it is called, or to its original fulfillment value if the promise is instead fulfilled."/>
+      <param description="Invoked when the promise is rejected." type="object" variable="$onRejected">
+        <type full="GuzzleHttp\Promise\callable" namespace="GuzzleHttp\Promise" name="callable"/>
+      </param>
+      <return type="object">
+        <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="onRejected" byreference="false" type="callable"/>
+  </method>
+  <method name="getState" start="54" end="54" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the state of the promise (&quot;pending&quot;, &quot;rejected&quot;, or &quot;fulfilled&quot;).">The three states can be checked against the constants defined on
+PromiseInterface: PENDING, FULFILLED, and REJECTED.</description>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="resolve" start="63" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Resolve the promise with the given value."/>
+      <param type="mixed" variable="$value"/>
+      <throws description="if the promise is already resolved." type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="reject" start="72" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Reject the promise with the given reason."/>
+      <param type="mixed" variable="$reason"/>
+      <throws description="if the promise is already resolved." type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+    </docblock>
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cancel" start="79" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Cancels the promise if possible."/>
+      <link value="https://github.com/promises-aplus/cancellation-spec/issues/7"/>
+    </docblock>
+  </method>
+  <method name="wait" start="96" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Waits until the promise completes if possible.">Pass $unwrap as true to unwrap the result of the promise, either
+returning the resolved value or throwing the rejected exception.
+
+If the promise cannot be waited on, then the promise will be rejected.</description>
+      <param type="object" variable="$unwrap">
+        <type full="GuzzleHttp\Promise\bool" namespace="GuzzleHttp\Promise" name="bool"/>
+      </param>
+      <return type="mixed"/>
+      <throws description="if the promise has no wait function or if the" type="object">promise does not settle after waiting.<type full="\LogicException" namespace="" name="LogicException"/></throws>
+    </docblock>
+    <parameter name="unwrap" byreference="false" type="boolean" default="true"/>
+  </method>
+  <implementors>
+    <class full="GuzzleHttp\Promise\Promise" namespace="GuzzleHttp\Promise" name="Promise"/>
+    <class full="GuzzleHttp\Promise\Coroutine" namespace="GuzzleHttp\Promise" name="Coroutine"/>
+    <class full="GuzzleHttp\Promise\FulfilledPromise" namespace="GuzzleHttp\Promise" name="FulfilledPromise"/>
+    <class full="GuzzleHttp\Promise\RejectedPromise" namespace="GuzzleHttp\Promise" name="RejectedPromise"/>
+  </implementors>
+</interface>

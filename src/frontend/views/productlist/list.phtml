@@ -1,0 +1,35 @@
+<body>
+    <h2>Products list</h2>
+</body>
+<?php
+if (isset($productlist)) {
+    $list = '';
+    $list .= "<form action='/frontend/testapi/order/' method='post'><table >
+            <tr>
+    
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Place Order</th>
+            </tr>";
+    foreach ($productlist as $k => $v) {
+        $list .= "<tr>
+        <td>" . $v['_id']['$oid'] . "</td>
+        <td>" . $v['name'] . "</td>
+        <td>" . $v['price'] . "</td>
+        <td>" . $v['category'] . "</td>
+        <input type='hidden' value=" . $v['quantity'] . ">
+        <td>" . $v['quantity'] . "</td>";
+        if ($v['quantity'] > 0) {
+            $list .= "<td><a href='/frontend/testapi/order?id=" . $v['_id']['$oid'] . '&qty=' . $v['quantity'] . "' class='btn btn-primary'>Buy</a></td>";
+        }
+        if ($v['quantity'] <= 0) {
+            $list .= "<td><a href='' class='btn btn-danger'>Out Of Stock</a></td>
+        </tr>";
+        }
+    }
+    $list .= "</table></form>";
+    echo $list;
+}

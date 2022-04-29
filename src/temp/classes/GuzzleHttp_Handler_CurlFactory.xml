@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Handler\CurlFactory" namespace="GuzzleHttp\Handler" name="CurlFactory" abstract="false" final="false" start="20" end="595">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Handler" file="CurlFactory.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php" size="22691" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="eef71556af334dc04505d7db99be86449d3c9eec" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php"/>
+  <docblock>
+    <description compact="Creates curl resources from a request"/>
+    <final/>
+  </docblock>
+  <implements full="GuzzleHttp\Handler\CurlFactoryInterface" namespace="GuzzleHttp\Handler" name="CurlFactoryInterface"/>
+  <constant type="string" name="CURL_VERSION_STR" value="'curl_version'"/>
+  <constant type="string" name="LOW_CURL_VERSION_NUMBER" value="'7.21.2'">
+    <docblock>
+      <description/>
+      <deprecated/>
+    </docblock>
+  </constant>
+  <member name="handles" default="" type="array" visibility="private" static="false" line="32">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="GuzzleHttp\Handler\resource[]|\CurlHandle" namespace="GuzzleHttp\Handler\resource[]|" name="CurlHandle"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="maxHandles" visibility="private" static="false" line="37">
+    <docblock>
+      <description/>
+      <var description="Total number of idle handles to keep in cache" type="int"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="42" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Maximum number of idle handles." type="int" variable="$maxHandles"/>
+    </docblock>
+    <parameter name="maxHandles" byreference="false" type="int"/>
+  </constructor>
+  <method name="create" start="47" end="73" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <inline>
+      <comment value="Add handler options from the request configuration options" line="63"/>
+    </inline>
+  </method>
+  <method name="release" start="75" end="94" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+  </method>
+  <method name="finish" start="103" end="123" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Completes a cURL transaction, either returning a response promise or a rejected promise."/>
+      <param description="array): PromiseInterface $handler" type="object">
+        <type full="GuzzleHttp\Handler\callable(RequestInterface" namespace="GuzzleHttp\Handler" name="callable(RequestInterface"/>
+      </param>
+      <param description="Dictates how the handle is released" type="object" variable="$factory">
+        <type full="GuzzleHttp\Handler\CurlFactoryInterface" namespace="GuzzleHttp\Handler" name="CurlFactoryInterface"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="handler" byreference="false" type="callable"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+    <parameter name="factory" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\CurlFactoryInterface" namespace="GuzzleHttp\Handler" name="CurlFactoryInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Return the response if it is present and there is no error." line="113"/>
+      <comment value="Rewind the body of the response if possible." line="116"/>
+    </inline>
+  </method>
+  <method name="invokeStats" start="125" end="137" abstract="false" final="false" static="true" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+  </method>
+  <method name="finishError" start="142" end="159" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param description="array): PromiseInterface $handler" type="object">
+        <type full="GuzzleHttp\Handler\callable(RequestInterface" namespace="GuzzleHttp\Handler" name="callable(RequestInterface"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="handler" byreference="false" type="callable"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+    <parameter name="factory" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\CurlFactoryInterface" namespace="GuzzleHttp\Handler" name="CurlFactoryInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Get error information and release the handle to the factory." line="144"/>
+      <comment value="Retry when nothing is present or when curl failed to rewind." line="153"/>
+    </inline>
+  </method>
+  <method name="createRejection" start="161" end="214" abstract="false" final="false" static="true" visibility="private">
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+    <parameter name="ctx" byreference="false" type="array"/>
+    <inline>
+      <comment value="If an exception was encountered during the onHeaders event, then" line="183"/>
+      <comment value="return a rejected promise that wraps that exception." line="184"/>
+      <comment value="Create a connection exception if it was a specific error code." line="208"/>
+    </inline>
+  </method>
+  <method name="getDefaultConf" start="219" end="244" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return description="mixed&gt;" type="object">
+        <type full="GuzzleHttp\Handler\array&lt;int|string" namespace="GuzzleHttp\Handler" name="array&lt;int|string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+  </method>
+  <method name="applyMethod" start="246" end="271" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+    <parameter name="conf" byreference="true" type="array"/>
+  </method>
+  <method name="applyBody" start="273" end="310" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="conf" byreference="true" type="array"/>
+    <inline>
+      <comment value="Send the body as a string if the size is less than 1MB OR if the" line="279"/>
+      <comment value="[curl][body_as_string] request value is set." line="280"/>
+      <comment value="If the Expect header is not present, prevent curl from adding it" line="301"/>
+      <comment value="cURL sometimes adds a content-type by default. Prevent this." line="306"/>
+    </inline>
+  </method>
+  <method name="applyHeaders" start="312" end="331" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+    <parameter name="conf" byreference="true" type="array"/>
+    <inline>
+      <comment value="Remove the Accept header if one was not set" line="327"/>
+    </inline>
+  </method>
+  <method name="removeHeader" start="339" end="347" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Remove a header from the options array."/>
+      <param description="Case-insensitive header to remove" type="string" variable="$name"/>
+      <param description="Array of options to modify" type="array" variable="$options"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="options" byreference="true" type="array"/>
+  </method>
+  <method name="applyHandlerOptions" start="349" end="503" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+    <parameter name="conf" byreference="true" type="array"/>
+    <inline>
+      <comment value="CURL default value is CURL_IPRESOLVE_WHATEVER" line="421"/>
+    </inline>
+  </method>
+  <method name="retryFailedRewind" start="516" end="548" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="This function ensures that a response was set on a transaction. If one was not set, then the request is retried if possible. This error typically means you are sending a payload, curl encountered a &quot;Connection died, retrying a fresh connect&quot; error, tried to rewind the stream, and then encountered a &quot;necessary data rewind wasn't possible&quot; error, causing the request to be sent through curl_multi_info_read() without an error status."/>
+      <param description="array): PromiseInterface $handler" type="object">
+        <type full="GuzzleHttp\Handler\callable(RequestInterface" namespace="GuzzleHttp\Handler" name="callable(RequestInterface"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="handler" byreference="false" type="callable"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+    <parameter name="ctx" byreference="false" type="array"/>
+    <inline>
+      <comment value="Retry no more than 3 times before giving up." line="532"/>
+    </inline>
+  </method>
+  <method name="createHeaderFn" start="550" end="594" abstract="false" final="false" static="false" visibility="private">
+    <return type="callable" nullable="false"/>
+    <parameter name="easy" byreference="false" type="object">
+      <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+    </parameter>
+  </method>
+  <interface full="GuzzleHttp\Handler\CurlFactoryInterface" namespace="GuzzleHttp\Handler" name="CurlFactoryInterface">
+    <method name="create" start="17" end="17" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Creates a cURL handle resource."/>
+        <param description="Request" type="object" variable="$request">
+          <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+        </param>
+        <param description="Transfer options" type="array" variable="$options"/>
+        <throws description="when an option cannot be applied" type="object">
+          <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+        </throws>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+      </return>
+      <parameter name="request" byreference="false" type="object">
+        <type full="Psr\Http\Message\RequestInterface" namespace="Psr\Http\Message" name="RequestInterface"/>
+      </parameter>
+      <parameter name="options" byreference="false" type="array"/>
+    </method>
+    <method name="release" start="24" end="24" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Release an easy handle, allowing it to be reused or closed.">This function must call unset on the easy handle's "handle" property.</description>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="easy" byreference="false" type="object">
+        <type full="GuzzleHttp\Handler\EasyHandle" namespace="GuzzleHttp\Handler" name="EasyHandle"/>
+      </parameter>
+    </method>
+  </interface>
+</class>

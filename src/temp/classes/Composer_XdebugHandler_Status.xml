@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\XdebugHandler\Status" namespace="Composer\XdebugHandler" name="Status" abstract="false" final="false" start="23" end="203">
+  <file path="//var/www/html/vendor/composer/xdebug-handler/src" file="Status.php" realpath="/var/www/html/vendor/composer/xdebug-handler/src/Status.php" size="5233" time="2022-02-25T21:32:43+00:00" unixtime="1645824763" sha1="8388e03daec1f3574628cf931bf85476213dcfab" relative="ar/www/html/vendor/composer/xdebug-handler/src/Status.php"/>
+  <docblock>
+    <description/>
+    <author value="John Stevenson &lt;john-stevenson@blueyonder.co.uk&gt;"/>
+    <internal/>
+  </docblock>
+  <constant type="string" name="ENV_RESTART" value="'XDEBUG_HANDLER_RESTART'"/>
+  <constant type="string" name="CHECK" value="'Check'"/>
+  <constant type="string" name="ERROR" value="'Error'"/>
+  <constant type="string" name="INFO" value="'Info'"/>
+  <constant type="string" name="NORESTART" value="'NoRestart'"/>
+  <constant type="string" name="RESTART" value="'Restart'"/>
+  <constant type="string" name="RESTARTING" value="'Restarting'"/>
+  <constant type="string" name="RESTARTED" value="'Restarted'"/>
+  <member name="debug" visibility="private" static="false" line="35">
+    <docblock>
+      <var type="object">
+        <type full="Composer\XdebugHandler\bool" namespace="Composer\XdebugHandler" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="envAllowXdebug" visibility="private" static="false" line="38">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="loaded" visibility="private" static="false" line="41">
+    <docblock>
+      <var type="object">
+        <type full="Composer\XdebugHandler\string|null" namespace="Composer\XdebugHandler" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="logger" visibility="private" static="false" line="44">
+    <docblock>
+      <var type="object">
+        <type full="Composer\XdebugHandler\LoggerInterface|null" namespace="Composer\XdebugHandler" name="LoggerInterface|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="modeOff" visibility="private" static="false" line="47">
+    <docblock>
+      <var type="object">
+        <type full="Composer\XdebugHandler\bool" namespace="Composer\XdebugHandler" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="time" visibility="private" static="false" line="50">
+    <docblock>
+      <var type="float"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="56" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Prefixed _ALLOW_XDEBUG name" type="string" variable="$envAllowXdebug"/>
+      <param description="Whether debug output is required" type="object" variable="$debug">
+        <type full="Composer\XdebugHandler\bool" namespace="Composer\XdebugHandler" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="envAllowXdebug" byreference="false" type="string"/>
+    <parameter name="debug" byreference="false" type="bool"/>
+  </constructor>
+  <method name="setLogger" start="72" end="75" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Activates status message output to a PSR3 logger"/>
+      <return type="object">
+        <type full="Composer\XdebugHandler\void" namespace="Composer\XdebugHandler" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="logger" byreference="false" type="object">
+      <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+    </parameter>
+  </method>
+  <method name="report" start="82" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Calls a handler method to report a message"/>
+      <throws description="If $op is not known" type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="op" byreference="false" type="string"/>
+    <parameter name="data" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="output" start="99" end="108" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Outputs a status message"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="text" byreference="false" type="string"/>
+    <parameter name="level" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="reportCheck" start="113" end="122" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Checking status message"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="loaded" byreference="false" type="string"/>
+  </method>
+  <method name="reportError" start="127" end="130" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Error status message"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="error" byreference="false" type="string"/>
+  </method>
+  <method name="reportInfo" start="135" end="138" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Info status message"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="info" byreference="false" type="string"/>
+  </method>
+  <method name="reportNoRestart" start="143" end="154" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="No restart status message"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="reportRestart" start="159" end="163" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Restart status message"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="reportRestarted" start="168" end="174" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Restarted status message"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="reportRestarting" start="179" end="185" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Restarting status message"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="command" byreference="false" type="string"/>
+  </method>
+  <method name="getEnvAllow" start="190" end="193" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Returns the _ALLOW_XDEBUG environment variable as name=value"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getLoadedMessage" start="198" end="202" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Returns the Xdebug status and version"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+</class>

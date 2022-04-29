@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Utils" namespace="GuzzleHttp" name="Utils" abstract="false" final="true" start="12" end="382">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="Utils.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Utils.php" size="13011" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="1a1ab72b3aa4bf341e8241d2d61156711c542700" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Utils.php"/>
+  <method name="describeType" start="22" end="38" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Debug function used to describe the provided value type and class."/>
+      <param type="mixed" variable="$input"/>
+      <return description="Returns a string containing the type of the variable and" type="string">if a class is provided, the class name.</return>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="input" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="headersFromLines" start="46" end="56" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Parses an array of header lines into an associative array of headers."/>
+      <param description="Header lines array of strings in the following" type="object" variable="$lines">format: "Name: Value"<type full="GuzzleHttp\iterable" namespace="GuzzleHttp" name="iterable"/></param>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="lines" byreference="false" type="object">
+      <type full="GuzzleHttp\iterable" namespace="GuzzleHttp" name="iterable"/>
+    </parameter>
+  </method>
+  <method name="debugResource" start="65" end="75" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns a debug stream based on the provided variable."/>
+      <param description="Optional value" type="mixed" variable="$value"/>
+      <return type="resource"/>
+    </docblock>
+    <parameter name="value" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="chooseHandler" start="86" end="106" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Chooses and creates a default handler to use based on the environment.">The returned handler is not wrapped by any default middlewares.</description>
+      <throws description="if no viable Handler is available." type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return description="array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system." type="object">
+        <type full="GuzzleHttp\callable(\Psr\Http\Message\RequestInterface" namespace="GuzzleHttp\callable(\Psr\Http\Message" name="RequestInterface"/>
+      </return>
+    </docblock>
+    <return type="callable" nullable="false"/>
+  </method>
+  <method name="defaultUserAgent" start="111" end="114" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get the default User-Agent string to use with Guzzle."/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="defaultCaBundle" start="131" end="186" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns the default cacert bundle for the current system.">First, the openssl.cafile and curl.cainfo php.ini settings are checked.
+If those settings are not configured, then the common locations for
+bundles found on Red Hat, CentOS, Fedora, Ubuntu, Debian, FreeBSD, OS X
+and Windows are checked. If any of these file locations are found on
+disk, they will be utilized.
+
+Note: the result of this function is cached for subsequent calls.</description>
+      <throws description="if no bundle can be found." type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <deprecated value="Utils::defaultCaBundle will be removed in guzzlehttp/guzzle:8.0. This method is not needed in PHP 5.6+."/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="normalizeHeaderKeys" start="192" end="200" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates an associative array of lowercase header names to the actual header casing."/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="headers" byreference="false" type="array"/>
+  </method>
+  <method name="isHostInNoProxy" start="221" end="254" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns true if the provided host matches any of the no proxy areas.">This method will strip a port from the host if it is present. Each pattern
+can be matched with an exact match (e.g., "foo.com" == "foo.com") or a
+partial match: (e.g., "foo.com" == "baz.foo.com" and ".foo.com" ==
+"baz.foo.com", but ".foo.com" != "foo.com").
+
+Areas are matched in the following cases:
+1. "*" (without quotes) always matches any hosts.
+2. An exact match.
+3. The area starts with "." and the area is the last part of the host. e.g.
+   '.mit.edu' will match any host that ends with '.mit.edu'.</description>
+      <param description="Host to check against the patterns." type="string" variable="$host"/>
+      <param description="An array of host patterns." type="array" variable="$noProxyArray" of="object">
+        <type full="GuzzleHttp\string" namespace="GuzzleHttp" name="string"/>
+      </param>
+      <throws type="object">
+        <type full="GuzzleHttp\Exception\InvalidArgumentException" namespace="GuzzleHttp\Exception" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="host" byreference="false" type="string"/>
+    <parameter name="noProxyArray" byreference="false" type="array"/>
+    <inline>
+      <comment value="Strip port if present." line="227"/>
+    </inline>
+  </method>
+  <method name="jsonDecode" start="271" end="279" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Wrapper for json_decode that throws when an error occurs."/>
+      <param description="JSON data to parse" type="string" variable="$json"/>
+      <param description="When true, returned objects will be converted" type="object" variable="$assoc">into associative arrays.<type full="GuzzleHttp\bool" namespace="GuzzleHttp" name="bool"/></param>
+      <param description="User specified recursion depth." type="int" variable="$depth"/>
+      <param description="Bitmask of JSON decode options." type="int" variable="$options"/>
+      <return type="object">
+        <type full="GuzzleHttp\object|array|string|int|float|bool|null" namespace="GuzzleHttp" name="object|array|string|int|float|bool|null"/>
+      </return>
+      <throws description="if the JSON cannot be decoded." type="object">
+        <type full="GuzzleHttp\Exception\InvalidArgumentException" namespace="GuzzleHttp\Exception" name="InvalidArgumentException"/>
+      </throws>
+      <link value="https://www.php.net/manual/en/function.json-decode.php"/>
+    </docblock>
+    <parameter name="json" byreference="false" type="string"/>
+    <parameter name="assoc" byreference="false" type="boolean" default="false"/>
+    <parameter name="depth" byreference="false" type="integer" default="512"/>
+    <parameter name="options" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="jsonEncode" start="292" end="301" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Wrapper for JSON encoding that throws when an error occurs."/>
+      <param description="The value being encoded" type="mixed" variable="$value"/>
+      <param description="JSON encode option bitmask" type="int" variable="$options"/>
+      <param description="Set the maximum depth. Must be greater than zero." type="int" variable="$depth"/>
+      <throws description="if the JSON cannot be encoded." type="object">
+        <type full="GuzzleHttp\Exception\InvalidArgumentException" namespace="GuzzleHttp\Exception" name="InvalidArgumentException"/>
+      </throws>
+      <link value="https://www.php.net/manual/en/function.json-encode.php"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="integer" default="0"/>
+    <parameter name="depth" byreference="false" type="integer" default="512"/>
+  </method>
+  <method name="currentTime" start="311" end="314" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Wrapper for the hrtime() or microtime() functions (depending on the PHP version, one of the two is used)"/>
+      <return description="UNIX timestamp" type="float"/>
+      <internal/>
+    </docblock>
+    <return type="float" nullable="false"/>
+  </method>
+  <method name="idnUriConvert" start="321" end="353" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="GuzzleHttp\Exception\InvalidArgumentException" namespace="GuzzleHttp\Exception" name="InvalidArgumentException"/>
+      </throws>
+      <internal/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="getenv" start="358" end="369" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="idnToAsci" start="374" end="381" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="GuzzleHttp\string|false" namespace="GuzzleHttp" name="string|false"/>
+      </return>
+    </docblock>
+    <parameter name="domain" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="int"/>
+    <parameter name="info" byreference="true" nullable="true" type="array" default=""/>
+  </method>
+</class>

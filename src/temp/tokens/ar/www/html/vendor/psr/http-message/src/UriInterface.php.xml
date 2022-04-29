@@ -1,0 +1,1109 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="//var/www/html/vendor/psr/http-message/src" file="UriInterface.php" realpath="/var/www/html/vendor/psr/http-message/src/UriInterface.php" size="12607" time="2016-08-06T14:39:51+00:00" unixtime="1470494391" sha1="a8f69d73e2ca020f5a56d580625c6d598f936a24" relative="ar/www/html/vendor/psr/http-message/src/UriInterface.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_NAMESPACE">namespace</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Psr</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Http</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Message</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="3"/>
+  <line no="4">
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="5">
+    <token name="T_DOC_COMMENT"> * Value object representing a URI.</token>
+  </line>
+  <line no="6">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="7">
+    <token name="T_DOC_COMMENT"> * This interface is meant to represent URIs according to RFC 3986 and to</token>
+  </line>
+  <line no="8">
+    <token name="T_DOC_COMMENT"> * provide methods for most common operations. Additional functionality for</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT"> * working with URIs can be provided on top of the interface or externally.</token>
+  </line>
+  <line no="10">
+    <token name="T_DOC_COMMENT"> * Its primary use is for HTTP requests, but may also be used in other</token>
+  </line>
+  <line no="11">
+    <token name="T_DOC_COMMENT"> * contexts.</token>
+  </line>
+  <line no="12">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="13">
+    <token name="T_DOC_COMMENT"> * Instances of this interface are considered immutable; all methods that</token>
+  </line>
+  <line no="14">
+    <token name="T_DOC_COMMENT"> * might change state MUST be implemented such that they retain the internal</token>
+  </line>
+  <line no="15">
+    <token name="T_DOC_COMMENT"> * state of the current instance and return an instance that contains the</token>
+  </line>
+  <line no="16">
+    <token name="T_DOC_COMMENT"> * changed state.</token>
+  </line>
+  <line no="17">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="18">
+    <token name="T_DOC_COMMENT"> * Typically the Host header will be also be present in the request message.</token>
+  </line>
+  <line no="19">
+    <token name="T_DOC_COMMENT"> * For server-side requests, the scheme will typically be discoverable in the</token>
+  </line>
+  <line no="20">
+    <token name="T_DOC_COMMENT"> * server parameters.</token>
+  </line>
+  <line no="21">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="22">
+    <token name="T_DOC_COMMENT"> * @link http://tools.ietf.org/html/rfc3986 (the URI specification)</token>
+  </line>
+  <line no="23">
+    <token name="T_DOC_COMMENT"> */</token>
+  </line>
+  <line no="24">
+    <token name="T_INTERFACE">interface</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">UriInterface</token>
+  </line>
+  <line no="25">
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="26">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="27">
+    <token name="T_DOC_COMMENT">     * Retrieve the scheme component of the URI.</token>
+  </line>
+  <line no="28">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="29">
+    <token name="T_DOC_COMMENT">     * If no scheme is present, this method MUST return an empty string.</token>
+  </line>
+  <line no="30">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="31">
+    <token name="T_DOC_COMMENT">     * The value returned MUST be normalized to lowercase, per RFC 3986</token>
+  </line>
+  <line no="32">
+    <token name="T_DOC_COMMENT">     * Section 3.1.</token>
+  </line>
+  <line no="33">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="34">
+    <token name="T_DOC_COMMENT">     * The trailing ":" character is not part of the scheme and MUST NOT be</token>
+  </line>
+  <line no="35">
+    <token name="T_DOC_COMMENT">     * added.</token>
+  </line>
+  <line no="36">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="37">
+    <token name="T_DOC_COMMENT">     * @see https://tools.ietf.org/html/rfc3986#section-3.1</token>
+  </line>
+  <line no="38">
+    <token name="T_DOC_COMMENT">     * @return string The URI scheme.</token>
+  </line>
+  <line no="39">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="40">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getScheme</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="41"/>
+  <line no="42">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="43">
+    <token name="T_DOC_COMMENT">     * Retrieve the authority component of the URI.</token>
+  </line>
+  <line no="44">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="45">
+    <token name="T_DOC_COMMENT">     * If no authority information is present, this method MUST return an empty</token>
+  </line>
+  <line no="46">
+    <token name="T_DOC_COMMENT">     * string.</token>
+  </line>
+  <line no="47">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="48">
+    <token name="T_DOC_COMMENT">     * The authority syntax of the URI is:</token>
+  </line>
+  <line no="49">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="50">
+    <token name="T_DOC_COMMENT">     * &lt;pre&gt;</token>
+  </line>
+  <line no="51">
+    <token name="T_DOC_COMMENT">     * [user-info@]host[:port]</token>
+  </line>
+  <line no="52">
+    <token name="T_DOC_COMMENT">     * &lt;/pre&gt;</token>
+  </line>
+  <line no="53">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="54">
+    <token name="T_DOC_COMMENT">     * If the port component is not set or is the standard port for the current</token>
+  </line>
+  <line no="55">
+    <token name="T_DOC_COMMENT">     * scheme, it SHOULD NOT be included.</token>
+  </line>
+  <line no="56">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="57">
+    <token name="T_DOC_COMMENT">     * @see https://tools.ietf.org/html/rfc3986#section-3.2</token>
+  </line>
+  <line no="58">
+    <token name="T_DOC_COMMENT">     * @return string The URI authority, in "[user-info@]host[:port]" format.</token>
+  </line>
+  <line no="59">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="60">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getAuthority</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="61"/>
+  <line no="62">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="63">
+    <token name="T_DOC_COMMENT">     * Retrieve the user information component of the URI.</token>
+  </line>
+  <line no="64">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="65">
+    <token name="T_DOC_COMMENT">     * If no user information is present, this method MUST return an empty</token>
+  </line>
+  <line no="66">
+    <token name="T_DOC_COMMENT">     * string.</token>
+  </line>
+  <line no="67">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="68">
+    <token name="T_DOC_COMMENT">     * If a user is present in the URI, this will return that value;</token>
+  </line>
+  <line no="69">
+    <token name="T_DOC_COMMENT">     * additionally, if the password is also present, it will be appended to the</token>
+  </line>
+  <line no="70">
+    <token name="T_DOC_COMMENT">     * user value, with a colon (":") separating the values.</token>
+  </line>
+  <line no="71">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="72">
+    <token name="T_DOC_COMMENT">     * The trailing "@" character is not part of the user information and MUST</token>
+  </line>
+  <line no="73">
+    <token name="T_DOC_COMMENT">     * NOT be added.</token>
+  </line>
+  <line no="74">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="75">
+    <token name="T_DOC_COMMENT">     * @return string The URI user information, in "username[:password]" format.</token>
+  </line>
+  <line no="76">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="77">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getUserInfo</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="78"/>
+  <line no="79">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="80">
+    <token name="T_DOC_COMMENT">     * Retrieve the host component of the URI.</token>
+  </line>
+  <line no="81">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="82">
+    <token name="T_DOC_COMMENT">     * If no host is present, this method MUST return an empty string.</token>
+  </line>
+  <line no="83">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="84">
+    <token name="T_DOC_COMMENT">     * The value returned MUST be normalized to lowercase, per RFC 3986</token>
+  </line>
+  <line no="85">
+    <token name="T_DOC_COMMENT">     * Section 3.2.2.</token>
+  </line>
+  <line no="86">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="87">
+    <token name="T_DOC_COMMENT">     * @see http://tools.ietf.org/html/rfc3986#section-3.2.2</token>
+  </line>
+  <line no="88">
+    <token name="T_DOC_COMMENT">     * @return string The URI host.</token>
+  </line>
+  <line no="89">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="90">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getHost</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="91"/>
+  <line no="92">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="93">
+    <token name="T_DOC_COMMENT">     * Retrieve the port component of the URI.</token>
+  </line>
+  <line no="94">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="95">
+    <token name="T_DOC_COMMENT">     * If a port is present, and it is non-standard for the current scheme,</token>
+  </line>
+  <line no="96">
+    <token name="T_DOC_COMMENT">     * this method MUST return it as an integer. If the port is the standard port</token>
+  </line>
+  <line no="97">
+    <token name="T_DOC_COMMENT">     * used with the current scheme, this method SHOULD return null.</token>
+  </line>
+  <line no="98">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="99">
+    <token name="T_DOC_COMMENT">     * If no port is present, and no scheme is present, this method MUST return</token>
+  </line>
+  <line no="100">
+    <token name="T_DOC_COMMENT">     * a null value.</token>
+  </line>
+  <line no="101">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="102">
+    <token name="T_DOC_COMMENT">     * If no port is present, but a scheme is present, this method MAY return</token>
+  </line>
+  <line no="103">
+    <token name="T_DOC_COMMENT">     * the standard port for that scheme, but SHOULD return null.</token>
+  </line>
+  <line no="104">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="105">
+    <token name="T_DOC_COMMENT">     * @return null|int The URI port.</token>
+  </line>
+  <line no="106">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="107">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getPort</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="108"/>
+  <line no="109">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="110">
+    <token name="T_DOC_COMMENT">     * Retrieve the path component of the URI.</token>
+  </line>
+  <line no="111">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="112">
+    <token name="T_DOC_COMMENT">     * The path can either be empty or absolute (starting with a slash) or</token>
+  </line>
+  <line no="113">
+    <token name="T_DOC_COMMENT">     * rootless (not starting with a slash). Implementations MUST support all</token>
+  </line>
+  <line no="114">
+    <token name="T_DOC_COMMENT">     * three syntaxes.</token>
+  </line>
+  <line no="115">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="116">
+    <token name="T_DOC_COMMENT">     * Normally, the empty path "" and absolute path "/" are considered equal as</token>
+  </line>
+  <line no="117">
+    <token name="T_DOC_COMMENT">     * defined in RFC 7230 Section 2.7.3. But this method MUST NOT automatically</token>
+  </line>
+  <line no="118">
+    <token name="T_DOC_COMMENT">     * do this normalization because in contexts with a trimmed base path, e.g.</token>
+  </line>
+  <line no="119">
+    <token name="T_DOC_COMMENT">     * the front controller, this difference becomes significant. It's the task</token>
+  </line>
+  <line no="120">
+    <token name="T_DOC_COMMENT">     * of the user to handle both "" and "/".</token>
+  </line>
+  <line no="121">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="122">
+    <token name="T_DOC_COMMENT">     * The value returned MUST be percent-encoded, but MUST NOT double-encode</token>
+  </line>
+  <line no="123">
+    <token name="T_DOC_COMMENT">     * any characters. To determine what characters to encode, please refer to</token>
+  </line>
+  <line no="124">
+    <token name="T_DOC_COMMENT">     * RFC 3986, Sections 2 and 3.3.</token>
+  </line>
+  <line no="125">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="126">
+    <token name="T_DOC_COMMENT">     * As an example, if the value should include a slash ("/") not intended as</token>
+  </line>
+  <line no="127">
+    <token name="T_DOC_COMMENT">     * delimiter between path segments, that value MUST be passed in encoded</token>
+  </line>
+  <line no="128">
+    <token name="T_DOC_COMMENT">     * form (e.g., "%2F") to the instance.</token>
+  </line>
+  <line no="129">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="130">
+    <token name="T_DOC_COMMENT">     * @see https://tools.ietf.org/html/rfc3986#section-2</token>
+  </line>
+  <line no="131">
+    <token name="T_DOC_COMMENT">     * @see https://tools.ietf.org/html/rfc3986#section-3.3</token>
+  </line>
+  <line no="132">
+    <token name="T_DOC_COMMENT">     * @return string The URI path.</token>
+  </line>
+  <line no="133">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="134">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getPath</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="135"/>
+  <line no="136">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="137">
+    <token name="T_DOC_COMMENT">     * Retrieve the query string of the URI.</token>
+  </line>
+  <line no="138">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="139">
+    <token name="T_DOC_COMMENT">     * If no query string is present, this method MUST return an empty string.</token>
+  </line>
+  <line no="140">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="141">
+    <token name="T_DOC_COMMENT">     * The leading "?" character is not part of the query and MUST NOT be</token>
+  </line>
+  <line no="142">
+    <token name="T_DOC_COMMENT">     * added.</token>
+  </line>
+  <line no="143">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="144">
+    <token name="T_DOC_COMMENT">     * The value returned MUST be percent-encoded, but MUST NOT double-encode</token>
+  </line>
+  <line no="145">
+    <token name="T_DOC_COMMENT">     * any characters. To determine what characters to encode, please refer to</token>
+  </line>
+  <line no="146">
+    <token name="T_DOC_COMMENT">     * RFC 3986, Sections 2 and 3.4.</token>
+  </line>
+  <line no="147">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="148">
+    <token name="T_DOC_COMMENT">     * As an example, if a value in a key/value pair of the query string should</token>
+  </line>
+  <line no="149">
+    <token name="T_DOC_COMMENT">     * include an ampersand ("&amp;") not intended as a delimiter between values,</token>
+  </line>
+  <line no="150">
+    <token name="T_DOC_COMMENT">     * that value MUST be passed in encoded form (e.g., "%26") to the instance.</token>
+  </line>
+  <line no="151">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="152">
+    <token name="T_DOC_COMMENT">     * @see https://tools.ietf.org/html/rfc3986#section-2</token>
+  </line>
+  <line no="153">
+    <token name="T_DOC_COMMENT">     * @see https://tools.ietf.org/html/rfc3986#section-3.4</token>
+  </line>
+  <line no="154">
+    <token name="T_DOC_COMMENT">     * @return string The URI query string.</token>
+  </line>
+  <line no="155">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="156">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getQuery</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="157"/>
+  <line no="158">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="159">
+    <token name="T_DOC_COMMENT">     * Retrieve the fragment component of the URI.</token>
+  </line>
+  <line no="160">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="161">
+    <token name="T_DOC_COMMENT">     * If no fragment is present, this method MUST return an empty string.</token>
+  </line>
+  <line no="162">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="163">
+    <token name="T_DOC_COMMENT">     * The leading "#" character is not part of the fragment and MUST NOT be</token>
+  </line>
+  <line no="164">
+    <token name="T_DOC_COMMENT">     * added.</token>
+  </line>
+  <line no="165">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="166">
+    <token name="T_DOC_COMMENT">     * The value returned MUST be percent-encoded, but MUST NOT double-encode</token>
+  </line>
+  <line no="167">
+    <token name="T_DOC_COMMENT">     * any characters. To determine what characters to encode, please refer to</token>
+  </line>
+  <line no="168">
+    <token name="T_DOC_COMMENT">     * RFC 3986, Sections 2 and 3.5.</token>
+  </line>
+  <line no="169">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="170">
+    <token name="T_DOC_COMMENT">     * @see https://tools.ietf.org/html/rfc3986#section-2</token>
+  </line>
+  <line no="171">
+    <token name="T_DOC_COMMENT">     * @see https://tools.ietf.org/html/rfc3986#section-3.5</token>
+  </line>
+  <line no="172">
+    <token name="T_DOC_COMMENT">     * @return string The URI fragment.</token>
+  </line>
+  <line no="173">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="174">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getFragment</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="175"/>
+  <line no="176">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="177">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified scheme.</token>
+  </line>
+  <line no="178">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="179">
+    <token name="T_DOC_COMMENT">     * This method MUST retain the state of the current instance, and return</token>
+  </line>
+  <line no="180">
+    <token name="T_DOC_COMMENT">     * an instance that contains the specified scheme.</token>
+  </line>
+  <line no="181">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="182">
+    <token name="T_DOC_COMMENT">     * Implementations MUST support the schemes "http" and "https" case</token>
+  </line>
+  <line no="183">
+    <token name="T_DOC_COMMENT">     * insensitively, and MAY accommodate other schemes if required.</token>
+  </line>
+  <line no="184">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="185">
+    <token name="T_DOC_COMMENT">     * An empty scheme is equivalent to removing the scheme.</token>
+  </line>
+  <line no="186">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="187">
+    <token name="T_DOC_COMMENT">     * @param string $scheme The scheme to use with the new instance.</token>
+  </line>
+  <line no="188">
+    <token name="T_DOC_COMMENT">     * @return static A new instance with the specified scheme.</token>
+  </line>
+  <line no="189">
+    <token name="T_DOC_COMMENT">     * @throws \InvalidArgumentException for invalid or unsupported schemes.</token>
+  </line>
+  <line no="190">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="191">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withScheme</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$scheme</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="192"/>
+  <line no="193">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="194">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified user information.</token>
+  </line>
+  <line no="195">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="196">
+    <token name="T_DOC_COMMENT">     * This method MUST retain the state of the current instance, and return</token>
+  </line>
+  <line no="197">
+    <token name="T_DOC_COMMENT">     * an instance that contains the specified user information.</token>
+  </line>
+  <line no="198">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="199">
+    <token name="T_DOC_COMMENT">     * Password is optional, but the user information MUST include the</token>
+  </line>
+  <line no="200">
+    <token name="T_DOC_COMMENT">     * user; an empty string for the user is equivalent to removing user</token>
+  </line>
+  <line no="201">
+    <token name="T_DOC_COMMENT">     * information.</token>
+  </line>
+  <line no="202">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="203">
+    <token name="T_DOC_COMMENT">     * @param string $user The user name to use for authority.</token>
+  </line>
+  <line no="204">
+    <token name="T_DOC_COMMENT">     * @param null|string $password The password associated with $user.</token>
+  </line>
+  <line no="205">
+    <token name="T_DOC_COMMENT">     * @return static A new instance with the specified user information.</token>
+  </line>
+  <line no="206">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="207">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withUserInfo</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$user</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$password</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">null</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="208"/>
+  <line no="209">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="210">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified host.</token>
+  </line>
+  <line no="211">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="212">
+    <token name="T_DOC_COMMENT">     * This method MUST retain the state of the current instance, and return</token>
+  </line>
+  <line no="213">
+    <token name="T_DOC_COMMENT">     * an instance that contains the specified host.</token>
+  </line>
+  <line no="214">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="215">
+    <token name="T_DOC_COMMENT">     * An empty host value is equivalent to removing the host.</token>
+  </line>
+  <line no="216">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="217">
+    <token name="T_DOC_COMMENT">     * @param string $host The hostname to use with the new instance.</token>
+  </line>
+  <line no="218">
+    <token name="T_DOC_COMMENT">     * @return static A new instance with the specified host.</token>
+  </line>
+  <line no="219">
+    <token name="T_DOC_COMMENT">     * @throws \InvalidArgumentException for invalid hostnames.</token>
+  </line>
+  <line no="220">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="221">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withHost</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$host</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="222"/>
+  <line no="223">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="224">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified port.</token>
+  </line>
+  <line no="225">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="226">
+    <token name="T_DOC_COMMENT">     * This method MUST retain the state of the current instance, and return</token>
+  </line>
+  <line no="227">
+    <token name="T_DOC_COMMENT">     * an instance that contains the specified port.</token>
+  </line>
+  <line no="228">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="229">
+    <token name="T_DOC_COMMENT">     * Implementations MUST raise an exception for ports outside the</token>
+  </line>
+  <line no="230">
+    <token name="T_DOC_COMMENT">     * established TCP and UDP port ranges.</token>
+  </line>
+  <line no="231">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="232">
+    <token name="T_DOC_COMMENT">     * A null value provided for the port is equivalent to removing the port</token>
+  </line>
+  <line no="233">
+    <token name="T_DOC_COMMENT">     * information.</token>
+  </line>
+  <line no="234">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="235">
+    <token name="T_DOC_COMMENT">     * @param null|int $port The port to use with the new instance; a null value</token>
+  </line>
+  <line no="236">
+    <token name="T_DOC_COMMENT">     *     removes the port information.</token>
+  </line>
+  <line no="237">
+    <token name="T_DOC_COMMENT">     * @return static A new instance with the specified port.</token>
+  </line>
+  <line no="238">
+    <token name="T_DOC_COMMENT">     * @throws \InvalidArgumentException for invalid ports.</token>
+  </line>
+  <line no="239">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="240">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withPort</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$port</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="241"/>
+  <line no="242">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="243">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified path.</token>
+  </line>
+  <line no="244">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="245">
+    <token name="T_DOC_COMMENT">     * This method MUST retain the state of the current instance, and return</token>
+  </line>
+  <line no="246">
+    <token name="T_DOC_COMMENT">     * an instance that contains the specified path.</token>
+  </line>
+  <line no="247">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="248">
+    <token name="T_DOC_COMMENT">     * The path can either be empty or absolute (starting with a slash) or</token>
+  </line>
+  <line no="249">
+    <token name="T_DOC_COMMENT">     * rootless (not starting with a slash). Implementations MUST support all</token>
+  </line>
+  <line no="250">
+    <token name="T_DOC_COMMENT">     * three syntaxes.</token>
+  </line>
+  <line no="251">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="252">
+    <token name="T_DOC_COMMENT">     * If the path is intended to be domain-relative rather than path relative then</token>
+  </line>
+  <line no="253">
+    <token name="T_DOC_COMMENT">     * it must begin with a slash ("/"). Paths not starting with a slash ("/")</token>
+  </line>
+  <line no="254">
+    <token name="T_DOC_COMMENT">     * are assumed to be relative to some base path known to the application or</token>
+  </line>
+  <line no="255">
+    <token name="T_DOC_COMMENT">     * consumer.</token>
+  </line>
+  <line no="256">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="257">
+    <token name="T_DOC_COMMENT">     * Users can provide both encoded and decoded path characters.</token>
+  </line>
+  <line no="258">
+    <token name="T_DOC_COMMENT">     * Implementations ensure the correct encoding as outlined in getPath().</token>
+  </line>
+  <line no="259">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="260">
+    <token name="T_DOC_COMMENT">     * @param string $path The path to use with the new instance.</token>
+  </line>
+  <line no="261">
+    <token name="T_DOC_COMMENT">     * @return static A new instance with the specified path.</token>
+  </line>
+  <line no="262">
+    <token name="T_DOC_COMMENT">     * @throws \InvalidArgumentException for invalid paths.</token>
+  </line>
+  <line no="263">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="264">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withPath</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$path</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="265"/>
+  <line no="266">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="267">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified query string.</token>
+  </line>
+  <line no="268">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="269">
+    <token name="T_DOC_COMMENT">     * This method MUST retain the state of the current instance, and return</token>
+  </line>
+  <line no="270">
+    <token name="T_DOC_COMMENT">     * an instance that contains the specified query string.</token>
+  </line>
+  <line no="271">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="272">
+    <token name="T_DOC_COMMENT">     * Users can provide both encoded and decoded query characters.</token>
+  </line>
+  <line no="273">
+    <token name="T_DOC_COMMENT">     * Implementations ensure the correct encoding as outlined in getQuery().</token>
+  </line>
+  <line no="274">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="275">
+    <token name="T_DOC_COMMENT">     * An empty query string value is equivalent to removing the query string.</token>
+  </line>
+  <line no="276">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="277">
+    <token name="T_DOC_COMMENT">     * @param string $query The query string to use with the new instance.</token>
+  </line>
+  <line no="278">
+    <token name="T_DOC_COMMENT">     * @return static A new instance with the specified query string.</token>
+  </line>
+  <line no="279">
+    <token name="T_DOC_COMMENT">     * @throws \InvalidArgumentException for invalid query strings.</token>
+  </line>
+  <line no="280">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="281">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withQuery</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$query</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="282"/>
+  <line no="283">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="284">
+    <token name="T_DOC_COMMENT">     * Return an instance with the specified URI fragment.</token>
+  </line>
+  <line no="285">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="286">
+    <token name="T_DOC_COMMENT">     * This method MUST retain the state of the current instance, and return</token>
+  </line>
+  <line no="287">
+    <token name="T_DOC_COMMENT">     * an instance that contains the specified URI fragment.</token>
+  </line>
+  <line no="288">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="289">
+    <token name="T_DOC_COMMENT">     * Users can provide both encoded and decoded fragment characters.</token>
+  </line>
+  <line no="290">
+    <token name="T_DOC_COMMENT">     * Implementations ensure the correct encoding as outlined in getFragment().</token>
+  </line>
+  <line no="291">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="292">
+    <token name="T_DOC_COMMENT">     * An empty fragment value is equivalent to removing the fragment.</token>
+  </line>
+  <line no="293">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="294">
+    <token name="T_DOC_COMMENT">     * @param string $fragment The fragment to use with the new instance.</token>
+  </line>
+  <line no="295">
+    <token name="T_DOC_COMMENT">     * @return static A new instance with the specified fragment.</token>
+  </line>
+  <line no="296">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="297">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">withFragment</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$fragment</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="298"/>
+  <line no="299">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="300">
+    <token name="T_DOC_COMMENT">     * Return the string representation as a URI reference.</token>
+  </line>
+  <line no="301">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="302">
+    <token name="T_DOC_COMMENT">     * Depending on which components of the URI are present, the resulting</token>
+  </line>
+  <line no="303">
+    <token name="T_DOC_COMMENT">     * string is either a full URI or relative reference according to RFC 3986,</token>
+  </line>
+  <line no="304">
+    <token name="T_DOC_COMMENT">     * Section 4.1. The method concatenates the various components of the URI,</token>
+  </line>
+  <line no="305">
+    <token name="T_DOC_COMMENT">     * using the appropriate delimiters:</token>
+  </line>
+  <line no="306">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="307">
+    <token name="T_DOC_COMMENT">     * - If a scheme is present, it MUST be suffixed by ":".</token>
+  </line>
+  <line no="308">
+    <token name="T_DOC_COMMENT">     * - If an authority is present, it MUST be prefixed by "//".</token>
+  </line>
+  <line no="309">
+    <token name="T_DOC_COMMENT">     * - The path can be concatenated without delimiters. But there are two</token>
+  </line>
+  <line no="310">
+    <token name="T_DOC_COMMENT">     *   cases where the path has to be adjusted to make the URI reference</token>
+  </line>
+  <line no="311">
+    <token name="T_DOC_COMMENT">     *   valid as PHP does not allow to throw an exception in __toString():</token>
+  </line>
+  <line no="312">
+    <token name="T_DOC_COMMENT">     *     - If the path is rootless and an authority is present, the path MUST</token>
+  </line>
+  <line no="313">
+    <token name="T_DOC_COMMENT">     *       be prefixed by "/".</token>
+  </line>
+  <line no="314">
+    <token name="T_DOC_COMMENT">     *     - If the path is starting with more than one "/" and no authority is</token>
+  </line>
+  <line no="315">
+    <token name="T_DOC_COMMENT">     *       present, the starting slashes MUST be reduced to one.</token>
+  </line>
+  <line no="316">
+    <token name="T_DOC_COMMENT">     * - If a query is present, it MUST be prefixed by "?".</token>
+  </line>
+  <line no="317">
+    <token name="T_DOC_COMMENT">     * - If a fragment is present, it MUST be prefixed by "#".</token>
+  </line>
+  <line no="318">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="319">
+    <token name="T_DOC_COMMENT">     * @see http://tools.ietf.org/html/rfc3986#section-4.1</token>
+  </line>
+  <line no="320">
+    <token name="T_DOC_COMMENT">     * @return string</token>
+  </line>
+  <line no="321">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="322">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">__toString</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="323">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="324"/>
+</source>

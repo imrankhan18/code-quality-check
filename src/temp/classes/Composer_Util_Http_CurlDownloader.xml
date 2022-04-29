@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Http\CurlDownloader" namespace="Composer\Util\Http" name="CurlDownloader" abstract="false" final="false" start="33" end="648">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util/Http" file="CurlDownloader.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Http/CurlDownloader.php" size="28299" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="4e68ce78a4e3d4653032cdeb9755071d4b2d74a9" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Http/CurlDownloader.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+    <author value="Nicolas Grekas &lt;p@tchwork.com&gt;"/>
+    <phpstan value="-type Attributes array{retryAuthFailure: bool, redirects: int, retries: int, storeAuth: bool}"/>
+    <phpstan value="-type Job array{url: string, origin: string, attributes: Attributes, options: mixed[], progress: mixed[], curlHandle: resource, filename: string|null, headerHandle: resource, bodyHandle: resource, resolve: callable, reject: callable}"/>
+  </docblock>
+  <member name="multiHandle" visibility="private" static="false" line="36">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\?resource" namespace="Composer\Util\Http" name="?resource"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="shareHandle" visibility="private" static="false" line="38">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\?resource" namespace="Composer\Util\Http" name="?resource"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="jobs" default="" type="array" visibility="private" static="false" line="40">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Util\Http\Job" namespace="Composer\Util\Http" name="Job"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="io" visibility="private" static="false" line="42">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="private" static="false" line="44">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="authHelper" visibility="private" static="false" line="46">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\AuthHelper" namespace="Composer\Util" name="AuthHelper"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="selectTimeout" default="5.0" type="float" visibility="private" static="false" line="48">
+    <docblock>
+      <var type="float"/>
+    </docblock>
+  </member>
+  <member name="maxRedirects" default="20" type="integer" visibility="private" static="false" line="50">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="maxRetries" default="3" type="integer" visibility="private" static="false" line="52">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="proxyManager" visibility="private" static="false" line="54">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\ProxyManager" namespace="Composer\Util\Http" name="ProxyManager"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="supportsSecureProxy" visibility="private" static="false" line="56">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\bool" namespace="Composer\Util\Http" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="multiErrors" default="" type="array" visibility="protected" static="false" line="58">
+    <docblock>
+      <var description="string[]&gt;" type="object">
+        <type full="Composer\Util\Http\array&lt;int" namespace="Composer\Util\Http" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="options" default="" type="array" visibility="private" static="true" line="66">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Util\Http\mixed" namespace="Composer\Util\Http" name="mixed"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="timeInfo" default="" type="array" visibility="private" static="true" line="85">
+    <docblock>
+      <var description="true&gt;" type="object">
+        <type full="Composer\Util\Http\array&lt;string" namespace="Composer\Util\Http" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="98" end="124" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$options" of="object">
+        <type full="Composer\Util\Http\mixed" namespace="Composer\Util\Http" name="mixed"/>
+      </param>
+      <param type="object" variable="$disableTls">
+        <type full="Composer\Util\Http\bool" namespace="Composer\Util\Http" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="disableTls" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="download" start="136" end="145" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$resolve">
+        <type full="Composer\Util\Http\callable" namespace="Composer\Util\Http" name="callable"/>
+      </param>
+      <param type="object" variable="$reject">
+        <type full="Composer\Util\Http\callable" namespace="Composer\Util\Http" name="callable"/>
+      </param>
+      <param type="string" variable="$origin"/>
+      <param type="string" variable="$url"/>
+      <param type="array" variable="$options" of="object">
+        <type full="Composer\Util\Http\mixed" namespace="Composer\Util\Http" name="mixed"/>
+      </param>
+      <param type="object" variable="$copyTo">
+        <type full="Composer\Util\Http\null|string" namespace="Composer\Util\Http" name="null|string"/>
+      </param>
+      <return description="internal job id" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="resolve" byreference="false" type="callable"/>
+    <parameter name="reject" byreference="false" type="callable"/>
+    <parameter name="origin" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="copyTo" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="initDownload" start="159" end="284" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$resolve">
+        <type full="Composer\Util\Http\callable" namespace="Composer\Util\Http" name="callable"/>
+      </param>
+      <param type="object" variable="$reject">
+        <type full="Composer\Util\Http\callable" namespace="Composer\Util\Http" name="callable"/>
+      </param>
+      <param type="string" variable="$origin"/>
+      <param type="string" variable="$url"/>
+      <param type="array" variable="$options" of="object">
+        <type full="Composer\Util\Http\mixed" namespace="Composer\Util\Http" name="mixed"/>
+      </param>
+      <param type="object" variable="$copyTo">
+        <type full="Composer\Util\Http\null|string" namespace="Composer\Util\Http" name="null|string"/>
+      </param>
+      <param description="bool redirects?: int, retries?: int, storeAuth?: bool} $attributes" type="object">
+        <type full="Composer\Util\Http\array{retryAuthFailure?:" namespace="Composer\Util\Http" name="array{retryAuthFailure?:"/>
+      </param>
+      <return description="internal job id" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="resolve" byreference="false" type="callable"/>
+    <parameter name="reject" byreference="false" type="callable"/>
+    <parameter name="origin" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array"/>
+    <parameter name="copyTo" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="set defaults in a PHPStan-happy way (array_merge is not well supported)" line="161"/>
+      <comment value="check URL can be accessed (i.e. is not insecure), but allow insecure Packagist calls to $hashed providers as file integrity is verified with sha256" line="169"/>
+      <comment value="let cURL set the Accept-Encoding header to what it supports" line="204"/>
+      <comment value="Always set CURLOPT_PROXY to enable/disable proxy handling" line="239"/>
+      <comment value="Any proxy authorization is included in the proxy url" line="240"/>
+      <comment value="Curl needs certificate locations for secure proxies." line="244"/>
+      <comment value="CURLOPT_PROXY_SSL_VERIFY_PEER/HOST are enabled by default" line="245"/>
+      <todo value="progress" line="281"/>
+    </inline>
+  </method>
+  <method name="abortRequest" start="290" end="307" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$id"/>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="id" byreference="false" type="int"/>
+  </method>
+  <method name="tick" start="312" end="489" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="handleRedirect" start="495" end="524" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$job">
+        <type full="Composer\Util\Http\Job" namespace="Composer\Util\Http" name="Job"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="job" byreference="false" type="array"/>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Composer\Util\Http\Response" namespace="Composer\Util\Http" name="Response"/>
+    </parameter>
+  </method>
+  <method name="isAuthenticatedRetryNeeded" start="530" end="575" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$job">
+        <type full="Composer\Util\Http\Job" namespace="Composer\Util\Http" name="Job"/>
+      </param>
+      <return description="bool, storeAuth: string|bool}" type="object">
+        <type full="Composer\Util\Http\array{retry:" namespace="Composer\Util\Http" name="array{retry:"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="job" byreference="false" type="array"/>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Composer\Util\Http\Response" namespace="Composer\Util\Http" name="Response"/>
+    </parameter>
+    <inline>
+      <comment value="check for bitbucket login page asking to authenticate" line="543"/>
+      <comment value="check for gitlab 404 when downloading archives" line="554"/>
+    </inline>
+  </method>
+  <method name="restartJob" start="585" end="595" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$job">
+        <type full="Composer\Util\Http\Job" namespace="Composer\Util\Http" name="Job"/>
+      </param>
+      <param type="string" variable="$url"/>
+      <param description="bool redirects?: int, storeAuth?: bool} $attributes" type="object">
+        <type full="Composer\Util\Http\array{retryAuthFailure?:" namespace="Composer\Util\Http" name="array{retryAuthFailure?:"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="job" byreference="false" type="array"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="failResponse" start="602" end="614" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$job">
+        <type full="Composer\Util\Http\Job" namespace="Composer\Util\Http" name="Job"/>
+      </param>
+      <param type="string" variable="$errorMessage"/>
+      <return type="object">
+        <type full="Composer\Downloader\TransportException" namespace="Composer\Downloader" name="TransportException"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Downloader\TransportException" namespace="Composer\Downloader" name="TransportException"/>
+    </return>
+    <parameter name="job" byreference="false" type="array"/>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Composer\Util\Http\Response" namespace="Composer\Util\Http" name="Response"/>
+    </parameter>
+    <parameter name="errorMessage" byreference="false" type="string"/>
+  </method>
+  <method name="rejectJob" start="620" end="632" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$job">
+        <type full="Composer\Util\Http\Job" namespace="Composer\Util\Http" name="Job"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="job" byreference="false" type="array"/>
+    <parameter name="e" byreference="false" type="object">
+      <type full="Exception" namespace="" name="Exception"/>
+    </parameter>
+  </method>
+  <method name="checkCurlResult" start="638" end="647" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$code"/>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="code" byreference="false" type="int"/>
+  </method>
+</class>

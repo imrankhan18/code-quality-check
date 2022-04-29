@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri" abstract="false" final="false" start="17" end="738">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="Uri.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/Uri.php" size="21954" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="3581fdabfed9b3e0d5739ec059cb00b4b710efe3" relative="ar/www/html/vendor/guzzlehttp/psr7/src/Uri.php"/>
+  <docblock>
+    <description compact="PSR-7 URI implementation."/>
+    <author value="Michael Dowling"/>
+    <author value="Tobias Schultze"/>
+    <author value="Matthew Weier O'Phinney"/>
+  </docblock>
+  <implements full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+  <implements full="JsonSerializable" namespace="" name="JsonSerializable"/>
+  <constant type="string" name="HTTP_DEFAULT_HOST" value="'localhost'">
+    <docblock>
+      <description compact="Absolute http and https URIs require a host per RFC 7230 Section 2.7 but in generic URIs the host can be empty. So for http(s) URIs we apply this default host when no host is given yet to form a valid URI."/>
+    </docblock>
+  </constant>
+  <constant type="array" name="DEFAULT_PORTS" value=""/>
+  <constant type="string" name="CHAR_UNRESERVED" value="'a-zA-Z0-9_\-\.~'">
+    <docblock>
+      <description compact="Unreserved characters for use in a regex."/>
+      <link value="https://tools.ietf.org/html/rfc3986#section-2.3"/>
+    </docblock>
+  </constant>
+  <constant type="string" name="CHAR_SUB_DELIMS" value="'!\$&amp;\'\(\)\*\+,;='">
+    <docblock>
+      <description compact="Sub-delims for use in a regex."/>
+      <link value="https://tools.ietf.org/html/rfc3986#section-2.2"/>
+    </docblock>
+  </constant>
+  <constant type="array" name="QUERY_SEPARATORS_REPLACEMENT" value=""/>
+  <member name="scheme" default="''" type="string" visibility="private" static="false" line="57">
+    <docblock>
+      <var description="Uri scheme." type="string"/>
+    </docblock>
+  </member>
+  <member name="userInfo" default="''" type="string" visibility="private" static="false" line="60">
+    <docblock>
+      <var description="Uri user info." type="string"/>
+    </docblock>
+  </member>
+  <member name="host" default="''" type="string" visibility="private" static="false" line="63">
+    <docblock>
+      <var description="Uri host." type="string"/>
+    </docblock>
+  </member>
+  <member name="port" visibility="private" static="false" line="66">
+    <docblock>
+      <var description="Uri port." type="object">
+        <type full="GuzzleHttp\Psr7\int|null" namespace="GuzzleHttp\Psr7" name="int|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="path" default="''" type="string" visibility="private" static="false" line="69">
+    <docblock>
+      <var description="Uri path." type="string"/>
+    </docblock>
+  </member>
+  <member name="query" default="''" type="string" visibility="private" static="false" line="72">
+    <docblock>
+      <var description="Uri query string." type="string"/>
+    </docblock>
+  </member>
+  <member name="fragment" default="''" type="string" visibility="private" static="false" line="75">
+    <docblock>
+      <var description="Uri fragment." type="string"/>
+    </docblock>
+  </member>
+  <member name="composedComponents" visibility="private" static="false" line="78">
+    <docblock>
+      <var description="String representation" type="object">
+        <type full="GuzzleHttp\Psr7\string|null" namespace="GuzzleHttp\Psr7" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="80" end="89" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="uri" byreference="false" type="string" default="''"/>
+  </constructor>
+  <method name="parse" start="105" end="131" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="UTF-8 aware \parse_url() replacement.">The internal function produces broken output for non ASCII domain names
+(IDN) when used with locales other than "C".
+
+On the other hand, cURL understands IDN correctly only when UTF-8 locale
+is configured ("C.UTF-8", "en_US.UTF-8", etc.).</description>
+      <see value="https://bugs.php.net/bug.php?id=52923"/>
+      <see value="https://www.php.net/manual/en/function.parse-url.php#114817"/>
+      <see value="https://curl.haxx.se/libcurl/c/CURLOPT_URL.html#ENCODING"/>
+      <return type="object">
+        <type full="GuzzleHttp\Psr7\array|false" namespace="GuzzleHttp\Psr7" name="array|false"/>
+      </return>
+    </docblock>
+    <parameter name="url" byreference="false" type="string"/>
+    <inline>
+      <comment value="If IPv6" line="107"/>
+    </inline>
+  </method>
+  <method name="__toString" start="133" end="146" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="composeComponents" start="166" end="190" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Composes a URI reference string from its various components.">Usually this method does not need to be called manually but instead is used indirectly via
+`Psr\Http\Message\UriInterface::__toString`.
+
+PSR-7 UriInterface treats an empty component the same as a missing component as
+getQuery(), getFragment() etc. always return a string. This explains the slight
+difference to RFC 3986 Section 5.3.
+
+Another adjustment is that the authority separator is added even when the authority is missing/empty
+for the "file" scheme. This is because PHP stream functions like `file_get_contents` only work with
+`file:///myfile` but not with `file:/myfile` although they are equivalent according to RFC 3986. But
+`file:///` is the more common syntax for the file scheme anyway (Chrome for example redirects to
+that format).</description>
+      <link value="https://tools.ietf.org/html/rfc3986#section-5.3"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="scheme" byreference="false" nullable="true" type="string"/>
+    <parameter name="authority" byreference="false" nullable="true" type="string"/>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="query" byreference="false" nullable="true" type="string"/>
+    <parameter name="fragment" byreference="false" nullable="true" type="string"/>
+    <inline>
+      <comment value="weak type checks to also accept null until we can add scalar type hints" line="170"/>
+    </inline>
+  </method>
+  <method name="isDefaultPort" start="198" end="202" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Whether the URI has the default port of the current scheme.">`Psr\Http\Message\UriInterface::getPort` may return null or the standard port. This method can be used
+independently of the implementation.</description>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+  </method>
+  <method name="isAbsolute" start="219" end="222" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Whether the URI is absolute, i.e. it has a scheme.">An instance of UriInterface can either be an absolute URI or a relative reference. This method returns true
+if it is the former. An absolute URI has a scheme. A relative reference is used to express a URI relative
+to another URI, the base URI. Relative references can be divided into several forms:
+- network-path references, e.g. '//example.com/path'
+- absolute-path references, e.g. '/path'
+- relative-path references, e.g. 'subpath'</description>
+      <see value="Uri::isNetworkPathReference"/>
+      <see value="Uri::isAbsolutePathReference"/>
+      <see value="Uri::isRelativePathReference"/>
+      <link value="https://tools.ietf.org/html/rfc3986#section-4"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+  </method>
+  <method name="isNetworkPathReference" start="231" end="234" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Whether the URI is a network-path reference.">A relative reference that begins with two slash characters is termed an network-path reference.</description>
+      <link value="https://tools.ietf.org/html/rfc3986#section-4.2"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+  </method>
+  <method name="isAbsolutePathReference" start="243" end="249" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Whether the URI is a absolute-path reference.">A relative reference that begins with a single slash character is termed an absolute-path reference.</description>
+      <link value="https://tools.ietf.org/html/rfc3986#section-4.2"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+  </method>
+  <method name="isRelativePathReference" start="258" end="263" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Whether the URI is a relative-path reference.">A relative reference that does not begin with a slash character is termed a relative-path reference.</description>
+      <link value="https://tools.ietf.org/html/rfc3986#section-4.2"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+  </method>
+  <method name="isSameDocumentReference" start="277" end="289" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Whether the URI is a same-document reference.">A same-document reference refers to a URI that is, aside from its fragment
+component, identical to the base URI. When no base URI is given, only an empty
+URI reference (apart from its fragment) is considered a same-document reference.</description>
+      <param description="The URI to check" type="object" variable="$uri">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </param>
+      <param description="An optional base URI to compare against" type="object" variable="$base">
+        <type full="GuzzleHttp\Psr7\UriInterface|null" namespace="GuzzleHttp\Psr7" name="UriInterface|null"/>
+      </param>
+      <link value="https://tools.ietf.org/html/rfc3986#section-4.4"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="base" byreference="false" type="object" default="NULL">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+  </method>
+  <method name="withoutQueryValue" start="300" end="305" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates a new URI with a specific query string value removed.">Any existing query string values that exactly match the provided key are
+removed.</description>
+      <param description="URI to use as a base." type="object" variable="$uri">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </param>
+      <param description="Query string key to remove." type="string" variable="$key"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="key" byreference="false" type="string"/>
+  </method>
+  <method name="withQueryValue" start="320" end="327" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates a new URI with a specific query string value.">Any existing query string values that exactly match the provided key are
+removed and replaced with the given key value pair.
+
+A value of null will set the query string key without a value, e.g. "key"
+instead of "key=value".</description>
+      <param description="URI to use as a base." type="object" variable="$uri">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </param>
+      <param description="Key to set." type="string" variable="$key"/>
+      <param description="Value to set" type="object" variable="$value">
+        <type full="GuzzleHttp\Psr7\string|null" namespace="GuzzleHttp\Psr7" name="string|null"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="key" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="withQueryValues" start="337" end="346" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates a new URI with multiple specific query string values.">It has the same behavior as withQueryValue() but for an associative array of key =&gt; value.</description>
+      <param description="URI to use as a base." type="object" variable="$uri">
+        <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+      </param>
+      <param description="string|null&gt; $keyValueArray Associative array of key and values" type="object">
+        <type full="GuzzleHttp\Psr7\array&lt;string" namespace="GuzzleHttp\Psr7" name="array&lt;string"/>
+      </param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="keyValueArray" byreference="false" type="array"/>
+  </method>
+  <method name="fromParts" start="355" end="362" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Creates a URI from a hash of `parse_url` components."/>
+      <link value="http://php.net/manual/en/function.parse-url.php"/>
+      <throws description="If the components do not form a valid URI." type="object">
+        <type full="GuzzleHttp\Psr7\Exception\MalformedUriException" namespace="GuzzleHttp\Psr7\Exception" name="MalformedUriException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="parts" byreference="false" type="array"/>
+  </method>
+  <method name="getScheme" start="364" end="367" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getAuthority" start="369" end="381" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getUserInfo" start="383" end="386" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getHost" start="388" end="391" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getPort" start="393" end="396" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="true"/>
+  </method>
+  <method name="getPath" start="398" end="401" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getQuery" start="403" end="406" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getFragment" start="408" end="411" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="withScheme" start="413" end="428" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="scheme" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withUserInfo" start="430" end="447" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="user" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="withHost" start="449" end="463" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withPort" start="465" end="480" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="port" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withPath" start="482" end="496" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withQuery" start="498" end="511" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="query" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="withFragment" start="513" end="526" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </return>
+    <parameter name="fragment" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="jsonSerialize" start="528" end="531" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="applyParts" start="538" end="566" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Apply parse_url parts to a URI."/>
+      <param description="Array of parse_url parts to apply." type="array" variable="$parts"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="parts" byreference="false" type="array"/>
+  </method>
+  <method name="filterScheme" start="573" end="580" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$scheme"/>
+      <throws description="If the scheme is invalid." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="scheme" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="filterUserInfoComponent" start="587" end="598" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$component"/>
+      <throws description="If the user info is invalid." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="component" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="filterHost" start="605" end="612" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$host"/>
+      <throws description="If the host is invalid." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="filterPort" start="619" end="633" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$port"/>
+      <throws description="If the port is invalid." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="int" nullable="true"/>
+    <parameter name="port" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getFilteredQueryString" start="640" end="653" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$keys" of="object">
+        <type full="GuzzleHttp\Psr7\string" namespace="GuzzleHttp\Psr7" name="string"/>
+      </param>
+      <return type="array" of="object">
+        <type full="GuzzleHttp\Psr7\string" namespace="GuzzleHttp\Psr7" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="uri" byreference="false" type="object">
+      <type full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface"/>
+    </parameter>
+    <parameter name="keys" byreference="false" type="array"/>
+  </method>
+  <method name="generateQueryString" start="655" end="667" abstract="false" final="false" static="true" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="key" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" nullable="true" type="string"/>
+    <inline>
+      <comment value="Query string separators (&quot;=&quot;, &quot;&amp;&quot;) within the key or value need to be encoded" line="657"/>
+      <comment value="(while preventing double-encoding) before setting the query string. All other" line="658"/>
+      <comment value="chars that need percent-encoding will be encoded by withQuery()." line="659"/>
+    </inline>
+  </method>
+  <method name="removeDefaultPort" start="669" end="674" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="filterPath" start="683" end="694" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Filters the path of a URI"/>
+      <param type="mixed" variable="$path"/>
+      <throws description="If the path is invalid." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="filterQueryAndFragment" start="703" end="714" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Filters the query string or fragment of a URI."/>
+      <param type="mixed" variable="$str"/>
+      <throws description="If the query or fragment is invalid." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="rawurlencodeMatchZero" start="716" end="719" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="match" byreference="false" type="array"/>
+  </method>
+  <method name="validateState" start="721" end="737" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+  </method>
+  <interface full="Psr\Http\Message\UriInterface" namespace="Psr\Http\Message" name="UriInterface">
+    <method name="getScheme" start="40" end="40" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the scheme component of the URI.">If no scheme is present, this method MUST return an empty string.
+
+The value returned MUST be normalized to lowercase, per RFC 3986
+Section 3.1.
+
+The trailing ":" character is not part of the scheme and MUST NOT be
+added.</description>
+        <see value="https://tools.ietf.org/html/rfc3986#section-3.1"/>
+        <return description="The URI scheme." type="string"/>
+      </docblock>
+    </method>
+    <method name="getAuthority" start="60" end="60" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the authority component of the URI.">If no authority information is present, this method MUST return an empty
+string.
+
+The authority syntax of the URI is:
+
+&lt;pre&gt;
+[user-info@]host[:port]
+&lt;/pre&gt;
+
+If the port component is not set or is the standard port for the current
+scheme, it SHOULD NOT be included.</description>
+        <see value="https://tools.ietf.org/html/rfc3986#section-3.2"/>
+        <return description="The URI authority, in &quot;[user-info@]host[:port]&quot; format." type="string"/>
+      </docblock>
+    </method>
+    <method name="getUserInfo" start="77" end="77" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the user information component of the URI.">If no user information is present, this method MUST return an empty
+string.
+
+If a user is present in the URI, this will return that value;
+additionally, if the password is also present, it will be appended to the
+user value, with a colon (":") separating the values.
+
+The trailing "@" character is not part of the user information and MUST
+NOT be added.</description>
+        <return description="The URI user information, in &quot;username[:password]&quot; format." type="string"/>
+      </docblock>
+    </method>
+    <method name="getHost" start="90" end="90" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the host component of the URI.">If no host is present, this method MUST return an empty string.
+
+The value returned MUST be normalized to lowercase, per RFC 3986
+Section 3.2.2.</description>
+        <see value="http://tools.ietf.org/html/rfc3986#section-3.2.2"/>
+        <return description="The URI host." type="string"/>
+      </docblock>
+    </method>
+    <method name="getPort" start="107" end="107" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the port component of the URI.">If a port is present, and it is non-standard for the current scheme,
+this method MUST return it as an integer. If the port is the standard port
+used with the current scheme, this method SHOULD return null.
+
+If no port is present, and no scheme is present, this method MUST return
+a null value.
+
+If no port is present, but a scheme is present, this method MAY return
+the standard port for that scheme, but SHOULD return null.</description>
+        <return description="The URI port." type="object">
+          <type full="Psr\Http\Message\null|int" namespace="Psr\Http\Message" name="null|int"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getPath" start="134" end="134" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the path component of the URI.">The path can either be empty or absolute (starting with a slash) or
+rootless (not starting with a slash). Implementations MUST support all
+three syntaxes.
+
+Normally, the empty path "" and absolute path "/" are considered equal as
+defined in RFC 7230 Section 2.7.3. But this method MUST NOT automatically
+do this normalization because in contexts with a trimmed base path, e.g.
+the front controller, this difference becomes significant. It's the task
+of the user to handle both "" and "/".
+
+The value returned MUST be percent-encoded, but MUST NOT double-encode
+any characters. To determine what characters to encode, please refer to
+RFC 3986, Sections 2 and 3.3.
+
+As an example, if the value should include a slash ("/") not intended as
+delimiter between path segments, that value MUST be passed in encoded
+form (e.g., "%2F") to the instance.</description>
+        <see value="https://tools.ietf.org/html/rfc3986#section-2"/>
+        <see value="https://tools.ietf.org/html/rfc3986#section-3.3"/>
+        <return description="The URI path." type="string"/>
+      </docblock>
+    </method>
+    <method name="getQuery" start="156" end="156" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the query string of the URI.">If no query string is present, this method MUST return an empty string.
+
+The leading "?" character is not part of the query and MUST NOT be
+added.
+
+The value returned MUST be percent-encoded, but MUST NOT double-encode
+any characters. To determine what characters to encode, please refer to
+RFC 3986, Sections 2 and 3.4.
+
+As an example, if a value in a key/value pair of the query string should
+include an ampersand ("&amp;") not intended as a delimiter between values,
+that value MUST be passed in encoded form (e.g., "%26") to the instance.</description>
+        <see value="https://tools.ietf.org/html/rfc3986#section-2"/>
+        <see value="https://tools.ietf.org/html/rfc3986#section-3.4"/>
+        <return description="The URI query string." type="string"/>
+      </docblock>
+    </method>
+    <method name="getFragment" start="174" end="174" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the fragment component of the URI.">If no fragment is present, this method MUST return an empty string.
+
+The leading "#" character is not part of the fragment and MUST NOT be
+added.
+
+The value returned MUST be percent-encoded, but MUST NOT double-encode
+any characters. To determine what characters to encode, please refer to
+RFC 3986, Sections 2 and 3.5.</description>
+        <see value="https://tools.ietf.org/html/rfc3986#section-2"/>
+        <see value="https://tools.ietf.org/html/rfc3986#section-3.5"/>
+        <return description="The URI fragment." type="string"/>
+      </docblock>
+    </method>
+    <method name="withScheme" start="191" end="191" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specified scheme.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified scheme.
+
+Implementations MUST support the schemes "http" and "https" case
+insensitively, and MAY accommodate other schemes if required.
+
+An empty scheme is equivalent to removing the scheme.</description>
+        <param description="The scheme to use with the new instance." type="string" variable="$scheme"/>
+        <return description="A new instance with the specified scheme." resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri"/>
+        </return>
+        <throws description="for invalid or unsupported schemes." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="scheme" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withUserInfo" start="207" end="207" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specified user information.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified user information.
+
+Password is optional, but the user information MUST include the
+user; an empty string for the user is equivalent to removing user
+information.</description>
+        <param description="The user name to use for authority." type="string" variable="$user"/>
+        <param description="The password associated with $user." type="object" variable="$password">
+          <type full="Psr\Http\Message\null|string" namespace="Psr\Http\Message" name="null|string"/>
+        </param>
+        <return description="A new instance with the specified user information." resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri"/>
+        </return>
+      </docblock>
+      <parameter name="user" byreference="false" type="{unknown}"/>
+      <parameter name="password" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="withHost" start="221" end="221" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specified host.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified host.
+
+An empty host value is equivalent to removing the host.</description>
+        <param description="The hostname to use with the new instance." type="string" variable="$host"/>
+        <return description="A new instance with the specified host." resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri"/>
+        </return>
+        <throws description="for invalid hostnames." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="host" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withPort" start="240" end="240" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specified port.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified port.
+
+Implementations MUST raise an exception for ports outside the
+established TCP and UDP port ranges.
+
+A null value provided for the port is equivalent to removing the port
+information.</description>
+        <param description="The port to use with the new instance; a null value" type="object" variable="$port">removes the port information.<type full="Psr\Http\Message\null|int" namespace="Psr\Http\Message" name="null|int"/></param>
+        <return description="A new instance with the specified port." resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri"/>
+        </return>
+        <throws description="for invalid ports." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="port" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withPath" start="264" end="264" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specified path.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified path.
+
+The path can either be empty or absolute (starting with a slash) or
+rootless (not starting with a slash). Implementations MUST support all
+three syntaxes.
+
+If the path is intended to be domain-relative rather than path relative then
+it must begin with a slash ("/"). Paths not starting with a slash ("/")
+are assumed to be relative to some base path known to the application or
+consumer.
+
+Users can provide both encoded and decoded path characters.
+Implementations ensure the correct encoding as outlined in getPath().</description>
+        <param description="The path to use with the new instance." type="string" variable="$path"/>
+        <return description="A new instance with the specified path." resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri"/>
+        </return>
+        <throws description="for invalid paths." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="path" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withQuery" start="281" end="281" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specified query string.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified query string.
+
+Users can provide both encoded and decoded query characters.
+Implementations ensure the correct encoding as outlined in getQuery().
+
+An empty query string value is equivalent to removing the query string.</description>
+        <param description="The query string to use with the new instance." type="string" variable="$query"/>
+        <return description="A new instance with the specified query string." resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri"/>
+        </return>
+        <throws description="for invalid query strings." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="query" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withFragment" start="297" end="297" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specified URI fragment.">This method MUST retain the state of the current instance, and return
+an instance that contains the specified URI fragment.
+
+Users can provide both encoded and decoded fragment characters.
+Implementations ensure the correct encoding as outlined in getFragment().
+
+An empty fragment value is equivalent to removing the fragment.</description>
+        <param description="The fragment to use with the new instance." type="string" variable="$fragment"/>
+        <return description="A new instance with the specified fragment." resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Uri" namespace="GuzzleHttp\Psr7" name="Uri"/>
+        </return>
+      </docblock>
+      <parameter name="fragment" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__toString" start="322" end="322" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return the string representation as a URI reference.">Depending on which components of the URI are present, the resulting
+string is either a full URI or relative reference according to RFC 3986,
+Section 4.1. The method concatenates the various components of the URI,
+using the appropriate delimiters:
+
+- If a scheme is present, it MUST be suffixed by ":".
+- If an authority is present, it MUST be prefixed by "//".
+- The path can be concatenated without delimiters. But there are two
+  cases where the path has to be adjusted to make the URI reference
+  valid as PHP does not allow to throw an exception in __toString():
+    - If the path is rootless and an authority is present, the path MUST
+      be prefixed by "/".
+    - If the path is starting with more than one "/" and no authority is
+      present, the starting slashes MUST be reduced to one.
+- If a query is present, it MUST be prefixed by "?".
+- If a fragment is present, it MUST be prefixed by "#".</description>
+        <see value="http://tools.ietf.org/html/rfc3986#section-4.1"/>
+        <return type="string"/>
+      </docblock>
+    </method>
+  </interface>
+  <interface full="JsonSerializable" namespace="" name="JsonSerializable">
+    <method name="jsonSerialize" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object">
+          <type full="void" namespace="" name="void"/>
+        </param>
+        <return type="mixed"/>
+      </docblock>
+    </method>
+  </interface>
+</class>

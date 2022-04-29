@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Symfony\Component\Cache\Messenger\EarlyExpirationDispatcher" namespace="Symfony\Component\Cache\Messenger" name="EarlyExpirationDispatcher" abstract="false" final="false" start="24" end="61">
+  <file path="//var/www/html/vendor/symfony/cache/Messenger" file="EarlyExpirationDispatcher.php" realpath="/var/www/html/vendor/symfony/cache/Messenger/EarlyExpirationDispatcher.php" size="2303" time="2022-04-26T13:19:20+00:00" unixtime="1650979160" sha1="ef69cdd5cefa59df976b197321293065bf68b0fb" relative="ar/www/html/vendor/symfony/cache/Messenger/EarlyExpirationDispatcher.php"/>
+  <docblock>
+    <description compact="Sends the computation of cached values to a message bus."/>
+  </docblock>
+  <member name="bus" visibility="private" static="false" line="26"/>
+  <member name="reverseContainer" visibility="private" static="false" line="27"/>
+  <member name="callbackWrapper" visibility="private" static="false" line="28"/>
+  <constructor name="__construct" start="30" end="35" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="bus" byreference="false" type="object">
+      <type full="Symfony\Component\Messenger\MessageBusInterface" namespace="Symfony\Component\Messenger" name="MessageBusInterface"/>
+    </parameter>
+    <parameter name="reverseContainer" byreference="false" type="object">
+      <type full="Symfony\Component\DependencyInjection\ReverseContainer" namespace="Symfony\Component\DependencyInjection" name="ReverseContainer"/>
+    </parameter>
+    <parameter name="callbackWrapper" byreference="false" type="callable" default="NULL"/>
+  </constructor>
+  <method name="__invoke" start="37" end="60" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="callback" byreference="false" type="callable"/>
+    <parameter name="item" byreference="false" type="object">
+      <type full="Symfony\Component\Cache\CacheItem" namespace="Symfony\Component\Cache" name="CacheItem"/>
+    </parameter>
+    <parameter name="save" byreference="true" type="bool"/>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Symfony\Component\Cache\Adapter\AdapterInterface" namespace="Symfony\Component\Cache\Adapter" name="AdapterInterface"/>
+    </parameter>
+    <parameter name="setMetadata" byreference="false" type="object">
+      <type full="Closure" namespace="" name="Closure"/>
+    </parameter>
+    <parameter name="logger" byreference="false" type="object" default="NULL">
+      <type full="Psr\Log\LoggerInterface" namespace="Psr\Log" name="LoggerInterface"/>
+    </parameter>
+    <inline>
+      <comment value="The item's value is not stale, no need to write it to the backend" line="56"/>
+    </inline>
+  </method>
+</class>

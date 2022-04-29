@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Repository\RepositoryFactory" namespace="Composer\Repository" name="RepositoryFactory" abstract="false" final="false" start="27" end="190">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Repository" file="RepositoryFactory.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Repository/RepositoryFactory.php" size="7716" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="6ad7faa7acef21ada44d9d142a6a14a750442b17" relative="ar/www/html/vendor/composer/composer/src/Composer/Repository/RepositoryFactory.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <method name="configFromString" start="36" end="58" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param type="string" variable="$repository"/>
+      <param type="object" variable="$allowFilesystem">
+        <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Repository\array|mixed" namespace="Composer\Repository" name="array|mixed"/>
+      </return>
+    </docblock>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="repository" byreference="false" type="string"/>
+    <parameter name="allowFilesystem" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="fromString" start="67" end="72" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param type="string" variable="$repository"/>
+      <param type="object" variable="$allowFilesystem">
+        <type full="Composer\Repository\bool" namespace="Composer\Repository" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+    </return>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="repository" byreference="false" type="string"/>
+    <parameter name="allowFilesystem" byreference="false" type="boolean" default="false"/>
+    <parameter name="rm" byreference="false" type="object" default="NULL">
+      <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+    </parameter>
+  </method>
+  <method name="createRepo" start="80" end="88" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param description="mixed&gt; $repoConfig" type="object">
+        <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+    </return>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="repoConfig" byreference="false" type="array"/>
+    <parameter name="rm" byreference="false" type="object" default="NULL">
+      <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+    </parameter>
+  </method>
+  <method name="defaultRepos" start="96" end="112" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$io">
+        <type full="Composer\Repository\IOInterface|null" namespace="Composer\Repository" name="IOInterface|null"/>
+      </param>
+      <param type="object" variable="$config">
+        <type full="Composer\Repository\Config|null" namespace="Composer\Repository" name="Config|null"/>
+      </param>
+      <param type="object" variable="$rm">
+        <type full="Composer\Repository\RepositoryManager|null" namespace="Composer\Repository" name="RepositoryManager|null"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="io" byreference="false" type="object" default="NULL">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object" default="NULL">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="rm" byreference="false" type="object" default="NULL">
+      <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+    </parameter>
+  </method>
+  <method name="manager" start="121" end="141" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param type="object" variable="$eventDispatcher">
+        <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+      </param>
+      <param type="object" variable="$httpDownloader">
+        <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+    </return>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="httpDownloader" byreference="false" type="object">
+      <type full="Composer\Util\HttpDownloader" namespace="Composer\Util" name="HttpDownloader"/>
+    </parameter>
+    <parameter name="eventDispatcher" byreference="false" type="object" default="NULL">
+      <type full="Composer\EventDispatcher\EventDispatcher" namespace="Composer\EventDispatcher" name="EventDispatcher"/>
+    </parameter>
+    <parameter name="process" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+  </method>
+  <method name="createRepos" start="148" end="172" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description/>
+      <param description="mixed&gt; $repoConfigs" type="object">
+        <type full="Composer\Repository\array&lt;int|string" namespace="Composer\Repository" name="array&lt;int|string"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\Repository\RepositoryInterface" namespace="Composer\Repository" name="RepositoryInterface"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="rm" byreference="false" type="object">
+      <type full="Composer\Repository\RepositoryManager" namespace="Composer\Repository" name="RepositoryManager"/>
+    </parameter>
+    <parameter name="repoConfigs" byreference="false" type="array"/>
+  </method>
+  <method name="generateRepositoryName" start="181" end="189" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$index">
+        <type full="Composer\Repository\int|string" namespace="Composer\Repository" name="int|string"/>
+      </param>
+      <param description="string} $repo" type="object">
+        <type full="Composer\Repository\array{url?:" namespace="Composer\Repository" name="array{url?:"/>
+      </param>
+      <param description="mixed&gt; $existingRepos" type="object">
+        <type full="Composer\Repository\array&lt;string" namespace="Composer\Repository" name="array&lt;string"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="index" byreference="false" type="{unknown}"/>
+    <parameter name="repo" byreference="false" type="array"/>
+    <parameter name="existingRepos" byreference="false" type="array"/>
+  </method>
+</class>

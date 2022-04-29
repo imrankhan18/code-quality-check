@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Tokenizer\Analyzer\Analysis\TypeAnalysis" namespace="PhpCsFixer\Tokenizer\Analyzer\Analysis" name="TypeAnalysis" abstract="false" final="true" start="20" end="96">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer/Analysis" file="TypeAnalysis.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer/Analysis/TypeAnalysis.php" size="2097" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="148e6a4280795dad34559982bb02d8764ca2757a" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Analyzer/Analysis/TypeAnalysis.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <implements full="PhpCsFixer\Tokenizer\Analyzer\Analysis\StartEndTokenAwareAnalysis" namespace="PhpCsFixer\Tokenizer\Analyzer\Analysis" name="StartEndTokenAwareAnalysis"/>
+  <member name="reservedTypes" default="" type="array" visibility="private" static="true" line="33">
+    <docblock>
+      <description compact="This list contains soft and hard reserved types that can be used or will be used by PHP at some point.">More info:</description>
+      <see value="https://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration.types"/>
+      <see value="https://php.net/manual/en/reserved.other-reserved-words.php"/>
+      <see value="https://php.net/manual/en/language.pseudo-types.php"/>
+      <var type="array" of="object">
+        <type full="PhpCsFixer\Tokenizer\Analyzer\Analysis\string" namespace="PhpCsFixer\Tokenizer\Analyzer\Analysis" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="name" visibility="private" static="false" line="50"/>
+  <member name="startIndex" visibility="private" static="false" line="52"/>
+  <member name="endIndex" visibility="private" static="false" line="54"/>
+  <member name="nullable" visibility="private" static="false" line="56"/>
+  <constructor name="__construct" start="58" end="70" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="startIndex" byreference="false" type="int"/>
+    <parameter name="endIndex" byreference="false" type="int"/>
+  </constructor>
+  <method name="getName" start="72" end="75" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getStartIndex" start="77" end="80" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getEndIndex" start="82" end="85" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="isReservedType" start="87" end="90" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isNullable" start="92" end="95" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+  </method>
+  <interface full="PhpCsFixer\Tokenizer\Analyzer\Analysis\StartEndTokenAwareAnalysis" namespace="PhpCsFixer\Tokenizer\Analyzer\Analysis" name="StartEndTokenAwareAnalysis">
+    <method name="getStartIndex" start="22" end="22" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="The start index of the analyzed subject inside of the Tokens."/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="getEndIndex" start="27" end="27" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="The end index of the analyzed subject inside of the Tokens."/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+  </interface>
+</class>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PHPStan\PhpDocParser\Lexer\Lexer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#PHPStan_PhpDocParser_Lexer">PHPStan\PhpDocParser\Lexer</a>
+          </li>
+          <li class="separator">Lexer</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/phpstan/phpdoc-parser/src/Lexer/Lexer.php.xhtml#line15">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>PHPStan\PhpDocParser\Lexer\</small>Lexer</h1>
+        <h4>Implementation based on Nette Tokenizer (New BSD License; https://github.com/nette/tokenizer)</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Lexer
+            {<br/><ul class="none"><li>// constants</li><li>const TOKEN_REFERENCE = 0;</li><li>const TOKEN_UNION = 1;</li><li>const TOKEN_INTERSECTION = 2;</li><li>const TOKEN_NULLABLE = 3;</li><li>const TOKEN_OPEN_PARENTHESES = 4;</li><li>const TOKEN_CLOSE_PARENTHESES = 5;</li><li>const TOKEN_OPEN_ANGLE_BRACKET = 6;</li><li>const TOKEN_CLOSE_ANGLE_BRACKET = 7;</li><li>const TOKEN_OPEN_SQUARE_BRACKET = 8;</li><li>const TOKEN_CLOSE_SQUARE_BRACKET = 9;</li><li>const TOKEN_COMMA = 10;</li><li>const TOKEN_VARIADIC = 11;</li><li>const TOKEN_DOUBLE_COLON = 12;</li><li>const TOKEN_DOUBLE_ARROW = 13;</li><li>const TOKEN_EQUAL = 14;</li><li>const TOKEN_OPEN_PHPDOC = 15;</li><li>const TOKEN_CLOSE_PHPDOC = 16;</li><li>const TOKEN_PHPDOC_TAG = 17;</li><li>const TOKEN_FLOAT = 18;</li><li>const TOKEN_INTEGER = 19;</li><li>const TOKEN_SINGLE_QUOTED_STRING = 20;</li><li>const TOKEN_DOUBLE_QUOTED_STRING = 21;</li><li>const TOKEN_IDENTIFIER = 22;</li><li>const TOKEN_THIS_VARIABLE = 23;</li><li>const TOKEN_VARIABLE = 24;</li><li>const TOKEN_HORIZONTAL_WS = 25;</li><li>const TOKEN_PHPDOC_EOL = 26;</li><li>const TOKEN_OTHER = 27;</li><li>const TOKEN_END = 28;</li><li>const TOKEN_COLON = 29;</li><li>const TOKEN_WILDCARD = 30;</li><li>const TOKEN_OPEN_CURLY_BRACKET = 31;</li><li>const TOKEN_CLOSE_CURLY_BRACKET = 32;</li><li>const TOKEN_LABELS = ;</li><li>const VALUE_OFFSET = 0;</li><li>const TYPE_OFFSET = 1;</li></ul><ul class="none"><li>// members</li><li>private <span title="PHPStan\PhpDocParser\Lexer\string|null">string|null</span> <a href="#members">$regexp</a>;
+                    </li><li>private  <a href="#members">$types</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public array <a title="PHPStan\PhpDocParser\Lexer\Lexer" href="../classes/PHPStan_PhpDocParser_Lexer_Lexer/tokenize.xhtml">tokenize</a>()
+                    </li><li>private void <a title="PHPStan\PhpDocParser\Lexer\Lexer" href="../classes/PHPStan_PhpDocParser_Lexer_Lexer/initialize.xhtml">initialize</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="TOKEN_REFERENCE">TOKEN_REFERENCE</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_UNION">TOKEN_UNION</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_INTERSECTION">TOKEN_INTERSECTION</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_NULLABLE">TOKEN_NULLABLE</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_OPEN_PARENTHESES">TOKEN_OPEN_PARENTHESES</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_CLOSE_PARENTHESES">TOKEN_CLOSE_PARENTHESES</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_OPEN_ANGLE_BRACKET">TOKEN_OPEN_ANGLE_BRACKET</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_CLOSE_ANGLE_BRACKET">TOKEN_CLOSE_ANGLE_BRACKET</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_OPEN_SQUARE_BRACKET">TOKEN_OPEN_SQUARE_BRACKET</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_CLOSE_SQUARE_BRACKET">TOKEN_CLOSE_SQUARE_BRACKET</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_COMMA">TOKEN_COMMA</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_VARIADIC">TOKEN_VARIADIC</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_DOUBLE_COLON">TOKEN_DOUBLE_COLON</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_DOUBLE_ARROW">TOKEN_DOUBLE_ARROW</td>
+              <td>13</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_EQUAL">TOKEN_EQUAL</td>
+              <td>14</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_OPEN_PHPDOC">TOKEN_OPEN_PHPDOC</td>
+              <td>15</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_CLOSE_PHPDOC">TOKEN_CLOSE_PHPDOC</td>
+              <td>16</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_PHPDOC_TAG">TOKEN_PHPDOC_TAG</td>
+              <td>17</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_FLOAT">TOKEN_FLOAT</td>
+              <td>18</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_INTEGER">TOKEN_INTEGER</td>
+              <td>19</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_SINGLE_QUOTED_STRING">TOKEN_SINGLE_QUOTED_STRING</td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_DOUBLE_QUOTED_STRING">TOKEN_DOUBLE_QUOTED_STRING</td>
+              <td>21</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_IDENTIFIER">TOKEN_IDENTIFIER</td>
+              <td>22</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_THIS_VARIABLE">TOKEN_THIS_VARIABLE</td>
+              <td>23</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_VARIABLE">TOKEN_VARIABLE</td>
+              <td>24</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_HORIZONTAL_WS">TOKEN_HORIZONTAL_WS</td>
+              <td>25</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_PHPDOC_EOL">TOKEN_PHPDOC_EOL</td>
+              <td>26</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_OTHER">TOKEN_OTHER</td>
+              <td>27</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_END">TOKEN_END</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_COLON">TOKEN_COLON</td>
+              <td>29</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_WILDCARD">TOKEN_WILDCARD</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_OPEN_CURLY_BRACKET">TOKEN_OPEN_CURLY_BRACKET</td>
+              <td>31</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_CLOSE_CURLY_BRACKET">TOKEN_CLOSE_CURLY_BRACKET</td>
+              <td>32</td>
+            </tr>
+            <tr>
+              <td id="TOKEN_LABELS">TOKEN_LABELS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="VALUE_OFFSET">VALUE_OFFSET</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="TYPE_OFFSET">TYPE_OFFSET</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="regexp"><strong>$regexp</strong>
+                —
+                <a title="PHPStan\PhpDocParser\Lexer\string|null" href="../classes/PHPStan_PhpDocParser_Lexer_string|null.xhtml">PHPStan\PhpDocParser\Lexer\string|null</a></li>
+            <li id="types"><strong>$types</strong>
+                —
+                array</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="initialize">
+              <a title="PHPStan\PhpDocParser\Lexer\Lexer" href="../classes/PHPStan_PhpDocParser_Lexer_Lexer/initialize.xhtml">initialize()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="tokenize">
+              <a title="PHPStan\PhpDocParser\Lexer\Lexer" href="../classes/PHPStan_PhpDocParser_Lexer_Lexer/tokenize.xhtml">tokenize()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

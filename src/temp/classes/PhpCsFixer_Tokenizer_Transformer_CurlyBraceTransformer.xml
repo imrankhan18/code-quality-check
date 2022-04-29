@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Tokenizer\Transformer\CurlyBraceTransformer" namespace="PhpCsFixer\Tokenizer\Transformer" name="CurlyBraceTransformer" abstract="false" final="true" start="37" end="253">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Transformer" file="CurlyBraceTransformer.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Transformer/CurlyBraceTransformer.php" size="8334" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="84dc70f0226f69ac6781b31fc6b284da0a07a05f" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Tokenizer/Transformer/CurlyBraceTransformer.php"/>
+  <docblock>
+    <description compact="Transform discriminate overloaded curly braces tokens.">Performed transformations:
+- closing `}` for T_CURLY_OPEN into CT::T_CURLY_CLOSE,
+- closing `}` for T_DOLLAR_OPEN_CURLY_BRACES into CT::T_DOLLAR_CLOSE_CURLY_BRACES,
+- in `$foo-&gt;{$bar}` into CT::T_DYNAMIC_PROP_BRACE_OPEN and CT::T_DYNAMIC_PROP_BRACE_CLOSE,
+- in `${$foo}` into CT::T_DYNAMIC_VAR_BRACE_OPEN and CT::T_DYNAMIC_VAR_BRACE_CLOSE,
+- in `$array{$index}` into CT::T_ARRAY_INDEX_CURLY_BRACE_OPEN and CT::T_ARRAY_INDEX_CURLY_BRACE_CLOSE,
+- in `use some\a\{ClassA, ClassB, ClassC as C}` into CT::T_GROUP_IMPORT_BRACE_OPEN, CT::T_GROUP_IMPORT_BRACE_CLOSE.</description>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+    <internal/>
+  </docblock>
+  <extends full="PhpCsFixer\Tokenizer\AbstractTransformer" namespace="PhpCsFixer\Tokenizer" name="AbstractTransformer"/>
+  <method name="getRequiredPhpVersionId" start="42" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="process" start="50" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="getCustomTokens" start="63" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritdoc}"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="transformIntoCurlyCloseBrace" start="84" end="103" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Transform closing `}` for T_CURLY_OPEN into CT::T_CURLY_CLOSE.">This should be done at very beginning of curly braces transformations.</description>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="transformIntoDollarCloseBrace" start="105" end="111" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="transformIntoDynamicPropBraces" start="113" end="128" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="transformIntoDynamicVarBraces" start="130" end="152" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="transformIntoCurlyIndexBraces" start="154" end="192" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="transformIntoGroupUseBraces" start="194" end="210" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="token" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+    </parameter>
+    <parameter name="index" byreference="false" type="int"/>
+  </method>
+  <method name="naivelyFindCurlyBlockEnd" start="217" end="252" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="We do not want to rely on `$tokens-&gt;findBlockEnd(Tokens::BLOCK_TYPE_CURLY_BRACE, $index)` here, as it relies on block types that are assuming that `}` tokens are already transformed to Custom Tokens that are allowing to distinguish different block types.">As we are just about to transform `{` and `}` into Custom Tokens by this transformer, thus we need to compare those tokens manually by content without using `Tokens::findBlockEnd`.</description>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="tokens" byreference="false" type="object">
+      <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+    </parameter>
+    <parameter name="startIndex" byreference="false" type="int"/>
+  </method>
+  <parent full="PhpCsFixer\Tokenizer\AbstractTransformer" namespace="PhpCsFixer\Tokenizer" name="AbstractTransformer">
+    <implements full="PhpCsFixer\Tokenizer\TransformerInterface" namespace="PhpCsFixer\Tokenizer" name="TransformerInterface"/>
+    <method name="getName" start="29" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPriority" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="getCustomTokens" start="48" end="48" abstract="true" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="{@inheritdoc}"/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+  </parent>
+  <interface full="PhpCsFixer\Tokenizer\TransformerInterface" namespace="PhpCsFixer\Tokenizer" name="TransformerInterface">
+    <method name="getCustomTokens" start="36" end="36" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get tokens created by Transformer."/>
+        <return type="array" of="object">
+          <type full="PhpCsFixer\Tokenizer\int" namespace="PhpCsFixer\Tokenizer" name="int"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getName" start="45" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return the name of the transformer.">The name must be all lowercase and without any spaces.</description>
+        <return description="The name of the fixer" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPriority" start="52" end="52" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the priority of the transformer.">The default priority is 0 and higher priorities are executed first.</description>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="getRequiredPhpVersionId" start="62" end="62" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return minimal required PHP version id to transform the code.">Custom Token kinds from Transformers are always registered, but sometimes
+there is no need to analyse the Tokens if for sure we cannot find examined
+token kind, e.g. transforming `T_FUNCTION` in `&lt;?php use function Foo\\bar;`
+code.</description>
+      </docblock>
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="process" start="67" end="67" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Process Token to transform it into custom token when needed."/>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="tokens" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Tokens" namespace="PhpCsFixer\Tokenizer" name="Tokens"/>
+      </parameter>
+      <parameter name="token" byreference="false" type="object">
+        <type full="PhpCsFixer\Tokenizer\Token" namespace="PhpCsFixer\Tokenizer" name="Token"/>
+      </parameter>
+      <parameter name="index" byreference="false" type="int"/>
+    </method>
+  </interface>
+</class>

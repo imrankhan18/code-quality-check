@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Cookie\SetCookie" namespace="GuzzleHttp\Cookie" name="SetCookie" abstract="false" final="false" start="8" end="444">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src/Cookie" file="SetCookie.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Cookie/SetCookie.php" size="13183" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="123ee76608a76452bcda25834093a9765b5df583" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Cookie/SetCookie.php"/>
+  <docblock>
+    <description compact="Set-Cookie object"/>
+  </docblock>
+  <member name="defaults" default="" type="array" visibility="private" static="true" line="13">
+    <docblock>
+      <description/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="data" visibility="private" static="false" line="28">
+    <docblock>
+      <description/>
+      <var description="Cookie data" type="array"/>
+    </docblock>
+  </member>
+  <method name="fromString" start="35" end="70" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Create a new SetCookie object from a string."/>
+      <param description="Set-Cookie header string" type="string" variable="$cookie"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Cookie\SetCookie" namespace="GuzzleHttp\Cookie" name="SetCookie"/>
+    </return>
+    <parameter name="cookie" byreference="false" type="string"/>
+    <inline>
+      <comment value="Create the default return array" line="37"/>
+      <comment value="Explode the cookie string using a series of semicolons" line="39"/>
+      <comment value="The name of the cookie (first kvp) must exist and include an equal sign." line="41"/>
+      <comment value="Add the cookie pieces into the parsed data array" line="46"/>
+    </inline>
+  </method>
+  <constructor name="__construct" start="75" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Array of cookie data provided by a Cookie parser" type="array" variable="$data"/>
+    </docblock>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <inline>
+      <comment value="Extract the Expires value and turn it into a UNIX timestamp if needed" line="84"/>
+    </inline>
+  </constructor>
+  <method name="__toString" start="93" end="107" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="toArray" start="109" end="112" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getName" start="119" end="122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the cookie name."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setName" start="129" end="136" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the cookie name."/>
+      <param description="Cookie name" type="string" variable="$name"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getValue" start="143" end="146" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the cookie value."/>
+      <return type="object">
+        <type full="GuzzleHttp\Cookie\string|null" namespace="GuzzleHttp\Cookie" name="string|null"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setValue" start="153" end="160" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the cookie value."/>
+      <param description="Cookie value" type="string" variable="$value"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getDomain" start="167" end="170" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the domain."/>
+      <return type="object">
+        <type full="GuzzleHttp\Cookie\string|null" namespace="GuzzleHttp\Cookie" name="string|null"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setDomain" start="177" end="184" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the domain of the cookie."/>
+      <param type="object" variable="$domain">
+        <type full="GuzzleHttp\Cookie\string|null" namespace="GuzzleHttp\Cookie" name="string|null"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="domain" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPath" start="191" end="194" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the path."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setPath" start="201" end="208" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the path of the cookie."/>
+      <param description="Path of the cookie" type="string" variable="$path"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMaxAge" start="215" end="218" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Maximum lifetime of the cookie in seconds."/>
+      <return type="object">
+        <type full="GuzzleHttp\Cookie\int|null" namespace="GuzzleHttp\Cookie" name="int|null"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setMaxAge" start="225" end="232" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the max-age of the cookie."/>
+      <param description="Max age of the cookie in seconds" type="object" variable="$maxAge">
+        <type full="GuzzleHttp\Cookie\int|null" namespace="GuzzleHttp\Cookie" name="int|null"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="maxAge" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getExpires" start="239" end="242" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The UNIX timestamp when the cookie Expires."/>
+      <return type="object">
+        <type full="GuzzleHttp\Cookie\string|int|null" namespace="GuzzleHttp\Cookie" name="string|int|null"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setExpires" start="249" end="256" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the unix timestamp for which the cookie will expire."/>
+      <param description="Unix timestamp or any English textual datetime description." type="object" variable="$timestamp">
+        <type full="GuzzleHttp\Cookie\int|string|null" namespace="GuzzleHttp\Cookie" name="int|string|null"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="timestamp" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getSecure" start="263" end="266" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get whether or not this is a secure cookie."/>
+      <return type="object">
+        <type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setSecure" start="273" end="280" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set whether or not the cookie is secure."/>
+      <param description="Set to true or false if secure" type="object" variable="$secure">
+        <type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="secure" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getDiscard" start="287" end="290" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get whether or not this is a session cookie."/>
+      <return type="object">
+        <type full="GuzzleHttp\Cookie\bool|null" namespace="GuzzleHttp\Cookie" name="bool|null"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setDiscard" start="297" end="304" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set whether or not this is a session cookie."/>
+      <param description="Set to true or false if this is a session cookie" type="object" variable="$discard">
+        <type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="discard" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getHttpOnly" start="311" end="314" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get whether or not this is an HTTP only cookie."/>
+      <return type="object">
+        <type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setHttpOnly" start="321" end="328" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set whether or not this is an HTTP only cookie."/>
+      <param description="Set to true or false if this is HTTP only" type="object" variable="$httpOnly">
+        <type full="GuzzleHttp\Cookie\bool" namespace="GuzzleHttp\Cookie" name="bool"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="httpOnly" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="matchesPath" start="345" end="366" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if the cookie matches a path value.">A request-path path-matches a given cookie-path if at least one of
+the following conditions holds:
+
+- The cookie-path and the request-path are identical.
+- The cookie-path is a prefix of the request-path, and the last
+  character of the cookie-path is %x2F ("/").
+- The cookie-path is a prefix of the request-path, and the first
+  character of the request-path that is not included in the cookie-
+  path is a %x2F ("/") character.</description>
+      <param description="Path to check against" type="string" variable="$requestPath"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="requestPath" byreference="false" type="string"/>
+    <inline>
+      <comment value="Match on exact matches or when path is the default empty &quot;/&quot;" line="349"/>
+      <comment value="Ensure that the cookie-path is a prefix of the request path." line="354"/>
+      <comment value="Match if the last character of the cookie-path is &quot;/&quot;" line="359"/>
+      <comment value="Match if the first character not included in cookie path is &quot;/&quot;" line="364"/>
+    </inline>
+  </method>
+  <method name="matchesDomain" start="373" end="396" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if the cookie matches a domain value."/>
+      <param description="Domain to check against" type="string" variable="$domain"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="domain" byreference="false" type="string"/>
+    <inline>
+      <comment value="Remove the leading '.' as per spec in RFC 6265." line="380"/>
+      <comment value="https://tools.ietf.org/html/rfc6265#section-5.2.3" line="381"/>
+      <comment value="Domain not set or exact match." line="384"/>
+      <comment value="Matching the subdomain according to RFC 6265." line="389"/>
+      <comment value="https://tools.ietf.org/html/rfc6265#section-5.1.3" line="390"/>
+    </inline>
+  </method>
+  <method name="isExpired" start="401" end="404" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if the cookie is expired."/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="validate" start="411" end="443" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if the cookie is valid according to RFC 6265."/>
+      <return description="Returns true if valid or an error message if invalid" type="object">
+        <type full="GuzzleHttp\Cookie\bool|string" namespace="GuzzleHttp\Cookie" name="bool|string"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="Check if any of the invalid characters are present in the cookie name" line="418"/>
+      <comment value="Value must not be null. 0 and empty string are valid. Empty strings" line="428"/>
+      <comment value="are technically against RFC 6265, but known to happen in the wild." line="429"/>
+      <comment value="Domains must not be empty, but can be 0. &quot;0&quot; is not a valid internet" line="435"/>
+      <comment value="domain, but may be used as server name in a private network." line="436"/>
+    </inline>
+  </method>
+</class>

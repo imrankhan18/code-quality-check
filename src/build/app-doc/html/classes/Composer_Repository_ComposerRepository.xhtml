@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Repository\ComposerRepository</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Repository">Composer\Repository</a>
+          </li>
+          <li class="separator">ComposerRepository</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Repository/ComposerRepository.php.xhtml#line47">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Repository\</small>ComposerRepository</h1>
+        <h4/>
+        <p/>
+        <ul>
+          <li>Author: Jordi Boggiano &lt;j.boggiano@seld.be&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ComposerRepository
+                extends <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository.xhtml">ArrayRepository</a>
+                implements
+                <a title="Composer\Repository\ConfigurableRepositoryInterface" href="../interfaces/Composer_Repository_ConfigurableRepositoryInterface.xhtml">ConfigurableRepositoryInterface</a>
+            {<br/><ul class="none"><li>// members</li><li>private  <a href="#members">$repoConfig</a>;
+                    </li><li>private  <a href="#members">$options</a>;
+                    </li><li>private  <a href="#members">$url</a>;
+                    </li><li>private  <a href="#members">$baseUrl</a>;
+                    </li><li>private <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>private <span title="Composer\Util\HttpDownloader">HttpDownloader</span> <a href="#members">$httpDownloader</a>;
+                    </li><li>private <span title="Composer\Util\Loop">Loop</span> <a href="#members">$loop</a>;
+                    </li><li>protected <span title="Composer\Cache">Cache</span> <a href="#members">$cache</a>;
+                    </li><li>protected <span title="Composer\Repository\?string">?string</span> <a href="#members">$notifyUrl</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Repository\?string">?string</span> <a href="#members">$searchUrl</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Repository\?string">?string</span> <a href="#members">$providersApiUrl</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Repository\bool">bool</span> <a href="#members">$hasProviders</a> =
+                        false;
+                    </li><li>protected <span title="Composer\Repository\?string">?string</span> <a href="#members">$providersUrl</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Repository\?string">?string</span> <a href="#members">$listUrl</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Repository\bool">bool</span> <a href="#members">$hasAvailablePackageList</a> =
+                        false;
+                    </li><li>protected <span title="Composer\Repository\?array&lt;string&gt;">?array&lt;string&gt;</span> <a href="#members">$availablePackages</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Repository\?array&lt;non-empty-string&gt;">?array&lt;non-empty-string&gt;</span> <a href="#members">$availablePackagePatterns</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Repository\?string">?string</span> <a href="#members">$lazyProvidersUrl</a> =
+                        NULL;
+                    </li><li>protected <span title="Composer\Repository\?array&lt;string">?array&lt;string</span> <a href="#members">$providerListing</a>;
+                    </li><li>protected <span title="Composer\Package\Loader\ArrayLoader">ArrayLoader</span> <a href="#members">$loader</a>;
+                    </li><li>private <span title="Composer\Repository\bool">bool</span> <a href="#members">$allowSslDowngrade</a> =
+                        false;
+                    </li><li>private <span title="Composer\Repository\?EventDispatcher">?EventDispatcher</span> <a href="#members">$eventDispatcher</a>;
+                    </li><li>private <span title="Composer\Repository\?array&lt;string">?array&lt;string</span> <a href="#members">$sourceMirrors</a>;
+                    </li><li>private <span title="Composer\Repository\?array&lt;int">?array&lt;int</span> <a href="#members">$distMirrors</a>;
+                    </li><li>private <span title="Composer\Repository\bool">bool</span> <a href="#members">$degradedMode</a> =
+                        false;
+                    </li><li>private  <a href="#members">$rootData</a>;
+                    </li><li>private <span title="Composer\Repository\bool">bool</span> <a href="#members">$hasPartialPackages</a> =
+                        false;
+                    </li><li>private <span title="Composer\Repository\?array&lt;string">?array&lt;string</span> <a href="#members">$partialPackagesByName</a> =
+                        NULL;
+                    </li><li>private array <a href="#members">$freshMetadataUrls</a> =
+                        ;
+                    </li><li>private array <a href="#members">$packagesNotFoundCache</a> =
+                        ;
+                    </li><li>private <span title="Composer\Package\Version\VersionParser">VersionParser</span> <a href="#members">$versionParser</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="Composer\Repository\ArrayRepository">ArrayRepository</span></li><li>protected <span title="Composer\Repository\?array&lt;BasePackage&gt;">?array&lt;BasePackage&gt;</span> <a href="#members">$packages</a>;
+                        </li><li>protected <span title="Composer\Repository\?array&lt;BasePackage&gt;">?array&lt;BasePackage&gt;</span> <a href="#members">$packageMap</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getRepoName.xhtml">getRepoName</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getRepoConfig.xhtml">getRepoConfig</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/findPackage.xhtml">findPackage</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/findPackages.xhtml">findPackages</a>()
+                    </li><li>private BasePackage|array&lt;BasePackage&gt;|null <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/filterPackages.xhtml">filterPackages</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getPackages.xhtml">getPackages</a>()
+                    </li><li>public array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getPackageNames.xhtml">getPackageNames</a>()
+                    </li><li>private array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getVendorNames.xhtml">getVendorNames</a>()
+                    </li><li>private array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadPackageList.xhtml">loadPackageList</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadPackages.xhtml">loadPackages</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/search.xhtml">search</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getProviders.xhtml">getProviders</a>()
+                    </li><li>private array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getProviderNames.xhtml">getProviderNames</a>()
+                    </li><li>protected void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/configurePackageTransportOptions.xhtml">configurePackageTransportOptions</a>()
+                    </li><li>private bool <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/hasProviders.xhtml">hasProviders</a>()
+                    </li><li>private array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/whatProvides.xhtml">whatProvides</a>()
+                    </li><li>protected void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/initialize.xhtml">initialize</a>()
+                    </li><li>public void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/addPackage.xhtml">addPackage</a>()
+                    </li><li>private array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadAsyncPackages.xhtml">loadAsyncPackages</a>()
+                    </li><li>private bool <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/isVersionAcceptable.xhtml">isVersionAcceptable</a>()
+                    </li><li>private string <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getPackagesJsonUrl.xhtml">getPackagesJsonUrl</a>()
+                    </li><li>protected array&lt;'providers'|'provider-includes'|'packages'|'providers-url'|'notify-batch'|'search'|'mirrors'|'providers-lazy-url'|'metadata-url'|'available-packages'|'available-package-patterns' <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadRootServerFile.xhtml">loadRootServerFile</a>()
+                    </li><li>private string <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/canonicalizeUrl.xhtml">canonicalizeUrl</a>()
+                    </li><li>private array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadDataFromServer.xhtml">loadDataFromServer</a>()
+                    </li><li>private bool <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/hasPartialPackages.xhtml">hasPartialPackages</a>()
+                    </li><li>private void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadProviderListings.xhtml">loadProviderListings</a>()
+                    </li><li>private array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadIncludes.xhtml">loadIncludes</a>()
+                    </li><li>private array <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/createPackages.xhtml">createPackages</a>()
+                    </li><li>protected array&lt;mixed&gt; <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/fetchFile.xhtml">fetchFile</a>()
+                    </li><li>private array&lt;mixed&gt;|true <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/fetchFileIfLastModified.xhtml">fetchFileIfLastModified</a>()
+                    </li><li>private <span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/asyncFetchFile.xhtml">asyncFetchFile</a>()
+                    </li><li>private void <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/initializePartialPackages.xhtml">initializePartialPackages</a>()
+                    </li><li>protected bool <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/lazyProvidersRepoContains.xhtml">lazyProvidersRepoContains</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Composer\Repository\ArrayRepository">ArrayRepository</span></li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getRepoName.xhtml">getRepoName</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/loadPackages.xhtml">loadPackages</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/findPackage.xhtml">findPackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/findPackages.xhtml">findPackages</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/search.xhtml">search</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/hasPackage.xhtml">hasPackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/addPackage.xhtml">addPackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getProviders.xhtml">getProviders</a>()
+                        </li><li>protected AliasPackage|CompleteAliasPackage <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/createAliasPackage.xhtml">createAliasPackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/removePackage.xhtml">removePackage</a>()
+                        </li><li>public void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getPackages.xhtml">getPackages</a>()
+                        </li><li>public int <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/count.xhtml">count</a>()
+                        </li><li>protected void <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/initialize.xhtml">initialize</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository.xhtml">Composer\Repository\ArrayRepository</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Composer\Repository\ConfigurableRepositoryInterface" href="../interfaces/Composer_Repository_ConfigurableRepositoryInterface.xhtml">Composer\Repository\ConfigurableRepositoryInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="SEARCH_FULLTEXT">SEARCH_FULLTEXT</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="SEARCH_NAME">SEARCH_NAME</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="SEARCH_VENDOR">SEARCH_VENDOR</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="allowSslDowngrade"><strong>$allowSslDowngrade</strong>
+                —
+                <a title="Composer\Repository\bool" href="../classes/Composer_Repository_bool.xhtml">Composer\Repository\bool</a></li>
+            <li id="baseUrl"><strong>$baseUrl</strong>
+                —
+                string</li>
+            <li id="degradedMode"><strong>$degradedMode</strong>
+                —
+                <a title="Composer\Repository\bool" href="../classes/Composer_Repository_bool.xhtml">Composer\Repository\bool</a></li>
+            <li id="distMirrors"><strong>$distMirrors</strong>
+                —
+                <a title="Composer\Repository\?array&lt;int" href="../classes/Composer_Repository_?array&lt;int.xhtml">Composer\Repository\?array&lt;int</a></li>
+            <li id="eventDispatcher"><strong>$eventDispatcher</strong>
+                —
+                <a title="Composer\Repository\?EventDispatcher" href="../classes/Composer_Repository_?EventDispatcher.xhtml">Composer\Repository\?EventDispatcher</a></li>
+            <li id="freshMetadataUrls"><strong>$freshMetadataUrls</strong>
+                —
+                array</li>
+            <li id="hasPartialPackages"><strong>$hasPartialPackages</strong>
+                —
+                <a title="Composer\Repository\bool" href="../classes/Composer_Repository_bool.xhtml">Composer\Repository\bool</a></li>
+            <li id="httpDownloader"><strong>$httpDownloader</strong>
+                —
+                <a title="Composer\Util\HttpDownloader" href="../classes/Composer_Util_HttpDownloader.xhtml">Composer\Util\HttpDownloader</a></li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="loop"><strong>$loop</strong>
+                —
+                <a title="Composer\Util\Loop" href="../classes/Composer_Util_Loop.xhtml">Composer\Util\Loop</a></li>
+            <li id="options"><strong>$options</strong>
+                —
+                array</li>
+            <li id="packagesNotFoundCache"><strong>$packagesNotFoundCache</strong>
+                —
+                array</li>
+            <li id="partialPackagesByName"><strong>$partialPackagesByName</strong>
+                —
+                <a title="Composer\Repository\?array&lt;string" href="../classes/Composer_Repository_?array&lt;string.xhtml">Composer\Repository\?array&lt;string</a></li>
+            <li id="repoConfig"><strong>$repoConfig</strong>
+                —
+                array</li>
+            <li id="rootData"><strong>$rootData</strong>
+                —
+                array</li>
+            <li id="sourceMirrors"><strong>$sourceMirrors</strong>
+                —
+                <a title="Composer\Repository\?array&lt;string" href="../classes/Composer_Repository_?array&lt;string.xhtml">Composer\Repository\?array&lt;string</a></li>
+            <li id="url"><strong>$url</strong>
+                —
+                string</li>
+            <li id="versionParser"><strong>$versionParser</strong>
+                —
+                <a title="Composer\Package\Version\VersionParser" href="../classes/Composer_Package_Version_VersionParser.xhtml">Composer\Package\Version\VersionParser</a></li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="availablePackagePatterns"><strong>$availablePackagePatterns</strong>
+                —
+                <a title="Composer\Repository\?array&lt;non-empty-string&gt;" href="../classes/Composer_Repository_?array&lt;non-empty-string&gt;.xhtml">Composer\Repository\?array&lt;non-empty-string&gt;</a></li>
+            <li id="availablePackages"><strong>$availablePackages</strong>
+                —
+                <a title="Composer\Repository\?array&lt;string&gt;" href="../classes/Composer_Repository_?array&lt;string&gt;.xhtml">Composer\Repository\?array&lt;string&gt;</a></li>
+            <li id="cache"><strong>$cache</strong>
+                —
+                <a title="Composer\Cache" href="../classes/Composer_Cache.xhtml">Composer\Cache</a></li>
+            <li id="hasAvailablePackageList"><strong>$hasAvailablePackageList</strong>
+                —
+                <a title="Composer\Repository\bool" href="../classes/Composer_Repository_bool.xhtml">Composer\Repository\bool</a></li>
+            <li id="hasProviders"><strong>$hasProviders</strong>
+                —
+                <a title="Composer\Repository\bool" href="../classes/Composer_Repository_bool.xhtml">Composer\Repository\bool</a></li>
+            <li id="lazyProvidersUrl"><strong>$lazyProvidersUrl</strong>
+                —
+                <a title="Composer\Repository\?string" href="../classes/Composer_Repository_?string.xhtml">Composer\Repository\?string</a></li>
+            <li id="listUrl"><strong>$listUrl</strong>
+                —
+                <a title="Composer\Repository\?string" href="../classes/Composer_Repository_?string.xhtml">Composer\Repository\?string</a></li>
+            <li id="loader"><strong>$loader</strong>
+                —
+                <a title="Composer\Package\Loader\ArrayLoader" href="../classes/Composer_Package_Loader_ArrayLoader.xhtml">Composer\Package\Loader\ArrayLoader</a></li>
+            <li id="notifyUrl"><strong>$notifyUrl</strong>
+                —
+                <a title="Composer\Repository\?string" href="../classes/Composer_Repository_?string.xhtml">Composer\Repository\?string</a></li>
+            <li id="packageMap"><strong>$packageMap</strong>
+                —
+                <a title="Composer\Repository\?array&lt;BasePackage&gt;" href="../classes/Composer_Repository_?array&lt;BasePackage&gt;.xhtml">Composer\Repository\?array&lt;BasePackage&gt;</a></li>
+            <li id="packages"><strong>$packages</strong>
+                —
+                <a title="Composer\Repository\?array&lt;BasePackage&gt;" href="../classes/Composer_Repository_?array&lt;BasePackage&gt;.xhtml">Composer\Repository\?array&lt;BasePackage&gt;</a></li>
+            <li id="providerListing"><strong>$providerListing</strong>
+                —
+                <a title="Composer\Repository\?array&lt;string" href="../classes/Composer_Repository_?array&lt;string.xhtml">Composer\Repository\?array&lt;string</a></li>
+            <li id="providersApiUrl"><strong>$providersApiUrl</strong>
+                —
+                <a title="Composer\Repository\?string" href="../classes/Composer_Repository_?string.xhtml">Composer\Repository\?string</a></li>
+            <li id="providersUrl"><strong>$providersUrl</strong>
+                —
+                <a title="Composer\Repository\?string" href="../classes/Composer_Repository_?string.xhtml">Composer\Repository\?string</a></li>
+            <li id="searchUrl"><strong>$searchUrl</strong>
+                —
+                <a title="Composer\Repository\?string" href="../classes/Composer_Repository_?string.xhtml">Composer\Repository\?string</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="asyncFetchFile">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/asyncFetchFile.xhtml">asyncFetchFile()</a>
+            </li>
+            <li id="canonicalizeUrl">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/canonicalizeUrl.xhtml">canonicalizeUrl()</a>
+            </li>
+            <li id="createPackages">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/createPackages.xhtml">createPackages()</a>
+            </li>
+            <li id="fetchFileIfLastModified">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/fetchFileIfLastModified.xhtml">fetchFileIfLastModified()</a>
+            </li>
+            <li id="filterPackages">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/filterPackages.xhtml">filterPackages()</a>
+            </li>
+            <li id="getPackagesJsonUrl">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getPackagesJsonUrl.xhtml">getPackagesJsonUrl()</a>
+            </li>
+            <li id="getProviderNames">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getProviderNames.xhtml">getProviderNames()</a>
+            </li>
+            <li id="getVendorNames">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getVendorNames.xhtml">getVendorNames()</a>
+            </li>
+            <li id="hasPartialPackages">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/hasPartialPackages.xhtml">hasPartialPackages()</a>
+            </li>
+            <li id="hasProviders">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/hasProviders.xhtml">hasProviders()</a>
+            </li>
+            <li id="initializePartialPackages"><a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/initializePartialPackages.xhtml">initializePartialPackages()</a>
+                — This initializes the packages key of a partial packages.json that contain some packages inlined + a providers-lazy-url</li>
+            <li id="isVersionAcceptable">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/isVersionAcceptable.xhtml">isVersionAcceptable()</a>
+            </li>
+            <li id="loadAsyncPackages">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadAsyncPackages.xhtml">loadAsyncPackages()</a>
+            </li>
+            <li id="loadDataFromServer">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadDataFromServer.xhtml">loadDataFromServer()</a>
+            </li>
+            <li id="loadIncludes">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadIncludes.xhtml">loadIncludes()</a>
+            </li>
+            <li id="loadPackageList">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadPackageList.xhtml">loadPackageList()</a>
+            </li>
+            <li id="loadProviderListings">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadProviderListings.xhtml">loadProviderListings()</a>
+            </li>
+            <li id="whatProvides">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/whatProvides.xhtml">whatProvides()</a>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="configurePackageTransportOptions">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/configurePackageTransportOptions.xhtml">configurePackageTransportOptions()</a>
+            </li>
+            <li id="fetchFile">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/fetchFile.xhtml">fetchFile()</a>
+            </li>
+            <li id="initialize">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/initialize.xhtml">initialize()</a>
+            </li>
+            <li id="lazyProvidersRepoContains"><a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/lazyProvidersRepoContains.xhtml">lazyProvidersRepoContains()</a>
+                — Checks if the package name is present in this lazy providers repo</li>
+            <li id="loadRootServerFile">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadRootServerFile.xhtml">loadRootServerFile()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="addPackage"><a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/addPackage.xhtml">addPackage()</a>
+                — Adds a new package to the repository</li>
+            <li id="findPackage">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/findPackage.xhtml">findPackage()</a>
+            </li>
+            <li id="findPackages">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/findPackages.xhtml">findPackages()</a>
+            </li>
+            <li id="getPackageNames">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getPackageNames.xhtml">getPackageNames()</a>
+            </li>
+            <li id="getPackages">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getPackages.xhtml">getPackages()</a>
+            </li>
+            <li id="getProviders">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getProviders.xhtml">getProviders()</a>
+            </li>
+            <li id="getRepoConfig">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getRepoConfig.xhtml">getRepoConfig()</a>
+            </li>
+            <li id="getRepoName">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/getRepoName.xhtml">getRepoName()</a>
+            </li>
+            <li id="loadPackages">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/loadPackages.xhtml">loadPackages()</a>
+            </li>
+            <li id="search">
+              <a title="Composer\Repository\ComposerRepository" href="../classes/Composer_Repository_ComposerRepository/search.xhtml">search()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository.xhtml">Composer\Repository\ArrayRepository</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="createAliasPackage">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/createAliasPackage.xhtml">createAliasPackage()</a>
+            </li>
+            <li id="initialize"><a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/initialize.xhtml">initialize()</a>
+                — Initializes the packages array. Mostly meant as an extension point.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="addPackage"><a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/addPackage.xhtml">addPackage()</a>
+                — Adds a new package to the repository</li>
+            <li id="count"><a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/count.xhtml">count()</a>
+                — Returns the number of packages in this repository</li>
+            <li id="findPackage">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/findPackage.xhtml">findPackage()</a>
+            </li>
+            <li id="findPackages">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/findPackages.xhtml">findPackages()</a>
+            </li>
+            <li id="getPackages">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getPackages.xhtml">getPackages()</a>
+            </li>
+            <li id="getProviders">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getProviders.xhtml">getProviders()</a>
+            </li>
+            <li id="getRepoName">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/getRepoName.xhtml">getRepoName()</a>
+            </li>
+            <li id="hasPackage">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/hasPackage.xhtml">hasPackage()</a>
+            </li>
+            <li id="loadPackages">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/loadPackages.xhtml">loadPackages()</a>
+            </li>
+            <li id="removePackage"><a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/removePackage.xhtml">removePackage()</a>
+                — Removes package from repository.</li>
+            <li id="search">
+              <a title="Composer\Repository\ArrayRepository" href="../classes/Composer_Repository_ArrayRepository/search.xhtml">search()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

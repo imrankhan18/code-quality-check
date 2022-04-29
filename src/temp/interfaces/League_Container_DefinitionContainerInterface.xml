@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface" abstract="false" final="false" start="12" end="20">
+  <file path="//var/www/html/vendor/league/container/src" file="DefinitionContainerInterface.php" realpath="/var/www/html/vendor/league/container/src/DefinitionContainerInterface.php" size="764" time="2021-11-16T10:29:06+00:00" unixtime="1637058546" sha1="abe428b6120e028ab8862d73de003bea00d7ec6f" relative="ar/www/html/vendor/league/container/src/DefinitionContainerInterface.php"/>
+  <extends full="Psr\Container\ContainerInterface" namespace="Psr\Container" name="ContainerInterface"/>
+  <method name="add" start="14" end="14" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Definition\DefinitionInterface" namespace="League\Container\Definition" name="DefinitionInterface"/>
+    </return>
+    <parameter name="id" byreference="false" type="string"/>
+    <parameter name="concrete" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="addServiceProvider" start="15" end="15" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+    </return>
+    <parameter name="provider" byreference="false" type="object">
+      <type full="League\Container\ServiceProvider\ServiceProviderInterface" namespace="League\Container\ServiceProvider" name="ServiceProviderInterface"/>
+    </parameter>
+  </method>
+  <method name="addShared" start="16" end="16" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Definition\DefinitionInterface" namespace="League\Container\Definition" name="DefinitionInterface"/>
+    </return>
+    <parameter name="id" byreference="false" type="string"/>
+    <parameter name="concrete" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="extend" start="17" end="17" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Definition\DefinitionInterface" namespace="League\Container\Definition" name="DefinitionInterface"/>
+    </return>
+    <parameter name="id" byreference="false" type="string"/>
+  </method>
+  <method name="getNew" start="18" end="18" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="inflector" start="19" end="19" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Inflector\InflectorInterface" namespace="League\Container\Inflector" name="InflectorInterface"/>
+    </return>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="callback" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <parent full="Psr\Container\ContainerInterface" namespace="Psr\Container" name="ContainerInterface">
+    <method name="get" start="22" end="22" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Finds an entry of the container by its identifier and returns it."/>
+        <param description="Identifier of the entry to look for." type="string" variable="$id"/>
+        <throws description="No entry was found for **this** identifier." type="object">
+          <type full="Psr\Container\NotFoundExceptionInterface" namespace="Psr\Container" name="NotFoundExceptionInterface"/>
+        </throws>
+        <throws description="Error while retrieving the entry." type="object">
+          <type full="Psr\Container\ContainerExceptionInterface" namespace="Psr\Container" name="ContainerExceptionInterface"/>
+        </throws>
+        <return description="Entry." type="mixed"/>
+      </docblock>
+      <parameter name="id" byreference="false" type="string"/>
+    </method>
+    <method name="has" start="35" end="35" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns true if the container can return an entry for the given identifier.">Returns false otherwise.
+
+`has($id)` returning true does not mean that `get($id)` will not throw an exception.
+It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.</description>
+        <param description="Identifier of the entry to look for." type="string" variable="$id"/>
+        <return type="object">
+          <type full="Psr\Container\bool" namespace="Psr\Container" name="bool"/>
+        </return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="id" byreference="false" type="string"/>
+    </method>
+  </parent>
+  <implementors>
+    <class full="League\Container\Container" namespace="League\Container" name="Container"/>
+  </implementors>
+</interface>

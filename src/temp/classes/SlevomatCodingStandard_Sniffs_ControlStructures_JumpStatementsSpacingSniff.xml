@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="SlevomatCodingStandard\Sniffs\ControlStructures\JumpStatementsSpacingSniff" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="JumpStatementsSpacingSniff" abstract="false" final="false" start="25" end="268">
+  <file path="//var/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/ControlStructures" file="JumpStatementsSpacingSniff.php" realpath="/var/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/ControlStructures/JumpStatementsSpacingSniff.php" size="7587" time="2022-03-29T12:44:16+00:00" unixtime="1648557856" sha1="6c518b621e408f460d8215f14ec25a8362a2bb19" relative="ar/www/html/vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/ControlStructures/JumpStatementsSpacingSniff.php"/>
+  <extends full="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="AbstractControlStructureSpacing"/>
+  <member name="linesCountBefore" default="1" type="integer" visibility="public" static="false" line="29">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="linesCountBeforeFirst" default="0" type="integer" visibility="public" static="false" line="32">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="linesCountBeforeWhenFirstInCaseOrDefault" default="NULL" visibility="public" static="false" line="35">
+    <docblock>
+      <var type="object">
+        <type full="SlevomatCodingStandard\Sniffs\ControlStructures\int|null" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="int|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="linesCountAfter" default="1" type="integer" visibility="public" static="false" line="38">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="linesCountAfterLast" default="0" type="integer" visibility="public" static="false" line="41">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="linesCountAfterWhenLastInCaseOrDefault" default="NULL" visibility="public" static="false" line="44">
+    <docblock>
+      <var type="object">
+        <type full="SlevomatCodingStandard\Sniffs\ControlStructures\int|null" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="int|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="linesCountAfterWhenLastInLastCaseOrDefault" default="NULL" visibility="public" static="false" line="47">
+    <docblock>
+      <var type="object">
+        <type full="SlevomatCodingStandard\Sniffs\ControlStructures\int|null" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="int|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="allowSingleLineYieldStacking" default="true" type="boolean" visibility="public" static="false" line="50">
+    <docblock>
+      <var type="object">
+        <type full="SlevomatCodingStandard\Sniffs\ControlStructures\bool" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="jumpStatements" default="" type="array" visibility="public" static="false" line="53">
+    <docblock>
+      <var type="array" of="object">
+        <type full="SlevomatCodingStandard\Sniffs\ControlStructures\string" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="string"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="process" start="59" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <phpcssuppress value="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"/>
+      <param type="int" variable="$jumpStatementPointer"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getSupportedKeywords" start="71" end="82" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="SlevomatCodingStandard\Sniffs\ControlStructures\string" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getKeywordsToCheck" start="87" end="90" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="SlevomatCodingStandard\Sniffs\ControlStructures\string" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getLinesCountBefore" start="92" end="95" abstract="false" final="false" static="false" visibility="protected">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getLinesCountBeforeFirst" start="97" end="107" abstract="false" final="false" static="false" visibility="protected">
+    <return type="int" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="int"/>
+  </method>
+  <method name="getLinesCountAfter" start="109" end="112" abstract="false" final="false" static="false" visibility="protected">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getLinesCountAfterLast" start="117" end="134" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <phpcssuppress value="SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="int"/>
+    <parameter name="jumpStatementEndPointer" byreference="false" type="int"/>
+  </method>
+  <method name="checkLinesBefore" start="136" end="150" abstract="false" final="false" static="false" visibility="protected">
+    <return type="void" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="int"/>
+  </method>
+  <method name="checkLinesAfter" start="152" end="166" abstract="false" final="false" static="false" visibility="protected">
+    <return type="void" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="int"/>
+  </method>
+  <method name="isOneOfYieldSpecialCases" start="168" end="191" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="int"/>
+    <inline>
+      <comment value="check if yield is used inside parentheses (function call, while, ...)" line="177"/>
+      <comment value="check if yield is used in assignment" line="184"/>
+      <comment value="check if yield is used in a return statement" line="189"/>
+    </inline>
+  </method>
+  <method name="isStackedSingleLineYield" start="193" end="208" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="int"/>
+    <parameter name="previous" byreference="false" type="bool"/>
+  </method>
+  <method name="isThrowExpression" start="210" end="225" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="int"/>
+  </method>
+  <method name="isFirstInCaseOrDefault" start="227" end="240" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementPointer" byreference="false" type="int"/>
+  </method>
+  <method name="isLastInCaseOrDefault" start="242" end="255" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementEndPointer" byreference="false" type="int"/>
+  </method>
+  <method name="isLastInLastCaseOrDefault" start="257" end="266" abstract="false" final="false" static="false" visibility="private">
+    <return type="bool" nullable="false"/>
+    <parameter name="phpcsFile" byreference="false" type="object">
+      <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+    </parameter>
+    <parameter name="jumpStatementEndPointer" byreference="false" type="int"/>
+  </method>
+  <parent full="SlevomatCodingStandard\Sniffs\ControlStructures\AbstractControlStructureSpacing" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="AbstractControlStructureSpacing">
+    <implements full="PHP_CodeSniffer\Sniffs\Sniff" namespace="PHP_CodeSniffer\Sniffs" name="Sniff"/>
+    <constant type="{unknown}" name="CODE_INCORRECT_LINES_COUNT_BEFORE_CONTROL_STRUCTURE" value="'IncorrectLinesCountBeforeControlStructure'"/>
+    <constant type="{unknown}" name="CODE_INCORRECT_LINES_COUNT_BEFORE_FIRST_CONTROL_STRUCTURE" value="'IncorrectLinesCountBeforeFirstControlStructure'"/>
+    <constant type="{unknown}" name="CODE_INCORRECT_LINES_COUNT_AFTER_CONTROL_STRUCTURE" value="'IncorrectLinesCountAfterControlStructure'"/>
+    <constant type="{unknown}" name="CODE_INCORRECT_LINES_COUNT_AFTER_LAST_CONTROL_STRUCTURE" value="'IncorrectLinesCountAfterLastControlStructure'"/>
+    <constant type="{unknown}" name="KEYWORD_IF" value="'if'"/>
+    <constant type="{unknown}" name="KEYWORD_DO" value="'do'"/>
+    <constant type="{unknown}" name="KEYWORD_WHILE" value="'while'"/>
+    <constant type="{unknown}" name="KEYWORD_FOR" value="'for'"/>
+    <constant type="{unknown}" name="KEYWORD_FOREACH" value="'foreach'"/>
+    <constant type="{unknown}" name="KEYWORD_SWITCH" value="'switch'"/>
+    <constant type="{unknown}" name="KEYWORD_CASE" value="'case'"/>
+    <constant type="{unknown}" name="KEYWORD_DEFAULT" value="'default'"/>
+    <constant type="{unknown}" name="KEYWORD_TRY" value="'try'"/>
+    <constant type="{unknown}" name="KEYWORD_PARENT" value="'parent'"/>
+    <constant type="{unknown}" name="KEYWORD_GOTO" value="'goto'"/>
+    <constant type="{unknown}" name="KEYWORD_BREAK" value="'break'"/>
+    <constant type="{unknown}" name="KEYWORD_CONTINUE" value="'continue'"/>
+    <constant type="{unknown}" name="KEYWORD_RETURN" value="'return'"/>
+    <constant type="{unknown}" name="KEYWORD_THROW" value="'throw'"/>
+    <constant type="{unknown}" name="KEYWORD_YIELD" value="'yield'"/>
+    <constant type="{unknown}" name="KEYWORD_YIELD_FROM" value="'yield_from'"/>
+    <method name="getSupportedKeywords" start="89" end="89" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return type="array" of="object">
+          <type full="SlevomatCodingStandard\Sniffs\ControlStructures\string" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getKeywordsToCheck" start="94" end="94" abstract="true" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return type="array" of="object">
+          <type full="SlevomatCodingStandard\Sniffs\ControlStructures\string" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="string"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="getLinesCountBefore" start="96" end="96" abstract="true" final="false" static="false" visibility="protected">
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="getLinesCountBeforeFirst" start="98" end="98" abstract="true" final="false" static="false" visibility="protected">
+      <return type="int" nullable="false"/>
+      <parameter name="phpcsFile" byreference="false" type="object">
+        <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+      </parameter>
+      <parameter name="controlStructurePointer" byreference="false" type="int"/>
+    </method>
+    <method name="getLinesCountAfter" start="100" end="100" abstract="true" final="false" static="false" visibility="protected">
+      <return type="int" nullable="false"/>
+    </method>
+    <method name="getLinesCountAfterLast" start="102" end="102" abstract="true" final="false" static="false" visibility="protected">
+      <return type="int" nullable="false"/>
+      <parameter name="phpcsFile" byreference="false" type="object">
+        <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+      </parameter>
+      <parameter name="controlStructurePointer" byreference="false" type="int"/>
+      <parameter name="controlStructureEndPointer" byreference="false" type="int"/>
+    </method>
+    <method name="register" start="107" end="110" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="array" of="object">
+          <type full="SlevomatCodingStandard\Sniffs\ControlStructures\(int|string)" namespace="SlevomatCodingStandard\Sniffs\ControlStructures" name="(int|string)"/>
+        </return>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="process" start="116" end="126" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <phpcssuppress value="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"/>
+        <param type="int" variable="$controlStructurePointer"/>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="phpcsFile" byreference="false" type="object">
+        <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+      </parameter>
+      <parameter name="controlStructurePointer" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="checkLinesBefore" start="128" end="229" abstract="false" final="false" static="false" visibility="protected">
+      <return type="void" nullable="false"/>
+      <parameter name="phpcsFile" byreference="false" type="object">
+        <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+      </parameter>
+      <parameter name="controlStructurePointer" byreference="false" type="int"/>
+    </method>
+    <method name="checkLinesAfter" start="231" end="337" abstract="false" final="false" static="false" visibility="protected">
+      <return type="void" nullable="false"/>
+      <parameter name="phpcsFile" byreference="false" type="object">
+        <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+      </parameter>
+      <parameter name="controlStructurePointer" byreference="false" type="int"/>
+    </method>
+  </parent>
+  <interface full="PHP_CodeSniffer\Sniffs\Sniff" namespace="PHP_CodeSniffer\Sniffs" name="Sniff">
+    <method name="register" start="40" end="40" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Registers the tokens that this sniff wants to listen for.">An example return value for a sniff that wants to listen for whitespace
+and any comments would be:
+
+&lt;code&gt;
+   return array(
+           T_WHITESPACE,
+           T_DOC_COMMENT,
+           T_COMMENT,
+          );
+&lt;/code&gt;</description>
+        <return type="array" of="object">
+          <type full="PHP_CodeSniffer\Sniffs\mixed" namespace="PHP_CodeSniffer\Sniffs" name="mixed"/>
+        </return>
+        <see value="Tokens.php"/>
+      </docblock>
+    </method>
+    <method name="process" start="77" end="77" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Called when one of the token types that this sniff is listening for is found.">The stackPtr variable indicates where in the stack the token was found.
+A sniff can acquire information this token, along with all the other
+tokens within the stack by first acquiring the token stack:
+
+&lt;code&gt;
+   $tokens = $phpcsFile-&gt;getTokens();
+   echo 'Encountered a '.$tokens[$stackPtr]['type'].' token';
+   echo 'token information: ';
+   print_r($tokens[$stackPtr]);
+&lt;/code&gt;
+
+If the sniff discovers an anomaly in the code, they can raise an error
+by calling addError() on the \PHP_CodeSniffer\Files\File object, specifying an error
+message and the position of the offending token:
+
+&lt;code&gt;
+   $phpcsFile-&gt;addError('Encountered an error', $stackPtr);
+&lt;/code&gt;</description>
+        <param description="The PHP_CodeSniffer file where the" type="object" variable="$phpcsFile">token was found.<type full="\PHP_CodeSniffer\Files\File" namespace="\PHP_CodeSniffer\Files" name="File"/></param>
+        <param description="The position in the PHP_CodeSniffer" type="int" variable="$stackPtr">file's token stack where the token
+                                              was found.</param>
+        <return description="Optionally returns a stack pointer. The sniff will not be" type="object">called again on the current file until the returned stack
+                 pointer is reached. Return (count($tokens) + 1) to skip
+                 the rest of the file.<type full="PHP_CodeSniffer\Sniffs\void|int" namespace="PHP_CodeSniffer\Sniffs" name="void|int"/></return>
+      </docblock>
+      <parameter name="phpcsFile" byreference="false" type="object">
+        <type full="PHP_CodeSniffer\Files\File" namespace="PHP_CodeSniffer\Files" name="File"/>
+      </parameter>
+      <parameter name="stackPtr" byreference="false" type="{unknown}"/>
+    </method>
+  </interface>
+</class>

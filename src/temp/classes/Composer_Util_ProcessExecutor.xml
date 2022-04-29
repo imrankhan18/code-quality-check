@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor" abstract="false" final="false" start="26" end="477">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="ProcessExecutor.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/ProcessExecutor.php" size="13579" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="c9250ef4149e595901ea35d71cf8c0c1def9c4c2" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/ProcessExecutor.php"/>
+  <docblock>
+    <description/>
+    <author value="Robert Schönthal &lt;seroscho@googlemail.com&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <constant type="integer" name="STATUS_QUEUED" value="1"/>
+  <constant type="integer" name="STATUS_STARTED" value="2"/>
+  <constant type="integer" name="STATUS_COMPLETED" value="3"/>
+  <constant type="integer" name="STATUS_FAILED" value="4"/>
+  <constant type="integer" name="STATUS_ABORTED" value="5"/>
+  <member name="timeout" default="300" type="integer" visibility="protected" static="true" line="35">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="captureOutput" default="false" type="boolean" visibility="protected" static="false" line="38">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="errorOutput" default="''" type="string" visibility="protected" static="false" line="40">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="io" visibility="protected" static="false" line="42">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?IOInterface" namespace="Composer\Util" name="?IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="jobs" default="" type="array" visibility="private" static="false" line="47">
+    <docblock>
+      <description/>
+      <phpstan value="-var array&lt;int, array&lt;string, mixed&gt;&gt;"/>
+    </docblock>
+  </member>
+  <member name="runningJobs" default="0" type="integer" visibility="private" static="false" line="49">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="maxJobs" default="10" type="integer" visibility="private" static="false" line="51">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="idGen" default="0" type="integer" visibility="private" static="false" line="53">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="allowAsync" default="false" type="boolean" visibility="private" static="false" line="55">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="57" end="60" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="io" byreference="false" type="object" default="NULL">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+  </constructor>
+  <method name="execute" start="71" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="runs a process on the commandline"/>
+      <param description="the command to execute" type="object" variable="$command">
+        <type full="Composer\Util\string|list&lt;string&gt;" namespace="Composer\Util" name="string|list&lt;string&gt;"/>
+      </param>
+      <param description="the output will be written into this var if passed by ref" type="mixed" variable="$output">if a callable is passed it will be used as output handler</param>
+      <param description="the working directory" type="object" variable="$cwd">
+        <type full="Composer\Util\null|string" namespace="Composer\Util" name="null|string"/>
+      </param>
+      <return description="statuscode" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+    <parameter name="output" byreference="true" type="{unknown}" default="NULL"/>
+    <parameter name="cwd" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="executeTty" start="87" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="runs a process on the commandline in TTY mode"/>
+      <param description="the command to execute" type="object" variable="$command">
+        <type full="Composer\Util\string|list&lt;string&gt;" namespace="Composer\Util" name="string|list&lt;string&gt;"/>
+      </param>
+      <param description="the working directory" type="object" variable="$cwd">
+        <type full="Composer\Util\null|string" namespace="Composer\Util" name="null|string"/>
+      </param>
+      <return description="statuscode" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+    <parameter name="cwd" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="doExecute" start="103" end="137" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$command">
+        <type full="Composer\Util\string|list&lt;string&gt;" namespace="Composer\Util" name="string|list&lt;string&gt;"/>
+      </param>
+      <param type="object" variable="$cwd">
+        <type full="Composer\Util\null|string" namespace="Composer\Util" name="null|string"/>
+      </param>
+      <param type="object" variable="$tty">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <param type="mixed" variable="$output"/>
+      <return type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+    <parameter name="cwd" byreference="false" nullable="true" type="string"/>
+    <parameter name="tty" byreference="false" type="bool"/>
+    <parameter name="output" byreference="true" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="executeAsync" start="146" end="210" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="starts a process on the commandline in async mode"/>
+      <param description="the command to execute" type="object" variable="$command">
+        <type full="Composer\Util\string|list&lt;string&gt;" namespace="Composer\Util" name="string|list&lt;string&gt;"/>
+      </param>
+      <param description="the working directory" type="string" variable="$cwd"/>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+    </return>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+    <parameter name="cwd" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="outputHandler" start="212" end="229" abstract="false" final="false" static="false" visibility="protected">
+    <return type="void" nullable="false"/>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="buffer" byreference="false" type="string"/>
+  </method>
+  <method name="startJob" start="235" end="272" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="int" variable="$id"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="id" byreference="false" type="int"/>
+    <inline>
+      <comment value="start job" line="242"/>
+    </inline>
+  </method>
+  <method name="setMaxJobs" start="274" end="277" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="maxJobs" byreference="false" type="int"/>
+  </method>
+  <method name="resetMaxJobs" start="279" end="282" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="wait" start="288" end="297" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="job id" type="object" variable="$index">
+        <type full="Composer\Util\?int" namespace="Composer\Util" name="?int"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="index" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="enableAsync" start="304" end="307" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="countActiveJobs" start="315" end="348" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <internal/>
+      <param description="job id" type="object" variable="$index">
+        <type full="Composer\Util\?int" namespace="Composer\Util" name="?int"/>
+      </param>
+      <return description="number of active (queued or started) jobs" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="index" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="tick" line="317"/>
+    </inline>
+  </method>
+  <method name="markJobDone" start="350" end="353" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="splitLines" start="359" end="364" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$output">
+        <type full="Composer\Util\null|string" namespace="Composer\Util" name="null|string"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="output" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="getErrorOutput" start="371" end="374" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get any error output from the last command"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getTimeout" start="379" end="382" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return description="the timeout in seconds" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="setTimeout" start="388" end="391" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="the timeout in seconds" type="int" variable="$timeout"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="timeout" byreference="false" type="int"/>
+  </method>
+  <method name="escape" start="400" end="403" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Escapes a string to be used as a shell argument."/>
+      <param description="The argument that will be escaped" type="object" variable="$argument">
+        <type full="Composer\Util\string|false|null" namespace="Composer\Util" name="string|false|null"/>
+      </param>
+      <return description="The escaped argument" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="argument" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="outputCommandRun" start="408" end="428" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="object" variable="$command">
+        <type full="Composer\Util\string|list&lt;string&gt;" namespace="Composer\Util" name="string|list&lt;string&gt;"/>
+      </param>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+    <parameter name="cwd" byreference="false" nullable="true" type="string"/>
+    <parameter name="async" byreference="false" type="bool"/>
+  </method>
+  <method name="escapeArgument" start="445" end="476" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="Escapes a string to be used as a shell argument for Symfony Process.">This method expects cmd.exe to be started with the /V:ON option, which
+enables delayed environment variable expansion using ! as the delimiter.
+If this is not the case, any escaped ^^!var^^! will be transformed to
+^!var^! and introduce two unintended carets.
+
+Modified from https://github.com/johnstevenson/winbox-args
+MIT Licensed (c) John Stevenson &lt;john-stevenson@blueyonder.co.uk&gt;</description>
+      <param type="object" variable="$argument">
+        <type full="Composer\Util\string|false|null" namespace="Composer\Util" name="string|false|null"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="argument" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="New lines break cmd.exe command parsing" line="455"/>
+    </inline>
+  </method>
+</class>

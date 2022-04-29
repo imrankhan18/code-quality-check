@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Error\Error" namespace="PhpCsFixer\Error" name="Error" abstract="false" final="true" start="24" end="90">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Error" file="Error.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Error/Error.php" size="1822" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="76551e76b1539eb00539db975f30aca92b7be247" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Error/Error.php"/>
+  <docblock>
+    <description compact="An abstraction for errors that can occur before and during fixing."/>
+    <author value="Andreas Möller &lt;am@localheinz.com&gt;"/>
+    <internal/>
+  </docblock>
+  <constant type="integer" name="TYPE_INVALID" value="1">
+    <docblock>
+      <description compact="Error which has occurred in linting phase, before applying any fixers."/>
+    </docblock>
+  </constant>
+  <constant type="integer" name="TYPE_EXCEPTION" value="2">
+    <docblock>
+      <description compact="Error which has occurred during fixing phase."/>
+    </docblock>
+  </constant>
+  <constant type="integer" name="TYPE_LINT" value="3">
+    <docblock>
+      <description compact="Error which has occurred in linting phase, after applying any fixers."/>
+    </docblock>
+  </constant>
+  <member name="type" visibility="private" static="false" line="41"/>
+  <member name="filePath" visibility="private" static="false" line="43"/>
+  <member name="source" visibility="private" static="false" line="48">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\Error\null|\Throwable" namespace="PhpCsFixer\Error\null|" name="Throwable"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="appliedFixers" visibility="private" static="false" line="50"/>
+  <member name="diff" visibility="private" static="false" line="55">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\Error\null|string" namespace="PhpCsFixer\Error" name="null|string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="57" end="64" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="type" byreference="false" type="int"/>
+    <parameter name="filePath" byreference="false" type="string"/>
+    <parameter name="source" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="Throwable" namespace="" name="Throwable"/>
+    </parameter>
+    <parameter name="appliedFixers" byreference="false" type="array" default=""/>
+    <parameter name="diff" byreference="false" nullable="true" type="string" default="NULL"/>
+  </constructor>
+  <method name="getFilePath" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getSource" start="71" end="74" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="true">
+      <type full="Throwable" namespace="" name="Throwable"/>
+    </return>
+  </method>
+  <method name="getType" start="76" end="79" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getAppliedFixers" start="81" end="84" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getDiff" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+</class>

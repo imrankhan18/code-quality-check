@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_DependencyDB" namespace="" name="PEAR_DependencyDB" abstract="false" final="false" start="36" end="766">
+  <file path="//usr/local/lib/php/PEAR" file="DependencyDB.php" realpath="/usr/local/lib/php/PEAR/DependencyDB.php" size="24120" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="1d67d0e81ed90071a26113afff75ce3290d23393" relative="sr/local/lib/php/PEAR/DependencyDB.php"/>
+  <docblock>
+    <description compact="Track dependency relationships between installed packages"/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <author value="Tomas V.V.Cox &lt;cox@idec.net.com&gt;"/>
+    <copyright value="1997-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.4.0a1"/>
+  </docblock>
+  <member name="_config" visibility="public" static="false" line="45">
+    <docblock>
+      <description compact="This is initialized by {@link setConfig()}"/>
+      <var type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_registry" visibility="public" static="false" line="51">
+    <docblock>
+      <description compact="This is initialized by {@link setConfig()}"/>
+      <var type="object">
+        <type full="PEAR_Registry" namespace="" name="PEAR_Registry"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_depdb" default="false" type="boolean" visibility="public" static="false" line="57">
+    <docblock>
+      <description compact="Filename of the dependency DB (usually .depdb)"/>
+      <var type="string"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_lockfile" default="false" type="boolean" visibility="public" static="false" line="63">
+    <docblock>
+      <description compact="File name of the lockfile (usually .depdblock)"/>
+      <var type="string"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_lockFp" default="false" type="boolean" visibility="public" static="false" line="69">
+    <docblock>
+      <description compact="Open file resource for locking the lockfile"/>
+      <var type="object">
+        <type full="resource|false" namespace="" name="resource|false"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_version" default="'1.0'" type="string" visibility="public" static="false" line="75">
+    <docblock>
+      <description compact="API version of this class, used to validate a file on-disk"/>
+      <var type="string"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="_cache" visibility="public" static="false" line="81">
+    <docblock>
+      <description compact="Cached dependency database file"/>
+      <var type="object">
+        <type full="array|null" namespace="" name="array|null"/>
+      </var>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <method name="singleton" start="92" end="106" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get a raw dependency database.  Calls setConfig() and assertDepsDB()"/>
+      <param type="object">
+        <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+      </param>
+      <param description="full path to the dependency database, or false to use default" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+      <return type="object">
+        <type full="PEAR_DependencyDB|PEAR_Error" namespace="" name="PEAR_DependencyDB|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="config" byreference="true" type="{unknown}"/>
+    <parameter name="depdb" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="setConfig" start="113" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set up the registry/location of dependency DB"/>
+      <param type="object">
+        <type full="PEAR_Config|false" namespace="" name="PEAR_Config|false"/>
+      </param>
+      <param description="full path to the dependency database, or false to use default" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+    </docblock>
+    <parameter name="config" byreference="true" type="{unknown}"/>
+    <parameter name="depdb" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="hasWriteAccess" start="136" end="155" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="assertDepsDB" start="164" end="182" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the dependency database, if it doesn't exist.  Error if the database is newer than the code reading it."/>
+      <return type="object">
+        <type full="void|PEAR_Error" namespace="" name="void|PEAR_Error"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="Datatype format has been changed, rebuild the Deps DB" line="172"/>
+    </inline>
+  </method>
+  <method name="getDependentPackages" start="189" end="205" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get a list of installed packages that depend on this package"/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2|array" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2|array"/>
+      </param>
+      <return type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </return>
+    </docblock>
+    <parameter name="pkg" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getDependentPackageDependencies" start="213" end="253" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get a list of the actual dependencies of installed packages that depend on a package."/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2|array" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2|array"/>
+      </param>
+      <return type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </return>
+    </docblock>
+    <parameter name="pkg" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="getDependencies" start="260" end="276" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get a list of dependencies of this installed package"/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2|array" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2|array"/>
+      </param>
+      <return type="object">
+        <type full="array|false" namespace="" name="array|false"/>
+      </return>
+    </docblock>
+    <parameter name="pkg" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="dependsOn" start="283" end="288" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Determine whether $parent depends on $child, near or deep"/>
+      <param type="object">
+        <type full="array|PEAR_PackageFile_v2|PEAR_PackageFile_v2" namespace="" name="array|PEAR_PackageFile_v2|PEAR_PackageFile_v2"/>
+      </param>
+      <param type="object">
+        <type full="array|PEAR_PackageFile_v2|PEAR_PackageFile_v2" namespace="" name="array|PEAR_PackageFile_v2|PEAR_PackageFile_v2"/>
+      </param>
+    </docblock>
+    <parameter name="parent" byreference="false" type="{unknown}"/>
+    <parameter name="child" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_dependsOn" start="290" end="354" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="parent" byreference="false" type="{unknown}"/>
+    <parameter name="child" byreference="false" type="{unknown}"/>
+    <parameter name="checked" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="installPackage" start="360" end="366" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Register dependencies of a package that is being installed or upgraded"/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v2|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2|PEAR_PackageFile_v2"/>
+      </param>
+    </docblock>
+    <parameter name="package" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="uninstallPackage" start="375" end="432" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Remove dependencies of a package that is being uninstalled, or upgraded.">Upgraded packages first uninstall, then install</description>
+      <param description="If an array, then it must have" type="object">indices 'channel' and 'package'<type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2|array" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2|array"/></param>
+    </docblock>
+    <parameter name="pkg" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="rebuildDB" start="438" end="468" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Rebuild the dependency DB by reading registry entries."/>
+      <return type="object">
+        <type full="true|PEAR_Error" namespace="" name="true|PEAR_Error"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_lock" start="476" end="520" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Register usage of the dependency DB to prevent race conditions"/>
+      <param description="one of the LOCK_* constants" type="int"/>
+      <return type="object">
+        <type full="true|PEAR_Error" namespace="" name="true|PEAR_Error"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="mode" byreference="false" type="{unknown}" default="" constant="LOCK_EX"/>
+    <inline>
+      <comment value="XXX People reported problems with LOCK_SH and 'w'" line="488"/>
+    </inline>
+  </method>
+  <method name="_unlock" start="527" end="535" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Release usage of dependency DB"/>
+      <return type="object">
+        <type full="true|PEAR_Error" namespace="" name="true|PEAR_Error"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+  </method>
+  <method name="_getDepDB" start="541" end="561" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Load the dependency database from disk, or return the cache"/>
+      <return type="object">
+        <type full="array|PEAR_Error" namespace="" name="array|PEAR_Error"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_writeDepDB" start="569" end="585" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Write out the dependency database to disk"/>
+      <param description="the database" type="array"/>
+      <return type="object">
+        <type full="true|PEAR_Error" namespace="" name="true|PEAR_Error"/>
+      </return>
+      <access value="private"/>
+    </docblock>
+    <parameter name="deps" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_setPackageDeps" start="594" end="700" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Register all dependencies from a package in the dependencies database, in essence &quot;installing&quot; the package's dependency information"/>
+      <param description="the database" type="array"/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </param>
+      <access value="private"/>
+    </docblock>
+    <parameter name="data" byreference="true" type="{unknown}"/>
+    <parameter name="pkg" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_registerDep" start="709" end="765" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="the database" type="array"/>
+      <param type="object">
+        <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+      </param>
+      <param description="the specific dependency" type="array"/>
+      <param description="whether this is a required or an optional dep" type="object">
+        <type full="required|optional" namespace="" name="required|optional"/>
+      </param>
+      <param description="dependency group this dependency is from, or false for ordinary dep" type="object">
+        <type full="string|false" namespace="" name="string|false"/>
+      </param>
+    </docblock>
+    <parameter name="data" byreference="true" type="{unknown}"/>
+    <parameter name="pkg" byreference="true" type="{unknown}"/>
+    <parameter name="dep" byreference="false" type="{unknown}"/>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="group" byreference="false" type="boolean" default="false"/>
+  </method>
+</class>

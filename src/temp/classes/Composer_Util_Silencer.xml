@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Silencer" namespace="Composer\Util" name="Silencer" abstract="false" final="false" start="20" end="79">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Silencer.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Silencer.php" size="2131" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="6cf5d546a250b0550275ec2421809e833274dba9" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Silencer.php"/>
+  <docblock>
+    <description compact="Temporarily suppress PHP error reporting, usually warnings and below."/>
+    <author value="Niels Keurentjes &lt;niels.keurentjes@omines.com&gt;"/>
+  </docblock>
+  <member name="stack" default="" type="array" visibility="private" static="true" line="25">
+    <docblock>
+      <description/>
+      <var description="Unpop stack" type="array" of="object">
+        <type full="Composer\Util\int" namespace="Composer\Util" name="int"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="suppress" start="33" end="43" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Suppresses given mask or errors."/>
+      <param description="Error levels to suppress, default value NULL indicates all warnings and below." type="object" variable="$mask">
+        <type full="Composer\Util\int|null" namespace="Composer\Util" name="int|null"/>
+      </param>
+      <return description="The old error reporting level." type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+    <parameter name="mask" byreference="false" nullable="true" type="int" default="NULL"/>
+  </method>
+  <method name="restore" start="50" end="55" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Restores a single state."/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="call" start="65" end="78" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Calls a specified function while silencing warnings and below."/>
+      <param description="Function to execute." type="object" variable="$callable">
+        <type full="Composer\Util\callable" namespace="Composer\Util" name="callable"/>
+      </param>
+      <param description="Function to execute." type="mixed" variable="$parameters"/>
+      <throws description="Any exceptions from the callback are rethrown." type="object">
+        <type full="\Exception" namespace="" name="Exception"/>
+      </throws>
+      <return description="Return value of the callback." type="mixed"/>
+    </docblock>
+    <parameter name="callable" byreference="false" type="callable"/>
+    <parameter name="parameters" byreference="false" type="{unknown}"/>
+  </method>
+</class>

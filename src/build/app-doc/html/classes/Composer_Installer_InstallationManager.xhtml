@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Composer\Installer\InstallationManager</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Composer_Installer">Composer\Installer</a>
+          </li>
+          <li class="separator">InstallationManager</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/composer/composer/src/Composer/Installer/InstallationManager.php.xhtml#line39">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Composer\Installer\</small>InstallationManager</h1>
+        <h4>Package operation manager.</h4>
+        <p/>
+        <ul>
+          <li>Author: Konstantin Kudryashov &lt;ever.zet@gmail.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class InstallationManager
+            {<br/><ul class="none"><li>// members</li><li>private <span title="Composer\Installer\array&lt;InstallerInterface&gt;">array&lt;InstallerInterface&gt;</span> <a href="#members">$installers</a> =
+                        ;
+                    </li><li>private <span title="Composer\Installer\array&lt;string">array&lt;string</span> <a href="#members">$cache</a> =
+                        ;
+                    </li><li>private <span title="Composer\Installer\array&lt;string">array&lt;string</span> <a href="#members">$notifiablePackages</a> =
+                        ;
+                    </li><li>private <span title="Composer\Util\Loop">Loop</span> <a href="#members">$loop</a>;
+                    </li><li>private <span title="Composer\IO\IOInterface">IOInterface</span> <a href="#members">$io</a>;
+                    </li><li>private <span title="Composer\Installer\?EventDispatcher">?EventDispatcher</span> <a href="#members">$eventDispatcher</a>;
+                    </li><li>private <span title="Composer\Installer\bool">bool</span> <a href="#members">$outputProgress</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/reset.xhtml">reset</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/addInstaller.xhtml">addInstaller</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/removeInstaller.xhtml">removeInstaller</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/disablePlugins.xhtml">disablePlugins</a>()
+                    </li><li>public <span title="InstallerInterface">InstallerInterface</span> <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/getInstaller.xhtml">getInstaller</a>()
+                    </li><li>public bool <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/isPackageInstalled.xhtml">isPackageInstalled</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/ensureBinariesPresence.xhtml">ensureBinariesPresence</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/execute.xhtml">execute</a>()
+                    </li><li>private void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/downloadAndExecuteBatch.xhtml">downloadAndExecuteBatch</a>()
+                    </li><li>private void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/executeBatch.xhtml">executeBatch</a>()
+                    </li><li>private void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/waitOnPromises.xhtml">waitOnPromises</a>()
+                    </li><li>public ?<span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/install.xhtml">install</a>()
+                    </li><li>public ?<span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/update.xhtml">update</a>()
+                    </li><li>public ?<span title="PromiseInterface">PromiseInterface</span> <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/uninstall.xhtml">uninstall</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/markAliasInstalled.xhtml">markAliasInstalled</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/markAliasUninstalled.xhtml">markAliasUninstalled</a>()
+                    </li><li>public string <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/getInstallPath.xhtml">getInstallPath</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/setOutputProgress.xhtml">setOutputProgress</a>()
+                    </li><li>public void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/notifyInstalls.xhtml">notifyInstalls</a>()
+                    </li><li>private void <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/markForNotification.xhtml">markForNotification</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="cache"><strong>$cache</strong>
+                —
+                <a title="Composer\Installer\array&lt;string" href="../classes/Composer_Installer_array&lt;string.xhtml">Composer\Installer\array&lt;string</a></li>
+            <li id="eventDispatcher"><strong>$eventDispatcher</strong>
+                —
+                <a title="Composer\Installer\?EventDispatcher" href="../classes/Composer_Installer_?EventDispatcher.xhtml">Composer\Installer\?EventDispatcher</a></li>
+            <li id="installers"><strong>$installers</strong>
+                —
+                <a title="Composer\Installer\array&lt;InstallerInterface&gt;" href="../classes/Composer_Installer_array&lt;InstallerInterface&gt;.xhtml">Composer\Installer\array&lt;InstallerInterface&gt;</a></li>
+            <li id="io"><strong>$io</strong>
+                —
+                <a title="Composer\IO\IOInterface" href="../classes/Composer_IO_IOInterface.xhtml">Composer\IO\IOInterface</a></li>
+            <li id="loop"><strong>$loop</strong>
+                —
+                <a title="Composer\Util\Loop" href="../classes/Composer_Util_Loop.xhtml">Composer\Util\Loop</a></li>
+            <li id="notifiablePackages"><strong>$notifiablePackages</strong>
+                —
+                <a title="Composer\Installer\array&lt;string" href="../classes/Composer_Installer_array&lt;string.xhtml">Composer\Installer\array&lt;string</a></li>
+            <li id="outputProgress"><strong>$outputProgress</strong>
+                —
+                <a title="Composer\Installer\bool" href="../classes/Composer_Installer_bool.xhtml">Composer\Installer\bool</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="downloadAndExecuteBatch">
+              <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/downloadAndExecuteBatch.xhtml">downloadAndExecuteBatch()</a>
+            </li>
+            <li id="executeBatch">
+              <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/executeBatch.xhtml">executeBatch()</a>
+            </li>
+            <li id="markForNotification">
+              <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/markForNotification.xhtml">markForNotification()</a>
+            </li>
+            <li id="waitOnPromises">
+              <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/waitOnPromises.xhtml">waitOnPromises()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="addInstaller"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/addInstaller.xhtml">addInstaller()</a>
+                — Adds installer</li>
+            <li id="disablePlugins"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/disablePlugins.xhtml">disablePlugins()</a>
+                — Disables plugins.</li>
+            <li id="ensureBinariesPresence"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/ensureBinariesPresence.xhtml">ensureBinariesPresence()</a>
+                — Install binary for the given package.</li>
+            <li id="execute"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/execute.xhtml">execute()</a>
+                — Executes solver operation.</li>
+            <li id="getInstallPath"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/getInstallPath.xhtml">getInstallPath()</a>
+                — Returns the installation path of a package</li>
+            <li id="getInstaller"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/getInstaller.xhtml">getInstaller()</a>
+                — Returns installer for a specific package type.</li>
+            <li id="install"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/install.xhtml">install()</a>
+                — Executes install operation.</li>
+            <li id="isPackageInstalled"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/isPackageInstalled.xhtml">isPackageInstalled()</a>
+                — Checks whether provided package is installed in one of the registered installers.</li>
+            <li id="markAliasInstalled"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/markAliasInstalled.xhtml">markAliasInstalled()</a>
+                — Executes markAliasInstalled operation.</li>
+            <li id="markAliasUninstalled"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/markAliasUninstalled.xhtml">markAliasUninstalled()</a>
+                — Executes markAlias operation.</li>
+            <li id="notifyInstalls">
+              <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/notifyInstalls.xhtml">notifyInstalls()</a>
+            </li>
+            <li id="removeInstaller"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/removeInstaller.xhtml">removeInstaller()</a>
+                — Removes installer</li>
+            <li id="reset">
+              <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/reset.xhtml">reset()</a>
+            </li>
+            <li id="setOutputProgress">
+              <a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/setOutputProgress.xhtml">setOutputProgress()</a>
+            </li>
+            <li id="uninstall"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/uninstall.xhtml">uninstall()</a>
+                — Uninstalls package.</li>
+            <li id="update"><a title="Composer\Installer\InstallationManager" href="../classes/Composer_Installer_InstallationManager/update.xhtml">update()</a>
+                — Executes update operation.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

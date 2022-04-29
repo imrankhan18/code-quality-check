@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Pool" namespace="GuzzleHttp" name="Pool" abstract="false" final="false" start="24" end="125">
+  <file path="//var/www/html/vendor/guzzlehttp/guzzle/src" file="Pool.php" realpath="/var/www/html/vendor/guzzlehttp/guzzle/src/Pool.php" size="4716" time="2022-03-20T14:16:28+00:00" unixtime="1647785788" sha1="b46b0aa6ab2b29ccab31f97305c48f390c209b22" relative="ar/www/html/vendor/guzzlehttp/guzzle/src/Pool.php"/>
+  <docblock>
+    <description compact="Sends an iterator of requests concurrently using a capped pool size.">The pool will read from an iterator until it is cancelled or until the
+iterator is consumed. When a request is yielded, the request is sent after
+applying the "request_options" request options (if provided in the ctor).
+
+When a function is yielded by the iterator, the function is provided the
+"request_options" array that should be merged on top of any existing
+options, and the function MUST then return a wait-able promise.</description>
+    <final/>
+  </docblock>
+  <implements full="GuzzleHttp\Promise\PromisorInterface" namespace="GuzzleHttp\Promise" name="PromisorInterface"/>
+  <member name="each" visibility="private" static="false" line="29">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="GuzzleHttp\Promise\EachPromise" namespace="GuzzleHttp\Promise" name="EachPromise"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="41" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Client used to send the requests." type="object" variable="$client">
+        <type full="GuzzleHttp\ClientInterface" namespace="GuzzleHttp" name="ClientInterface"/>
+      </param>
+      <param description="Requests or functions that return" type="object" variable="$requests">requests to send concurrently.<type full="GuzzleHttp\array|\Iterator" namespace="GuzzleHttp\array|" name="Iterator"/></param>
+      <param description="Associative array of options" type="array" variable="$config">- concurrency: (int) Maximum number of requests to send concurrently
+                                 - options: Array of request options to apply to each request.
+                                 - fulfilled: (callable) Function to invoke when a request completes.
+                                 - rejected: (callable) Function to invoke when a request is rejected.</param>
+    </docblock>
+    <parameter name="client" byreference="false" type="object">
+      <type full="GuzzleHttp\ClientInterface" namespace="GuzzleHttp" name="ClientInterface"/>
+    </parameter>
+    <parameter name="requests" byreference="false" type="{unknown}"/>
+    <parameter name="config" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="promise" start="73" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get promise"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+    </return>
+  </method>
+  <method name="batch" start="96" end="106" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Sends multiple requests concurrently and returns an array of responses and exceptions that uses the same ordering as the provided requests.">IMPORTANT: This method keeps every request and response in memory, and
+as such, is NOT recommended when sending a large number or an
+indeterminate number of requests concurrently.</description>
+      <param description="Client used to send the requests" type="object" variable="$client">
+        <type full="GuzzleHttp\ClientInterface" namespace="GuzzleHttp" name="ClientInterface"/>
+      </param>
+      <param description="Requests to send concurrently." type="object" variable="$requests">
+        <type full="GuzzleHttp\array|\Iterator" namespace="GuzzleHttp\array|" name="Iterator"/>
+      </param>
+      <param description="Passes through the options available in" type="array" variable="$options">{@see \GuzzleHttp\Pool::__construct}</param>
+      <return description="Returns an array containing the response or an exception" type="array">in the same order that the requests were sent.</return>
+      <throws description="if the event format is incorrect." type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="client" byreference="false" type="object">
+      <type full="GuzzleHttp\ClientInterface" namespace="GuzzleHttp" name="ClientInterface"/>
+    </parameter>
+    <parameter name="requests" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="cmpCallback" start="111" end="124" abstract="false" final="false" static="true" visibility="private">
+    <docblock>
+      <description compact="Execute callback(s)"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="options" byreference="true" type="array"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="results" byreference="true" type="array"/>
+  </method>
+  <interface full="GuzzleHttp\Promise\PromisorInterface" namespace="GuzzleHttp\Promise" name="PromisorInterface">
+    <method name="promise" start="15" end="15" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns a promise."/>
+        <return type="object">
+          <type full="GuzzleHttp\Promise\PromiseInterface" namespace="GuzzleHttp\Promise" name="PromiseInterface"/>
+        </return>
+      </docblock>
+    </method>
+  </interface>
+</class>

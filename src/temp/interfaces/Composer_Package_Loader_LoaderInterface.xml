@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Composer\Package\Loader\LoaderInterface" namespace="Composer\Package\Loader" name="LoaderInterface" abstract="false" final="false" start="26" end="39">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Package/Loader" file="LoaderInterface.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Package/Loader/LoaderInterface.php" size="1128" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="d15acd1b52befbc1fa6554adb0308060c31fc58e" relative="ar/www/html/vendor/composer/composer/src/Composer/Package/Loader/LoaderInterface.php"/>
+  <docblock>
+    <description compact="Defines a loader that takes an array to create package instances"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <method name="load" start="38" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Converts a package from an array to a real instance"/>
+      <param description="package data" type="array" variable="$config" of="object">
+        <type full="Composer\Package\Loader\mixed" namespace="Composer\Package\Loader" name="mixed"/>
+      </param>
+      <param description="FQCN to be instantiated" type="string" variable="$class"/>
+      <return type="object">
+        <type full="Composer\Package\Loader\CompletePackage|CompleteAliasPackage|RootPackage|RootAliasPackage" namespace="Composer\Package\Loader" name="CompletePackage|CompleteAliasPackage|RootPackage|RootAliasPackage"/>
+      </return>
+      <phpstan value="-param class-string&lt;CompletePackage|RootPackage&gt; $class"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </return>
+    <parameter name="config" byreference="false" type="array"/>
+    <parameter name="class" byreference="false" type="string" default="'Composer\Package\CompletePackage'"/>
+  </method>
+  <implementors>
+    <class full="Composer\Package\Loader\ValidatingArrayLoader" namespace="Composer\Package\Loader" name="ValidatingArrayLoader"/>
+    <class full="Composer\Package\Loader\ArrayLoader" namespace="Composer\Package\Loader" name="ArrayLoader"/>
+    <class full="Composer\Package\Loader\RootPackageLoader" namespace="Composer\Package\Loader" name="RootPackageLoader"/>
+  </implementors>
+</interface>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\AuthHelper" namespace="Composer\Util" name="AuthHelper" abstract="false" final="false" start="23" end="292">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="AuthHelper.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/AuthHelper.php" size="13365" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="42c5b29d13efe22db03922fae905614897670672" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/AuthHelper.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="io" visibility="protected" static="false" line="26">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="config" visibility="protected" static="false" line="28">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="displayedOriginAuthentications" default="" type="array" visibility="private" static="false" line="30">
+    <docblock>
+      <var description="string&gt; Map of origins to message displayed" type="object">
+        <type full="Composer\Util\array&lt;string" namespace="Composer\Util" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="32" end="36" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+  </constructor>
+  <method name="storeAuth" start="44" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$origin"/>
+      <param type="object" variable="$storeAuth">
+        <type full="Composer\Util\string|bool" namespace="Composer\Util" name="string|bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="origin" byreference="false" type="string"/>
+    <parameter name="storeAuth" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="promptAuthIfNeeded" start="86" end="209" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$url"/>
+      <param type="string" variable="$origin"/>
+      <param description="HTTP status code that triggered this call" type="int" variable="$statusCode"/>
+      <param description="a message/description explaining why this was called" type="object" variable="$reason">
+        <type full="Composer\Util\string|null" namespace="Composer\Util" name="string|null"/>
+      </param>
+      <param type="array" variable="$headers" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <return description="containing retry (bool) and storeAuth (string|bool) keys, if retry is true the request should be" type="object">retried, if storeAuth is true then on a successful retry the authentication should be persisted to auth.json<type full="Composer\Util\array|null" namespace="Composer\Util" name="array|null"/></return>
+      <phpstan value="-return ?array{retry: bool, storeAuth: string|bool}"/>
+    </docblock>
+    <return type="array" nullable="true"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="origin" byreference="false" type="string"/>
+    <parameter name="statusCode" byreference="false" type="int"/>
+    <parameter name="reason" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+  </method>
+  <method name="addAuthenticationHeader" start="218" end="266" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$headers" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </param>
+      <param type="string" variable="$origin"/>
+      <param type="string" variable="$url"/>
+      <return description="updated headers array" type="array" of="object">
+        <type full="Composer\Util\string" namespace="Composer\Util" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="headers" byreference="false" type="array"/>
+    <parameter name="origin" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+  </method>
+  <method name="isPublicBitBucketDownload" start="275" end="291" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <link value="https://github.com/composer/composer/issues/5584"/>
+      <param description="URL to a file at bitbucket.org." type="string" variable="$urlToBitBucketFile"/>
+      <return description="Whether the given URL is a public BitBucket download which requires no authentication." type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="urlToBitBucketFile" byreference="false" type="string"/>
+    <inline>
+      <comment value="Path for a public download follows this pattern /{user}/{repo}/downloads/{whatever}" line="286"/>
+      <comment value="{@link https://blog.bitbucket.org/2009/04/12/new-feature-downloads/}" line="287"/>
+    </inline>
+  </method>
+</class>

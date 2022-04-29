@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\Filesystem\Path::makeRelative</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#Symfony_Component_Filesystem">Symfony\Component\Filesystem</a>
+          </li>
+          <li class="separator">
+            <a title="Symfony\Component\Filesystem\Path" href="../../classes/Symfony_Component_Filesystem_Path.xhtml">Path</a>
+          </li>
+          <li class="separator">makeRelative</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
+            <a href="../../source/ar/www/html/vendor/symfony/filesystem/Path.php.xhtml#line514">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>Symfony\Component\Filesystem\Path::</small>makeRelative</h1>
+        <h4>Turns a path into a relative path.</h4>
+        <p>The relative path is created relative to the given base path:
+
+```php
+echo Path::makeRelative("/symfony/style.css", "/symfony/puli");
+// =&gt; ../style.css
+```
+
+If a relative path is passed and the base path is absolute, the relative
+path is returned unchanged:
+
+```php
+Path::makeRelative("style.css", "/symfony/puli/css");
+// =&gt; style.css
+```
+
+If both paths are relative, the relative path is created with the
+assumption that both paths are relative to the same directory:
+
+```php
+Path::makeRelative("style.css", "symfony/puli/css");
+// =&gt; ../../../style.css
+```
+
+If both paths are absolute, their root directory must be the same,
+otherwise an exception is thrown:
+
+```php
+Path::makeRelative("C:/symfony/style.css", "/symfony/puli");
+// InvalidArgumentException
+```
+
+If the passed path is absolute, but the base path is not, an exception
+is thrown as well:
+
+```php
+Path::makeRelative("/symfony/style.css", "symfony/puli");
+// InvalidArgumentException
+```
+
+If the base path is not an absolute path, an exception is thrown.
+
+The result is a canonical path.</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function makeRelative(string
+        $path,
+            string
+        $basePath )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$path</code>
+                —
+                string</dt>
+          <dd/>
+          <dt><code>$basePath</code>
+                —
+                string</dt>
+          <dd/>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="Symfony\Component\Filesystem\Exception\InvalidArgumentException" href="../../classes/Symfony_Component_Filesystem_Exception_InvalidArgumentException.xhtml">InvalidArgumentException</a>
+            </code>
+          </dt>
+          <dd>if the base path is not absolute or if</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

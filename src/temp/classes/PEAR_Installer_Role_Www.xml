@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PEAR_Installer_Role_Www" namespace="" name="PEAR_Installer_Role_Www" abstract="false" final="false" start="26" end="26">
+  <file path="//usr/local/lib/php/PEAR/Installer/Role" file="Www.php" realpath="/usr/local/lib/php/PEAR/Installer/Role/Www.php" size="777" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="1a3bc52bee0c2e61547d9e155f9103f9ffaab76e" relative="sr/local/lib/php/PEAR/Installer/Role/Www.php"/>
+  <docblock>
+    <description/>
+    <category value="pear"/>
+    <package value="PEAR"/>
+    <author value="Greg Beaver &lt;cellog@php.net&gt;"/>
+    <copyright value="2007-2009 The Authors"/>
+    <license name="http://opensource.org/licenses/bsd-license.php New BSD License"/>
+    <version value="Release: 1.10.10"/>
+    <link value="http://pear.php.net/package/PEAR"/>
+    <since value="Class available since Release 1.7.0"/>
+  </docblock>
+  <extends full="PEAR_Installer_Role_Common" namespace="" name="PEAR_Installer_Role_Common"/>
+  <parent full="PEAR_Installer_Role_Common" namespace="" name="PEAR_Installer_Role_Common">
+    <member name="config" visibility="public" static="false" line="36">
+      <docblock>
+        <description/>
+        <var type="object">
+          <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+        </var>
+        <access value="protected"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="41" end="44" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object">
+          <type full="PEAR_Config" namespace="" name="PEAR_Config"/>
+        </param>
+      </docblock>
+      <parameter name="config" byreference="true" type="{unknown}"/>
+    </constructor>
+    <method name="getInfo" start="52" end="58" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve configuration information about a file role from its XML info"/>
+        <param description="Role Classname, as in &quot;PEAR_Installer_Role_Data&quot;" type="string" variable="$role"/>
+        <return type="array"/>
+      </docblock>
+      <parameter name="role" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="processInstallation" start="72" end="116" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="This is called for each file to set up the directories and files"/>
+        <param type="object">
+          <type full="PEAR_PackageFile_v1|PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v1|PEAR_PackageFile_v2"/>
+        </param>
+        <param description="attributes from the &lt;file&gt; tag" type="array"/>
+        <param description="file name" type="string"/>
+        <return description="an array consisting of:" type="array">1 the original, pre-baseinstalldir installation directory
+   2 the final installation directory
+   3 the full path to the final location of the file
+   4 the location of the pre-installation file</return>
+      </docblock>
+      <parameter name="pkg" byreference="false" type="{unknown}"/>
+      <parameter name="atts" byreference="false" type="{unknown}"/>
+      <parameter name="file" byreference="false" type="{unknown}"/>
+      <parameter name="tmp_path" byreference="false" type="{unknown}"/>
+      <parameter name="layer" byreference="false" type="{unknown}" default="NULL"/>
+      <inline>
+        <comment value="Clean up the DIRECTORY_SEPARATOR mess" line="108"/>
+      </inline>
+    </method>
+    <method name="getLocationConfig" start="122" end="130" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Get the name of the configuration variable that specifies the location of this file"/>
+        <return type="object">
+          <type full="string|false" namespace="" name="string|false"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="setup" start="139" end="141" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Do any unusual setup here"/>
+        <param type="object">
+          <type full="PEAR_Installer" namespace="" name="PEAR_Installer"/>
+        </param>
+        <param type="object">
+          <type full="PEAR_PackageFile_v2" namespace="" name="PEAR_PackageFile_v2"/>
+        </param>
+        <param description="file attributes" type="array"/>
+        <param description="file name" type="string"/>
+      </docblock>
+      <parameter name="installer" byreference="true" type="{unknown}"/>
+      <parameter name="pkg" byreference="false" type="{unknown}"/>
+      <parameter name="atts" byreference="false" type="{unknown}"/>
+      <parameter name="file" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="isExecutable" start="143" end="151" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="isInstallable" start="153" end="161" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="isExtension" start="163" end="171" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

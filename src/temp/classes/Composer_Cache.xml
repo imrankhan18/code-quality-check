@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Cache" namespace="Composer" name="Cache" abstract="false" final="false" start="27" end="379">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer" file="Cache.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Cache.php" size="10442" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="7dc33ffe88db791294bbe31540acf75cb4364459" relative="ar/www/html/vendor/composer/composer/src/Composer/Cache.php"/>
+  <docblock>
+    <description compact="Reads/writes to a filesystem cache"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="cacheCollected" default="NULL" visibility="private" static="true" line="30">
+    <docblock>
+      <var type="object">
+        <type full="Composer\bool|null" namespace="Composer" name="bool|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="io" visibility="private" static="false" line="32">
+    <docblock>
+      <var type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="root" visibility="private" static="false" line="34">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="enabled" default="NULL" visibility="private" static="false" line="36">
+    <docblock>
+      <var type="object">
+        <type full="Composer\?bool" namespace="Composer" name="?bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="allowlist" visibility="private" static="false" line="38">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="filesystem" visibility="private" static="false" line="40">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="readOnly" visibility="private" static="false" line="42">
+    <docblock>
+      <var type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="51" end="62" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param description="location of the cache" type="string" variable="$cacheDir"/>
+      <param description="List of characters that are allowed in path names (used in a regex character class)" type="string" variable="$allowlist"/>
+      <param description="optional filesystem instance" type="object" variable="$filesystem">
+        <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+      </param>
+      <param description="whether the cache is in readOnly mode" type="object" variable="$readOnly">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="cacheDir" byreference="false" type="string"/>
+    <parameter name="allowlist" byreference="false" type="string" default="'a-z0-9.'"/>
+    <parameter name="filesystem" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+    <parameter name="readOnly" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="setReadOnly" start="69" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$readOnly">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\void" namespace="Composer" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="readOnly" byreference="false" type="bool"/>
+  </method>
+  <method name="isReadOnly" start="77" end="80" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="isUsable" start="87" end="90" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="isEnabled" start="95" end="110" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getRoot" start="115" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="read" start="125" end="137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <return type="object">
+        <type full="Composer\string|false" namespace="Composer" name="string|false"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="write" start="145" end="179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$contents"/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="contents" byreference="false" type="string"/>
+  </method>
+  <method name="copyFrom" start="189" end="205" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Copy a file into the cache"/>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$source"/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="source" byreference="false" type="string"/>
+  </method>
+  <method name="copyTo" start="215" end="235" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Copy a file out of the cache"/>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$target"/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+    <parameter name="target" byreference="false" type="string"/>
+  </method>
+  <method name="gcIsNecessary" start="240" end="252" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="remove" start="259" end="269" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="clear" start="274" end="283" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getAge" start="290" end="300" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <return type="object">
+        <type full="Composer\int|false" namespace="Composer" name="int|false"/>
+      </return>
+      <phpstan value="-return int&lt;0, max&gt;|false"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="gc" start="308" end="336" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$ttl"/>
+      <param type="int" variable="$maxSize"/>
+      <return type="object">
+        <type full="Composer\bool" namespace="Composer" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="ttl" byreference="false" type="int"/>
+    <parameter name="maxSize" byreference="false" type="int"/>
+  </method>
+  <method name="sha1" start="343" end="353" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <return type="object">
+        <type full="Composer\string|false" namespace="Composer" name="string|false"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="sha256" start="360" end="370" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <return type="object">
+        <type full="Composer\string|false" namespace="Composer" name="string|false"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="getFinder" start="375" end="378" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Symfony\Component\Finder\Finder" namespace="Symfony\Component\Finder" name="Finder"/>
+      </return>
+    </docblock>
+  </method>
+</class>

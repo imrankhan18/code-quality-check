@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GuzzleHttp\Psr7\Response" namespace="GuzzleHttp\Psr7" name="Response" abstract="false" final="false" start="13" end="160">
+  <file path="//var/www/html/vendor/guzzlehttp/psr7/src" file="Response.php" realpath="/var/www/html/vendor/guzzlehttp/psr7/src/Response.php" size="4905" time="2022-03-20T21:55:58+00:00" unixtime="1647813358" sha1="081777165ad246c27ba9aa5dd08cb75cc262e96b" relative="ar/www/html/vendor/guzzlehttp/psr7/src/Response.php"/>
+  <docblock>
+    <description compact="PSR-7 response implementation."/>
+  </docblock>
+  <implements full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+  <uses full="GuzzleHttp\Psr7\MessageTrait" namespace="GuzzleHttp\Psr7" name="MessageTrait" start="15" end="15"/>
+  <constant type="array" name="PHRASES" value="">
+    <docblock>
+      <description compact="Map of standard HTTP status code/reason phrases"/>
+    </docblock>
+  </constant>
+  <member name="reasonPhrase" visibility="private" static="false" line="82">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="statusCode" visibility="private" static="false" line="85">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="94" end="117" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Status code" type="int" variable="$status"/>
+      <param description="string|string[]&gt; $headers Response headers" type="object">
+        <type full="GuzzleHttp\Psr7\array&lt;string" namespace="GuzzleHttp\Psr7" name="array&lt;string"/>
+      </param>
+      <param description="Response body" type="object" variable="$body">
+        <type full="GuzzleHttp\Psr7\string|resource|StreamInterface|null" namespace="GuzzleHttp\Psr7" name="string|resource|StreamInterface|null"/>
+      </param>
+      <param description="Protocol version" type="string" variable="$version"/>
+      <param description="Reason phrase (when empty a default will be used based on the status code)" type="object" variable="$reason">
+        <type full="GuzzleHttp\Psr7\string|null" namespace="GuzzleHttp\Psr7" name="string|null"/>
+      </param>
+    </docblock>
+    <parameter name="status" byreference="false" type="integer" default="200"/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="body" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="version" byreference="false" type="string" default="'1.1'"/>
+    <parameter name="reason" byreference="false" type="string" default="NULL"/>
+  </constructor>
+  <method name="getStatusCode" start="119" end="122" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getReasonPhrase" start="124" end="127" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="withStatus" start="129" end="142" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface"/>
+    </return>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+    <parameter name="reasonPhrase" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="assertStatusCodeIsInteger" start="147" end="152" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$statusCode"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="statusCode" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="assertStatusCodeRange" start="154" end="159" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="statusCode" byreference="false" type="int"/>
+  </method>
+  <interface full="Psr\Http\Message\ResponseInterface" namespace="Psr\Http\Message" name="ResponseInterface">
+    <extends full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+    <method name="getStatusCode" start="30" end="30" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Gets the response status code.">The status code is a 3-digit integer result code of the server's attempt
+to understand and satisfy the request.</description>
+        <return description="Status code." type="int"/>
+      </docblock>
+    </method>
+    <method name="withStatus" start="52" end="52" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Return an instance with the specified status code and, optionally, reason phrase.">If no reason phrase is specified, implementations MAY choose to default
+to the RFC 7231 or IANA recommended reason phrase for the response's
+status code.
+
+This method MUST be implemented in such a way as to retain the
+immutability of the message, and MUST return an instance that has the
+updated status and reason phrase.</description>
+        <link value="http://tools.ietf.org/html/rfc7231#section-6"/>
+        <link value="http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml"/>
+        <param description="The 3-digit integer result code to set." type="int" variable="$code"/>
+        <param description="The reason phrase to use with the" type="string" variable="$reasonPhrase">provided status code; if none is provided, implementations MAY
+    use the defaults as suggested in the HTTP specification.</param>
+        <return resolution="static" type="object">
+          <type full="GuzzleHttp\Psr7\Response" namespace="GuzzleHttp\Psr7" name="Response"/>
+        </return>
+        <throws description="For invalid status code arguments." type="object">
+          <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+      </docblock>
+      <parameter name="code" byreference="false" type="{unknown}"/>
+      <parameter name="reasonPhrase" byreference="false" type="string" default="''"/>
+    </method>
+    <method name="getReasonPhrase" start="67" end="67" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Gets the response reason phrase associated with the status code.">Because a reason phrase is not a required element in a response
+status line, the reason phrase value MAY be null. Implementations MAY
+choose to return the default RFC 7231 recommended reason phrase (or those
+listed in the IANA HTTP Status Code Registry) for the response's
+status code.</description>
+        <link value="http://tools.ietf.org/html/rfc7231#section-6"/>
+        <link value="http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml"/>
+        <return description="Reason phrase; must return an empty string if none present." type="string"/>
+      </docblock>
+    </method>
+  </interface>
+  <trait full="GuzzleHttp\Psr7\MessageTrait" namespace="GuzzleHttp\Psr7" name="MessageTrait">
+    <method name="getProtocolVersion" start="27" end="30" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="withProtocolVersion" start="32" end="41" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="version" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getHeaders" start="43" end="46" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="hasHeader" start="48" end="51" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getHeader" start="53" end="64" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getHeaderLine" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withHeader" start="71" end="85" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withAddedHeader" start="87" end="103" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="withoutHeader" start="105" end="119" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="header" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getBody" start="121" end="128" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </return>
+    </method>
+    <method name="withBody" start="130" end="139" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Psr\Http\Message\MessageInterface" namespace="Psr\Http\Message" name="MessageInterface"/>
+      </return>
+      <parameter name="body" byreference="false" type="object">
+        <type full="Psr\Http\Message\StreamInterface" namespace="Psr\Http\Message" name="StreamInterface"/>
+      </parameter>
+    </method>
+  </trait>
+</class>

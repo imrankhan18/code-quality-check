@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Http\ProxyManager" namespace="Composer\Util\Http" name="ProxyManager" abstract="false" final="false" start="23" end="191">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util/Http" file="ProxyManager.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Http/ProxyManager.php" size="5112" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="ca238fffe7798d98616ddf6d9c4e6ab90ad4fafb" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Http/ProxyManager.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+    <author value="John Stevenson &lt;john-stevenson@blueyonder.co.uk&gt;"/>
+  </docblock>
+  <member name="error" default="NULL" visibility="private" static="false" line="26">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\?string" namespace="Composer\Util\Http" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="fullProxy" visibility="private" static="false" line="28">
+    <docblock>
+      <var description="?string, https: ?string}" type="object">
+        <type full="Composer\Util\Http\array{http:" namespace="Composer\Util\Http" name="array{http:"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="safeProxy" visibility="private" static="false" line="30">
+    <docblock>
+      <var description="?string, https: ?string}" type="object">
+        <type full="Composer\Util\Http\array{http:" namespace="Composer\Util\Http" name="array{http:"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="streams" visibility="private" static="false" line="32">
+    <docblock>
+      <var description="array{options: mixed[]|null}, https: array{options: mixed[]|null}}" type="object">
+        <type full="Composer\Util\Http\array{http:" namespace="Composer\Util\Http" name="array{http:"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="hasProxy" visibility="private" static="false" line="34">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\bool" namespace="Composer\Util\Http" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="info" default="NULL" visibility="private" static="false" line="36">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\?string" namespace="Composer\Util\Http" name="?string"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="noProxyHandler" default="NULL" visibility="private" static="false" line="38">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\?NoProxyPattern" namespace="Composer\Util\Http" name="?NoProxyPattern"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="instance" default="NULL" visibility="private" static="true" line="41">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\Http\?ProxyManager" namespace="Composer\Util\Http" name="?ProxyManager"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="43" end="56" abstract="false" final="false" static="false" visibility="private"/>
+  <method name="getInstance" start="61" end="68" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\Http\ProxyManager" namespace="Composer\Util\Http" name="ProxyManager"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\Http\ProxyManager" namespace="Composer\Util\Http" name="ProxyManager"/>
+    </return>
+  </method>
+  <method name="reset" start="75" end="78" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Clears the persistent instance"/>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="getProxyForRequest" start="86" end="109" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns a RequestProxy instance for the request url"/>
+      <param type="string" variable="$requestUrl"/>
+      <return type="object">
+        <type full="Composer\Util\Http\RequestProxy" namespace="Composer\Util\Http" name="RequestProxy"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Util\Http\RequestProxy" namespace="Composer\Util\Http" name="RequestProxy"/>
+    </return>
+    <parameter name="requestUrl" byreference="false" type="string"/>
+  </method>
+  <method name="isProxying" start="116" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns true if a proxy is being used"/>
+      <return description="If false any error will be in $message" type="object">
+        <type full="Composer\Util\Http\bool" namespace="Composer\Util\Http" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getFormattedProxy" start="126" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns proxy configuration info which can be shown to the user"/>
+      <return description="Safe proxy URL or an error message if setting up proxy failed or null if no proxy was configured" type="object">
+        <type full="Composer\Util\Http\string|null" namespace="Composer\Util\Http" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+  </method>
+  <method name="initProxyData" start="136" end="160" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Initializes proxy values from the environment"/>
+      <return type="object">
+        <type full="Composer\Util\Http\void" namespace="Composer\Util\Http" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="setData" start="170" end="179" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Sets initial data"/>
+      <param description="Proxy url" type="object" variable="$url">
+        <type full="Composer\Util\Http\non-empty-string" namespace="Composer\Util\Http" name="non-empty-string"/>
+      </param>
+      <param description="Environment variable scheme" type="object" variable="$scheme">
+        <type full="Composer\Util\Http\'http'|'https'" namespace="Composer\Util\Http" name="'http'|'https'"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\Http\non-empty-string" namespace="Composer\Util\Http" name="non-empty-string"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="scheme" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="noProxy" start="187" end="190" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Returns true if a url matches no_proxy value"/>
+      <param type="string" variable="$requestUrl"/>
+      <return type="object">
+        <type full="Composer\Util\Http\bool" namespace="Composer\Util\Http" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="requestUrl" byreference="false" type="string"/>
+  </method>
+</class>

@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Installer\PluginInstaller" namespace="Composer\Installer" name="PluginInstaller" abstract="false" final="false" start="31" end="121">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Installer" file="PluginInstaller.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Installer/PluginInstaller.php" size="3991" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="7a76c87e047550303806159dad66f61d40abda9a" relative="ar/www/html/vendor/composer/composer/src/Composer/Installer/PluginInstaller.php"/>
+  <docblock>
+    <description compact="Installer for plugin packages"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+  </docblock>
+  <extends full="Composer\Installer\LibraryInstaller" namespace="Composer\Installer" name="LibraryInstaller"/>
+  <constructor name="__construct" start="33" end="36" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="composer" byreference="false" type="object">
+      <type full="Composer\PartialComposer" namespace="Composer" name="PartialComposer"/>
+    </parameter>
+    <parameter name="fs" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+    </parameter>
+    <parameter name="binaryInstaller" byreference="false" type="object" default="NULL">
+      <type full="Composer\Installer\BinaryInstaller" namespace="Composer\Installer" name="BinaryInstaller"/>
+    </parameter>
+  </constructor>
+  <method name="supports" start="41" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <parameter name="packageType" byreference="false" type="string"/>
+  </method>
+  <method name="download" start="49" end="57" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="install" start="62" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <parameter name="repo" byreference="false" type="object">
+      <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+    </parameter>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="update" start="82" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <inheritdoc/>
+    </docblock>
+    <parameter name="repo" byreference="false" type="object">
+      <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+    </parameter>
+    <parameter name="initial" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="target" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="uninstall" start="100" end="105" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="repo" byreference="false" type="object">
+      <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+    </parameter>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="rollbackInstall" start="107" end="112" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="e" byreference="false" type="object">
+      <type full="Exception" namespace="" name="Exception"/>
+    </parameter>
+    <parameter name="repo" byreference="false" type="object">
+      <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+    </parameter>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+  <method name="getPluginManager" start="114" end="120" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Composer\Plugin\PluginManager" namespace="Composer\Plugin" name="PluginManager"/>
+    </return>
+  </method>
+  <parent full="Composer\Installer\LibraryInstaller" namespace="Composer\Installer" name="LibraryInstaller">
+    <implements full="Composer\Installer\InstallerInterface" namespace="Composer\Installer" name="InstallerInterface"/>
+    <implements full="Composer\Installer\BinaryPresenceInterface" namespace="Composer\Installer" name="BinaryPresenceInterface"/>
+    <member name="composer" visibility="protected" static="false" line="36">
+      <docblock>
+        <var type="object">
+          <type full="Composer\PartialComposer" namespace="Composer" name="PartialComposer"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="vendorDir" visibility="protected" static="false" line="38">
+      <docblock>
+        <var type="string"/>
+      </docblock>
+    </member>
+    <member name="downloadManager" visibility="protected" static="false" line="40">
+      <docblock>
+        <var type="object">
+          <type full="Composer\Installer\DownloadManager|null" namespace="Composer\Installer" name="DownloadManager|null"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="io" visibility="protected" static="false" line="42">
+      <docblock>
+        <var type="object">
+          <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="type" visibility="protected" static="false" line="44">
+      <docblock>
+        <var type="string"/>
+      </docblock>
+    </member>
+    <member name="filesystem" visibility="protected" static="false" line="46">
+      <docblock>
+        <var type="object">
+          <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="binaryInstaller" visibility="protected" static="false" line="48">
+      <docblock>
+        <var type="object">
+          <type full="Composer\Installer\BinaryInstaller" namespace="Composer\Installer" name="BinaryInstaller"/>
+        </var>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="59" end="69" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Initializes library installer."/>
+        <param type="object" variable="$io">
+          <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+        </param>
+        <param type="object" variable="$composer">
+          <type full="Composer\PartialComposer" namespace="Composer" name="PartialComposer"/>
+        </param>
+        <param type="object" variable="$type">
+          <type full="Composer\Installer\string|null" namespace="Composer\Installer" name="string|null"/>
+        </param>
+        <param type="object" variable="$filesystem">
+          <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+        </param>
+        <param type="object" variable="$binaryInstaller">
+          <type full="Composer\Installer\BinaryInstaller" namespace="Composer\Installer" name="BinaryInstaller"/>
+        </param>
+      </docblock>
+      <parameter name="io" byreference="false" type="object">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </parameter>
+      <parameter name="composer" byreference="false" type="object">
+        <type full="Composer\PartialComposer" namespace="Composer" name="PartialComposer"/>
+      </parameter>
+      <parameter name="type" byreference="false" nullable="true" type="string" default="'library'"/>
+      <parameter name="filesystem" byreference="false" type="object" default="NULL">
+        <type full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem"/>
+      </parameter>
+      <parameter name="binaryInstaller" byreference="false" type="object" default="NULL">
+        <type full="Composer\Installer\BinaryInstaller" namespace="Composer\Installer" name="BinaryInstaller"/>
+      </parameter>
+    </constructor>
+    <method name="supports" start="74" end="77" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="packageType" byreference="false" type="string"/>
+    </method>
+    <method name="isInstalled" start="82" end="95" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="repo" byreference="false" type="object">
+        <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+      </parameter>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="download" start="100" end="106" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="prepare" start="111" end="117" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="type" byreference="false" type="{unknown}"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="cleanup" start="122" end="128" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="type" byreference="false" type="{unknown}"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="install" start="133" end="157" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="repo" byreference="false" type="object">
+        <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+      </parameter>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <inline>
+        <comment value="remove the binaries if it appears the package files are missing" line="138"/>
+      </inline>
+    </method>
+    <method name="update" start="162" end="186" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="repo" byreference="false" type="object">
+        <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+      </parameter>
+      <parameter name="initial" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="target" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="uninstall" start="191" end="217" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="repo" byreference="false" type="object">
+        <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+      </parameter>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="getInstallPath" start="222" end="230" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <inheritdoc/>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="ensureBinariesPresence" start="237" end="240" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Make sure binaries are installed for a given package."/>
+        <param description="Package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="getPackageBasePath" start="251" end="261" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Returns the base path of the package without target-dir path">It is used for BC as getInstallPath tends to be overridden by
+installer plugins but not getPackageBasePath</description>
+        <param type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="string"/>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="installCode" start="266" end="271" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="updateCode" start="276" end="305" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="initial" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="target" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="removeCode" start="310" end="315" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="initializeVendorDir" start="320" end="324" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Installer\void" namespace="Composer\Installer" name="void"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getDownloadManager" start="326" end="331" abstract="false" final="false" static="false" visibility="protected">
+      <return type="object" nullable="false">
+        <type full="Composer\Downloader\DownloadManager" namespace="Composer\Downloader" name="DownloadManager"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="Composer\Installer\InstallerInterface" namespace="Composer\Installer" name="InstallerInterface">
+    <method name="supports" start="34" end="34" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Decides if the installer supports the given type"/>
+        <param type="string" variable="$packageType"/>
+        <return type="object">
+          <type full="Composer\Installer\bool" namespace="Composer\Installer" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="packageType" byreference="false" type="string"/>
+    </method>
+    <method name="isInstalled" start="44" end="44" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks that provided package is installed."/>
+        <param description="repository in which to check" type="object" variable="$repo">
+          <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+        </param>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Installer\bool" namespace="Composer\Installer" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="repo" byreference="false" type="object">
+        <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+      </parameter>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="download" start="53" end="53" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Downloads the files needed to later install the given package."/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="previous package instance in case of an update" type="object" variable="$prevPackage">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="prepare" start="68" end="68" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Do anything that needs to be done between all downloads have been completed and the actual operation is executed">All packages get first downloaded, then all together prepared, then all together installed/updated/uninstalled. Therefore
+for error recovery it is important to avoid failing during install/update/uninstall as much as possible, and risky things or
+user prompts should happen in the prepare step rather. In case of failure, cleanup() will be called so that changes can
+be undone as much as possible.</description>
+        <param description="one of install/update/uninstall" type="string" variable="$type"/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="previous package instance in case of an update" type="object" variable="$prevPackage">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="type" byreference="false" type="string"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="install" start="77" end="77" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Installs specific package."/>
+        <param description="repository in which to check" type="object" variable="$repo">
+          <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+        </param>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="repo" byreference="false" type="object">
+        <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+      </parameter>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="update" start="88" end="88" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Updates specific package."/>
+        <param description="repository in which to check" type="object" variable="$repo">
+          <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+        </param>
+        <param description="already installed package version" type="object" variable="$initial">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="updated version" type="object" variable="$target">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <throws description="if $initial package is not installed" type="object">
+          <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+        </throws>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="repo" byreference="false" type="object">
+        <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+      </parameter>
+      <parameter name="initial" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="target" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="uninstall" start="97" end="97" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Uninstalls specific package."/>
+        <param description="repository in which to check" type="object" variable="$repo">
+          <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+        </param>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="repo" byreference="false" type="object">
+        <type full="Composer\Repository\InstalledRepositoryInterface" namespace="Composer\Repository" name="InstalledRepositoryInterface"/>
+      </parameter>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="cleanup" start="111" end="111" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Do anything to cleanup changes applied in the prepare or install/update/uninstall steps">Note that cleanup will be called for all packages regardless if they failed an operation or not, to give
+all installers a change to cleanup things they did previously, so you need to keep track of changes
+applied in the installer/downloader themselves.</description>
+        <param description="one of install/update/uninstall" type="string" variable="$type"/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <param description="previous package instance in case of an update" type="object" variable="$prevPackage">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Installer\PromiseInterface|null" namespace="Composer\Installer" name="PromiseInterface|null"/>
+        </return>
+      </docblock>
+      <parameter name="type" byreference="false" type="string"/>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+      <parameter name="prevPackage" byreference="false" type="object" default="NULL">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+    <method name="getInstallPath" start="119" end="119" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the absolute installation path of a package."/>
+        <param type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return description="absolute path to install to, which MUST not end with a slash" type="string"/>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+  </interface>
+  <interface full="Composer\Installer\BinaryPresenceInterface" namespace="Composer\Installer" name="BinaryPresenceInterface">
+    <method name="ensureBinariesPresence" start="31" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Make sure binaries are installed for a given package."/>
+        <param description="package instance" type="object" variable="$package">
+          <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Installer\void" namespace="Composer\Installer" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="package" byreference="false" type="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </parameter>
+    </method>
+  </interface>
+</class>

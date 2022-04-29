@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Filesystem" namespace="Composer\Util" name="Filesystem" abstract="false" final="false" start="26" end="959">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Filesystem.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Filesystem.php" size="29437" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="e4b75009e22d21e766976ba259ed73748e5431ad" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Filesystem.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+    <author value="Johannes M. Schmitt &lt;schmittjoh@gmail.com&gt;"/>
+  </docblock>
+  <member name="processExecutor" visibility="private" static="false" line="29">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\?ProcessExecutor" namespace="Composer\Util" name="?ProcessExecutor"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="31" end="34" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="executor" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+  </constructor>
+  <method name="remove" start="41" end="52" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$file"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="isDirEmpty" start="60" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Checks if a directory is empty"/>
+      <param type="string" variable="$dir"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="dir" byreference="false" type="string"/>
+  </method>
+  <method name="emptyDirectory" start="77" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$dir"/>
+      <param type="object" variable="$ensureDirectoryExists">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="dir" byreference="false" type="string"/>
+    <parameter name="ensureDirectoryExists" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="removeDirectory" start="110" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Recursively remove a directory">Uses the process component if proc_open is enabled on the PHP
+installation.</description>
+      <param type="string" variable="$directory"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="directory" byreference="false" type="string"/>
+    <inline>
+      <comment value="clear stat cache because external processes aren't tracked by the php stat cache" line="125"/>
+    </inline>
+  </method>
+  <method name="removeDirectoryAsync" start="145" end="172" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Recursively remove a directory asynchronously">Uses the process component if proc_open is enabled on the PHP
+installation.</description>
+      <param type="string" variable="$directory"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="object">
+        <type full="React\Promise\PromiseInterface" namespace="React\Promise" name="PromiseInterface"/>
+      </return>
+    </docblock>
+    <parameter name="directory" byreference="false" type="string"/>
+  </method>
+  <method name="removeEdgeCases" start="180" end="207" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$directory"/>
+      <param type="object" variable="$fallbackToPhp">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <return description="Returns null, when no edge case was hit. Otherwise a bool whether removal was successful" type="object">
+        <type full="Composer\Util\bool|null" namespace="Composer\Util" name="bool|null"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="true"/>
+    <parameter name="directory" byreference="false" type="string"/>
+    <parameter name="fallbackToPhp" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="removeDirectoryPhp" start="219" end="252" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Recursively delete directory using PHP iterators.">Uses a CHILD_FIRST RecursiveIteratorIterator to sort files
+before directories, creating a single non-recursive loop
+to delete files/directories in the correct order.</description>
+      <param type="string" variable="$directory"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="directory" byreference="false" type="string"/>
+    <inline>
+      <comment value="release locks on the directory, see https://github.com/composer/composer/issues/9945" line="248"/>
+    </inline>
+  </method>
+  <method name="ensureDirectoryExists" start="259" end="273" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$directory"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="directory" byreference="false" type="string"/>
+  </method>
+  <method name="unlink" start="282" end="304" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Attempts to unlink a file and in case of failure retries after 350ms on windows"/>
+      <param type="string" variable="$path"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="rmdir" start="313" end="335" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Attempts to rmdir a file and in case of failure retries after 350ms on windows"/>
+      <param type="string" variable="$path"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="copyThenRemove" start="348" end="358" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Copy then delete is a non-atomic version of {@link rename}.">Some systems can't rename and also don't have proc_open,
+which requires this solution.</description>
+      <param type="string" variable="$source"/>
+      <param type="string" variable="$target"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="source" byreference="false" type="string"/>
+    <parameter name="target" byreference="false" type="string"/>
+  </method>
+  <method name="copy" start="367" end="388" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Copies a file or directory from $source to $target."/>
+      <param type="string" variable="$source"/>
+      <param type="string" variable="$target"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="source" byreference="false" type="string"/>
+    <parameter name="target" byreference="false" type="string"/>
+  </method>
+  <method name="rename" start="396" end="436" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$source"/>
+      <param type="string" variable="$target"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="source" byreference="false" type="string"/>
+    <parameter name="target" byreference="false" type="string"/>
+  </method>
+  <method name="findShortestPath" start="447" end="483" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the shortest path from $from to $to"/>
+      <param type="string" variable="$from"/>
+      <param type="string" variable="$to"/>
+      <param description="if true, the source/target are considered to be directories" type="object" variable="$directories">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <throws type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <return type="string"/>
+    </docblock>
+    <parameter name="from" byreference="false" type="string"/>
+    <parameter name="to" byreference="false" type="string"/>
+    <parameter name="directories" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="findShortestPathCode" start="495" end="530" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns PHP code that, when executed in $from, will return the path to $to"/>
+      <param type="string" variable="$from"/>
+      <param type="string" variable="$to"/>
+      <param description="if true, the source/target are considered to be directories" type="object" variable="$directories">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <param type="object" variable="$staticCode">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </param>
+      <throws type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <return type="string"/>
+    </docblock>
+    <parameter name="from" byreference="false" type="string"/>
+    <parameter name="to" byreference="false" type="string"/>
+    <parameter name="directories" byreference="false" type="boolean" default="false"/>
+    <parameter name="staticCode" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="isAbsolutePath" start="538" end="541" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Checks if the given path is absolute"/>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="size" start="551" end="561" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns size of a file or directory specified by path. If a directory is given, its size will be computed recursively."/>
+      <param description="Path to the file or directory" type="string" variable="$path"/>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="int"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="normalizePath" start="570" end="609" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Normalize a path. This replaces backslashes with slashes, removes ending slash and collapses redundant separators and up-level references."/>
+      <param description="Path to the file or directory" type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+    <inline>
+      <comment value="extract windows UNC paths e.g. \\foo\bar" line="577"/>
+      <comment value="extract a prefix being a protocol://, protocol:, protocol://drive: or simply drive:" line="583"/>
+      <comment value="ensure c: is normalized to C:" line="605"/>
+    </inline>
+  </method>
+  <method name="trimTrailingSlash" start="619" end="626" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Remove trailing slashes if present to avoid issues with symlinks">And other possible unforeseen disasters, see https://github.com/composer/composer/pull/9422</description>
+      <param type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="isLocalPath" start="634" end="637" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Return if the given path is local"/>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="getPlatformPath" start="644" end="651" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="isReadable" start="662" end="678" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Cross-platform safe version of is_readable()">This will also check for readability by reading the file as is_readable can not be trusted on network-mounts
+and \\wsl$ paths. See https://github.com/composer/composer/issues/8231 and https://bugs.php.net/bug.php?id=68926</description>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+    <inline>
+      <comment value="assume false otherwise" line="676"/>
+    </inline>
+  </method>
+  <method name="directorySize" start="685" end="698" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="string" variable="$directory"/>
+      <return type="int"/>
+    </docblock>
+    <parameter name="directory" byreference="false" type="string"/>
+  </method>
+  <method name="getProcess" start="703" end="710" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="unlinkImplementation" start="721" end="728" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="delete symbolic link implementation (commonly known as &quot;unlink()&quot;)">symbolic links on windows which link to directories need rmdir instead of unlink</description>
+      <param type="string" variable="$path"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="path" byreference="false" type="string"/>
+  </method>
+  <method name="relativeSymlink" start="737" end="752" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a relative symlink from $link to $target"/>
+      <param description="The path of the binary file to be symlinked" type="string" variable="$target"/>
+      <param description="The path where the symlink should be created" type="string" variable="$link"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="target" byreference="false" type="string"/>
+    <parameter name="link" byreference="false" type="string"/>
+  </method>
+  <method name="isSymlinkedDirectory" start="761" end="770" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="return true if that directory is a symlink."/>
+      <param type="string" variable="$directory"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="directory" byreference="false" type="string"/>
+  </method>
+  <method name="unlinkSymlinkedDirectory" start="777" end="782" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="string" variable="$directory"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="directory" byreference="false" type="string"/>
+  </method>
+  <method name="resolveSymlinkedDirectorySymlink" start="791" end="804" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="resolve pathname to symbolic link of a directory"/>
+      <param description="directory path to resolve" type="string" variable="$pathname"/>
+      <return description="resolved path to symbolic link or original pathname (unresolved)" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="pathname" byreference="false" type="string"/>
+  </method>
+  <method name="junction" start="814" end="831" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates an NTFS junction."/>
+      <param type="string" variable="$target"/>
+      <param type="string" variable="$junction"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="target" byreference="false" type="string"/>
+    <parameter name="junction" byreference="false" type="string"/>
+  </method>
+  <method name="isJunction" start="853" end="870" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns whether the target directory is a Windows NTFS Junction.">We test if the path is a directory and not an ordinary link, then check
+that the mode value returned from lstat (which gives the status of the
+link itself) is not a directory, by replicating the POSIX S_ISDIR test.
+
+This logic works because PHP does not set the mode value for a junction,
+since there is no universal file type flag for it. Unfortunately an
+uninitialized variable in PHP prior to 7.2.16 and 7.3.3 may cause a
+random value to be returned. See https://bugs.php.net/bug.php?id=77552
+
+If this random value passes the S_ISDIR test, then a junction will not be
+detected and a recursive delete operation could lead to loss of data in
+the target directory. Note that Windows rmdir can handle this situation
+and will only delete the junction (from Windows 7 onwards).</description>
+      <param description="Path to check." type="string" variable="$junction"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="junction" byreference="false" type="string"/>
+    <inline>
+      <comment value="Important to clear all caches first" line="859"/>
+      <comment value="S_ISDIR test (S_IFDIR is 0x4000, S_IFMT is 0xF000 bitmask)" line="868"/>
+    </inline>
+  </method>
+  <method name="removeJunction" start="878" end="889" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes a Windows NTFS junction."/>
+      <param type="string" variable="$junction"/>
+      <return type="object">
+        <type full="Composer\Util\bool" namespace="Composer\Util" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="junction" byreference="false" type="string"/>
+  </method>
+  <method name="filePutContentsIfModified" start="897" end="905" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$path"/>
+      <param type="string" variable="$content"/>
+      <return type="object">
+        <type full="Composer\Util\int|false" namespace="Composer\Util" name="int|false"/>
+      </return>
+    </docblock>
+    <parameter name="path" byreference="false" type="string"/>
+    <parameter name="content" byreference="false" type="string"/>
+  </method>
+  <method name="safeCopy" start="915" end="927" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Copy file using stream_copy_to_stream to work around https://bugs.php.net/bug.php?id=6463"/>
+      <param type="string" variable="$source"/>
+      <param type="string" variable="$target"/>
+      <return type="object">
+        <type full="Composer\Util\void" namespace="Composer\Util" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="source" byreference="false" type="string"/>
+    <parameter name="target" byreference="false" type="string"/>
+  </method>
+  <method name="filesAreEqual" start="933" end="958" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="compare 2 files https://stackoverflow.com/questions/3060125/can-i-use-file-get-contents-to-compare-two-files"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="a" byreference="false" type="string"/>
+    <parameter name="b" byreference="false" type="string"/>
+    <inline>
+      <comment value="Check if filesize is different" line="935"/>
+      <comment value="Check if content is different" line="940"/>
+    </inline>
+  </method>
+</class>

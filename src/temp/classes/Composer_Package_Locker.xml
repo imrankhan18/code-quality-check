@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Package\Locker" namespace="Composer\Package" name="Locker" abstract="false" final="false" start="34" end="511">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Package" file="Locker.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Package/Locker.php" size="17351" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="5ad5a23eeb6b96b9bae30b29a1b9d59522855301" relative="ar/www/html/vendor/composer/composer/src/Composer/Package/Locker.php"/>
+  <docblock>
+    <description compact="Reads/writes project lockfile (composer.lock)."/>
+    <author value="Konstantin Kudryashiv &lt;ever.zet@gmail.com&gt;"/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="lockFile" visibility="private" static="false" line="37">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Json\JsonFile" namespace="Composer\Json" name="JsonFile"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="installationManager" visibility="private" static="false" line="39">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="hash" visibility="private" static="false" line="41">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="contentHash" visibility="private" static="false" line="43">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="loader" visibility="private" static="false" line="45">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\Loader\ArrayLoader" namespace="Composer\Package\Loader" name="ArrayLoader"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="dumper" visibility="private" static="false" line="47">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\Dumper\ArrayDumper" namespace="Composer\Package\Dumper" name="ArrayDumper"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="process" visibility="private" static="false" line="49">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="lockDataCache" default="NULL" visibility="private" static="false" line="51">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Package\mixed[]|nu" namespace="Composer\Package" name="mixed[]|nu"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="virtualFileWritten" default="false" type="boolean" visibility="private" static="false" line="53">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="63" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initializes packages locker."/>
+      <param type="object" variable="$io">
+        <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+      </param>
+      <param description="lockfile loader" type="object" variable="$lockFile">
+        <type full="Composer\Json\JsonFile" namespace="Composer\Json" name="JsonFile"/>
+      </param>
+      <param description="installation manager instance" type="object" variable="$installationManager">
+        <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+      </param>
+      <param description="The contents of the composer file" type="string" variable="$composerFileContents"/>
+    </docblock>
+    <parameter name="io" byreference="false" type="object">
+      <type full="Composer\IO\IOInterface" namespace="Composer\IO" name="IOInterface"/>
+    </parameter>
+    <parameter name="lockFile" byreference="false" type="object">
+      <type full="Composer\Json\JsonFile" namespace="Composer\Json" name="JsonFile"/>
+    </parameter>
+    <parameter name="installationManager" byreference="false" type="object">
+      <type full="Composer\Installer\InstallationManager" namespace="Composer\Installer" name="InstallationManager"/>
+    </parameter>
+    <parameter name="composerFileContents" byreference="false" type="string"/>
+    <parameter name="process" byreference="false" type="object" default="NULL">
+      <type full="Composer\Util\ProcessExecutor" namespace="Composer\Util" name="ProcessExecutor"/>
+    </parameter>
+  </constructor>
+  <method name="getContentHash" start="81" end="111" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Returns the md5 hash of the sorted content of the composer file."/>
+      <param description="The contents of the composer file." type="string" variable="$composerFileContents"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="composerFileContents" byreference="false" type="string"/>
+  </method>
+  <method name="isLocked" start="118" end="127" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Checks whether locker has been locked (lockfile found)."/>
+      <return type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="isFresh" start="134" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Checks whether the lock file is still up to date with the current hash"/>
+      <return type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <inline>
+      <comment value="BC support for old lock files without content-hash" line="143"/>
+      <comment value="should not be reached unless the lock file is corrupted, so assume it's out of date" line="148"/>
+    </inline>
+  </method>
+  <method name="getLockedRepository" start="159" end="203" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Searches and returns an array of locked packages, retrieved from registered repositories."/>
+      <param description="true to retrieve the locked dev packages" type="object" variable="$withDevReqs">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </param>
+      <throws type="object">
+        <type full="\RuntimeException" namespace="" name="RuntimeException"/>
+      </throws>
+      <return type="object">
+        <type full="\Composer\Repository\LockArrayRepository" namespace="\Composer\Repository" name="LockArrayRepository"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Repository\LockArrayRepository" namespace="Composer\Repository" name="LockArrayRepository"/>
+    </return>
+    <parameter name="withDevReqs" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getDevPackageNames" start="208" end="219" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="Names of dependencies installed through require-dev" type="array" of="object">
+        <type full="Composer\Package\string" namespace="Composer\Package" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getPlatformRequirements" start="227" end="253" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the platform requirements stored in the lock file"/>
+      <param description="if true, the platform requirements from the require-dev block are also returned" type="object" variable="$withDevReqs">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </param>
+      <return type="array" of="object">
+        <type full="\Composer\Package\Link" namespace="\Composer\Package" name="Link"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="withDevReqs" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getMinimumStability" start="258" end="263" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getStabilityFlags" start="268" end="273" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="string&gt;" type="object">
+        <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getPreferStable" start="278" end="285" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Package\bool|null" namespace="Composer\Package" name="bool|null"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="true"/>
+    <inline>
+      <comment value="return null if not set to allow caller logic to choose the" line="282"/>
+      <comment value="right behavior since old lock files have no prefer-stable" line="283"/>
+    </inline>
+  </method>
+  <method name="getPreferLowest" start="290" end="297" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Package\bool|null" namespace="Composer\Package" name="bool|null"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="true"/>
+    <inline>
+      <comment value="return null if not set to allow caller logic to choose the" line="294"/>
+      <comment value="right behavior since old lock files have no prefer-lowest" line="295"/>
+    </inline>
+  </method>
+  <method name="getPlatformOverrides" start="302" end="307" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="string&gt;" type="object">
+        <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getAliases" start="314" end="319" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\Package\string[]" namespace="Composer\Package" name="string[]"/>
+      </return>
+      <phpstan value="-return list&lt;array{package: string, version: string, alias: string, alias_normalized: string}&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getLockData" start="324" end="335" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="mixed&gt;" type="object">
+        <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="setLockData" start="356" end="413" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Locks provided data into lockfile."/>
+      <param description="array of packages" type="array" variable="$packages" of="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <param description="array of dev packages or null if installed without --dev" type="array" variable="$devPackages" of="object">
+        <type full="Composer\Package\PackageInterface[]|nu" namespace="Composer\Package" name="PackageInterface[]|nu"/>
+      </param>
+      <param description="string&gt; $platformReqs      array of package name =&gt; constraint for required platform packages" type="object">
+        <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+      </param>
+      <param description="string&gt; $platformDevReqs   array of package name =&gt; constraint for dev-required platform packages" type="object">
+        <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+      </param>
+      <param description="array of aliases" type="array" variable="$aliases" of="object">
+        <type full="Composer\Package\string[]" namespace="Composer\Package" name="string[]"/>
+      </param>
+      <param type="string" variable="$minimumStability"/>
+      <param description="int&gt; $stabilityFlags" type="object">
+        <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+      </param>
+      <param type="object" variable="$preferStable">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </param>
+      <param type="object" variable="$preferLowest">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </param>
+      <param description="string&gt; $platformOverrides" type="object">
+        <type full="Composer\Package\array&lt;string" namespace="Composer\Package" name="array&lt;string"/>
+      </param>
+      <param description="Whether to actually write data to disk, useful in tests and for --dry-run" type="object" variable="$write">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Package\bool" namespace="Composer\Package" name="bool"/>
+      </return>
+      <phpstan value="-param list&lt;array{package: string, version: string, alias: string, alias_normalized: string}&gt; $aliases"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="packages" byreference="false" type="array"/>
+    <parameter name="devPackages" byreference="false" nullable="true" type="array"/>
+    <parameter name="platformReqs" byreference="false" type="array"/>
+    <parameter name="platformDevReqs" byreference="false" type="array"/>
+    <parameter name="aliases" byreference="false" type="array"/>
+    <parameter name="minimumStability" byreference="false" type="string"/>
+    <parameter name="stabilityFlags" byreference="false" type="array"/>
+    <parameter name="preferStable" byreference="false" type="bool"/>
+    <parameter name="preferLowest" byreference="false" type="bool"/>
+    <parameter name="platformOverrides" byreference="false" type="array"/>
+    <parameter name="write" byreference="false" type="boolean" default="true"/>
+    <inline>
+      <comment value="keep old default branch names normalized to DEFAULT_BRANCH_ALIAS for BC as that is how Composer 1 outputs the lock file" line="358"/>
+      <comment value="when loading the lock file the version is anyway ignored in Composer 2, so it has no adverse effect" line="359"/>
+    </inline>
+  </method>
+  <method name="lockPackages" start="422" end="472" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$packages" of="object">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\Package\mixed[]" namespace="Composer\Package" name="mixed[]"/>
+      </return>
+      <phpstan value="-return list&lt;array&lt;string, mixed&gt;&gt;"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="packages" byreference="false" type="array"/>
+  </method>
+  <method name="getPackageTime" start="480" end="510" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Returns the packages's datetime for its source reference."/>
+      <param description="The package to scan." type="object" variable="$package">
+        <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+      </param>
+      <return description="The formatted datetime or null if none was found." type="object">
+        <type full="Composer\Package\string|null" namespace="Composer\Package" name="string|null"/>
+      </return>
+    </docblock>
+    <return type="string" nullable="true"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+  </method>
+</class>

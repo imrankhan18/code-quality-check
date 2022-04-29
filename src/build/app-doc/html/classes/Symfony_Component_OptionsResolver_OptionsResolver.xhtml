@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Symfony\Component\OptionsResolver\OptionsResolver</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Symfony_Component_OptionsResolver">Symfony\Component\OptionsResolver</a>
+          </li>
+          <li class="separator">OptionsResolver</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/symfony/options-resolver/OptionsResolver.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Symfony\Component\OptionsResolver\</small>OptionsResolver</h1>
+        <h4>Validates options and merges them with default values.</h4>
+        <p/>
+        <ul>
+          <li>Author: Bernhard Schussek &lt;bschussek@gmail.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class OptionsResolver
+                implements
+                <a title="Symfony\Component\OptionsResolver\Options" href="../interfaces/Symfony_Component_OptionsResolver_Options.xhtml">Options</a>
+            {<br/><ul class="none"><li>// constants</li><li>const VALIDATION_FUNCTIONS = ;</li></ul><ul class="none"><li>// members</li><li>private array <a href="#members">$defined</a> =
+                        ;
+                    </li><li>private array <a href="#members">$defaults</a> =
+                        ;
+                    </li><li>private array <a href="#members">$nested</a> =
+                        ;
+                    </li><li>private array <a href="#members">$required</a> =
+                        ;
+                    </li><li>private array <a href="#members">$resolved</a> =
+                        ;
+                    </li><li>private array <a href="#members">$normalizers</a> =
+                        ;
+                    </li><li>private array <a href="#members">$allowedValues</a> =
+                        ;
+                    </li><li>private array <a href="#members">$allowedTypes</a> =
+                        ;
+                    </li><li>private array <a href="#members">$info</a> =
+                        ;
+                    </li><li>private array <a href="#members">$lazy</a> =
+                        ;
+                    </li><li>private array <a href="#members">$calling</a> =
+                        ;
+                    </li><li>private array <a href="#members">$deprecated</a> =
+                        ;
+                    </li><li>private array <a href="#members">$given</a> =
+                        ;
+                    </li><li>private boolean <a href="#members">$locked</a> =
+                        false;
+                    </li><li>private array <a href="#members">$parentsOptions</a> =
+                        ;
+                    </li><li>private  <a href="#members">$prototype</a>;
+                    </li><li>private  <a href="#members">$prototypeIndex</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setDefault.xhtml">setDefault</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setDefaults.xhtml">setDefaults</a>()
+                    </li><li>public bool <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/hasDefault.xhtml">hasDefault</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setRequired.xhtml">setRequired</a>()
+                    </li><li>public bool <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isRequired.xhtml">isRequired</a>()
+                    </li><li>public array <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getRequiredOptions.xhtml">getRequiredOptions</a>()
+                    </li><li>public bool <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isMissing.xhtml">isMissing</a>()
+                    </li><li>public array <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getMissingOptions.xhtml">getMissingOptions</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setDefined.xhtml">setDefined</a>()
+                    </li><li>public bool <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isDefined.xhtml">isDefined</a>()
+                    </li><li>public array <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getDefinedOptions.xhtml">getDefinedOptions</a>()
+                    </li><li>public bool <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isNested.xhtml">isNested</a>()
+                    </li><li>public <span title="OptionsResolver">OptionsResolver</span> <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setDeprecated.xhtml">setDeprecated</a>()
+                    </li><li>public bool <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isDeprecated.xhtml">isDeprecated</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setNormalizer.xhtml">setNormalizer</a>()
+                    </li><li>public <span title="OptionsResolver">OptionsResolver</span> <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/addNormalizer.xhtml">addNormalizer</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setAllowedValues.xhtml">setAllowedValues</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/addAllowedValues.xhtml">addAllowedValues</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setAllowedTypes.xhtml">setAllowedTypes</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/addAllowedTypes.xhtml">addAllowedTypes</a>()
+                    </li><li>public <span title="OptionConfigurator">OptionConfigurator</span> <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/define.xhtml">define</a>()
+                    </li><li>public <span title="OptionsResolver">OptionsResolver</span> <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setInfo.xhtml">setInfo</a>()
+                    </li><li>public ?string <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getInfo.xhtml">getInfo</a>()
+                    </li><li>public <span title="OptionsResolver">OptionsResolver</span> <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setPrototype.xhtml">setPrototype</a>()
+                    </li><li>public bool <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isPrototype.xhtml">isPrototype</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/remove.xhtml">remove</a>()
+                    </li><li>public $this <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/clear.xhtml">clear</a>()
+                    </li><li>public array <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/resolve.xhtml">resolve</a>()
+                    </li><li>public void <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/offsetGet.xhtml">offsetGet</a>()
+                    </li><li>private bool <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/verifyTypes.xhtml">verifyTypes</a>()
+                    </li><li>public void <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/offsetExists.xhtml">offsetExists</a>()
+                    </li><li>public void <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/offsetSet.xhtml">offsetSet</a>()
+                    </li><li>public void <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/offsetUnset.xhtml">offsetUnset</a>()
+                    </li><li>public void <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/count.xhtml">count</a>()
+                    </li><li>private string <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/formatValue.xhtml">formatValue</a>()
+                    </li><li>private string <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/formatValues.xhtml">formatValues</a>()
+                    </li><li>private string <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/formatOptions.xhtml">formatOptions</a>()
+                    </li><li>private ?string <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getParameterClassName.xhtml">getParameterClassName</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="Symfony\Component\OptionsResolver\Options" href="../interfaces/Symfony_Component_OptionsResolver_Options.xhtml">Symfony\Component\OptionsResolver\Options</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="VALIDATION_FUNCTIONS">VALIDATION_FUNCTIONS</td>
+              <td/>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="allowedTypes">
+              <strong>$allowedTypes</strong>
+              <br/>
+              <span class="indent">A list of accepted types for each option.</span>
+            </li>
+            <li id="allowedValues">
+              <strong>$allowedValues</strong>
+              <br/>
+              <span class="indent">A list of accepted values for each option.</span>
+            </li>
+            <li id="calling">
+              <strong>$calling</strong>
+              <br/>
+              <span class="indent">A list of lazy options whose closure is currently being called.</span>
+            </li>
+            <li id="defaults">
+              <strong>$defaults</strong>
+              <br/>
+              <span class="indent">The default option values.</span>
+            </li>
+            <li id="defined">
+              <strong>$defined</strong>
+              <br/>
+              <span class="indent">The names of all defined options.</span>
+            </li>
+            <li id="deprecated">
+              <strong>$deprecated</strong>
+              <br/>
+              <span class="indent">A list of deprecated options.</span>
+            </li>
+            <li id="given">
+              <strong>$given</strong>
+              <br/>
+              <span class="indent">The list of options provided by the user.</span>
+            </li>
+            <li id="info">
+              <strong>$info</strong>
+              <br/>
+              <span class="indent">A list of info messages for each option.</span>
+            </li>
+            <li id="lazy">
+              <strong>$lazy</strong>
+              <br/>
+              <span class="indent">A list of closures for evaluating lazy options.</span>
+            </li>
+            <li id="locked">
+              <strong>$locked</strong>
+              <br/>
+              <span class="indent">Whether the instance is locked for reading.</span>
+            </li>
+            <li id="nested"><strong>$nested</strong>
+                —
+                array<br/><span class="indent">A list of closure for nested options.</span></li>
+            <li id="normalizers"><strong>$normalizers</strong>
+                —
+                array<br/><span class="indent">A list of normalizer closures.</span></li>
+            <li id="parentsOptions">
+              <strong>$parentsOptions</strong>
+            </li>
+            <li id="prototype">
+              <strong>$prototype</strong>
+              <br/>
+              <span class="indent">Whether the whole options definition is marked as array prototype.</span>
+            </li>
+            <li id="prototypeIndex">
+              <strong>$prototypeIndex</strong>
+              <br/>
+              <span class="indent">The prototype array's index that is being read.</span>
+            </li>
+            <li id="required">
+              <strong>$required</strong>
+              <br/>
+              <span class="indent">The names of required options.</span>
+            </li>
+            <li id="resolved">
+              <strong>$resolved</strong>
+              <br/>
+              <span class="indent">The resolved option values.</span>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="formatOptions">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/formatOptions.xhtml">formatOptions()</a>
+            </li>
+            <li id="formatValue"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/formatValue.xhtml">formatValue()</a>
+                — Returns a string representation of the value.</li>
+            <li id="formatValues"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/formatValues.xhtml">formatValues()</a>
+                — Returns a string representation of a list of values.</li>
+            <li id="getParameterClassName">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getParameterClassName.xhtml">getParameterClassName()</a>
+            </li>
+            <li id="verifyTypes">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/verifyTypes.xhtml">verifyTypes()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="addAllowedTypes"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/addAllowedTypes.xhtml">addAllowedTypes()</a>
+                — Adds allowed types for an option.</li>
+            <li id="addAllowedValues"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/addAllowedValues.xhtml">addAllowedValues()</a>
+                — Adds allowed values for an option.</li>
+            <li id="addNormalizer"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/addNormalizer.xhtml">addNormalizer()</a>
+                — Adds a normalizer for an option.</li>
+            <li id="clear"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/clear.xhtml">clear()</a>
+                — Removes all options.</li>
+            <li id="count">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/count.xhtml">count()</a>
+            </li>
+            <li id="define"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/define.xhtml">define()</a>
+                — Defines an option configurator with the given name.</li>
+            <li id="getDefinedOptions"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getDefinedOptions.xhtml">getDefinedOptions()</a>
+                — Returns the names of all defined options.</li>
+            <li id="getInfo"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getInfo.xhtml">getInfo()</a>
+                — Gets the info message for an option.</li>
+            <li id="getMissingOptions"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getMissingOptions.xhtml">getMissingOptions()</a>
+                — Returns the names of all options missing a default value.</li>
+            <li id="getRequiredOptions"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/getRequiredOptions.xhtml">getRequiredOptions()</a>
+                — Returns the names of all required options.</li>
+            <li id="hasDefault"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/hasDefault.xhtml">hasDefault()</a>
+                — Returns whether a default value is set for an option.</li>
+            <li id="isDefined"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isDefined.xhtml">isDefined()</a>
+                — Returns whether an option is defined.</li>
+            <li id="isDeprecated">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isDeprecated.xhtml">isDeprecated()</a>
+            </li>
+            <li id="isMissing"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isMissing.xhtml">isMissing()</a>
+                — Returns whether an option is missing a default value.</li>
+            <li id="isNested">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isNested.xhtml">isNested()</a>
+            </li>
+            <li id="isPrototype">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isPrototype.xhtml">isPrototype()</a>
+            </li>
+            <li id="isRequired"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/isRequired.xhtml">isRequired()</a>
+                — Returns whether an option is required.</li>
+            <li id="offsetExists">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/offsetExists.xhtml">offsetExists()</a>
+            </li>
+            <li id="offsetGet">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/offsetGet.xhtml">offsetGet()</a>
+            </li>
+            <li id="offsetSet">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/offsetSet.xhtml">offsetSet()</a>
+            </li>
+            <li id="offsetUnset">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/offsetUnset.xhtml">offsetUnset()</a>
+            </li>
+            <li id="remove"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/remove.xhtml">remove()</a>
+                — Removes the option with the given name.</li>
+            <li id="resolve"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/resolve.xhtml">resolve()</a>
+                — Merges options with the default values stored in the container and validates them.</li>
+            <li id="setAllowedTypes"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setAllowedTypes.xhtml">setAllowedTypes()</a>
+                — Sets allowed types for an option.</li>
+            <li id="setAllowedValues"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setAllowedValues.xhtml">setAllowedValues()</a>
+                — Sets allowed values for an option.</li>
+            <li id="setDefault"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setDefault.xhtml">setDefault()</a>
+                — Sets the default value of a given option.</li>
+            <li id="setDefaults">
+              <a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setDefaults.xhtml">setDefaults()</a>
+            </li>
+            <li id="setDefined"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setDefined.xhtml">setDefined()</a>
+                — Defines a valid option name.</li>
+            <li id="setDeprecated"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setDeprecated.xhtml">setDeprecated()</a>
+                — Deprecates an option, allowed types or values.</li>
+            <li id="setInfo"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setInfo.xhtml">setInfo()</a>
+                — Sets an info message for an option.</li>
+            <li id="setNormalizer"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setNormalizer.xhtml">setNormalizer()</a>
+                — Sets the normalizer for an option.</li>
+            <li id="setPrototype"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setPrototype.xhtml">setPrototype()</a>
+                — Marks the whole options definition as array prototype.</li>
+            <li id="setRequired"><a title="Symfony\Component\OptionsResolver\OptionsResolver" href="../classes/Symfony_Component_OptionsResolver_OptionsResolver/setRequired.xhtml">setRequired()</a>
+                — Marks one or more options as required.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

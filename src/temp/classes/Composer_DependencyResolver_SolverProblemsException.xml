@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\SolverProblemsException" namespace="Composer\DependencyResolver" name="SolverProblemsException" abstract="false" final="false" start="23" end="150">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="SolverProblemsException.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/SolverProblemsException.php" size="5694" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="221ff83713c2ba2f6813d39f10759294d28f8a20" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/SolverProblemsException.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+    <method value="self::ERROR_DEPENDENCY_RESOLUTION_FAILED getCode()"/>
+  </docblock>
+  <extends full="RuntimeException" namespace="" name="RuntimeException"/>
+  <constant type="integer" name="ERROR_DEPENDENCY_RESOLUTION_FAILED" value="2"/>
+  <member name="problems" visibility="protected" static="false" line="28">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\Problem" namespace="Composer\DependencyResolver" name="Problem"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="learnedPool" visibility="protected" static="false" line="30">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\DependencyResolver\array&lt;Rule[" namespace="Composer\DependencyResolver" name="array&lt;Rule["/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="36" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$problems" of="object">
+        <type full="Composer\DependencyResolver\Problem" namespace="Composer\DependencyResolver" name="Problem"/>
+      </param>
+      <param type="array" variable="$learnedPool" of="object">
+        <type full="Composer\DependencyResolver\array&lt;Rule[" namespace="Composer\DependencyResolver" name="array&lt;Rule["/>
+      </param>
+    </docblock>
+    <parameter name="problems" byreference="false" type="array"/>
+    <parameter name="learnedPool" byreference="false" type="array"/>
+  </constructor>
+  <method name="getPrettyString" start="49" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$isVerbose">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <param type="object" variable="$isDevExtraction">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="repositorySet" byreference="false" type="object">
+      <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+    </parameter>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="isVerbose" byreference="false" type="bool"/>
+    <parameter name="isDevExtraction" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getProblems" start="103" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\Problem" namespace="Composer\DependencyResolver" name="Problem"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="createExtensionHint" start="112" end="130" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$missingExtensions" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="missingExtensions" byreference="false" type="array"/>
+  </method>
+  <method name="getExtensionProblems" start="136" end="149" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <param type="array" variable="$reasonSets" of="object">
+        <type full="Composer\DependencyResolver\Rule[]" namespace="Composer\DependencyResolver" name="Rule[]"/>
+      </param>
+      <return type="array" of="object">
+        <type full="Composer\DependencyResolver\string" namespace="Composer\DependencyResolver" name="string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="reasonSets" byreference="false" type="array"/>
+  </method>
+  <parent full="RuntimeException" namespace="" name="RuntimeException">
+    <extends full="Exception" namespace="" name="Exception"/>
+    <member name="message" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception message"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="code" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception code"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <member name="file" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The filename where the exception was created"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="line" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The line where the exception was created"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <method name="getMessage" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getPrevious" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="Throwable"/>
+    </docblock>
+  </method>
+    <method name="getCode" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="getFile" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getLine" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getTrace" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="array"/>
+    </docblock>
+  </method>
+    <method name="getTraceAsString" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact=""/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="__toString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact=""/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  </parent>
+  <parent full="Exception" namespace="" name="Exception">
+    <member name="message" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception message"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="code" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception code"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <member name="file" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The filename where the exception was created"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="line" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The line where the exception was created"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <constructor name="__construct" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Construct the exception"/>
+      <return type="void"/>
+    </docblock>
+    <parameter name="message" optional="true" byreference="false" type="string"/>
+    <parameter name="code" optional="true" byreference="false" type="int"/>
+    <parameter name="previous" optional="true" byreference="false" type="object" class="Throwable"/>
+  </constructor>
+    <method name="getMessage" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the Exception message"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getPrevious" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Returns previous Exception"/>
+      <return type="Throwable"/>
+    </docblock>
+  </method>
+    <method name="getCode" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the Exception code"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="getFile" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the file in which the exception was created"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getLine" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the line in which the exception was created"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getTrace" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the stack trace"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+    <method name="getTraceAsString" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the stack trace as a string"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="__toString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="String representation of the exception"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  </parent>
+</class>

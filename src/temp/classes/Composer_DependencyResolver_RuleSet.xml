@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\RuleSet" namespace="Composer\DependencyResolver" name="RuleSet" abstract="false" final="false" start="21" end="202">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="RuleSet.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/RuleSet.php" size="5153" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="67e1ce55c9ac94a163b513e6c8a8047d315218f3" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/RuleSet.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+    <implements value="\IteratorAggregate&lt;Rule&gt;"/>
+  </docblock>
+  <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+  <implements full="Countable" namespace="" name="Countable"/>
+  <constant type="integer" name="TYPE_PACKAGE" value="0"/>
+  <constant type="integer" name="TYPE_REQUEST" value="1"/>
+  <constant type="integer" name="TYPE_LEARNED" value="4"/>
+  <member name="ruleById" default="" type="array" visibility="public" static="false" line="33">
+    <docblock>
+      <description compact="READ-ONLY: Lookup table for rule id to rule object"/>
+      <var description="Rule&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="types" default="" type="array" visibility="protected" static="true" line="36">
+    <docblock>
+      <var description="string&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;0|1|4" namespace="Composer\DependencyResolver" name="array&lt;0|1|4"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="rules" visibility="protected" static="false" line="43">
+    <docblock>
+      <var description="Rule[]&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;self::TYPE_*" namespace="Composer\DependencyResolver" name="array&lt;self::TYPE_*"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="nextRuleId" default="0" type="integer" visibility="protected" static="false" line="46">
+    <docblock>
+      <var type="int"/>
+    </docblock>
+  </member>
+  <member name="rulesByHash" default="" type="array" visibility="protected" static="false" line="49">
+    <docblock>
+      <var description="Rule|Rule[]&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int|string" namespace="Composer\DependencyResolver" name="array&lt;int|string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="51" end="56" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="add" start="62" end="104" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$type">
+        <type full="Composer\DependencyResolver\self::TYPE_*" namespace="Composer\DependencyResolver" name="self::TYPE_*"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="rule" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Do not add if rule already exists" line="70"/>
+    </inline>
+  </method>
+  <method name="count" start="106" end="109" abstract="false" final="false" static="false" visibility="public">
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="ruleById" start="115" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$id"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </return>
+    <parameter name="id" byreference="false" type="int"/>
+  </method>
+  <method name="getRules" start="121" end="124" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <return description="Rule[]&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;self::TYPE_*" namespace="Composer\DependencyResolver" name="array&lt;self::TYPE_*"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getIterator" start="126" end="129" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\RuleSetIterator" namespace="Composer\DependencyResolver" name="RuleSetIterator"/>
+    </return>
+  </method>
+  <method name="getIteratorFor" start="135" end="151" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$types">
+        <type full="Composer\DependencyResolver\self::TYPE_*|array&lt;self::TYPE_*&gt;" namespace="Composer\DependencyResolver" name="self::TYPE_*|array&lt;self::TYPE_*&gt;"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\RuleSetIterator" namespace="Composer\DependencyResolver" name="RuleSetIterator"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\RuleSetIterator" namespace="Composer\DependencyResolver" name="RuleSetIterator"/>
+    </return>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getIteratorWithout" start="157" end="170" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$types">
+        <type full="Composer\DependencyResolver\array&lt;self::TYPE_*&gt;|self::TYPE_*" namespace="Composer\DependencyResolver" name="array&lt;self::TYPE_*&gt;|self::TYPE_*"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\RuleSetIterator" namespace="Composer\DependencyResolver" name="RuleSetIterator"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\RuleSetIterator" namespace="Composer\DependencyResolver" name="RuleSetIterator"/>
+    </return>
+    <parameter name="types" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getTypes" start="173" end="178" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <return description="0, 1: 1, 2: 4}" type="object">
+        <type full="Composer\DependencyResolver\array{0:" namespace="Composer\DependencyResolver" name="array{0:"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="getPrettyString" start="184" end="196" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$isVerbose">
+        <type full="Composer\DependencyResolver\bool" namespace="Composer\DependencyResolver" name="bool"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="repositorySet" byreference="false" type="object" default="NULL">
+      <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+    </parameter>
+    <parameter name="request" byreference="false" type="object" default="NULL">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object" default="NULL">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+    <parameter name="isVerbose" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="__toString" start="198" end="201" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+  <interface full="Countable" namespace="" name="Countable">
+    <method name="count" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Count elements of an object"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

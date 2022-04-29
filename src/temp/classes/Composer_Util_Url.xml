@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Util\Url" namespace="Composer\Util" name="Url" abstract="false" final="false" start="21" end="128">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Util" file="Url.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Util/Url.php" size="5381" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="8e663aa230c281757ba2803e56598fa8a55d7a7f" relative="ar/www/html/vendor/composer/composer/src/Composer/Util/Url.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <method name="updateDistReference" start="29" end="61" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$config">
+        <type full="Composer\Config" namespace="Composer" name="Config"/>
+      </param>
+      <param type="string" variable="$url"/>
+      <param type="string" variable="$ref"/>
+      <return description="the updated URL" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="ref" byreference="false" type="string"/>
+  </method>
+  <method name="getOrigin" start="67" end="105" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$url"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="config" byreference="false" type="object">
+      <type full="Composer\Config" namespace="Composer" name="Config"/>
+    </parameter>
+    <parameter name="url" byreference="false" type="string"/>
+    <inline>
+      <comment value="Gitlab can be installed in a non-root context (i.e. gitlab.com/foo). When downloading archives the originUrl" line="90"/>
+      <comment value="is the host without the path, so we look for the registered gitlab-domains matching the host here" line="91"/>
+    </inline>
+  </method>
+  <method name="sanitize" start="111" end="127" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$url"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <inline>
+      <comment value="GitHub repository rename result in redirect locations containing the access_token as GET parameter" line="113"/>
+      <comment value="e.g. https://api.github.com/repositories/9999999999?access_token=github_token" line="114"/>
+    </inline>
+  </method>
+</class>

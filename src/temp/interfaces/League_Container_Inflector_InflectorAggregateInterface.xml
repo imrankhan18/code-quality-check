@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="League\Container\Inflector\InflectorAggregateInterface" namespace="League\Container\Inflector" name="InflectorAggregateInterface" abstract="false" final="false" start="10" end="14">
+  <file path="//var/www/html/vendor/league/container/src/Inflector" file="InflectorAggregateInterface.php" realpath="/var/www/html/vendor/league/container/src/Inflector/InflectorAggregateInterface.php" size="357" time="2021-11-16T10:29:06+00:00" unixtime="1637058546" sha1="c89b03c755b64edd42223355707536cc0a397927" relative="ar/www/html/vendor/league/container/src/Inflector/InflectorAggregateInterface.php"/>
+  <extends full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface"/>
+  <extends full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+  <method name="add" start="12" end="12" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="League\Container\Inflector\Inflector" namespace="League\Container\Inflector" name="Inflector"/>
+    </return>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="callback" byreference="false" type="callable" default="NULL"/>
+  </method>
+  <method name="inflect" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="object" byreference="false" type="object"/>
+  </method>
+  <implementors>
+    <class full="League\Container\Inflector\InflectorAggregate" namespace="League\Container\Inflector" name="InflectorAggregate"/>
+  </implementors>
+  <parent full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface">
+    <method name="getContainer" start="9" end="9" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </return>
+    </method>
+    <method name="setContainer" start="10" end="10" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="League\Container\ContainerAwareInterface" namespace="League\Container" name="ContainerAwareInterface"/>
+      </return>
+      <parameter name="container" byreference="false" type="object">
+        <type full="League\Container\DefinitionContainerInterface" namespace="League\Container" name="DefinitionContainerInterface"/>
+      </parameter>
+    </method>
+  </parent>
+  <parent full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </parent>
+  <parent full="Traversable" namespace="" name="Traversable"/>
+</interface>

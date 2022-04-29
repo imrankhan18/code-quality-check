@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="Composer\Command\PackageDiscoveryTrait" namespace="Composer\Command" name="PackageDiscoveryTrait" abstract="false" final="false" start="35" end="458">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Command" file="PackageDiscoveryTrait.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Command/PackageDiscoveryTrait.php" size="21656" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="19743c084824effebe9d0dd11af988ef870b5a4d" relative="ar/www/html/vendor/composer/composer/src/Composer/Command/PackageDiscoveryTrait.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <member name="repos" visibility="private" static="false" line="38">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Command\?CompositeRepository" namespace="Composer\Command" name="?CompositeRepository"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="repositorySets" visibility="private" static="false" line="40">
+    <docblock>
+      <var type="array" of="object">
+        <type full="Composer\Command\RepositorySet" namespace="Composer\Command" name="RepositorySet"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="getRepos" start="45" end="55" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Repository\CompositeRepository" namespace="Composer\Repository" name="CompositeRepository"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\Repository\CompositeRepository" namespace="Composer\Repository" name="CompositeRepository"/>
+    </return>
+  </method>
+  <method name="getRepositorySet" start="57" end="67" abstract="false" final="false" static="false" visibility="private">
+    <return type="object" nullable="false">
+      <type full="Composer\Repository\RepositorySet" namespace="Composer\Repository" name="RepositorySet"/>
+    </return>
+    <parameter name="input" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+    </parameter>
+    <parameter name="minimumStability" byreference="false" nullable="true" type="string" default="NULL"/>
+  </method>
+  <method name="getMinimumStability" start="69" end="84" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="input" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+    </parameter>
+    <inline>
+      <comment value="@phpstan-ignore-next-line as RequireCommand does not have the option above so this code is reachable there" line="75"/>
+    </inline>
+  </method>
+  <method name="determineRequirements" start="92" end="261" abstract="false" final="true" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="object" variable="$requires">
+        <type full="Composer\Command\array&lt;string&gt;" namespace="Composer\Command" name="array&lt;string&gt;"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Command\array&lt;string&gt;" namespace="Composer\Command" name="array&lt;string&gt;"/>
+      </return>
+      <throws type="object">
+        <type full="\Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="input" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+    </parameter>
+    <parameter name="output" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Output\OutputInterface" namespace="Symfony\Component\Console\Output" name="OutputInterface"/>
+    </parameter>
+    <parameter name="requires" byreference="false" type="array" default=""/>
+    <parameter name="platformRepo" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="Composer\Repository\PlatformRepository" namespace="Composer\Repository" name="PlatformRepository"/>
+    </parameter>
+    <parameter name="preferredStability" byreference="false" type="string" default="'stable'"/>
+    <parameter name="checkProvidedVersions" byreference="false" type="boolean" default="true"/>
+    <parameter name="fixed" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="Collect existing packages" line="123"/>
+    </inline>
+  </method>
+  <method name="findBestVersionAndNameForPackage" start="271" end="386" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Given a package name, this determines the best version to use in the require key.">This returns a version with the ~ operator prefixed when possible.</description>
+      <throws type="object">
+        <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <return description="string}     name version" type="object">
+        <type full="Composer\Command\array{string" namespace="Composer\Command" name="array{string"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="input" byreference="false" type="object">
+      <type full="Symfony\Component\Console\Input\InputInterface" namespace="Symfony\Component\Console\Input" name="InputInterface"/>
+    </parameter>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="platformRepo" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="Composer\Repository\PlatformRepository" namespace="Composer\Repository" name="PlatformRepository"/>
+    </parameter>
+    <parameter name="preferredStability" byreference="false" type="string" default="'stable'"/>
+    <parameter name="requiredVersion" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="minimumStability" byreference="false" nullable="true" type="string" default="NULL"/>
+    <parameter name="fixed" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="handle ignore-platform-reqs flag if present" line="273"/>
+      <comment value="find the latest version allowed in this repo set" line="276"/>
+    </inline>
+  </method>
+  <method name="findSimilar" start="391" end="420" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Command\array&lt;string&gt;" namespace="Composer\Command" name="array&lt;string&gt;"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="package" byreference="false" type="string"/>
+  </method>
+  <method name="getPlatformExceptionDetails" start="422" end="457" abstract="false" final="false" static="false" visibility="private">
+    <return type="string" nullable="false"/>
+    <parameter name="candidate" byreference="false" type="object">
+      <type full="Composer\Package\PackageInterface" namespace="Composer\Package" name="PackageInterface"/>
+    </parameter>
+    <parameter name="platformRepo" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="Composer\Repository\PlatformRepository" namespace="Composer\Repository" name="PlatformRepository"/>
+    </parameter>
+  </method>
+  <users>
+    <class full="Composer\Command\RequireCommand" namespace="Composer\Command" name="RequireCommand"/>
+    <class full="Composer\Command\InitCommand" namespace="Composer\Command" name="InitCommand"/>
+  </users>
+</trait>

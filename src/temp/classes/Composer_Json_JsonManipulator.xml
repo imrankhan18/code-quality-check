@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Json\JsonManipulator" namespace="Composer\Json" name="JsonManipulator" abstract="false" final="false" start="21" end="609">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/Json" file="JsonManipulator.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/Json/JsonManipulator.php" size="21072" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="606f66e2a423f06f95325d7154eeb131141048c7" relative="ar/www/html/vendor/composer/composer/src/Composer/Json/JsonManipulator.php"/>
+  <docblock>
+    <description/>
+    <author value="Jordi Boggiano &lt;j.boggiano@seld.be&gt;"/>
+  </docblock>
+  <member name="DEFINES" default="'(?(DEFINE)&#10;       (?&lt;number&gt;    -? (?= [1-9]|0(?!\d) ) \d++ (\.\d++)? ([eE] [+-]?+ \d++)? )&#10;       (?&lt;boolean&gt;   true | false | null )&#10;       (?&lt;string&gt;    &quot; ([^&quot;\\\\]*+ | \\\\ [&quot;\\\\bfnrt\/] | \\\\ u [0-9A-Fa-f]{4} )* &quot; )&#10;       (?&lt;array&gt;     \[  (?:  (?&amp;json) \s*+ (?: , (?&amp;json) \s*+ )*+  )?+  \s*+ \] )&#10;       (?&lt;pair&gt;      \s*+ (?&amp;string) \s*+ : (?&amp;json) \s*+ )&#10;       (?&lt;object&gt;    \{  (?:  (?&amp;pair)  (?: , (?&amp;pair)  )*+  )?+  \s*+ \} )&#10;       (?&lt;json&gt;      \s*+ (?: (?&amp;number) | (?&amp;boolean) | (?&amp;string) | (?&amp;array) | (?&amp;object) ) )&#10;    )'" type="string" visibility="private" static="true" line="24">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="contents" visibility="private" static="false" line="35">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="newline" visibility="private" static="false" line="37">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="indent" visibility="private" static="false" line="39">
+    <docblock>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="44" end="56" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$contents"/>
+    </docblock>
+    <parameter name="contents" byreference="false" type="string"/>
+  </constructor>
+  <method name="getContents" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="addLink" start="73" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$type"/>
+      <param type="string" variable="$package"/>
+      <param type="string" variable="$constraint"/>
+      <param type="object" variable="$sortPackages">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="type" byreference="false" type="string"/>
+    <parameter name="package" byreference="false" type="string"/>
+    <parameter name="constraint" byreference="false" type="string"/>
+    <parameter name="sortPackages" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="no link of that type yet" line="77"/>
+      <comment value="try to find existing link" line="90"/>
+    </inline>
+  </method>
+  <method name="sortPackages" start="136" end="165" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Sorts packages by importance (platform packages first, then PHP dependencies) and alphabetically."/>
+      <link value="https://getcomposer.org/doc/02-libraries.md#platform-packages"/>
+      <param type="object" variable="$packages">
+        <type full="Composer\Json\array&lt;string&gt;" namespace="Composer\Json" name="array&lt;string&gt;"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Json\void" namespace="Composer\Json" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="packages" byreference="true" type="array" default=""/>
+  </method>
+  <method name="addRepository" start="173" end="176" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <param description="mixed&gt;|false $config" type="object">
+        <type full="Composer\Json\array&lt;string" namespace="Composer\Json" name="array&lt;string"/>
+      </param>
+      <param type="object" variable="$append">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="config" byreference="false" type="{unknown}"/>
+    <parameter name="append" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="removeRepository" start="182" end="185" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="addConfigSetting" start="192" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <param type="mixed" variable="$value"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="removeConfigSetting" start="201" end="204" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="addProperty" start="211" end="226" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <param type="mixed" variable="$value"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="removeProperty" start="232" end="247" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="addSubNode" start="256" end="359" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$mainNode"/>
+      <param type="string" variable="$name"/>
+      <param type="mixed" variable="$value"/>
+      <param type="object" variable="$append">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="mainNode" byreference="false" type="string"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="append" byreference="false" type="boolean" default="true"/>
+    <inline>
+      <comment value="no main node yet" line="265"/>
+      <comment value="main node content not match-able" line="276"/>
+      <comment value="invalid match due to un-regexable content, abort" line="292"/>
+      <comment value="child exists" line="297"/>
+    </inline>
+  </method>
+  <method name="removeSubNode" start="366" end="465" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$mainNode"/>
+      <param type="string" variable="$name"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="mainNode" byreference="false" type="string"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <inline>
+      <comment value="no node or empty node" line="370"/>
+      <comment value="no node content match-able" line="375"/>
+      <comment value="invalid match due to un-regexable content, abort" line="391"/>
+      <comment value="no node to remove" line="401"/>
+      <comment value="try and find a match for the subkey" line="406"/>
+      <comment value="no child data left, $name was the only key in" line="433"/>
+    </inline>
+  </method>
+  <method name="addMainKey" start="472" end="510" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$key"/>
+      <param type="mixed" variable="$content"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="key" byreference="false" type="string"/>
+    <parameter name="content" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="key exists already" line="477"/>
+      <comment value="append at the end of the file and keep whitespace" line="491"/>
+      <comment value="append at the end of the file" line="502"/>
+    </inline>
+  </method>
+  <method name="removeMainKey" start="516" end="547" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$key"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="key" byreference="false" type="string"/>
+    <inline>
+      <comment value="key exists already" line="524"/>
+    </inline>
+  </method>
+  <method name="removeMainKeyIfEmpty" start="553" end="566" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$key"/>
+      <return type="object">
+        <type full="Composer\Json\bool" namespace="Composer\Json" name="bool"/>
+      </return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="key" byreference="false" type="string"/>
+  </method>
+  <method name="format" start="573" end="596" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="mixed" variable="$data"/>
+      <param type="int" variable="$depth"/>
+      <return type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="depth" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="detectIndenting" start="601" end="608" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\Json\void" namespace="Composer\Json" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+</class>

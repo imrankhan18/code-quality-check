@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PEAR_PackageFile_Generator_v1::_convertRelease2_0</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#"/>
+          </li>
+          <li class="separator">
+            <a title="PEAR_PackageFile_Generator_v1" href="../../classes/PEAR_PackageFile_Generator_v1.xhtml">PEAR_PackageFile_Generator_v1</a>
+          </li>
+          <li class="separator">_convertRelease2_0</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="../../source/sr/local/lib/php/PEAR/PackageFile/Generator/v1.php.xhtml#line878">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>PEAR_PackageFile_Generator_v1::</small>_convertRelease2_0</h1>
+        <h4>Post-process special files with install-as/platform attributes and make the release tag.</h4>
+        <p>This complex method follows this work-flow to create the release tags:
+
+&lt;pre&gt;
+- if any install-as/platform exist, create a generic release and fill it with
+  o &lt;install as=..&gt; tags for &lt;file name=... install-as=...&gt;
+  o &lt;install as=..&gt; tags for &lt;file name=... platform=!... install-as=..&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=...&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=... install-as=..&gt;
+- create a release for each platform encountered and fill with
+  o &lt;install as..&gt; tags for &lt;file name=... install-as=...&gt;
+  o &lt;install as..&gt; tags for &lt;file name=... platform=this platform install-as=..&gt;
+  o &lt;install as..&gt; tags for &lt;file name=... platform=!other platform install-as=..&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=!this platform&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=other platform&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=other platform install-as=..&gt;
+  o &lt;ignore&gt; tags for &lt;file name=... platform=!this platform install-as=..&gt;
+&lt;/pre&gt;
+
+It does this by accessing the $package parameter, which contains an array with
+indices:
+
+ - platform: mapping of file =&gt; OS the file should be installed on
+ - install-as: mapping of file =&gt; installed name
+ - osmap: mapping of OS =&gt; list of files that should be installed
+   on that OS
+ - notosmap: mapping of OS =&gt; list of files that should not be
+   installed on that OS</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function _convertRelease2_0(&amp;
+        $release,
+            
+        $package )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$release</code>
+                —
+                </dt>
+          <dd/>
+          <dt><code>$package</code>
+                —
+                </dt>
+          <dd/>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

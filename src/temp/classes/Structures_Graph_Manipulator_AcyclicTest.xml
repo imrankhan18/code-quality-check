@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Structures_Graph_Manipulator_AcyclicTest" namespace="" name="Structures_Graph_Manipulator_AcyclicTest" abstract="false" final="false" start="55" end="132">
+  <file path="//usr/local/lib/php/Structures/Graph/Manipulator" file="AcyclicTest.php" realpath="/usr/local/lib/php/Structures/Graph/Manipulator/AcyclicTest.php" size="5761" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="e4a0199bbeb74fe45f676890f229babc89b0bc8a" relative="sr/local/lib/php/Structures/Graph/Manipulator/AcyclicTest.php"/>
+  <docblock>
+    <description compact="The Structures_Graph_Manipulator_AcyclicTest is a graph manipulator which tests whether a graph contains a cycle.">The definition of an acyclic graph used in this manipulator is that of a
+DAG. The graph must be directed, or else it is considered cyclic, even when
+there are no arcs.</description>
+    <author value="Sérgio Carvalho &lt;sergio.carvalho@portugalmail.com&gt;"/>
+    <copyright value="(c) 2004 by Sérgio Carvalho"/>
+    <package value="Structures_Graph"/>
+  </docblock>
+  <method name="_nonVisitedInDegree" start="64" end="72" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="This is a variant of Structures_Graph::inDegree which does not count nodes marked as visited."/>
+      <return description="Number of non-visited nodes that link to this one" type="integer"/>
+    </docblock>
+    <parameter name="node" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="_isAcyclic" start="79" end="114" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Check if the graph is acyclic"/>
+    </docblock>
+    <parameter name="graph" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="Mark every node as not visited" line="80"/>
+      <comment value="Iteratively peel off leaf nodes" line="89"/>
+      <comment value="If graph is a DAG, there should be no non-visited nodes. Let's try to prove otherwise" line="106"/>
+      <comment value="Cleanup visited marks" line="110"/>
+    </inline>
+  </method>
+  <method name="isAcyclic" start="124" end="130" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="isAcyclic returns true if a graph contains no cycles, false otherwise."/>
+      <return description="true iff graph is acyclic" type="boolean"/>
+    </docblock>
+    <parameter name="graph" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="We only test graphs" line="125"/>
+      <comment value="Only directed graphs may be acyclic" line="127"/>
+    </inline>
+  </method>
+</class>

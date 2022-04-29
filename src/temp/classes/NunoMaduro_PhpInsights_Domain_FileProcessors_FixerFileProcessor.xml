@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="NunoMaduro\PhpInsights\Domain\FileProcessors\FixerFileProcessor" namespace="NunoMaduro\PhpInsights\Domain\FileProcessors" name="FixerFileProcessor" abstract="false" final="true" start="22" end="111">
+  <file path="//var/www/html/vendor/nunomaduro/phpinsights/src/Domain/FileProcessors" file="FixerFileProcessor.php" realpath="/var/www/html/vendor/nunomaduro/phpinsights/src/Domain/FileProcessors/FixerFileProcessor.php" size="3335" time="2022-03-21T20:51:37+00:00" unixtime="1647895897" sha1="f1ebe78e897ab07c1f2dfe92d9170966d7f6567b" relative="ar/www/html/vendor/nunomaduro/phpinsights/src/Domain/FileProcessors/FixerFileProcessor.php"/>
+  <docblock>
+    <description/>
+    <internal/>
+  </docblock>
+  <implements full="NunoMaduro\PhpInsights\Domain\Contracts\FileProcessor" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="FileProcessor"/>
+  <member name="fixers" default="" type="array" visibility="private" static="false" line="27">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\FileProcessors\array&lt;FixerDecorator&gt;" namespace="NunoMaduro\PhpInsights\Domain\FileProcessors" name="array&lt;FixerDecorator&gt;"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="differ" visibility="private" static="false" line="29"/>
+  <member name="fixEnabled" visibility="private" static="false" line="31"/>
+  <constructor name="__construct" start="33" end="37" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="differ" byreference="false" type="object">
+      <type full="PhpCsFixer\Differ\DifferInterface" namespace="PhpCsFixer\Differ" name="DifferInterface"/>
+    </parameter>
+  </constructor>
+  <method name="support" start="39" end="42" abstract="false" final="false" static="false" visibility="public">
+    <return type="bool" nullable="false"/>
+    <parameter name="insight" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+    </parameter>
+  </method>
+  <method name="addChecker" start="44" end="54" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="insight" byreference="false" type="object">
+      <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+    </parameter>
+  </method>
+  <method name="processFile" start="56" end="110" abstract="false" final="false" static="false" visibility="public">
+    <return type="void" nullable="false"/>
+    <parameter name="splFileInfo" byreference="false" type="object">
+      <type full="Symfony\Component\Finder\SplFileInfo" namespace="Symfony\Component\Finder" name="SplFileInfo"/>
+    </parameter>
+  </method>
+  <interface full="NunoMaduro\PhpInsights\Domain\Contracts\FileProcessor" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="FileProcessor">
+    <constant type="{unknown}" name="FILE_PROCESSOR_TAG" value="'phpinsights.file_processor'"/>
+    <method name="processFile" start="16" end="16" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="splFileInfo" byreference="false" type="object">
+        <type full="Symfony\Component\Finder\SplFileInfo" namespace="Symfony\Component\Finder" name="SplFileInfo"/>
+      </parameter>
+    </method>
+    <method name="support" start="21" end="21" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check if an Insight implementation could be add to current file processor."/>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="insight" byreference="false" type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+      </parameter>
+    </method>
+    <method name="addChecker" start="23" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="insight" byreference="false" type="object">
+        <type full="NunoMaduro\PhpInsights\Domain\Contracts\Insight" namespace="NunoMaduro\PhpInsights\Domain\Contracts" name="Insight"/>
+      </parameter>
+    </method>
+  </interface>
+</class>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Console_Getopt" namespace="" name="Console_Getopt" abstract="false" final="false" start="32" end="365">
+  <file path="//usr/local/lib/php/Console" file="Getopt.php" realpath="/usr/local/lib/php/Console/Getopt.php" size="13635" time="2020-02-26T12:11:53+00:00" unixtime="1582719113" sha1="4eba3aa83e7d78a9332928c22d4592bd232d6200" relative="sr/local/lib/php/Console/Getopt.php"/>
+  <docblock>
+    <description compact="Command-line options parsing class."/>
+    <category value="Console"/>
+    <package value="Console_Getopt"/>
+    <author value="Andrei Zmievski &lt;andrei@php.net&gt;"/>
+    <license name="http://opensource.org/licenses/bsd-license.php BSD-2-Clause"/>
+    <link value="http://pear.php.net/package/Console_Getopt"/>
+  </docblock>
+  <method name="getopt2" start="69" end="72" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Parses the command-line options.">The first parameter to this function should be the list of command-line
+arguments without the leading reference to the running program.
+
+The second parameter is a string of allowed short options. Each of the
+option letters can be followed by a colon ':' to specify that the option
+requires an argument, or a double colon '::' to specify that the option
+takes an optional argument.
+
+The third argument is an optional array of allowed long options. The
+leading '--' should not be included in the option name. Options that
+require an argument should be followed by '=', and options that take an
+option argument should be followed by '=='.
+
+The return value is an array of two elements: the list of parsed
+options and the list of non-option command-line arguments. Each entry in
+the list of parsed options is a pair of elements - the first one
+specifies the option, and the second one specifies the option argument,
+if there was one.
+
+Long and short options can be mixed.
+
+Most of the semantics of this function are based on GNU getopt_long().</description>
+      <param description="an array of command-line arguments" type="array" variable="$args"/>
+      <param description="specifies the list of allowed short options" type="string" variable="$short_options"/>
+      <param description="specifies the list of allowed long options" type="array" variable="$long_options"/>
+      <param description="suppresses Console_Getopt: unrecognized option" type="boolean" variable="$skip_unknown"/>
+      <return description="two-element array containing the list of parsed options and" type="array">the non-option arguments</return>
+    </docblock>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+    <parameter name="short_options" byreference="false" type="{unknown}"/>
+    <parameter name="long_options" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="skip_unknown" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="getopt" start="86" end="89" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="This function expects $args to start with the script name (POSIX-style).">Preserved for backwards compatibility.</description>
+      <param description="an array of command-line arguments" type="array" variable="$args"/>
+      <param description="specifies the list of allowed short options" type="string" variable="$short_options"/>
+      <param description="specifies the list of allowed long options" type="array" variable="$long_options"/>
+      <see value="getopt2()"/>
+      <return description="two-element array containing the list of parsed options and" type="array">the non-option arguments</return>
+    </docblock>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+    <parameter name="short_options" byreference="false" type="{unknown}"/>
+    <parameter name="long_options" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="skip_unknown" byreference="false" type="boolean" default="false"/>
+  </method>
+  <method name="doGetopt" start="102" end="172" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="The actual implementation of the argument parsing code."/>
+      <param description="Version to use" type="int" variable="$version"/>
+      <param description="an array of command-line arguments" type="array" variable="$args"/>
+      <param description="specifies the list of allowed short options" type="string" variable="$short_options"/>
+      <param description="specifies the list of allowed long options" type="array" variable="$long_options"/>
+      <param description="suppresses Console_Getopt: unrecognized option" type="boolean" variable="$skip_unknown"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="{unknown}"/>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+    <parameter name="short_options" byreference="false" type="{unknown}"/>
+    <parameter name="long_options" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="skip_unknown" byreference="false" type="boolean" default="false"/>
+    <inline>
+      <comment value="in case you pass directly readPHPArgv() as the first arg" line="104"/>
+      <comment value="Preserve backwards compatibility with callers that relied on" line="121"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="erroneous POSIX fix." line="122"/>
+    </inline>
+  </method>
+  <method name="_parseShortOption" start="186" end="233" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Parse short option"/>
+      <param description="Argument" type="string" variable="$arg"/>
+      <param description="Available short options" type="array" variable="$short_options" of="string"/>
+      <param type="array" variable="&amp;$opts" of="object">
+        <type full="string[]" namespace="" name="string[]"/>
+      </param>
+      <param type="int" variable="&amp;$argIdx"/>
+      <param type="array" variable="$args" of="string"/>
+      <param description="suppresses Console_Getopt: unrecognized option" type="boolean" variable="$skip_unknown"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="arg" byreference="false" type="{unknown}"/>
+    <parameter name="short_options" byreference="false" type="{unknown}"/>
+    <parameter name="opts" byreference="true" type="{unknown}"/>
+    <parameter name="argIdx" byreference="true" type="{unknown}"/>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+    <parameter name="skip_unknown" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_isShortOpt" start="242" end="246" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Checks if an argument is a short option"/>
+      <param description="Argument to check" type="string" variable="$arg"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="arg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_isLongOpt" start="255" end="259" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Checks if an argument is a long option"/>
+      <param description="Argument to check" type="string" variable="$arg"/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="arg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_parseLongOption" start="272" end="341" abstract="false" final="false" static="true" visibility="protected">
+    <docblock>
+      <description compact="Parse long option"/>
+      <param description="Argument" type="string" variable="$arg"/>
+      <param description="Available long options" type="array" variable="$long_options" of="string"/>
+      <param type="array" variable="&amp;$opts" of="object">
+        <type full="string[]" namespace="" name="string[]"/>
+      </param>
+      <param type="int" variable="&amp;$argIdx"/>
+      <param type="array" variable="$args" of="string"/>
+      <return type="object">
+        <type full="void|PEAR_Error" namespace="" name="void|PEAR_Error"/>
+      </return>
+    </docblock>
+    <parameter name="arg" byreference="false" type="{unknown}"/>
+    <parameter name="long_options" byreference="false" type="{unknown}"/>
+    <parameter name="opts" byreference="true" type="{unknown}"/>
+    <parameter name="argIdx" byreference="true" type="{unknown}"/>
+    <parameter name="args" byreference="false" type="{unknown}"/>
+    <parameter name="skip_unknown" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="readPHPArgv" start="349" end="363" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Safely read the $argv PHP array across different PHP configurations.">Will take care on register_globals and register_argc_argv ini directives</description>
+      <return description="the $argv PHP array or PEAR error if not registered" type="mixed"/>
+    </docblock>
+  </method>
+</class>

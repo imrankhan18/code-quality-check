@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Semver\Constraint\MatchAllConstraint" namespace="Composer\Semver\Constraint" name="MatchAllConstraint" abstract="false" final="false" start="19" end="85">
+  <file path="//var/www/html/vendor/composer/semver/src/Constraint" file="MatchAllConstraint.php" realpath="/var/www/html/vendor/composer/semver/src/Constraint/MatchAllConstraint.php" size="1476" time="2022-04-01T19:23:25+00:00" unixtime="1648841005" sha1="545b0962a18c6de3625d01451aeeb7582407a117" relative="ar/www/html/vendor/composer/semver/src/Constraint/MatchAllConstraint.php"/>
+  <docblock>
+    <description compact="Defines the absence of a constraint.">This constraint matches everything.</description>
+  </docblock>
+  <implements full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+  <member name="prettyString" visibility="protected" static="false" line="22">
+    <docblock>
+      <var type="object">
+        <type full="Composer\Semver\Constraint\string|null" namespace="Composer\Semver\Constraint" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="matches" start="29" end="32" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$provider">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </param>
+      <return type="object">
+        <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="provider" byreference="false" type="object">
+      <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+    </parameter>
+  </method>
+  <method name="compile" start="37" end="40" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+    <parameter name="otherOperator" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPrettyString" start="45" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+    <parameter name="prettyString" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPrettyString" start="53" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+  </method>
+  <method name="__toString" start="65" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+  </method>
+  <method name="getUpperBound" start="73" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+  </method>
+  <method name="getLowerBound" start="81" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="{@inheritDoc}"/>
+    </docblock>
+  </method>
+  <interface full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface">
+    <method name="matches" start="29" end="29" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Checks whether the given constraint intersects in any way with this constraint"/>
+        <param type="object" variable="$provider">
+          <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\bool" namespace="Composer\Semver\Constraint" name="bool"/>
+        </return>
+      </docblock>
+      <parameter name="provider" byreference="false" type="object">
+        <type full="Composer\Semver\Constraint\ConstraintInterface" namespace="Composer\Semver\Constraint" name="ConstraintInterface"/>
+      </parameter>
+    </method>
+    <method name="compile" start="47" end="47" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Provides a compiled version of the constraint for the given operator The compiled version must be a PHP expression.">Executor of compile version must provide 2 variables:
+- $v = the string version to compare with
+- $b = whether or not the version is a non-comparable branch (starts with "dev-")</description>
+        <see value="Constraint::OP_* for the list of available operators."/>
+        <example value="return '!$b &amp;&amp; version_compare($v, '1.0', '&gt;')';"/>
+        <param description="one Constraint::OP_" type="int" variable="$otherOperator"/>
+        <return type="string"/>
+        <phpstan value="-param Constraint::OP_* $otherOperator"/>
+      </docblock>
+      <parameter name="otherOperator" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getUpperBound" start="52" end="52" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\Bound" namespace="Composer\Semver\Constraint" name="Bound"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getLowerBound" start="57" end="57" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\Bound" namespace="Composer\Semver\Constraint" name="Bound"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="getPrettyString" start="62" end="62" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="string"/>
+      </docblock>
+    </method>
+    <method name="setPrettyString" start="69" end="69" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object" variable="$prettyString">
+          <type full="Composer\Semver\Constraint\string|null" namespace="Composer\Semver\Constraint" name="string|null"/>
+        </param>
+        <return type="object">
+          <type full="Composer\Semver\Constraint\void" namespace="Composer\Semver\Constraint" name="void"/>
+        </return>
+      </docblock>
+      <parameter name="prettyString" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__toString" start="74" end="74" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return type="string"/>
+      </docblock>
+    </method>
+  </interface>
+</class>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\DependencyResolver\RuleSetGenerator" namespace="Composer\DependencyResolver" name="RuleSetGenerator" abstract="false" final="false" start="25" end="345">
+  <file path="//var/www/html/vendor/composer/composer/src/Composer/DependencyResolver" file="RuleSetGenerator.php" realpath="/var/www/html/vendor/composer/composer/src/Composer/DependencyResolver/RuleSetGenerator.php" size="13501" time="2022-04-13T14:43:00+00:00" unixtime="1649860980" sha1="a248889e827d9b3c025ce1d0bb72749283ae3799" relative="ar/www/html/vendor/composer/composer/src/Composer/DependencyResolver/RuleSetGenerator.php"/>
+  <docblock>
+    <description/>
+    <author value="Nils Adermann &lt;naderman@naderman.de&gt;"/>
+    <phpstan value="-import-type ReasonData from Rule"/>
+  </docblock>
+  <member name="policy" visibility="protected" static="false" line="28">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\PolicyInterface" namespace="Composer\DependencyResolver" name="PolicyInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="pool" visibility="protected" static="false" line="30">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="rules" visibility="protected" static="false" line="32">
+    <docblock>
+      <var type="object">
+        <type full="Composer\DependencyResolver\RuleSet" namespace="Composer\DependencyResolver" name="RuleSet"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="addedMap" default="" type="array" visibility="protected" static="false" line="34">
+    <docblock>
+      <var description="BasePackage&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;int" namespace="Composer\DependencyResolver" name="array&lt;int"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="addedPackagesByNames" default="" type="array" visibility="protected" static="false" line="36">
+    <docblock>
+      <var description="BasePackage[]&gt;" type="object">
+        <type full="Composer\DependencyResolver\array&lt;string" namespace="Composer\DependencyResolver" name="array&lt;string"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="38" end="43" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="policy" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\PolicyInterface" namespace="Composer\DependencyResolver" name="PolicyInterface"/>
+    </parameter>
+    <parameter name="pool" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Pool" namespace="Composer\DependencyResolver" name="Pool"/>
+    </parameter>
+  </constructor>
+  <method name="createRequireRule" start="59" end="72" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Creates a new rule for the requirements of a package">This rule is of the form (-A|B|C), where B and C are the providers of
+one requirement of the package A.</description>
+      <param description="The package with a requirement" type="object" variable="$package">
+        <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+      </param>
+      <param description="The providers of the requirement" type="array" variable="$providers" of="object">
+        <type full="Composer\DependencyResolver\BasePackage" namespace="Composer\DependencyResolver" name="BasePackage"/>
+      </param>
+      <param description="A RULE_* constant describing the reason for generating this rule" type="object" variable="$reason">
+        <type full="Composer\DependencyResolver\Rule::RULE_*" namespace="Composer\DependencyResolver" name="Rule::RULE_*"/>
+      </param>
+      <param description="Any data, e.g. the requirement name, that goes with the reason" type="mixed" variable="$reasonData"/>
+      <return description="The generated rule or null if tautological" type="object">
+        <type full="Composer\DependencyResolver\Rule|null" namespace="Composer\DependencyResolver" name="Rule|null"/>
+      </return>
+      <phpstan value="-param ReasonData $reasonData"/>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </return>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="providers" byreference="false" type="array"/>
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+    <parameter name="reasonData" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="createInstallOneOfRule" start="88" end="96" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Creates a rule to install at least one of a set of packages">The rule is (A|B|C) with A, B and C different packages. If the given
+set of packages is empty an impossible rule is generated.</description>
+      <param description="The set of packages to choose from" type="array" variable="$packages" of="object">
+        <type full="Composer\DependencyResolver\BasePackage" namespace="Composer\DependencyResolver" name="BasePackage"/>
+      </param>
+      <param description="A RULE_* constant describing the reason for" type="object" variable="$reason">generating this rule<type full="Composer\DependencyResolver\Rule::RULE_*" namespace="Composer\DependencyResolver" name="Rule::RULE_*"/></param>
+      <param description="Additional data like the root require or fix request info" type="mixed" variable="$reasonData"/>
+      <return description="The generated rule" type="object">
+        <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+      </return>
+      <phpstan value="-param ReasonData $reasonData"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </return>
+    <parameter name="packages" byreference="false" type="array"/>
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+    <parameter name="reasonData" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createRule2Literals" start="112" end="120" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Creates a rule for two conflicting packages">The rule for conflicting packages A and B is (-A|-B). A is called the issuer
+and B the provider.</description>
+      <param description="The package declaring the conflict" type="object" variable="$issuer">
+        <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+      </param>
+      <param description="The package causing the conflict" type="object" variable="$provider">
+        <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+      </param>
+      <param description="A RULE_* constant describing the reason for generating this rule" type="object" variable="$reason">
+        <type full="Composer\DependencyResolver\Rule::RULE_*" namespace="Composer\DependencyResolver" name="Rule::RULE_*"/>
+      </param>
+      <param description="Any data, e.g. the package name, that goes with the reason" type="mixed" variable="$reasonData"/>
+      <return description="The generated rule" type="object">
+        <type full="Composer\DependencyResolver\?Rule" namespace="Composer\DependencyResolver" name="?Rule"/>
+      </return>
+      <phpstan value="-param ReasonData $reasonData"/>
+    </docblock>
+    <return type="object" nullable="true">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </return>
+    <parameter name="issuer" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="provider" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+    <parameter name="reasonData" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <comment value="ignore self conflict" line="114"/>
+    </inline>
+  </method>
+  <method name="createMultiConflictRule" start="130" end="142" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param type="array" variable="$packages" of="object">
+        <type full="Composer\DependencyResolver\BasePackage" namespace="Composer\DependencyResolver" name="BasePackage"/>
+      </param>
+      <param description="A RULE_* constant" type="object" variable="$reason">
+        <type full="Composer\DependencyResolver\Rule::RULE_*" namespace="Composer\DependencyResolver" name="Rule::RULE_*"/>
+      </param>
+      <param type="mixed" variable="$reasonData"/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+      </return>
+      <phpstan value="-param ReasonData $reasonData"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </return>
+    <parameter name="packages" byreference="false" type="array"/>
+    <parameter name="reason" byreference="false" type="{unknown}"/>
+    <parameter name="reasonData" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addRule" start="155" end="162" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Adds a rule unless it duplicates an existing one of any type">To be able to directly pass in the result of one of the rule creation
+methods null is allowed which will not insert a rule.</description>
+      <param description="A TYPE_* constant defining the rule type" type="object" variable="$type">
+        <type full="Composer\DependencyResolver\RuleSet::TYPE_*" namespace="Composer\DependencyResolver" name="RuleSet::TYPE_*"/>
+      </param>
+      <param description="The rule about to be added" type="object" variable="$newRule">
+        <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+      </param>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="newRule" byreference="false" type="object" default="NULL">
+      <type full="Composer\DependencyResolver\Rule" namespace="Composer\DependencyResolver" name="Rule"/>
+    </parameter>
+  </method>
+  <method name="addRulesForPackage" start="167" end="216" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="package" byreference="false" type="object">
+      <type full="Composer\Package\BasePackage" namespace="Composer\Package" name="BasePackage"/>
+    </parameter>
+    <parameter name="platformRequirementFilter" byreference="false" type="object">
+      <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+    </parameter>
+  </method>
+  <method name="addConflictRules" start="221" end="257" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="platformRequirementFilter" byreference="false" type="object">
+      <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+    </parameter>
+  </method>
+  <method name="addRulesForRequest" start="262" end="303" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="platformRequirementFilter" byreference="false" type="object">
+      <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+    </parameter>
+  </method>
+  <method name="addRulesForRootAliases" start="308" end="321" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\void" namespace="Composer\DependencyResolver" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="platformRequirementFilter" byreference="false" type="object">
+      <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+    </parameter>
+  </method>
+  <method name="getRulesFor" start="326" end="344" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Composer\DependencyResolver\RuleSet" namespace="Composer\DependencyResolver" name="RuleSet"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Composer\DependencyResolver\RuleSet" namespace="Composer\DependencyResolver" name="RuleSet"/>
+    </return>
+    <parameter name="request" byreference="false" type="object">
+      <type full="Composer\DependencyResolver\Request" namespace="Composer\DependencyResolver" name="Request"/>
+    </parameter>
+    <parameter name="platformRequirementFilter" byreference="false" type="object" default="NULL">
+      <type full="Composer\Filter\PlatformRequirementFilter\PlatformRequirementFilterInterface" namespace="Composer\Filter\PlatformRequirementFilter" name="PlatformRequirementFilterInterface"/>
+    </parameter>
+    <inline>
+      <comment value="Remove references to packages" line="336"/>
+    </inline>
+  </method>
+</class>

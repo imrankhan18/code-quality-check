@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PhpCsFixer\Runner\Runner" namespace="PhpCsFixer\Runner" name="Runner" abstract="false" final="true" start="38" end="294">
+  <file path="//var/www/html/vendor/friendsofphp/php-cs-fixer/src/Runner" file="Runner.php" realpath="/var/www/html/vendor/friendsofphp/php-cs-fixer/src/Runner/Runner.php" size="9171" time="2022-03-18T17:20:59+00:00" unixtime="1647624059" sha1="76533ee2471525cb9b8bc8740d225d94f4374c4b" relative="ar/www/html/vendor/friendsofphp/php-cs-fixer/src/Runner/Runner.php"/>
+  <docblock>
+    <description/>
+    <author value="Dariusz Rumiński &lt;dariusz.ruminski@gmail.com&gt;"/>
+  </docblock>
+  <member name="differ" visibility="private" static="false" line="40"/>
+  <member name="directory" visibility="private" static="false" line="42"/>
+  <member name="eventDispatcher" visibility="private" static="false" line="47">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="PhpCsFixer\Runner\null|EventDispatcherInterface" namespace="PhpCsFixer\Runner" name="null|EventDispatcherInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="errorsManager" visibility="private" static="false" line="49"/>
+  <member name="cacheManager" visibility="private" static="false" line="51"/>
+  <member name="isDryRun" visibility="private" static="false" line="53"/>
+  <member name="linter" visibility="private" static="false" line="55"/>
+  <member name="finder" visibility="private" static="false" line="60">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="\Traversable" namespace="" name="Traversable"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="fixers" visibility="private" static="false" line="65">
+    <docblock>
+      <description/>
+      <var type="array" of="object">
+        <type full="PhpCsFixer\Runner\FixerInterface" namespace="PhpCsFixer\Runner" name="FixerInterface"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="stopOnViolation" visibility="private" static="false" line="67"/>
+  <constructor name="__construct" start="69" end="91" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="finder" byreference="false" type="{unknown}"/>
+    <parameter name="fixers" byreference="false" type="array"/>
+    <parameter name="differ" byreference="false" type="object">
+      <type full="PhpCsFixer\Differ\DifferInterface" namespace="PhpCsFixer\Differ" name="DifferInterface"/>
+    </parameter>
+    <parameter name="eventDispatcher" byreference="false" nullable="true" type="object">
+      <type full="Symfony\Component\EventDispatcher\EventDispatcherInterface" namespace="Symfony\Component\EventDispatcher" name="EventDispatcherInterface"/>
+    </parameter>
+    <parameter name="errorsManager" byreference="false" type="object">
+      <type full="PhpCsFixer\Error\ErrorsManager" namespace="PhpCsFixer\Error" name="ErrorsManager"/>
+    </parameter>
+    <parameter name="linter" byreference="false" type="object">
+      <type full="PhpCsFixer\Linter\LinterInterface" namespace="PhpCsFixer\Linter" name="LinterInterface"/>
+    </parameter>
+    <parameter name="isDryRun" byreference="false" type="bool"/>
+    <parameter name="cacheManager" byreference="false" type="object">
+      <type full="PhpCsFixer\Cache\CacheManagerInterface" namespace="PhpCsFixer\Cache" name="CacheManagerInterface"/>
+    </parameter>
+    <parameter name="directory" byreference="false" nullable="true" type="object" default="NULL">
+      <type full="PhpCsFixer\Cache\DirectoryInterface" namespace="PhpCsFixer\Cache" name="DirectoryInterface"/>
+    </parameter>
+    <parameter name="stopOnViolation" byreference="false" type="boolean" default="false"/>
+  </constructor>
+  <method name="fix" start="93" end="127" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="fixFile" start="129" end="271" abstract="false" final="false" static="false" visibility="private">
+    <return type="array" nullable="true"/>
+    <parameter name="file" byreference="false" type="object">
+      <type full="SplFileInfo" namespace="" name="SplFileInfo"/>
+    </parameter>
+    <parameter name="lintingResult" byreference="false" type="object">
+      <type full="PhpCsFixer\Linter\LintingResultInterface" namespace="PhpCsFixer\Linter" name="LintingResultInterface"/>
+    </parameter>
+    <inline>
+      <comment value="We need to check if content was changed and then applied changes." line="197"/>
+      <comment value="But we can't simply check $appliedFixers, because one fixer may revert" line="198"/>
+      <comment value="work of other and both of them will mark collection as changed." line="199"/>
+      <comment value="Therefore we need to check if code hashes changed." line="200"/>
+    </inline>
+  </method>
+  <method name="processException" start="276" end="284" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Process an exception that occurred."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="e" byreference="false" type="object">
+      <type full="Throwable" namespace="" name="Throwable"/>
+    </parameter>
+  </method>
+  <method name="dispatchEvent" start="286" end="293" abstract="false" final="false" static="false" visibility="private">
+    <return type="void" nullable="false"/>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="event" byreference="false" type="object">
+      <type full="Symfony\Contracts\EventDispatcher\Event" namespace="Symfony\Contracts\EventDispatcher" name="Event"/>
+    </parameter>
+  </method>
+</class>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MongoDB\Operation\Watch</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#MongoDB_Operation">MongoDB\Operation</a>
+          </li>
+          <li class="separator">Watch</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/ar/www/html/vendor/mongodb/mongodb/src/Operation/Watch.php.xhtml#line57">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MongoDB\Operation\</small>Watch</h1>
+        <h4>Operation for creating a change stream with the aggregate command.</h4>
+        <p>Note: the implementation of CommandSubscriber is an internal implementation<br/>detail and should not be considered part of the public API.</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Watch
+                implements
+                <a title="MongoDB\Operation\Executable" href="../interfaces/MongoDB_Operation_Executable.xhtml">Executable</a>,<a title="MongoDB\Driver\Monitoring\CommandSubscriber" href="../interfaces/MongoDB_Driver_Monitoring_CommandSubscriber.xhtml">CommandSubscriber</a>
+            {<br/><ul class="none"><li>// constants</li><li>const FULL_DOCUMENT_DEFAULT = 'default';</li><li>const FULL_DOCUMENT_UPDATE_LOOKUP = 'updateLookup';</li></ul><ul class="none"><li>// members</li><li>private static integer <a href="#members">$wireVersionForStartAtOperationTime</a> =
+                        7;
+                    </li><li>private <span title="MongoDB\Operation\Aggregate">Aggregate</span> <a href="#members">$aggregate</a>;
+                    </li><li>private  <a href="#members">$aggregateOptions</a>;
+                    </li><li>private  <a href="#members">$changeStreamOptions</a>;
+                    </li><li>private <span title="MongoDB\Operation\string|null">string|null</span> <a href="#members">$collectionName</a>;
+                    </li><li>private  <a href="#members">$databaseName</a>;
+                    </li><li>private <span title="MongoDB\Operation\integer|null">integer|null</span> <a href="#members">$firstBatchSize</a>;
+                    </li><li>private boolean <a href="#members">$hasResumed</a> =
+                        false;
+                    </li><li>private <span title="MongoDB\Driver\Manager">Manager</span> <a href="#members">$manager</a>;
+                    </li><li>private <span title="MongoDB\BSON\TimestampInterface">TimestampInterface</span> <a href="#members">$operationTime</a>;
+                    </li><li>private  <a href="#members">$pipeline</a>;
+                    </li><li>private <span title="MongoDB\Operation\object|null">object|null</span> <a href="#members">$postBatchResumeToken</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/__construct.xhtml">__construct</a>()
+                    </li><li>public final void <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/commandFailed.xhtml">commandFailed</a>()
+                    </li><li>public final void <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/commandStarted.xhtml">commandStarted</a>()
+                    </li><li>public final void <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/commandSucceeded.xhtml">commandSucceeded</a>()
+                    </li><li>public ChangeStream <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/execute.xhtml">execute</a>()
+                    </li><li>private Aggregate <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/createAggregate.xhtml">createAggregate</a>()
+                    </li><li>private ChangeStreamIterator <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/createChangeStreamIterator.xhtml">createChangeStreamIterator</a>()
+                    </li><li>private Cursor <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/executeAggregate.xhtml">executeAggregate</a>()
+                    </li><li>private array|object|null <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/getInitialResumeToken.xhtml">getInitialResumeToken</a>()
+                    </li><li>private ChangeStreamIterator <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/resume.xhtml">resume</a>()
+                    </li><li>private boolean <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/shouldCaptureOperationTime.xhtml">shouldCaptureOperationTime</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="MongoDB\Operation\Executable" href="../interfaces/MongoDB_Operation_Executable.xhtml">MongoDB\Operation\Executable</a>
+            </li>
+            <li>
+              <a title="MongoDB\Driver\Monitoring\CommandSubscriber" href="../interfaces/MongoDB_Driver_Monitoring_CommandSubscriber.xhtml">MongoDB\Driver\Monitoring\CommandSubscriber</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="FULL_DOCUMENT_DEFAULT">FULL_DOCUMENT_DEFAULT</td>
+              <td>'default'</td>
+            </tr>
+            <tr>
+              <td id="FULL_DOCUMENT_UPDATE_LOOKUP">FULL_DOCUMENT_UPDATE_LOOKUP</td>
+              <td>'updateLookup'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="aggregate"><strong>$aggregate</strong>
+                —
+                <a title="MongoDB\Operation\Aggregate" href="../classes/MongoDB_Operation_Aggregate.xhtml">MongoDB\Operation\Aggregate</a></li>
+            <li id="aggregateOptions"><strong>$aggregateOptions</strong>
+                —
+                array</li>
+            <li id="changeStreamOptions"><strong>$changeStreamOptions</strong>
+                —
+                array</li>
+            <li id="collectionName"><strong>$collectionName</strong>
+                —
+                <a title="MongoDB\Operation\string|null" href="../classes/MongoDB_Operation_string|null.xhtml">MongoDB\Operation\string|null</a></li>
+            <li id="databaseName"><strong>$databaseName</strong>
+                —
+                string</li>
+            <li id="firstBatchSize"><strong>$firstBatchSize</strong>
+                —
+                <a title="MongoDB\Operation\integer|null" href="../classes/MongoDB_Operation_integer|null.xhtml">MongoDB\Operation\integer|null</a></li>
+            <li id="hasResumed"><strong>$hasResumed</strong>
+                —
+                boolean</li>
+            <li id="manager"><strong>$manager</strong>
+                —
+                <a title="MongoDB\Driver\Manager" href="../classes/MongoDB_Driver_Manager.xhtml">MongoDB\Driver\Manager</a></li>
+            <li id="operationTime"><strong>$operationTime</strong>
+                —
+                <a title="MongoDB\BSON\TimestampInterface" href="../classes/MongoDB_BSON_TimestampInterface.xhtml">MongoDB\BSON\TimestampInterface</a></li>
+            <li id="pipeline"><strong>$pipeline</strong>
+                —
+                array</li>
+            <li id="postBatchResumeToken"><strong>$postBatchResumeToken</strong>
+                —
+                <a title="MongoDB\Operation\object|null" href="../classes/MongoDB_Operation_object|null.xhtml">MongoDB\Operation\object|null</a></li>
+            <li id="wireVersionForStartAtOperationTime"><strong>$wireVersionForStartAtOperationTime</strong>
+                —
+                integer</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="createAggregate"><a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/createAggregate.xhtml">createAggregate()</a>
+                — Create the aggregate command for a change stream.</li>
+            <li id="createChangeStreamIterator"><a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/createChangeStreamIterator.xhtml">createChangeStreamIterator()</a>
+                — Create a ChangeStreamIterator by executing the aggregate command.</li>
+            <li id="executeAggregate"><a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/executeAggregate.xhtml">executeAggregate()</a>
+                — Execute the aggregate command.</li>
+            <li id="getInitialResumeToken"><a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/getInitialResumeToken.xhtml">getInitialResumeToken()</a>
+                — Return the initial resume token for creating the ChangeStreamIterator.</li>
+            <li id="resume"><a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/resume.xhtml">resume()</a>
+                — Resumes a change stream.</li>
+            <li id="shouldCaptureOperationTime"><a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/shouldCaptureOperationTime.xhtml">shouldCaptureOperationTime()</a>
+                — Determine whether to capture operation time from an aggregate response.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/__construct.xhtml">__construct()</a>
+                — Constructs an aggregate command for creating a change stream.</li>
+            <li id="commandFailed">
+              <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/commandFailed.xhtml">commandFailed()</a>
+            </li>
+            <li id="commandStarted">
+              <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/commandStarted.xhtml">commandStarted()</a>
+            </li>
+            <li id="commandSucceeded">
+              <a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/commandSucceeded.xhtml">commandSucceeded()</a>
+            </li>
+            <li id="execute"><a title="MongoDB\Operation\Watch" href="../classes/MongoDB_Operation_Watch/execute.xhtml">execute()</a>
+                — Execute the operation.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
